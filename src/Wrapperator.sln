@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wrapperator", "Wrapperator\Wrapperator.csproj", "{280B0054-0D34-46D7-92C2-BC23D6A98583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wrapperator.Interfaces", "Wrapperator.Interfaces\Wrapperator.Interfaces.csproj", "{DB088D39-F028-4325-8FD8-10A09F58C5CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wrapperator.Wrappers", "Wrapperator.Wrappers\Wrapperator.Wrappers.csproj", "{159108CD-3AA7-41A8-B519-4B93D1EFCEA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Build", ".Build", "{5D6D293B-F24D-4F0E-81B0-0904F69A5D3D}"
+	ProjectSection(SolutionItems) = preProject
+		..\appveyor.yml = ..\appveyor.yml
+		Build-Analyze.cmd = Build-Analyze.cmd
+		Build-Package.cmd = Build-Package.cmd
+		Build.cmd = Build.cmd
+		Build.ps1 = Build.ps1
+		InsertSourceLinks.msbuild = InsertSourceLinks.msbuild
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{BC1B1751-6463-429C-9A43-2826FE951143}"
+	ProjectSection(SolutionItems) = preProject
+		Shared\Build\Build.AppVeyor.ps1 = Shared\Build\Build.AppVeyor.ps1
+		Shared\Build\Build.Common.ps1 = Shared\Build\Build.Common.ps1
+		Shared\Build\Build.Logging.ps1 = Shared\Build\Build.Logging.ps1
+		Shared\Build\Build.MSBuild.ps1 = Shared\Build\Build.MSBuild.ps1
+		Shared\Build\Build.NuGet.ps1 = Shared\Build\Build.NuGet.ps1
+		Shared\Build\Build.Reporting.AppVeyor.ps1 = Shared\Build\Build.Reporting.AppVeyor.ps1
+		Shared\Build\Build.Reporting.Local.ps1 = Shared\Build\Build.Reporting.Local.ps1
+		Shared\Build\Build.ReSharperInspectCode.ps1 = Shared\Build\Build.ReSharperInspectCode.ps1
+		Shared\Build\Build.Testing.ps1 = Shared\Build\Build.Testing.ps1
+		Shared\Build\Build.Versioning.ps1 = Shared\Build\Build.Versioning.ps1
+		Shared\Build\BuildLibrary.ps1 = Shared\Build\BuildLibrary.ps1
+		Shared\Build\Versioning.ps1 = Shared\Build\Versioning.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NuGet", ".NuGet", "{9E634FE2-C73F-4D90-97AB-7A2017789396}"
+	ProjectSection(SolutionItems) = preProject
+		.NuGet\NuGet.config = .NuGet\NuGet.config
+		.NuGet\NuGet.exe = .NuGet\NuGet.exe
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Docs", ".Docs", "{126FBD6D-879D-4563-9231-5AF058DB3D6F}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Shared", ".Shared", "{44B16B50-A251-4E77-9585-0F2688928722}"
+	ProjectSection(SolutionItems) = preProject
+		AssemblyInfoShared.cs = AssemblyInfoShared.cs
+		FxCop.ruleset = FxCop.ruleset
+		SharedTemplate.nuspec = SharedTemplate.nuspec
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolutionPackages", "SolutionPackages\SolutionPackages.csproj", "{A094B4E4-7328-4A4C-9474-F12F483F03E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{280B0054-0D34-46D7-92C2-BC23D6A98583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280B0054-0D34-46D7-92C2-BC23D6A98583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{280B0054-0D34-46D7-92C2-BC23D6A98583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{280B0054-0D34-46D7-92C2-BC23D6A98583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB088D39-F028-4325-8FD8-10A09F58C5CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB088D39-F028-4325-8FD8-10A09F58C5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB088D39-F028-4325-8FD8-10A09F58C5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB088D39-F028-4325-8FD8-10A09F58C5CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159108CD-3AA7-41A8-B519-4B93D1EFCEA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159108CD-3AA7-41A8-B519-4B93D1EFCEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159108CD-3AA7-41A8-B519-4B93D1EFCEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159108CD-3AA7-41A8-B519-4B93D1EFCEA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A094B4E4-7328-4A4C-9474-F12F483F03E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A094B4E4-7328-4A4C-9474-F12F483F03E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A094B4E4-7328-4A4C-9474-F12F483F03E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A094B4E4-7328-4A4C-9474-F12F483F03E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC1B1751-6463-429C-9A43-2826FE951143} = {5D6D293B-F24D-4F0E-81B0-0904F69A5D3D}
+		{A094B4E4-7328-4A4C-9474-F12F483F03E3} = {44B16B50-A251-4E77-9585-0F2688928722}
+	EndGlobalSection
+EndGlobal

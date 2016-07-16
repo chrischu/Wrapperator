@@ -1,0 +1,4 @@
+[submodule "src/Shared"]
+	path = src/Shared
+	url = https://github.com/chrischu/Shared.git
+	branch = master

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{159108CD-3AA7-41A8-B519-4B93D1EFCEA2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wrapperator.Wrappers</RootNamespace>
+    <AssemblyName>Wrapperator.Wrappers</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NullGuard, Version=1.4.6.0, Culture=neutral, PublicKeyToken=1958ac8092168428, processorArchitecture=MSIL">
+      <HintPath>..\packages\NullGuard.Fody.1.4.6\lib\dotnet\NullGuard.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfoShared.cs">
+      <Link>Properties\AssemblyInfoShared.cs</Link>
+    </Compile>
+    <Compile Include="AppDomainWrapper.cs" />
+    <Compile Include="Collections\Specialized\NameValueCollectionWrapper.cs" />
+    <Compile Include="Configuration\ConfigurationManagerWrapper.cs" />
+    <Compile Include="Configuration\ConfigurationWrapper.cs" />
+    <Compile Include="ConsoleWrapper.cs" />
+    <Compile Include="DateTimeWrapper.cs" />
+    <Compile Include="EnvironmentWrapper.cs" />
+    <Compile Include="IO\BinaryReaderWrapper.cs" />
+    <Compile Include="IO\BinaryWriterWrapper.cs" />
+    <Compile Include="IO\Compression\DeflateStreamWrapper.cs" />
+    <Compile Include="IO\DirectoryInfoWrapper.cs" />
+    <Compile Include="IO\DirectoryWrapper.cs" />
+    <Compile Include="IO\FileInfoWrapper.cs" />
+    <Compile Include="IO\FileStreamWrapper.cs" />
+    <Compile Include="IO\FileSystemWatcherWrapper.cs" />
+    <Compile Include="IO\FileWrapper.cs" />
+    <Compile Include="IO\MemoryStreamWrapper.cs" />
+    <Compile Include="IO\PathWrapper.cs" />
+    <Compile Include="IO\StreamReaderWrapper.cs" />
+    <Compile Include="IO\StreamWrapper.cs" />
+    <Compile Include="IO\StreamWriterWrapper.cs" />
+    <Compile Include="IO\TextReaderWrapper.cs" />
+    <Compile Include="IO\TextWriterWrapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflection\AssemblyNameWrapper.cs" />
+    <Compile Include="Reflection\AssemblyWrapper.cs" />
+    <Compile Include="Threading\ThreadWrapper.cs" />
+    <Compile Include="TypeWrapper.cs" />
+    <Compile Include="VersionWrapper.cs" />
+    <Compile Include="Xml\Linq\XAttributeWrapper.cs" />
+    <Compile Include="Xml\Linq\XCDataWrapper.cs" />
+    <Compile Include="Xml\Linq\XCommentWrapper.cs" />
+    <Compile Include="Xml\Linq\XContainerWrapper.cs" />
+    <Compile Include="Xml\Linq\XDeclarationWrapper.cs" />
+    <Compile Include="Xml\Linq\XDocumentTypeWrapper.cs" />
+    <Compile Include="Xml\Linq\XDocumentWrapper.cs" />
+    <Compile Include="Xml\Linq\XElementWrapper.cs" />
+    <Compile Include="Xml\Linq\XNamespaceWrapper.cs" />
+    <Compile Include="Xml\Linq\XNameWrapper.cs" />
+    <Compile Include="Xml\Linq\XNodeWrapper.cs" />
+    <Compile Include="Xml\Linq\XObjectWrapper.cs" />
+    <Compile Include="Xml\Linq\XProcessingInstructionWrapper.cs" />
+    <Compile Include="Xml\Linq\XStreamingElementWrapper.cs" />
+    <Compile Include="Xml\Linq\XTextWrapper.cs" />
+    <Compile Include="Xml\Serialization\XmlSerializerWrapper.cs" />
+    <Compile Include="Xml\XmlDocumentFragmentWrapper.cs" />
+    <Compile Include="Xml\XmlDocumentWrapper.cs" />
+    <Compile Include="Xml\XmlReaderWrapper.cs" />
+    <Compile Include="Xml\XmlWriterWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Wrapperator.Interfaces\Wrapperator.Interfaces.csproj">
+      <Project>{db088d39-f028-4325-8fd8-10a09f58c5cf}</Project>
+      <Name>Wrapperator.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SharedTemplate.nuspec">
+      <Link>Properties\SharedTemplate.nuspec</Link>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.4\build\dotnet\Fody.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
