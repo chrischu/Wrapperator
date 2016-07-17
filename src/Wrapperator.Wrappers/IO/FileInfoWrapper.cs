@@ -24,6 +24,58 @@ namespace Wrapperator.Wrappers.IO
       _fileInfo = fileInfo;
     }
     
+    public System.IO.DirectoryInfo Directory
+    {
+      get
+      {
+        return _fileInfo.Directory;
+      }
+    }
+    
+    public string DirectoryName
+    {
+      get
+      {
+        return _fileInfo.DirectoryName;
+      }
+    }
+    
+    public bool Exists
+    {
+      get
+      {
+        return _fileInfo.Exists;
+      }
+    }
+    
+    public bool IsReadOnly
+    {
+      get
+      {
+        return _fileInfo.IsReadOnly;
+      }
+      set
+      {
+        _fileInfo.IsReadOnly = value;
+      }
+    }
+    
+    public long Length
+    {
+      get
+      {
+        return _fileInfo.Length;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _fileInfo.Name;
+      }
+    }
+    
     /// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends text to the file represented by this instance of the <see cref="T:System.IO.FileInfo" />.</summary>
     /// <returns>A new StreamWriter.</returns>
     /// <filterpriority>1</filterpriority>

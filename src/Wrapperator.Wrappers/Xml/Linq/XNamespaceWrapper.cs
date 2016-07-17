@@ -23,6 +23,38 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xNamespace = xNamespace;
     }
     
+    public string NamespaceName
+    {
+      get
+      {
+        return _xNamespace.NamespaceName;
+      }
+    }
+    
+    public System.Xml.Linq.XNamespace None
+    {
+      get
+      {
+        return System.Xml.Linq.XNamespace.None;
+      }
+    }
+    
+    public System.Xml.Linq.XNamespace Xml
+    {
+      get
+      {
+        return System.Xml.Linq.XNamespace.Xml;
+      }
+    }
+    
+    public System.Xml.Linq.XNamespace Xmlns
+    {
+      get
+      {
+        return System.Xml.Linq.XNamespace.Xmlns;
+      }
+    }
+    
     /// <summary>Gets an <see cref="T:System.Xml.Linq.XNamespace" /> for the specified Uniform Resource Identifier (URI).</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XNamespace" /> created from the specified URI.</returns>
     /// <param name="namespaceName">A <see cref="T:System.String" /> that contains a namespace URI.</param>

@@ -16,6 +16,21 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXName
   {
     
+    string LocalName
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNamespace Namespace
+    {
+      get;
+    }
+    
+    string NamespaceName
+    {
+      get;
+    }
+    
     /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from an expanded name.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object constructed from the expanded name.</returns>
     /// <param name="expandedName">A <see cref="T:System.String" /> that contains an expanded XML name in the format {namespace}localname.</param>

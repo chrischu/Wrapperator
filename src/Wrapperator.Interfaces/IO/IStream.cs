@@ -17,6 +17,49 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IStream : System.IDisposable
   {
     
+    bool CanRead
+    {
+      get;
+    }
+    
+    bool CanSeek
+    {
+      get;
+    }
+    
+    bool CanTimeout
+    {
+      get;
+    }
+    
+    bool CanWrite
+    {
+      get;
+    }
+    
+    long Length
+    {
+      get;
+    }
+    
+    long Position
+    {
+      get;
+      set;
+    }
+    
+    int ReadTimeout
+    {
+      get;
+      set;
+    }
+    
+    int WriteTimeout
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> instead; see the Remarks section.)</summary>
     /// <returns>An <see cref="T:System.IAsyncResult" /> that represents the asynchronous read, which could still be pending.</returns>
     /// <param name="buffer">The buffer to read the data into. </param>

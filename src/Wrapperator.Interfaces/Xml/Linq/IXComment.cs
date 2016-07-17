@@ -16,6 +16,17 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXComment
   {
     
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string Value
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Write this comment to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>

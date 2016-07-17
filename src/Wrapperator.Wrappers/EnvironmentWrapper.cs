@@ -17,6 +17,174 @@ namespace Wrapperator.Wrappers
   public partial class EnvironmentWrapper : Wrapperator.Interfaces.IEnvironment
   {
     
+    public string CommandLine
+    {
+      get
+      {
+        return System.Environment.CommandLine;
+      }
+    }
+    
+    public string CurrentDirectory
+    {
+      get
+      {
+        return System.Environment.CurrentDirectory;
+      }
+      set
+      {
+        System.Environment.CurrentDirectory = value;
+      }
+    }
+    
+    public int CurrentManagedThreadId
+    {
+      get
+      {
+        return System.Environment.CurrentManagedThreadId;
+      }
+    }
+    
+    public int ExitCode
+    {
+      get
+      {
+        return System.Environment.ExitCode;
+      }
+      set
+      {
+        System.Environment.ExitCode = value;
+      }
+    }
+    
+    public bool HasShutdownStarted
+    {
+      get
+      {
+        return System.Environment.HasShutdownStarted;
+      }
+    }
+    
+    public bool Is64BitOperatingSystem
+    {
+      get
+      {
+        return System.Environment.Is64BitOperatingSystem;
+      }
+    }
+    
+    public bool Is64BitProcess
+    {
+      get
+      {
+        return System.Environment.Is64BitProcess;
+      }
+    }
+    
+    public string MachineName
+    {
+      get
+      {
+        return System.Environment.MachineName;
+      }
+    }
+    
+    public string NewLine
+    {
+      get
+      {
+        return System.Environment.NewLine;
+      }
+    }
+    
+    public System.OperatingSystem OSVersion
+    {
+      get
+      {
+        return System.Environment.OSVersion;
+      }
+    }
+    
+    public int ProcessorCount
+    {
+      get
+      {
+        return System.Environment.ProcessorCount;
+      }
+    }
+    
+    public string StackTrace
+    {
+      get
+      {
+        return System.Environment.StackTrace;
+      }
+    }
+    
+    public string SystemDirectory
+    {
+      get
+      {
+        return System.Environment.SystemDirectory;
+      }
+    }
+    
+    public int SystemPageSize
+    {
+      get
+      {
+        return System.Environment.SystemPageSize;
+      }
+    }
+    
+    public int TickCount
+    {
+      get
+      {
+        return System.Environment.TickCount;
+      }
+    }
+    
+    public string UserDomainName
+    {
+      get
+      {
+        return System.Environment.UserDomainName;
+      }
+    }
+    
+    public bool UserInteractive
+    {
+      get
+      {
+        return System.Environment.UserInteractive;
+      }
+    }
+    
+    public string UserName
+    {
+      get
+      {
+        return System.Environment.UserName;
+      }
+    }
+    
+    public System.Version Version
+    {
+      get
+      {
+        return System.Environment.Version;
+      }
+    }
+    
+    public long WorkingSet
+    {
+      get
+      {
+        return System.Environment.WorkingSet;
+      }
+    }
+    
     /// <summary>Terminates this process and gives the underlying operating system the specified exit code.</summary>
     /// <param name="exitCode">Exit code to be given to the operating system. Use 0 (zero) to indicate that the process completed successfully.</param>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have sufficient security permission to perform this function.</exception>

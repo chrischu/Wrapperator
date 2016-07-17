@@ -24,6 +24,38 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xObject = xObject;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xObject.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xObject.Document;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xObject.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xObject.Parent;
+      }
+    }
+    
     /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
     public void AddAnnotation(object annotation)

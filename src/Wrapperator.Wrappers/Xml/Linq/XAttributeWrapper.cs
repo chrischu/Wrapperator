@@ -23,6 +23,66 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xAttribute = xAttribute;
     }
     
+    public System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
+    {
+      get
+      {
+        return System.Xml.Linq.XAttribute.EmptySequence;
+      }
+    }
+    
+    public bool IsNamespaceDeclaration
+    {
+      get
+      {
+        return _xAttribute.IsNamespaceDeclaration;
+      }
+    }
+    
+    public System.Xml.Linq.XName Name
+    {
+      get
+      {
+        return _xAttribute.Name;
+      }
+    }
+    
+    public System.Xml.Linq.XAttribute NextAttribute
+    {
+      get
+      {
+        return _xAttribute.NextAttribute;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xAttribute.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XAttribute PreviousAttribute
+    {
+      get
+      {
+        return _xAttribute.PreviousAttribute;
+      }
+    }
+    
+    public string Value
+    {
+      get
+      {
+        return _xAttribute.Value;
+      }
+      set
+      {
+        _xAttribute.Value = value;
+      }
+    }
+    
     /// <summary>Removes this attribute from its parent element.</summary>
     /// <exception cref="T:System.InvalidOperationException">The parent element is null.</exception>
     public void Remove()

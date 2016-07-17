@@ -23,6 +23,154 @@ namespace Wrapperator.Wrappers.Xml
       _xmlDocument = xmlDocument;
     }
     
+    public string BaseURI
+    {
+      get
+      {
+        return _xmlDocument.BaseURI;
+      }
+    }
+    
+    public System.Xml.XmlElement DocumentElement
+    {
+      get
+      {
+        return _xmlDocument.DocumentElement;
+      }
+    }
+    
+    public System.Xml.XmlDocumentType DocumentType
+    {
+      get
+      {
+        return _xmlDocument.DocumentType;
+      }
+    }
+    
+    public System.Xml.XmlImplementation Implementation
+    {
+      get
+      {
+        return _xmlDocument.Implementation;
+      }
+    }
+    
+    public string InnerText
+    {
+      set
+      {
+        _xmlDocument.InnerText = value;
+      }
+    }
+    
+    public string InnerXml
+    {
+      get
+      {
+        return _xmlDocument.InnerXml;
+      }
+      set
+      {
+        _xmlDocument.InnerXml = value;
+      }
+    }
+    
+    public bool IsReadOnly
+    {
+      get
+      {
+        return _xmlDocument.IsReadOnly;
+      }
+    }
+    
+    public string LocalName
+    {
+      get
+      {
+        return _xmlDocument.LocalName;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _xmlDocument.Name;
+      }
+    }
+    
+    public System.Xml.XmlNameTable NameTable
+    {
+      get
+      {
+        return _xmlDocument.NameTable;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xmlDocument.NodeType;
+      }
+    }
+    
+    public System.Xml.XmlDocument OwnerDocument
+    {
+      get
+      {
+        return _xmlDocument.OwnerDocument;
+      }
+    }
+    
+    public System.Xml.XmlNode ParentNode
+    {
+      get
+      {
+        return _xmlDocument.ParentNode;
+      }
+    }
+    
+    public bool PreserveWhitespace
+    {
+      get
+      {
+        return _xmlDocument.PreserveWhitespace;
+      }
+      set
+      {
+        _xmlDocument.PreserveWhitespace = value;
+      }
+    }
+    
+    public System.Xml.Schema.IXmlSchemaInfo SchemaInfo
+    {
+      get
+      {
+        return _xmlDocument.SchemaInfo;
+      }
+    }
+    
+    public System.Xml.Schema.XmlSchemaSet Schemas
+    {
+      get
+      {
+        return _xmlDocument.Schemas;
+      }
+      set
+      {
+        _xmlDocument.Schemas = value;
+      }
+    }
+    
+    public System.Xml.XmlResolver XmlResolver
+    {
+      set
+      {
+        _xmlDocument.XmlResolver = value;
+      }
+    }
+    
     /// <summary>Creates a duplicate of this node.</summary>
     /// <returns>The cloned XmlDocument node.</returns>
     /// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself. </param>

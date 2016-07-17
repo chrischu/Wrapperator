@@ -24,6 +24,34 @@ namespace Wrapperator.Wrappers.IO
       _streamWriter = streamWriter;
     }
     
+    public bool AutoFlush
+    {
+      get
+      {
+        return _streamWriter.AutoFlush;
+      }
+      set
+      {
+        _streamWriter.AutoFlush = value;
+      }
+    }
+    
+    public System.IO.Stream BaseStream
+    {
+      get
+      {
+        return _streamWriter.BaseStream;
+      }
+    }
+    
+    public System.Text.Encoding Encoding
+    {
+      get
+      {
+        return _streamWriter.Encoding;
+      }
+    }
+    
     /// <summary>Closes the current StreamWriter object and the underlying stream.</summary>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair.</exception>
     /// <filterpriority>1</filterpriority>

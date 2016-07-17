@@ -17,6 +17,21 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IStreamReader : System.IDisposable
   {
     
+    System.IO.Stream BaseStream
+    {
+      get;
+    }
+    
+    System.Text.Encoding CurrentEncoding
+    {
+      get;
+    }
+    
+    bool EndOfStream
+    {
+      get;
+    }
+    
     /// <summary>Closes the <see cref="T:System.IO.StreamReader" /> object and the underlying stream, and releases any system resources associated with the reader.</summary>
     /// <filterpriority>1</filterpriority>
     void Close();

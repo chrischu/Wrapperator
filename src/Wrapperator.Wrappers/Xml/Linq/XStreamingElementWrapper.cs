@@ -23,6 +23,18 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xStreamingElement = xStreamingElement;
     }
     
+    public System.Xml.Linq.XName Name
+    {
+      get
+      {
+        return _xStreamingElement.Name;
+      }
+      set
+      {
+        _xStreamingElement.Name = value;
+      }
+    }
+    
     /// <summary>Adds the specified content as children to this <see cref="T:System.Xml.Linq.XStreamingElement" />.</summary>
     /// <param name="content">Content to be added to the streaming element.</param>
     public void Add(object content)

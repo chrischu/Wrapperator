@@ -17,6 +17,16 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXContainer
   {
     
+    System.Xml.Linq.XNode FirstNode
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode LastNode
+    {
+      get;
+    }
+    
     /// <summary>Adds the specified content as children of this <see cref="T:System.Xml.Linq.XContainer" />.</summary>
     /// <param name="content">A content object containing simple content or a collection of content objects to be added.</param>
     void Add(object content);

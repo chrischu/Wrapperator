@@ -24,6 +24,14 @@ namespace Wrapperator.Wrappers.IO
       _binaryReader = binaryReader;
     }
     
+    public System.IO.Stream BaseStream
+    {
+      get
+      {
+        return _binaryReader.BaseStream;
+      }
+    }
+    
     /// <summary>Closes the current reader and the underlying stream.</summary>
     /// <filterpriority>2</filterpriority>
     public void Close()

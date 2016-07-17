@@ -24,6 +24,62 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xDocumentType = xDocumentType;
     }
     
+    public string InternalSubset
+    {
+      get
+      {
+        return _xDocumentType.InternalSubset;
+      }
+      set
+      {
+        _xDocumentType.InternalSubset = value;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _xDocumentType.Name;
+      }
+      set
+      {
+        _xDocumentType.Name = value;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xDocumentType.NodeType;
+      }
+    }
+    
+    public string PublicId
+    {
+      get
+      {
+        return _xDocumentType.PublicId;
+      }
+      set
+      {
+        _xDocumentType.PublicId = value;
+      }
+    }
+    
+    public string SystemId
+    {
+      get
+      {
+        return _xDocumentType.SystemId;
+      }
+      set
+      {
+        _xDocumentType.SystemId = value;
+      }
+    }
+    
     /// <summary>Write this <see cref="T:System.Xml.Linq.XDocumentType" /> to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>

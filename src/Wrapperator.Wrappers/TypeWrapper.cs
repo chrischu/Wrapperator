@@ -24,6 +24,494 @@ namespace Wrapperator.Wrappers
       _type = type;
     }
     
+    public System.Reflection.Assembly Assembly
+    {
+      get
+      {
+        return _type.Assembly;
+      }
+    }
+    
+    public string AssemblyQualifiedName
+    {
+      get
+      {
+        return _type.AssemblyQualifiedName;
+      }
+    }
+    
+    public System.Reflection.TypeAttributes Attributes
+    {
+      get
+      {
+        return _type.Attributes;
+      }
+    }
+    
+    public System.Type BaseType
+    {
+      get
+      {
+        return _type.BaseType;
+      }
+    }
+    
+    public bool ContainsGenericParameters
+    {
+      get
+      {
+        return _type.ContainsGenericParameters;
+      }
+    }
+    
+    public System.Reflection.MethodBase DeclaringMethod
+    {
+      get
+      {
+        return _type.DeclaringMethod;
+      }
+    }
+    
+    public System.Type DeclaringType
+    {
+      get
+      {
+        return _type.DeclaringType;
+      }
+    }
+    
+    public System.Reflection.Binder DefaultBinder
+    {
+      get
+      {
+        return System.Type.DefaultBinder;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return _type.FullName;
+      }
+    }
+    
+    public System.Reflection.GenericParameterAttributes GenericParameterAttributes
+    {
+      get
+      {
+        return _type.GenericParameterAttributes;
+      }
+    }
+    
+    public int GenericParameterPosition
+    {
+      get
+      {
+        return _type.GenericParameterPosition;
+      }
+    }
+    
+    public System.Type[] GenericTypeArguments
+    {
+      get
+      {
+        return _type.GenericTypeArguments;
+      }
+    }
+    
+    public System.Guid GUID
+    {
+      get
+      {
+        return _type.GUID;
+      }
+    }
+    
+    public bool HasElementType
+    {
+      get
+      {
+        return _type.HasElementType;
+      }
+    }
+    
+    public bool IsAbstract
+    {
+      get
+      {
+        return _type.IsAbstract;
+      }
+    }
+    
+    public bool IsAnsiClass
+    {
+      get
+      {
+        return _type.IsAnsiClass;
+      }
+    }
+    
+    public bool IsArray
+    {
+      get
+      {
+        return _type.IsArray;
+      }
+    }
+    
+    public bool IsAutoClass
+    {
+      get
+      {
+        return _type.IsAutoClass;
+      }
+    }
+    
+    public bool IsAutoLayout
+    {
+      get
+      {
+        return _type.IsAutoLayout;
+      }
+    }
+    
+    public bool IsByRef
+    {
+      get
+      {
+        return _type.IsByRef;
+      }
+    }
+    
+    public bool IsClass
+    {
+      get
+      {
+        return _type.IsClass;
+      }
+    }
+    
+    public bool IsCOMObject
+    {
+      get
+      {
+        return _type.IsCOMObject;
+      }
+    }
+    
+    public bool IsConstructedGenericType
+    {
+      get
+      {
+        return _type.IsConstructedGenericType;
+      }
+    }
+    
+    public bool IsContextful
+    {
+      get
+      {
+        return _type.IsContextful;
+      }
+    }
+    
+    public bool IsEnum
+    {
+      get
+      {
+        return _type.IsEnum;
+      }
+    }
+    
+    public bool IsExplicitLayout
+    {
+      get
+      {
+        return _type.IsExplicitLayout;
+      }
+    }
+    
+    public bool IsGenericParameter
+    {
+      get
+      {
+        return _type.IsGenericParameter;
+      }
+    }
+    
+    public bool IsGenericType
+    {
+      get
+      {
+        return _type.IsGenericType;
+      }
+    }
+    
+    public bool IsGenericTypeDefinition
+    {
+      get
+      {
+        return _type.IsGenericTypeDefinition;
+      }
+    }
+    
+    public bool IsImport
+    {
+      get
+      {
+        return _type.IsImport;
+      }
+    }
+    
+    public bool IsInterface
+    {
+      get
+      {
+        return _type.IsInterface;
+      }
+    }
+    
+    public bool IsLayoutSequential
+    {
+      get
+      {
+        return _type.IsLayoutSequential;
+      }
+    }
+    
+    public bool IsMarshalByRef
+    {
+      get
+      {
+        return _type.IsMarshalByRef;
+      }
+    }
+    
+    public bool IsNested
+    {
+      get
+      {
+        return _type.IsNested;
+      }
+    }
+    
+    public bool IsNestedAssembly
+    {
+      get
+      {
+        return _type.IsNestedAssembly;
+      }
+    }
+    
+    public bool IsNestedFamANDAssem
+    {
+      get
+      {
+        return _type.IsNestedFamANDAssem;
+      }
+    }
+    
+    public bool IsNestedFamily
+    {
+      get
+      {
+        return _type.IsNestedFamily;
+      }
+    }
+    
+    public bool IsNestedFamORAssem
+    {
+      get
+      {
+        return _type.IsNestedFamORAssem;
+      }
+    }
+    
+    public bool IsNestedPrivate
+    {
+      get
+      {
+        return _type.IsNestedPrivate;
+      }
+    }
+    
+    public bool IsNestedPublic
+    {
+      get
+      {
+        return _type.IsNestedPublic;
+      }
+    }
+    
+    public bool IsNotPublic
+    {
+      get
+      {
+        return _type.IsNotPublic;
+      }
+    }
+    
+    public bool IsPointer
+    {
+      get
+      {
+        return _type.IsPointer;
+      }
+    }
+    
+    public bool IsPrimitive
+    {
+      get
+      {
+        return _type.IsPrimitive;
+      }
+    }
+    
+    public bool IsPublic
+    {
+      get
+      {
+        return _type.IsPublic;
+      }
+    }
+    
+    public bool IsSealed
+    {
+      get
+      {
+        return _type.IsSealed;
+      }
+    }
+    
+    public bool IsSecurityCritical
+    {
+      get
+      {
+        return _type.IsSecurityCritical;
+      }
+    }
+    
+    public bool IsSecuritySafeCritical
+    {
+      get
+      {
+        return _type.IsSecuritySafeCritical;
+      }
+    }
+    
+    public bool IsSecurityTransparent
+    {
+      get
+      {
+        return _type.IsSecurityTransparent;
+      }
+    }
+    
+    public bool IsSerializable
+    {
+      get
+      {
+        return _type.IsSerializable;
+      }
+    }
+    
+    public bool IsSpecialName
+    {
+      get
+      {
+        return _type.IsSpecialName;
+      }
+    }
+    
+    public bool IsUnicodeClass
+    {
+      get
+      {
+        return _type.IsUnicodeClass;
+      }
+    }
+    
+    public bool IsValueType
+    {
+      get
+      {
+        return _type.IsValueType;
+      }
+    }
+    
+    public bool IsVisible
+    {
+      get
+      {
+        return _type.IsVisible;
+      }
+    }
+    
+    public System.Reflection.MemberTypes MemberType
+    {
+      get
+      {
+        return _type.MemberType;
+      }
+    }
+    
+    public System.Reflection.Module Module
+    {
+      get
+      {
+        return _type.Module;
+      }
+    }
+    
+    public string Namespace
+    {
+      get
+      {
+        return _type.Namespace;
+      }
+    }
+    
+    public System.Type ReflectedType
+    {
+      get
+      {
+        return _type.ReflectedType;
+      }
+    }
+    
+    public System.Runtime.InteropServices.StructLayoutAttribute StructLayoutAttribute
+    {
+      get
+      {
+        return _type.StructLayoutAttribute;
+      }
+    }
+    
+    public System.RuntimeTypeHandle TypeHandle
+    {
+      get
+      {
+        return _type.TypeHandle;
+      }
+    }
+    
+    public System.Reflection.ConstructorInfo TypeInitializer
+    {
+      get
+      {
+        return _type.TypeInitializer;
+      }
+    }
+    
+    public System.Type UnderlyingSystemType
+    {
+      get
+      {
+        return _type.UnderlyingSystemType;
+      }
+    }
+    
     /// <summary>Returns an array of <see cref="T:System.Type" /> objects representing a filtered list of interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
     /// <returns>An array of <see cref="T:System.Type" /> objects representing a filtered list of the interfaces implemented or inherited by the current <see cref="T:System.Type" />, or an empty array of type <see cref="T:System.Type" /> if no interfaces matching the filter are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
     /// <param name="filter">The delegate that compares the interfaces against <paramref name="filterCriteria" />. </param>

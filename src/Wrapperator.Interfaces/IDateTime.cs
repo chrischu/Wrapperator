@@ -17,6 +17,86 @@ namespace Wrapperator.Interfaces
   public partial interface IDateTime
   {
     
+    System.DateTime Date
+    {
+      get;
+    }
+    
+    int Day
+    {
+      get;
+    }
+    
+    System.DayOfWeek DayOfWeek
+    {
+      get;
+    }
+    
+    int DayOfYear
+    {
+      get;
+    }
+    
+    int Hour
+    {
+      get;
+    }
+    
+    System.DateTimeKind Kind
+    {
+      get;
+    }
+    
+    int Millisecond
+    {
+      get;
+    }
+    
+    int Minute
+    {
+      get;
+    }
+    
+    int Month
+    {
+      get;
+    }
+    
+    System.DateTime Now
+    {
+      get;
+    }
+    
+    int Second
+    {
+      get;
+    }
+    
+    long Ticks
+    {
+      get;
+    }
+    
+    System.TimeSpan TimeOfDay
+    {
+      get;
+    }
+    
+    System.DateTime Today
+    {
+      get;
+    }
+    
+    System.DateTime UtcNow
+    {
+      get;
+    }
+    
+    int Year
+    {
+      get;
+    }
+    
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the value of the specified <see cref="T:System.TimeSpan" /> to the value of this instance.</summary>
     /// <returns>An object whose value is the sum of the date and time represented by this instance and the time interval represented by <paramref name="value" />.</returns>
     /// <param name="value">A positive or negative time interval. </param>

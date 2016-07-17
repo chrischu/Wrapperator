@@ -24,6 +24,62 @@ namespace Wrapperator.Wrappers.IO
       _memoryStream = memoryStream;
     }
     
+    public bool CanRead
+    {
+      get
+      {
+        return _memoryStream.CanRead;
+      }
+    }
+    
+    public bool CanSeek
+    {
+      get
+      {
+        return _memoryStream.CanSeek;
+      }
+    }
+    
+    public bool CanWrite
+    {
+      get
+      {
+        return _memoryStream.CanWrite;
+      }
+    }
+    
+    public int Capacity
+    {
+      get
+      {
+        return _memoryStream.Capacity;
+      }
+      set
+      {
+        _memoryStream.Capacity = value;
+      }
+    }
+    
+    public long Length
+    {
+      get
+      {
+        return _memoryStream.Length;
+      }
+    }
+    
+    public long Position
+    {
+      get
+      {
+        return _memoryStream.Position;
+      }
+      set
+      {
+        _memoryStream.Position = value;
+      }
+    }
+    
     /// <summary>Asynchronously reads all the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
     /// <returns>A task that represents the asynchronous copy operation.</returns>
     /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>

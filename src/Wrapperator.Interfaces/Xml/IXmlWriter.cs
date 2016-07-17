@@ -16,6 +16,26 @@ namespace Wrapperator.Interfaces.Xml
   public partial interface IXmlWriter : System.IDisposable
   {
     
+    System.Xml.XmlWriterSettings Settings
+    {
+      get;
+    }
+    
+    System.Xml.WriteState WriteState
+    {
+      get;
+    }
+    
+    string XmlLang
+    {
+      get;
+    }
+    
+    System.Xml.XmlSpace XmlSpace
+    {
+      get;
+    }
+    
     /// <summary>When overridden in a derived class, closes this stream and the underlying stream.</summary>
     /// <exception cref="T:System.InvalidOperationException">A call is made to write more output after Close has been called or the result of this call is an invalid XML document.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>

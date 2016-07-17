@@ -24,6 +24,54 @@ namespace Wrapperator.Wrappers
       _version = version;
     }
     
+    public int Build
+    {
+      get
+      {
+        return _version.Build;
+      }
+    }
+    
+    public int Major
+    {
+      get
+      {
+        return _version.Major;
+      }
+    }
+    
+    public short MajorRevision
+    {
+      get
+      {
+        return _version.MajorRevision;
+      }
+    }
+    
+    public int Minor
+    {
+      get
+      {
+        return _version.Minor;
+      }
+    }
+    
+    public short MinorRevision
+    {
+      get
+      {
+        return _version.MinorRevision;
+      }
+    }
+    
+    public int Revision
+    {
+      get
+      {
+        return _version.Revision;
+      }
+    }
+    
     /// <summary>Returns a new <see cref="T:System.Version" /> object whose value is the same as the current <see cref="T:System.Version" /> object.</summary>
     /// <returns>A new <see cref="T:System.Object" /> whose values are a copy of the current <see cref="T:System.Version" /> object.</returns>
     /// <filterpriority>2</filterpriority>

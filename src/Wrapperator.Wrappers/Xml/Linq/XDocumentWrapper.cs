@@ -23,6 +23,42 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xDocument = xDocument;
     }
     
+    public System.Xml.Linq.XDeclaration Declaration
+    {
+      get
+      {
+        return _xDocument.Declaration;
+      }
+      set
+      {
+        _xDocument.Declaration = value;
+      }
+    }
+    
+    public System.Xml.Linq.XDocumentType DocumentType
+    {
+      get
+      {
+        return _xDocument.DocumentType;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xDocument.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Root
+    {
+      get
+      {
+        return _xDocument.Root;
+      }
+    }
+    
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
     /// <param name="uri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>

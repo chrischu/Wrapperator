@@ -23,6 +23,58 @@ namespace Wrapperator.Wrappers.IO.Compression
       _deflateStream = deflateStream;
     }
     
+    public System.IO.Stream BaseStream
+    {
+      get
+      {
+        return _deflateStream.BaseStream;
+      }
+    }
+    
+    public bool CanRead
+    {
+      get
+      {
+        return _deflateStream.CanRead;
+      }
+    }
+    
+    public bool CanSeek
+    {
+      get
+      {
+        return _deflateStream.CanSeek;
+      }
+    }
+    
+    public bool CanWrite
+    {
+      get
+      {
+        return _deflateStream.CanWrite;
+      }
+    }
+    
+    public long Length
+    {
+      get
+      {
+        return _deflateStream.Length;
+      }
+    }
+    
+    public long Position
+    {
+      get
+      {
+        return _deflateStream.Position;
+      }
+      set
+      {
+        _deflateStream.Position = value;
+      }
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using the <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
     /// <returns>An  object that represents the asynchronous read operation, which could still be pending.</returns>
     /// <param name="array">The byte array to read the data into.</param>

@@ -42,10 +42,33 @@ namespace Wrapperator
 
       ns.Types.Add(wrapperInterface);
 
+      foreach (var propertyInfo in model.Properties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
+        wrapperInterface.Members.Add(ConvertPropertyInfoToCodeDomProperty(propertyInfo));
+
       foreach (var methodInfo in model.Methods.OrderBy(x => x.Name).ThenBy(x => x.IsStatic))
         wrapperInterface.Members.Add(ConvertMethodInfoToCodeDomMethod(helper, methodInfo));
 
       helper.WriteToInterfaceFile(model.Type, sw => ConvertCompileUnitToCode(compileUnit, sw));
+    }
+
+    private static CodeMemberProperty ConvertPropertyInfoToCodeDomProperty (PropertyInfo propertyInfo)
+    {
+      var property = new CodeMemberProperty
+                     {
+                         Name = propertyInfo.Name,
+                         Type = ConvertTypeToTypeReference(propertyInfo.PropertyType),
+                         HasGet = propertyInfo.CanRead,
+                         HasSet = propertyInfo.CanWrite,
+                         // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+                         Attributes = MemberAttributes.Public | MemberAttributes.Final
+                     };
+
+      var parameters = propertyInfo.GetIndexParameters();
+      if(parameters.Length > 0)
+        foreach (var parameter in parameters)
+          property.Parameters.Add(new CodeParameterDeclarationExpression(ConvertTypeToTypeReference(parameter.ParameterType), parameter.Name));
+
+      return property;
     }
 
     private static void GenerateWrapper (WrapperatorHelper helper, WrapperatorModel model)
@@ -69,6 +92,7 @@ namespace Wrapperator
         AddWrappedFieldToWrapper(helper, model, wrapperClass);
 
       AddMethodsToWrapper(helper, model, wrapperClass);
+      AddPropertiesToWrapper(model, wrapperClass);
 
       if (typeof(IDisposable).IsAssignableFrom(model.Type))
         AddDisposeMethodToWrapper(model, wrapperClass);
@@ -156,6 +180,41 @@ namespace Wrapperator
           method.Statements.Add(new CodeMethodReturnStatement(invoke));
 
         wrapperClass.Members.Add(method);
+      }
+    }
+
+    private static void AddPropertiesToWrapper(WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    {
+      foreach(var propertyInfo in model.Properties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
+      {
+        var property = ConvertPropertyInfoToCodeDomProperty(propertyInfo);
+
+        var invokeTarget = propertyInfo.IsStatic()
+            ? (CodeExpression)new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
+            : new CodeFieldReferenceExpression { FieldName = model.FieldName };
+
+        CodeExpression propertyReference = new CodePropertyReferenceExpression(invokeTarget, propertyInfo.Name);
+
+        var parameters = propertyInfo.GetIndexParameters();
+        if (parameters.Length > 0)
+          propertyReference = new CodeIndexerExpression(
+              invokeTarget,
+              parameters.Select(p => new CodeArgumentReferenceExpression(p.Name)).ToArray<CodeExpression>());
+
+        if (property.HasGet)
+        {
+          property.GetStatements.Add(new CodeMethodReturnStatement(propertyReference));
+        }
+
+        if (property.HasSet)
+        {
+          property.SetStatements.Add(
+              new CodeAssignStatement(
+                  propertyReference,
+                  new CodePropertySetValueReferenceExpression()));
+        }
+
+        wrapperClass.Members.Add(property);
       }
     }
 

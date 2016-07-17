@@ -24,6 +24,38 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xNode = xNode;
     }
     
+    public System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
+    {
+      get
+      {
+        return System.Xml.Linq.XNode.DocumentOrderComparer;
+      }
+    }
+    
+    public System.Xml.Linq.XNodeEqualityComparer EqualityComparer
+    {
+      get
+      {
+        return System.Xml.Linq.XNode.EqualityComparer;
+      }
+    }
+    
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xNode.NextNode;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xNode.PreviousNode;
+      }
+    }
+    
     /// <summary>Adds the specified content immediately after this node.</summary>
     /// <param name="content">A content object that contains simple content or a collection of content objects to be added after this node.</param>
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>

@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXStreamingElement
   {
     
+    System.Xml.Linq.XName Name
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Adds the specified content as children to this <see cref="T:System.Xml.Linq.XStreamingElement" />.</summary>
     /// <param name="content">Content to be added to the streaming element.</param>
     void Add(object content);

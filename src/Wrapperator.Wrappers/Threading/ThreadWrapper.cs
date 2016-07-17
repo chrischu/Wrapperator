@@ -24,6 +24,134 @@ namespace Wrapperator.Wrappers.Threading
       _thread = thread;
     }
     
+    public System.Runtime.Remoting.Contexts.Context CurrentContext
+    {
+      get
+      {
+        return System.Threading.Thread.CurrentContext;
+      }
+    }
+    
+    public System.Globalization.CultureInfo CurrentCulture
+    {
+      get
+      {
+        return _thread.CurrentCulture;
+      }
+      set
+      {
+        _thread.CurrentCulture = value;
+      }
+    }
+    
+    public System.Security.Principal.IPrincipal CurrentPrincipal
+    {
+      get
+      {
+        return System.Threading.Thread.CurrentPrincipal;
+      }
+      set
+      {
+        System.Threading.Thread.CurrentPrincipal = value;
+      }
+    }
+    
+    public System.Threading.Thread CurrentThread
+    {
+      get
+      {
+        return System.Threading.Thread.CurrentThread;
+      }
+    }
+    
+    public System.Globalization.CultureInfo CurrentUICulture
+    {
+      get
+      {
+        return _thread.CurrentUICulture;
+      }
+      set
+      {
+        _thread.CurrentUICulture = value;
+      }
+    }
+    
+    public System.Threading.ExecutionContext ExecutionContext
+    {
+      get
+      {
+        return _thread.ExecutionContext;
+      }
+    }
+    
+    public bool IsAlive
+    {
+      get
+      {
+        return _thread.IsAlive;
+      }
+    }
+    
+    public bool IsBackground
+    {
+      get
+      {
+        return _thread.IsBackground;
+      }
+      set
+      {
+        _thread.IsBackground = value;
+      }
+    }
+    
+    public bool IsThreadPoolThread
+    {
+      get
+      {
+        return _thread.IsThreadPoolThread;
+      }
+    }
+    
+    public int ManagedThreadId
+    {
+      get
+      {
+        return _thread.ManagedThreadId;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _thread.Name;
+      }
+      set
+      {
+        _thread.Name = value;
+      }
+    }
+    
+    public System.Threading.ThreadPriority Priority
+    {
+      get
+      {
+        return _thread.Priority;
+      }
+      set
+      {
+        _thread.Priority = value;
+      }
+    }
+    
+    public System.Threading.ThreadState ThreadState
+    {
+      get
+      {
+        return _thread.ThreadState;
+      }
+    }
+    
     /// <summary>Raises a <see cref="T:System.Threading.ThreadAbortException" /> in the thread on which it is invoked, to begin the process of terminating the thread while also providing exception information about the thread termination. Calling this method usually terminates the thread.</summary>
     /// <param name="stateInfo">An object that contains application-specific information, such as state, which can be used by the thread being aborted. </param>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>

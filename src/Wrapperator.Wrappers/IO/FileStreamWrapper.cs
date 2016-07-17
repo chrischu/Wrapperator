@@ -24,6 +24,74 @@ namespace Wrapperator.Wrappers.IO
       _fileStream = fileStream;
     }
     
+    public bool CanRead
+    {
+      get
+      {
+        return _fileStream.CanRead;
+      }
+    }
+    
+    public bool CanSeek
+    {
+      get
+      {
+        return _fileStream.CanSeek;
+      }
+    }
+    
+    public bool CanWrite
+    {
+      get
+      {
+        return _fileStream.CanWrite;
+      }
+    }
+    
+    public bool IsAsync
+    {
+      get
+      {
+        return _fileStream.IsAsync;
+      }
+    }
+    
+    public long Length
+    {
+      get
+      {
+        return _fileStream.Length;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _fileStream.Name;
+      }
+    }
+    
+    public long Position
+    {
+      get
+      {
+        return _fileStream.Position;
+      }
+      set
+      {
+        _fileStream.Position = value;
+      }
+    }
+    
+    public Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle
+    {
+      get
+      {
+        return _fileStream.SafeFileHandle;
+      }
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using <see cref="M:System.IO.FileStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)" /> instead; see the Remarks section.)</summary>
     /// <returns>An object that references the asynchronous read.</returns>
     /// <param name="array">The buffer to read data into. </param>

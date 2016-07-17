@@ -16,6 +16,53 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXElement
   {
     
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XAttribute FirstAttribute
+    {
+      get;
+    }
+    
+    bool HasAttributes
+    {
+      get;
+    }
+    
+    bool HasElements
+    {
+      get;
+    }
+    
+    bool IsEmpty
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XAttribute LastAttribute
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XName Name
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string Value
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Returns a collection of elements that contain this element, and the ancestors of this element. </summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of elements that contain this element, and the ancestors of this element. </returns>
     System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> AncestorsAndSelf();

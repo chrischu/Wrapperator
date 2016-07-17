@@ -24,6 +24,34 @@ namespace Wrapperator.Wrappers.IO
       _textWriter = textWriter;
     }
     
+    public System.Text.Encoding Encoding
+    {
+      get
+      {
+        return _textWriter.Encoding;
+      }
+    }
+    
+    public System.IFormatProvider FormatProvider
+    {
+      get
+      {
+        return _textWriter.FormatProvider;
+      }
+    }
+    
+    public string NewLine
+    {
+      get
+      {
+        return _textWriter.NewLine;
+      }
+      set
+      {
+        _textWriter.NewLine = value;
+      }
+    }
+    
     /// <summary>Closes the current writer and releases any system resources associated with the writer.</summary>
     /// <filterpriority>1</filterpriority>
     public void Close()

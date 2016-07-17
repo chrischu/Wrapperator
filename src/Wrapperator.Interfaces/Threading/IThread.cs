@@ -17,6 +17,77 @@ namespace Wrapperator.Interfaces.Threading
   public partial interface IThread
   {
     
+    System.Runtime.Remoting.Contexts.Context CurrentContext
+    {
+      get;
+    }
+    
+    System.Globalization.CultureInfo CurrentCulture
+    {
+      get;
+      set;
+    }
+    
+    System.Security.Principal.IPrincipal CurrentPrincipal
+    {
+      get;
+      set;
+    }
+    
+    System.Threading.Thread CurrentThread
+    {
+      get;
+    }
+    
+    System.Globalization.CultureInfo CurrentUICulture
+    {
+      get;
+      set;
+    }
+    
+    System.Threading.ExecutionContext ExecutionContext
+    {
+      get;
+    }
+    
+    bool IsAlive
+    {
+      get;
+    }
+    
+    bool IsBackground
+    {
+      get;
+      set;
+    }
+    
+    bool IsThreadPoolThread
+    {
+      get;
+    }
+    
+    int ManagedThreadId
+    {
+      get;
+    }
+    
+    string Name
+    {
+      get;
+      set;
+    }
+    
+    System.Threading.ThreadPriority Priority
+    {
+      get;
+      set;
+    }
+    
+    System.Threading.ThreadState ThreadState
+    {
+      get;
+    }
+    
     /// <summary>Raises a <see cref="T:System.Threading.ThreadAbortException" /> in the thread on which it is invoked, to begin the process of terminating the thread while also providing exception information about the thread termination. Calling this method usually terminates the thread.</summary>
     /// <param name="stateInfo">An object that contains application-specific information, such as state, which can be used by the thread being aborted. </param>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>

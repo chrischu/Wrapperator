@@ -23,6 +23,38 @@ namespace Wrapperator.Wrappers.Xml
       _xmlWriter = xmlWriter;
     }
     
+    public System.Xml.XmlWriterSettings Settings
+    {
+      get
+      {
+        return _xmlWriter.Settings;
+      }
+    }
+    
+    public System.Xml.WriteState WriteState
+    {
+      get
+      {
+        return _xmlWriter.WriteState;
+      }
+    }
+    
+    public string XmlLang
+    {
+      get
+      {
+        return _xmlWriter.XmlLang;
+      }
+    }
+    
+    public System.Xml.XmlSpace XmlSpace
+    {
+      get
+      {
+        return _xmlWriter.XmlSpace;
+      }
+    }
+    
     /// <summary>When overridden in a derived class, closes this stream and the underlying stream.</summary>
     /// <exception cref="T:System.InvalidOperationException">A call is made to write more output after Close has been called or the result of this call is an invalid XML document.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>

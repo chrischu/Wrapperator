@@ -24,6 +24,102 @@ namespace Wrapperator.Wrappers.IO
       _fileSystemWatcher = fileSystemWatcher;
     }
     
+    public bool EnableRaisingEvents
+    {
+      get
+      {
+        return _fileSystemWatcher.EnableRaisingEvents;
+      }
+      set
+      {
+        _fileSystemWatcher.EnableRaisingEvents = value;
+      }
+    }
+    
+    public string Filter
+    {
+      get
+      {
+        return _fileSystemWatcher.Filter;
+      }
+      set
+      {
+        _fileSystemWatcher.Filter = value;
+      }
+    }
+    
+    public bool IncludeSubdirectories
+    {
+      get
+      {
+        return _fileSystemWatcher.IncludeSubdirectories;
+      }
+      set
+      {
+        _fileSystemWatcher.IncludeSubdirectories = value;
+      }
+    }
+    
+    public int InternalBufferSize
+    {
+      get
+      {
+        return _fileSystemWatcher.InternalBufferSize;
+      }
+      set
+      {
+        _fileSystemWatcher.InternalBufferSize = value;
+      }
+    }
+    
+    public System.IO.NotifyFilters NotifyFilter
+    {
+      get
+      {
+        return _fileSystemWatcher.NotifyFilter;
+      }
+      set
+      {
+        _fileSystemWatcher.NotifyFilter = value;
+      }
+    }
+    
+    public string Path
+    {
+      get
+      {
+        return _fileSystemWatcher.Path;
+      }
+      set
+      {
+        _fileSystemWatcher.Path = value;
+      }
+    }
+    
+    public System.ComponentModel.ISite Site
+    {
+      get
+      {
+        return _fileSystemWatcher.Site;
+      }
+      set
+      {
+        _fileSystemWatcher.Site = value;
+      }
+    }
+    
+    public System.ComponentModel.ISynchronizeInvoke SynchronizingObject
+    {
+      get
+      {
+        return _fileSystemWatcher.SynchronizingObject;
+      }
+      set
+      {
+        _fileSystemWatcher.SynchronizingObject = value;
+      }
+    }
+    
     /// <summary>Begins the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>
     public void BeginInit()

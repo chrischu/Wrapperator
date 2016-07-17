@@ -23,6 +23,38 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xProcessingInstruction = xProcessingInstruction;
     }
     
+    public string Data
+    {
+      get
+      {
+        return _xProcessingInstruction.Data;
+      }
+      set
+      {
+        _xProcessingInstruction.Data = value;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xProcessingInstruction.NodeType;
+      }
+    }
+    
+    public string Target
+    {
+      get
+      {
+        return _xProcessingInstruction.Target;
+      }
+      set
+      {
+        _xProcessingInstruction.Target = value;
+      }
+    }
+    
     /// <summary>Writes this processing instruction to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">The <see cref="T:System.Xml.XmlWriter" /> to write this processing instruction to.</param>
     /// <filterpriority>2</filterpriority>

@@ -17,6 +17,112 @@ namespace Wrapperator.Interfaces
   public partial interface IAppDomain
   {
     
+    System.ActivationContext ActivationContext
+    {
+      get;
+    }
+    
+    System.ApplicationIdentity ApplicationIdentity
+    {
+      get;
+    }
+    
+    System.Security.Policy.ApplicationTrust ApplicationTrust
+    {
+      get;
+    }
+    
+    string BaseDirectory
+    {
+      get;
+    }
+    
+    System.AppDomain CurrentDomain
+    {
+      get;
+    }
+    
+    System.AppDomainManager DomainManager
+    {
+      get;
+    }
+    
+    string DynamicDirectory
+    {
+      get;
+    }
+    
+    System.Security.Policy.Evidence Evidence
+    {
+      get;
+    }
+    
+    string FriendlyName
+    {
+      get;
+    }
+    
+    int Id
+    {
+      get;
+    }
+    
+    bool IsFullyTrusted
+    {
+      get;
+    }
+    
+    bool IsHomogenous
+    {
+      get;
+    }
+    
+    bool MonitoringIsEnabled
+    {
+      get;
+      set;
+    }
+    
+    long MonitoringSurvivedMemorySize
+    {
+      get;
+    }
+    
+    long MonitoringSurvivedProcessMemorySize
+    {
+      get;
+    }
+    
+    long MonitoringTotalAllocatedMemorySize
+    {
+      get;
+    }
+    
+    System.TimeSpan MonitoringTotalProcessorTime
+    {
+      get;
+    }
+    
+    System.Security.PermissionSet PermissionSet
+    {
+      get;
+    }
+    
+    string RelativeSearchPath
+    {
+      get;
+    }
+    
+    System.AppDomainSetup SetupInformation
+    {
+      get;
+    }
+    
+    bool ShadowCopyFiles
+    {
+      get;
+    }
+    
     /// <summary>Returns the assembly display name after policy has been applied.</summary>
     /// <returns>A string containing the assembly display name after policy has been applied.</returns>
     /// <param name="assemblyName">The assembly display name, in the form provided by the <see cref="P:System.Reflection.Assembly.FullName" /> property.</param>

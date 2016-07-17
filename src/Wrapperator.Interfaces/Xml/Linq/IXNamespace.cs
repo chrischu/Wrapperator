@@ -16,6 +16,26 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXNamespace
   {
     
+    string NamespaceName
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNamespace None
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNamespace Xml
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNamespace Xmlns
+    {
+      get;
+    }
+    
     /// <summary>Gets an <see cref="T:System.Xml.Linq.XNamespace" /> for the specified Uniform Resource Identifier (URI).</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XNamespace" /> created from the specified URI.</returns>
     /// <param name="namespaceName">A <see cref="T:System.String" /> that contains a namespace URI.</param>

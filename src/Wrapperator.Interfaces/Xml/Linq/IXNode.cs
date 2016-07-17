@@ -17,6 +17,26 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXNode
   {
     
+    System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNodeEqualityComparer EqualityComparer
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode NextNode
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode PreviousNode
+    {
+      get;
+    }
+    
     /// <summary>Adds the specified content immediately after this node.</summary>
     /// <param name="content">A content object that contains simple content or a collection of content objects to be added after this node.</param>
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>

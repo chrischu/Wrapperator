@@ -16,6 +16,75 @@ namespace Wrapperator.Interfaces.Configuration
   public partial interface IConfiguration
   {
     
+    System.Configuration.AppSettingsSection AppSettings
+    {
+      get;
+    }
+    
+    System.Func<string, string> AssemblyStringTransformer
+    {
+      get;
+      set;
+    }
+    
+    System.Configuration.ConnectionStringsSection ConnectionStrings
+    {
+      get;
+    }
+    
+    System.Configuration.ContextInformation EvaluationContext
+    {
+      get;
+    }
+    
+    string FilePath
+    {
+      get;
+    }
+    
+    bool HasFile
+    {
+      get;
+    }
+    
+    System.Configuration.ConfigurationLocationCollection Locations
+    {
+      get;
+    }
+    
+    bool NamespaceDeclared
+    {
+      get;
+      set;
+    }
+    
+    System.Configuration.ConfigurationSectionGroup RootSectionGroup
+    {
+      get;
+    }
+    
+    System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    {
+      get;
+    }
+    
+    System.Configuration.ConfigurationSectionCollection Sections
+    {
+      get;
+    }
+    
+    System.Runtime.Versioning.FrameworkName TargetFramework
+    {
+      get;
+      set;
+    }
+    
+    System.Func<string, string> TypeStringTransformer
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Returns the specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</summary>
     /// <returns>The specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</returns>
     /// <param name="sectionName">The path to the section to be returned.</param>

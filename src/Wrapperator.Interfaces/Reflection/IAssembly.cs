@@ -16,6 +16,101 @@ namespace Wrapperator.Interfaces.Reflection
   public partial interface IAssembly
   {
     
+    string CodeBase
+    {
+      get;
+    }
+    
+    System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
+    {
+      get;
+    }
+    
+    System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> DefinedTypes
+    {
+      get;
+    }
+    
+    System.Reflection.MethodInfo EntryPoint
+    {
+      get;
+    }
+    
+    string EscapedCodeBase
+    {
+      get;
+    }
+    
+    System.Security.Policy.Evidence Evidence
+    {
+      get;
+    }
+    
+    System.Collections.Generic.IEnumerable<System.Type> ExportedTypes
+    {
+      get;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
+    bool GlobalAssemblyCache
+    {
+      get;
+    }
+    
+    long HostContext
+    {
+      get;
+    }
+    
+    string ImageRuntimeVersion
+    {
+      get;
+    }
+    
+    bool IsDynamic
+    {
+      get;
+    }
+    
+    bool IsFullyTrusted
+    {
+      get;
+    }
+    
+    string Location
+    {
+      get;
+    }
+    
+    System.Reflection.Module ManifestModule
+    {
+      get;
+    }
+    
+    System.Collections.Generic.IEnumerable<System.Reflection.Module> Modules
+    {
+      get;
+    }
+    
+    System.Security.PermissionSet PermissionSet
+    {
+      get;
+    }
+    
+    bool ReflectionOnly
+    {
+      get;
+    }
+    
+    System.Security.SecurityRuleSet SecurityRuleSet
+    {
+      get;
+    }
+    
     /// <summary>Locates the specified type from this assembly and creates an instance of it using the system activator, using case-sensitive search.</summary>
     /// <returns>An instance of the specified type created with the default constructor; or null if <paramref name="typeName" /> is not found. The type is resolved using the default binder, without specifying culture or activation attributes, and with <see cref="T:System.Reflection.BindingFlags" /> set to Public or Instance. </returns>
     /// <param name="typeName">The <see cref="P:System.Type.FullName" /> of the type to locate. </param>

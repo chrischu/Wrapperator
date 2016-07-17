@@ -16,5 +16,23 @@ namespace Wrapperator.Interfaces.Xml.Linq
   /// <filterpriority>2</filterpriority>
   public partial interface IXDeclaration
   {
+    
+    string Encoding
+    {
+      get;
+      set;
+    }
+    
+    string Standalone
+    {
+      get;
+      set;
+    }
+    
+    string Version
+    {
+      get;
+      set;
+    }
   }
 }

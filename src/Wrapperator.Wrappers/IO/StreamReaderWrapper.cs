@@ -24,6 +24,30 @@ namespace Wrapperator.Wrappers.IO
       _streamReader = streamReader;
     }
     
+    public System.IO.Stream BaseStream
+    {
+      get
+      {
+        return _streamReader.BaseStream;
+      }
+    }
+    
+    public System.Text.Encoding CurrentEncoding
+    {
+      get
+      {
+        return _streamReader.CurrentEncoding;
+      }
+    }
+    
+    public bool EndOfStream
+    {
+      get
+      {
+        return _streamReader.EndOfStream;
+      }
+    }
+    
     /// <summary>Closes the <see cref="T:System.IO.StreamReader" /> object and the underlying stream, and releases any system resources associated with the reader.</summary>
     /// <filterpriority>1</filterpriority>
     public void Close()

@@ -17,6 +17,47 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileStream : System.IDisposable
   {
     
+    bool CanRead
+    {
+      get;
+    }
+    
+    bool CanSeek
+    {
+      get;
+    }
+    
+    bool CanWrite
+    {
+      get;
+    }
+    
+    bool IsAsync
+    {
+      get;
+    }
+    
+    long Length
+    {
+      get;
+    }
+    
+    string Name
+    {
+      get;
+    }
+    
+    long Position
+    {
+      get;
+      set;
+    }
+    
+    Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle
+    {
+      get;
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using <see cref="M:System.IO.FileStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)" /> instead; see the Remarks section.)</summary>
     /// <returns>An object that references the asynchronous read.</returns>
     /// <param name="array">The buffer to read data into. </param>

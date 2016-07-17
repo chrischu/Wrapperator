@@ -16,6 +16,27 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXDocument
   {
     
+    System.Xml.Linq.XDeclaration Declaration
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.Linq.XDocumentType DocumentType
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Root
+    {
+      get;
+    }
+    
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
     /// <param name="uri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>

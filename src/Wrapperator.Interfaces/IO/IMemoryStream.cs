@@ -17,6 +17,38 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IMemoryStream : System.IDisposable
   {
     
+    bool CanRead
+    {
+      get;
+    }
+    
+    bool CanSeek
+    {
+      get;
+    }
+    
+    bool CanWrite
+    {
+      get;
+    }
+    
+    int Capacity
+    {
+      get;
+      set;
+    }
+    
+    long Length
+    {
+      get;
+    }
+    
+    long Position
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Asynchronously reads all the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
     /// <returns>A task that represents the asynchronous copy operation.</returns>
     /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>

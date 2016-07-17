@@ -23,5 +23,41 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       _xDeclaration = xDeclaration;
     }
+    
+    public string Encoding
+    {
+      get
+      {
+        return _xDeclaration.Encoding;
+      }
+      set
+      {
+        _xDeclaration.Encoding = value;
+      }
+    }
+    
+    public string Standalone
+    {
+      get
+      {
+        return _xDeclaration.Standalone;
+      }
+      set
+      {
+        _xDeclaration.Standalone = value;
+      }
+    }
+    
+    public string Version
+    {
+      get
+      {
+        return _xDeclaration.Version;
+      }
+      set
+      {
+        _xDeclaration.Version = value;
+      }
+    }
   }
 }

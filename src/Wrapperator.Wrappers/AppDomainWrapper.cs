@@ -24,6 +24,178 @@ namespace Wrapperator.Wrappers
       _appDomain = appDomain;
     }
     
+    public System.ActivationContext ActivationContext
+    {
+      get
+      {
+        return _appDomain.ActivationContext;
+      }
+    }
+    
+    public System.ApplicationIdentity ApplicationIdentity
+    {
+      get
+      {
+        return _appDomain.ApplicationIdentity;
+      }
+    }
+    
+    public System.Security.Policy.ApplicationTrust ApplicationTrust
+    {
+      get
+      {
+        return _appDomain.ApplicationTrust;
+      }
+    }
+    
+    public string BaseDirectory
+    {
+      get
+      {
+        return _appDomain.BaseDirectory;
+      }
+    }
+    
+    public System.AppDomain CurrentDomain
+    {
+      get
+      {
+        return System.AppDomain.CurrentDomain;
+      }
+    }
+    
+    public System.AppDomainManager DomainManager
+    {
+      get
+      {
+        return _appDomain.DomainManager;
+      }
+    }
+    
+    public string DynamicDirectory
+    {
+      get
+      {
+        return _appDomain.DynamicDirectory;
+      }
+    }
+    
+    public System.Security.Policy.Evidence Evidence
+    {
+      get
+      {
+        return _appDomain.Evidence;
+      }
+    }
+    
+    public string FriendlyName
+    {
+      get
+      {
+        return _appDomain.FriendlyName;
+      }
+    }
+    
+    public int Id
+    {
+      get
+      {
+        return _appDomain.Id;
+      }
+    }
+    
+    public bool IsFullyTrusted
+    {
+      get
+      {
+        return _appDomain.IsFullyTrusted;
+      }
+    }
+    
+    public bool IsHomogenous
+    {
+      get
+      {
+        return _appDomain.IsHomogenous;
+      }
+    }
+    
+    public bool MonitoringIsEnabled
+    {
+      get
+      {
+        return System.AppDomain.MonitoringIsEnabled;
+      }
+      set
+      {
+        System.AppDomain.MonitoringIsEnabled = value;
+      }
+    }
+    
+    public long MonitoringSurvivedMemorySize
+    {
+      get
+      {
+        return _appDomain.MonitoringSurvivedMemorySize;
+      }
+    }
+    
+    public long MonitoringSurvivedProcessMemorySize
+    {
+      get
+      {
+        return System.AppDomain.MonitoringSurvivedProcessMemorySize;
+      }
+    }
+    
+    public long MonitoringTotalAllocatedMemorySize
+    {
+      get
+      {
+        return _appDomain.MonitoringTotalAllocatedMemorySize;
+      }
+    }
+    
+    public System.TimeSpan MonitoringTotalProcessorTime
+    {
+      get
+      {
+        return _appDomain.MonitoringTotalProcessorTime;
+      }
+    }
+    
+    public System.Security.PermissionSet PermissionSet
+    {
+      get
+      {
+        return _appDomain.PermissionSet;
+      }
+    }
+    
+    public string RelativeSearchPath
+    {
+      get
+      {
+        return _appDomain.RelativeSearchPath;
+      }
+    }
+    
+    public System.AppDomainSetup SetupInformation
+    {
+      get
+      {
+        return _appDomain.SetupInformation;
+      }
+    }
+    
+    public bool ShadowCopyFiles
+    {
+      get
+      {
+        return _appDomain.ShadowCopyFiles;
+      }
+    }
+    
     /// <summary>Returns the assembly display name after policy has been applied.</summary>
     /// <returns>A string containing the assembly display name after policy has been applied.</returns>
     /// <param name="assemblyName">The assembly display name, in the form provided by the <see cref="P:System.Reflection.Assembly.FullName" /> property.</param>

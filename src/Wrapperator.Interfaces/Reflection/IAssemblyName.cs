@@ -16,6 +16,81 @@ namespace Wrapperator.Interfaces.Reflection
   public partial interface IAssemblyName
   {
     
+    string CodeBase
+    {
+      get;
+      set;
+    }
+    
+    System.Reflection.AssemblyContentType ContentType
+    {
+      get;
+      set;
+    }
+    
+    System.Globalization.CultureInfo CultureInfo
+    {
+      get;
+      set;
+    }
+    
+    string CultureName
+    {
+      get;
+    }
+    
+    string EscapedCodeBase
+    {
+      get;
+    }
+    
+    System.Reflection.AssemblyNameFlags Flags
+    {
+      get;
+      set;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
+    System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm
+    {
+      get;
+      set;
+    }
+    
+    System.Reflection.StrongNameKeyPair KeyPair
+    {
+      get;
+      set;
+    }
+    
+    string Name
+    {
+      get;
+      set;
+    }
+    
+    System.Reflection.ProcessorArchitecture ProcessorArchitecture
+    {
+      get;
+      set;
+    }
+    
+    System.Version Version
+    {
+      get;
+      set;
+    }
+    
+    System.Configuration.Assemblies.AssemblyVersionCompatibility VersionCompatibility
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Makes a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</summary>
     /// <returns>An object that is a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</returns>
     object Clone();

@@ -16,6 +16,94 @@ namespace Wrapperator.Interfaces.Xml
   public partial interface IXmlDocument
   {
     
+    string BaseURI
+    {
+      get;
+    }
+    
+    System.Xml.XmlElement DocumentElement
+    {
+      get;
+    }
+    
+    System.Xml.XmlDocumentType DocumentType
+    {
+      get;
+    }
+    
+    System.Xml.XmlImplementation Implementation
+    {
+      get;
+    }
+    
+    string InnerText
+    {
+      set;
+    }
+    
+    string InnerXml
+    {
+      get;
+      set;
+    }
+    
+    bool IsReadOnly
+    {
+      get;
+    }
+    
+    string LocalName
+    {
+      get;
+    }
+    
+    string Name
+    {
+      get;
+    }
+    
+    System.Xml.XmlNameTable NameTable
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.XmlDocument OwnerDocument
+    {
+      get;
+    }
+    
+    System.Xml.XmlNode ParentNode
+    {
+      get;
+    }
+    
+    bool PreserveWhitespace
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.Schema.IXmlSchemaInfo SchemaInfo
+    {
+      get;
+    }
+    
+    System.Xml.Schema.XmlSchemaSet Schemas
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.XmlResolver XmlResolver
+    {
+      set;
+    }
+    
     /// <summary>Creates a duplicate of this node.</summary>
     /// <returns>The cloned XmlDocument node.</returns>
     /// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself. </param>

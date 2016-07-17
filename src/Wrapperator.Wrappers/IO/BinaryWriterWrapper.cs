@@ -24,6 +24,14 @@ namespace Wrapperator.Wrappers.IO
       _binaryWriter = binaryWriter;
     }
     
+    public System.IO.Stream BaseStream
+    {
+      get
+      {
+        return _binaryWriter.BaseStream;
+      }
+    }
+    
     /// <summary>Closes the current <see cref="T:System.IO.BinaryWriter" /> and the underlying stream.</summary>
     /// <filterpriority>1</filterpriority>
     public void Close()

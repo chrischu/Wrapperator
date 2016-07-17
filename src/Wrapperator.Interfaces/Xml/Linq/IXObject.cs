@@ -17,6 +17,26 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXObject
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XDocument Document
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
+    {
+      get;
+    }
+    
     /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
     void AddAnnotation(object annotation);

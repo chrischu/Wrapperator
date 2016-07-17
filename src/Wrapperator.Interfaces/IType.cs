@@ -17,6 +17,311 @@ namespace Wrapperator.Interfaces
   public partial interface IType
   {
     
+    System.Reflection.Assembly Assembly
+    {
+      get;
+    }
+    
+    string AssemblyQualifiedName
+    {
+      get;
+    }
+    
+    System.Reflection.TypeAttributes Attributes
+    {
+      get;
+    }
+    
+    System.Type BaseType
+    {
+      get;
+    }
+    
+    bool ContainsGenericParameters
+    {
+      get;
+    }
+    
+    System.Reflection.MethodBase DeclaringMethod
+    {
+      get;
+    }
+    
+    System.Type DeclaringType
+    {
+      get;
+    }
+    
+    System.Reflection.Binder DefaultBinder
+    {
+      get;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
+    System.Reflection.GenericParameterAttributes GenericParameterAttributes
+    {
+      get;
+    }
+    
+    int GenericParameterPosition
+    {
+      get;
+    }
+    
+    System.Type[] GenericTypeArguments
+    {
+      get;
+    }
+    
+    System.Guid GUID
+    {
+      get;
+    }
+    
+    bool HasElementType
+    {
+      get;
+    }
+    
+    bool IsAbstract
+    {
+      get;
+    }
+    
+    bool IsAnsiClass
+    {
+      get;
+    }
+    
+    bool IsArray
+    {
+      get;
+    }
+    
+    bool IsAutoClass
+    {
+      get;
+    }
+    
+    bool IsAutoLayout
+    {
+      get;
+    }
+    
+    bool IsByRef
+    {
+      get;
+    }
+    
+    bool IsClass
+    {
+      get;
+    }
+    
+    bool IsCOMObject
+    {
+      get;
+    }
+    
+    bool IsConstructedGenericType
+    {
+      get;
+    }
+    
+    bool IsContextful
+    {
+      get;
+    }
+    
+    bool IsEnum
+    {
+      get;
+    }
+    
+    bool IsExplicitLayout
+    {
+      get;
+    }
+    
+    bool IsGenericParameter
+    {
+      get;
+    }
+    
+    bool IsGenericType
+    {
+      get;
+    }
+    
+    bool IsGenericTypeDefinition
+    {
+      get;
+    }
+    
+    bool IsImport
+    {
+      get;
+    }
+    
+    bool IsInterface
+    {
+      get;
+    }
+    
+    bool IsLayoutSequential
+    {
+      get;
+    }
+    
+    bool IsMarshalByRef
+    {
+      get;
+    }
+    
+    bool IsNested
+    {
+      get;
+    }
+    
+    bool IsNestedAssembly
+    {
+      get;
+    }
+    
+    bool IsNestedFamANDAssem
+    {
+      get;
+    }
+    
+    bool IsNestedFamily
+    {
+      get;
+    }
+    
+    bool IsNestedFamORAssem
+    {
+      get;
+    }
+    
+    bool IsNestedPrivate
+    {
+      get;
+    }
+    
+    bool IsNestedPublic
+    {
+      get;
+    }
+    
+    bool IsNotPublic
+    {
+      get;
+    }
+    
+    bool IsPointer
+    {
+      get;
+    }
+    
+    bool IsPrimitive
+    {
+      get;
+    }
+    
+    bool IsPublic
+    {
+      get;
+    }
+    
+    bool IsSealed
+    {
+      get;
+    }
+    
+    bool IsSecurityCritical
+    {
+      get;
+    }
+    
+    bool IsSecuritySafeCritical
+    {
+      get;
+    }
+    
+    bool IsSecurityTransparent
+    {
+      get;
+    }
+    
+    bool IsSerializable
+    {
+      get;
+    }
+    
+    bool IsSpecialName
+    {
+      get;
+    }
+    
+    bool IsUnicodeClass
+    {
+      get;
+    }
+    
+    bool IsValueType
+    {
+      get;
+    }
+    
+    bool IsVisible
+    {
+      get;
+    }
+    
+    System.Reflection.MemberTypes MemberType
+    {
+      get;
+    }
+    
+    System.Reflection.Module Module
+    {
+      get;
+    }
+    
+    string Namespace
+    {
+      get;
+    }
+    
+    System.Type ReflectedType
+    {
+      get;
+    }
+    
+    System.Runtime.InteropServices.StructLayoutAttribute StructLayoutAttribute
+    {
+      get;
+    }
+    
+    System.RuntimeTypeHandle TypeHandle
+    {
+      get;
+    }
+    
+    System.Reflection.ConstructorInfo TypeInitializer
+    {
+      get;
+    }
+    
+    System.Type UnderlyingSystemType
+    {
+      get;
+    }
+    
     /// <summary>Returns an array of <see cref="T:System.Type" /> objects representing a filtered list of interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
     /// <returns>An array of <see cref="T:System.Type" /> objects representing a filtered list of the interfaces implemented or inherited by the current <see cref="T:System.Type" />, or an empty array of type <see cref="T:System.Type" /> if no interfaces matching the filter are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
     /// <param name="filter">The delegate that compares the interfaces against <paramref name="filterCriteria" />. </param>

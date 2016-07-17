@@ -17,6 +17,11 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IBinaryReader : System.IDisposable
   {
     
+    System.IO.Stream BaseStream
+    {
+      get;
+    }
+    
     /// <summary>Closes the current reader and the underlying stream.</summary>
     /// <filterpriority>2</filterpriority>
     void Close();

@@ -23,6 +23,158 @@ namespace Wrapperator.Wrappers.Reflection
       _assembly = assembly;
     }
     
+    public string CodeBase
+    {
+      get
+      {
+        return _assembly.CodeBase;
+      }
+    }
+    
+    public System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
+    {
+      get
+      {
+        return _assembly.CustomAttributes;
+      }
+    }
+    
+    public System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> DefinedTypes
+    {
+      get
+      {
+        return _assembly.DefinedTypes;
+      }
+    }
+    
+    public System.Reflection.MethodInfo EntryPoint
+    {
+      get
+      {
+        return _assembly.EntryPoint;
+      }
+    }
+    
+    public string EscapedCodeBase
+    {
+      get
+      {
+        return _assembly.EscapedCodeBase;
+      }
+    }
+    
+    public System.Security.Policy.Evidence Evidence
+    {
+      get
+      {
+        return _assembly.Evidence;
+      }
+    }
+    
+    public System.Collections.Generic.IEnumerable<System.Type> ExportedTypes
+    {
+      get
+      {
+        return _assembly.ExportedTypes;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return _assembly.FullName;
+      }
+    }
+    
+    public bool GlobalAssemblyCache
+    {
+      get
+      {
+        return _assembly.GlobalAssemblyCache;
+      }
+    }
+    
+    public long HostContext
+    {
+      get
+      {
+        return _assembly.HostContext;
+      }
+    }
+    
+    public string ImageRuntimeVersion
+    {
+      get
+      {
+        return _assembly.ImageRuntimeVersion;
+      }
+    }
+    
+    public bool IsDynamic
+    {
+      get
+      {
+        return _assembly.IsDynamic;
+      }
+    }
+    
+    public bool IsFullyTrusted
+    {
+      get
+      {
+        return _assembly.IsFullyTrusted;
+      }
+    }
+    
+    public string Location
+    {
+      get
+      {
+        return _assembly.Location;
+      }
+    }
+    
+    public System.Reflection.Module ManifestModule
+    {
+      get
+      {
+        return _assembly.ManifestModule;
+      }
+    }
+    
+    public System.Collections.Generic.IEnumerable<System.Reflection.Module> Modules
+    {
+      get
+      {
+        return _assembly.Modules;
+      }
+    }
+    
+    public System.Security.PermissionSet PermissionSet
+    {
+      get
+      {
+        return _assembly.PermissionSet;
+      }
+    }
+    
+    public bool ReflectionOnly
+    {
+      get
+      {
+        return _assembly.ReflectionOnly;
+      }
+    }
+    
+    public System.Security.SecurityRuleSet SecurityRuleSet
+    {
+      get
+      {
+        return _assembly.SecurityRuleSet;
+      }
+    }
+    
     /// <summary>Locates the specified type from this assembly and creates an instance of it using the system activator, using case-sensitive search.</summary>
     /// <returns>An instance of the specified type created with the default constructor; or null if <paramref name="typeName" /> is not found. The type is resolved using the default binder, without specifying culture or activation attributes, and with <see cref="T:System.Reflection.BindingFlags" /> set to Public or Instance. </returns>
     /// <param name="typeName">The <see cref="P:System.Type.FullName" /> of the type to locate. </param>

@@ -16,6 +16,37 @@ namespace Wrapperator.Interfaces.IO.Compression
   public partial interface IDeflateStream : System.IDisposable
   {
     
+    System.IO.Stream BaseStream
+    {
+      get;
+    }
+    
+    bool CanRead
+    {
+      get;
+    }
+    
+    bool CanSeek
+    {
+      get;
+    }
+    
+    bool CanWrite
+    {
+      get;
+    }
+    
+    long Length
+    {
+      get;
+    }
+    
+    long Position
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using the <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
     /// <returns>An  object that represents the asynchronous read operation, which could still be pending.</returns>
     /// <param name="array">The byte array to read the data into.</param>

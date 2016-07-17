@@ -23,6 +23,34 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       _nameValueCollection = nameValueCollection;
     }
     
+    public string[] AllKeys
+    {
+      get
+      {
+        return _nameValueCollection.AllKeys;
+      }
+    }
+    
+    public string this[string name]
+    {
+      get
+      {
+        return _nameValueCollection[name];
+      }
+      set
+      {
+        _nameValueCollection[name] = value;
+      }
+    }
+    
+    public string this[int index]
+    {
+      get
+      {
+        return _nameValueCollection[index];
+      }
+    }
+    
     /// <summary>Copies the entries in the specified <see cref="T:System.Collections.Specialized.NameValueCollection" /> to the current <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <param name="c">The <see cref="T:System.Collections.Specialized.NameValueCollection" /> to copy to the current <see cref="T:System.Collections.Specialized.NameValueCollection" />.</param>
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>

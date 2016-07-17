@@ -23,6 +23,230 @@ namespace Wrapperator.Wrappers.Xml
       _xmlReader = xmlReader;
     }
     
+    public int AttributeCount
+    {
+      get
+      {
+        return _xmlReader.AttributeCount;
+      }
+    }
+    
+    public string BaseURI
+    {
+      get
+      {
+        return _xmlReader.BaseURI;
+      }
+    }
+    
+    public bool CanReadBinaryContent
+    {
+      get
+      {
+        return _xmlReader.CanReadBinaryContent;
+      }
+    }
+    
+    public bool CanReadValueChunk
+    {
+      get
+      {
+        return _xmlReader.CanReadValueChunk;
+      }
+    }
+    
+    public bool CanResolveEntity
+    {
+      get
+      {
+        return _xmlReader.CanResolveEntity;
+      }
+    }
+    
+    public int Depth
+    {
+      get
+      {
+        return _xmlReader.Depth;
+      }
+    }
+    
+    public bool EOF
+    {
+      get
+      {
+        return _xmlReader.EOF;
+      }
+    }
+    
+    public bool HasAttributes
+    {
+      get
+      {
+        return _xmlReader.HasAttributes;
+      }
+    }
+    
+    public bool HasValue
+    {
+      get
+      {
+        return _xmlReader.HasValue;
+      }
+    }
+    
+    public bool IsDefault
+    {
+      get
+      {
+        return _xmlReader.IsDefault;
+      }
+    }
+    
+    public bool IsEmptyElement
+    {
+      get
+      {
+        return _xmlReader.IsEmptyElement;
+      }
+    }
+    
+    public string this[int i]
+    {
+      get
+      {
+        return _xmlReader[i];
+      }
+    }
+    
+    public string this[string name]
+    {
+      get
+      {
+        return _xmlReader[name];
+      }
+    }
+    
+    public string this[string name, string namespaceURI]
+    {
+      get
+      {
+        return _xmlReader[name, namespaceURI];
+      }
+    }
+    
+    public string LocalName
+    {
+      get
+      {
+        return _xmlReader.LocalName;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _xmlReader.Name;
+      }
+    }
+    
+    public string NamespaceURI
+    {
+      get
+      {
+        return _xmlReader.NamespaceURI;
+      }
+    }
+    
+    public System.Xml.XmlNameTable NameTable
+    {
+      get
+      {
+        return _xmlReader.NameTable;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xmlReader.NodeType;
+      }
+    }
+    
+    public string Prefix
+    {
+      get
+      {
+        return _xmlReader.Prefix;
+      }
+    }
+    
+    public char QuoteChar
+    {
+      get
+      {
+        return _xmlReader.QuoteChar;
+      }
+    }
+    
+    public System.Xml.ReadState ReadState
+    {
+      get
+      {
+        return _xmlReader.ReadState;
+      }
+    }
+    
+    public System.Xml.Schema.IXmlSchemaInfo SchemaInfo
+    {
+      get
+      {
+        return _xmlReader.SchemaInfo;
+      }
+    }
+    
+    public System.Xml.XmlReaderSettings Settings
+    {
+      get
+      {
+        return _xmlReader.Settings;
+      }
+    }
+    
+    public string Value
+    {
+      get
+      {
+        return _xmlReader.Value;
+      }
+    }
+    
+    public System.Type ValueType
+    {
+      get
+      {
+        return _xmlReader.ValueType;
+      }
+    }
+    
+    public string XmlLang
+    {
+      get
+      {
+        return _xmlReader.XmlLang;
+      }
+    }
+    
+    public System.Xml.XmlSpace XmlSpace
+    {
+      get
+      {
+        return _xmlReader.XmlSpace;
+      }
+    }
+    
     /// <summary>When overridden in a derived class, changes the <see cref="P:System.Xml.XmlReader.ReadState" /> to Closed.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void Close()

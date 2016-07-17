@@ -16,6 +16,22 @@ namespace Wrapperator.Wrappers.Configuration
   public partial class ConfigurationManagerWrapper : Wrapperator.Interfaces.Configuration.IConfigurationManager
   {
     
+    public System.Collections.Specialized.NameValueCollection AppSettings
+    {
+      get
+      {
+        return System.Configuration.ConfigurationManager.AppSettings;
+      }
+    }
+    
+    public System.Configuration.ConnectionStringSettingsCollection ConnectionStrings
+    {
+      get
+      {
+        return System.Configuration.ConfigurationManager.ConnectionStrings;
+      }
+    }
+    
     /// <summary>Retrieves a specified configuration section for the current application's default configuration.</summary>
     /// <returns>The specified <see cref="T:System.Configuration.ConfigurationSection" /> object, or null if the section does not exist.</returns>
     /// <param name="sectionName">The configuration section path and name.</param>

@@ -23,6 +23,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xCData = xCData;
     }
     
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xCData.NodeType;
+      }
+    }
+    
     /// <summary>Writes this CDATA object to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>

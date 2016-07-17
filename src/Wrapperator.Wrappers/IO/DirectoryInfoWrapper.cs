@@ -24,6 +24,38 @@ namespace Wrapperator.Wrappers.IO
       _directoryInfo = directoryInfo;
     }
     
+    public bool Exists
+    {
+      get
+      {
+        return _directoryInfo.Exists;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _directoryInfo.Name;
+      }
+    }
+    
+    public System.IO.DirectoryInfo Parent
+    {
+      get
+      {
+        return _directoryInfo.Parent;
+      }
+    }
+    
+    public System.IO.DirectoryInfo Root
+    {
+      get
+      {
+        return _directoryInfo.Root;
+      }
+    }
+    
     /// <summary>Creates a directory.</summary>
     /// <exception cref="T:System.IO.IOException">The directory cannot be created. </exception>
     /// <filterpriority>1</filterpriority>

@@ -17,6 +17,22 @@ namespace Wrapperator.Interfaces.IO
   public partial interface ITextWriter : System.IDisposable
   {
     
+    System.Text.Encoding Encoding
+    {
+      get;
+    }
+    
+    System.IFormatProvider FormatProvider
+    {
+      get;
+    }
+    
+    string NewLine
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Closes the current writer and releases any system resources associated with the writer.</summary>
     /// <filterpriority>1</filterpriority>
     void Close();

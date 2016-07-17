@@ -23,6 +23,86 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xElement = xElement;
     }
     
+    public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
+    {
+      get
+      {
+        return System.Xml.Linq.XElement.EmptySequence;
+      }
+    }
+    
+    public System.Xml.Linq.XAttribute FirstAttribute
+    {
+      get
+      {
+        return _xElement.FirstAttribute;
+      }
+    }
+    
+    public bool HasAttributes
+    {
+      get
+      {
+        return _xElement.HasAttributes;
+      }
+    }
+    
+    public bool HasElements
+    {
+      get
+      {
+        return _xElement.HasElements;
+      }
+    }
+    
+    public bool IsEmpty
+    {
+      get
+      {
+        return _xElement.IsEmpty;
+      }
+    }
+    
+    public System.Xml.Linq.XAttribute LastAttribute
+    {
+      get
+      {
+        return _xElement.LastAttribute;
+      }
+    }
+    
+    public System.Xml.Linq.XName Name
+    {
+      get
+      {
+        return _xElement.Name;
+      }
+      set
+      {
+        _xElement.Name = value;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xElement.NodeType;
+      }
+    }
+    
+    public string Value
+    {
+      get
+      {
+        return _xElement.Value;
+      }
+      set
+      {
+        _xElement.Value = value;
+      }
+    }
+    
     /// <summary>Returns a collection of elements that contain this element, and the ancestors of this element. </summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of elements that contain this element, and the ancestors of this element. </returns>
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> AncestorsAndSelf()

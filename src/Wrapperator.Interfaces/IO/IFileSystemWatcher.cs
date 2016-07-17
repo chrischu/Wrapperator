@@ -17,6 +17,54 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileSystemWatcher : System.IDisposable
   {
     
+    bool EnableRaisingEvents
+    {
+      get;
+      set;
+    }
+    
+    string Filter
+    {
+      get;
+      set;
+    }
+    
+    bool IncludeSubdirectories
+    {
+      get;
+      set;
+    }
+    
+    int InternalBufferSize
+    {
+      get;
+      set;
+    }
+    
+    System.IO.NotifyFilters NotifyFilter
+    {
+      get;
+      set;
+    }
+    
+    string Path
+    {
+      get;
+      set;
+    }
+    
+    System.ComponentModel.ISite Site
+    {
+      get;
+      set;
+    }
+    
+    System.ComponentModel.ISynchronizeInvoke SynchronizingObject
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Begins the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>
     void BeginInit();

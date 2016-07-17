@@ -17,6 +17,35 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXDocumentType
   {
     
+    string InternalSubset
+    {
+      get;
+      set;
+    }
+    
+    string Name
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string PublicId
+    {
+      get;
+      set;
+    }
+    
+    string SystemId
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Write this <see cref="T:System.Xml.Linq.XDocumentType" /> to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>

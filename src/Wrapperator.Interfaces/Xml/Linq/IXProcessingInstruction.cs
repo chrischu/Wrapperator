@@ -16,6 +16,23 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXProcessingInstruction
   {
     
+    string Data
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string Target
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Writes this processing instruction to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">The <see cref="T:System.Xml.XmlWriter" /> to write this processing instruction to.</param>
     /// <filterpriority>2</filterpriority>

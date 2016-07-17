@@ -24,6 +24,26 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xText = xText;
     }
     
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xText.NodeType;
+      }
+    }
+    
+    public string Value
+    {
+      get
+      {
+        return _xText.Value;
+      }
+      set
+      {
+        _xText.Value = value;
+      }
+    }
+    
     /// <summary>Writes this node to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>

@@ -17,6 +17,157 @@ namespace Wrapperator.Interfaces
   public partial interface IConsole
   {
     
+    System.ConsoleColor BackgroundColor
+    {
+      get;
+      set;
+    }
+    
+    int BufferHeight
+    {
+      get;
+      set;
+    }
+    
+    int BufferWidth
+    {
+      get;
+      set;
+    }
+    
+    bool CapsLock
+    {
+      get;
+    }
+    
+    int CursorLeft
+    {
+      get;
+      set;
+    }
+    
+    int CursorSize
+    {
+      get;
+      set;
+    }
+    
+    int CursorTop
+    {
+      get;
+      set;
+    }
+    
+    bool CursorVisible
+    {
+      get;
+      set;
+    }
+    
+    System.IO.TextWriter Error
+    {
+      get;
+    }
+    
+    System.ConsoleColor ForegroundColor
+    {
+      get;
+      set;
+    }
+    
+    System.IO.TextReader In
+    {
+      get;
+    }
+    
+    System.Text.Encoding InputEncoding
+    {
+      get;
+      set;
+    }
+    
+    bool IsErrorRedirected
+    {
+      get;
+    }
+    
+    bool IsInputRedirected
+    {
+      get;
+    }
+    
+    bool IsOutputRedirected
+    {
+      get;
+    }
+    
+    bool KeyAvailable
+    {
+      get;
+    }
+    
+    int LargestWindowHeight
+    {
+      get;
+    }
+    
+    int LargestWindowWidth
+    {
+      get;
+    }
+    
+    bool NumberLock
+    {
+      get;
+    }
+    
+    System.IO.TextWriter Out
+    {
+      get;
+    }
+    
+    System.Text.Encoding OutputEncoding
+    {
+      get;
+      set;
+    }
+    
+    string Title
+    {
+      get;
+      set;
+    }
+    
+    bool TreatControlCAsInput
+    {
+      get;
+      set;
+    }
+    
+    int WindowHeight
+    {
+      get;
+      set;
+    }
+    
+    int WindowLeft
+    {
+      get;
+      set;
+    }
+    
+    int WindowTop
+    {
+      get;
+      set;
+    }
+    
+    int WindowWidth
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Plays the sound of a beep through the console speaker.</summary>
     /// <exception cref="T:System.Security.HostProtectionException">This method was executed on a server, such as SQL Server, that does not permit access to a user interface.</exception>
     /// <filterpriority>1</filterpriority>

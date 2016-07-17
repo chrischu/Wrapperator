@@ -24,6 +24,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xContainer = xContainer;
     }
     
+    public System.Xml.Linq.XNode FirstNode
+    {
+      get
+      {
+        return _xContainer.FirstNode;
+      }
+    }
+    
+    public System.Xml.Linq.XNode LastNode
+    {
+      get
+      {
+        return _xContainer.LastNode;
+      }
+    }
+    
     /// <summary>Adds the specified content as children of this <see cref="T:System.Xml.Linq.XContainer" />.</summary>
     /// <param name="content">A content object containing simple content or a collection of content objects to be added.</param>
     public void Add(object content)

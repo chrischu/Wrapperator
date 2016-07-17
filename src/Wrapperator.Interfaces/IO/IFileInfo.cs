@@ -17,6 +17,37 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileInfo
   {
     
+    System.IO.DirectoryInfo Directory
+    {
+      get;
+    }
+    
+    string DirectoryName
+    {
+      get;
+    }
+    
+    bool Exists
+    {
+      get;
+    }
+    
+    bool IsReadOnly
+    {
+      get;
+      set;
+    }
+    
+    long Length
+    {
+      get;
+    }
+    
+    string Name
+    {
+      get;
+    }
+    
     /// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that appends text to the file represented by this instance of the <see cref="T:System.IO.FileInfo" />.</summary>
     /// <returns>A new StreamWriter.</returns>
     /// <filterpriority>1</filterpriority>

@@ -24,6 +24,82 @@ namespace Wrapperator.Wrappers.IO
       _stream = stream;
     }
     
+    public bool CanRead
+    {
+      get
+      {
+        return _stream.CanRead;
+      }
+    }
+    
+    public bool CanSeek
+    {
+      get
+      {
+        return _stream.CanSeek;
+      }
+    }
+    
+    public bool CanTimeout
+    {
+      get
+      {
+        return _stream.CanTimeout;
+      }
+    }
+    
+    public bool CanWrite
+    {
+      get
+      {
+        return _stream.CanWrite;
+      }
+    }
+    
+    public long Length
+    {
+      get
+      {
+        return _stream.Length;
+      }
+    }
+    
+    public long Position
+    {
+      get
+      {
+        return _stream.Position;
+      }
+      set
+      {
+        _stream.Position = value;
+      }
+    }
+    
+    public int ReadTimeout
+    {
+      get
+      {
+        return _stream.ReadTimeout;
+      }
+      set
+      {
+        _stream.ReadTimeout = value;
+      }
+    }
+    
+    public int WriteTimeout
+    {
+      get
+      {
+        return _stream.WriteTimeout;
+      }
+      set
+      {
+        _stream.WriteTimeout = value;
+      }
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> instead; see the Remarks section.)</summary>
     /// <returns>An <see cref="T:System.IAsyncResult" /> that represents the asynchronous read, which could still be pending.</returns>
     /// <param name="buffer">The buffer to read the data into. </param>

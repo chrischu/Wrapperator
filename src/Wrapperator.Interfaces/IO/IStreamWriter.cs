@@ -17,6 +17,22 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IStreamWriter : System.IDisposable
   {
     
+    bool AutoFlush
+    {
+      get;
+      set;
+    }
+    
+    System.IO.Stream BaseStream
+    {
+      get;
+    }
+    
+    System.Text.Encoding Encoding
+    {
+      get;
+    }
+    
     /// <summary>Closes the current StreamWriter object and the underlying stream.</summary>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair.</exception>
     /// <filterpriority>1</filterpriority>

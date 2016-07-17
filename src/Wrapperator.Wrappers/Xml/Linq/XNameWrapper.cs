@@ -23,6 +23,30 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xName = xName;
     }
     
+    public string LocalName
+    {
+      get
+      {
+        return _xName.LocalName;
+      }
+    }
+    
+    public System.Xml.Linq.XNamespace Namespace
+    {
+      get
+      {
+        return _xName.Namespace;
+      }
+    }
+    
+    public string NamespaceName
+    {
+      get
+      {
+        return _xName.NamespaceName;
+      }
+    }
+    
     /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from an expanded name.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object constructed from the expanded name.</returns>
     /// <param name="expandedName">A <see cref="T:System.String" /> that contains an expanded XML name in the format {namespace}localname.</param>

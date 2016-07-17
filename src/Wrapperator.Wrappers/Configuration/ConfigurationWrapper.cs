@@ -23,6 +23,126 @@ namespace Wrapperator.Wrappers.Configuration
       _configuration = configuration;
     }
     
+    public System.Configuration.AppSettingsSection AppSettings
+    {
+      get
+      {
+        return _configuration.AppSettings;
+      }
+    }
+    
+    public System.Func<string, string> AssemblyStringTransformer
+    {
+      get
+      {
+        return _configuration.AssemblyStringTransformer;
+      }
+      set
+      {
+        _configuration.AssemblyStringTransformer = value;
+      }
+    }
+    
+    public System.Configuration.ConnectionStringsSection ConnectionStrings
+    {
+      get
+      {
+        return _configuration.ConnectionStrings;
+      }
+    }
+    
+    public System.Configuration.ContextInformation EvaluationContext
+    {
+      get
+      {
+        return _configuration.EvaluationContext;
+      }
+    }
+    
+    public string FilePath
+    {
+      get
+      {
+        return _configuration.FilePath;
+      }
+    }
+    
+    public bool HasFile
+    {
+      get
+      {
+        return _configuration.HasFile;
+      }
+    }
+    
+    public System.Configuration.ConfigurationLocationCollection Locations
+    {
+      get
+      {
+        return _configuration.Locations;
+      }
+    }
+    
+    public bool NamespaceDeclared
+    {
+      get
+      {
+        return _configuration.NamespaceDeclared;
+      }
+      set
+      {
+        _configuration.NamespaceDeclared = value;
+      }
+    }
+    
+    public System.Configuration.ConfigurationSectionGroup RootSectionGroup
+    {
+      get
+      {
+        return _configuration.RootSectionGroup;
+      }
+    }
+    
+    public System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    {
+      get
+      {
+        return _configuration.SectionGroups;
+      }
+    }
+    
+    public System.Configuration.ConfigurationSectionCollection Sections
+    {
+      get
+      {
+        return _configuration.Sections;
+      }
+    }
+    
+    public System.Runtime.Versioning.FrameworkName TargetFramework
+    {
+      get
+      {
+        return _configuration.TargetFramework;
+      }
+      set
+      {
+        _configuration.TargetFramework = value;
+      }
+    }
+    
+    public System.Func<string, string> TypeStringTransformer
+    {
+      get
+      {
+        return _configuration.TypeStringTransformer;
+      }
+      set
+      {
+        _configuration.TypeStringTransformer = value;
+      }
+    }
+    
     /// <summary>Returns the specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</summary>
     /// <returns>The specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</returns>
     /// <param name="sectionName">The path to the section to be returned.</param>

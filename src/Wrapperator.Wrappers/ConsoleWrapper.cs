@@ -17,6 +17,286 @@ namespace Wrapperator.Wrappers
   public partial class ConsoleWrapper : Wrapperator.Interfaces.IConsole
   {
     
+    public System.ConsoleColor BackgroundColor
+    {
+      get
+      {
+        return System.Console.BackgroundColor;
+      }
+      set
+      {
+        System.Console.BackgroundColor = value;
+      }
+    }
+    
+    public int BufferHeight
+    {
+      get
+      {
+        return System.Console.BufferHeight;
+      }
+      set
+      {
+        System.Console.BufferHeight = value;
+      }
+    }
+    
+    public int BufferWidth
+    {
+      get
+      {
+        return System.Console.BufferWidth;
+      }
+      set
+      {
+        System.Console.BufferWidth = value;
+      }
+    }
+    
+    public bool CapsLock
+    {
+      get
+      {
+        return System.Console.CapsLock;
+      }
+    }
+    
+    public int CursorLeft
+    {
+      get
+      {
+        return System.Console.CursorLeft;
+      }
+      set
+      {
+        System.Console.CursorLeft = value;
+      }
+    }
+    
+    public int CursorSize
+    {
+      get
+      {
+        return System.Console.CursorSize;
+      }
+      set
+      {
+        System.Console.CursorSize = value;
+      }
+    }
+    
+    public int CursorTop
+    {
+      get
+      {
+        return System.Console.CursorTop;
+      }
+      set
+      {
+        System.Console.CursorTop = value;
+      }
+    }
+    
+    public bool CursorVisible
+    {
+      get
+      {
+        return System.Console.CursorVisible;
+      }
+      set
+      {
+        System.Console.CursorVisible = value;
+      }
+    }
+    
+    public System.IO.TextWriter Error
+    {
+      get
+      {
+        return System.Console.Error;
+      }
+    }
+    
+    public System.ConsoleColor ForegroundColor
+    {
+      get
+      {
+        return System.Console.ForegroundColor;
+      }
+      set
+      {
+        System.Console.ForegroundColor = value;
+      }
+    }
+    
+    public System.IO.TextReader In
+    {
+      get
+      {
+        return System.Console.In;
+      }
+    }
+    
+    public System.Text.Encoding InputEncoding
+    {
+      get
+      {
+        return System.Console.InputEncoding;
+      }
+      set
+      {
+        System.Console.InputEncoding = value;
+      }
+    }
+    
+    public bool IsErrorRedirected
+    {
+      get
+      {
+        return System.Console.IsErrorRedirected;
+      }
+    }
+    
+    public bool IsInputRedirected
+    {
+      get
+      {
+        return System.Console.IsInputRedirected;
+      }
+    }
+    
+    public bool IsOutputRedirected
+    {
+      get
+      {
+        return System.Console.IsOutputRedirected;
+      }
+    }
+    
+    public bool KeyAvailable
+    {
+      get
+      {
+        return System.Console.KeyAvailable;
+      }
+    }
+    
+    public int LargestWindowHeight
+    {
+      get
+      {
+        return System.Console.LargestWindowHeight;
+      }
+    }
+    
+    public int LargestWindowWidth
+    {
+      get
+      {
+        return System.Console.LargestWindowWidth;
+      }
+    }
+    
+    public bool NumberLock
+    {
+      get
+      {
+        return System.Console.NumberLock;
+      }
+    }
+    
+    public System.IO.TextWriter Out
+    {
+      get
+      {
+        return System.Console.Out;
+      }
+    }
+    
+    public System.Text.Encoding OutputEncoding
+    {
+      get
+      {
+        return System.Console.OutputEncoding;
+      }
+      set
+      {
+        System.Console.OutputEncoding = value;
+      }
+    }
+    
+    public string Title
+    {
+      get
+      {
+        return System.Console.Title;
+      }
+      set
+      {
+        System.Console.Title = value;
+      }
+    }
+    
+    public bool TreatControlCAsInput
+    {
+      get
+      {
+        return System.Console.TreatControlCAsInput;
+      }
+      set
+      {
+        System.Console.TreatControlCAsInput = value;
+      }
+    }
+    
+    public int WindowHeight
+    {
+      get
+      {
+        return System.Console.WindowHeight;
+      }
+      set
+      {
+        System.Console.WindowHeight = value;
+      }
+    }
+    
+    public int WindowLeft
+    {
+      get
+      {
+        return System.Console.WindowLeft;
+      }
+      set
+      {
+        System.Console.WindowLeft = value;
+      }
+    }
+    
+    public int WindowTop
+    {
+      get
+      {
+        return System.Console.WindowTop;
+      }
+      set
+      {
+        System.Console.WindowTop = value;
+      }
+    }
+    
+    public int WindowWidth
+    {
+      get
+      {
+        return System.Console.WindowWidth;
+      }
+      set
+      {
+        System.Console.WindowWidth = value;
+      }
+    }
+    
     /// <summary>Plays the sound of a beep through the console speaker.</summary>
     /// <exception cref="T:System.Security.HostProtectionException">This method was executed on a server, such as SQL Server, that does not permit access to a user interface.</exception>
     /// <filterpriority>1</filterpriority>

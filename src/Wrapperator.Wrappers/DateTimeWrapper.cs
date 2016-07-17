@@ -24,6 +24,134 @@ namespace Wrapperator.Wrappers
       _dateTime = dateTime;
     }
     
+    public System.DateTime Date
+    {
+      get
+      {
+        return _dateTime.Date;
+      }
+    }
+    
+    public int Day
+    {
+      get
+      {
+        return _dateTime.Day;
+      }
+    }
+    
+    public System.DayOfWeek DayOfWeek
+    {
+      get
+      {
+        return _dateTime.DayOfWeek;
+      }
+    }
+    
+    public int DayOfYear
+    {
+      get
+      {
+        return _dateTime.DayOfYear;
+      }
+    }
+    
+    public int Hour
+    {
+      get
+      {
+        return _dateTime.Hour;
+      }
+    }
+    
+    public System.DateTimeKind Kind
+    {
+      get
+      {
+        return _dateTime.Kind;
+      }
+    }
+    
+    public int Millisecond
+    {
+      get
+      {
+        return _dateTime.Millisecond;
+      }
+    }
+    
+    public int Minute
+    {
+      get
+      {
+        return _dateTime.Minute;
+      }
+    }
+    
+    public int Month
+    {
+      get
+      {
+        return _dateTime.Month;
+      }
+    }
+    
+    public System.DateTime Now
+    {
+      get
+      {
+        return System.DateTime.Now;
+      }
+    }
+    
+    public int Second
+    {
+      get
+      {
+        return _dateTime.Second;
+      }
+    }
+    
+    public long Ticks
+    {
+      get
+      {
+        return _dateTime.Ticks;
+      }
+    }
+    
+    public System.TimeSpan TimeOfDay
+    {
+      get
+      {
+        return _dateTime.TimeOfDay;
+      }
+    }
+    
+    public System.DateTime Today
+    {
+      get
+      {
+        return System.DateTime.Today;
+      }
+    }
+    
+    public System.DateTime UtcNow
+    {
+      get
+      {
+        return System.DateTime.UtcNow;
+      }
+    }
+    
+    public int Year
+    {
+      get
+      {
+        return _dateTime.Year;
+      }
+    }
+    
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the value of the specified <see cref="T:System.TimeSpan" /> to the value of this instance.</summary>
     /// <returns>An object whose value is the sum of the date and time represented by this instance and the time interval represented by <paramref name="value" />.</returns>
     /// <param name="value">A positive or negative time interval. </param>

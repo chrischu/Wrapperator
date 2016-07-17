@@ -17,6 +17,26 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IDirectoryInfo
   {
     
+    bool Exists
+    {
+      get;
+    }
+    
+    string Name
+    {
+      get;
+    }
+    
+    System.IO.DirectoryInfo Parent
+    {
+      get;
+    }
+    
+    System.IO.DirectoryInfo Root
+    {
+      get;
+    }
+    
     /// <summary>Creates a directory.</summary>
     /// <exception cref="T:System.IO.IOException">The directory cannot be created. </exception>
     /// <filterpriority>1</filterpriority>

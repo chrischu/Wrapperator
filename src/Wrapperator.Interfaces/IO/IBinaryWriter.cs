@@ -17,6 +17,11 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IBinaryWriter : System.IDisposable
   {
     
+    System.IO.Stream BaseStream
+    {
+      get;
+    }
+    
     /// <summary>Closes the current <see cref="T:System.IO.BinaryWriter" /> and the underlying stream.</summary>
     /// <filterpriority>1</filterpriority>
     void Close();

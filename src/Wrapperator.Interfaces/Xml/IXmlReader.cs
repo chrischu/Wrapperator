@@ -16,6 +16,146 @@ namespace Wrapperator.Interfaces.Xml
   public partial interface IXmlReader : System.IDisposable
   {
     
+    int AttributeCount
+    {
+      get;
+    }
+    
+    string BaseURI
+    {
+      get;
+    }
+    
+    bool CanReadBinaryContent
+    {
+      get;
+    }
+    
+    bool CanReadValueChunk
+    {
+      get;
+    }
+    
+    bool CanResolveEntity
+    {
+      get;
+    }
+    
+    int Depth
+    {
+      get;
+    }
+    
+    bool EOF
+    {
+      get;
+    }
+    
+    bool HasAttributes
+    {
+      get;
+    }
+    
+    bool HasValue
+    {
+      get;
+    }
+    
+    bool IsDefault
+    {
+      get;
+    }
+    
+    bool IsEmptyElement
+    {
+      get;
+    }
+    
+    string this[int i]
+    {
+      get;
+    }
+    
+    string this[string name]
+    {
+      get;
+    }
+    
+    string this[string name, string namespaceURI]
+    {
+      get;
+    }
+    
+    string LocalName
+    {
+      get;
+    }
+    
+    string Name
+    {
+      get;
+    }
+    
+    string NamespaceURI
+    {
+      get;
+    }
+    
+    System.Xml.XmlNameTable NameTable
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string Prefix
+    {
+      get;
+    }
+    
+    char QuoteChar
+    {
+      get;
+    }
+    
+    System.Xml.ReadState ReadState
+    {
+      get;
+    }
+    
+    System.Xml.Schema.IXmlSchemaInfo SchemaInfo
+    {
+      get;
+    }
+    
+    System.Xml.XmlReaderSettings Settings
+    {
+      get;
+    }
+    
+    string Value
+    {
+      get;
+    }
+    
+    System.Type ValueType
+    {
+      get;
+    }
+    
+    string XmlLang
+    {
+      get;
+    }
+    
+    System.Xml.XmlSpace XmlSpace
+    {
+      get;
+    }
+    
     /// <summary>When overridden in a derived class, changes the <see cref="P:System.Xml.XmlReader.ReadState" /> to Closed.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     void Close();

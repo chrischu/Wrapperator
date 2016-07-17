@@ -18,7 +18,7 @@ namespace Wrapperator
       _options = options;
       _typesToWrap = new HashSet<Type>(options.TypesToWrap);
       _excludedMethods = new HashSet<string>(options.ExcludedMethods);
-      Models = _typesToWrap.Select(t => new WrapperatorModel(t, GetMethodsToWrap(t))).ToList();
+      Models = _typesToWrap.Select(t => new WrapperatorModel(t, GetMethodsToWrap(t), GetPropertiesToWrap(t))).ToList();
     }
 
     public IReadOnlyCollection<WrapperatorModel> Models { get; }
@@ -72,6 +72,14 @@ namespace Wrapperator
           .Where(m => !m.IsSpecialName)
           .Where(m => m.GetCustomAttribute<ObsoleteAttribute>() == null)
           .Where(m => !_excludedMethods.Contains(m.Name))
+          .ToList();
+    }
+
+    private IReadOnlyCollection<PropertyInfo> GetPropertiesToWrap(Type typeToWrap)
+    {
+      return typeToWrap.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+          .Where(p => !p.IsSpecialName)
+          .Where(p => p.GetCustomAttribute<ObsoleteAttribute>() == null)
           .ToList();
     }
   }

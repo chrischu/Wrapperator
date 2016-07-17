@@ -17,6 +17,108 @@ namespace Wrapperator.Interfaces
   public partial interface IEnvironment
   {
     
+    string CommandLine
+    {
+      get;
+    }
+    
+    string CurrentDirectory
+    {
+      get;
+      set;
+    }
+    
+    int CurrentManagedThreadId
+    {
+      get;
+    }
+    
+    int ExitCode
+    {
+      get;
+      set;
+    }
+    
+    bool HasShutdownStarted
+    {
+      get;
+    }
+    
+    bool Is64BitOperatingSystem
+    {
+      get;
+    }
+    
+    bool Is64BitProcess
+    {
+      get;
+    }
+    
+    string MachineName
+    {
+      get;
+    }
+    
+    string NewLine
+    {
+      get;
+    }
+    
+    System.OperatingSystem OSVersion
+    {
+      get;
+    }
+    
+    int ProcessorCount
+    {
+      get;
+    }
+    
+    string StackTrace
+    {
+      get;
+    }
+    
+    string SystemDirectory
+    {
+      get;
+    }
+    
+    int SystemPageSize
+    {
+      get;
+    }
+    
+    int TickCount
+    {
+      get;
+    }
+    
+    string UserDomainName
+    {
+      get;
+    }
+    
+    bool UserInteractive
+    {
+      get;
+    }
+    
+    string UserName
+    {
+      get;
+    }
+    
+    System.Version Version
+    {
+      get;
+    }
+    
+    long WorkingSet
+    {
+      get;
+    }
+    
     /// <summary>Terminates this process and gives the underlying operating system the specified exit code.</summary>
     /// <param name="exitCode">Exit code to be given to the operating system. Use 0 (zero) to indicate that the process completed successfully.</param>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have sufficient security permission to perform this function.</exception>

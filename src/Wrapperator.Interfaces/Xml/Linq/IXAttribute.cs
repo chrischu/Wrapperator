@@ -16,6 +16,42 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXAttribute
   {
     
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
+    {
+      get;
+    }
+    
+    bool IsNamespaceDeclaration
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XName Name
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XAttribute NextAttribute
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XAttribute PreviousAttribute
+    {
+      get;
+    }
+    
+    string Value
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Removes this attribute from its parent element.</summary>
     /// <exception cref="T:System.InvalidOperationException">The parent element is null.</exception>
     void Remove();

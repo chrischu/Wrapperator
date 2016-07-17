@@ -17,6 +17,36 @@ namespace Wrapperator.Interfaces
   public partial interface IVersion
   {
     
+    int Build
+    {
+      get;
+    }
+    
+    int Major
+    {
+      get;
+    }
+    
+    short MajorRevision
+    {
+      get;
+    }
+    
+    int Minor
+    {
+      get;
+    }
+    
+    short MinorRevision
+    {
+      get;
+    }
+    
+    int Revision
+    {
+      get;
+    }
+    
     /// <summary>Returns a new <see cref="T:System.Version" /> object whose value is the same as the current <see cref="T:System.Version" /> object.</summary>
     /// <returns>A new <see cref="T:System.Object" /> whose values are a copy of the current <see cref="T:System.Version" /> object.</returns>
     /// <filterpriority>2</filterpriority>

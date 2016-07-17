@@ -23,6 +23,150 @@ namespace Wrapperator.Wrappers.Reflection
       _assemblyName = assemblyName;
     }
     
+    public string CodeBase
+    {
+      get
+      {
+        return _assemblyName.CodeBase;
+      }
+      set
+      {
+        _assemblyName.CodeBase = value;
+      }
+    }
+    
+    public System.Reflection.AssemblyContentType ContentType
+    {
+      get
+      {
+        return _assemblyName.ContentType;
+      }
+      set
+      {
+        _assemblyName.ContentType = value;
+      }
+    }
+    
+    public System.Globalization.CultureInfo CultureInfo
+    {
+      get
+      {
+        return _assemblyName.CultureInfo;
+      }
+      set
+      {
+        _assemblyName.CultureInfo = value;
+      }
+    }
+    
+    public string CultureName
+    {
+      get
+      {
+        return _assemblyName.CultureName;
+      }
+    }
+    
+    public string EscapedCodeBase
+    {
+      get
+      {
+        return _assemblyName.EscapedCodeBase;
+      }
+    }
+    
+    public System.Reflection.AssemblyNameFlags Flags
+    {
+      get
+      {
+        return _assemblyName.Flags;
+      }
+      set
+      {
+        _assemblyName.Flags = value;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return _assemblyName.FullName;
+      }
+    }
+    
+    public System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm
+    {
+      get
+      {
+        return _assemblyName.HashAlgorithm;
+      }
+      set
+      {
+        _assemblyName.HashAlgorithm = value;
+      }
+    }
+    
+    public System.Reflection.StrongNameKeyPair KeyPair
+    {
+      get
+      {
+        return _assemblyName.KeyPair;
+      }
+      set
+      {
+        _assemblyName.KeyPair = value;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _assemblyName.Name;
+      }
+      set
+      {
+        _assemblyName.Name = value;
+      }
+    }
+    
+    public System.Reflection.ProcessorArchitecture ProcessorArchitecture
+    {
+      get
+      {
+        return _assemblyName.ProcessorArchitecture;
+      }
+      set
+      {
+        _assemblyName.ProcessorArchitecture = value;
+      }
+    }
+    
+    public System.Version Version
+    {
+      get
+      {
+        return _assemblyName.Version;
+      }
+      set
+      {
+        _assemblyName.Version = value;
+      }
+    }
+    
+    public System.Configuration.Assemblies.AssemblyVersionCompatibility VersionCompatibility
+    {
+      get
+      {
+        return _assemblyName.VersionCompatibility;
+      }
+      set
+      {
+        _assemblyName.VersionCompatibility = value;
+      }
+    }
+    
     /// <summary>Makes a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</summary>
     /// <returns>An object that is a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</returns>
     public object Clone()

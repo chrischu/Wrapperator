@@ -16,6 +16,22 @@ namespace Wrapperator.Interfaces.Collections.Specialized
   public partial interface INameValueCollection
   {
     
+    string[] AllKeys
+    {
+      get;
+    }
+    
+    string this[string name]
+    {
+      get;
+      set;
+    }
+    
+    string this[int index]
+    {
+      get;
+    }
+    
     /// <summary>Copies the entries in the specified <see cref="T:System.Collections.Specialized.NameValueCollection" /> to the current <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <param name="c">The <see cref="T:System.Collections.Specialized.NameValueCollection" /> to copy to the current <see cref="T:System.Collections.Specialized.NameValueCollection" />.</param>
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
