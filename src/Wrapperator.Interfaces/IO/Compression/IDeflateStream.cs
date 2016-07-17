@@ -31,6 +31,11 @@ namespace Wrapperator.Interfaces.IO.Compression
       get;
     }
     
+    bool CanTimeout
+    {
+      get;
+    }
+    
     bool CanWrite
     {
       get;
@@ -42,6 +47,18 @@ namespace Wrapperator.Interfaces.IO.Compression
     }
     
     long Position
+    {
+      get;
+      set;
+    }
+    
+    int ReadTimeout
+    {
+      get;
+      set;
+    }
+    
+    int WriteTimeout
     {
       get;
       set;

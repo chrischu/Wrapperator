@@ -16,7 +16,17 @@ namespace Wrapperator.Interfaces.Xml
   public partial interface IXmlDocument
   {
     
+    System.Xml.XmlAttributeCollection Attributes
+    {
+      get;
+    }
+    
     string BaseURI
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeList ChildNodes
     {
       get;
     }
@@ -27,6 +37,16 @@ namespace Wrapperator.Interfaces.Xml
     }
     
     System.Xml.XmlDocumentType DocumentType
+    {
+      get;
+    }
+    
+    System.Xml.XmlNode FirstChild
+    {
+      get;
+    }
+    
+    bool HasChildNodes
     {
       get;
     }
@@ -52,6 +72,21 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
+    System.Xml.XmlElement this[string name]
+    {
+      get;
+    }
+    
+    System.Xml.XmlElement this[string localname, string ns]
+    {
+      get;
+    }
+    
+    System.Xml.XmlNode LastChild
+    {
+      get;
+    }
+    
     string LocalName
     {
       get;
@@ -62,12 +97,27 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
+    string NamespaceURI
+    {
+      get;
+    }
+    
     System.Xml.XmlNameTable NameTable
     {
       get;
     }
     
+    System.Xml.XmlNode NextSibling
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string OuterXml
     {
       get;
     }
@@ -82,10 +132,21 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
+    string Prefix
+    {
+      get;
+      set;
+    }
+    
     bool PreserveWhitespace
     {
       get;
       set;
+    }
+    
+    System.Xml.XmlNode PreviousSibling
+    {
+      get;
     }
     
     System.Xml.Schema.IXmlSchemaInfo SchemaInfo
@@ -94,6 +155,12 @@ namespace Wrapperator.Interfaces.Xml
     }
     
     System.Xml.Schema.XmlSchemaSet Schemas
+    {
+      get;
+      set;
+    }
+    
+    string Value
     {
       get;
       set;

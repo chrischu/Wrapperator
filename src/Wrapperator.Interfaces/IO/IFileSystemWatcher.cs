@@ -17,6 +17,11 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileSystemWatcher : System.IDisposable
   {
     
+    System.ComponentModel.IContainer Container
+    {
+      get;
+    }
+    
     bool EnableRaisingEvents
     {
       get;

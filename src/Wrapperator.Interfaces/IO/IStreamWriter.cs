@@ -33,6 +33,17 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
+    System.IFormatProvider FormatProvider
+    {
+      get;
+    }
+    
+    string NewLine
+    {
+      get;
+      set;
+    }
+    
     /// <summary>Closes the current StreamWriter object and the underlying stream.</summary>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair.</exception>
     /// <filterpriority>1</filterpriority>

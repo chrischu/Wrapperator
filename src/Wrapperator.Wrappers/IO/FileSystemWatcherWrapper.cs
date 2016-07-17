@@ -24,6 +24,14 @@ namespace Wrapperator.Wrappers.IO
       _fileSystemWatcher = fileSystemWatcher;
     }
     
+    public System.ComponentModel.IContainer Container
+    {
+      get
+      {
+        return _fileSystemWatcher.Container;
+      }
+    }
+    
     public bool EnableRaisingEvents
     {
       get

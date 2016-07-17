@@ -24,6 +24,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xDocumentType = xDocumentType;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xDocumentType.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xDocumentType.Document;
+      }
+    }
+    
     public string InternalSubset
     {
       get
@@ -48,11 +64,35 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xDocumentType.NextNode;
+      }
+    }
+    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xDocumentType.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xDocumentType.Parent;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xDocumentType.PreviousNode;
       }
     }
     

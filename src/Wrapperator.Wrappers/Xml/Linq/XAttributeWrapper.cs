@@ -23,6 +23,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xAttribute = xAttribute;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xAttribute.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xAttribute.Document;
+      }
+    }
+    
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
     {
       get
@@ -60,6 +76,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xAttribute.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xAttribute.Parent;
       }
     }
     

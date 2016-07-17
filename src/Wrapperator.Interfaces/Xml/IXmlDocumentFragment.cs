@@ -16,10 +16,61 @@ namespace Wrapperator.Interfaces.Xml
   public partial interface IXmlDocumentFragment
   {
     
+    System.Xml.XmlAttributeCollection Attributes
+    {
+      get;
+    }
+    
+    string BaseURI
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeList ChildNodes
+    {
+      get;
+    }
+    
+    System.Xml.XmlNode FirstChild
+    {
+      get;
+    }
+    
+    bool HasChildNodes
+    {
+      get;
+    }
+    
+    string InnerText
+    {
+      get;
+      set;
+    }
+    
     string InnerXml
     {
       get;
       set;
+    }
+    
+    bool IsReadOnly
+    {
+      get;
+    }
+    
+    System.Xml.XmlElement this[string name]
+    {
+      get;
+    }
+    
+    System.Xml.XmlElement this[string localname, string ns]
+    {
+      get;
+    }
+    
+    System.Xml.XmlNode LastChild
+    {
+      get;
     }
     
     string LocalName
@@ -32,7 +83,22 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
+    string NamespaceURI
+    {
+      get;
+    }
+    
+    System.Xml.XmlNode NextSibling
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    string OuterXml
     {
       get;
     }
@@ -45,6 +111,28 @@ namespace Wrapperator.Interfaces.Xml
     System.Xml.XmlNode ParentNode
     {
       get;
+    }
+    
+    string Prefix
+    {
+      get;
+      set;
+    }
+    
+    System.Xml.XmlNode PreviousSibling
+    {
+      get;
+    }
+    
+    System.Xml.Schema.IXmlSchemaInfo SchemaInfo
+    {
+      get;
+    }
+    
+    string Value
+    {
+      get;
+      set;
     }
     
     /// <summary>Creates a duplicate of this node.</summary>

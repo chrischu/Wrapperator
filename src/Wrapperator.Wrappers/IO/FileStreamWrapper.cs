@@ -40,6 +40,14 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public bool CanTimeout
+    {
+      get
+      {
+        return _fileStream.CanTimeout;
+      }
+    }
+    
     public bool CanWrite
     {
       get
@@ -84,11 +92,35 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public int ReadTimeout
+    {
+      get
+      {
+        return _fileStream.ReadTimeout;
+      }
+      set
+      {
+        _fileStream.ReadTimeout = value;
+      }
+    }
+    
     public Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle
     {
       get
       {
         return _fileStream.SafeFileHandle;
+      }
+    }
+    
+    public int WriteTimeout
+    {
+      get
+      {
+        return _fileStream.WriteTimeout;
+      }
+      set
+      {
+        _fileStream.WriteTimeout = value;
       }
     }
     

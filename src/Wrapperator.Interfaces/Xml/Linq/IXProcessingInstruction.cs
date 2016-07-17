@@ -16,13 +16,38 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXProcessingInstruction
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
     string Data
     {
       get;
       set;
     }
     
+    System.Xml.Linq.XDocument Document
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode NextNode
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }

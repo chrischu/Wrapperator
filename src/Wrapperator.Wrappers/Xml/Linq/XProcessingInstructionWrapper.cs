@@ -23,6 +23,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xProcessingInstruction = xProcessingInstruction;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xProcessingInstruction.BaseUri;
+      }
+    }
+    
     public string Data
     {
       get
@@ -35,11 +43,43 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xProcessingInstruction.Document;
+      }
+    }
+    
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xProcessingInstruction.NextNode;
+      }
+    }
+    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xProcessingInstruction.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xProcessingInstruction.Parent;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xProcessingInstruction.PreviousNode;
       }
     }
     

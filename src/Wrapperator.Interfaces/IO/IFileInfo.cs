@@ -17,6 +17,24 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileInfo
   {
     
+    System.IO.FileAttributes Attributes
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTimeUtc
+    {
+      get;
+      set;
+    }
+    
     System.IO.DirectoryInfo Directory
     {
       get;
@@ -32,7 +50,41 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
+    string Extension
+    {
+      get;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
     bool IsReadOnly
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastAccessTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastAccessTimeUtc
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTimeUtc
     {
       get;
       set;

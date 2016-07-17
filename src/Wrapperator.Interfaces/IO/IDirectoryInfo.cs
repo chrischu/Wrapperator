@@ -17,9 +17,61 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IDirectoryInfo
   {
     
+    System.IO.FileAttributes Attributes
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTimeUtc
+    {
+      get;
+      set;
+    }
+    
     bool Exists
     {
       get;
+    }
+    
+    string Extension
+    {
+      get;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
+    System.DateTime LastAccessTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastAccessTimeUtc
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTimeUtc
+    {
+      get;
+      set;
     }
     
     string Name

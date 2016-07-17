@@ -23,6 +23,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xDocument = xDocument;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xDocument.BaseUri;
+      }
+    }
+    
     public System.Xml.Linq.XDeclaration Declaration
     {
       get
@@ -35,6 +43,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xDocument.Document;
+      }
+    }
+    
     public System.Xml.Linq.XDocumentType DocumentType
     {
       get
@@ -43,11 +59,51 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public System.Xml.Linq.XNode FirstNode
+    {
+      get
+      {
+        return _xDocument.FirstNode;
+      }
+    }
+    
+    public System.Xml.Linq.XNode LastNode
+    {
+      get
+      {
+        return _xDocument.LastNode;
+      }
+    }
+    
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xDocument.NextNode;
+      }
+    }
+    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xDocument.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xDocument.Parent;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xDocument.PreviousNode;
       }
     }
     

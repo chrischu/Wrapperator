@@ -23,6 +23,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xElement = xElement;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xElement.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xElement.Document;
+      }
+    }
+    
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
     {
       get
@@ -36,6 +52,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xElement.FirstAttribute;
+      }
+    }
+    
+    public System.Xml.Linq.XNode FirstNode
+    {
+      get
+      {
+        return _xElement.FirstNode;
       }
     }
     
@@ -71,6 +95,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public System.Xml.Linq.XNode LastNode
+    {
+      get
+      {
+        return _xElement.LastNode;
+      }
+    }
+    
     public System.Xml.Linq.XName Name
     {
       get
@@ -83,11 +115,35 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xElement.NextNode;
+      }
+    }
+    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xElement.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xElement.Parent;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xElement.PreviousNode;
       }
     }
     

@@ -16,7 +16,32 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXComment
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XDocument Document
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode NextNode
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }

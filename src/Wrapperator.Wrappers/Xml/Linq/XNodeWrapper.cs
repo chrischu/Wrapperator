@@ -24,6 +24,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xNode = xNode;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xNode.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xNode.Document;
+      }
+    }
+    
     public System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
     {
       get
@@ -45,6 +61,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xNode.NextNode;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xNode.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xNode.Parent;
       }
     }
     

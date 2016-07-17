@@ -77,7 +77,7 @@ namespace Wrapperator
 
     private IReadOnlyCollection<PropertyInfo> GetPropertiesToWrap(Type typeToWrap)
     {
-      return typeToWrap.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+      return typeToWrap.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance)
           .Where(p => !p.IsSpecialName)
           .Where(p => p.GetCustomAttribute<ObsoleteAttribute>() == null)
           .ToList();

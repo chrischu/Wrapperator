@@ -64,6 +64,14 @@ namespace Wrapperator.Wrappers
       }
     }
     
+    public System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
+    {
+      get
+      {
+        return _type.CustomAttributes;
+      }
+    }
+    
     public System.Reflection.MethodBase DeclaringMethod
     {
       get
@@ -456,11 +464,27 @@ namespace Wrapperator.Wrappers
       }
     }
     
+    public int MetadataToken
+    {
+      get
+      {
+        return _type.MetadataToken;
+      }
+    }
+    
     public System.Reflection.Module Module
     {
       get
       {
         return _type.Module;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _type.Name;
       }
     }
     

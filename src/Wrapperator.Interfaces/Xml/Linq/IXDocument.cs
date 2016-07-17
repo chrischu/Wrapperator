@@ -16,10 +16,20 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXDocument
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
     System.Xml.Linq.XDeclaration Declaration
     {
       get;
       set;
+    }
+    
+    System.Xml.Linq.XDocument Document
+    {
+      get;
     }
     
     System.Xml.Linq.XDocumentType DocumentType
@@ -27,7 +37,32 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
+    System.Xml.Linq.XNode FirstNode
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode LastNode
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode NextNode
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }

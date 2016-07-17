@@ -31,6 +31,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       }
     }
     
+    public int Count
+    {
+      get
+      {
+        return _nameValueCollection.Count;
+      }
+    }
+    
     public string this[string name]
     {
       get
@@ -48,6 +56,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       get
       {
         return _nameValueCollection[index];
+      }
+    }
+    
+    public System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys
+    {
+      get
+      {
+        return _nameValueCollection.Keys;
       }
     }
     

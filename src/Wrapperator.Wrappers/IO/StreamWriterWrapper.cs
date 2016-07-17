@@ -52,6 +52,26 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public System.IFormatProvider FormatProvider
+    {
+      get
+      {
+        return _streamWriter.FormatProvider;
+      }
+    }
+    
+    public string NewLine
+    {
+      get
+      {
+        return _streamWriter.NewLine;
+      }
+      set
+      {
+        _streamWriter.NewLine = value;
+      }
+    }
+    
     /// <summary>Closes the current StreamWriter object and the underlying stream.</summary>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair.</exception>
     /// <filterpriority>1</filterpriority>

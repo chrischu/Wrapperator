@@ -40,6 +40,14 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public bool CanTimeout
+    {
+      get
+      {
+        return _memoryStream.CanTimeout;
+      }
+    }
+    
     public bool CanWrite
     {
       get
@@ -77,6 +85,30 @@ namespace Wrapperator.Wrappers.IO
       set
       {
         _memoryStream.Position = value;
+      }
+    }
+    
+    public int ReadTimeout
+    {
+      get
+      {
+        return _memoryStream.ReadTimeout;
+      }
+      set
+      {
+        _memoryStream.ReadTimeout = value;
+      }
+    }
+    
+    public int WriteTimeout
+    {
+      get
+      {
+        return _memoryStream.WriteTimeout;
+      }
+      set
+      {
+        _memoryStream.WriteTimeout = value;
       }
     }
     

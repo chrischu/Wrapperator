@@ -24,11 +24,51 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xText = xText;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xText.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xText.Document;
+      }
+    }
+    
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xText.NextNode;
+      }
+    }
+    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xText.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xText.Parent;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xText.PreviousNode;
       }
     }
     

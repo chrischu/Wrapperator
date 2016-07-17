@@ -27,6 +27,11 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
+    bool CanTimeout
+    {
+      get;
+    }
+    
     bool CanWrite
     {
       get;
@@ -53,9 +58,21 @@ namespace Wrapperator.Interfaces.IO
       set;
     }
     
+    int ReadTimeout
+    {
+      get;
+      set;
+    }
+    
     Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle
     {
       get;
+    }
+    
+    int WriteTimeout
+    {
+      get;
+      set;
     }
     
     /// <summary>Begins an asynchronous read operation. (Consider using <see cref="M:System.IO.FileStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)" /> instead; see the Remarks section.)</summary>

@@ -47,6 +47,14 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
+    public bool CanTimeout
+    {
+      get
+      {
+        return _deflateStream.CanTimeout;
+      }
+    }
+    
     public bool CanWrite
     {
       get
@@ -72,6 +80,30 @@ namespace Wrapperator.Wrappers.IO.Compression
       set
       {
         _deflateStream.Position = value;
+      }
+    }
+    
+    public int ReadTimeout
+    {
+      get
+      {
+        return _deflateStream.ReadTimeout;
+      }
+      set
+      {
+        _deflateStream.ReadTimeout = value;
+      }
+    }
+    
+    public int WriteTimeout
+    {
+      get
+      {
+        return _deflateStream.WriteTimeout;
+      }
+      set
+      {
+        _deflateStream.WriteTimeout = value;
       }
     }
     

@@ -17,12 +17,42 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXContainer
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XDocument Document
+    {
+      get;
+    }
+    
     System.Xml.Linq.XNode FirstNode
     {
       get;
     }
     
     System.Xml.Linq.XNode LastNode
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode NextNode
+    {
+      get;
+    }
+    
+    System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }

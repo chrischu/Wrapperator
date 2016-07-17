@@ -16,12 +16,27 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXElement
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XDocument Document
+    {
+      get;
+    }
+    
     System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
     {
       get;
     }
     
     System.Xml.Linq.XAttribute FirstAttribute
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode FirstNode
     {
       get;
     }
@@ -46,13 +61,33 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
+    System.Xml.Linq.XNode LastNode
+    {
+      get;
+    }
+    
     System.Xml.Linq.XName Name
     {
       get;
       set;
     }
     
+    System.Xml.Linq.XNode NextNode
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }

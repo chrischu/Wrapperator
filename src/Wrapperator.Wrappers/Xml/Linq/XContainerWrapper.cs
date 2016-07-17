@@ -24,6 +24,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xContainer = xContainer;
     }
     
+    public string BaseUri
+    {
+      get
+      {
+        return _xContainer.BaseUri;
+      }
+    }
+    
+    public System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xContainer.Document;
+      }
+    }
+    
     public System.Xml.Linq.XNode FirstNode
     {
       get
@@ -37,6 +53,38 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xContainer.LastNode;
+      }
+    }
+    
+    public System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xContainer.NextNode;
+      }
+    }
+    
+    public System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xContainer.NodeType;
+      }
+    }
+    
+    public System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xContainer.Parent;
+      }
+    }
+    
+    public System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xContainer.PreviousNode;
       }
     }
     

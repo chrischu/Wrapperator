@@ -16,6 +16,16 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public partial interface IXAttribute
   {
     
+    string BaseUri
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XDocument Document
+    {
+      get;
+    }
+    
     System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
     {
       get;
@@ -37,6 +47,11 @@ namespace Wrapperator.Interfaces.Xml.Linq
     }
     
     System.Xml.XmlNodeType NodeType
+    {
+      get;
+    }
+    
+    System.Xml.Linq.XElement Parent
     {
       get;
     }
