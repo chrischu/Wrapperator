@@ -14,7 +14,7 @@ namespace Wrapperator
 {
   internal static class Program
   {
-    private static void Main()
+    private static void Main ()
     {
       var executableDirectory = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
       Trace.Assert(executableDirectory != null);

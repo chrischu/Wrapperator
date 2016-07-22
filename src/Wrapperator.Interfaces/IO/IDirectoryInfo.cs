@@ -17,68 +17,6 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IDirectoryInfo
   {
     
-    System.IO.FileAttributes Attributes
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime CreationTime
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime CreationTimeUtc
-    {
-      get;
-      set;
-    }
-    
-    bool Exists
-    {
-      get;
-    }
-    
-    string Extension
-    {
-      get;
-    }
-    
-    string FullName
-    {
-      get;
-    }
-    
-    System.DateTime LastAccessTime
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime LastAccessTimeUtc
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime LastWriteTime
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime LastWriteTimeUtc
-    {
-      get;
-      set;
-    }
-    
-    string Name
-    {
-      get;
-    }
-    
     System.IO.DirectoryInfo Parent
     {
       get;
@@ -141,14 +79,6 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="path" /> contains a colon character (:) that is not part of a drive label ("C:\").</exception>
     /// <filterpriority>1</filterpriority>
     Wrapperator.Interfaces.IO.IDirectoryInfo CreateSubdirectory(string path, System.Security.AccessControl.DirectorySecurity directorySecurity);
-    
-    /// <summary>Deletes this <see cref="T:System.IO.DirectoryInfo" /> if it is empty.</summary>
-    /// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
-    /// <exception cref="T:System.IO.IOException">The directory is not empty. -or-The directory is the application's current working directory.-or-There is an open handle on the directory, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories. For more information, see How to: Enumerate Directories and Files.</exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    /// <filterpriority>1</filterpriority>
-    void Delete();
     
     /// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
     /// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>

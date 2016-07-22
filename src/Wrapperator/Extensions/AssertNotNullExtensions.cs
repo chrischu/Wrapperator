@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
@@ -14,9 +15,9 @@ namespace Wrapperator.Extensions
     ///   Asserts that the <paramref name="obj" /> is not <c>null</c>.
     /// </summary>
     [AssertionMethod]
-    [ContractAnnotation("obj: null => halt")]
+    [ContractAnnotation ("obj: null => halt")]
     [NotNull]
-    public static T AssertNotNull<T>([CanBeNull] this T obj, string message = null) where T : class
+    public static T AssertNotNull<T> ([CanBeNull] this T obj, string message = null) where T : class
     {
       Trace.Assert(obj != null, message ?? "AssertNotNull failed");
       return obj;

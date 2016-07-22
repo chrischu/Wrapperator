@@ -13,22 +13,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML processing instruction. </summary>
-  public partial class XProcessingInstructionWrapper : Wrapperator.Interfaces.Xml.Linq.IXProcessingInstruction
+  public partial class XProcessingInstructionWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXProcessingInstruction
   {
     
     private System.Xml.Linq.XProcessingInstruction _xProcessingInstruction;
     
-    public XProcessingInstructionWrapper(System.Xml.Linq.XProcessingInstruction xProcessingInstruction)
+    public XProcessingInstructionWrapper(System.Xml.Linq.XProcessingInstruction xProcessingInstruction) : 
+        base(xProcessingInstruction)
     {
       _xProcessingInstruction = xProcessingInstruction;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xProcessingInstruction.BaseUri;
-      }
     }
     
     public string Data
@@ -43,43 +36,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xProcessingInstruction.Document;
-      }
-    }
-    
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xProcessingInstruction.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xProcessingInstruction.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xProcessingInstruction.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xProcessingInstruction.PreviousNode;
       }
     }
     
@@ -98,7 +59,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <summary>Writes this processing instruction to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">The <see cref="T:System.Xml.XmlWriter" /> to write this processing instruction to.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xProcessingInstruction.WriteTo(writer);
     }

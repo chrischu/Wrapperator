@@ -38,14 +38,21 @@ namespace Wrapperator
       if (typeof(IDisposable).IsAssignableFrom(model.Type))
         wrapperInterface.BaseTypes.Add(new CodeTypeReference(typeof(IDisposable)));
 
+      if (helper.ShouldTypeBeWrapped(model.Type.BaseType))
+        wrapperInterface.BaseTypes.Add(helper.GetInterfaceName(model.Type.BaseType));
+
       wrapperInterface.Comments.AddRange(XmlDocumentationRetriever.GetDocumentation(model.Type));
 
       ns.Types.Add(wrapperInterface);
 
-      foreach (var propertyInfo in model.Properties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
+      foreach (
+          var propertyInfo in
+              model.Properties.Where(p => !p.IsOverriding()).OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
         wrapperInterface.Members.Add(ConvertPropertyInfoToCodeDomProperty(propertyInfo));
 
-      foreach (var methodInfo in model.Methods.OrderBy(x => x.Name).ThenBy(x => x.IsStatic))
+      foreach (
+          var methodInfo in
+              model.Methods.Where(m => !m.IsOverriding()).OrderBy(x => x.Name).ThenBy(x => x.IsStatic))
         wrapperInterface.Members.Add(ConvertMethodInfoToCodeDomMethod(helper, methodInfo));
 
       helper.WriteToInterfaceFile(model.Type, sw => ConvertCompileUnitToCode(compileUnit, sw));
@@ -64,7 +71,7 @@ namespace Wrapperator
                      };
 
       var parameters = propertyInfo.GetIndexParameters();
-      if(parameters.Length > 0)
+      if (parameters.Length > 0)
         foreach (var parameter in parameters)
           property.Parameters.Add(new CodeParameterDeclarationExpression(ConvertTypeToTypeReference(parameter.ParameterType), parameter.Name));
 
@@ -83,31 +90,35 @@ namespace Wrapperator
                              TypeAttributes = TypeAttributes.Public | TypeAttributes.Class,
                              IsPartial = true
                          };
+
+      if (helper.ShouldTypeBeWrapped(model.Type.BaseType))
+        wrapperClass.BaseTypes.Add(helper.GetWrapperName(model.Type.BaseType));
+
       wrapperClass.BaseTypes.Add(new CodeTypeReference($"{helper.GetInterfaceNamespace(model.Type)}.{helper.GetInterfaceName(model.Type)}"));
       wrapperClass.Comments.AddRange(XmlDocumentationRetriever.GetDocumentation(model.Type));
 
       ns.Types.Add(wrapperClass);
 
       if (!model.Type.IsStatic())
-        AddWrappedFieldToWrapper(helper, model, wrapperClass);
+        AddWrappedFieldAndCtorToWrapper(helper, model, wrapperClass);
 
       AddMethodsToWrapper(helper, model, wrapperClass);
-      AddPropertiesToWrapper(model, wrapperClass);
+      AddPropertiesToWrapper(helper, model, wrapperClass);
 
       if (typeof(IDisposable).IsAssignableFrom(model.Type))
-        AddDisposeMethodToWrapper(model, wrapperClass);
+        AddDisposeMethodToWrapper(helper, model, wrapperClass);
 
       helper.WriteToWrapperFile(model.Type, sw => ConvertCompileUnitToCode(compileUnit, sw));
     }
 
-    private static void AddDisposeMethodToWrapper (WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    private static void AddDisposeMethodToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
       var protectedDisposeMethod = new CodeMemberMethod
-                                   {
-                                       Name = "Dispose",
-                                       Attributes = MemberAttributes.Family,
-                                       Parameters = { new CodeParameterDeclarationExpression(typeof(bool), "disposing") }
-                                   };
+      {
+        Name = "Dispose",
+        Attributes = MemberAttributes.Family,
+        Parameters = { new CodeParameterDeclarationExpression(typeof(bool), "disposing") }
+      };
 
       var @if = new CodeConditionStatement(new CodeArgumentReferenceExpression("disposing"));
       @if.TrueStatements.Add(
@@ -117,23 +128,37 @@ namespace Wrapperator
       protectedDisposeMethod.Statements.Add(@if);
       wrapperClass.Members.Add(protectedDisposeMethod);
 
-      var publicDisposeMethod = new CodeMemberMethod
-                                {
-                                    Name = "Dispose",
-                                    // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
-                                    Attributes = MemberAttributes.Public | MemberAttributes.Final
-                                };
+      if (helper.ShouldTypeBeWrapped(model.Type.BaseType) && typeof(IDisposable).IsAssignableFrom(model.Type.BaseType))
+      {
+        // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+        protectedDisposeMethod.Attributes |= MemberAttributes.Override;
 
-      publicDisposeMethod.Statements.Add(new CodeMethodInvokeExpression(
-          new CodeMethodReferenceExpression(new CodeThisReferenceExpression(), "Dispose"),
-          new CodePrimitiveExpression(true)));
+        protectedDisposeMethod.Statements.Insert(
+            0,
+            new CodeExpressionStatement(
+                new CodeMethodInvokeExpression(new CodeBaseReferenceExpression(), "Dispose", new CodeArgumentReferenceExpression("disposing"))));
+      }
+      else
+      {
+        var publicDisposeMethod = new CodeMemberMethod
+        {
+          Name = "Dispose",
+          // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+          Attributes = MemberAttributes.Public | MemberAttributes.Final
+        };
 
-      publicDisposeMethod.Statements.Add(
-          new CodeMethodInvokeExpression(
-              new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(GC)), "SuppressFinalize"),
-              new CodeThisReferenceExpression()));
+        publicDisposeMethod.Statements.Add(
+            new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(new CodeThisReferenceExpression(), "Dispose"),
+                new CodePrimitiveExpression(true)));
 
-      wrapperClass.Members.Add(publicDisposeMethod);
+        publicDisposeMethod.Statements.Add(
+            new CodeMethodInvokeExpression(
+                new CodeMethodReferenceExpression(new CodeTypeReferenceExpression(typeof(GC)), "SuppressFinalize"),
+                new CodeThisReferenceExpression()));
+
+        wrapperClass.Members.Add(publicDisposeMethod);
+      }
     }
 
     private static void AddMethodsToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
@@ -145,6 +170,10 @@ namespace Wrapperator
         var invokeTarget = methodInfo.IsStatic
             ? (CodeExpression) new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
             : new CodeFieldReferenceExpression { FieldName = model.FieldName };
+
+        if (methodInfo.IsOverriding(b => helper.ShouldTypeBeWrapped(b.DeclaringType)))
+            // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+          method.Attributes |= MemberAttributes.New;
 
         var parameters = methodInfo.GetParameters().Select(
             p =>
@@ -183,14 +212,18 @@ namespace Wrapperator
       }
     }
 
-    private static void AddPropertiesToWrapper(WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    private static void AddPropertiesToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
-      foreach(var propertyInfo in model.Properties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
+      foreach (var propertyInfo in model.Properties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
       {
         var property = ConvertPropertyInfoToCodeDomProperty(propertyInfo);
 
+        if (propertyInfo.IsOverriding(b => helper.ShouldTypeBeWrapped(b.DeclaringType)))
+            // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+          property.Attributes |= MemberAttributes.New;
+
         var invokeTarget = propertyInfo.IsStatic()
-            ? (CodeExpression)new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
+            ? (CodeExpression) new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
             : new CodeFieldReferenceExpression { FieldName = model.FieldName };
 
         CodeExpression propertyReference = new CodePropertyReferenceExpression(invokeTarget, propertyInfo.Name);
@@ -218,7 +251,7 @@ namespace Wrapperator
       }
     }
 
-    private static void AddWrappedFieldToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    private static void AddWrappedFieldAndCtorToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
       var wrappedField = new CodeMemberField(ConvertTypeToTypeReference(model.Type), model.FieldName);
       wrapperClass.Members.Add(wrappedField);
@@ -228,6 +261,10 @@ namespace Wrapperator
                             Name = helper.GetWrapperName(model.Type),
                             Attributes = MemberAttributes.Public
                         };
+
+      if (helper.ShouldTypeBeWrapped(model.Type.BaseType))
+        constructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression(model.ParameterName));
+
       constructor.Statements.Add(
           new CodeAssignStatement(
               new CodeFieldReferenceExpression { FieldName = model.FieldName },

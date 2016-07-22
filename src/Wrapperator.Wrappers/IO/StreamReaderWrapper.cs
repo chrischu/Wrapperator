@@ -14,12 +14,13 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Implements a <see cref="T:System.IO.TextReader" /> that reads characters from a byte stream in a particular encoding.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class StreamReaderWrapper : Wrapperator.Interfaces.IO.IStreamReader
+  public partial class StreamReaderWrapper : TextReaderWrapper, Wrapperator.Interfaces.IO.IStreamReader
   {
     
     private System.IO.StreamReader _streamReader;
     
-    public StreamReaderWrapper(System.IO.StreamReader streamReader)
+    public StreamReaderWrapper(System.IO.StreamReader streamReader) : 
+        base(streamReader)
     {
       _streamReader = streamReader;
     }
@@ -50,7 +51,7 @@ namespace Wrapperator.Wrappers.IO
     
     /// <summary>Closes the <see cref="T:System.IO.StreamReader" /> object and the underlying stream, and releases any system resources associated with the reader.</summary>
     /// <filterpriority>1</filterpriority>
-    public void Close()
+    public new void Close()
     {
       _streamReader.Close();
     }
@@ -66,7 +67,7 @@ namespace Wrapperator.Wrappers.IO
     /// <returns>An integer representing the next character to be read, or -1 if there are no characters to be read or if the stream does not support seeking.</returns>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>1</filterpriority>
-    public int Peek()
+    public new int Peek()
     {
       return _streamReader.Peek();
     }
@@ -75,7 +76,7 @@ namespace Wrapperator.Wrappers.IO
     /// <returns>The next character from the input stream represented as an <see cref="T:System.Int32" /> object, or -1 if no more characters are available.</returns>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>1</filterpriority>
-    public int Read()
+    public new int Read()
     {
       return _streamReader.Read();
     }
@@ -92,7 +93,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs, such as the stream is closed. </exception>
     /// <filterpriority>1</filterpriority>
-    public int Read(char[] buffer, int index, int count)
+    public new int Read(char[] buffer, int index, int count)
     {
       return _streamReader.Read(buffer, index, count);
     }
@@ -109,7 +110,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
+    public new System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
     {
       return _streamReader.ReadAsync(buffer, index, count);
     }
@@ -126,7 +127,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.StreamReader" /> is closed. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
-    public int ReadBlock(char[] buffer, int index, int count)
+    public new int ReadBlock(char[] buffer, int index, int count)
     {
       return _streamReader.ReadBlock(buffer, index, count);
     }
@@ -143,7 +144,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
+    public new System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
     {
       return _streamReader.ReadBlockAsync(buffer, index, count);
     }
@@ -153,7 +154,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>1</filterpriority>
-    public string ReadLine()
+    public new string ReadLine()
     {
       return _streamReader.ReadLine();
     }
@@ -163,7 +164,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters in the next line is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<string> ReadLineAsync()
+    public new System.Threading.Tasks.Task<string> ReadLineAsync()
     {
       return _streamReader.ReadLineAsync();
     }
@@ -173,7 +174,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>1</filterpriority>
-    public string ReadToEnd()
+    public new string ReadToEnd()
     {
       return _streamReader.ReadToEnd();
     }
@@ -183,23 +184,18 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<string> ReadToEndAsync()
+    public new System.Threading.Tasks.Task<string> ReadToEndAsync()
     {
       return _streamReader.ReadToEndAsync();
     }
     
-    protected virtual void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
     {
+      base.Dispose(disposing);
       if (disposing)
       {
         _streamReader.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

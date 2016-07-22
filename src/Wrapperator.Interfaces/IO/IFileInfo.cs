@@ -17,24 +17,6 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileInfo
   {
     
-    System.IO.FileAttributes Attributes
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime CreationTime
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime CreationTimeUtc
-    {
-      get;
-      set;
-    }
-    
     System.IO.DirectoryInfo Directory
     {
       get;
@@ -45,57 +27,13 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
-    bool Exists
-    {
-      get;
-    }
-    
-    string Extension
-    {
-      get;
-    }
-    
-    string FullName
-    {
-      get;
-    }
-    
     bool IsReadOnly
     {
       get;
       set;
     }
     
-    System.DateTime LastAccessTime
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime LastAccessTimeUtc
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime LastWriteTime
-    {
-      get;
-      set;
-    }
-    
-    System.DateTime LastWriteTimeUtc
-    {
-      get;
-      set;
-    }
-    
     long Length
-    {
-      get;
-    }
-    
-    string Name
     {
       get;
     }
@@ -162,13 +100,6 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.UnauthorizedAccessException">The file described by the current <see cref="T:System.IO.FileInfo" /> object is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
     /// <filterpriority>2</filterpriority>
     void Decrypt();
-    
-    /// <summary>Permanently deletes a file.</summary>
-    /// <exception cref="T:System.IO.IOException">The target file is open or memory-mapped on a computer running Microsoft Windows NT.-or-There is an open handle on the file, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see How to: Enumerate Directories and Files. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The path is a directory. </exception>
-    /// <filterpriority>1</filterpriority>
-    void Delete();
     
     /// <summary>Encrypts a file so that only the account used to encrypt the file can decrypt it.</summary>
     /// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>

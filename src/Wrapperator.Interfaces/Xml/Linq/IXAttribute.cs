@@ -13,18 +13,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML attribute.</summary>
-  public partial interface IXAttribute
+  public partial interface IXAttribute : IXObject
   {
-    
-    string BaseUri
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
     
     System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
     {
@@ -42,16 +32,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
     }
     
     System.Xml.Linq.XAttribute NextAttribute
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
     {
       get;
     }

@@ -13,61 +13,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML comment. </summary>
-  public partial class XCommentWrapper : Wrapperator.Interfaces.Xml.Linq.IXComment
+  public partial class XCommentWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXComment
   {
     
     private System.Xml.Linq.XComment _xComment;
     
-    public XCommentWrapper(System.Xml.Linq.XComment xComment)
+    public XCommentWrapper(System.Xml.Linq.XComment xComment) : 
+        base(xComment)
     {
       _xComment = xComment;
     }
     
-    public string BaseUri
-    {
-      get
-      {
-        return _xComment.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xComment.Document;
-      }
-    }
-    
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xComment.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xComment.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xComment.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xComment.PreviousNode;
       }
     }
     
@@ -86,7 +47,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <summary>Write this comment to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xComment.WriteTo(writer);
     }

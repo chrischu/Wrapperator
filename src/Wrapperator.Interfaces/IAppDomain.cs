@@ -674,12 +674,6 @@ namespace Wrapperator.Interfaces
     /// <filterpriority>2</filterpriority>
     object GetData(string name);
     
-    /// <summary>Gives the <see cref="T:System.AppDomain" /> an infinite lifetime by preventing a lease from being created.</summary>
-    /// <returns>Always null.</returns>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <filterpriority>2</filterpriority>
-    object InitializeLifetimeService();
-    
     /// <summary>Gets a nullable Boolean value that indicates whether any compatibility switches are set, and if so, whether the specified compatibility switch is set.</summary>
     /// <returns>A null reference (Nothing in Visual Basic) if no compatibility switches are set; otherwise, a Boolean value that indicates whether the compatibility switch that is specified by <paramref name="value" /> is set.</returns>
     /// <param name="value">The compatibility switch to test.</param>

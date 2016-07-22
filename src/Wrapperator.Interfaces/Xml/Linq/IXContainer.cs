@@ -14,18 +14,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents a node that can contain other nodes.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXContainer
+  public partial interface IXContainer : IXNode
   {
-    
-    string BaseUri
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
     
     System.Xml.Linq.XNode FirstNode
     {
@@ -33,26 +23,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
     }
     
     System.Xml.Linq.XNode LastNode
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }

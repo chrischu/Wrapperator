@@ -13,30 +13,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML element.</summary>
-  public partial class XElementWrapper : Wrapperator.Interfaces.Xml.Linq.IXElement
+  public partial class XElementWrapper : XContainerWrapper, Wrapperator.Interfaces.Xml.Linq.IXElement
   {
     
     private System.Xml.Linq.XElement _xElement;
     
-    public XElementWrapper(System.Xml.Linq.XElement xElement)
+    public XElementWrapper(System.Xml.Linq.XElement xElement) : 
+        base(xElement)
     {
       _xElement = xElement;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xElement.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xElement.Document;
-      }
     }
     
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
@@ -52,14 +37,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xElement.FirstAttribute;
-      }
-    }
-    
-    public System.Xml.Linq.XNode FirstNode
-    {
-      get
-      {
-        return _xElement.FirstNode;
       }
     }
     
@@ -95,14 +72,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XNode LastNode
-    {
-      get
-      {
-        return _xElement.LastNode;
-      }
-    }
-    
     public System.Xml.Linq.XName Name
     {
       get
@@ -115,35 +84,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xElement.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xElement.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xElement.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xElement.PreviousNode;
       }
     }
     
@@ -452,7 +397,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <summary>Write this element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xElement.WriteTo(writer);
     }

@@ -14,61 +14,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents a text node. </summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XTextWrapper : Wrapperator.Interfaces.Xml.Linq.IXText
+  public partial class XTextWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXText
   {
     
     private System.Xml.Linq.XText _xText;
     
-    public XTextWrapper(System.Xml.Linq.XText xText)
+    public XTextWrapper(System.Xml.Linq.XText xText) : 
+        base(xText)
     {
       _xText = xText;
     }
     
-    public string BaseUri
-    {
-      get
-      {
-        return _xText.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xText.Document;
-      }
-    }
-    
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xText.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xText.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xText.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xText.PreviousNode;
       }
     }
     
@@ -87,7 +48,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <summary>Writes this node to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xText.WriteTo(writer);
     }

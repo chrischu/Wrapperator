@@ -13,48 +13,13 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML comment. </summary>
-  public partial interface IXComment
+  public partial interface IXComment : IXNode
   {
-    
-    string BaseUri
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode PreviousNode
-    {
-      get;
-    }
     
     string Value
     {
       get;
       set;
     }
-    
-    /// <summary>Write this comment to an <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
-    /// <filterpriority>2</filterpriority>
-    void WriteTo(System.Xml.XmlWriter writer);
   }
 }

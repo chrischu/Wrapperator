@@ -24,111 +24,11 @@ namespace Wrapperator.Wrappers.IO
       _directoryInfo = directoryInfo;
     }
     
-    public System.IO.FileAttributes Attributes
-    {
-      get
-      {
-        return _directoryInfo.Attributes;
-      }
-      set
-      {
-        _directoryInfo.Attributes = value;
-      }
-    }
-    
-    public System.DateTime CreationTime
-    {
-      get
-      {
-        return _directoryInfo.CreationTime;
-      }
-      set
-      {
-        _directoryInfo.CreationTime = value;
-      }
-    }
-    
-    public System.DateTime CreationTimeUtc
-    {
-      get
-      {
-        return _directoryInfo.CreationTimeUtc;
-      }
-      set
-      {
-        _directoryInfo.CreationTimeUtc = value;
-      }
-    }
-    
     public bool Exists
     {
       get
       {
         return _directoryInfo.Exists;
-      }
-    }
-    
-    public string Extension
-    {
-      get
-      {
-        return _directoryInfo.Extension;
-      }
-    }
-    
-    public string FullName
-    {
-      get
-      {
-        return _directoryInfo.FullName;
-      }
-    }
-    
-    public System.DateTime LastAccessTime
-    {
-      get
-      {
-        return _directoryInfo.LastAccessTime;
-      }
-      set
-      {
-        _directoryInfo.LastAccessTime = value;
-      }
-    }
-    
-    public System.DateTime LastAccessTimeUtc
-    {
-      get
-      {
-        return _directoryInfo.LastAccessTimeUtc;
-      }
-      set
-      {
-        _directoryInfo.LastAccessTimeUtc = value;
-      }
-    }
-    
-    public System.DateTime LastWriteTime
-    {
-      get
-      {
-        return _directoryInfo.LastWriteTime;
-      }
-      set
-      {
-        _directoryInfo.LastWriteTime = value;
-      }
-    }
-    
-    public System.DateTime LastWriteTimeUtc
-    {
-      get
-      {
-        return _directoryInfo.LastWriteTimeUtc;
-      }
-      set
-      {
-        _directoryInfo.LastWriteTimeUtc = value;
       }
     }
     

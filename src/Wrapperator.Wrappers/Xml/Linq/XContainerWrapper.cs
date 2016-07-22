@@ -14,30 +14,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents a node that can contain other nodes.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XContainerWrapper : Wrapperator.Interfaces.Xml.Linq.IXContainer
+  public partial class XContainerWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXContainer
   {
     
     private System.Xml.Linq.XContainer _xContainer;
     
-    public XContainerWrapper(System.Xml.Linq.XContainer xContainer)
+    public XContainerWrapper(System.Xml.Linq.XContainer xContainer) : 
+        base(xContainer)
     {
       _xContainer = xContainer;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xContainer.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xContainer.Document;
-      }
     }
     
     public System.Xml.Linq.XNode FirstNode
@@ -53,38 +38,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xContainer.LastNode;
-      }
-    }
-    
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xContainer.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
-    {
-      get
-      {
-        return _xContainer.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xContainer.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xContainer.PreviousNode;
       }
     }
     

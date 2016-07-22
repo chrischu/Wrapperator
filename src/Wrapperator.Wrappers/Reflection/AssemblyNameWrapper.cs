@@ -59,14 +59,6 @@ namespace Wrapperator.Wrappers.Reflection
       }
     }
     
-    public string CultureName
-    {
-      get
-      {
-        return _assemblyName.CultureName;
-      }
-    }
-    
     public string EscapedCodeBase
     {
       get

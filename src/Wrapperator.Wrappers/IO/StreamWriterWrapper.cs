@@ -14,12 +14,13 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Implements a <see cref="T:System.IO.TextWriter" /> for writing characters to a stream in a particular encoding.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class StreamWriterWrapper : Wrapperator.Interfaces.IO.IStreamWriter
+  public partial class StreamWriterWrapper : TextWriterWrapper, Wrapperator.Interfaces.IO.IStreamWriter
   {
     
     private System.IO.StreamWriter _streamWriter;
     
-    public StreamWriterWrapper(System.IO.StreamWriter streamWriter)
+    public StreamWriterWrapper(System.IO.StreamWriter streamWriter) : 
+        base(streamWriter)
     {
       _streamWriter = streamWriter;
     }
@@ -44,7 +45,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.Text.Encoding Encoding
+    public new System.Text.Encoding Encoding
     {
       get
       {
@@ -52,30 +53,10 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.IFormatProvider FormatProvider
-    {
-      get
-      {
-        return _streamWriter.FormatProvider;
-      }
-    }
-    
-    public string NewLine
-    {
-      get
-      {
-        return _streamWriter.NewLine;
-      }
-      set
-      {
-        _streamWriter.NewLine = value;
-      }
-    }
-    
     /// <summary>Closes the current StreamWriter object and the underlying stream.</summary>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair.</exception>
     /// <filterpriority>1</filterpriority>
-    public void Close()
+    public new void Close()
     {
       _streamWriter.Close();
     }
@@ -85,7 +66,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.IO.IOException">An I/O error has occurred. </exception>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Flush()
+    public new void Flush()
     {
       _streamWriter.Flush();
     }
@@ -93,7 +74,7 @@ namespace Wrapperator.Wrappers.IO
     /// <summary>Clears all buffers for this stream asynchronously and causes any buffered data to be written to the underlying device.</summary>
     /// <returns>A task that represents the asynchronous flush operation.</returns>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-    public System.Threading.Tasks.Task FlushAsync()
+    public new System.Threading.Tasks.Task FlushAsync()
     {
       return _streamWriter.FlushAsync();
     }
@@ -106,7 +87,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <see cref="P:System.IO.StreamWriter.AutoFlush" /> is true or the <see cref="T:System.IO.StreamWriter" /> buffer is full, and the contents of the buffer cannot be written to the underlying fixed size stream because the <see cref="T:System.IO.StreamWriter" /> is at the end the stream. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Write(char value)
+    public new void Write(char value)
     {
       _streamWriter.Write(value);
     }
@@ -119,7 +100,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <see cref="P:System.IO.StreamWriter.AutoFlush" /> is true or the <see cref="T:System.IO.StreamWriter" /> buffer is full, and the contents of the buffer cannot be written to the underlying fixed size stream because the <see cref="T:System.IO.StreamWriter" /> is at the end the stream. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Write(char[] buffer)
+    public new void Write(char[] buffer)
     {
       _streamWriter.Write(buffer);
     }
@@ -139,7 +120,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <see cref="P:System.IO.StreamWriter.AutoFlush" /> is true or the <see cref="T:System.IO.StreamWriter" /> buffer is full, and the contents of the buffer cannot be written to the underlying fixed size stream because the <see cref="T:System.IO.StreamWriter" /> is at the end the stream. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Write(char[] buffer, int index, int count)
+    public new void Write(char[] buffer, int index, int count)
     {
       _streamWriter.Write(buffer, index, count);
     }
@@ -152,7 +133,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <see cref="P:System.IO.StreamWriter.AutoFlush" /> is true or the <see cref="T:System.IO.StreamWriter" /> buffer is full, and the contents of the buffer cannot be written to the underlying fixed size stream because the <see cref="T:System.IO.StreamWriter" /> is at the end the stream. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Write(string value)
+    public new void Write(string value)
     {
       _streamWriter.Write(value);
     }
@@ -162,7 +143,7 @@ namespace Wrapperator.Wrappers.IO
     /// <param name="value">The character to write to the stream.</param>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public System.Threading.Tasks.Task WriteAsync(char value)
+    public new System.Threading.Tasks.Task WriteAsync(char value)
     {
       return _streamWriter.WriteAsync(value);
     }
@@ -172,7 +153,7 @@ namespace Wrapperator.Wrappers.IO
     /// <param name="value">The string to write to the stream. If <paramref name="value" /> is null, nothing is written.</param>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public System.Threading.Tasks.Task WriteAsync(string value)
+    public new System.Threading.Tasks.Task WriteAsync(string value)
     {
       return _streamWriter.WriteAsync(value);
     }
@@ -189,7 +170,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
+    public new System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
     {
       return _streamWriter.WriteAsync(buffer, index, count);
     }
@@ -198,7 +179,7 @@ namespace Wrapperator.Wrappers.IO
     /// <returns>A task that represents the asynchronous write operation.</returns>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public System.Threading.Tasks.Task WriteLineAsync()
+    public new System.Threading.Tasks.Task WriteLineAsync()
     {
       return _streamWriter.WriteLineAsync();
     }
@@ -208,7 +189,7 @@ namespace Wrapperator.Wrappers.IO
     /// <param name="value">The character to write to the stream.</param>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public System.Threading.Tasks.Task WriteLineAsync(char value)
+    public new System.Threading.Tasks.Task WriteLineAsync(char value)
     {
       return _streamWriter.WriteLineAsync(value);
     }
@@ -218,7 +199,7 @@ namespace Wrapperator.Wrappers.IO
     /// <param name="value">The string to write. If the value is null, only a line terminator is written. </param>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public System.Threading.Tasks.Task WriteLineAsync(string value)
+    public new System.Threading.Tasks.Task WriteLineAsync(string value)
     {
       return _streamWriter.WriteLineAsync(value);
     }
@@ -235,23 +216,18 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteLineAsync(char[] buffer, int index, int count)
+    public new System.Threading.Tasks.Task WriteLineAsync(char[] buffer, int index, int count)
     {
       return _streamWriter.WriteLineAsync(buffer, index, count);
     }
     
-    protected virtual void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
     {
+      base.Dispose(disposing);
       if (disposing)
       {
         _streamWriter.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

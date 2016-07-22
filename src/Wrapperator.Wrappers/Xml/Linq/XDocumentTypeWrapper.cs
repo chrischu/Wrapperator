@@ -14,30 +14,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents an XML Document Type Definition (DTD). </summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XDocumentTypeWrapper : Wrapperator.Interfaces.Xml.Linq.IXDocumentType
+  public partial class XDocumentTypeWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXDocumentType
   {
     
     private System.Xml.Linq.XDocumentType _xDocumentType;
     
-    public XDocumentTypeWrapper(System.Xml.Linq.XDocumentType xDocumentType)
+    public XDocumentTypeWrapper(System.Xml.Linq.XDocumentType xDocumentType) : 
+        base(xDocumentType)
     {
       _xDocumentType = xDocumentType;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xDocumentType.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xDocumentType.Document;
-      }
     }
     
     public string InternalSubset
@@ -64,35 +49,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xDocumentType.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xDocumentType.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xDocumentType.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xDocumentType.PreviousNode;
       }
     }
     
@@ -123,7 +84,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <summary>Write this <see cref="T:System.Xml.Linq.XDocumentType" /> to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xDocumentType.WriteTo(writer);
     }

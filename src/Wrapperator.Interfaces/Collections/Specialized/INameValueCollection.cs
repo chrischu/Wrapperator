@@ -21,11 +21,6 @@ namespace Wrapperator.Interfaces.Collections.Specialized
       get;
     }
     
-    int Count
-    {
-      get;
-    }
-    
     string this[string name]
     {
       get;
@@ -33,11 +28,6 @@ namespace Wrapperator.Interfaces.Collections.Specialized
     }
     
     string this[int index]
-    {
-      get;
-    }
-    
-    System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys
     {
       get;
     }

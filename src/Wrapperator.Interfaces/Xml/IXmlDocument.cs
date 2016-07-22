@@ -16,21 +16,6 @@ namespace Wrapperator.Interfaces.Xml
   public partial interface IXmlDocument
   {
     
-    System.Xml.XmlAttributeCollection Attributes
-    {
-      get;
-    }
-    
-    string BaseURI
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeList ChildNodes
-    {
-      get;
-    }
-    
     System.Xml.XmlElement DocumentElement
     {
       get;
@@ -41,63 +26,7 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
-    System.Xml.XmlNode FirstChild
-    {
-      get;
-    }
-    
-    bool HasChildNodes
-    {
-      get;
-    }
-    
     System.Xml.XmlImplementation Implementation
-    {
-      get;
-    }
-    
-    string InnerText
-    {
-      set;
-    }
-    
-    string InnerXml
-    {
-      get;
-      set;
-    }
-    
-    bool IsReadOnly
-    {
-      get;
-    }
-    
-    System.Xml.XmlElement this[string name]
-    {
-      get;
-    }
-    
-    System.Xml.XmlElement this[string localname, string ns]
-    {
-      get;
-    }
-    
-    System.Xml.XmlNode LastChild
-    {
-      get;
-    }
-    
-    string LocalName
-    {
-      get;
-    }
-    
-    string Name
-    {
-      get;
-    }
-    
-    string NamespaceURI
     {
       get;
     }
@@ -107,60 +36,13 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
-    System.Xml.XmlNode NextSibling
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    string OuterXml
-    {
-      get;
-    }
-    
-    System.Xml.XmlDocument OwnerDocument
-    {
-      get;
-    }
-    
-    System.Xml.XmlNode ParentNode
-    {
-      get;
-    }
-    
-    string Prefix
-    {
-      get;
-      set;
-    }
-    
     bool PreserveWhitespace
     {
       get;
       set;
     }
     
-    System.Xml.XmlNode PreviousSibling
-    {
-      get;
-    }
-    
-    System.Xml.Schema.IXmlSchemaInfo SchemaInfo
-    {
-      get;
-    }
-    
     System.Xml.Schema.XmlSchemaSet Schemas
-    {
-      get;
-      set;
-    }
-    
-    string Value
     {
       get;
       set;
@@ -170,11 +52,6 @@ namespace Wrapperator.Interfaces.Xml
     {
       set;
     }
-    
-    /// <summary>Creates a duplicate of this node.</summary>
-    /// <returns>The cloned XmlDocument node.</returns>
-    /// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself. </param>
-    System.Xml.XmlNode CloneNode(bool deep);
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlAttribute" /> with the specified <see cref="P:System.Xml.XmlDocument.Name" />.</summary>
     /// <returns>The new XmlAttribute.</returns>
@@ -239,10 +116,6 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="name">The name of the entity reference. </param>
     /// <exception cref="T:System.ArgumentException">The name is invalid (for example, names starting with'#' are invalid.) </exception>
     System.Xml.XmlEntityReference CreateEntityReference(string name);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XPath.XPathNavigator" /> object for navigating this document.</summary>
-    /// <returns>An <see cref="T:System.Xml.XPath.XPathNavigator" /> object.</returns>
-    System.Xml.XPath.XPathNavigator CreateNavigator();
     
     /// <summary>Creates a <see cref="T:System.Xml.XmlNode" /> with the specified <see cref="T:System.Xml.XmlNodeType" />, <see cref="P:System.Xml.XmlNode.Prefix" />, <see cref="P:System.Xml.XmlDocument.Name" />, and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
     /// <returns>The new XmlNode.</returns>
@@ -397,13 +270,5 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.Xml.XmlNode" /> object parameter is not an element, attribute, document fragment, or the root node.</exception>
     /// <exception cref="T:System.Xml.Schema.XmlSchemaValidationException">A schema validation event occurred and no <see cref="T:System.Xml.Schema.ValidationEventHandler" /> object was specified.</exception>
     void Validate(System.Xml.Schema.ValidationEventHandler validationEventHandler, System.Xml.XmlNode nodeToValidate);
-    
-    /// <summary>Saves all the children of the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="xw">The XmlWriter to which you want to save. </param>
-    void WriteContentTo(System.Xml.XmlWriter xw);
-    
-    /// <summary>Saves the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="w">The XmlWriter to which you want to save. </param>
-    void WriteTo(System.Xml.XmlWriter w);
   }
 }

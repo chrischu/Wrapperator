@@ -34,11 +34,6 @@ namespace Wrapperator.Interfaces.Reflection
       set;
     }
     
-    string CultureName
-    {
-      get;
-    }
-    
     string EscapedCodeBase
     {
       get;

@@ -13,13 +13,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML document. For the components and usage of an <see cref="T:System.Xml.Linq.XDocument" /> object, see XDocument Class Overview.</summary>
-  public partial interface IXDocument
+  public partial interface IXDocument : IXContainer
   {
-    
-    string BaseUri
-    {
-      get;
-    }
     
     System.Xml.Linq.XDeclaration Declaration
     {
@@ -27,42 +22,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
       set;
     }
     
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
-    
     System.Xml.Linq.XDocumentType DocumentType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode FirstNode
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode LastNode
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode PreviousNode
     {
       get;
     }
@@ -157,10 +117,5 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Serialize this <see cref="T:System.Xml.Linq.XDocument" /> to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> that the <see cref="T:System.Xml.Linq.XDocument" /> will be written to.</param>
     void Save(System.Xml.XmlWriter writer);
-    
-    /// <summary>Write this document to an <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
-    /// <filterpriority>2</filterpriority>
-    void WriteTo(System.Xml.XmlWriter writer);
   }
 }

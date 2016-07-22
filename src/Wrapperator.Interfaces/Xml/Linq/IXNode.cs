@@ -14,18 +14,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents the abstract concept of a node (element, comment, document type, processing instruction, or text node) in the XML tree.  </summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXNode
+  public partial interface IXNode : IXObject
   {
-    
-    string BaseUri
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
     
     System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
     {
@@ -38,16 +28,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
     }
     
     System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
     {
       get;
     }

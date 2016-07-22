@@ -13,12 +13,13 @@ namespace Wrapperator.Wrappers.IO.Compression
   
   
   /// <summary>Provides methods and properties for compressing and decompressing streams by using the Deflate algorithm.</summary>
-  public partial class DeflateStreamWrapper : Wrapperator.Interfaces.IO.Compression.IDeflateStream
+  public partial class DeflateStreamWrapper : StreamWrapper, Wrapperator.Interfaces.IO.Compression.IDeflateStream
   {
     
     private System.IO.Compression.DeflateStream _deflateStream;
     
-    public DeflateStreamWrapper(System.IO.Compression.DeflateStream deflateStream)
+    public DeflateStreamWrapper(System.IO.Compression.DeflateStream deflateStream) : 
+        base(deflateStream)
     {
       _deflateStream = deflateStream;
     }
@@ -31,7 +32,7 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
-    public bool CanRead
+    public new bool CanRead
     {
       get
       {
@@ -39,7 +40,7 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
-    public bool CanSeek
+    public new bool CanSeek
     {
       get
       {
@@ -47,15 +48,7 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
-    public bool CanTimeout
-    {
-      get
-      {
-        return _deflateStream.CanTimeout;
-      }
-    }
-    
-    public bool CanWrite
+    public new bool CanWrite
     {
       get
       {
@@ -63,7 +56,7 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
-    public long Length
+    public new long Length
     {
       get
       {
@@ -71,7 +64,7 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
-    public long Position
+    public new long Position
     {
       get
       {
@@ -80,30 +73,6 @@ namespace Wrapperator.Wrappers.IO.Compression
       set
       {
         _deflateStream.Position = value;
-      }
-    }
-    
-    public int ReadTimeout
-    {
-      get
-      {
-        return _deflateStream.ReadTimeout;
-      }
-      set
-      {
-        _deflateStream.ReadTimeout = value;
-      }
-    }
-    
-    public int WriteTimeout
-    {
-      get
-      {
-        return _deflateStream.WriteTimeout;
-      }
-      set
-      {
-        _deflateStream.WriteTimeout = value;
       }
     }
     
@@ -119,7 +88,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed.</exception>
     /// <exception cref="T:System.NotSupportedException">The current <see cref="T:System.IO.Compression.DeflateStream" /> implementation does not support the read operation.</exception>
     /// <exception cref="T:System.InvalidOperationException">This call cannot be completed. </exception>
-    public System.IAsyncResult BeginRead(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState)
+    public new System.IAsyncResult BeginRead(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState)
     {
       return _deflateStream.BeginRead(array, offset, count, asyncCallback, asyncState);
     }
@@ -136,7 +105,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed.</exception>
     /// <exception cref="T:System.NotSupportedException">The current <see cref="T:System.IO.Compression.DeflateStream" /> implementation does not support the write operation.</exception>
     /// <exception cref="T:System.InvalidOperationException">The write operation cannot be performed because the stream is closed.</exception>
-    public System.IAsyncResult BeginWrite(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState)
+    public new System.IAsyncResult BeginWrite(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState)
     {
       return _deflateStream.BeginWrite(array, offset, count, asyncCallback, asyncState);
     }
@@ -151,7 +120,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <exception cref="T:System.SystemException">An exception was thrown during a call to <see cref="M:System.Threading.WaitHandle.WaitOne" />.</exception>
     /// <exception cref="T:System.InvalidOperationException">The end call is invalid because asynchronous read operations for this stream are not yet complete.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream is null.</exception>
-    public int EndRead(System.IAsyncResult asyncResult)
+    public new int EndRead(System.IAsyncResult asyncResult)
     {
       return _deflateStream.EndRead(asyncResult);
     }
@@ -165,14 +134,14 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <exception cref="T:System.Exception">An exception was thrown during a call to <see cref="M:System.Threading.WaitHandle.WaitOne" />.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream is null.</exception>
     /// <exception cref="T:System.InvalidOperationException">The end write call is invalid.</exception>
-    public void EndWrite(System.IAsyncResult asyncResult)
+    public new void EndWrite(System.IAsyncResult asyncResult)
     {
       _deflateStream.EndWrite(asyncResult);
     }
     
     /// <summary>The current implementation of this method has no functionality.</summary>
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed.</exception>
-    public void Flush()
+    public new void Flush()
     {
       _deflateStream.Flush();
     }
@@ -189,7 +158,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     ///  <paramref name="offset" /> or <paramref name="count" /> is less than zero.-or-<paramref name="array" /> length minus the index starting point is less than <paramref name="count" />.</exception>
     /// <exception cref="T:System.IO.InvalidDataException">The data is in an invalid format.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed.</exception>
-    public int Read(byte[] array, int offset, int count)
+    public new int Read(byte[] array, int offset, int count)
     {
       return _deflateStream.Read(array, offset, count);
     }
@@ -199,7 +168,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <param name="offset">The location in the stream.</param>
     /// <param name="origin">One of the <see cref="T:System.IO.SeekOrigin" /> values.</param>
     /// <exception cref="T:System.NotSupportedException">This property is not supported on this stream.</exception>
-    public long Seek(long offset, System.IO.SeekOrigin origin)
+    public new long Seek(long offset, System.IO.SeekOrigin origin)
     {
       return _deflateStream.Seek(offset, origin);
     }
@@ -207,7 +176,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <summary>This operation is not supported and always throws a <see cref="T:System.NotSupportedException" />.</summary>
     /// <param name="value">The length of the stream.</param>
     /// <exception cref="T:System.NotSupportedException">This property is not supported on this stream.</exception>
-    public void SetLength(long value)
+    public new void SetLength(long value)
     {
       _deflateStream.SetLength(value);
     }
@@ -216,23 +185,18 @@ namespace Wrapperator.Wrappers.IO.Compression
     /// <param name="array">The buffer that contains the data to compress.</param>
     /// <param name="offset">The byte offset in <paramref name="array" /> from which the bytes will be read.</param>
     /// <param name="count">The maximum number of bytes to write.</param>
-    public void Write(byte[] array, int offset, int count)
+    public new void Write(byte[] array, int offset, int count)
     {
       _deflateStream.Write(array, offset, count);
     }
     
-    protected virtual void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
     {
+      base.Dispose(disposing);
       if (disposing)
       {
         _deflateStream.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

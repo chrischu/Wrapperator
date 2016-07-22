@@ -14,17 +14,18 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Exposes a <see cref="T:System.IO.Stream" /> around a file, supporting both synchronous and asynchronous read and write operations.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class FileStreamWrapper : Wrapperator.Interfaces.IO.IFileStream
+  public partial class FileStreamWrapper : StreamWrapper, Wrapperator.Interfaces.IO.IFileStream
   {
     
     private System.IO.FileStream _fileStream;
     
-    public FileStreamWrapper(System.IO.FileStream fileStream)
+    public FileStreamWrapper(System.IO.FileStream fileStream) : 
+        base(fileStream)
     {
       _fileStream = fileStream;
     }
     
-    public bool CanRead
+    public new bool CanRead
     {
       get
       {
@@ -32,7 +33,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public bool CanSeek
+    public new bool CanSeek
     {
       get
       {
@@ -40,15 +41,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public bool CanTimeout
-    {
-      get
-      {
-        return _fileStream.CanTimeout;
-      }
-    }
-    
-    public bool CanWrite
+    public new bool CanWrite
     {
       get
       {
@@ -64,7 +57,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public long Length
+    public new long Length
     {
       get
       {
@@ -80,7 +73,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public long Position
+    public new long Position
     {
       get
       {
@@ -92,35 +85,11 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public int ReadTimeout
-    {
-      get
-      {
-        return _fileStream.ReadTimeout;
-      }
-      set
-      {
-        _fileStream.ReadTimeout = value;
-      }
-    }
-    
     public Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle
     {
       get
       {
         return _fileStream.SafeFileHandle;
-      }
-    }
-    
-    public int WriteTimeout
-    {
-      get
-      {
-        return _fileStream.WriteTimeout;
-      }
-      set
-      {
-        _fileStream.WriteTimeout = value;
       }
     }
     
@@ -138,7 +107,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="offset" /> or <paramref name="numBytes" /> is negative. </exception>
     /// <exception cref="T:System.IO.IOException">An asynchronous read was attempted past the end of the file. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.IAsyncResult BeginRead(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject)
+    public new System.IAsyncResult BeginRead(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject)
     {
       return _fileStream.BeginRead(array, offset, numBytes, userCallback, stateObject);
     }
@@ -160,7 +129,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.IAsyncResult BeginWrite(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject)
+    public new System.IAsyncResult BeginWrite(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject)
     {
       return _fileStream.BeginWrite(array, offset, numBytes, userCallback, stateObject);
     }
@@ -175,7 +144,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <see cref="M:System.IO.FileStream.EndRead(System.IAsyncResult)" /> is called multiple times. </exception>
     /// <exception cref="T:System.IO.IOException">The stream is closed or an internal error has occurred.</exception>
     /// <filterpriority>2</filterpriority>
-    public int EndRead(System.IAsyncResult asyncResult)
+    public new int EndRead(System.IAsyncResult asyncResult)
     {
       return _fileStream.EndRead(asyncResult);
     }
@@ -189,7 +158,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <see cref="M:System.IO.FileStream.EndWrite(System.IAsyncResult)" /> is called multiple times. </exception>
     /// <exception cref="T:System.IO.IOException">The stream is closed or an internal error has occurred.</exception>
     /// <filterpriority>2</filterpriority>
-    public void EndWrite(System.IAsyncResult asyncResult)
+    public new void EndWrite(System.IAsyncResult asyncResult)
     {
       _fileStream.EndWrite(asyncResult);
     }
@@ -198,7 +167,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Flush()
+    public new void Flush()
     {
       _fileStream.Flush();
     }
@@ -214,7 +183,7 @@ namespace Wrapperator.Wrappers.IO
     /// <returns>A task that represents the asynchronous flush operation. </returns>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-    public System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken)
     {
       return _fileStream.FlushAsync(cancellationToken);
     }
@@ -259,7 +228,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="offset" /> and <paramref name="count" /> describe an invalid range in <paramref name="array" />. </exception>
     /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
     /// <filterpriority>1</filterpriority>
-    public int Read(byte[] array, int offset, int count)
+    public new int Read(byte[] array, int offset, int count)
     {
       return _fileStream.Read(array, offset, count);
     }
@@ -278,7 +247,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return _fileStream.ReadAsync(buffer, offset, count, cancellationToken);
     }
@@ -288,7 +257,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The current stream is closed. </exception>
     /// <filterpriority>1</filterpriority>
-    public int ReadByte()
+    public new int ReadByte()
     {
       return _fileStream.ReadByte();
     }
@@ -302,7 +271,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentException">Seeking is attempted before the beginning of the stream. </exception>
     /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
     /// <filterpriority>1</filterpriority>
-    public long Seek(long offset, System.IO.SeekOrigin origin)
+    public new long Seek(long offset, System.IO.SeekOrigin origin)
     {
       return _fileStream.Seek(offset, origin);
     }
@@ -325,7 +294,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The stream does not support both writing and seeking. </exception>
     /// <exception cref="T:System.ArgumentOutOfRangeException">Attempted to set the <paramref name="value" /> parameter to less than 0. </exception>
     /// <filterpriority>2</filterpriority>
-    public void SetLength(long value)
+    public new void SetLength(long value)
     {
       _fileStream.SetLength(value);
     }
@@ -355,7 +324,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
     /// <exception cref="T:System.NotSupportedException">The current stream instance does not support writing. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Write(byte[] array, int offset, int count)
+    public new void Write(byte[] array, int offset, int count)
     {
       _fileStream.Write(array, offset, count);
     }
@@ -374,7 +343,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The stream does not support writing.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return _fileStream.WriteAsync(buffer, offset, count, cancellationToken);
     }
@@ -384,23 +353,18 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
     /// <exception cref="T:System.NotSupportedException">The stream does not support writing. </exception>
     /// <filterpriority>1</filterpriority>
-    public void WriteByte(byte value)
+    public new void WriteByte(byte value)
     {
       _fileStream.WriteByte(value);
     }
     
-    protected virtual void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
     {
+      base.Dispose(disposing);
       if (disposing)
       {
         _fileStream.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

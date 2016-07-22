@@ -13,22 +13,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML document. For the components and usage of an <see cref="T:System.Xml.Linq.XDocument" /> object, see XDocument Class Overview.</summary>
-  public partial class XDocumentWrapper : Wrapperator.Interfaces.Xml.Linq.IXDocument
+  public partial class XDocumentWrapper : XContainerWrapper, Wrapperator.Interfaces.Xml.Linq.IXDocument
   {
     
     private System.Xml.Linq.XDocument _xDocument;
     
-    public XDocumentWrapper(System.Xml.Linq.XDocument xDocument)
+    public XDocumentWrapper(System.Xml.Linq.XDocument xDocument) : 
+        base(xDocument)
     {
       _xDocument = xDocument;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xDocument.BaseUri;
-      }
     }
     
     public System.Xml.Linq.XDeclaration Declaration
@@ -43,14 +36,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xDocument.Document;
-      }
-    }
-    
     public System.Xml.Linq.XDocumentType DocumentType
     {
       get
@@ -59,51 +44,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XNode FirstNode
-    {
-      get
-      {
-        return _xDocument.FirstNode;
-      }
-    }
-    
-    public System.Xml.Linq.XNode LastNode
-    {
-      get
-      {
-        return _xDocument.LastNode;
-      }
-    }
-    
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xDocument.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xDocument.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xDocument.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xDocument.PreviousNode;
       }
     }
     
@@ -255,7 +200,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <summary>Write this document to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xDocument.WriteTo(writer);
     }

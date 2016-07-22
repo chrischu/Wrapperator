@@ -14,17 +14,18 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Creates a stream whose backing store is memory.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class MemoryStreamWrapper : Wrapperator.Interfaces.IO.IMemoryStream
+  public partial class MemoryStreamWrapper : StreamWrapper, Wrapperator.Interfaces.IO.IMemoryStream
   {
     
     private System.IO.MemoryStream _memoryStream;
     
-    public MemoryStreamWrapper(System.IO.MemoryStream memoryStream)
+    public MemoryStreamWrapper(System.IO.MemoryStream memoryStream) : 
+        base(memoryStream)
     {
       _memoryStream = memoryStream;
     }
     
-    public bool CanRead
+    public new bool CanRead
     {
       get
       {
@@ -32,7 +33,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public bool CanSeek
+    public new bool CanSeek
     {
       get
       {
@@ -40,15 +41,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public bool CanTimeout
-    {
-      get
-      {
-        return _memoryStream.CanTimeout;
-      }
-    }
-    
-    public bool CanWrite
+    public new bool CanWrite
     {
       get
       {
@@ -68,7 +61,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public long Length
+    public new long Length
     {
       get
       {
@@ -76,7 +69,7 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public long Position
+    public new long Position
     {
       get
       {
@@ -85,30 +78,6 @@ namespace Wrapperator.Wrappers.IO
       set
       {
         _memoryStream.Position = value;
-      }
-    }
-    
-    public int ReadTimeout
-    {
-      get
-      {
-        return _memoryStream.ReadTimeout;
-      }
-      set
-      {
-        _memoryStream.ReadTimeout = value;
-      }
-    }
-    
-    public int WriteTimeout
-    {
-      get
-      {
-        return _memoryStream.WriteTimeout;
-      }
-      set
-      {
-        _memoryStream.WriteTimeout = value;
       }
     }
     
@@ -123,14 +92,14 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="buffersize" /> is negative or zero.</exception>
     /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-    public System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize, System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize, System.Threading.CancellationToken cancellationToken)
     {
       return _memoryStream.CopyToAsync(destination, bufferSize, cancellationToken);
     }
     
     /// <summary>Overrides the <see cref="M:System.IO.Stream.Flush" /> method so that no action is performed.</summary>
     /// <filterpriority>2</filterpriority>
-    public void Flush()
+    public new void Flush()
     {
       _memoryStream.Flush();
     }
@@ -139,7 +108,7 @@ namespace Wrapperator.Wrappers.IO
     /// <returns>A task that represents the asynchronous flush operation.</returns>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-    public System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken)
     {
       return _memoryStream.FlushAsync(cancellationToken);
     }
@@ -166,7 +135,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="offset" /> subtracted from the buffer length is less than <paramref name="count" />. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The current stream instance is closed. </exception>
     /// <filterpriority>2</filterpriority>
-    public int Read(byte[] buffer, int offset, int count)
+    public new int Read(byte[] buffer, int offset, int count)
     {
       return _memoryStream.Read(buffer, offset, count);
     }
@@ -185,7 +154,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return _memoryStream.ReadAsync(buffer, offset, count, cancellationToken);
     }
@@ -194,7 +163,7 @@ namespace Wrapperator.Wrappers.IO
     /// <returns>The byte cast to a <see cref="T:System.Int32" />, or -1 if the end of the stream has been reached.</returns>
     /// <exception cref="T:System.ObjectDisposedException">The current stream instance is closed. </exception>
     /// <filterpriority>2</filterpriority>
-    public int ReadByte()
+    public new int ReadByte()
     {
       return _memoryStream.ReadByte();
     }
@@ -209,7 +178,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentException">There is an invalid <see cref="T:System.IO.SeekOrigin" />. -or-<paramref name="offset" /> caused an arithmetic overflow.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The current stream instance is closed. </exception>
     /// <filterpriority>2</filterpriority>
-    public long Seek(long offset, System.IO.SeekOrigin loc)
+    public new long Seek(long offset, System.IO.SeekOrigin loc)
     {
       return _memoryStream.Seek(offset, loc);
     }
@@ -220,7 +189,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="value" /> is negative or is greater than the maximum length of the <see cref="T:System.IO.MemoryStream" />, where the maximum length is(<see cref="F:System.Int32.MaxValue" /> - origin), and origin is the index into the underlying buffer at which the stream starts. </exception>
     /// <filterpriority>2</filterpriority>
-    public void SetLength(long value)
+    public new void SetLength(long value)
     {
       _memoryStream.SetLength(value);
     }
@@ -247,7 +216,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The current stream instance is closed. </exception>
     /// <filterpriority>2</filterpriority>
-    public void Write(byte[] buffer, int offset, int count)
+    public new void Write(byte[] buffer, int offset, int count)
     {
       _memoryStream.Write(buffer, offset, count);
     }
@@ -266,7 +235,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The stream does not support writing.</exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
     /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
+    public new System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return _memoryStream.WriteAsync(buffer, offset, count, cancellationToken);
     }
@@ -276,7 +245,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The stream does not support writing. For additional information see <see cref="P:System.IO.Stream.CanWrite" />.-or- The current position is at the end of the stream, and the capacity cannot be modified. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The current stream is closed. </exception>
     /// <filterpriority>2</filterpriority>
-    public void WriteByte(byte value)
+    public new void WriteByte(byte value)
     {
       _memoryStream.WriteByte(value);
     }
@@ -292,18 +261,13 @@ namespace Wrapperator.Wrappers.IO
       _memoryStream.WriteTo(stream);
     }
     
-    protected virtual void Dispose(bool disposing)
+    protected override void Dispose(bool disposing)
     {
+      base.Dispose(disposing);
       if (disposing)
       {
         _memoryStream.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

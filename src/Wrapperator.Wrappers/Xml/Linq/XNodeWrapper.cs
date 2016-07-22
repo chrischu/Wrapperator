@@ -14,30 +14,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents the abstract concept of a node (element, comment, document type, processing instruction, or text node) in the XML tree.  </summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XNodeWrapper : Wrapperator.Interfaces.Xml.Linq.IXNode
+  public partial class XNodeWrapper : XObjectWrapper, Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
     private System.Xml.Linq.XNode _xNode;
     
-    public XNodeWrapper(System.Xml.Linq.XNode xNode)
+    public XNodeWrapper(System.Xml.Linq.XNode xNode) : 
+        base(xNode)
     {
       _xNode = xNode;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xNode.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xNode.Document;
-      }
     }
     
     public System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
@@ -61,22 +46,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xNode.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
-    {
-      get
-      {
-        return _xNode.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xNode.Parent;
       }
     }
     

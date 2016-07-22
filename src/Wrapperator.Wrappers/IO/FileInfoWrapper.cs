@@ -24,42 +24,6 @@ namespace Wrapperator.Wrappers.IO
       _fileInfo = fileInfo;
     }
     
-    public System.IO.FileAttributes Attributes
-    {
-      get
-      {
-        return _fileInfo.Attributes;
-      }
-      set
-      {
-        _fileInfo.Attributes = value;
-      }
-    }
-    
-    public System.DateTime CreationTime
-    {
-      get
-      {
-        return _fileInfo.CreationTime;
-      }
-      set
-      {
-        _fileInfo.CreationTime = value;
-      }
-    }
-    
-    public System.DateTime CreationTimeUtc
-    {
-      get
-      {
-        return _fileInfo.CreationTimeUtc;
-      }
-      set
-      {
-        _fileInfo.CreationTimeUtc = value;
-      }
-    }
-    
     public System.IO.DirectoryInfo Directory
     {
       get
@@ -84,22 +48,6 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public string Extension
-    {
-      get
-      {
-        return _fileInfo.Extension;
-      }
-    }
-    
-    public string FullName
-    {
-      get
-      {
-        return _fileInfo.FullName;
-      }
-    }
-    
     public bool IsReadOnly
     {
       get
@@ -109,54 +57,6 @@ namespace Wrapperator.Wrappers.IO
       set
       {
         _fileInfo.IsReadOnly = value;
-      }
-    }
-    
-    public System.DateTime LastAccessTime
-    {
-      get
-      {
-        return _fileInfo.LastAccessTime;
-      }
-      set
-      {
-        _fileInfo.LastAccessTime = value;
-      }
-    }
-    
-    public System.DateTime LastAccessTimeUtc
-    {
-      get
-      {
-        return _fileInfo.LastAccessTimeUtc;
-      }
-      set
-      {
-        _fileInfo.LastAccessTimeUtc = value;
-      }
-    }
-    
-    public System.DateTime LastWriteTime
-    {
-      get
-      {
-        return _fileInfo.LastWriteTime;
-      }
-      set
-      {
-        _fileInfo.LastWriteTime = value;
-      }
-    }
-    
-    public System.DateTime LastWriteTimeUtc
-    {
-      get
-      {
-        return _fileInfo.LastWriteTimeUtc;
-      }
-      set
-      {
-        _fileInfo.LastWriteTimeUtc = value;
       }
     }
     

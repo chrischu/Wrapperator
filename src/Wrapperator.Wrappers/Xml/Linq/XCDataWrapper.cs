@@ -13,41 +13,18 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents a text node that contains CDATA. </summary>
-  public partial class XCDataWrapper : Wrapperator.Interfaces.Xml.Linq.IXCData
+  public partial class XCDataWrapper : XTextWrapper, Wrapperator.Interfaces.Xml.Linq.IXCData
   {
     
     private System.Xml.Linq.XCData _xCData;
     
-    public XCDataWrapper(System.Xml.Linq.XCData xCData)
+    public XCDataWrapper(System.Xml.Linq.XCData xCData) : 
+        base(xCData)
     {
       _xCData = xCData;
     }
     
-    public string BaseUri
-    {
-      get
-      {
-        return _xCData.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xCData.Document;
-      }
-    }
-    
-    public System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return _xCData.NextNode;
-      }
-    }
-    
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
@@ -55,38 +32,10 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xCData.Parent;
-      }
-    }
-    
-    public System.Xml.Linq.XNode PreviousNode
-    {
-      get
-      {
-        return _xCData.PreviousNode;
-      }
-    }
-    
-    public string Value
-    {
-      get
-      {
-        return _xCData.Value;
-      }
-      set
-      {
-        _xCData.Value = value;
-      }
-    }
-    
     /// <summary>Writes this CDATA object to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    public void WriteTo(System.Xml.XmlWriter writer)
+    public new void WriteTo(System.Xml.XmlWriter writer)
     {
       _xCData.WriteTo(writer);
     }

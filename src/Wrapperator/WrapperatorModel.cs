@@ -13,7 +13,7 @@ namespace Wrapperator
     public string ParameterName => Type.Name.ToLowerCamelCase();
     public string FieldName => $"_{ParameterName}";
 
-    public WrapperatorModel(Type type, IReadOnlyCollection<MethodInfo> methods, IReadOnlyCollection<PropertyInfo> properties)
+    public WrapperatorModel (Type type, IReadOnlyCollection<MethodInfo> methods, IReadOnlyCollection<PropertyInfo> properties)
     {
       Type = type;
       Methods = methods;
@@ -23,7 +23,7 @@ namespace Wrapperator
 
   internal static class StringExtensions
   {
-    public static string ToLowerCamelCase(this string s)
+    public static string ToLowerCamelCase (this string s)
     {
       var first = char.ToLower(s[0]);
       return first + s.Substring(1);

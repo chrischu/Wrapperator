@@ -42,17 +42,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
-    {
-      get;
-    }
-    
     System.Reflection.MethodBase DeclaringMethod
-    {
-      get;
-    }
-    
-    System.Type DeclaringType
     {
       get;
     }
@@ -287,32 +277,12 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Reflection.MemberTypes MemberType
-    {
-      get;
-    }
-    
-    int MetadataToken
-    {
-      get;
-    }
-    
     System.Reflection.Module Module
     {
       get;
     }
     
-    string Name
-    {
-      get;
-    }
-    
     string Namespace
-    {
-      get;
-    }
-    
-    System.Type ReflectedType
     {
       get;
     }

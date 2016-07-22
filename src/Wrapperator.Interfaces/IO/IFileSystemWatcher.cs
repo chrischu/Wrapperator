@@ -17,11 +17,6 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileSystemWatcher : System.IDisposable
   {
     
-    System.ComponentModel.IContainer Container
-    {
-      get;
-    }
-    
     bool EnableRaisingEvents
     {
       get;
@@ -53,12 +48,6 @@ namespace Wrapperator.Interfaces.IO
     }
     
     string Path
-    {
-      get;
-      set;
-    }
-    
-    System.ComponentModel.ISite Site
     {
       get;
       set;

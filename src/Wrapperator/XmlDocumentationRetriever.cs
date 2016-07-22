@@ -18,7 +18,7 @@ namespace Wrapperator
   {
     private static readonly Dictionary<Assembly, XDocument> s_assemblyDocuments = new Dictionary<Assembly, XDocument>();
 
-    private static XDocument GetDocumentation(Assembly assembly)
+    private static XDocument GetDocumentation (Assembly assembly)
     {
       XDocument xdoc;
       if (s_assemblyDocuments.TryGetValue(assembly, out xdoc))
@@ -31,13 +31,13 @@ namespace Wrapperator
       return s_assemblyDocuments[assembly] = XDocument.Load(path);
     }
 
-    private static string GetFrameworkVersionDirectoryName()
+    private static string GetFrameworkVersionDirectoryName ()
     {
       var targetFrameworkAttribute = Assembly.GetExecutingAssembly().GetCustomAttribute<TargetFrameworkAttribute>();
       return targetFrameworkAttribute.FrameworkName.Split('=')[1];
     }
 
-    private static CodeCommentStatement[] GetDocumentationComments(XElement documentationElement)
+    private static CodeCommentStatement[] GetDocumentationComments (XElement documentationElement)
     {
       return documentationElement.Elements()
           .Where(e => e.Name.LocalName != "PermissionSet")
@@ -45,7 +45,7 @@ namespace Wrapperator
           .ToArray();
     }
 
-    public static CodeCommentStatement[] GetDocumentation(Type type)
+    public static CodeCommentStatement[] GetDocumentation (Type type)
     {
       var xdoc = GetDocumentation(type.Assembly);
 
@@ -54,7 +54,7 @@ namespace Wrapperator
       return GetDocumentationComments(elem);
     }
 
-    public static CodeCommentStatement[] GetDocumentation(MethodInfo method)
+    public static CodeCommentStatement[] GetDocumentation (MethodInfo method)
     {
       var type = method.DeclaringType;
       Trace.Assert(type != null);
@@ -62,17 +62,14 @@ namespace Wrapperator
 
       var xpath =
           $"//member[@name='M:{GetTypeFullNameForXmlDoc(type)}.{GetMemberSignature(method)}']";
-      var elem =xdoc.XPathSelectElement(xpath);
+      var elem = xdoc.XPathSelectElement(xpath);
 
-      if(elem == null)
-      {
-        Console.WriteLine();
-      }
+      Trace.Assert(elem != null);
 
       return GetDocumentationComments(elem);
     }
 
-    private static string GetTypeFullNameForXmlDoc(Type type, bool isMethodParameter = false)
+    private static string GetTypeFullNameForXmlDoc (Type type, bool isMethodParameter = false)
     {
       if (type.IsByRef)
         return GetTypeFullNameForXmlDoc(type.GetElementType(), isMethodParameter) + "@";
@@ -87,13 +84,13 @@ namespace Wrapperator
       return $"{type.Namespace}.{type.Name.Replace('&', '@')}";
     }
 
-    private static string GetMemberSignature(MethodBase method)
+    private static string GetMemberSignature (MethodBase method)
     {
       var sb = new StringBuilder(method.Name);
 
       var parameters = method.GetParameters();
 
-      if(parameters.Length > 0)
+      if (parameters.Length > 0)
       {
         sb.Append('(');
         sb.Append(string.Join(",", parameters.Select(p => GetTypeFullNameForXmlDoc(p.ParameterType, true))));

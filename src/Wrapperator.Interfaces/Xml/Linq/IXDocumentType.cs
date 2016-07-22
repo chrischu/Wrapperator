@@ -14,18 +14,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents an XML Document Type Definition (DTD). </summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXDocumentType
+  public partial interface IXDocumentType : IXNode
   {
-    
-    string BaseUri
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
     
     string InternalSubset
     {
@@ -39,26 +29,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
       set;
     }
     
-    System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode PreviousNode
-    {
-      get;
-    }
-    
     string PublicId
     {
       get;
@@ -70,10 +40,5 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
       set;
     }
-    
-    /// <summary>Write this <see cref="T:System.Xml.Linq.XDocumentType" /> to an <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
-    /// <filterpriority>2</filterpriority>
-    void WriteTo(System.Xml.XmlWriter writer);
   }
 }

@@ -13,30 +13,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML attribute.</summary>
-  public partial class XAttributeWrapper : Wrapperator.Interfaces.Xml.Linq.IXAttribute
+  public partial class XAttributeWrapper : XObjectWrapper, Wrapperator.Interfaces.Xml.Linq.IXAttribute
   {
     
     private System.Xml.Linq.XAttribute _xAttribute;
     
-    public XAttributeWrapper(System.Xml.Linq.XAttribute xAttribute)
+    public XAttributeWrapper(System.Xml.Linq.XAttribute xAttribute) : 
+        base(xAttribute)
     {
       _xAttribute = xAttribute;
-    }
-    
-    public string BaseUri
-    {
-      get
-      {
-        return _xAttribute.BaseUri;
-      }
-    }
-    
-    public System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return _xAttribute.Document;
-      }
     }
     
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
@@ -71,19 +56,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.XmlNodeType NodeType
+    public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xAttribute.NodeType;
-      }
-    }
-    
-    public System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return _xAttribute.Parent;
       }
     }
     

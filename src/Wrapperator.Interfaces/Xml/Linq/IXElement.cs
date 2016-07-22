@@ -13,18 +13,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML element.</summary>
-  public partial interface IXElement
+  public partial interface IXElement : IXContainer
   {
-    
-    string BaseUri
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
     
     System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
     {
@@ -32,11 +22,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
     }
     
     System.Xml.Linq.XAttribute FirstAttribute
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode FirstNode
     {
       get;
     }
@@ -61,35 +46,10 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
-    System.Xml.Linq.XNode LastNode
-    {
-      get;
-    }
-    
     System.Xml.Linq.XName Name
     {
       get;
       set;
-    }
-    
-    System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode PreviousNode
-    {
-      get;
     }
     
     string Value
@@ -276,10 +236,5 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> is null.</exception>
     /// <exception cref="T:System.ArgumentException">The <paramref name="value" /> is an <see cref="T:System.Xml.Linq.XObject" />.</exception>
     void SetValue(object value);
-    
-    /// <summary>Write this element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
-    /// <filterpriority>2</filterpriority>
-    void WriteTo(System.Xml.XmlWriter writer);
   }
 }

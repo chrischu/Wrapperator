@@ -13,13 +13,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML processing instruction. </summary>
-  public partial interface IXProcessingInstruction
+  public partial interface IXProcessingInstruction : IXNode
   {
-    
-    string BaseUri
-    {
-      get;
-    }
     
     string Data
     {
@@ -27,40 +22,10 @@ namespace Wrapperator.Interfaces.Xml.Linq
       set;
     }
     
-    System.Xml.Linq.XDocument Document
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode NextNode
-    {
-      get;
-    }
-    
-    System.Xml.XmlNodeType NodeType
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XElement Parent
-    {
-      get;
-    }
-    
-    System.Xml.Linq.XNode PreviousNode
-    {
-      get;
-    }
-    
     string Target
     {
       get;
       set;
     }
-    
-    /// <summary>Writes this processing instruction to an <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="writer">The <see cref="T:System.Xml.XmlWriter" /> to write this processing instruction to.</param>
-    /// <filterpriority>2</filterpriority>
-    void WriteTo(System.Xml.XmlWriter writer);
   }
 }

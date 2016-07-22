@@ -23,27 +23,11 @@ namespace Wrapperator.Wrappers.Xml
       _xmlDocument = xmlDocument;
     }
     
-    public System.Xml.XmlAttributeCollection Attributes
-    {
-      get
-      {
-        return _xmlDocument.Attributes;
-      }
-    }
-    
     public string BaseURI
     {
       get
       {
         return _xmlDocument.BaseURI;
-      }
-    }
-    
-    public System.Xml.XmlNodeList ChildNodes
-    {
-      get
-      {
-        return _xmlDocument.ChildNodes;
       }
     }
     
@@ -60,22 +44,6 @@ namespace Wrapperator.Wrappers.Xml
       get
       {
         return _xmlDocument.DocumentType;
-      }
-    }
-    
-    public System.Xml.XmlNode FirstChild
-    {
-      get
-      {
-        return _xmlDocument.FirstChild;
-      }
-    }
-    
-    public bool HasChildNodes
-    {
-      get
-      {
-        return _xmlDocument.HasChildNodes;
       }
     }
     
@@ -115,30 +83,6 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
-    public System.Xml.XmlElement this[string name]
-    {
-      get
-      {
-        return _xmlDocument[name];
-      }
-    }
-    
-    public System.Xml.XmlElement this[string localname, string ns]
-    {
-      get
-      {
-        return _xmlDocument[localname, ns];
-      }
-    }
-    
-    public System.Xml.XmlNode LastChild
-    {
-      get
-      {
-        return _xmlDocument.LastChild;
-      }
-    }
-    
     public string LocalName
     {
       get
@@ -155,14 +99,6 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
-    public string NamespaceURI
-    {
-      get
-      {
-        return _xmlDocument.NamespaceURI;
-      }
-    }
-    
     public System.Xml.XmlNameTable NameTable
     {
       get
@@ -171,27 +107,11 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
-    public System.Xml.XmlNode NextSibling
-    {
-      get
-      {
-        return _xmlDocument.NextSibling;
-      }
-    }
-    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xmlDocument.NodeType;
-      }
-    }
-    
-    public string OuterXml
-    {
-      get
-      {
-        return _xmlDocument.OuterXml;
       }
     }
     
@@ -211,18 +131,6 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
-    public string Prefix
-    {
-      get
-      {
-        return _xmlDocument.Prefix;
-      }
-      set
-      {
-        _xmlDocument.Prefix = value;
-      }
-    }
-    
     public bool PreserveWhitespace
     {
       get
@@ -232,14 +140,6 @@ namespace Wrapperator.Wrappers.Xml
       set
       {
         _xmlDocument.PreserveWhitespace = value;
-      }
-    }
-    
-    public System.Xml.XmlNode PreviousSibling
-    {
-      get
-      {
-        return _xmlDocument.PreviousSibling;
       }
     }
     
@@ -260,18 +160,6 @@ namespace Wrapperator.Wrappers.Xml
       set
       {
         _xmlDocument.Schemas = value;
-      }
-    }
-    
-    public string Value
-    {
-      get
-      {
-        return _xmlDocument.Value;
-      }
-      set
-      {
-        _xmlDocument.Value = value;
       }
     }
     
