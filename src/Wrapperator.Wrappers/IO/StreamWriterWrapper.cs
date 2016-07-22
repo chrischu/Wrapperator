@@ -53,6 +53,26 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public new System.IFormatProvider FormatProvider
+    {
+      get
+      {
+        return _streamWriter.FormatProvider;
+      }
+    }
+    
+    public new string NewLine
+    {
+      get
+      {
+        return _streamWriter.NewLine;
+      }
+      set
+      {
+        _streamWriter.NewLine = value;
+      }
+    }
+    
     /// <summary>Closes the current StreamWriter object and the underlying stream.</summary>
     /// <exception cref="T:System.Text.EncoderFallbackException">The current encoding does not support displaying half of a Unicode surrogate pair.</exception>
     /// <filterpriority>1</filterpriority>
@@ -138,6 +158,159 @@ namespace Wrapperator.Wrappers.IO
       _streamWriter.Write(value);
     }
     
+    /// <summary>Writes the text representation of a Boolean value to the text string or stream.</summary>
+    /// <param name="value">The Boolean value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(bool value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of a 4-byte signed integer to the text string or stream.</summary>
+    /// <param name="value">The 4-byte signed integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(int value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of a 4-byte unsigned integer to the text string or stream.</summary>
+    /// <param name="value">The 4-byte unsigned integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(uint value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of an 8-byte signed integer to the text string or stream.</summary>
+    /// <param name="value">The 8-byte signed integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(long value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of an 8-byte unsigned integer to the text string or stream.</summary>
+    /// <param name="value">The 8-byte unsigned integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(ulong value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of a 4-byte floating-point value to the text string or stream.</summary>
+    /// <param name="value">The 4-byte floating-point value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(float value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of an 8-byte floating-point value to the text string or stream.</summary>
+    /// <param name="value">The 8-byte floating-point value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(double value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of a decimal value to the text string or stream.</summary>
+    /// <param name="value">The decimal value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(decimal value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes the text representation of an object to the text string or stream by calling the ToString method on that object.</summary>
+    /// <param name="value">The object to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(object value)
+    {
+      _streamWriter.Write(value);
+    }
+    
+    /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object)" /> method.</summary>
+    /// <param name="format">A composite format string (see Remarks). </param>
+    /// <param name="arg0">The object to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is one). </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(string format, object arg0)
+    {
+      _streamWriter.Write(format, arg0);
+    }
+    
+    /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
+    /// <param name="format">A composite format string (see Remarks). </param>
+    /// <param name="arg0">The first object to format and write. </param>
+    /// <param name="arg1">The second object to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero) or greater than or equal to the number of objects to be formatted (which, for this method overload, is two). </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(string format, object arg0, object arg1)
+    {
+      _streamWriter.Write(format, arg0, arg1);
+    }
+    
+    /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object,System.Object)" /> method.</summary>
+    /// <param name="format">A composite format string (see Remarks). </param>
+    /// <param name="arg0">The first object to format and write. </param>
+    /// <param name="arg1">The second object to format and write. </param>
+    /// <param name="arg2">The third object to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is three). </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(string format, object arg0, object arg1, object arg2)
+    {
+      _streamWriter.Write(format, arg0, arg1, arg2);
+    }
+    
+    /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object[])" /> method.</summary>
+    /// <param name="format">A composite format string (see Remarks). </param>
+    /// <param name="arg">An object array that contains zero or more objects to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> or <paramref name="arg" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the length of the <paramref name="arg" /> array. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void Write(string format, object[] arg)
+    {
+      _streamWriter.Write(format, arg);
+    }
+    
     /// <summary>Writes a character to the stream asynchronously.</summary>
     /// <returns>A task that represents the asynchronous write operation.</returns>
     /// <param name="value">The character to write to the stream.</param>
@@ -173,6 +346,223 @@ namespace Wrapperator.Wrappers.IO
     public new System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
     {
       return _streamWriter.WriteAsync(buffer, index, count);
+    }
+    
+    /// <summary>Writes a character array to the text string or stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">The character array to write to the text stream. If <paramref name="buffer" /> is null, nothing is written.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public new System.Threading.Tasks.Task WriteAsync(char[] buffer)
+    {
+      return _streamWriter.WriteAsync(buffer);
+    }
+    
+    /// <summary>Writes a line terminator to the text string or stream.</summary>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine()
+    {
+      _streamWriter.WriteLine();
+    }
+    
+    /// <summary>Writes a character followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The character to write to the text stream. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(char value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes an array of characters followed by a line terminator to the text string or stream.</summary>
+    /// <param name="buffer">The character array from which data is read. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(char[] buffer)
+    {
+      _streamWriter.WriteLine(buffer);
+    }
+    
+    /// <summary>Writes a subarray of characters followed by a line terminator to the text string or stream.</summary>
+    /// <param name="buffer">The character array from which data is read. </param>
+    /// <param name="index">The character position in <paramref name="buffer" /> at which to start reading data. </param>
+    /// <param name="count">The maximum number of characters to write. </param>
+    /// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />. </exception>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="buffer" /> parameter is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(char[] buffer, int index, int count)
+    {
+      _streamWriter.WriteLine(buffer, index, count);
+    }
+    
+    /// <summary>Writes the text representation of a Boolean value followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The Boolean value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(bool value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of a 4-byte signed integer followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The 4-byte signed integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(int value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of a 4-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The 4-byte unsigned integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(uint value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of an 8-byte signed integer followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The 8-byte signed integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(long value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of an 8-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The 8-byte unsigned integer to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(ulong value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of a 4-byte floating-point value followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The 4-byte floating-point value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(float value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of a 8-byte floating-point value followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The 8-byte floating-point value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(double value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of a decimal value followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The decimal value to write. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(decimal value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes a string followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The string to write. If <paramref name="value" /> is null, only the line terminator is written. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(string value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes the text representation of an object by calling the ToString method on that object, followed by a line terminator to the text string or stream.</summary>
+    /// <param name="value">The object to write. If <paramref name="value" /> is null, only the line terminator is written. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(object value)
+    {
+      _streamWriter.WriteLine(value);
+    }
+    
+    /// <summary>Writes a formatted string and a new line to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object)" /> method.</summary>
+    /// <param name="format">A composite format string (see Remarks).</param>
+    /// <param name="arg0">The object to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is one). </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(string format, object arg0)
+    {
+      _streamWriter.WriteLine(format, arg0);
+    }
+    
+    /// <summary>Writes a formatted string and a new line to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
+    /// <param name="format">A composite format string (see Remarks).</param>
+    /// <param name="arg0">The first object to format and write. </param>
+    /// <param name="arg1">The second object to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is two). </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(string format, object arg0, object arg1)
+    {
+      _streamWriter.WriteLine(format, arg0, arg1);
+    }
+    
+    /// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
+    /// <param name="format">A composite format string (see Remarks).</param>
+    /// <param name="arg0">The first object to format and write. </param>
+    /// <param name="arg1">The second object to format and write. </param>
+    /// <param name="arg2">The third object to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="format" /> is null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the number of objects to be formatted (which, for this method overload, is three). </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(string format, object arg0, object arg1, object arg2)
+    {
+      _streamWriter.WriteLine(format, arg0, arg1, arg2);
+    }
+    
+    /// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
+    /// <param name="format">A composite format string (see Remarks).</param>
+    /// <param name="arg">An object array that contains zero or more objects to format and write. </param>
+    /// <exception cref="T:System.ArgumentNullException">A string or object is passed in as null. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextWriter" /> is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.FormatException">
+    ///  <paramref name="format" /> is not a valid composite format string.-or- The index of a format item is less than 0 (zero), or greater than or equal to the length of the <paramref name="arg" /> array. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new void WriteLine(string format, object[] arg)
+    {
+      _streamWriter.WriteLine(format, arg);
     }
     
     /// <summary>Writes a line terminator asynchronously to the stream.</summary>
@@ -219,6 +609,16 @@ namespace Wrapperator.Wrappers.IO
     public new System.Threading.Tasks.Task WriteLineAsync(char[] buffer, int index, int count)
     {
       return _streamWriter.WriteLineAsync(buffer, index, count);
+    }
+    
+    /// <summary>Writes an array of characters followed by a line terminator asynchronously to the text string or stream.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">The character array to write to the text stream. If the character array is null, only the line terminator is written. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public new System.Threading.Tasks.Task WriteLineAsync(char[] buffer)
+    {
+      return _streamWriter.WriteLineAsync(buffer);
     }
     
     protected override void Dispose(bool disposing)

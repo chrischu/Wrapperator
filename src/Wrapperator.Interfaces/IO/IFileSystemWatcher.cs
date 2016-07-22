@@ -17,6 +17,11 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileSystemWatcher : System.IDisposable
   {
     
+    System.ComponentModel.IContainer Container
+    {
+      get;
+    }
+    
     bool EnableRaisingEvents
     {
       get;
@@ -53,6 +58,12 @@ namespace Wrapperator.Interfaces.IO
       set;
     }
     
+    System.ComponentModel.ISite Site
+    {
+      get;
+      set;
+    }
+    
     System.ComponentModel.ISynchronizeInvoke SynchronizingObject
     {
       get;
@@ -63,9 +74,29 @@ namespace Wrapperator.Interfaces.IO
     /// <filterpriority>2</filterpriority>
     void BeginInit();
     
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    
     /// <summary>Ends the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>
     void EndInit();
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object GetLifetimeService();
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object InitializeLifetimeService();
     
     /// <summary>A synchronous method that returns a structure that contains specific information on the change that occurred, given the type of change you want to monitor.</summary>
     /// <returns>A <see cref="T:System.IO.WaitForChangedResult" /> that contains specific information on the change that occurred.</returns>

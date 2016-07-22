@@ -18,7 +18,60 @@ namespace Wrapperator
       _options = options;
       _typesToWrap = new HashSet<Type>(options.TypesToWrap);
       _excluded = new Excluded(options.ExcludedMethods, options.ExcludedProperties);
-      Models = _typesToWrap.Select(t => new WrapperatorModel(t, GetMethodsToWrap(t), GetPropertiesToWrap(t))).ToList();
+      Models = _typesToWrap
+        .OrderBy(t => t.HierarchyDepth())
+        .Select(CreateModel).ToList();
+    }
+
+    private WrapperatorModel CreateModel (Type t)
+    {
+      var preSelectedMethods = GetMethodsToWrap(t);
+      var preSelectedProperties = GetPropertiesToWrap(t);
+
+      Tuple<MethodInfo[], WrapperatorMemberModel<MethodInfo>[]> methods;
+      Tuple<PropertyInfo[], WrapperatorMemberModel<PropertyInfo>[]> properties;
+
+
+      if (ShouldTypeBeWrapped(t.BaseType))
+      {
+        methods = FilterMembersForNonRootWrapper(t, preSelectedMethods);
+        properties = FilterMembersForNonRootWrapper(t, preSelectedProperties);
+      }
+      else
+      {
+        methods = FilterMembersForRootWrapper(preSelectedMethods);
+        properties = FilterMembersForRootWrapper(preSelectedProperties);
+      }
+
+      return new WrapperatorModel(t, methods.Item1, properties.Item1, methods.Item2, properties.Item2);
+    }
+
+    private Tuple<T[], WrapperatorMemberModel<T>[]> FilterMembersForRootWrapper<T>(IEnumerable<T> members)
+      where T: MemberInfo
+    {
+      var membersArray = members as T[] ?? members.ToArray();
+      return Tuple.Create(membersArray, membersArray.Select(m => new WrapperatorMemberModel<T>(m, false)).ToArray());
+    }
+
+    private Tuple<T[], WrapperatorMemberModel<T>[]> FilterMembersForNonRootWrapper<T>(Type typeToWrap, IEnumerable<T> members)
+      where T : MemberInfo
+    {
+      var membersArray = members as T[] ?? members.ToArray();
+      var interfaceMembers = membersArray.Where(m => m.DeclaringType == typeToWrap && m.GetBaseDeclaringType() == typeToWrap).ToArray();
+
+      var wrappedBases = GetWrappedBaseTypes(typeToWrap).ToArray();
+
+      var wrapperMembers = membersArray.Select(
+          m => new { Override = wrappedBases.Any(t => t.HasMatchingMember(m)), Member = m })
+          .Where(x => x.Override || x.Member.DeclaringType == typeToWrap)
+          .Select(x => new WrapperatorMemberModel<T>(x.Member, x.Override)).ToArray();
+
+      return Tuple.Create(interfaceMembers, wrapperMembers);
+    }
+
+    private IEnumerable<Type> GetWrappedBaseTypes(Type type)
+    {
+      return type.GetBaseTypes().Where(ShouldTypeBeWrapped);
     }
 
     public IReadOnlyCollection<WrapperatorModel> Models { get; }
@@ -65,22 +118,21 @@ namespace Wrapperator
 
     public bool ShouldTypeBeWrapped (Type type) => _typesToWrap.Contains(type);
 
-    private IReadOnlyCollection<MethodInfo> GetMethodsToWrap (Type typeToWrap)
+    private IEnumerable<MethodInfo> GetMethodsToWrap (Type typeToWrap)
     {
       return typeToWrap
-          .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.DeclaredOnly)
+          .GetMethods(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance)
           .Where(m => !m.IsSpecialName)
-          .Where(m => m.DeclaringType == typeToWrap)
+          //.Where(m => m.DeclaringType == typeToWrap || !ShouldTypeBeWrapped(m.DeclaringType))
           .Where(m => m.GetCustomAttribute<ObsoleteAttribute>() == null)
-          .Where(m => !_excluded.IsMethodExcluded(typeToWrap.Name, m.Name))
-          .ToList();
+          .Where(m => !_excluded.IsMethodExcluded(typeToWrap.Name, m.Name));
     }
 
-    private IReadOnlyCollection<PropertyInfo> GetPropertiesToWrap (Type typeToWrap)
+    private IEnumerable<PropertyInfo> GetPropertiesToWrap (Type typeToWrap)
     {
       return typeToWrap.GetProperties(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance)
           .Where(p => !p.IsSpecialName)
-          .Where(p => p.DeclaringType == typeToWrap)
+          //.Where(p => p.DeclaringType == typeToWrap || !ShouldTypeBeWrapped(p.DeclaringType))
           .Where(p => p.GetCustomAttribute<ObsoleteAttribute>() == null)
           .Where(p => !_excluded.IsPropertyExcluded(typeToWrap.Name, p.Name))
           .ToList();

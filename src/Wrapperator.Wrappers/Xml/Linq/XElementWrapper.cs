@@ -24,6 +24,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xElement = xElement;
     }
     
+    public new string BaseUri
+    {
+      get
+      {
+        return _xElement.BaseUri;
+      }
+    }
+    
+    public new System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xElement.Document;
+      }
+    }
+    
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
     {
       get
@@ -37,6 +53,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xElement.FirstAttribute;
+      }
+    }
+    
+    public new System.Xml.Linq.XNode FirstNode
+    {
+      get
+      {
+        return _xElement.FirstNode;
       }
     }
     
@@ -72,6 +96,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public new System.Xml.Linq.XNode LastNode
+    {
+      get
+      {
+        return _xElement.LastNode;
+      }
+    }
+    
     public System.Xml.Linq.XName Name
     {
       get
@@ -84,11 +116,35 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public new System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return _xElement.NextNode;
+      }
+    }
+    
     public new System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xElement.NodeType;
+      }
+    }
+    
+    public new System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xElement.Parent;
+      }
+    }
+    
+    public new System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return _xElement.PreviousNode;
       }
     }
     
@@ -104,6 +160,89 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    /// <summary>Adds the specified content as children of this <see cref="T:System.Xml.Linq.XContainer" />.</summary>
+    /// <param name="content">A content object containing simple content or a collection of content objects to be added.</param>
+    public new void Add(object content)
+    {
+      _xElement.Add(content);
+    }
+    
+    /// <summary>Adds the specified content as children of this <see cref="T:System.Xml.Linq.XContainer" />.</summary>
+    /// <param name="content">A parameter list of content objects.</param>
+    public new void Add(object[] content)
+    {
+      _xElement.Add(content);
+    }
+    
+    /// <summary>Adds the specified content immediately after this node.</summary>
+    /// <param name="content">A content object that contains simple content or a collection of content objects to be added after this node.</param>
+    /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
+    public new void AddAfterSelf(object content)
+    {
+      _xElement.AddAfterSelf(content);
+    }
+    
+    /// <summary>Adds the specified content immediately after this node.</summary>
+    /// <param name="content">A parameter list of content objects.</param>
+    /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
+    public new void AddAfterSelf(object[] content)
+    {
+      _xElement.AddAfterSelf(content);
+    }
+    
+    /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
+    public new void AddAnnotation(object annotation)
+    {
+      _xElement.AddAnnotation(annotation);
+    }
+    
+    /// <summary>Adds the specified content immediately before this node.</summary>
+    /// <param name="content">A content object that contains simple content or a collection of content objects to be added before this node.</param>
+    /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
+    public new void AddBeforeSelf(object content)
+    {
+      _xElement.AddBeforeSelf(content);
+    }
+    
+    /// <summary>Adds the specified content immediately before this node.</summary>
+    /// <param name="content">A parameter list of content objects.</param>
+    /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
+    public new void AddBeforeSelf(object[] content)
+    {
+      _xElement.AddBeforeSelf(content);
+    }
+    
+    /// <summary>Adds the specified content as the first children of this document or element.</summary>
+    /// <param name="content">A content object containing simple content or a collection of content objects to be added.</param>
+    public new void AddFirst(object content)
+    {
+      _xElement.AddFirst(content);
+    }
+    
+    /// <summary>Adds the specified content as the first children of this document or element.</summary>
+    /// <param name="content">A parameter list of content objects.</param>
+    /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
+    public new void AddFirst(object[] content)
+    {
+      _xElement.AddFirst(content);
+    }
+    
+    /// <summary>Returns a collection of the ancestor elements of this node.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the ancestor elements of this node.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors()
+    {
+      return _xElement.Ancestors();
+    }
+    
+    /// <summary>Returns a filtered collection of the ancestor elements of this node. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the ancestor elements of this node. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.The nodes in the returned collection are in reverse document order.This method uses deferred execution.</returns>
+    /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors(System.Xml.Linq.XName name)
+    {
+      return _xElement.Ancestors(name);
+    }
+    
     /// <summary>Returns a collection of elements that contain this element, and the ancestors of this element. </summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of elements that contain this element, and the ancestors of this element. </returns>
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> AncestorsAndSelf()
@@ -117,6 +256,40 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> AncestorsAndSelf(System.Xml.Linq.XName name)
     {
       return _xElement.AncestorsAndSelf(name);
+    }
+    
+    /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> that contains the first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
+    public new object Annotation(System.Type type)
+    {
+      return _xElement.Annotation(type);
+    }
+    
+    /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
+    /// <returns>The first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <typeparam name="T">The type of the annotation to retrieve.</typeparam>
+    public new T Annotation<T>()
+      where T :  class
+    {
+      return _xElement.Annotation<T>();
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Object" /> that contains the annotations that match the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
+    public new System.Collections.Generic.IEnumerable<object> Annotations(System.Type type)
+    {
+      return _xElement.Annotations(type);
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the annotations for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <typeparam name="T">The type of the annotations to retrieve.</typeparam>
+    public new System.Collections.Generic.IEnumerable<T> Annotations<T>()
+      where T :  class
+    {
+      return _xElement.Annotations<T>();
     }
     
     /// <summary>Returns the <see cref="T:System.Xml.Linq.XAttribute" /> of this <see cref="T:System.Xml.Linq.XElement" /> that has the specified <see cref="T:System.Xml.Linq.XName" />.</summary>
@@ -142,11 +315,57 @@ namespace Wrapperator.Wrappers.Xml.Linq
       return _xElement.Attributes(name);
     }
     
+    /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> for this node.</summary>
+    /// <returns>An <see cref="T:System.Xml.XmlReader" /> that can be used to read this node and its descendants.</returns>
+    /// <filterpriority>2</filterpriority>
+    public new Wrapperator.Interfaces.Xml.IXmlReader CreateReader()
+    {
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(_xElement.CreateReader());
+    }
+    
+    /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> with the options specified by the <paramref name="readerOptions" /> parameter.</summary>
+    /// <returns>An <see cref="T:System.Xml.XmlReader" /> object.</returns>
+    /// <param name="readerOptions">A <see cref="T:System.Xml.Linq.ReaderOptions" /> object that specifies whether to omit duplicate namespaces.</param>
+    public new Wrapperator.Interfaces.Xml.IXmlReader CreateReader(System.Xml.Linq.ReaderOptions readerOptions)
+    {
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(_xElement.CreateReader(readerOptions));
+    }
+    
+    /// <summary>Creates an <see cref="T:System.Xml.XmlWriter" /> that can be used to add nodes to the <see cref="T:System.Xml.Linq.XContainer" />.</summary>
+    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> that is ready to have content written to it.</returns>
+    /// <filterpriority>2</filterpriority>
+    public new Wrapperator.Interfaces.Xml.IXmlWriter CreateWriter()
+    {
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(_xElement.CreateWriter());
+    }
+    
+    /// <summary>Returns a collection of the descendant nodes for this document or element, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> containing the descendant nodes of the <see cref="T:System.Xml.Linq.XContainer" />, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> DescendantNodes()
+    {
+      return _xElement.DescendantNodes();
+    }
+    
     /// <summary>Returns a collection of nodes that contain this element, and all descendant nodes of this element, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> that contain this element, and all descendant nodes of this element, in document order.</returns>
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> DescendantNodesAndSelf()
     {
       return _xElement.DescendantNodesAndSelf();
+    }
+    
+    /// <summary>Returns a collection of the descendant elements for this document or element, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> containing the descendant elements of the <see cref="T:System.Xml.Linq.XContainer" />.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Descendants()
+    {
+      return _xElement.Descendants();
+    }
+    
+    /// <summary>Returns a filtered collection of the descendant elements for this document or element, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> containing the descendant elements of the <see cref="T:System.Xml.Linq.XContainer" /> that match the specified <see cref="T:System.Xml.Linq.XName" />.</returns>
+    /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Descendants(System.Xml.Linq.XName name)
+    {
+      return _xElement.Descendants(name);
     }
     
     /// <summary>Returns a collection of elements that contain this element, and all descendant elements of this element, in document order.</summary>
@@ -162,6 +381,59 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> DescendantsAndSelf(System.Xml.Linq.XName name)
     {
       return _xElement.DescendantsAndSelf(name);
+    }
+    
+    /// <summary>Gets the first (in document order) child element with the specified <see cref="T:System.Xml.Linq.XName" />.</summary>
+    /// <returns>A <see cref="T:System.Xml.Linq.XElement" /> that matches the specified <see cref="T:System.Xml.Linq.XName" />, or null.</returns>
+    /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
+    public new Wrapperator.Interfaces.Xml.Linq.IXElement Element(System.Xml.Linq.XName name)
+    {
+      return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(_xElement.Element(name));
+    }
+    
+    /// <summary>Returns a collection of the child elements of this element or document, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> containing the child elements of this <see cref="T:System.Xml.Linq.XContainer" />, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Elements()
+    {
+      return _xElement.Elements();
+    }
+    
+    /// <summary>Returns a filtered collection of the child elements of this element or document, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> containing the children of the <see cref="T:System.Xml.Linq.XContainer" /> that have a matching <see cref="T:System.Xml.Linq.XName" />, in document order.</returns>
+    /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Elements(System.Xml.Linq.XName name)
+    {
+      return _xElement.Elements(name);
+    }
+    
+    /// <summary>Returns a collection of the sibling elements after this node, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements after this node, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf()
+    {
+      return _xElement.ElementsAfterSelf();
+    }
+    
+    /// <summary>Returns a filtered collection of the sibling elements after this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements after this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
+    /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf(System.Xml.Linq.XName name)
+    {
+      return _xElement.ElementsAfterSelf(name);
+    }
+    
+    /// <summary>Returns a collection of the sibling elements before this node, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements before this node, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf()
+    {
+      return _xElement.ElementsBeforeSelf();
+    }
+    
+    /// <summary>Returns a filtered collection of the sibling elements before this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements before this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
+    /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf(System.Xml.Linq.XName name)
+    {
+      return _xElement.ElementsBeforeSelf(name);
     }
     
     /// <summary>Gets the default <see cref="T:System.Xml.Linq.XNamespace" /> of this <see cref="T:System.Xml.Linq.XElement" />.</summary>
@@ -188,6 +460,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public string GetPrefixOfNamespace(System.Xml.Linq.XNamespace ns)
     {
       return _xElement.GetPrefixOfNamespace(ns);
+    }
+    
+    /// <summary>Determines if the current node appears after a specified node in terms of document order.</summary>
+    /// <returns>true if this node appears after the specified node; otherwise false.</returns>
+    /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
+    public new bool IsAfter(System.Xml.Linq.XNode node)
+    {
+      return _xElement.IsAfter(node);
+    }
+    
+    /// <summary>Determines if the current node appears before a specified node in terms of document order.</summary>
+    /// <returns>true if this node appears before the specified node; otherwise false.</returns>
+    /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
+    public new bool IsBefore(System.Xml.Linq.XNode node)
+    {
+      return _xElement.IsBefore(node);
     }
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XElement" /> from a file.</summary>
@@ -258,6 +546,27 @@ namespace Wrapperator.Wrappers.Xml.Linq
       return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(System.Xml.Linq.XElement.Load(reader, options));
     }
     
+    /// <summary>Returns a collection of the child nodes of this element or document, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> containing the contents of this <see cref="T:System.Xml.Linq.XContainer" />, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> Nodes()
+    {
+      return _xElement.Nodes();
+    }
+    
+    /// <summary>Returns a collection of the sibling nodes after this node, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes after this node, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesAfterSelf()
+    {
+      return _xElement.NodesAfterSelf();
+    }
+    
+    /// <summary>Returns a collection of the sibling nodes before this node, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes before this node, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesBeforeSelf()
+    {
+      return _xElement.NodesBeforeSelf();
+    }
+    
     /// <summary>Load an <see cref="T:System.Xml.Linq.XElement" /> from a string that contains XML.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> populated from the string that contains XML.</returns>
     /// <param name="text">A <see cref="T:System.String" /> that contains XML.</param>
@@ -275,16 +584,44 @@ namespace Wrapperator.Wrappers.Xml.Linq
       return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(System.Xml.Linq.XElement.Parse(text, options));
     }
     
+    /// <summary>Removes this node from its parent.</summary>
+    /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
+    public new void Remove()
+    {
+      _xElement.Remove();
+    }
+    
     /// <summary>Removes nodes and attributes from this <see cref="T:System.Xml.Linq.XElement" />.</summary>
     public void RemoveAll()
     {
       _xElement.RemoveAll();
     }
     
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
+    public new void RemoveAnnotations(System.Type type)
+    {
+      _xElement.RemoveAnnotations(type);
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <typeparam name="T">The type of annotations to remove.</typeparam>
+    public new void RemoveAnnotations<T>()
+      where T :  class
+    {
+      _xElement.RemoveAnnotations<T>();
+    }
+    
     /// <summary>Removes the attributes of this <see cref="T:System.Xml.Linq.XElement" />.</summary>
     public void RemoveAttributes()
     {
       _xElement.RemoveAttributes();
+    }
+    
+    /// <summary>Removes the child nodes from this document or element.</summary>
+    public new void RemoveNodes()
+    {
+      _xElement.RemoveNodes();
     }
     
     /// <summary>Replaces the child nodes and the attributes of this element with the specified content.</summary>
@@ -313,6 +650,34 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public void ReplaceAttributes(object[] content)
     {
       _xElement.ReplaceAttributes(content);
+    }
+    
+    /// <summary>Replaces the children nodes of this document or element with the specified content.</summary>
+    /// <param name="content">A content object containing simple content or a collection of content objects that replace the children nodes.</param>
+    public new void ReplaceNodes(object content)
+    {
+      _xElement.ReplaceNodes(content);
+    }
+    
+    /// <summary>Replaces the children nodes of this document or element with the specified content.</summary>
+    /// <param name="content">A parameter list of content objects.</param>
+    public new void ReplaceNodes(object[] content)
+    {
+      _xElement.ReplaceNodes(content);
+    }
+    
+    /// <summary>Replaces this node with the specified content.</summary>
+    /// <param name="content">Content that replaces this node.</param>
+    public new void ReplaceWith(object content)
+    {
+      _xElement.ReplaceWith(content);
+    }
+    
+    /// <summary>Replaces this node with the specified content.</summary>
+    /// <param name="content">A parameter list of the new content.</param>
+    public new void ReplaceWith(object[] content)
+    {
+      _xElement.ReplaceWith(content);
     }
     
     /// <summary>Serialize this element to a file.</summary>

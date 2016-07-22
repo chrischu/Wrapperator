@@ -17,6 +17,68 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IDirectoryInfo
   {
     
+    System.IO.FileAttributes Attributes
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTimeUtc
+    {
+      get;
+      set;
+    }
+    
+    bool Exists
+    {
+      get;
+    }
+    
+    string Extension
+    {
+      get;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
+    System.DateTime LastAccessTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastAccessTimeUtc
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTimeUtc
+    {
+      get;
+      set;
+    }
+    
+    string Name
+    {
+      get;
+    }
+    
     System.IO.DirectoryInfo Parent
     {
       get;
@@ -46,6 +108,14 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.IO.IOException">The directory specified by <paramref name="path" /> is read-only or is not empty. </exception>
     /// <filterpriority>1</filterpriority>
     void Create(System.Security.AccessControl.DirectorySecurity directorySecurity);
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
     
     /// <summary>Creates a subdirectory or subdirectories on the specified path. The specified path can be relative to this instance of the <see cref="T:System.IO.DirectoryInfo" /> class.</summary>
     /// <returns>The last directory specified in <paramref name="path" />.</returns>
@@ -79,6 +149,14 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="path" /> contains a colon character (:) that is not part of a drive label ("C:\").</exception>
     /// <filterpriority>1</filterpriority>
     Wrapperator.Interfaces.IO.IDirectoryInfo CreateSubdirectory(string path, System.Security.AccessControl.DirectorySecurity directorySecurity);
+    
+    /// <summary>Deletes this <see cref="T:System.IO.DirectoryInfo" /> if it is empty.</summary>
+    /// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
+    /// <exception cref="T:System.IO.IOException">The directory is not empty. -or-The directory is the application's current working directory.-or-There is an open handle on the directory, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories. For more information, see How to: Enumerate Directories and Files.</exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <filterpriority>1</filterpriority>
+    void Delete();
     
     /// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
     /// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>
@@ -284,6 +362,24 @@ namespace Wrapperator.Interfaces.IO
     /// <filterpriority>2</filterpriority>
     System.IO.FileSystemInfo[] GetFileSystemInfos();
     
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object GetLifetimeService();
+    
+    /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param>
+    /// <filterpriority>2</filterpriority>
+    void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object InitializeLifetimeService();
+    
     /// <summary>Moves a <see cref="T:System.IO.DirectoryInfo" /> instance and its contents to a new path.</summary>
     /// <param name="destDirName">The name and path to which to move this directory. The destination cannot be another disk volume or a directory with the identical name. It can be an existing directory to which you want to add this directory as a subdirectory. </param>
     /// <exception cref="T:System.ArgumentNullException">
@@ -295,6 +391,11 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.IO.DirectoryNotFoundException">The destination directory cannot be found.</exception>
     /// <filterpriority>1</filterpriority>
     void MoveTo(string destDirName);
+    
+    /// <summary>Refreshes the state of the object.</summary>
+    /// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
+    /// <filterpriority>1</filterpriority>
+    void Refresh();
     
     /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object to the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
     /// <param name="directorySecurity">An object that describes an ACL entry to apply to the directory described by the <paramref name="path" /> parameter.</param>

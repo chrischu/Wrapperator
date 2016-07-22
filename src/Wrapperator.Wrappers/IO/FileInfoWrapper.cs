@@ -24,6 +24,42 @@ namespace Wrapperator.Wrappers.IO
       _fileInfo = fileInfo;
     }
     
+    public System.IO.FileAttributes Attributes
+    {
+      get
+      {
+        return _fileInfo.Attributes;
+      }
+      set
+      {
+        _fileInfo.Attributes = value;
+      }
+    }
+    
+    public System.DateTime CreationTime
+    {
+      get
+      {
+        return _fileInfo.CreationTime;
+      }
+      set
+      {
+        _fileInfo.CreationTime = value;
+      }
+    }
+    
+    public System.DateTime CreationTimeUtc
+    {
+      get
+      {
+        return _fileInfo.CreationTimeUtc;
+      }
+      set
+      {
+        _fileInfo.CreationTimeUtc = value;
+      }
+    }
+    
     public System.IO.DirectoryInfo Directory
     {
       get
@@ -48,6 +84,22 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public string Extension
+    {
+      get
+      {
+        return _fileInfo.Extension;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return _fileInfo.FullName;
+      }
+    }
+    
     public bool IsReadOnly
     {
       get
@@ -57,6 +109,54 @@ namespace Wrapperator.Wrappers.IO
       set
       {
         _fileInfo.IsReadOnly = value;
+      }
+    }
+    
+    public System.DateTime LastAccessTime
+    {
+      get
+      {
+        return _fileInfo.LastAccessTime;
+      }
+      set
+      {
+        _fileInfo.LastAccessTime = value;
+      }
+    }
+    
+    public System.DateTime LastAccessTimeUtc
+    {
+      get
+      {
+        return _fileInfo.LastAccessTimeUtc;
+      }
+      set
+      {
+        _fileInfo.LastAccessTimeUtc = value;
+      }
+    }
+    
+    public System.DateTime LastWriteTime
+    {
+      get
+      {
+        return _fileInfo.LastWriteTime;
+      }
+      set
+      {
+        _fileInfo.LastWriteTime = value;
+      }
+    }
+    
+    public System.DateTime LastWriteTimeUtc
+    {
+      get
+      {
+        return _fileInfo.LastWriteTimeUtc;
+      }
+      set
+      {
+        _fileInfo.LastWriteTimeUtc = value;
       }
     }
     
@@ -133,6 +233,17 @@ namespace Wrapperator.Wrappers.IO
       return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.Create());
     }
     
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    {
+      return _fileInfo.CreateObjRef(requestedType);
+    }
+    
     /// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that writes a new text file.</summary>
     /// <returns>A new StreamWriter.</returns>
     /// <exception cref="T:System.UnauthorizedAccessException">The file name is a directory. </exception>
@@ -205,6 +316,33 @@ namespace Wrapperator.Wrappers.IO
     public System.Security.AccessControl.FileSecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections)
     {
       return _fileInfo.GetAccessControl(includeSections);
+    }
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
+    {
+      return _fileInfo.GetLifetimeService();
+    }
+    
+    /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param>
+    /// <filterpriority>2</filterpriority>
+    public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+    {
+      _fileInfo.GetObjectData(info, context);
+    }
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object InitializeLifetimeService()
+    {
+      return _fileInfo.InitializeLifetimeService();
     }
     
     /// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
@@ -307,6 +445,14 @@ namespace Wrapperator.Wrappers.IO
     public Wrapperator.Interfaces.IO.IFileStream OpenWrite()
     {
       return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.OpenWrite());
+    }
+    
+    /// <summary>Refreshes the state of the object.</summary>
+    /// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
+    /// <filterpriority>1</filterpriority>
+    public void Refresh()
+    {
+      _fileInfo.Refresh();
     }
     
     /// <summary>Replaces the contents of a specified file with the file described by the current <see cref="T:System.IO.FileInfo" /> object, deleting the original file, and creating a backup of the replaced file.</summary>

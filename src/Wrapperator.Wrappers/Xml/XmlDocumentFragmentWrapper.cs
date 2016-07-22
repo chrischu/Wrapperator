@@ -23,6 +23,58 @@ namespace Wrapperator.Wrappers.Xml
       _xmlDocumentFragment = xmlDocumentFragment;
     }
     
+    public System.Xml.XmlAttributeCollection Attributes
+    {
+      get
+      {
+        return _xmlDocumentFragment.Attributes;
+      }
+    }
+    
+    public string BaseURI
+    {
+      get
+      {
+        return _xmlDocumentFragment.BaseURI;
+      }
+    }
+    
+    public System.Xml.XmlNodeList ChildNodes
+    {
+      get
+      {
+        return _xmlDocumentFragment.ChildNodes;
+      }
+    }
+    
+    public System.Xml.XmlNode FirstChild
+    {
+      get
+      {
+        return _xmlDocumentFragment.FirstChild;
+      }
+    }
+    
+    public bool HasChildNodes
+    {
+      get
+      {
+        return _xmlDocumentFragment.HasChildNodes;
+      }
+    }
+    
+    public string InnerText
+    {
+      get
+      {
+        return _xmlDocumentFragment.InnerText;
+      }
+      set
+      {
+        _xmlDocumentFragment.InnerText = value;
+      }
+    }
+    
     public string InnerXml
     {
       get
@@ -32,6 +84,38 @@ namespace Wrapperator.Wrappers.Xml
       set
       {
         _xmlDocumentFragment.InnerXml = value;
+      }
+    }
+    
+    public bool IsReadOnly
+    {
+      get
+      {
+        return _xmlDocumentFragment.IsReadOnly;
+      }
+    }
+    
+    public System.Xml.XmlElement this[string name]
+    {
+      get
+      {
+        return _xmlDocumentFragment[name];
+      }
+    }
+    
+    public System.Xml.XmlElement this[string localname, string ns]
+    {
+      get
+      {
+        return _xmlDocumentFragment[localname, ns];
+      }
+    }
+    
+    public System.Xml.XmlNode LastChild
+    {
+      get
+      {
+        return _xmlDocumentFragment.LastChild;
       }
     }
     
@@ -51,11 +135,35 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
+    public string NamespaceURI
+    {
+      get
+      {
+        return _xmlDocumentFragment.NamespaceURI;
+      }
+    }
+    
+    public System.Xml.XmlNode NextSibling
+    {
+      get
+      {
+        return _xmlDocumentFragment.NextSibling;
+      }
+    }
+    
     public System.Xml.XmlNodeType NodeType
     {
       get
       {
         return _xmlDocumentFragment.NodeType;
+      }
+    }
+    
+    public string OuterXml
+    {
+      get
+      {
+        return _xmlDocumentFragment.OuterXml;
       }
     }
     
@@ -75,12 +183,210 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
+    public string Prefix
+    {
+      get
+      {
+        return _xmlDocumentFragment.Prefix;
+      }
+      set
+      {
+        _xmlDocumentFragment.Prefix = value;
+      }
+    }
+    
+    public System.Xml.XmlNode PreviousSibling
+    {
+      get
+      {
+        return _xmlDocumentFragment.PreviousSibling;
+      }
+    }
+    
+    public System.Xml.Schema.IXmlSchemaInfo SchemaInfo
+    {
+      get
+      {
+        return _xmlDocumentFragment.SchemaInfo;
+      }
+    }
+    
+    public string Value
+    {
+      get
+      {
+        return _xmlDocumentFragment.Value;
+      }
+      set
+      {
+        _xmlDocumentFragment.Value = value;
+      }
+    }
+    
+    /// <summary>Adds the specified node to the end of the list of child nodes, of this node.</summary>
+    /// <returns>The node added.</returns>
+    /// <param name="newChild">The node to add. All the contents of the node to be added are moved into the specified location. </param>
+    /// <exception cref="T:System.InvalidOperationException">This node is of a type that does not allow child nodes of the type of the <paramref name="newChild" /> node.The <paramref name="newChild" /> is an ancestor of this node. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only. </exception>
+    public System.Xml.XmlNode AppendChild(System.Xml.XmlNode newChild)
+    {
+      return _xmlDocumentFragment.AppendChild(newChild);
+    }
+    
+    /// <summary>Creates a duplicate of this node.</summary>
+    /// <returns>The cloned node.</returns>
+    public System.Xml.XmlNode Clone()
+    {
+      return _xmlDocumentFragment.Clone();
+    }
+    
     /// <summary>Creates a duplicate of this node.</summary>
     /// <returns>The cloned node.</returns>
     /// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself. </param>
     public System.Xml.XmlNode CloneNode(bool deep)
     {
       return _xmlDocumentFragment.CloneNode(deep);
+    }
+    
+    /// <summary>Creates an <see cref="T:System.Xml.XPath.XPathNavigator" /> for navigating this object.</summary>
+    /// <returns>An XPathNavigator object used to navigate the node. The XPathNavigator is positioned on the node from which the method was called. It is not positioned on the root of the document.</returns>
+    public System.Xml.XPath.XPathNavigator CreateNavigator()
+    {
+      return _xmlDocumentFragment.CreateNavigator();
+    }
+    
+    /// <summary>Get an enumerator that iterates through the child nodes in the current node.</summary>
+    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the child nodes in the current node.</returns>
+    public System.Collections.IEnumerator GetEnumerator()
+    {
+      return _xmlDocumentFragment.GetEnumerator();
+    }
+    
+    /// <summary>Looks up the closest xmlns declaration for the given prefix that is in scope for the current node and returns the namespace URI in the declaration.</summary>
+    /// <returns>The namespace URI of the specified prefix.</returns>
+    /// <param name="prefix">The prefix whose namespace URI you want to find. </param>
+    public string GetNamespaceOfPrefix(string prefix)
+    {
+      return _xmlDocumentFragment.GetNamespaceOfPrefix(prefix);
+    }
+    
+    /// <summary>Looks up the closest xmlns declaration for the given namespace URI that is in scope for the current node and returns the prefix defined in that declaration.</summary>
+    /// <returns>The prefix for the specified namespace URI.</returns>
+    /// <param name="namespaceURI">The namespace URI whose prefix you want to find. </param>
+    public string GetPrefixOfNamespace(string namespaceURI)
+    {
+      return _xmlDocumentFragment.GetPrefixOfNamespace(namespaceURI);
+    }
+    
+    /// <summary>Inserts the specified node immediately after the specified reference node.</summary>
+    /// <returns>The node being inserted.</returns>
+    /// <param name="newChild">The XmlNode to insert. </param>
+    /// <param name="refChild">The XmlNode that is the reference node. The <paramref name="newNode" /> is placed after the <paramref name="refNode" />. </param>
+    /// <exception cref="T:System.InvalidOperationException">This node is of a type that does not allow child nodes of the type of the <paramref name="newChild" /> node.The <paramref name="newChild" /> is an ancestor of this node. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.The <paramref name="refChild" /> is not a child of this node.This node is read-only. </exception>
+    public System.Xml.XmlNode InsertAfter(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild)
+    {
+      return _xmlDocumentFragment.InsertAfter(newChild, refChild);
+    }
+    
+    /// <summary>Inserts the specified node immediately before the specified reference node.</summary>
+    /// <returns>The node being inserted.</returns>
+    /// <param name="newChild">The XmlNode to insert. </param>
+    /// <param name="refChild">The XmlNode that is the reference node. The <paramref name="newChild" /> is placed before this node. </param>
+    /// <exception cref="T:System.InvalidOperationException">The current node is of a type that does not allow child nodes of the type of the <paramref name="newChild" /> node.The <paramref name="newChild" /> is an ancestor of this node. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.The <paramref name="refChild" /> is not a child of this node.This node is read-only. </exception>
+    public System.Xml.XmlNode InsertBefore(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild)
+    {
+      return _xmlDocumentFragment.InsertBefore(newChild, refChild);
+    }
+    
+    /// <summary>Puts all XmlText nodes in the full depth of the sub-tree underneath this XmlNode into a "normal" form where only markup (that is, tags, comments, processing instructions, CDATA sections, and entity references) separates XmlText nodes, that is, there are no adjacent XmlText nodes.</summary>
+    public void Normalize()
+    {
+      _xmlDocumentFragment.Normalize();
+    }
+    
+    /// <summary>Adds the specified node to the beginning of the list of child nodes for this node.</summary>
+    /// <returns>The node added.</returns>
+    /// <param name="newChild">The node to add. All the contents of the node to be added are moved into the specified location.</param>
+    /// <exception cref="T:System.InvalidOperationException">This node is of a type that does not allow child nodes of the type of the <paramref name="newChild" /> node.The <paramref name="newChild" /> is an ancestor of this node. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only. </exception>
+    public System.Xml.XmlNode PrependChild(System.Xml.XmlNode newChild)
+    {
+      return _xmlDocumentFragment.PrependChild(newChild);
+    }
+    
+    /// <summary>Removes all the child nodes and/or attributes of the current node.</summary>
+    public void RemoveAll()
+    {
+      _xmlDocumentFragment.RemoveAll();
+    }
+    
+    /// <summary>Removes specified child node.</summary>
+    /// <returns>The node removed.</returns>
+    /// <param name="oldChild">The node being removed. </param>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="oldChild" /> is not a child of this node. Or this node is read-only. </exception>
+    public System.Xml.XmlNode RemoveChild(System.Xml.XmlNode oldChild)
+    {
+      return _xmlDocumentFragment.RemoveChild(oldChild);
+    }
+    
+    /// <summary>Replaces the child node <paramref name="oldChild" /> with <paramref name="newChild" /> node.</summary>
+    /// <returns>The node replaced.</returns>
+    /// <param name="newChild">The new node to put in the child list. </param>
+    /// <param name="oldChild">The node being replaced in the list. </param>
+    /// <exception cref="T:System.InvalidOperationException">This node is of a type that does not allow child nodes of the type of the <paramref name="newChild" /> node.The <paramref name="newChild" /> is an ancestor of this node. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only.The <paramref name="oldChild" /> is not a child of this node. </exception>
+    public System.Xml.XmlNode ReplaceChild(System.Xml.XmlNode newChild, System.Xml.XmlNode oldChild)
+    {
+      return _xmlDocumentFragment.ReplaceChild(newChild, oldChild);
+    }
+    
+    /// <summary>Selects a list of nodes matching the XPath expression.</summary>
+    /// <returns>An <see cref="T:System.Xml.XmlNodeList" /> containing a collection of nodes matching the XPath query.</returns>
+    /// <param name="xpath">The XPath expression. </param>
+    /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix. </exception>
+    public System.Xml.XmlNodeList SelectNodes(string xpath)
+    {
+      return _xmlDocumentFragment.SelectNodes(xpath);
+    }
+    
+    /// <summary>Selects a list of nodes matching the XPath expression. Any prefixes found in the XPath expression are resolved using the supplied <see cref="T:System.Xml.XmlNamespaceManager" />.</summary>
+    /// <returns>An <see cref="T:System.Xml.XmlNodeList" /> containing a collection of nodes matching the XPath query.</returns>
+    /// <param name="xpath">The XPath expression. </param>
+    /// <param name="nsmgr">An <see cref="T:System.Xml.XmlNamespaceManager" /> to use for resolving namespaces for prefixes in the XPath expression. </param>
+    /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix which is not defined in the XmlNamespaceManager. </exception>
+    public System.Xml.XmlNodeList SelectNodes(string xpath, System.Xml.XmlNamespaceManager nsmgr)
+    {
+      return _xmlDocumentFragment.SelectNodes(xpath, nsmgr);
+    }
+    
+    /// <summary>Selects the first XmlNode that matches the XPath expression.</summary>
+    /// <returns>The first XmlNode that matches the XPath query or null if no matching node is found. The XmlNode should not be expected to be connected "live" to the XML document. That is, changes that appear in the XML document may not appear in the XmlNode, and vice versa.</returns>
+    /// <param name="xpath">The XPath expression. </param>
+    /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix. </exception>
+    public System.Xml.XmlNode SelectSingleNode(string xpath)
+    {
+      return _xmlDocumentFragment.SelectSingleNode(xpath);
+    }
+    
+    /// <summary>Selects the first XmlNode that matches the XPath expression. Any prefixes found in the XPath expression are resolved using the supplied <see cref="T:System.Xml.XmlNamespaceManager" />.</summary>
+    /// <returns>The first XmlNode that matches the XPath query or null if no matching node is found. The XmlNode should not be expected to be connected "live" to the XML document. That is, changes that appear in the XML document may not appear in the XmlNode, and vice versa.</returns>
+    /// <param name="xpath">The XPath expression. </param>
+    /// <param name="nsmgr">An <see cref="T:System.Xml.XmlNamespaceManager" /> to use for resolving namespaces for prefixes in the XPath expression. </param>
+    /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix which is not defined in the XmlNamespaceManager. </exception>
+    public System.Xml.XmlNode SelectSingleNode(string xpath, System.Xml.XmlNamespaceManager nsmgr)
+    {
+      return _xmlDocumentFragment.SelectSingleNode(xpath, nsmgr);
+    }
+    
+    /// <summary>Tests if the DOM implementation implements a specific feature.</summary>
+    /// <returns>true if the feature is implemented in the specified version; otherwise, false. The following table describes the combinations that return true.Feature Version XML 1.0 XML 2.0 </returns>
+    /// <param name="feature">The package name of the feature to test. This name is not case-sensitive. </param>
+    /// <param name="version">The version number of the package name to test. If the version is not specified (null), supporting any version of the feature causes the method to return true. </param>
+    public bool Supports(string feature, string version)
+    {
+      return _xmlDocumentFragment.Supports(feature, version);
     }
     
     /// <summary>Saves all the children of the node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>

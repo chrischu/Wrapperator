@@ -17,6 +17,24 @@ namespace Wrapperator.Interfaces.IO
   public partial interface IFileInfo
   {
     
+    System.IO.FileAttributes Attributes
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime CreationTimeUtc
+    {
+      get;
+      set;
+    }
+    
     System.IO.DirectoryInfo Directory
     {
       get;
@@ -27,13 +45,57 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
+    bool Exists
+    {
+      get;
+    }
+    
+    string Extension
+    {
+      get;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
     bool IsReadOnly
     {
       get;
       set;
     }
     
+    System.DateTime LastAccessTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastAccessTimeUtc
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTime
+    {
+      get;
+      set;
+    }
+    
+    System.DateTime LastWriteTimeUtc
+    {
+      get;
+      set;
+    }
+    
     long Length
+    {
+      get;
+    }
+    
+    string Name
     {
       get;
     }
@@ -83,6 +145,14 @@ namespace Wrapperator.Interfaces.IO
     /// <filterpriority>1</filterpriority>
     Wrapperator.Interfaces.IO.IFileStream Create();
     
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    
     /// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that writes a new text file.</summary>
     /// <returns>A new StreamWriter.</returns>
     /// <exception cref="T:System.UnauthorizedAccessException">The file name is a directory. </exception>
@@ -100,6 +170,13 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.UnauthorizedAccessException">The file described by the current <see cref="T:System.IO.FileInfo" /> object is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
     /// <filterpriority>2</filterpriority>
     void Decrypt();
+    
+    /// <summary>Permanently deletes a file.</summary>
+    /// <exception cref="T:System.IO.IOException">The target file is open or memory-mapped on a computer running Microsoft Windows NT.-or-There is an open handle on the file, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see How to: Enumerate Directories and Files. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The path is a directory. </exception>
+    /// <filterpriority>1</filterpriority>
+    void Delete();
     
     /// <summary>Encrypts a file so that only the account used to encrypt the file can decrypt it.</summary>
     /// <exception cref="T:System.IO.DriveNotFoundException">An invalid drive was specified. </exception>
@@ -131,6 +208,24 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.UnauthorizedAccessException">This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
     /// <filterpriority>1</filterpriority>
     System.Security.AccessControl.FileSecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections);
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object GetLifetimeService();
+    
+    /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param>
+    /// <filterpriority>2</filterpriority>
+    void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object InitializeLifetimeService();
     
     /// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
     /// <param name="destFileName">The path to move the file to, which can specify a different file name. </param>
@@ -212,6 +307,11 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.IO.DirectoryNotFoundException">The path specified when creating an instance of the <see cref="T:System.IO.FileInfo" /> object is invalid, such as being on an unmapped drive. </exception>
     /// <filterpriority>2</filterpriority>
     Wrapperator.Interfaces.IO.IFileStream OpenWrite();
+    
+    /// <summary>Refreshes the state of the object.</summary>
+    /// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
+    /// <filterpriority>1</filterpriority>
+    void Refresh();
     
     /// <summary>Replaces the contents of a specified file with the file described by the current <see cref="T:System.IO.FileInfo" /> object, deleting the original file, and creating a backup of the replaced file.</summary>
     /// <returns>A <see cref="T:System.IO.FileInfo" /> object that encapsulates information about the file described by the <paramref name="destFileName" /> parameter.</returns>

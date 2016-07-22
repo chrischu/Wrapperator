@@ -7,26 +7,36 @@ namespace Wrapperator
   internal class WrapperatorModel
   {
     public Type Type { get; }
-    public IReadOnlyCollection<MethodInfo> Methods { get; }
-    public IReadOnlyCollection<PropertyInfo> Properties { get; }
+
+    public IReadOnlyCollection<MethodInfo> InterfaceMethods { get; }
+    public IReadOnlyCollection<PropertyInfo> InterfaceProperties { get; }
+
+    public IReadOnlyCollection<WrapperatorMemberModel<MethodInfo>> WrapperMethods { get; }
+    public IReadOnlyCollection<WrapperatorMemberModel<PropertyInfo>> WrapperProperties { get; }
 
     public string ParameterName => Type.Name.ToLowerCamelCase();
     public string FieldName => $"_{ParameterName}";
 
-    public WrapperatorModel (Type type, IReadOnlyCollection<MethodInfo> methods, IReadOnlyCollection<PropertyInfo> properties)
+    public WrapperatorModel (Type type, IReadOnlyCollection<MethodInfo> interfaceMethods, IReadOnlyCollection<PropertyInfo> interfaceProperties, IReadOnlyCollection<WrapperatorMemberModel<MethodInfo>> wrapperMethods, IReadOnlyCollection<WrapperatorMemberModel<PropertyInfo>> wrapperProperties)
     {
       Type = type;
-      Methods = methods;
-      Properties = properties;
+      InterfaceMethods = interfaceMethods;
+      InterfaceProperties = interfaceProperties;
+      WrapperMethods = wrapperMethods;
+      WrapperProperties = wrapperProperties;
     }
   }
 
-  internal static class StringExtensions
+  internal class WrapperatorMemberModel<T>
+    where T : MemberInfo
   {
-    public static string ToLowerCamelCase (this string s)
+    public T Member { get; }
+    public bool Overrides { get; }
+
+    public WrapperatorMemberModel (T member, bool overrides)
     {
-      var first = char.ToLower(s[0]);
-      return first + s.Substring(1);
+      Member = member;
+      Overrides = overrides;
     }
   }
 }

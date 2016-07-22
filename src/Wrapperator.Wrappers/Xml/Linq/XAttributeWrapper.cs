@@ -24,6 +24,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xAttribute = xAttribute;
     }
     
+    public new string BaseUri
+    {
+      get
+      {
+        return _xAttribute.BaseUri;
+      }
+    }
+    
+    public new System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xAttribute.Document;
+      }
+    }
+    
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
     {
       get
@@ -64,6 +80,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    public new System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xAttribute.Parent;
+      }
+    }
+    
     public System.Xml.Linq.XAttribute PreviousAttribute
     {
       get
@@ -84,11 +108,67 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
+    /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
+    public new void AddAnnotation(object annotation)
+    {
+      _xAttribute.AddAnnotation(annotation);
+    }
+    
+    /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> that contains the first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
+    public new object Annotation(System.Type type)
+    {
+      return _xAttribute.Annotation(type);
+    }
+    
+    /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
+    /// <returns>The first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <typeparam name="T">The type of the annotation to retrieve.</typeparam>
+    public new T Annotation<T>()
+      where T :  class
+    {
+      return _xAttribute.Annotation<T>();
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Object" /> that contains the annotations that match the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
+    public new System.Collections.Generic.IEnumerable<object> Annotations(System.Type type)
+    {
+      return _xAttribute.Annotations(type);
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the annotations for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <typeparam name="T">The type of the annotations to retrieve.</typeparam>
+    public new System.Collections.Generic.IEnumerable<T> Annotations<T>()
+      where T :  class
+    {
+      return _xAttribute.Annotations<T>();
+    }
+    
     /// <summary>Removes this attribute from its parent element.</summary>
     /// <exception cref="T:System.InvalidOperationException">The parent element is null.</exception>
     public void Remove()
     {
       _xAttribute.Remove();
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
+    public new void RemoveAnnotations(System.Type type)
+    {
+      _xAttribute.RemoveAnnotations(type);
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <typeparam name="T">The type of annotations to remove.</typeparam>
+    public new void RemoveAnnotations<T>()
+      where T :  class
+    {
+      _xAttribute.RemoveAnnotations<T>();
     }
     
     /// <summary>Sets the value of this attribute.</summary>

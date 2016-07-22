@@ -24,11 +24,111 @@ namespace Wrapperator.Wrappers.IO
       _directoryInfo = directoryInfo;
     }
     
+    public System.IO.FileAttributes Attributes
+    {
+      get
+      {
+        return _directoryInfo.Attributes;
+      }
+      set
+      {
+        _directoryInfo.Attributes = value;
+      }
+    }
+    
+    public System.DateTime CreationTime
+    {
+      get
+      {
+        return _directoryInfo.CreationTime;
+      }
+      set
+      {
+        _directoryInfo.CreationTime = value;
+      }
+    }
+    
+    public System.DateTime CreationTimeUtc
+    {
+      get
+      {
+        return _directoryInfo.CreationTimeUtc;
+      }
+      set
+      {
+        _directoryInfo.CreationTimeUtc = value;
+      }
+    }
+    
     public bool Exists
     {
       get
       {
         return _directoryInfo.Exists;
+      }
+    }
+    
+    public string Extension
+    {
+      get
+      {
+        return _directoryInfo.Extension;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return _directoryInfo.FullName;
+      }
+    }
+    
+    public System.DateTime LastAccessTime
+    {
+      get
+      {
+        return _directoryInfo.LastAccessTime;
+      }
+      set
+      {
+        _directoryInfo.LastAccessTime = value;
+      }
+    }
+    
+    public System.DateTime LastAccessTimeUtc
+    {
+      get
+      {
+        return _directoryInfo.LastAccessTimeUtc;
+      }
+      set
+      {
+        _directoryInfo.LastAccessTimeUtc = value;
+      }
+    }
+    
+    public System.DateTime LastWriteTime
+    {
+      get
+      {
+        return _directoryInfo.LastWriteTime;
+      }
+      set
+      {
+        _directoryInfo.LastWriteTime = value;
+      }
+    }
+    
+    public System.DateTime LastWriteTimeUtc
+    {
+      get
+      {
+        return _directoryInfo.LastWriteTimeUtc;
+      }
+      set
+      {
+        _directoryInfo.LastWriteTimeUtc = value;
       }
     }
     
@@ -80,6 +180,17 @@ namespace Wrapperator.Wrappers.IO
     public void Create(System.Security.AccessControl.DirectorySecurity directorySecurity)
     {
       _directoryInfo.Create(directorySecurity);
+    }
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    {
+      return _directoryInfo.CreateObjRef(requestedType);
     }
     
     /// <summary>Creates a subdirectory or subdirectories on the specified path. The specified path can be relative to this instance of the <see cref="T:System.IO.DirectoryInfo" /> class.</summary>
@@ -399,6 +510,33 @@ namespace Wrapperator.Wrappers.IO
       return _directoryInfo.GetFileSystemInfos();
     }
     
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
+    {
+      return _directoryInfo.GetLifetimeService();
+    }
+    
+    /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param>
+    /// <filterpriority>2</filterpriority>
+    public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+    {
+      _directoryInfo.GetObjectData(info, context);
+    }
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object InitializeLifetimeService()
+    {
+      return _directoryInfo.InitializeLifetimeService();
+    }
+    
     /// <summary>Moves a <see cref="T:System.IO.DirectoryInfo" /> instance and its contents to a new path.</summary>
     /// <param name="destDirName">The name and path to which to move this directory. The destination cannot be another disk volume or a directory with the identical name. It can be an existing directory to which you want to add this directory as a subdirectory. </param>
     /// <exception cref="T:System.ArgumentNullException">
@@ -412,6 +550,14 @@ namespace Wrapperator.Wrappers.IO
     public void MoveTo(string destDirName)
     {
       _directoryInfo.MoveTo(destDirName);
+    }
+    
+    /// <summary>Refreshes the state of the object.</summary>
+    /// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
+    /// <filterpriority>1</filterpriority>
+    public void Refresh()
+    {
+      _directoryInfo.Refresh();
     }
     
     /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object to the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>

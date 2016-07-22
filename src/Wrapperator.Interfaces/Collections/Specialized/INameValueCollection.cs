@@ -21,6 +21,11 @@ namespace Wrapperator.Interfaces.Collections.Specialized
       get;
     }
     
+    int Count
+    {
+      get;
+    }
+    
     string this[string name]
     {
       get;
@@ -28,6 +33,11 @@ namespace Wrapperator.Interfaces.Collections.Specialized
     }
     
     string this[int index]
+    {
+      get;
+    }
+    
+    System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys
     {
       get;
     }
@@ -73,12 +83,23 @@ namespace Wrapperator.Interfaces.Collections.Specialized
     ///  <paramref name="index" /> is outside the valid range of indexes for the collection.</exception>
     string Get(int index);
     
+    /// <summary>Returns an enumerator that iterates through the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> for the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</returns>
+    System.Collections.IEnumerator GetEnumerator();
+    
     /// <summary>Gets the key at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <returns>A <see cref="T:System.String" /> that contains the key at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
     /// <param name="index">The zero-based index of the key to get from the collection.</param>
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="index" /> is outside the valid range of indexes for the collection. </exception>
     string GetKey(int index);
+    
+    /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and returns the data needed to serialize the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
+    /// <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object that contains the information required to serialize the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</param>
+    /// <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext" /> object that contains the source and destination of the serialized stream associated with the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="info" /> is null.</exception>
+    void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     
     /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <returns>A <see cref="T:System.String" /> array that contains the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
@@ -95,6 +116,11 @@ namespace Wrapperator.Interfaces.Collections.Specialized
     /// <summary>Gets a value indicating whether the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null.</summary>
     /// <returns>true if the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null; otherwise, false.</returns>
     bool HasKeys();
+    
+    /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and raises the deserialization event when the deserialization is complete.</summary>
+    /// <param name="sender">The source of the deserialization event.</param>
+    /// <exception cref="T:System.Runtime.Serialization.SerializationException">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object associated with the current <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance is invalid.</exception>
+    void OnDeserialization(object sender);
     
     /// <summary>Removes the entries with the specified key from the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
     /// <param name="name">The <see cref="T:System.String" /> key of the entry to remove. The key can be null.</param>

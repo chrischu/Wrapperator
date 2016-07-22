@@ -644,6 +644,17 @@ namespace Wrapperator.Wrappers
       return _appDomain.CreateInstanceFromAndUnwrap(assemblyFile, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
     }
     
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    {
+      return _appDomain.CreateObjRef(requestedType);
+    }
+    
     /// <summary>Defines a dynamic assembly with the specified name and access mode.</summary>
     /// <returns>A dynamic assembly with the specified name and access mode.</returns>
     /// <param name="name">The unique identity of the dynamic assembly. </param>
@@ -850,6 +861,15 @@ namespace Wrapperator.Wrappers
     public object GetData(string name)
     {
       return _appDomain.GetData(name);
+    }
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
+    {
+      return _appDomain.GetLifetimeService();
     }
     
     /// <summary>Gives the <see cref="T:System.AppDomain" /> an infinite lifetime by preventing a lease from being created.</summary>

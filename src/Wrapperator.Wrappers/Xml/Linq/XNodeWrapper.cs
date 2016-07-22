@@ -25,6 +25,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       _xNode = xNode;
     }
     
+    public new string BaseUri
+    {
+      get
+      {
+        return _xNode.BaseUri;
+      }
+    }
+    
+    public new System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return _xNode.Document;
+      }
+    }
+    
     public System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
     {
       get
@@ -46,6 +62,22 @@ namespace Wrapperator.Wrappers.Xml.Linq
       get
       {
         return _xNode.NextNode;
+      }
+    }
+    
+    public new System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return _xNode.NodeType;
+      }
+    }
+    
+    public new System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return _xNode.Parent;
       }
     }
     
@@ -71,6 +103,13 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public void AddAfterSelf(object[] content)
     {
       _xNode.AddAfterSelf(content);
+    }
+    
+    /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
+    public new void AddAnnotation(object annotation)
+    {
+      _xNode.AddAnnotation(annotation);
     }
     
     /// <summary>Adds the specified content immediately before this node.</summary>
@@ -102,6 +141,40 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors(System.Xml.Linq.XName name)
     {
       return _xNode.Ancestors(name);
+    }
+    
+    /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> that contains the first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
+    public new object Annotation(System.Type type)
+    {
+      return _xNode.Annotation(type);
+    }
+    
+    /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
+    /// <returns>The first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <typeparam name="T">The type of the annotation to retrieve.</typeparam>
+    public new T Annotation<T>()
+      where T :  class
+    {
+      return _xNode.Annotation<T>();
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Object" /> that contains the annotations that match the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
+    public new System.Collections.Generic.IEnumerable<object> Annotations(System.Type type)
+    {
+      return _xNode.Annotations(type);
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the annotations for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <typeparam name="T">The type of the annotations to retrieve.</typeparam>
+    public new System.Collections.Generic.IEnumerable<T> Annotations<T>()
+      where T :  class
+    {
+      return _xNode.Annotations<T>();
     }
     
     /// <summary>Compares two nodes to determine their relative XML document order.</summary>
@@ -215,6 +288,21 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public void Remove()
     {
       _xNode.Remove();
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
+    public new void RemoveAnnotations(System.Type type)
+    {
+      _xNode.RemoveAnnotations(type);
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <typeparam name="T">The type of annotations to remove.</typeparam>
+    public new void RemoveAnnotations<T>()
+      where T :  class
+    {
+      _xNode.RemoveAnnotations<T>();
     }
     
     /// <summary>Replaces this node with the specified content.</summary>

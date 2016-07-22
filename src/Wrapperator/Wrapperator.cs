@@ -45,14 +45,10 @@ namespace Wrapperator
 
       ns.Types.Add(wrapperInterface);
 
-      foreach (
-          var propertyInfo in
-              model.Properties.Where(p => !p.IsOverriding()).OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
+      foreach (var propertyInfo in model.InterfaceProperties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
         wrapperInterface.Members.Add(ConvertPropertyInfoToCodeDomProperty(propertyInfo));
 
-      foreach (
-          var methodInfo in
-              model.Methods.Where(m => !m.IsOverriding()).OrderBy(x => x.Name).ThenBy(x => x.IsStatic))
+      foreach (var methodInfo in model.InterfaceMethods.OrderBy(x => x.Name).ThenBy(x => x.IsStatic))
         wrapperInterface.Members.Add(ConvertMethodInfoToCodeDomMethod(helper, methodInfo));
 
       helper.WriteToInterfaceFile(model.Type, sw => ConvertCompileUnitToCode(compileUnit, sw));
@@ -103,7 +99,7 @@ namespace Wrapperator
         AddWrappedFieldAndCtorToWrapper(helper, model, wrapperClass);
 
       AddMethodsToWrapper(helper, model, wrapperClass);
-      AddPropertiesToWrapper(helper, model, wrapperClass);
+      AddPropertiesToWrapper(model, wrapperClass);
 
       if (typeof(IDisposable).IsAssignableFrom(model.Type))
         AddDisposeMethodToWrapper(helper, model, wrapperClass);
@@ -114,11 +110,11 @@ namespace Wrapperator
     private static void AddDisposeMethodToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
       var protectedDisposeMethod = new CodeMemberMethod
-      {
-        Name = "Dispose",
-        Attributes = MemberAttributes.Family,
-        Parameters = { new CodeParameterDeclarationExpression(typeof(bool), "disposing") }
-      };
+                                   {
+                                       Name = "Dispose",
+                                       Attributes = MemberAttributes.Family,
+                                       Parameters = { new CodeParameterDeclarationExpression(typeof(bool), "disposing") }
+                                   };
 
       var @if = new CodeConditionStatement(new CodeArgumentReferenceExpression("disposing"));
       @if.TrueStatements.Add(
@@ -141,11 +137,11 @@ namespace Wrapperator
       else
       {
         var publicDisposeMethod = new CodeMemberMethod
-        {
-          Name = "Dispose",
-          // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
-          Attributes = MemberAttributes.Public | MemberAttributes.Final
-        };
+                                  {
+                                      Name = "Dispose",
+                                      // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+                                      Attributes = MemberAttributes.Public | MemberAttributes.Final
+                                  };
 
         publicDisposeMethod.Statements.Add(
             new CodeMethodInvokeExpression(
@@ -163,15 +159,16 @@ namespace Wrapperator
 
     private static void AddMethodsToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
-      foreach (var methodInfo in model.Methods.OrderBy(x => x.Name).ThenBy(x => x.IsStatic))
+      foreach (var memberModel in model.WrapperMethods.OrderBy(x => x.Member.Name).ThenBy(x => x.Member.IsStatic))
       {
+        var methodInfo = memberModel.Member;
         var method = ConvertMethodInfoToCodeDomMethod(helper, methodInfo);
 
         var invokeTarget = methodInfo.IsStatic
             ? (CodeExpression) new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
             : new CodeFieldReferenceExpression { FieldName = model.FieldName };
 
-        if (methodInfo.IsOverriding(b => helper.ShouldTypeBeWrapped(b.DeclaringType)))
+        if (memberModel.Overrides)
             // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
           method.Attributes |= MemberAttributes.New;
 
@@ -212,13 +209,15 @@ namespace Wrapperator
       }
     }
 
-    private static void AddPropertiesToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    private static void AddPropertiesToWrapper (WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
-      foreach (var propertyInfo in model.Properties.OrderBy(x => x.Name).ThenBy(x => x.IsStatic()))
+      foreach (var memberModel in model.WrapperProperties.OrderBy(x => x.Member.Name).ThenBy(x => x.Member.IsStatic()))
       {
+        var propertyInfo = memberModel.Member;
+
         var property = ConvertPropertyInfoToCodeDomProperty(propertyInfo);
 
-        if (propertyInfo.IsOverriding(b => helper.ShouldTypeBeWrapped(b.DeclaringType)))
+        if (memberModel.Overrides)
             // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
           property.Attributes |= MemberAttributes.New;
 

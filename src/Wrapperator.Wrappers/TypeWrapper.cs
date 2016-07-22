@@ -64,6 +64,14 @@ namespace Wrapperator.Wrappers
       }
     }
     
+    public System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
+    {
+      get
+      {
+        return _type.CustomAttributes;
+      }
+    }
+    
     public System.Reflection.MethodBase DeclaringMethod
     {
       get
@@ -456,11 +464,27 @@ namespace Wrapperator.Wrappers
       }
     }
     
+    public int MetadataToken
+    {
+      get
+      {
+        return _type.MetadataToken;
+      }
+    }
+    
     public System.Reflection.Module Module
     {
       get
       {
         return _type.Module;
+      }
+    }
+    
+    public string Name
+    {
+      get
+      {
+        return _type.Name;
       }
     }
     
@@ -610,6 +634,35 @@ namespace Wrapperator.Wrappers
     public System.Reflection.ConstructorInfo[] GetConstructors(System.Reflection.BindingFlags bindingAttr)
     {
       return _type.GetConstructors(bindingAttr);
+    }
+    
+    /// <summary>When overridden in a derived class, returns an array of all custom attributes applied to this member. </summary>
+    /// <returns>An array that contains all the custom attributes applied to this member, or an array with zero elements if no attributes are defined.</returns>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
+    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
+    /// <exception cref="T:System.TypeLoadException">A custom attribute type could not be loaded. </exception>
+    public object[] GetCustomAttributes(bool inherit)
+    {
+      return _type.GetCustomAttributes(inherit);
+    }
+    
+    /// <summary>When overridden in a derived class, returns an array of custom attributes applied to this member and identified by <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of custom attributes applied to this member, or an array with zero elements if no attributes assignable to <paramref name="attributeType" /> have been applied.</returns>
+    /// <param name="attributeType">The type of attribute to search for. Only attributes that are assignable to this type are returned. </param>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks. </param>
+    /// <exception cref="T:System.TypeLoadException">A custom attribute type cannot be loaded. </exception>
+    /// <exception cref="T:System.ArgumentNullException">If <paramref name="attributeType" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
+    public object[] GetCustomAttributes(System.Type attributeType, bool inherit)
+    {
+      return _type.GetCustomAttributes(attributeType, inherit);
+    }
+    
+    /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>
+    /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</returns>
+    public System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData()
+    {
+      return _type.GetCustomAttributesData();
     }
     
     /// <summary>Searches for the members defined for the current <see cref="T:System.Type" /> whose <see cref="T:System.Reflection.DefaultMemberAttribute" /> is set.</summary>
@@ -1364,6 +1417,15 @@ namespace Wrapperator.Wrappers
     public bool IsAssignableFrom(System.Type c)
     {
       return _type.IsAssignableFrom(c);
+    }
+    
+    /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
+    /// <returns>true if one or more instances of <paramref name="attributeType" /> or any of its derived types is applied to this member; otherwise, false.</returns>
+    /// <param name="attributeType">The type of custom attribute to search for. The search includes derived types. </param>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
+    public bool IsDefined(System.Type attributeType, bool inherit)
+    {
+      return _type.IsDefined(attributeType, inherit);
     }
     
     /// <summary>Returns a value that indicates whether the specified value exists in the current enumeration type.</summary>

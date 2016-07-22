@@ -41,6 +41,14 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public new bool CanTimeout
+    {
+      get
+      {
+        return _fileStream.CanTimeout;
+      }
+    }
+    
     public new bool CanWrite
     {
       get
@@ -85,11 +93,35 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public new int ReadTimeout
+    {
+      get
+      {
+        return _fileStream.ReadTimeout;
+      }
+      set
+      {
+        _fileStream.ReadTimeout = value;
+      }
+    }
+    
     public Microsoft.Win32.SafeHandles.SafeFileHandle SafeFileHandle
     {
       get
       {
         return _fileStream.SafeFileHandle;
+      }
+    }
+    
+    public new int WriteTimeout
+    {
+      get
+      {
+        return _fileStream.WriteTimeout;
+      }
+      set
+      {
+        _fileStream.WriteTimeout = value;
       }
     }
     
@@ -132,6 +164,83 @@ namespace Wrapperator.Wrappers.IO
     public new System.IAsyncResult BeginWrite(byte[] array, int offset, int numBytes, System.AsyncCallback userCallback, object stateObject)
     {
       return _fileStream.BeginWrite(array, offset, numBytes, userCallback, stateObject);
+    }
+    
+    /// <summary>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream. Instead of calling this method, ensure that the stream is properly disposed.</summary>
+    /// <filterpriority>1</filterpriority>
+    public new void Close()
+    {
+      _fileStream.Close();
+    }
+    
+    /// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+    public new void CopyTo(System.IO.Stream destination)
+    {
+      _fileStream.CopyTo(destination);
+    }
+    
+    /// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <param name="bufferSize">The size of the buffer. This value must be greater than zero. The default size is 81920.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="bufferSize" /> is negative or zero.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+    public new void CopyTo(System.IO.Stream destination, int bufferSize)
+    {
+      _fileStream.CopyTo(destination, bufferSize);
+    }
+    
+    /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
+    /// <returns>A task that represents the asynchronous copy operation.</returns>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
+    public new System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination)
+    {
+      return _fileStream.CopyToAsync(destination);
+    }
+    
+    /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
+    /// <returns>A task that represents the asynchronous copy operation.</returns>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <param name="bufferSize">The size, in bytes, of the buffer. This value must be greater than zero. The default size is 81920.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="buffersize" /> is negative or zero.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
+    public new System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize)
+    {
+      return _fileStream.CopyToAsync(destination, bufferSize);
+    }
+    
+    /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
+    /// <returns>A task that represents the asynchronous copy operation.</returns>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <param name="bufferSize">The size, in bytes, of the buffer. This value must be greater than zero. The default size is 81920.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests. The default value is <see cref="P:System.Threading.CancellationToken.None" />.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="buffersize" /> is negative or zero.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
+    public new System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize, System.Threading.CancellationToken cancellationToken)
+    {
+      return _fileStream.CopyToAsync(destination, bufferSize, cancellationToken);
     }
     
     /// <summary>Waits for the pending asynchronous read operation to complete. (Consider using <see cref="M:System.IO.FileStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)" /> instead; see the Remarks section.)</summary>
@@ -186,6 +295,14 @@ namespace Wrapperator.Wrappers.IO
     public new System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken)
     {
       return _fileStream.FlushAsync(cancellationToken);
+    }
+    
+    /// <summary>Asynchronously clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
+    /// <returns>A task that represents the asynchronous flush operation.</returns>
+    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+    public new System.Threading.Tasks.Task FlushAsync()
+    {
+      return _fileStream.FlushAsync();
     }
     
     /// <summary>Gets a <see cref="T:System.Security.AccessControl.FileSecurity" /> object that encapsulates the access control list (ACL) entries for the file described by the current <see cref="T:System.IO.FileStream" /> object.</summary>
@@ -250,6 +367,24 @@ namespace Wrapperator.Wrappers.IO
     public new System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return _fileStream.ReadAsync(buffer, offset, count, cancellationToken);
+    }
+    
+    /// <summary>Asynchronously reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.</summary>
+    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached. </returns>
+    /// <param name="buffer">The buffer to write the data into.</param>
+    /// <param name="offset">The byte offset in <paramref name="buffer" /> at which to begin writing data from the stream.</param>
+    /// <param name="count">The maximum number of bytes to read.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="offset" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="offset" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+    /// <exception cref="T:System.NotSupportedException">The stream does not support reading.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous read operation. </exception>
+    public new System.Threading.Tasks.Task<int> ReadAsync(byte[] buffer, int offset, int count)
+    {
+      return _fileStream.ReadAsync(buffer, offset, count);
     }
     
     /// <summary>Reads a byte from the file and advances the read position one byte.</summary>
@@ -346,6 +481,24 @@ namespace Wrapperator.Wrappers.IO
     public new System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return _fileStream.WriteAsync(buffer, offset, count, cancellationToken);
+    }
+    
+    /// <summary>Asynchronously writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">The buffer to write data from.</param>
+    /// <param name="offset">The zero-based byte offset in <paramref name="buffer" /> from which to begin copying bytes to the stream.</param>
+    /// <param name="count">The maximum number of bytes to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="offset" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="offset" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+    /// <exception cref="T:System.NotSupportedException">The stream does not support writing.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream is currently in use by a previous write operation. </exception>
+    public new System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count)
+    {
+      return _fileStream.WriteAsync(buffer, offset, count);
     }
     
     /// <summary>Writes a byte to the current position in the file stream.</summary>

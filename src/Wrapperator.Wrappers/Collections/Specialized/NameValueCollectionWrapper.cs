@@ -31,6 +31,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       }
     }
     
+    public int Count
+    {
+      get
+      {
+        return _nameValueCollection.Count;
+      }
+    }
+    
     public string this[string name]
     {
       get
@@ -48,6 +56,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       get
       {
         return _nameValueCollection[index];
+      }
+    }
+    
+    public System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys
+    {
+      get
+      {
+        return _nameValueCollection.Keys;
       }
     }
     
@@ -110,6 +126,13 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       return _nameValueCollection.Get(index);
     }
     
+    /// <summary>Returns an enumerator that iterates through the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> for the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</returns>
+    public System.Collections.IEnumerator GetEnumerator()
+    {
+      return _nameValueCollection.GetEnumerator();
+    }
+    
     /// <summary>Gets the key at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <returns>A <see cref="T:System.String" /> that contains the key at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
     /// <param name="index">The zero-based index of the key to get from the collection.</param>
@@ -118,6 +141,16 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     public string GetKey(int index)
     {
       return _nameValueCollection.GetKey(index);
+    }
+    
+    /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and returns the data needed to serialize the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
+    /// <param name="info">A <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object that contains the information required to serialize the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</param>
+    /// <param name="context">A <see cref="T:System.Runtime.Serialization.StreamingContext" /> object that contains the source and destination of the serialized stream associated with the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="info" /> is null.</exception>
+    public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+    {
+      _nameValueCollection.GetObjectData(info, context);
     }
     
     /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -143,6 +176,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     public bool HasKeys()
     {
       return _nameValueCollection.HasKeys();
+    }
+    
+    /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and raises the deserialization event when the deserialization is complete.</summary>
+    /// <param name="sender">The source of the deserialization event.</param>
+    /// <exception cref="T:System.Runtime.Serialization.SerializationException">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object associated with the current <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance is invalid.</exception>
+    public void OnDeserialization(object sender)
+    {
+      _nameValueCollection.OnDeserialization(sender);
     }
     
     /// <summary>Removes the entries with the specified key from the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>

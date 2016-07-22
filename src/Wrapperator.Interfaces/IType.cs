@@ -42,7 +42,17 @@ namespace Wrapperator.Interfaces
       get;
     }
     
+    System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
+    {
+      get;
+    }
+    
     System.Reflection.MethodBase DeclaringMethod
+    {
+      get;
+    }
+    
+    System.Type DeclaringType
     {
       get;
     }
@@ -277,12 +287,32 @@ namespace Wrapperator.Interfaces
       get;
     }
     
+    System.Reflection.MemberTypes MemberType
+    {
+      get;
+    }
+    
+    int MetadataToken
+    {
+      get;
+    }
+    
     System.Reflection.Module Module
     {
       get;
     }
     
+    string Name
+    {
+      get;
+    }
+    
     string Namespace
+    {
+      get;
+    }
+    
+    System.Type ReflectedType
     {
       get;
     }
@@ -382,6 +412,26 @@ namespace Wrapperator.Interfaces
     /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
     /// <filterpriority>2</filterpriority>
     System.Reflection.ConstructorInfo[] GetConstructors(System.Reflection.BindingFlags bindingAttr);
+    
+    /// <summary>When overridden in a derived class, returns an array of all custom attributes applied to this member. </summary>
+    /// <returns>An array that contains all the custom attributes applied to this member, or an array with zero elements if no attributes are defined.</returns>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
+    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
+    /// <exception cref="T:System.TypeLoadException">A custom attribute type could not be loaded. </exception>
+    object[] GetCustomAttributes(bool inherit);
+    
+    /// <summary>When overridden in a derived class, returns an array of custom attributes applied to this member and identified by <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of custom attributes applied to this member, or an array with zero elements if no attributes assignable to <paramref name="attributeType" /> have been applied.</returns>
+    /// <param name="attributeType">The type of attribute to search for. Only attributes that are assignable to this type are returned. </param>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks. </param>
+    /// <exception cref="T:System.TypeLoadException">A custom attribute type cannot be loaded. </exception>
+    /// <exception cref="T:System.ArgumentNullException">If <paramref name="attributeType" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
+    object[] GetCustomAttributes(System.Type attributeType, bool inherit);
+    
+    /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>
+    /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</returns>
+    System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData();
     
     /// <summary>Searches for the members defined for the current <see cref="T:System.Type" /> whose <see cref="T:System.Reflection.DefaultMemberAttribute" /> is set.</summary>
     /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all default members of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have default members.</returns>
@@ -947,6 +997,12 @@ namespace Wrapperator.Interfaces
     /// <param name="c">The type to compare with the current type. </param>
     /// <filterpriority>2</filterpriority>
     bool IsAssignableFrom(System.Type c);
+    
+    /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
+    /// <returns>true if one or more instances of <paramref name="attributeType" /> or any of its derived types is applied to this member; otherwise, false.</returns>
+    /// <param name="attributeType">The type of custom attribute to search for. The search includes derived types. </param>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
+    bool IsDefined(System.Type attributeType, bool inherit);
     
     /// <summary>Returns a value that indicates whether the specified value exists in the current enumeration type.</summary>
     /// <returns>true if the specified value is a member of the current enumeration type; otherwise, false.</returns>
