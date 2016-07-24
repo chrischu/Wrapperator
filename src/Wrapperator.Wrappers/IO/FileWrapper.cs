@@ -871,9 +871,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <paramref name="path" /> is in an invalid format. </exception>
     /// <filterpriority>1</filterpriority>
-    public void SetCreationTime(string path, System.DateTime creationTime)
+    public void SetCreationTime(string path, Wrapperator.Interfaces.IDateTime creationTime)
     {
-      System.IO.File.SetCreationTime(path, creationTime);
+      System.IO.File.SetCreationTime(path, creationTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)creationTime).DateTime);
     }
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the file was created.</summary>
@@ -892,9 +892,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <paramref name="path" /> is in an invalid format. </exception>
     /// <filterpriority>2</filterpriority>
-    public void SetCreationTimeUtc(string path, System.DateTime creationTimeUtc)
+    public void SetCreationTimeUtc(string path, Wrapperator.Interfaces.IDateTime creationTimeUtc)
     {
-      System.IO.File.SetCreationTimeUtc(path, creationTimeUtc);
+      System.IO.File.SetCreationTimeUtc(path, creationTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)creationTimeUtc).DateTime);
     }
     
     /// <summary>Sets the date and time the specified file was last accessed.</summary>
@@ -912,9 +912,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastAccessTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    public void SetLastAccessTime(string path, System.DateTime lastAccessTime)
+    public void SetLastAccessTime(string path, Wrapperator.Interfaces.IDateTime lastAccessTime)
     {
-      System.IO.File.SetLastAccessTime(path, lastAccessTime);
+      System.IO.File.SetLastAccessTime(path, lastAccessTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastAccessTime).DateTime);
     }
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed.</summary>
@@ -932,9 +932,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastAccessTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    public void SetLastAccessTimeUtc(string path, System.DateTime lastAccessTimeUtc)
+    public void SetLastAccessTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastAccessTimeUtc)
     {
-      System.IO.File.SetLastAccessTimeUtc(path, lastAccessTimeUtc);
+      System.IO.File.SetLastAccessTimeUtc(path, lastAccessTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastAccessTimeUtc).DateTime);
     }
     
     /// <summary>Sets the date and time that the specified file was last written to.</summary>
@@ -952,9 +952,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastWriteTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    public void SetLastWriteTime(string path, System.DateTime lastWriteTime)
+    public void SetLastWriteTime(string path, Wrapperator.Interfaces.IDateTime lastWriteTime)
     {
-      System.IO.File.SetLastWriteTime(path, lastWriteTime);
+      System.IO.File.SetLastWriteTime(path, lastWriteTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastWriteTime).DateTime);
     }
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to.</summary>
@@ -972,9 +972,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastWriteTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>2</filterpriority>
-    public void SetLastWriteTimeUtc(string path, System.DateTime lastWriteTimeUtc)
+    public void SetLastWriteTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastWriteTimeUtc)
     {
-      System.IO.File.SetLastWriteTimeUtc(path, lastWriteTimeUtc);
+      System.IO.File.SetLastWriteTimeUtc(path, lastWriteTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastWriteTimeUtc).DateTime);
     }
     
     /// <summary>Creates a new file, writes the specified byte array to the file, and then closes the file. If the target file already exists, it is overwritten.</summary>

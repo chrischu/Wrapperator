@@ -178,7 +178,7 @@ namespace Wrapperator.Interfaces.Reflection
     /// <param name="type">An object representing a class in the assembly that will be returned. </param>
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="type" /> is null. </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly GetAssembly(System.Type type);
+    Wrapperator.Interfaces.Reflection.IAssembly GetAssembly(Wrapperator.Interfaces.IType type);
     
     /// <summary>Returns the <see cref="T:System.Reflection.Assembly" /> of the method that invoked the currently executing method.</summary>
     /// <returns>The Assembly object of the method that invoked the currently executing method.</returns>
@@ -197,7 +197,7 @@ namespace Wrapperator.Interfaces.Reflection
     ///  <paramref name="attributeType" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">
     ///  <paramref name="attributeType" /> is not a runtime type. </exception>
-    object[] GetCustomAttributes(System.Type attributeType, bool inherit);
+    object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit);
     
     /// <summary>Returns information about the attributes that have been applied to the current <see cref="T:System.Reflection.Assembly" />, expressed as <see cref="T:System.Reflection.CustomAttributeData" /> objects.</summary>
     /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the current assembly.</returns>
@@ -276,7 +276,7 @@ namespace Wrapperator.Interfaces.Reflection
     /// <exception cref="T:System.BadImageFormatException">
     ///  <paramref name="name" /> is not a valid assembly. </exception>
     /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
-    Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(System.Type type, string name);
+    Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(Wrapperator.Interfaces.IType type, string name);
     
     /// <summary>Loads the specified manifest resource from this assembly.</summary>
     /// <returns>The manifest resource; or null if no resources were specified during compilation or if the resource is not visible to the caller.</returns>
@@ -352,7 +352,7 @@ namespace Wrapperator.Interfaces.Reflection
     /// <exception cref="T:System.IO.FileLoadException">The satellite assembly with a matching file name was found, but the CultureInfo or the version did not match the one specified. </exception>
     /// <exception cref="T:System.IO.FileNotFoundException">The assembly cannot be found. </exception>
     /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, System.Version version);
+    Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, Wrapperator.Interfaces.IVersion version);
     
     /// <summary>Gets the types defined in this assembly.</summary>
     /// <returns>An array that contains all the types that are defined in this assembly.</returns>
@@ -367,7 +367,7 @@ namespace Wrapperator.Interfaces.Reflection
     ///  <paramref name="attributeType" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">
     ///  <paramref name="attributeType" /> uses an invalid type.</exception>
-    bool IsDefined(System.Type attributeType, bool inherit);
+    bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit);
     
     /// <summary>Loads an assembly given the long form of its name.</summary>
     /// <returns>The loaded assembly.</returns>
@@ -393,7 +393,7 @@ namespace Wrapperator.Interfaces.Reflection
     /// <exception cref="T:System.IO.FileLoadException">NoteIn the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.IO.IOException" />, instead.A file that was found could not be loaded. </exception>
     /// <exception cref="T:System.BadImageFormatException">
     ///  <paramref name="assemblyRef" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyRef" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(System.Reflection.AssemblyName assemblyRef);
+    Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef);
     
     /// <summary>Loads the assembly with a common object file format (COFF)-based image containing an emitted assembly. The assembly is loaded into the application domain of the caller.</summary>
     /// <returns>The loaded assembly.</returns>

@@ -498,9 +498,9 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="newError" /> is null. </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    public void SetError(System.IO.TextWriter newError)
+    public void SetError(Wrapperator.Interfaces.IO.ITextWriter newError)
     {
-      System.Console.SetError(newError);
+      System.Console.SetError(newError == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)newError).TextWriter);
     }
     
     /// <summary>Sets the <see cref="P:System.Console.In" /> property to the specified <see cref="T:System.IO.TextReader" /> object.</summary>
@@ -509,9 +509,9 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="newIn" /> is null. </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    public void SetIn(System.IO.TextReader newIn)
+    public void SetIn(Wrapperator.Interfaces.IO.ITextReader newIn)
     {
-      System.Console.SetIn(newIn);
+      System.Console.SetIn(newIn == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)newIn).TextReader);
     }
     
     /// <summary>Sets the <see cref="P:System.Console.Out" /> property to the specified <see cref="T:System.IO.TextWriter" /> object.</summary>
@@ -520,9 +520,9 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="newOut" /> is null. </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    public void SetOut(System.IO.TextWriter newOut)
+    public void SetOut(Wrapperator.Interfaces.IO.ITextWriter newOut)
     {
-      System.Console.SetOut(newOut);
+      System.Console.SetOut(newOut == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)newOut).TextWriter);
     }
     
     /// <summary>Sets the position of the console window relative to the screen buffer.</summary>

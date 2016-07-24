@@ -129,7 +129,7 @@ namespace Wrapperator.Interfaces.Reflection
     /// <returns>true if the simple assembly names are the same; otherwise, false.</returns>
     /// <param name="reference">The reference assembly name.</param>
     /// <param name="definition">The assembly name that is compared to the reference assembly.</param>
-    bool ReferenceMatchesDefinition(System.Reflection.AssemblyName reference, System.Reflection.AssemblyName definition);
+    bool ReferenceMatchesDefinition(Wrapperator.Interfaces.Reflection.IAssemblyName reference, Wrapperator.Interfaces.Reflection.IAssemblyName definition);
     
     /// <summary>Sets the public key identifying the assembly.</summary>
     /// <param name="publicKey">A byte array containing the public key of the assembly. </param>

@@ -17,28 +17,23 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public partial class XDeclarationWrapper : Wrapperator.Interfaces.Xml.Linq.IXDeclaration
   {
     
-    private System.Xml.Linq.XDeclaration _xDeclaration;
-    
-    public static implicit operator System.Xml.Linq.XDeclaration (XDeclarationWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Xml.Linq.XDeclaration);
-      return wrapper._xDeclaration;
-    }
+    internal System.Xml.Linq.XDeclaration XDeclaration { get; private set; }
+
     
     public XDeclarationWrapper(System.Xml.Linq.XDeclaration xDeclaration)
     {
-      _xDeclaration = xDeclaration;
+      XDeclaration = xDeclaration;
     }
     
     public string Encoding
     {
       get
       {
-        return _xDeclaration.Encoding;
+        return XDeclaration.Encoding;
       }
       set
       {
-        _xDeclaration.Encoding = value;
+        XDeclaration.Encoding = value;
       }
     }
     
@@ -46,11 +41,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return _xDeclaration.Standalone;
+        return XDeclaration.Standalone;
       }
       set
       {
-        _xDeclaration.Standalone = value;
+        XDeclaration.Standalone = value;
       }
     }
     
@@ -58,11 +53,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return _xDeclaration.Version;
+        return XDeclaration.Version;
       }
       set
       {
-        _xDeclaration.Version = value;
+        XDeclaration.Version = value;
       }
     }
   }

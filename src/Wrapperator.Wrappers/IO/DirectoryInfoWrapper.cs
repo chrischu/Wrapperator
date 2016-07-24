@@ -17,28 +17,23 @@ namespace Wrapperator.Wrappers.IO
   public partial class DirectoryInfoWrapper : Wrapperator.Interfaces.IO.IDirectoryInfo
   {
     
-    private System.IO.DirectoryInfo _directoryInfo;
-    
-    public static implicit operator System.IO.DirectoryInfo (DirectoryInfoWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.IO.DirectoryInfo);
-      return wrapper._directoryInfo;
-    }
+    internal System.IO.DirectoryInfo DirectoryInfo { get; private set; }
+
     
     public DirectoryInfoWrapper(System.IO.DirectoryInfo directoryInfo)
     {
-      _directoryInfo = directoryInfo;
+      DirectoryInfo = directoryInfo;
     }
     
     public System.IO.FileAttributes Attributes
     {
       get
       {
-        return _directoryInfo.Attributes;
+        return DirectoryInfo.Attributes;
       }
       set
       {
-        _directoryInfo.Attributes = value;
+        DirectoryInfo.Attributes = value;
       }
     }
     
@@ -46,11 +41,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.CreationTime;
+        return DirectoryInfo.CreationTime;
       }
       set
       {
-        _directoryInfo.CreationTime = value;
+        DirectoryInfo.CreationTime = value;
       }
     }
     
@@ -58,11 +53,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.CreationTimeUtc;
+        return DirectoryInfo.CreationTimeUtc;
       }
       set
       {
-        _directoryInfo.CreationTimeUtc = value;
+        DirectoryInfo.CreationTimeUtc = value;
       }
     }
     
@@ -70,7 +65,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.Exists;
+        return DirectoryInfo.Exists;
       }
     }
     
@@ -78,7 +73,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.Extension;
+        return DirectoryInfo.Extension;
       }
     }
     
@@ -86,7 +81,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.FullName;
+        return DirectoryInfo.FullName;
       }
     }
     
@@ -94,11 +89,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.LastAccessTime;
+        return DirectoryInfo.LastAccessTime;
       }
       set
       {
-        _directoryInfo.LastAccessTime = value;
+        DirectoryInfo.LastAccessTime = value;
       }
     }
     
@@ -106,11 +101,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.LastAccessTimeUtc;
+        return DirectoryInfo.LastAccessTimeUtc;
       }
       set
       {
-        _directoryInfo.LastAccessTimeUtc = value;
+        DirectoryInfo.LastAccessTimeUtc = value;
       }
     }
     
@@ -118,11 +113,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.LastWriteTime;
+        return DirectoryInfo.LastWriteTime;
       }
       set
       {
-        _directoryInfo.LastWriteTime = value;
+        DirectoryInfo.LastWriteTime = value;
       }
     }
     
@@ -130,11 +125,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.LastWriteTimeUtc;
+        return DirectoryInfo.LastWriteTimeUtc;
       }
       set
       {
-        _directoryInfo.LastWriteTimeUtc = value;
+        DirectoryInfo.LastWriteTimeUtc = value;
       }
     }
     
@@ -142,7 +137,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.Name;
+        return DirectoryInfo.Name;
       }
     }
     
@@ -150,7 +145,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.Parent;
+        return DirectoryInfo.Parent;
       }
     }
     
@@ -158,7 +153,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _directoryInfo.Root;
+        return DirectoryInfo.Root;
       }
     }
     
@@ -167,7 +162,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Create()
     {
-      _directoryInfo.Create();
+      DirectoryInfo.Create();
     }
     
     /// <summary>Creates a directory using a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object.</summary>
@@ -185,7 +180,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Create(System.Security.AccessControl.DirectorySecurity directorySecurity)
     {
-      _directoryInfo.Create(directorySecurity);
+      DirectoryInfo.Create(directorySecurity);
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -194,9 +189,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _directoryInfo.CreateObjRef(requestedType);
+      return DirectoryInfo.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     /// <summary>Creates a subdirectory or subdirectories on the specified path. The specified path can be relative to this instance of the <see cref="T:System.IO.DirectoryInfo" /> class.</summary>
@@ -215,7 +210,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IDirectoryInfo CreateSubdirectory(string path)
     {
-      return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(_directoryInfo.CreateSubdirectory(path));
+      return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(DirectoryInfo.CreateSubdirectory(path));
     }
     
     /// <summary>Creates a subdirectory or subdirectories on the specified path with the specified security. The specified path can be relative to this instance of the <see cref="T:System.IO.DirectoryInfo" /> class.</summary>
@@ -235,7 +230,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.IO.IDirectoryInfo CreateSubdirectory(string path, System.Security.AccessControl.DirectorySecurity directorySecurity)
     {
-      return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(_directoryInfo.CreateSubdirectory(path, directorySecurity));
+      return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(DirectoryInfo.CreateSubdirectory(path, directorySecurity));
     }
     
     /// <summary>Deletes this <see cref="T:System.IO.DirectoryInfo" /> if it is empty.</summary>
@@ -246,7 +241,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Delete()
     {
-      _directoryInfo.Delete();
+      DirectoryInfo.Delete();
     }
     
     /// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
@@ -258,7 +253,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Delete(bool recursive)
     {
-      _directoryInfo.Delete(recursive);
+      DirectoryInfo.Delete(recursive);
     }
     
     /// <summary>Returns an enumerable collection of directory information in the current directory.</summary>
@@ -267,7 +262,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> EnumerateDirectories()
     {
-      return _directoryInfo.EnumerateDirectories();
+      return DirectoryInfo.EnumerateDirectories();
     }
     
     /// <summary>Returns an enumerable collection of directory information that matches a specified search pattern.</summary>
@@ -279,7 +274,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> EnumerateDirectories(string searchPattern)
     {
-      return _directoryInfo.EnumerateDirectories(searchPattern);
+      return DirectoryInfo.EnumerateDirectories(searchPattern);
     }
     
     /// <summary>Returns an enumerable collection of directory information that matches a specified search pattern and search subdirectory option. </summary>
@@ -294,7 +289,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.DirectoryInfo> EnumerateDirectories(string searchPattern, System.IO.SearchOption searchOption)
     {
-      return _directoryInfo.EnumerateDirectories(searchPattern, searchOption);
+      return DirectoryInfo.EnumerateDirectories(searchPattern, searchOption);
     }
     
     /// <summary>Returns an enumerable collection of file information in the current directory.</summary>
@@ -303,7 +298,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.FileInfo> EnumerateFiles()
     {
-      return _directoryInfo.EnumerateFiles();
+      return DirectoryInfo.EnumerateFiles();
     }
     
     /// <summary>Returns an enumerable collection of file information that matches a search pattern.</summary>
@@ -315,7 +310,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.FileInfo> EnumerateFiles(string searchPattern)
     {
-      return _directoryInfo.EnumerateFiles(searchPattern);
+      return DirectoryInfo.EnumerateFiles(searchPattern);
     }
     
     /// <summary>Returns an enumerable collection of file information that matches a specified search pattern and search subdirectory option.</summary>
@@ -330,7 +325,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.FileInfo> EnumerateFiles(string searchPattern, System.IO.SearchOption searchOption)
     {
-      return _directoryInfo.EnumerateFiles(searchPattern, searchOption);
+      return DirectoryInfo.EnumerateFiles(searchPattern, searchOption);
     }
     
     /// <summary>Returns an enumerable collection of file system information in the current directory.</summary>
@@ -339,7 +334,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.FileSystemInfo> EnumerateFileSystemInfos()
     {
-      return _directoryInfo.EnumerateFileSystemInfos();
+      return DirectoryInfo.EnumerateFileSystemInfos();
     }
     
     /// <summary>Returns an enumerable collection of file system information that matches a specified search pattern.</summary>
@@ -351,7 +346,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.FileSystemInfo> EnumerateFileSystemInfos(string searchPattern)
     {
-      return _directoryInfo.EnumerateFileSystemInfos(searchPattern);
+      return DirectoryInfo.EnumerateFileSystemInfos(searchPattern);
     }
     
     /// <summary>Returns an enumerable collection of file system information that matches a specified search pattern and search subdirectory option.</summary>
@@ -366,7 +361,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.Collections.Generic.IEnumerable<System.IO.FileSystemInfo> EnumerateFileSystemInfos(string searchPattern, System.IO.SearchOption searchOption)
     {
-      return _directoryInfo.EnumerateFileSystemInfos(searchPattern, searchOption);
+      return DirectoryInfo.EnumerateFileSystemInfos(searchPattern, searchOption);
     }
     
     /// <summary>Gets a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control list (ACL) entries for the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
@@ -379,7 +374,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.Security.AccessControl.DirectorySecurity GetAccessControl()
     {
-      return _directoryInfo.GetAccessControl();
+      return DirectoryInfo.GetAccessControl();
     }
     
     /// <summary>Gets a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the specified type of access control list (ACL) entries for the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
@@ -388,7 +383,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.Security.AccessControl.DirectorySecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections)
     {
-      return _directoryInfo.GetAccessControl(includeSections);
+      return DirectoryInfo.GetAccessControl(includeSections);
     }
     
     /// <summary>Returns the subdirectories of the current directory.</summary>
@@ -399,7 +394,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.IO.DirectoryInfo[] GetDirectories()
     {
-      return _directoryInfo.GetDirectories();
+      return DirectoryInfo.GetDirectories();
     }
     
     /// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria.</summary>
@@ -414,7 +409,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.IO.DirectoryInfo[] GetDirectories(string searchPattern)
     {
-      return _directoryInfo.GetDirectories(searchPattern);
+      return DirectoryInfo.GetDirectories(searchPattern);
     }
     
     /// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria and using a value to determine whether to search subdirectories.</summary>
@@ -431,7 +426,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
     public System.IO.DirectoryInfo[] GetDirectories(string searchPattern, System.IO.SearchOption searchOption)
     {
-      return _directoryInfo.GetDirectories(searchPattern, searchOption);
+      return DirectoryInfo.GetDirectories(searchPattern, searchOption);
     }
     
     /// <summary>Returns a file list from the current directory matching the given search pattern.</summary>
@@ -446,7 +441,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.IO.FileInfo[] GetFiles(string searchPattern)
     {
-      return _directoryInfo.GetFiles(searchPattern);
+      return DirectoryInfo.GetFiles(searchPattern);
     }
     
     /// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
@@ -463,7 +458,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.IO.FileInfo[] GetFiles(string searchPattern, System.IO.SearchOption searchOption)
     {
-      return _directoryInfo.GetFiles(searchPattern, searchOption);
+      return DirectoryInfo.GetFiles(searchPattern, searchOption);
     }
     
     /// <summary>Returns a file list from the current directory.</summary>
@@ -472,7 +467,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.IO.FileInfo[] GetFiles()
     {
-      return _directoryInfo.GetFiles();
+      return DirectoryInfo.GetFiles();
     }
     
     /// <summary>Retrieves an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> objects representing the files and subdirectories that match the specified search criteria.</summary>
@@ -487,7 +482,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern)
     {
-      return _directoryInfo.GetFileSystemInfos(searchPattern);
+      return DirectoryInfo.GetFileSystemInfos(searchPattern);
     }
     
     /// <summary>Retrieves an array of <see cref="T:System.IO.FileSystemInfo" /> objects that represent the files and subdirectories matching the specified search criteria.</summary>
@@ -504,7 +499,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern, System.IO.SearchOption searchOption)
     {
-      return _directoryInfo.GetFileSystemInfos(searchPattern, searchOption);
+      return DirectoryInfo.GetFileSystemInfos(searchPattern, searchOption);
     }
     
     /// <summary>Returns an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries representing all the files and subdirectories in a directory.</summary>
@@ -513,7 +508,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.IO.FileSystemInfo[] GetFileSystemInfos()
     {
-      return _directoryInfo.GetFileSystemInfos();
+      return DirectoryInfo.GetFileSystemInfos();
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -522,7 +517,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return _directoryInfo.GetLifetimeService();
+      return DirectoryInfo.GetLifetimeService();
     }
     
     /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
@@ -531,7 +526,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      _directoryInfo.GetObjectData(info, context);
+      DirectoryInfo.GetObjectData(info, context);
     }
     
     /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
@@ -540,7 +535,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return _directoryInfo.InitializeLifetimeService();
+      return DirectoryInfo.InitializeLifetimeService();
     }
     
     /// <summary>Moves a <see cref="T:System.IO.DirectoryInfo" /> instance and its contents to a new path.</summary>
@@ -555,7 +550,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void MoveTo(string destDirName)
     {
-      _directoryInfo.MoveTo(destDirName);
+      DirectoryInfo.MoveTo(destDirName);
     }
     
     /// <summary>Refreshes the state of the object.</summary>
@@ -563,7 +558,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Refresh()
     {
-      _directoryInfo.Refresh();
+      DirectoryInfo.Refresh();
     }
     
     /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object to the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
@@ -575,7 +570,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void SetAccessControl(System.Security.AccessControl.DirectorySecurity directorySecurity)
     {
-      _directoryInfo.SetAccessControl(directorySecurity);
+      DirectoryInfo.SetAccessControl(directorySecurity);
     }
   }
 }

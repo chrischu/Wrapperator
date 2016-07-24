@@ -23,6 +23,23 @@ namespace Wrapperator
         .Select(CreateModel).ToList();
     }
 
+    public string GetInterfaceName(Type typeToWrap) => $"{_options.Interface.ClassPrefix}{typeToWrap.Name}{_options.Interface.ClassSuffix}";
+    public string GetWrapperName(Type typeToWrap) => $"{_options.Wrapper.ClassPrefix}{typeToWrap.Name}{_options.Wrapper.ClassSuffix}";
+
+    public string GetInterfaceNamespace(Type typeToWrap) => typeToWrap.Namespace.AssertNotNull().Replace("System", _options.Interface.ProjectName);
+    public string GetWrapperNamespace(Type typeToWrap) => typeToWrap.Namespace.AssertNotNull().Replace("System", _options.Wrapper.ProjectName);
+
+    public string GetFullInterfaceName(Type typeToWrap) => $"{GetInterfaceNamespace(typeToWrap)}.{GetInterfaceName(typeToWrap)}";
+    public string GetFullWrapperName(Type typeToWrap) => $"{GetWrapperNamespace(typeToWrap)}.{GetWrapperName(typeToWrap)}";
+
+    public string GetParameterName(Type typeToWrap) => typeToWrap.Name.ToLowerCamelCase();
+    public string GetPropertyName(Type typeToWrap) => typeToWrap.Name;
+
+    public bool ShouldParameterTypesGetWrapped => _options.WrapParameterTypes;
+    public bool ShouldImplicitConversionOperatorsBeGenerated => _options.GenerateImplicitConversionOperators;
+
+    public bool ShouldTypeBeWrapped(Type type) => _typesToWrap.Contains(type);
+
     private WrapperatorModel CreateModel (Type t)
     {
       var preSelectedMethods = GetMethodsToWrap(t);
@@ -109,18 +126,6 @@ namespace Wrapperator
     {
       return toWrap.Namespace.AssertNotNull().Replace("System", options.ProjectName);
     }
-
-    public string GetInterfaceName (Type typeToWrap) => $"{_options.Interface.ClassPrefix}{typeToWrap.Name}{_options.Interface.ClassSuffix}";
-    public string GetWrapperName (Type typeToWrap) => $"{_options.Wrapper.ClassPrefix}{typeToWrap.Name}{_options.Wrapper.ClassSuffix}";
-
-    public string GetInterfaceNamespace (Type typeToWrap) => typeToWrap.Namespace.AssertNotNull().Replace("System", _options.Interface.ProjectName);
-    public string GetWrapperNamespace (Type typeToWrap) => typeToWrap.Namespace.AssertNotNull().Replace("System", _options.Wrapper.ProjectName);
-
-    public string GetFullInterfaceName(Type typeToWrap) => $"{GetInterfaceNamespace(typeToWrap)}.{GetInterfaceName(typeToWrap)}";
-    public string GetFullWrapperName(Type typeToWrap) => $"{GetWrapperNamespace(typeToWrap)}.{GetWrapperName(typeToWrap)}";
-
-
-    public bool ShouldTypeBeWrapped (Type type) => _typesToWrap.Contains(type);
 
     private IEnumerable<MethodInfo> GetMethodsToWrap (Type typeToWrap)
     {

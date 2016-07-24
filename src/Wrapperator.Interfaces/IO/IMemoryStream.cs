@@ -40,6 +40,6 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="stream" /> is null. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The current or target stream is closed. </exception>
     /// <filterpriority>2</filterpriority>
-    void WriteTo(System.IO.Stream stream);
+    void WriteTo(Wrapperator.Interfaces.IO.IStream stream);
   }
 }

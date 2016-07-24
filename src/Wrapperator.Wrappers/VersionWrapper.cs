@@ -17,24 +17,19 @@ namespace Wrapperator.Wrappers
   public partial class VersionWrapper : Wrapperator.Interfaces.IVersion
   {
     
-    private System.Version _version;
-    
-    public static implicit operator System.Version (VersionWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Version);
-      return wrapper._version;
-    }
+    internal System.Version Version { get; private set; }
+
     
     public VersionWrapper(System.Version version)
     {
-      _version = version;
+      Version = version;
     }
     
     public int Build
     {
       get
       {
-        return _version.Build;
+        return Version.Build;
       }
     }
     
@@ -42,7 +37,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _version.Major;
+        return Version.Major;
       }
     }
     
@@ -50,7 +45,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _version.MajorRevision;
+        return Version.MajorRevision;
       }
     }
     
@@ -58,7 +53,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _version.Minor;
+        return Version.Minor;
       }
     }
     
@@ -66,7 +61,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _version.MinorRevision;
+        return Version.MinorRevision;
       }
     }
     
@@ -74,7 +69,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _version.Revision;
+        return Version.Revision;
       }
     }
     
@@ -83,7 +78,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object Clone()
     {
-      return _version.Clone();
+      return Version.Clone();
     }
     
     /// <summary>Compares the current <see cref="T:System.Version" /> object to a specified object and returns an indication of their relative values.</summary>
@@ -94,16 +89,16 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public int CompareTo(object version)
     {
-      return _version.CompareTo(version);
+      return Version.CompareTo(version);
     }
     
     /// <summary>Compares the current <see cref="T:System.Version" /> object to a specified <see cref="T:System.Version" /> object and returns an indication of their relative values.</summary>
     /// <returns>A signed integer that indicates the relative values of the two objects, as shown in the following table.Return value Meaning Less than zero The current <see cref="T:System.Version" /> object is a version before <paramref name="value" />. Zero The current <see cref="T:System.Version" /> object is the same version as <paramref name="value" />. Greater than zero The current <see cref="T:System.Version" /> object is a version subsequent to <paramref name="value" />. -or-<paramref name="value" /> is null.</returns>
     /// <param name="value">A <see cref="T:System.Version" /> object to compare to the current <see cref="T:System.Version" /> object, or null.</param>
     /// <filterpriority>1</filterpriority>
-    public int CompareTo(System.Version value)
+    public int CompareTo(Wrapperator.Interfaces.IVersion value)
     {
-      return _version.CompareTo(value);
+      return Version.CompareTo(value == null ? default(System.Version) : ((Wrapperator.Wrappers.VersionWrapper)value).Version);
     }
     
     /// <summary>Converts the string representation of a version number to an equivalent <see cref="T:System.Version" /> object.</summary>

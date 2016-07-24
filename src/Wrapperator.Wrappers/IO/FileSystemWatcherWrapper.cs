@@ -17,24 +17,19 @@ namespace Wrapperator.Wrappers.IO
   public partial class FileSystemWatcherWrapper : Wrapperator.Interfaces.IO.IFileSystemWatcher
   {
     
-    private System.IO.FileSystemWatcher _fileSystemWatcher;
-    
-    public static implicit operator System.IO.FileSystemWatcher (FileSystemWatcherWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.IO.FileSystemWatcher);
-      return wrapper._fileSystemWatcher;
-    }
+    internal System.IO.FileSystemWatcher FileSystemWatcher { get; private set; }
+
     
     public FileSystemWatcherWrapper(System.IO.FileSystemWatcher fileSystemWatcher)
     {
-      _fileSystemWatcher = fileSystemWatcher;
+      FileSystemWatcher = fileSystemWatcher;
     }
     
     public System.ComponentModel.IContainer Container
     {
       get
       {
-        return _fileSystemWatcher.Container;
+        return FileSystemWatcher.Container;
       }
     }
     
@@ -42,11 +37,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.EnableRaisingEvents;
+        return FileSystemWatcher.EnableRaisingEvents;
       }
       set
       {
-        _fileSystemWatcher.EnableRaisingEvents = value;
+        FileSystemWatcher.EnableRaisingEvents = value;
       }
     }
     
@@ -54,11 +49,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.Filter;
+        return FileSystemWatcher.Filter;
       }
       set
       {
-        _fileSystemWatcher.Filter = value;
+        FileSystemWatcher.Filter = value;
       }
     }
     
@@ -66,11 +61,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.IncludeSubdirectories;
+        return FileSystemWatcher.IncludeSubdirectories;
       }
       set
       {
-        _fileSystemWatcher.IncludeSubdirectories = value;
+        FileSystemWatcher.IncludeSubdirectories = value;
       }
     }
     
@@ -78,11 +73,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.InternalBufferSize;
+        return FileSystemWatcher.InternalBufferSize;
       }
       set
       {
-        _fileSystemWatcher.InternalBufferSize = value;
+        FileSystemWatcher.InternalBufferSize = value;
       }
     }
     
@@ -90,11 +85,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.NotifyFilter;
+        return FileSystemWatcher.NotifyFilter;
       }
       set
       {
-        _fileSystemWatcher.NotifyFilter = value;
+        FileSystemWatcher.NotifyFilter = value;
       }
     }
     
@@ -102,11 +97,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.Path;
+        return FileSystemWatcher.Path;
       }
       set
       {
-        _fileSystemWatcher.Path = value;
+        FileSystemWatcher.Path = value;
       }
     }
     
@@ -114,11 +109,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.Site;
+        return FileSystemWatcher.Site;
       }
       set
       {
-        _fileSystemWatcher.Site = value;
+        FileSystemWatcher.Site = value;
       }
     }
     
@@ -126,11 +121,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileSystemWatcher.SynchronizingObject;
+        return FileSystemWatcher.SynchronizingObject;
       }
       set
       {
-        _fileSystemWatcher.SynchronizingObject = value;
+        FileSystemWatcher.SynchronizingObject = value;
       }
     }
     
@@ -138,7 +133,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void BeginInit()
     {
-      _fileSystemWatcher.BeginInit();
+      FileSystemWatcher.BeginInit();
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -147,16 +142,16 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _fileSystemWatcher.CreateObjRef(requestedType);
+      return FileSystemWatcher.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     /// <summary>Ends the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>
     public void EndInit()
     {
-      _fileSystemWatcher.EndInit();
+      FileSystemWatcher.EndInit();
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -165,7 +160,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return _fileSystemWatcher.GetLifetimeService();
+      return FileSystemWatcher.GetLifetimeService();
     }
     
     /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
@@ -174,7 +169,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return _fileSystemWatcher.InitializeLifetimeService();
+      return FileSystemWatcher.InitializeLifetimeService();
     }
     
     /// <summary>A synchronous method that returns a structure that contains specific information on the change that occurred, given the type of change you want to monitor.</summary>
@@ -183,7 +178,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.IO.WaitForChangedResult WaitForChanged(System.IO.WatcherChangeTypes changeType)
     {
-      return _fileSystemWatcher.WaitForChanged(changeType);
+      return FileSystemWatcher.WaitForChanged(changeType);
     }
     
     /// <summary>A synchronous method that returns a structure that contains specific information on the change that occurred, given the type of change you want to monitor and the time (in milliseconds) to wait before timing out.</summary>
@@ -193,14 +188,14 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.IO.WaitForChangedResult WaitForChanged(System.IO.WatcherChangeTypes changeType, int timeout)
     {
-      return _fileSystemWatcher.WaitForChanged(changeType, timeout);
+      return FileSystemWatcher.WaitForChanged(changeType, timeout);
     }
     
     protected virtual void Dispose(bool disposing)
     {
       if (disposing)
       {
-        _fileSystemWatcher.Dispose();
+        FileSystemWatcher.Dispose();
       }
     }
     

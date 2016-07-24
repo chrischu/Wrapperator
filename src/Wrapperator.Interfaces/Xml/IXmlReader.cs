@@ -195,14 +195,14 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="input">The stream containing the XML data.The <see cref="T:System.Xml.XmlReader" /> scans the first bytes of the stream looking for a byte order mark or other sign of encoding. When encoding is determined, the encoding is used to continue reading the stream, and processing continues parsing the input as a stream of (Unicode) characters.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     /// <exception cref="T:System.Security.SecurityException">The <see cref="T:System.Xml.XmlReader" /> does not have sufficient permissions to access the location of the XML data.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.Stream input);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance with the specified stream and <see cref="T:System.Xml.XmlReaderSettings" /> object.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read the XML data.</returns>
     /// <param name="input">The stream containing the XML data.The <see cref="T:System.Xml.XmlReader" /> scans the first bytes of the stream looking for a byte order mark or other sign of encoding. When encoding is determined, the encoding is used to continue reading the stream, and processing continues parsing the input as a stream of (Unicode) characters.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlReaderSettings" /> object used to configure the new <see cref="T:System.Xml.XmlReader" /> instance. This value can be null.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.Stream input, System.Xml.XmlReaderSettings settings);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input, System.Xml.XmlReaderSettings settings);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified stream, base URI, and <see cref="T:System.Xml.XmlReaderSettings" /> object.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read XML data.</returns>
@@ -210,7 +210,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="settings">The <see cref="T:System.Xml.XmlReaderSettings" /> object used to configure the new <see cref="T:System.Xml.XmlReader" /> instance. This value can be null.</param>
     /// <param name="baseUri">The base URI for the entity or document being read. This value can be null.Security Note   The base URI is used to resolve the relative URI of the XML document. Do not use a base URI from an untrusted source.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.Stream input, System.Xml.XmlReaderSettings settings, string baseUri);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input, System.Xml.XmlReaderSettings settings, string baseUri);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified stream, <see cref="T:System.Xml.XmlReaderSettings" />, and <see cref="T:System.Xml.XmlParserContext" /> objects.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read XML data.</returns>
@@ -218,20 +218,20 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="settings">The <see cref="T:System.Xml.XmlReaderSettings" /> object used to configure the new <see cref="T:System.Xml.XmlReader" /> instance. This value can be null.</param>
     /// <param name="inputContext">The <see cref="T:System.Xml.XmlParserContext" /> object that provides the context information required to parse the XML fragment. The context information can include the <see cref="T:System.Xml.XmlNameTable" /> to use, encoding, namespace scope, the current xml:lang and xml:space scope, base URI, and document type definition. This value can be null.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.Stream input, System.Xml.XmlReaderSettings settings, System.Xml.XmlParserContext inputContext);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input, System.Xml.XmlReaderSettings settings, System.Xml.XmlParserContext inputContext);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance with the specified <see cref="T:System.IO.TextReader" />.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read the XML data.</returns>
     /// <param name="input">The <see cref="T:System.IO.TextReader" /> from which to read the XML data. Because a <see cref="T:System.IO.TextReader" /> returns a stream of Unicode characters, the encoding specified in the XML declaration is not used by the <see cref="T:System.Xml.XmlReader" /> to decode the data stream.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.TextReader input);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified <see cref="T:System.IO.TextReader" /> and <see cref="T:System.Xml.XmlReaderSettings" /> objects.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read XML data.</returns>
     /// <param name="input">The <see cref="T:System.IO.TextReader" /> from which to read the XML data. Because a <see cref="T:System.IO.TextReader" /> returns a stream of Unicode characters, the encoding specified in the XML declaration is not used by the <see cref="T:System.Xml.XmlReader" /> to decode the data stream</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlReaderSettings" /> object used to configure the new <see cref="T:System.Xml.XmlReader" />. This value can be null.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.TextReader input, System.Xml.XmlReaderSettings settings);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input, System.Xml.XmlReaderSettings settings);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified <see cref="T:System.IO.TextReader" />, <see cref="T:System.Xml.XmlReaderSettings" />, and base URI.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read XML data.</returns>
@@ -239,7 +239,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="settings">The <see cref="T:System.Xml.XmlReaderSettings" /> object used to configure the new <see cref="T:System.Xml.XmlReader" /> instance. This value can be null.</param>
     /// <param name="baseUri">The base URI for the entity or document being read. This value can be null.Security Note   The base URI is used to resolve the relative URI of the XML document. Do not use a base URI from an untrusted source.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.TextReader input, System.Xml.XmlReaderSettings settings, string baseUri);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input, System.Xml.XmlReaderSettings settings, string baseUri);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified <see cref="T:System.IO.TextReader" />, <see cref="T:System.Xml.XmlReaderSettings" />, and <see cref="T:System.Xml.XmlParserContext" /> objects.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object to read XML data.</returns>
@@ -248,7 +248,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="inputContext">The <see cref="T:System.Xml.XmlParserContext" /> object that provides the context information required to parse the XML fragment. The context information can include the <see cref="T:System.Xml.XmlNameTable" /> to use, encoding, namespace scope, the current xml:lang and xml:space scope, base URI, and document type definition.This value can be null.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     /// <exception cref="T:System.ArgumentException">The <see cref="P:System.Xml.XmlReaderSettings.NameTable" />  and <see cref="P:System.Xml.XmlParserContext.NameTable" /> properties both contain values. (Only one of these NameTable properties can be set and used).</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.IO.TextReader input, System.Xml.XmlReaderSettings settings, System.Xml.XmlParserContext inputContext);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input, System.Xml.XmlReaderSettings settings, System.Xml.XmlParserContext inputContext);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance with the specified <see cref="T:System.Xml.XmlReader" /> and <see cref="T:System.Xml.XmlReaderSettings" /> objects.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> object that is wrapped around the specified <see cref="T:System.Xml.XmlReader" /> object.</returns>
@@ -256,7 +256,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="settings">The <see cref="T:System.Xml.XmlReaderSettings" /> object used to configure the new <see cref="T:System.Xml.XmlReader" /> instance.The conformance level of the <see cref="T:System.Xml.XmlReaderSettings" /> object must either match the conformance level of the underlying reader, or it must be set to <see cref="F:System.Xml.ConformanceLevel.Auto" />.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="reader" /> value is null.</exception>
     /// <exception cref="T:System.InvalidOperationException">If the <see cref="T:System.Xml.XmlReaderSettings" /> object specifies a conformance level that is not consistent with conformance level of the underlying reader.-or-The underlying <see cref="T:System.Xml.XmlReader" /> is in an <see cref="F:System.Xml.ReadState.Error" /> or <see cref="F:System.Xml.ReadState.Closed" /> state.</exception>
-    Wrapperator.Interfaces.Xml.IXmlReader Create(System.Xml.XmlReader reader, System.Xml.XmlReaderSettings settings);
+    Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.Xml.IXmlReader reader, System.Xml.XmlReaderSettings settings);
     
     /// <summary>When overridden in a derived class, gets the value of the attribute with the specified <see cref="P:System.Xml.XmlReader.Name" />.</summary>
     /// <returns>The value of the specified attribute. If the attribute is not found or the value is String.Empty, null is returned.</returns>
@@ -403,7 +403,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">The current node is not a supported node type. See the table below for details.</exception>
     /// <exception cref="T:System.OverflowException">Read Decimal.MaxValue.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    object ReadContentAs(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
+    object ReadContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
     
     /// <summary>Asynchronously reads the content as an object of the type specified.</summary>
     /// <returns>The concatenated text content or attribute value converted to the requested type.</returns>
@@ -411,7 +411,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="namespaceResolver">An <see cref="T:System.Xml.IXmlNamespaceResolver" /> object that is used to resolve any namespace prefixes related to type conversion.</param>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task<object> ReadContentAsAsync(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
+    System.Threading.Tasks.Task<object> ReadContentAsAsync(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
     
     /// <summary>Reads the content and returns the Base64 decoded binary bytes.</summary>
     /// <returns>The number of bytes written to the buffer.</returns>
@@ -546,7 +546,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.ArgumentNullException">The method is called with null arguments.</exception>
     /// <exception cref="T:System.OverflowException">Read Decimal.MaxValue.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    object ReadElementContentAs(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
+    object ReadElementContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the element content as the requested type.</summary>
     /// <returns>The element content converted to the requested typed object.</returns>
@@ -560,7 +560,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.ArgumentException">The specified local name and namespace URI do not match that of the current element being read.</exception>
     /// <exception cref="T:System.OverflowException">Read Decimal.MaxValue.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    object ReadElementContentAs(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver, string localName, string namespaceURI);
+    object ReadElementContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver, string localName, string namespaceURI);
     
     /// <summary>Asynchronously reads the element content as the requested type.</summary>
     /// <returns>The element content converted to the requested typed object.</returns>
@@ -568,7 +568,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="namespaceResolver">An <see cref="T:System.Xml.IXmlNamespaceResolver" /> object that is used to resolve any namespace prefixes related to type conversion.</param>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task<object> ReadElementContentAsAsync(System.Type returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
+    System.Threading.Tasks.Task<object> ReadElementContentAsAsync(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver);
     
     /// <summary>Reads the element and decodes the Base64 content.</summary>
     /// <returns>The number of bytes written to the buffer.</returns>

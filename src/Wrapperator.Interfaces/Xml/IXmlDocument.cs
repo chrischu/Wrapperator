@@ -383,17 +383,17 @@ namespace Wrapperator.Interfaces.Xml
     /// <summary>Loads the XML document from the specified stream.</summary>
     /// <param name="inStream">The stream containing the XML document to load. </param>
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, a <see cref="T:System.IO.FileNotFoundException" /> is raised. </exception>
-    void Load(System.IO.Stream inStream);
+    void Load(Wrapperator.Interfaces.IO.IStream inStream);
     
     /// <summary>Loads the XML document from the specified <see cref="T:System.IO.TextReader" />.</summary>
     /// <param name="txtReader">The TextReader used to feed the XML data into the document. </param>
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
-    void Load(System.IO.TextReader txtReader);
+    void Load(Wrapperator.Interfaces.IO.ITextReader txtReader);
     
     /// <summary>Loads the XML document from the specified <see cref="T:System.Xml.XmlReader" />.</summary>
     /// <param name="reader">The XmlReader used to feed the XML data into the document. </param>
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
-    void Load(System.Xml.XmlReader reader);
+    void Load(Wrapperator.Interfaces.Xml.IXmlReader reader);
     
     /// <summary>Loads the XML document from the specified string.</summary>
     /// <param name="xml">String containing the XML document to load. </param>
@@ -414,7 +414,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <returns>The new XmlNode or null if no more nodes exist.</returns>
     /// <param name="reader">The XML source </param>
     /// <exception cref="T:System.NullReferenceException">The reader is positioned on a node type that does not translate to a valid DOM node (for example, EndElement or EndEntity). </exception>
-    System.Xml.XmlNode ReadNode(System.Xml.XmlReader reader);
+    System.Xml.XmlNode ReadNode(Wrapperator.Interfaces.Xml.IXmlReader reader);
     
     /// <summary>Removes all the child nodes and/or attributes of the current node.</summary>
     void RemoveAll();
@@ -441,17 +441,17 @@ namespace Wrapperator.Interfaces.Xml
     /// <summary>Saves the XML document to the specified stream.</summary>
     /// <param name="outStream">The stream to which you want to save. </param>
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
-    void Save(System.IO.Stream outStream);
+    void Save(Wrapperator.Interfaces.IO.IStream outStream);
     
     /// <summary>Saves the XML document to the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="writer">The TextWriter to which you want to save. </param>
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
-    void Save(System.IO.TextWriter writer);
+    void Save(Wrapperator.Interfaces.IO.ITextWriter writer);
     
     /// <summary>Saves the XML document to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
-    void Save(System.Xml.XmlWriter w);
+    void Save(Wrapperator.Interfaces.Xml.IXmlWriter w);
     
     /// <summary>Selects a list of nodes matching the XPath expression.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlNodeList" /> containing a collection of nodes matching the XPath query.</returns>
@@ -500,10 +500,10 @@ namespace Wrapperator.Interfaces.Xml
     
     /// <summary>Saves all the children of the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="xw">The XmlWriter to which you want to save. </param>
-    void WriteContentTo(System.Xml.XmlWriter xw);
+    void WriteContentTo(Wrapperator.Interfaces.Xml.IXmlWriter xw);
     
     /// <summary>Saves the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
-    void WriteTo(System.Xml.XmlWriter w);
+    void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter w);
   }
 }

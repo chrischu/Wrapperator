@@ -742,7 +742,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <paramref name="path" /> is in an invalid format. </exception>
     /// <filterpriority>1</filterpriority>
-    void SetCreationTime(string path, System.DateTime creationTime);
+    void SetCreationTime(string path, Wrapperator.Interfaces.IDateTime creationTime);
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the file was created.</summary>
     /// <param name="path">The file for which to set the creation date and time information. </param>
@@ -760,7 +760,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.NotSupportedException">
     ///  <paramref name="path" /> is in an invalid format. </exception>
     /// <filterpriority>2</filterpriority>
-    void SetCreationTimeUtc(string path, System.DateTime creationTimeUtc);
+    void SetCreationTimeUtc(string path, Wrapperator.Interfaces.IDateTime creationTimeUtc);
     
     /// <summary>Sets the date and time the specified file was last accessed.</summary>
     /// <param name="path">The file for which to set the access date and time information. </param>
@@ -777,7 +777,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastAccessTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetLastAccessTime(string path, System.DateTime lastAccessTime);
+    void SetLastAccessTime(string path, Wrapperator.Interfaces.IDateTime lastAccessTime);
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed.</summary>
     /// <param name="path">The file for which to set the access date and time information. </param>
@@ -794,7 +794,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastAccessTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetLastAccessTimeUtc(string path, System.DateTime lastAccessTimeUtc);
+    void SetLastAccessTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastAccessTimeUtc);
     
     /// <summary>Sets the date and time that the specified file was last written to.</summary>
     /// <param name="path">The file for which to set the date and time information. </param>
@@ -811,7 +811,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastWriteTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetLastWriteTime(string path, System.DateTime lastWriteTime);
+    void SetLastWriteTime(string path, Wrapperator.Interfaces.IDateTime lastWriteTime);
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to.</summary>
     /// <param name="path">The file for which to set the date and time information. </param>
@@ -828,7 +828,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastWriteTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>2</filterpriority>
-    void SetLastWriteTimeUtc(string path, System.DateTime lastWriteTimeUtc);
+    void SetLastWriteTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastWriteTimeUtc);
     
     /// <summary>Creates a new file, writes the specified byte array to the file, and then closes the file. If the target file already exists, it is overwritten.</summary>
     /// <param name="path">The file to write to. </param>

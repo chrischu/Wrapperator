@@ -17,24 +17,19 @@ namespace Wrapperator.Wrappers
   public partial class TypeWrapper : Wrapperator.Interfaces.IType
   {
     
-    private System.Type _type;
-    
-    public static implicit operator System.Type (TypeWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Type);
-      return wrapper._type;
-    }
+    internal System.Type Type { get; private set; }
+
     
     public TypeWrapper(System.Type type)
     {
-      _type = type;
+      Type = type;
     }
     
     public System.Reflection.Assembly Assembly
     {
       get
       {
-        return _type.Assembly;
+        return Type.Assembly;
       }
     }
     
@@ -42,7 +37,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.AssemblyQualifiedName;
+        return Type.AssemblyQualifiedName;
       }
     }
     
@@ -50,7 +45,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.Attributes;
+        return Type.Attributes;
       }
     }
     
@@ -58,7 +53,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.BaseType;
+        return Type.BaseType;
       }
     }
     
@@ -66,7 +61,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.ContainsGenericParameters;
+        return Type.ContainsGenericParameters;
       }
     }
     
@@ -74,7 +69,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.CustomAttributes;
+        return Type.CustomAttributes;
       }
     }
     
@@ -82,7 +77,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.DeclaringMethod;
+        return Type.DeclaringMethod;
       }
     }
     
@@ -90,7 +85,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.DeclaringType;
+        return Type.DeclaringType;
       }
     }
     
@@ -106,7 +101,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.FullName;
+        return Type.FullName;
       }
     }
     
@@ -114,7 +109,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.GenericParameterAttributes;
+        return Type.GenericParameterAttributes;
       }
     }
     
@@ -122,7 +117,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.GenericParameterPosition;
+        return Type.GenericParameterPosition;
       }
     }
     
@@ -130,7 +125,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.GenericTypeArguments;
+        return Type.GenericTypeArguments;
       }
     }
     
@@ -138,7 +133,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.GUID;
+        return Type.GUID;
       }
     }
     
@@ -146,7 +141,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.HasElementType;
+        return Type.HasElementType;
       }
     }
     
@@ -154,7 +149,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsAbstract;
+        return Type.IsAbstract;
       }
     }
     
@@ -162,7 +157,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsAnsiClass;
+        return Type.IsAnsiClass;
       }
     }
     
@@ -170,7 +165,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsArray;
+        return Type.IsArray;
       }
     }
     
@@ -178,7 +173,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsAutoClass;
+        return Type.IsAutoClass;
       }
     }
     
@@ -186,7 +181,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsAutoLayout;
+        return Type.IsAutoLayout;
       }
     }
     
@@ -194,7 +189,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsByRef;
+        return Type.IsByRef;
       }
     }
     
@@ -202,7 +197,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsClass;
+        return Type.IsClass;
       }
     }
     
@@ -210,7 +205,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsCOMObject;
+        return Type.IsCOMObject;
       }
     }
     
@@ -218,7 +213,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsConstructedGenericType;
+        return Type.IsConstructedGenericType;
       }
     }
     
@@ -226,7 +221,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsContextful;
+        return Type.IsContextful;
       }
     }
     
@@ -234,7 +229,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsEnum;
+        return Type.IsEnum;
       }
     }
     
@@ -242,7 +237,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsExplicitLayout;
+        return Type.IsExplicitLayout;
       }
     }
     
@@ -250,7 +245,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsGenericParameter;
+        return Type.IsGenericParameter;
       }
     }
     
@@ -258,7 +253,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsGenericType;
+        return Type.IsGenericType;
       }
     }
     
@@ -266,7 +261,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsGenericTypeDefinition;
+        return Type.IsGenericTypeDefinition;
       }
     }
     
@@ -274,7 +269,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsImport;
+        return Type.IsImport;
       }
     }
     
@@ -282,7 +277,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsInterface;
+        return Type.IsInterface;
       }
     }
     
@@ -290,7 +285,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsLayoutSequential;
+        return Type.IsLayoutSequential;
       }
     }
     
@@ -298,7 +293,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsMarshalByRef;
+        return Type.IsMarshalByRef;
       }
     }
     
@@ -306,7 +301,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNested;
+        return Type.IsNested;
       }
     }
     
@@ -314,7 +309,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNestedAssembly;
+        return Type.IsNestedAssembly;
       }
     }
     
@@ -322,7 +317,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNestedFamANDAssem;
+        return Type.IsNestedFamANDAssem;
       }
     }
     
@@ -330,7 +325,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNestedFamily;
+        return Type.IsNestedFamily;
       }
     }
     
@@ -338,7 +333,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNestedFamORAssem;
+        return Type.IsNestedFamORAssem;
       }
     }
     
@@ -346,7 +341,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNestedPrivate;
+        return Type.IsNestedPrivate;
       }
     }
     
@@ -354,7 +349,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNestedPublic;
+        return Type.IsNestedPublic;
       }
     }
     
@@ -362,7 +357,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsNotPublic;
+        return Type.IsNotPublic;
       }
     }
     
@@ -370,7 +365,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsPointer;
+        return Type.IsPointer;
       }
     }
     
@@ -378,7 +373,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsPrimitive;
+        return Type.IsPrimitive;
       }
     }
     
@@ -386,7 +381,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsPublic;
+        return Type.IsPublic;
       }
     }
     
@@ -394,7 +389,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsSealed;
+        return Type.IsSealed;
       }
     }
     
@@ -402,7 +397,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsSecurityCritical;
+        return Type.IsSecurityCritical;
       }
     }
     
@@ -410,7 +405,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsSecuritySafeCritical;
+        return Type.IsSecuritySafeCritical;
       }
     }
     
@@ -418,7 +413,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsSecurityTransparent;
+        return Type.IsSecurityTransparent;
       }
     }
     
@@ -426,7 +421,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsSerializable;
+        return Type.IsSerializable;
       }
     }
     
@@ -434,7 +429,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsSpecialName;
+        return Type.IsSpecialName;
       }
     }
     
@@ -442,7 +437,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsUnicodeClass;
+        return Type.IsUnicodeClass;
       }
     }
     
@@ -450,7 +445,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsValueType;
+        return Type.IsValueType;
       }
     }
     
@@ -458,7 +453,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.IsVisible;
+        return Type.IsVisible;
       }
     }
     
@@ -466,7 +461,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.MemberType;
+        return Type.MemberType;
       }
     }
     
@@ -474,7 +469,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.MetadataToken;
+        return Type.MetadataToken;
       }
     }
     
@@ -482,7 +477,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.Module;
+        return Type.Module;
       }
     }
     
@@ -490,7 +485,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.Name;
+        return Type.Name;
       }
     }
     
@@ -498,7 +493,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.Namespace;
+        return Type.Namespace;
       }
     }
     
@@ -506,7 +501,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.ReflectedType;
+        return Type.ReflectedType;
       }
     }
     
@@ -514,7 +509,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.StructLayoutAttribute;
+        return Type.StructLayoutAttribute;
       }
     }
     
@@ -522,7 +517,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.TypeHandle;
+        return Type.TypeHandle;
       }
     }
     
@@ -530,7 +525,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.TypeInitializer;
+        return Type.TypeInitializer;
       }
     }
     
@@ -538,7 +533,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _type.UnderlyingSystemType;
+        return Type.UnderlyingSystemType;
       }
     }
     
@@ -552,7 +547,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Type[] FindInterfaces(System.Reflection.TypeFilter filter, object filterCriteria)
     {
-      return _type.FindInterfaces(filter, filterCriteria);
+      return Type.FindInterfaces(filter, filterCriteria);
     }
     
     /// <summary>Returns a filtered array of <see cref="T:System.Reflection.MemberInfo" /> objects of the specified member type.</summary>
@@ -566,7 +561,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] FindMembers(System.Reflection.MemberTypes memberType, System.Reflection.BindingFlags bindingAttr, System.Reflection.MemberFilter filter, object filterCriteria)
     {
-      return _type.FindMembers(memberType, bindingAttr, filter, filterCriteria);
+      return Type.FindMembers(memberType, bindingAttr, filter, filterCriteria);
     }
     
     /// <summary>Gets the number of dimensions in an <see cref="T:System.Array" />.</summary>
@@ -576,7 +571,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public int GetArrayRank()
     {
-      return _type.GetArrayRank();
+      return Type.GetArrayRank();
     }
     
     /// <summary>Searches for a constructor whose parameters match the specified argument types and modifiers, using the specified binding constraints and the specified calling convention.</summary>
@@ -593,7 +588,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.ConstructorInfo GetConstructor(System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetConstructor(bindingAttr, binder, callConvention, types, modifiers);
+      return Type.GetConstructor(bindingAttr, binder, callConvention, types, modifiers);
     }
     
     /// <summary>Searches for a constructor whose parameters match the specified argument types and modifiers, using the specified binding constraints.</summary>
@@ -609,7 +604,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.ConstructorInfo GetConstructor(System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetConstructor(bindingAttr, binder, types, modifiers);
+      return Type.GetConstructor(bindingAttr, binder, types, modifiers);
     }
     
     /// <summary>Searches for a public instance constructor whose parameters match the types in the specified array.</summary>
@@ -622,7 +617,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.ConstructorInfo GetConstructor(System.Type[] types)
     {
-      return _type.GetConstructor(types);
+      return Type.GetConstructor(types);
     }
     
     /// <summary>Returns all the public constructors defined for the current <see cref="T:System.Type" />.</summary>
@@ -630,7 +625,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.ConstructorInfo[] GetConstructors()
     {
-      return _type.GetConstructors();
+      return Type.GetConstructors();
     }
     
     /// <summary>When overridden in a derived class, searches for the constructors defined for the current <see cref="T:System.Type" />, using the specified BindingFlags.</summary>
@@ -639,7 +634,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.ConstructorInfo[] GetConstructors(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetConstructors(bindingAttr);
+      return Type.GetConstructors(bindingAttr);
     }
     
     /// <summary>When overridden in a derived class, returns an array of all custom attributes applied to this member. </summary>
@@ -649,7 +644,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.TypeLoadException">A custom attribute type could not be loaded. </exception>
     public object[] GetCustomAttributes(bool inherit)
     {
-      return _type.GetCustomAttributes(inherit);
+      return Type.GetCustomAttributes(inherit);
     }
     
     /// <summary>When overridden in a derived class, returns an array of custom attributes applied to this member and identified by <see cref="T:System.Type" />.</summary>
@@ -659,16 +654,16 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.TypeLoadException">A custom attribute type cannot be loaded. </exception>
     /// <exception cref="T:System.ArgumentNullException">If <paramref name="attributeType" /> is null.</exception>
     /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
-    public object[] GetCustomAttributes(System.Type attributeType, bool inherit)
+    public object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _type.GetCustomAttributes(attributeType, inherit);
+      return Type.GetCustomAttributes(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
     }
     
     /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>
     /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</returns>
     public System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData()
     {
-      return _type.GetCustomAttributesData();
+      return Type.GetCustomAttributesData();
     }
     
     /// <summary>Searches for the members defined for the current <see cref="T:System.Type" /> whose <see cref="T:System.Reflection.DefaultMemberAttribute" /> is set.</summary>
@@ -676,7 +671,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] GetDefaultMembers()
     {
-      return _type.GetDefaultMembers();
+      return Type.GetDefaultMembers();
     }
     
     /// <summary>When overridden in a derived class, returns the <see cref="T:System.Type" /> of the object encompassed or referred to by the current array, pointer or reference type.</summary>
@@ -684,7 +679,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType GetElementType()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetElementType());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetElementType());
     }
     
     /// <summary>Returns the name of the constant that has the specified value, for the current enumeration type.</summary>
@@ -695,7 +690,7 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="value" /> is null.</exception>
     public string GetEnumName(object value)
     {
-      return _type.GetEnumName(value);
+      return Type.GetEnumName(value);
     }
     
     /// <summary>Returns the names of the members of the current enumeration type.</summary>
@@ -703,7 +698,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
     public string[] GetEnumNames()
     {
-      return _type.GetEnumNames();
+      return Type.GetEnumNames();
     }
     
     /// <summary>Returns the underlying type of the current enumeration type. </summary>
@@ -711,7 +706,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.-or-The enumeration type is not valid, because it contains more than one instance field.</exception>
     public Wrapperator.Interfaces.IType GetEnumUnderlyingType()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetEnumUnderlyingType());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetEnumUnderlyingType());
     }
     
     /// <summary>Returns an array of the values of the constants in the current enumeration type.</summary>
@@ -719,7 +714,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
     public System.Array GetEnumValues()
     {
-      return _type.GetEnumValues();
+      return Type.GetEnumValues();
     }
     
     /// <summary>Returns the <see cref="T:System.Reflection.EventInfo" /> object representing the specified public event.</summary>
@@ -730,7 +725,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.EventInfo GetEvent(string name)
     {
-      return _type.GetEvent(name);
+      return Type.GetEvent(name);
     }
     
     /// <summary>When overridden in a derived class, returns the <see cref="T:System.Reflection.EventInfo" /> object representing the specified event, using the specified binding constraints.</summary>
@@ -742,7 +737,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.EventInfo GetEvent(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetEvent(name, bindingAttr);
+      return Type.GetEvent(name, bindingAttr);
     }
     
     /// <summary>Returns all the public events that are declared or inherited by the current <see cref="T:System.Type" />.</summary>
@@ -750,7 +745,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.EventInfo[] GetEvents()
     {
-      return _type.GetEvents();
+      return Type.GetEvents();
     }
     
     /// <summary>When overridden in a derived class, searches for events that are declared or inherited by the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
@@ -759,7 +754,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.EventInfo[] GetEvents(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetEvents(bindingAttr);
+      return Type.GetEvents(bindingAttr);
     }
     
     /// <summary>Searches for the specified field, using the specified binding constraints.</summary>
@@ -771,7 +766,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.FieldInfo GetField(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetField(name, bindingAttr);
+      return Type.GetField(name, bindingAttr);
     }
     
     /// <summary>Searches for the public field with the specified name.</summary>
@@ -783,7 +778,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.FieldInfo GetField(string name)
     {
-      return _type.GetField(name);
+      return Type.GetField(name);
     }
     
     /// <summary>Returns all the public fields of the current <see cref="T:System.Type" />.</summary>
@@ -791,7 +786,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.FieldInfo[] GetFields()
     {
-      return _type.GetFields();
+      return Type.GetFields();
     }
     
     /// <summary>When overridden in a derived class, searches for the fields defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
@@ -800,7 +795,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetFields(bindingAttr);
+      return Type.GetFields(bindingAttr);
     }
     
     /// <summary>Returns an array of <see cref="T:System.Type" /> objects that represent the type arguments of a generic type or the type parameters of a generic type definition.</summary>
@@ -809,7 +804,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Type[] GetGenericArguments()
     {
-      return _type.GetGenericArguments();
+      return Type.GetGenericArguments();
     }
     
     /// <summary>Returns an array of <see cref="T:System.Type" /> objects that represent the constraints on the current generic type parameter. </summary>
@@ -818,7 +813,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public System.Type[] GetGenericParameterConstraints()
     {
-      return _type.GetGenericParameterConstraints();
+      return Type.GetGenericParameterConstraints();
     }
     
     /// <summary>Returns a <see cref="T:System.Type" /> object that represents a generic type definition from which the current generic type can be constructed.</summary>
@@ -828,7 +823,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType GetGenericTypeDefinition()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetGenericTypeDefinition());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetGenericTypeDefinition());
     }
     
     /// <summary>Searches for the interface with the specified name.</summary>
@@ -840,7 +835,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType GetInterface(string name)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetInterface(name));
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetInterface(name));
     }
     
     /// <summary>When overridden in a derived class, searches for the specified interface, specifying whether to do a case-insensitive search for the interface name.</summary>
@@ -853,7 +848,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType GetInterface(string name, bool ignoreCase)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetInterface(name, ignoreCase));
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetInterface(name, ignoreCase));
     }
     
     /// <summary>Returns an interface mapping for the specified interface type.</summary>
@@ -866,9 +861,9 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.InvalidOperationException">The current <see cref="T:System.Type" /> represents a generic type parameter; that is, <see cref="P:System.Type.IsGenericParameter" /> is true. </exception>
     /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.InterfaceMapping GetInterfaceMap(System.Type interfaceType)
+    public System.Reflection.InterfaceMapping GetInterfaceMap(Wrapperator.Interfaces.IType interfaceType)
     {
-      return _type.GetInterfaceMap(interfaceType);
+      return Type.GetInterfaceMap(interfaceType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)interfaceType).Type);
     }
     
     /// <summary>When overridden in a derived class, gets all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
@@ -877,7 +872,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Type[] GetInterfaces()
     {
-      return _type.GetInterfaces();
+      return Type.GetInterfaces();
     }
     
     /// <summary>Searches for the public members with the specified name.</summary>
@@ -888,7 +883,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] GetMember(string name)
     {
-      return _type.GetMember(name);
+      return Type.GetMember(name);
     }
     
     /// <summary>Searches for the specified members, using the specified binding constraints.</summary>
@@ -900,7 +895,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] GetMember(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetMember(name, bindingAttr);
+      return Type.GetMember(name, bindingAttr);
     }
     
     /// <summary>Searches for the specified members of the specified member type, using the specified binding constraints.</summary>
@@ -914,7 +909,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] GetMember(string name, System.Reflection.MemberTypes type, System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetMember(name, type, bindingAttr);
+      return Type.GetMember(name, type, bindingAttr);
     }
     
     /// <summary>Returns all the public members of the current <see cref="T:System.Type" />.</summary>
@@ -922,7 +917,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] GetMembers()
     {
-      return _type.GetMembers();
+      return Type.GetMembers();
     }
     
     /// <summary>When overridden in a derived class, searches for the members defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
@@ -931,7 +926,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MemberInfo[] GetMembers(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetMembers(bindingAttr);
+      return Type.GetMembers(bindingAttr);
     }
     
     /// <summary>Searches for the specified method whose parameters match the specified argument types and modifiers, using the specified binding constraints and the specified calling convention.</summary>
@@ -950,7 +945,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo GetMethod(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Reflection.CallingConventions callConvention, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetMethod(name, bindingAttr, binder, callConvention, types, modifiers);
+      return Type.GetMethod(name, bindingAttr, binder, callConvention, types, modifiers);
     }
     
     /// <summary>Searches for the specified method whose parameters match the specified argument types and modifiers, using the specified binding constraints.</summary>
@@ -968,7 +963,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo GetMethod(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetMethod(name, bindingAttr, binder, types, modifiers);
+      return Type.GetMethod(name, bindingAttr, binder, types, modifiers);
     }
     
     /// <summary>Searches for the specified public method whose parameters match the specified argument types and modifiers.</summary>
@@ -984,7 +979,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo GetMethod(string name, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetMethod(name, types, modifiers);
+      return Type.GetMethod(name, types, modifiers);
     }
     
     /// <summary>Searches for the specified public method whose parameters match the specified argument types.</summary>
@@ -999,7 +994,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo GetMethod(string name, System.Type[] types)
     {
-      return _type.GetMethod(name, types);
+      return Type.GetMethod(name, types);
     }
     
     /// <summary>Searches for the specified method, using the specified binding constraints.</summary>
@@ -1012,7 +1007,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo GetMethod(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetMethod(name, bindingAttr);
+      return Type.GetMethod(name, bindingAttr);
     }
     
     /// <summary>Searches for the public method with the specified name.</summary>
@@ -1024,7 +1019,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo GetMethod(string name)
     {
-      return _type.GetMethod(name);
+      return Type.GetMethod(name);
     }
     
     /// <summary>Returns all the public methods of the current <see cref="T:System.Type" />.</summary>
@@ -1032,7 +1027,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo[] GetMethods()
     {
-      return _type.GetMethods();
+      return Type.GetMethods();
     }
     
     /// <summary>When overridden in a derived class, searches for the methods defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
@@ -1041,7 +1036,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.MethodInfo[] GetMethods(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetMethods(bindingAttr);
+      return Type.GetMethods(bindingAttr);
     }
     
     /// <summary>Searches for the public nested type with the specified name.</summary>
@@ -1052,7 +1047,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType GetNestedType(string name)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetNestedType(name));
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetNestedType(name));
     }
     
     /// <summary>When overridden in a derived class, searches for the specified nested type, using the specified binding constraints.</summary>
@@ -1064,7 +1059,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType GetNestedType(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.GetNestedType(name, bindingAttr));
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetNestedType(name, bindingAttr));
     }
     
     /// <summary>Returns the public types nested in the current <see cref="T:System.Type" />.</summary>
@@ -1072,7 +1067,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Type[] GetNestedTypes()
     {
-      return _type.GetNestedTypes();
+      return Type.GetNestedTypes();
     }
     
     /// <summary>When overridden in a derived class, searches for the types nested in the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
@@ -1081,7 +1076,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Type[] GetNestedTypes(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetNestedTypes(bindingAttr);
+      return Type.GetNestedTypes(bindingAttr);
     }
     
     /// <summary>When overridden in a derived class, searches for the properties of the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
@@ -1090,7 +1085,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo[] GetProperties(System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetProperties(bindingAttr);
+      return Type.GetProperties(bindingAttr);
     }
     
     /// <summary>Returns all the public properties of the current <see cref="T:System.Type" />.</summary>
@@ -1098,7 +1093,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo[] GetProperties()
     {
-      return _type.GetProperties();
+      return Type.GetProperties();
     }
     
     /// <summary>Searches for the specified property whose parameters match the specified argument types and modifiers, using the specified binding constraints.</summary>
@@ -1116,9 +1111,9 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="types" /> is multidimensional.-or- <paramref name="modifiers" /> is multidimensional.-or- <paramref name="types" /> and <paramref name="modifiers" /> do not have the same length. </exception>
     /// <exception cref="T:System.NullReferenceException">An element of <paramref name="types" /> is null.</exception>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.PropertyInfo GetProperty(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
+    public System.Reflection.PropertyInfo GetProperty(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, Wrapperator.Interfaces.IType returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetProperty(name, bindingAttr, binder, returnType, types, modifiers);
+      return Type.GetProperty(name, bindingAttr, binder, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, types, modifiers);
     }
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types and modifiers.</summary>
@@ -1134,9 +1129,9 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="types" /> is multidimensional.-or- <paramref name="modifiers" /> is multidimensional.-or- <paramref name="types" /> and <paramref name="modifiers" /> do not have the same length. </exception>
     /// <exception cref="T:System.NullReferenceException">An element of <paramref name="types" /> is null.</exception>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.PropertyInfo GetProperty(string name, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
+    public System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _type.GetProperty(name, returnType, types, modifiers);
+      return Type.GetProperty(name, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, types, modifiers);
     }
     
     /// <summary>Searches for the specified property, using the specified binding constraints.</summary>
@@ -1149,7 +1144,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return _type.GetProperty(name, bindingAttr);
+      return Type.GetProperty(name, bindingAttr);
     }
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types.</summary>
@@ -1164,9 +1159,9 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="types" /> is multidimensional. </exception>
     /// <exception cref="T:System.NullReferenceException">An element of <paramref name="types" /> is null.</exception>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.PropertyInfo GetProperty(string name, System.Type returnType, System.Type[] types)
+    public System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType, System.Type[] types)
     {
-      return _type.GetProperty(name, returnType, types);
+      return Type.GetProperty(name, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, types);
     }
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types.</summary>
@@ -1182,7 +1177,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name, System.Type[] types)
     {
-      return _type.GetProperty(name, types);
+      return Type.GetProperty(name, types);
     }
     
     /// <summary>Searches for the public property with the specified name and return type.</summary>
@@ -1193,9 +1188,9 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="name" /> is null, or <paramref name="returnType" /> is null. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.PropertyInfo GetProperty(string name, System.Type returnType)
+    public System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType)
     {
-      return _type.GetProperty(name, returnType);
+      return Type.GetProperty(name, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type);
     }
     
     /// <summary>Searches for the public property with the specified name.</summary>
@@ -1207,7 +1202,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name)
     {
-      return _type.GetProperty(name);
+      return Type.GetProperty(name);
     }
     
     /// <summary>Gets the types of the objects in the specified array.</summary>
@@ -1226,9 +1221,9 @@ namespace Wrapperator.Wrappers
     /// <returns>The code of the underlying type, or <see cref="F:System.TypeCode.Empty" /> if <paramref name="type" /> is null.</returns>
     /// <param name="type">The type whose underlying type code to get. </param>
     /// <filterpriority>1</filterpriority>
-    public System.TypeCode GetTypeCode(System.Type type)
+    public System.TypeCode GetTypeCode(Wrapperator.Interfaces.IType type)
     {
-      return System.Type.GetTypeCode(type);
+      return System.Type.GetTypeCode(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
     }
     
     /// <summary>Gets the type associated with the specified class identifier (CLSID).</summary>
@@ -1365,7 +1360,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] namedParameters)
     {
-      return _type.InvokeMember(name, invokeAttr, binder, target, args, modifiers, culture, namedParameters);
+      return Type.InvokeMember(name, invokeAttr, binder, target, args, modifiers, culture, namedParameters);
     }
     
     /// <summary>Invokes the specified member, using the specified binding constraints and matching the specified argument list and culture.</summary>
@@ -1389,7 +1384,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Globalization.CultureInfo culture)
     {
-      return _type.InvokeMember(name, invokeAttr, binder, target, args, culture);
+      return Type.InvokeMember(name, invokeAttr, binder, target, args, culture);
     }
     
     /// <summary>Invokes the specified member, using the specified binding constraints and matching the specified argument list.</summary>
@@ -1413,25 +1408,25 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args)
     {
-      return _type.InvokeMember(name, invokeAttr, binder, target, args);
+      return Type.InvokeMember(name, invokeAttr, binder, target, args);
     }
     
     /// <summary>Determines whether an instance of the current <see cref="T:System.Type" /> can be assigned from an instance of the specified Type.</summary>
     /// <returns>true if <paramref name="c" /> and the current Type represent the same type, or if the current Type is in the inheritance hierarchy of <paramref name="c" />, or if the current Type is an interface that <paramref name="c" /> implements, or if <paramref name="c" /> is a generic type parameter and the current Type represents one of the constraints of <paramref name="c" />, or if <paramref name="c" /> represents a value type and the current Type represents Nullable&lt;c&gt; (Nullable(Of c) in Visual Basic). false if none of these conditions are true, or if <paramref name="c" /> is null.</returns>
     /// <param name="c">The type to compare with the current type. </param>
     /// <filterpriority>2</filterpriority>
-    public bool IsAssignableFrom(System.Type c)
+    public bool IsAssignableFrom(Wrapperator.Interfaces.IType c)
     {
-      return _type.IsAssignableFrom(c);
+      return Type.IsAssignableFrom(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c).Type);
     }
     
     /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
     /// <returns>true if one or more instances of <paramref name="attributeType" /> or any of its derived types is applied to this member; otherwise, false.</returns>
     /// <param name="attributeType">The type of custom attribute to search for. The search includes derived types. </param>
     /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
-    public bool IsDefined(System.Type attributeType, bool inherit)
+    public bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _type.IsDefined(attributeType, inherit);
+      return Type.IsDefined(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
     }
     
     /// <summary>Returns a value that indicates whether the specified value exists in the current enumeration type.</summary>
@@ -1444,15 +1439,15 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="value" /> is of a type that cannot be the underlying type of an enumeration.</exception>
     public bool IsEnumDefined(object value)
     {
-      return _type.IsEnumDefined(value);
+      return Type.IsEnumDefined(value);
     }
     
     /// <summary>Determines whether two COM types have the same identity and are eligible for type equivalence.</summary>
     /// <returns>true if the COM types are equivalent; otherwise, false. This method also returns false if one type is in an assembly that is loaded for execution, and the other is in an assembly that is loaded into the reflection-only context.</returns>
     /// <param name="other">The COM type that is tested for equivalence with the current type.</param>
-    public bool IsEquivalentTo(System.Type other)
+    public bool IsEquivalentTo(Wrapperator.Interfaces.IType other)
     {
-      return _type.IsEquivalentTo(other);
+      return Type.IsEquivalentTo(other == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)other).Type);
     }
     
     /// <summary>Determines whether the specified object is an instance of the current <see cref="T:System.Type" />.</summary>
@@ -1461,7 +1456,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public bool IsInstanceOfType(object o)
     {
-      return _type.IsInstanceOfType(o);
+      return Type.IsInstanceOfType(o);
     }
     
     /// <summary>Determines whether the class represented by the current <see cref="T:System.Type" /> derives from the class represented by the specified <see cref="T:System.Type" />.</summary>
@@ -1469,9 +1464,9 @@ namespace Wrapperator.Wrappers
     /// <param name="c">The type to compare with the current type. </param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="c" /> parameter is null. </exception>
     /// <filterpriority>2</filterpriority>
-    public bool IsSubclassOf(System.Type c)
+    public bool IsSubclassOf(Wrapperator.Interfaces.IType c)
     {
-      return _type.IsSubclassOf(c);
+      return Type.IsSubclassOf(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c).Type);
     }
     
     /// <summary>Returns a <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</summary>
@@ -1481,7 +1476,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType MakeArrayType()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.MakeArrayType());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeArrayType());
     }
     
     /// <summary>Returns a <see cref="T:System.Type" /> object representing an array of the current type, with the specified number of dimensions.</summary>
@@ -1494,7 +1489,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType MakeArrayType(int rank)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.MakeArrayType(rank));
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeArrayType(rank));
     }
     
     /// <summary>Returns a <see cref="T:System.Type" /> object that represents the current type when passed as a ref parameter (ByRef parameter in Visual Basic).</summary>
@@ -1504,7 +1499,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType MakeByRefType()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.MakeByRefType());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeByRefType());
     }
     
     /// <summary>Substitutes the elements of an array of types for the type parameters of the current generic type definition and returns a <see cref="T:System.Type" /> object representing the resulting constructed type.</summary>
@@ -1517,7 +1512,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
     public Wrapperator.Interfaces.IType MakeGenericType(System.Type[] typeArguments)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.MakeGenericType(typeArguments));
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeGenericType(typeArguments));
     }
     
     /// <summary>Returns a <see cref="T:System.Type" /> object that represents a pointer to the current type.</summary>
@@ -1527,7 +1522,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IType MakePointerType()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(_type.MakePointerType());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakePointerType());
     }
     
     /// <summary>Gets the <see cref="T:System.Type" /> with the specified name, specifying whether to perform a case-sensitive search and whether to throw an exception if the type is not found. The type is loaded for reflection only, not for execution.</summary>

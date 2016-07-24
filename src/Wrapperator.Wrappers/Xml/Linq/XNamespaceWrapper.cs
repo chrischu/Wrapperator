@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public partial class XNamespaceWrapper : Wrapperator.Interfaces.Xml.Linq.IXNamespace
   {
     
-    private System.Xml.Linq.XNamespace _xNamespace;
-    
-    public static implicit operator System.Xml.Linq.XNamespace (XNamespaceWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Xml.Linq.XNamespace);
-      return wrapper._xNamespace;
-    }
+    internal System.Xml.Linq.XNamespace XNamespace { get; private set; }
+
     
     public XNamespaceWrapper(System.Xml.Linq.XNamespace xNamespace)
     {
-      _xNamespace = xNamespace;
+      XNamespace = xNamespace;
     }
     
     public string NamespaceName
     {
       get
       {
-        return _xNamespace.NamespaceName;
+        return XNamespace.NamespaceName;
       }
     }
     
@@ -74,7 +69,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="localName">A <see cref="T:System.String" /> that contains a local name.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXName GetName(string localName)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(_xNamespace.GetName(localName));
+      return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(XNamespace.GetName(localName));
     }
   }
 }

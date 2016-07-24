@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Xml
   public partial class XmlWriterWrapper : Wrapperator.Interfaces.Xml.IXmlWriter
   {
     
-    private System.Xml.XmlWriter _xmlWriter;
-    
-    public static implicit operator System.Xml.XmlWriter (XmlWriterWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Xml.XmlWriter);
-      return wrapper._xmlWriter;
-    }
+    internal System.Xml.XmlWriter XmlWriter { get; private set; }
+
     
     public XmlWriterWrapper(System.Xml.XmlWriter xmlWriter)
     {
-      _xmlWriter = xmlWriter;
+      XmlWriter = xmlWriter;
     }
     
     public System.Xml.XmlWriterSettings Settings
     {
       get
       {
-        return _xmlWriter.Settings;
+        return XmlWriter.Settings;
       }
     }
     
@@ -41,7 +36,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlWriter.WriteState;
+        return XmlWriter.WriteState;
       }
     }
     
@@ -49,7 +44,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlWriter.XmlLang;
+        return XmlWriter.XmlLang;
       }
     }
     
@@ -57,7 +52,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlWriter.XmlSpace;
+        return XmlWriter.XmlSpace;
       }
     }
     
@@ -66,7 +61,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void Close()
     {
-      _xmlWriter.Close();
+      XmlWriter.Close();
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified filename.</summary>
@@ -92,9 +87,9 @@ namespace Wrapperator.Wrappers.Xml
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The stream to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified stream.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
-    public Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.Stream output)
+    public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)output).Stream));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the stream and <see cref="T:System.Xml.XmlWriterSettings" /> object.</summary>
@@ -102,18 +97,18 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="output">The stream to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified stream.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
-    public Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.Stream output, System.Xml.XmlWriterSettings settings)
+    public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output, System.Xml.XmlWriterSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output, settings));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)output).Stream, settings));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The <see cref="T:System.IO.TextWriter" /> to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified <see cref="T:System.IO.TextWriter" />.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
-    public Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.TextWriter output)
+    public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)output).TextWriter));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the <see cref="T:System.IO.TextWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
@@ -121,9 +116,9 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="output">The <see cref="T:System.IO.TextWriter" /> to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified <see cref="T:System.IO.TextWriter" />.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
-    public Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.TextWriter output, System.Xml.XmlWriterSettings settings)
+    public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output, System.Xml.XmlWriterSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output, settings));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)output).TextWriter, settings));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Text.StringBuilder" />.</summary>
@@ -149,9 +144,9 @@ namespace Wrapperator.Wrappers.Xml
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object that is wrapped around the specified <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The <see cref="T:System.Xml.XmlWriter" /> object that you want to use as the underlying writer.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
-    public Wrapperator.Interfaces.Xml.IXmlWriter Create(System.Xml.XmlWriter output)
+    public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)output).XmlWriter));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Xml.XmlWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
@@ -159,16 +154,16 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="output">The <see cref="T:System.Xml.XmlWriter" /> object that you want to use as the underlying writer.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
-    public Wrapperator.Interfaces.Xml.IXmlWriter Create(System.Xml.XmlWriter output, System.Xml.XmlWriterSettings settings)
+    public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output, System.Xml.XmlWriterSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output, settings));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)output).XmlWriter, settings));
     }
     
     /// <summary>When overridden in a derived class, flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void Flush()
     {
-      _xmlWriter.Flush();
+      XmlWriter.Flush();
     }
     
     /// <summary>Asynchronously flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
@@ -177,7 +172,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task FlushAsync()
     {
-      return _xmlWriter.FlushAsync();
+      return XmlWriter.FlushAsync();
     }
     
     /// <summary>When overridden in a derived class, returns the closest prefix defined in the current namespace scope for the namespace URI.</summary>
@@ -188,7 +183,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string LookupPrefix(string ns)
     {
-      return _xmlWriter.LookupPrefix(ns);
+      return XmlWriter.LookupPrefix(ns);
     }
     
     /// <summary>When overridden in a derived class, writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
@@ -198,9 +193,9 @@ namespace Wrapperator.Wrappers.Xml
     ///  <paramref name="reader" /> is null. </exception>
     /// <exception cref="T:System.Xml.XmlException">The reader is not positioned on an element, attribute or XmlDeclaration node. </exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    public void WriteAttributes(System.Xml.XmlReader reader, bool defattr)
+    public void WriteAttributes(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      _xmlWriter.WriteAttributes(reader, defattr);
+      XmlWriter.WriteAttributes(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader, defattr);
     }
     
     /// <summary>Asynchronously writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
@@ -209,9 +204,9 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    public System.Threading.Tasks.Task WriteAttributesAsync(System.Xml.XmlReader reader, bool defattr)
+    public System.Threading.Tasks.Task WriteAttributesAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      return _xmlWriter.WriteAttributesAsync(reader, defattr);
+      return XmlWriter.WriteAttributesAsync(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader, defattr);
     }
     
     /// <summary>When overridden in a derived class, writes an attribute with the specified local name, namespace URI, and value.</summary>
@@ -223,7 +218,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteAttributeString(string localName, string ns, string value)
     {
-      _xmlWriter.WriteAttributeString(localName, ns, value);
+      XmlWriter.WriteAttributeString(localName, ns, value);
     }
     
     /// <summary>When overridden in a derived class, writes out the attribute with the specified local name and value.</summary>
@@ -234,7 +229,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteAttributeString(string localName, string value)
     {
-      _xmlWriter.WriteAttributeString(localName, value);
+      XmlWriter.WriteAttributeString(localName, value);
     }
     
     /// <summary>When overridden in a derived class, writes out the attribute with the specified prefix, local name, namespace URI, and value.</summary>
@@ -248,7 +243,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteAttributeString(string prefix, string localName, string ns, string value)
     {
-      _xmlWriter.WriteAttributeString(prefix, localName, ns, value);
+      XmlWriter.WriteAttributeString(prefix, localName, ns, value);
     }
     
     /// <summary>Asynchronously writes out the attribute with the specified prefix, local name, namespace URI, and value.</summary>
@@ -261,7 +256,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteAttributeStringAsync(string prefix, string localName, string ns, string value)
     {
-      return _xmlWriter.WriteAttributeStringAsync(prefix, localName, ns, value);
+      return XmlWriter.WriteAttributeStringAsync(prefix, localName, ns, value);
     }
     
     /// <summary>When overridden in a derived class, encodes the specified binary bytes as Base64 and writes out the resulting text.</summary>
@@ -275,7 +270,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteBase64(byte[] buffer, int index, int count)
     {
-      _xmlWriter.WriteBase64(buffer, index, count);
+      XmlWriter.WriteBase64(buffer, index, count);
     }
     
     /// <summary>Asynchronously encodes the specified binary bytes as Base64 and writes out the resulting text.</summary>
@@ -287,7 +282,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteBase64Async(byte[] buffer, int index, int count)
     {
-      return _xmlWriter.WriteBase64Async(buffer, index, count);
+      return XmlWriter.WriteBase64Async(buffer, index, count);
     }
     
     /// <summary>When overridden in a derived class, encodes the specified binary bytes as BinHex and writes out the resulting text.</summary>
@@ -302,7 +297,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteBinHex(byte[] buffer, int index, int count)
     {
-      _xmlWriter.WriteBinHex(buffer, index, count);
+      XmlWriter.WriteBinHex(buffer, index, count);
     }
     
     /// <summary>Asynchronously encodes the specified binary bytes as BinHex and writes out the resulting text.</summary>
@@ -314,7 +309,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteBinHexAsync(byte[] buffer, int index, int count)
     {
-      return _xmlWriter.WriteBinHexAsync(buffer, index, count);
+      return XmlWriter.WriteBinHexAsync(buffer, index, count);
     }
     
     /// <summary>When overridden in a derived class, writes out a &lt;![CDATA[...]]&gt; block containing the specified text.</summary>
@@ -323,7 +318,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteCData(string text)
     {
-      _xmlWriter.WriteCData(text);
+      XmlWriter.WriteCData(text);
     }
     
     /// <summary>Asynchronously writes out a &lt;![CDATA[...]]&gt; block containing the specified text.</summary>
@@ -333,7 +328,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteCDataAsync(string text)
     {
-      return _xmlWriter.WriteCDataAsync(text);
+      return XmlWriter.WriteCDataAsync(text);
     }
     
     /// <summary>When overridden in a derived class, forces the generation of a character entity for the specified Unicode character value.</summary>
@@ -342,7 +337,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteCharEntity(char ch)
     {
-      _xmlWriter.WriteCharEntity(ch);
+      XmlWriter.WriteCharEntity(ch);
     }
     
     /// <summary>Asynchronously forces the generation of a character entity for the specified Unicode character value.</summary>
@@ -352,7 +347,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteCharEntityAsync(char ch)
     {
-      return _xmlWriter.WriteCharEntityAsync(ch);
+      return XmlWriter.WriteCharEntityAsync(ch);
     }
     
     /// <summary>When overridden in a derived class, writes text one buffer at a time.</summary>
@@ -367,7 +362,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteChars(char[] buffer, int index, int count)
     {
-      _xmlWriter.WriteChars(buffer, index, count);
+      XmlWriter.WriteChars(buffer, index, count);
     }
     
     /// <summary>Asynchronously writes text one buffer at a time.</summary>
@@ -379,7 +374,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteCharsAsync(char[] buffer, int index, int count)
     {
-      return _xmlWriter.WriteCharsAsync(buffer, index, count);
+      return XmlWriter.WriteCharsAsync(buffer, index, count);
     }
     
     /// <summary>When overridden in a derived class, writes out a comment &lt;!--...--&gt; containing the specified text.</summary>
@@ -388,7 +383,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteComment(string text)
     {
-      _xmlWriter.WriteComment(text);
+      XmlWriter.WriteComment(text);
     }
     
     /// <summary>Asynchronously writes out a comment &lt;!--...--&gt; containing the specified text.</summary>
@@ -398,7 +393,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteCommentAsync(string text)
     {
-      return _xmlWriter.WriteCommentAsync(text);
+      return XmlWriter.WriteCommentAsync(text);
     }
     
     /// <summary>When overridden in a derived class, writes the DOCTYPE declaration with the specified name and optional attributes.</summary>
@@ -411,7 +406,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteDocType(string name, string pubid, string sysid, string subset)
     {
-      _xmlWriter.WriteDocType(name, pubid, sysid, subset);
+      XmlWriter.WriteDocType(name, pubid, sysid, subset);
     }
     
     /// <summary>Asynchronously writes the DOCTYPE declaration with the specified name and optional attributes.</summary>
@@ -424,7 +419,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteDocTypeAsync(string name, string pubid, string sysid, string subset)
     {
-      return _xmlWriter.WriteDocTypeAsync(name, pubid, sysid, subset);
+      return XmlWriter.WriteDocTypeAsync(name, pubid, sysid, subset);
     }
     
     /// <summary>Writes an element with the specified local name and value.</summary>
@@ -435,7 +430,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteElementString(string localName, string value)
     {
-      _xmlWriter.WriteElementString(localName, value);
+      XmlWriter.WriteElementString(localName, value);
     }
     
     /// <summary>Writes an element with the specified local name, namespace URI, and value.</summary>
@@ -447,7 +442,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteElementString(string localName, string ns, string value)
     {
-      _xmlWriter.WriteElementString(localName, ns, value);
+      XmlWriter.WriteElementString(localName, ns, value);
     }
     
     /// <summary>Writes an element with the specified prefix, local name, namespace URI, and value.</summary>
@@ -460,7 +455,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteElementString(string prefix, string localName, string ns, string value)
     {
-      _xmlWriter.WriteElementString(prefix, localName, ns, value);
+      XmlWriter.WriteElementString(prefix, localName, ns, value);
     }
     
     /// <summary>Asynchronously writes an element with the specified prefix, local name, namespace URI, and value.</summary>
@@ -473,14 +468,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteElementStringAsync(string prefix, string localName, string ns, string value)
     {
-      return _xmlWriter.WriteElementStringAsync(prefix, localName, ns, value);
+      return XmlWriter.WriteElementStringAsync(prefix, localName, ns, value);
     }
     
     /// <summary>When overridden in a derived class, closes the previous <see cref="M:System.Xml.XmlWriter.WriteStartAttribute(System.String,System.String)" /> call.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteEndAttribute()
     {
-      _xmlWriter.WriteEndAttribute();
+      XmlWriter.WriteEndAttribute();
     }
     
     /// <summary>When overridden in a derived class, closes any open elements or attributes and puts the writer back in the Start state.</summary>
@@ -488,7 +483,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteEndDocument()
     {
-      _xmlWriter.WriteEndDocument();
+      XmlWriter.WriteEndDocument();
     }
     
     /// <summary>Asynchronously closes any open elements or attributes and puts the writer back in the Start state.</summary>
@@ -497,7 +492,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteEndDocumentAsync()
     {
-      return _xmlWriter.WriteEndDocumentAsync();
+      return XmlWriter.WriteEndDocumentAsync();
     }
     
     /// <summary>When overridden in a derived class, closes one element and pops the corresponding namespace scope.</summary>
@@ -505,7 +500,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteEndElement()
     {
-      _xmlWriter.WriteEndElement();
+      XmlWriter.WriteEndElement();
     }
     
     /// <summary>Asynchronously closes one element and pops the corresponding namespace scope.</summary>
@@ -514,7 +509,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteEndElementAsync()
     {
-      return _xmlWriter.WriteEndElementAsync();
+      return XmlWriter.WriteEndElementAsync();
     }
     
     /// <summary>When overridden in a derived class, writes out an entity reference as &amp;name;.</summary>
@@ -524,7 +519,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteEntityRef(string name)
     {
-      _xmlWriter.WriteEntityRef(name);
+      XmlWriter.WriteEntityRef(name);
     }
     
     /// <summary>Asynchronously writes out an entity reference as &amp;name;.</summary>
@@ -534,14 +529,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteEntityRefAsync(string name)
     {
-      return _xmlWriter.WriteEntityRefAsync(name);
+      return XmlWriter.WriteEntityRefAsync(name);
     }
     
     /// <summary>When overridden in a derived class, closes one element and pops the corresponding namespace scope.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteFullEndElement()
     {
-      _xmlWriter.WriteFullEndElement();
+      XmlWriter.WriteFullEndElement();
     }
     
     /// <summary>Asynchronously closes one element and pops the corresponding namespace scope.</summary>
@@ -550,7 +545,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteFullEndElementAsync()
     {
-      return _xmlWriter.WriteFullEndElementAsync();
+      return XmlWriter.WriteFullEndElementAsync();
     }
     
     /// <summary>When overridden in a derived class, writes out the specified name, ensuring it is a valid name according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
@@ -560,7 +555,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteName(string name)
     {
-      _xmlWriter.WriteName(name);
+      XmlWriter.WriteName(name);
     }
     
     /// <summary>Asynchronously writes out the specified name, ensuring it is a valid name according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
@@ -570,7 +565,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteNameAsync(string name)
     {
-      return _xmlWriter.WriteNameAsync(name);
+      return XmlWriter.WriteNameAsync(name);
     }
     
     /// <summary>When overridden in a derived class, writes out the specified name, ensuring it is a valid NmToken according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
@@ -580,7 +575,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteNmToken(string name)
     {
-      _xmlWriter.WriteNmToken(name);
+      XmlWriter.WriteNmToken(name);
     }
     
     /// <summary>Asynchronously writes out the specified name, ensuring it is a valid NmToken according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
@@ -590,7 +585,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteNmTokenAsync(string name)
     {
-      return _xmlWriter.WriteNmTokenAsync(name);
+      return XmlWriter.WriteNmTokenAsync(name);
     }
     
     /// <summary>When overridden in a derived class, copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
@@ -601,9 +596,9 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">
     ///  <paramref name="reader" /> contains invalid characters.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    public void WriteNode(System.Xml.XmlReader reader, bool defattr)
+    public void WriteNode(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      _xmlWriter.WriteNode(reader, defattr);
+      XmlWriter.WriteNode(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader, defattr);
     }
     
     /// <summary>Copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
@@ -614,7 +609,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteNode(System.Xml.XPath.XPathNavigator navigator, bool defattr)
     {
-      _xmlWriter.WriteNode(navigator, defattr);
+      XmlWriter.WriteNode(navigator, defattr);
     }
     
     /// <summary>Asynchronously copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
@@ -623,9 +618,9 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    public System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XmlReader reader, bool defattr)
+    public System.Threading.Tasks.Task WriteNodeAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      return _xmlWriter.WriteNodeAsync(reader, defattr);
+      return XmlWriter.WriteNodeAsync(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader, defattr);
     }
     
     /// <summary>Asynchronously copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
@@ -636,7 +631,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XPath.XPathNavigator navigator, bool defattr)
     {
-      return _xmlWriter.WriteNodeAsync(navigator, defattr);
+      return XmlWriter.WriteNodeAsync(navigator, defattr);
     }
     
     /// <summary>When overridden in a derived class, writes out a processing instruction with a space between the name and text as follows: &lt;?name text?&gt;.</summary>
@@ -646,7 +641,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteProcessingInstruction(string name, string text)
     {
-      _xmlWriter.WriteProcessingInstruction(name, text);
+      XmlWriter.WriteProcessingInstruction(name, text);
     }
     
     /// <summary>Asynchronously writes out a processing instruction with a space between the name and text as follows: &lt;?name text?&gt;.</summary>
@@ -657,7 +652,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteProcessingInstructionAsync(string name, string text)
     {
-      return _xmlWriter.WriteProcessingInstructionAsync(name, text);
+      return XmlWriter.WriteProcessingInstructionAsync(name, text);
     }
     
     /// <summary>When overridden in a derived class, writes out the namespace-qualified name. This method looks up the prefix that is in scope for the given namespace.</summary>
@@ -668,7 +663,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteQualifiedName(string localName, string ns)
     {
-      _xmlWriter.WriteQualifiedName(localName, ns);
+      XmlWriter.WriteQualifiedName(localName, ns);
     }
     
     /// <summary>Asynchronously writes out the namespace-qualified name. This method looks up the prefix that is in scope for the given namespace.</summary>
@@ -679,7 +674,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteQualifiedNameAsync(string localName, string ns)
     {
-      return _xmlWriter.WriteQualifiedNameAsync(localName, ns);
+      return XmlWriter.WriteQualifiedNameAsync(localName, ns);
     }
     
     /// <summary>When overridden in a derived class, writes raw markup manually from a character buffer.</summary>
@@ -693,7 +688,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteRaw(char[] buffer, int index, int count)
     {
-      _xmlWriter.WriteRaw(buffer, index, count);
+      XmlWriter.WriteRaw(buffer, index, count);
     }
     
     /// <summary>When overridden in a derived class, writes raw markup manually from a string.</summary>
@@ -703,7 +698,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteRaw(string data)
     {
-      _xmlWriter.WriteRaw(data);
+      XmlWriter.WriteRaw(data);
     }
     
     /// <summary>Asynchronously writes raw markup manually from a character buffer.</summary>
@@ -715,7 +710,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteRawAsync(char[] buffer, int index, int count)
     {
-      return _xmlWriter.WriteRawAsync(buffer, index, count);
+      return XmlWriter.WriteRawAsync(buffer, index, count);
     }
     
     /// <summary>Asynchronously writes raw markup manually from a string.</summary>
@@ -725,7 +720,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteRawAsync(string data)
     {
-      return _xmlWriter.WriteRawAsync(data);
+      return XmlWriter.WriteRawAsync(data);
     }
     
     /// <summary>Writes the start of an attribute with the specified local name and namespace URI.</summary>
@@ -735,7 +730,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartAttribute(string localName, string ns)
     {
-      _xmlWriter.WriteStartAttribute(localName, ns);
+      XmlWriter.WriteStartAttribute(localName, ns);
     }
     
     /// <summary>When overridden in a derived class, writes the start of an attribute with the specified prefix, local name, and namespace URI.</summary>
@@ -746,7 +741,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartAttribute(string prefix, string localName, string ns)
     {
-      _xmlWriter.WriteStartAttribute(prefix, localName, ns);
+      XmlWriter.WriteStartAttribute(prefix, localName, ns);
     }
     
     /// <summary>Writes the start of an attribute with the specified local name.</summary>
@@ -756,7 +751,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartAttribute(string localName)
     {
-      _xmlWriter.WriteStartAttribute(localName);
+      XmlWriter.WriteStartAttribute(localName);
     }
     
     /// <summary>When overridden in a derived class, writes the XML declaration with the version "1.0".</summary>
@@ -764,7 +759,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartDocument()
     {
-      _xmlWriter.WriteStartDocument();
+      XmlWriter.WriteStartDocument();
     }
     
     /// <summary>When overridden in a derived class, writes the XML declaration with the version "1.0" and the standalone attribute.</summary>
@@ -773,7 +768,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartDocument(bool standalone)
     {
-      _xmlWriter.WriteStartDocument(standalone);
+      XmlWriter.WriteStartDocument(standalone);
     }
     
     /// <summary>Asynchronously writes the XML declaration with the version "1.0".</summary>
@@ -782,7 +777,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteStartDocumentAsync()
     {
-      return _xmlWriter.WriteStartDocumentAsync();
+      return XmlWriter.WriteStartDocumentAsync();
     }
     
     /// <summary>Asynchronously writes the XML declaration with the version "1.0" and the standalone attribute.</summary>
@@ -792,7 +787,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteStartDocumentAsync(bool standalone)
     {
-      return _xmlWriter.WriteStartDocumentAsync(standalone);
+      return XmlWriter.WriteStartDocumentAsync(standalone);
     }
     
     /// <summary>When overridden in a derived class, writes the specified start tag and associates it with the given namespace.</summary>
@@ -803,7 +798,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartElement(string localName, string ns)
     {
-      _xmlWriter.WriteStartElement(localName, ns);
+      XmlWriter.WriteStartElement(localName, ns);
     }
     
     /// <summary>When overridden in a derived class, writes the specified start tag and associates it with the given namespace and prefix.</summary>
@@ -815,7 +810,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartElement(string prefix, string localName, string ns)
     {
-      _xmlWriter.WriteStartElement(prefix, localName, ns);
+      XmlWriter.WriteStartElement(prefix, localName, ns);
     }
     
     /// <summary>When overridden in a derived class, writes out a start tag with the specified local name.</summary>
@@ -825,7 +820,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteStartElement(string localName)
     {
-      _xmlWriter.WriteStartElement(localName);
+      XmlWriter.WriteStartElement(localName);
     }
     
     /// <summary>Asynchronously writes the specified start tag and associates it with the given namespace and prefix.</summary>
@@ -837,7 +832,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteStartElementAsync(string prefix, string localName, string ns)
     {
-      return _xmlWriter.WriteStartElementAsync(prefix, localName, ns);
+      return XmlWriter.WriteStartElementAsync(prefix, localName, ns);
     }
     
     /// <summary>When overridden in a derived class, writes the given text content.</summary>
@@ -846,7 +841,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteString(string text)
     {
-      _xmlWriter.WriteString(text);
+      XmlWriter.WriteString(text);
     }
     
     /// <summary>Asynchronously writes the given text content.</summary>
@@ -856,7 +851,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteStringAsync(string text)
     {
-      return _xmlWriter.WriteStringAsync(text);
+      return XmlWriter.WriteStringAsync(text);
     }
     
     /// <summary>When overridden in a derived class, generates and writes the surrogate character entity for the surrogate character pair.</summary>
@@ -866,7 +861,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteSurrogateCharEntity(char lowChar, char highChar)
     {
-      _xmlWriter.WriteSurrogateCharEntity(lowChar, highChar);
+      XmlWriter.WriteSurrogateCharEntity(lowChar, highChar);
     }
     
     /// <summary>Asynchronously generates and writes the surrogate character entity for the surrogate character pair.</summary>
@@ -877,7 +872,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteSurrogateCharEntityAsync(char lowChar, char highChar)
     {
-      return _xmlWriter.WriteSurrogateCharEntityAsync(lowChar, highChar);
+      return XmlWriter.WriteSurrogateCharEntityAsync(lowChar, highChar);
     }
     
     /// <summary>Writes the object value.</summary>
@@ -888,7 +883,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(object value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.String" /> value.</summary>
@@ -897,7 +892,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(string value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.Boolean" /> value.</summary>
@@ -906,16 +901,16 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(bool value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.DateTime" /> value.</summary>
     /// <param name="value">The <see cref="T:System.DateTime" /> value to write.</param>
     /// <exception cref="T:System.ArgumentException">An invalid value was specified.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    public void WriteValue(System.DateTime value)
+    public void WriteValue(Wrapperator.Interfaces.IDateTime value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value).DateTime);
     }
     
     /// <summary>Writes a <see cref="T:System.DateTimeOffset" /> value.</summary>
@@ -923,7 +918,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(System.DateTimeOffset value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.Double" /> value.</summary>
@@ -932,7 +927,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(double value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a single-precision floating-point number.</summary>
@@ -941,7 +936,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(float value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.Decimal" /> value.</summary>
@@ -950,7 +945,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(decimal value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.Int32" /> value.</summary>
@@ -959,7 +954,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(int value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>Writes a <see cref="T:System.Int64" /> value.</summary>
@@ -968,7 +963,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(long value)
     {
-      _xmlWriter.WriteValue(value);
+      XmlWriter.WriteValue(value);
     }
     
     /// <summary>When overridden in a derived class, writes out the given white space.</summary>
@@ -977,7 +972,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteWhitespace(string ws)
     {
-      _xmlWriter.WriteWhitespace(ws);
+      XmlWriter.WriteWhitespace(ws);
     }
     
     /// <summary>Asynchronously writes out the given white space.</summary>
@@ -987,14 +982,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteWhitespaceAsync(string ws)
     {
-      return _xmlWriter.WriteWhitespaceAsync(ws);
+      return XmlWriter.WriteWhitespaceAsync(ws);
     }
     
     protected virtual void Dispose(bool disposing)
     {
       if (disposing)
       {
-        _xmlWriter.Dispose();
+        XmlWriter.Dispose();
       }
     }
     

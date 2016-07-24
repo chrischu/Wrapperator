@@ -17,24 +17,19 @@ namespace Wrapperator.Wrappers.IO
   public partial class TextReaderWrapper : Wrapperator.Interfaces.IO.ITextReader
   {
     
-    private System.IO.TextReader _textReader;
-    
-    public static implicit operator System.IO.TextReader (TextReaderWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.IO.TextReader);
-      return wrapper._textReader;
-    }
+    internal System.IO.TextReader TextReader { get; private set; }
+
     
     public TextReaderWrapper(System.IO.TextReader textReader)
     {
-      _textReader = textReader;
+      TextReader = textReader;
     }
     
     /// <summary>Closes the <see cref="T:System.IO.TextReader" /> and releases any system resources associated with the TextReader.</summary>
     /// <filterpriority>1</filterpriority>
     public void Close()
     {
-      _textReader.Close();
+      TextReader.Close();
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -43,9 +38,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _textReader.CreateObjRef(requestedType);
+      return TextReader.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -54,7 +49,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return _textReader.GetLifetimeService();
+      return TextReader.GetLifetimeService();
     }
     
     /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
@@ -63,7 +58,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return _textReader.InitializeLifetimeService();
+      return TextReader.InitializeLifetimeService();
     }
     
     /// <summary>Reads the next character without changing the state of the reader or the character source. Returns the next available character without actually reading it from the reader.</summary>
@@ -73,7 +68,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public int Peek()
     {
-      return _textReader.Peek();
+      return TextReader.Peek();
     }
     
     /// <summary>Reads the next character from the text reader and advances the character position by one character.</summary>
@@ -83,7 +78,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public int Read()
     {
-      return _textReader.Read();
+      return TextReader.Read();
     }
     
     /// <summary>Reads a specified maximum number of characters from the current reader and writes the data to a buffer, beginning at the specified index.</summary>
@@ -101,7 +96,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public int Read(char[] buffer, int index, int count)
     {
-      return _textReader.Read(buffer, index, count);
+      return TextReader.Read(buffer, index, count);
     }
     
     /// <summary>Reads a specified maximum number of characters from the current text reader asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
@@ -118,7 +113,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
     {
-      return _textReader.ReadAsync(buffer, index, count);
+      return TextReader.ReadAsync(buffer, index, count);
     }
     
     /// <summary>Reads a specified maximum number of characters from the current text reader and writes the data to a buffer, beginning at the specified index.</summary>
@@ -136,7 +131,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public int ReadBlock(char[] buffer, int index, int count)
     {
-      return _textReader.ReadBlock(buffer, index, count);
+      return TextReader.ReadBlock(buffer, index, count);
     }
     
     /// <summary>Reads a specified maximum number of characters from the current text reader asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
@@ -153,7 +148,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
     {
-      return _textReader.ReadBlockAsync(buffer, index, count);
+      return TextReader.ReadBlockAsync(buffer, index, count);
     }
     
     /// <summary>Reads a line of characters from the text reader and returns the data as a string.</summary>
@@ -165,7 +160,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public string ReadLine()
     {
-      return _textReader.ReadLine();
+      return TextReader.ReadLine();
     }
     
     /// <summary>Reads a line of characters asynchronously and returns the data as a string. </summary>
@@ -175,7 +170,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public System.Threading.Tasks.Task<string> ReadLineAsync()
     {
-      return _textReader.ReadLineAsync();
+      return TextReader.ReadLineAsync();
     }
     
     /// <summary>Reads all characters from the current position to the end of the text reader and returns them as one string.</summary>
@@ -187,7 +182,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public string ReadToEnd()
     {
-      return _textReader.ReadToEnd();
+      return TextReader.ReadToEnd();
     }
     
     /// <summary>Reads all characters from the current position to the end of the text reader asynchronously and returns them as one string.</summary>
@@ -197,7 +192,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public System.Threading.Tasks.Task<string> ReadToEndAsync()
     {
-      return _textReader.ReadToEndAsync();
+      return TextReader.ReadToEndAsync();
     }
     
     /// <summary>Creates a thread-safe wrapper around the specified TextReader.</summary>
@@ -206,16 +201,16 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="reader" /> is null. </exception>
     /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IO.ITextReader Synchronized(System.IO.TextReader reader)
+    public Wrapperator.Interfaces.IO.ITextReader Synchronized(Wrapperator.Interfaces.IO.ITextReader reader)
     {
-      return new Wrapperator.Wrappers.IO.TextReaderWrapper(System.IO.TextReader.Synchronized(reader));
+      return new Wrapperator.Wrappers.IO.TextReaderWrapper(System.IO.TextReader.Synchronized(reader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)reader).TextReader));
     }
     
     protected virtual void Dispose(bool disposing)
     {
       if (disposing)
       {
-        _textReader.Dispose();
+        TextReader.Dispose();
       }
     }
     

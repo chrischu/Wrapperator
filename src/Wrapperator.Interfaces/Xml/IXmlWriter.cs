@@ -58,27 +58,27 @@ namespace Wrapperator.Interfaces.Xml
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The stream to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified stream.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.Stream output);
+    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the stream and <see cref="T:System.Xml.XmlWriterSettings" /> object.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The stream to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified stream.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.Stream output, System.Xml.XmlWriterSettings settings);
+    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output, System.Xml.XmlWriterSettings settings);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The <see cref="T:System.IO.TextWriter" /> to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified <see cref="T:System.IO.TextWriter" />.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.TextWriter output);
+    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the <see cref="T:System.IO.TextWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The <see cref="T:System.IO.TextWriter" /> to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified <see cref="T:System.IO.TextWriter" />.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.IO.TextWriter output, System.Xml.XmlWriterSettings settings);
+    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output, System.Xml.XmlWriterSettings settings);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Text.StringBuilder" />.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
@@ -97,14 +97,14 @@ namespace Wrapperator.Interfaces.Xml
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object that is wrapped around the specified <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The <see cref="T:System.Xml.XmlWriter" /> object that you want to use as the underlying writer.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.Xml.XmlWriter output);
+    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output);
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Xml.XmlWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object that is wrapped around the specified <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="output">The <see cref="T:System.Xml.XmlWriter" /> object that you want to use as the underlying writer.</param>
     /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.Xml.XmlWriter output, System.Xml.XmlWriterSettings settings);
+    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output, System.Xml.XmlWriterSettings settings);
     
     /// <summary>When overridden in a derived class, flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
@@ -131,7 +131,7 @@ namespace Wrapperator.Interfaces.Xml
     ///  <paramref name="reader" /> is null. </exception>
     /// <exception cref="T:System.Xml.XmlException">The reader is not positioned on an element, attribute or XmlDeclaration node. </exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteAttributes(System.Xml.XmlReader reader, bool defattr);
+    void WriteAttributes(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
     
     /// <summary>Asynchronously writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
     /// <returns>The task that represents the asynchronous WriteAttributes operation.</returns>
@@ -139,7 +139,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteAttributesAsync(System.Xml.XmlReader reader, bool defattr);
+    System.Threading.Tasks.Task WriteAttributesAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
     
     /// <summary>When overridden in a derived class, writes an attribute with the specified local name, namespace URI, and value.</summary>
     /// <param name="localName">The local name of the attribute.</param>
@@ -423,7 +423,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.ArgumentException">
     ///  <paramref name="reader" /> contains invalid characters.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteNode(System.Xml.XmlReader reader, bool defattr);
+    void WriteNode(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
     
     /// <summary>Copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
     /// <param name="navigator">The <see cref="T:System.Xml.XPath.XPathNavigator" /> to copy from.</param>
@@ -439,7 +439,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XmlReader reader, bool defattr);
+    System.Threading.Tasks.Task WriteNodeAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
     
     /// <summary>Asynchronously copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
     /// <returns>The task that represents the asynchronous WriteNode operation.</returns>
@@ -645,7 +645,7 @@ namespace Wrapperator.Interfaces.Xml
     /// <param name="value">The <see cref="T:System.DateTime" /> value to write.</param>
     /// <exception cref="T:System.ArgumentException">An invalid value was specified.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteValue(System.DateTime value);
+    void WriteValue(Wrapperator.Interfaces.IDateTime value);
     
     /// <summary>Writes a <see cref="T:System.DateTimeOffset" /> value.</summary>
     /// <param name="value">The <see cref="T:System.DateTimeOffset" /> value to write.</param>

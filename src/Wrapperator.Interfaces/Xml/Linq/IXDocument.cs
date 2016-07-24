@@ -46,35 +46,35 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> instance by using the specified stream.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> object that reads the data that is contained in the stream. </returns>
     /// <param name="stream">The stream that contains the XML data.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(System.IO.Stream stream);
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.IStream stream);
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> instance by using the specified stream, optionally preserving white space, setting the base URI, and retaining line information.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> object that reads the data that is contained in the stream.</returns>
     /// <param name="stream">The stream containing the XML data.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(System.IO.Stream stream, System.Xml.Linq.LoadOptions options);
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a <see cref="T:System.IO.TextReader" />. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified <see cref="T:System.IO.TextReader" />.</returns>
     /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(System.IO.TextReader textReader);
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.ITextReader textReader);
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a <see cref="T:System.IO.TextReader" />, optionally preserving white space, setting the base URI, and retaining line information.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the XML that was read from the specified <see cref="T:System.IO.TextReader" />.</returns>
     /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(System.IO.TextReader textReader, System.Xml.Linq.LoadOptions options);
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.ITextReader textReader, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from an <see cref="T:System.Xml.XmlReader" />. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified <see cref="T:System.Xml.XmlReader" />.</returns>
     /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(System.Xml.XmlReader reader);
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.Xml.IXmlReader reader);
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XDocument" /> from an <see cref="T:System.Xml.XmlReader" />, optionally setting the base URI, and retaining line information.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the XML that was read from the specified <see cref="T:System.Xml.XmlReader" />.</returns>
     /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that will be read for the content of the <see cref="T:System.Xml.Linq.XDocument" />.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(System.Xml.XmlReader reader, System.Xml.Linq.LoadOptions options);
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.Xml.IXmlReader reader, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a string.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> populated from the string that contains XML.</returns>
@@ -98,24 +98,24 @@ namespace Wrapperator.Interfaces.Xml.Linq
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XDocument" /> to the specified <see cref="T:System.IO.Stream" />.</summary>
     /// <param name="stream">The stream to output this <see cref="T:System.Xml.Linq.XDocument" /> to.</param>
-    void Save(System.IO.Stream stream);
+    void Save(Wrapperator.Interfaces.IO.IStream stream);
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XDocument" /> to the specified <see cref="T:System.IO.Stream" />, optionally specifying formatting behavior.</summary>
     /// <param name="stream">The stream to output this <see cref="T:System.Xml.Linq.XDocument" /> to.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> that specifies formatting behavior.</param>
-    void Save(System.IO.Stream stream, System.Xml.Linq.SaveOptions options);
+    void Save(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.SaveOptions options);
     
     /// <summary>Serialize this <see cref="T:System.Xml.Linq.XDocument" /> to a <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">A <see cref="T:System.IO.TextWriter" /> that the <see cref="T:System.Xml.Linq.XDocument" /> will be written to.</param>
-    void Save(System.IO.TextWriter textWriter);
+    void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter);
     
     /// <summary>Serialize this <see cref="T:System.Xml.Linq.XDocument" /> to a <see cref="T:System.IO.TextWriter" />, optionally disabling formatting.</summary>
     /// <param name="textWriter">The <see cref="T:System.IO.TextWriter" /> to output the XML to.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> that specifies formatting behavior.</param>
-    void Save(System.IO.TextWriter textWriter, System.Xml.Linq.SaveOptions options);
+    void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter, System.Xml.Linq.SaveOptions options);
     
     /// <summary>Serialize this <see cref="T:System.Xml.Linq.XDocument" /> to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> that the <see cref="T:System.Xml.Linq.XDocument" /> will be written to.</param>
-    void Save(System.Xml.XmlWriter writer);
+    void Save(Wrapperator.Interfaces.Xml.IXmlWriter writer);
   }
 }

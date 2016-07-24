@@ -514,7 +514,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Defines a dynamic assembly with the specified name and access mode.</summary>
     /// <returns>A dynamic assembly with the specified name and access mode.</returns>
@@ -525,7 +525,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.ArgumentException">The Name property of <paramref name="name" /> is null.-or- The Name property of <paramref name="name" /> begins with white space, or contains a forward or backward slash. </exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access);
+    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access);
     
     /// <summary>Defines a dynamic assembly with the specified name, access mode, and custom attributes.</summary>
     /// <returns>A dynamic assembly with the specified name and features.</returns>
@@ -536,7 +536,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="name" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">The Name property of <paramref name="name" /> is null.-or- The Name property of <paramref name="name" /> starts with white space, or contains a forward or backward slash. </exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes);
+    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes);
     
     /// <summary>Defines a dynamic assembly with the specified name, access mode, and custom attributes, and using the specified source for its security context.</summary>
     /// <returns>A dynamic assembly with the specified name and features.</returns>
@@ -549,7 +549,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.ArgumentException">The Name property of <paramref name="name" /> is null.-or- The Name property of <paramref name="name" /> starts with white space, or contains a forward or backward slash. </exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <exception cref="T:System.ArgumentOutOfRangeException">The value of <paramref name="securityContextSource" /> was not one of the enumeration values.</exception>
-    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes, System.Security.SecurityContextSource securityContextSource);
+    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes, System.Security.SecurityContextSource securityContextSource);
     
     /// <summary>Defines a dynamic assembly using the specified name, access mode, and storage directory.</summary>
     /// <returns>A dynamic assembly with the specified name and features.</returns>
@@ -561,7 +561,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.ArgumentException">The Name property of <paramref name="name" /> is null.-or- The Name property of <paramref name="name" /> begins with white space, or contains a forward or backward slash. </exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir);
+    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir);
     
     /// <summary>Defines a dynamic assembly using the specified name, access mode, storage directory, and synchronization option.</summary>
     /// <returns>A dynamic assembly with the specified name and features.</returns>
@@ -574,7 +574,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="name" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">The Name property of <paramref name="name" /> is null.-or- The Name property of <paramref name="name" /> starts with white space, or contains a forward or backward slash. </exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(System.Reflection.AssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes);
+    System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes);
     
     /// <summary>Executes the code in another application domain that is identified by the specified delegate.</summary>
     /// <param name="callBackDelegate">A delegate that specifies a method to call. </param>
@@ -665,7 +665,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.BadImageFormatException">The assembly specified by <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <exception cref="T:System.MissingMethodException">The specified assembly has no entry point.</exception>
-    int ExecuteAssemblyByName(System.Reflection.AssemblyName assemblyName, string[] args);
+    int ExecuteAssemblyByName(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyName, string[] args);
     
     /// <summary>Gets the assemblies that have been loaded into the execution context of this application domain.</summary>
     /// <returns>An array of assemblies in this application domain.</returns>
@@ -721,7 +721,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
     /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(System.Reflection.AssemblyName assemblyRef);
+    Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef);
     
     /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its display name.</summary>
     /// <returns>The loaded assembly.</returns>
@@ -808,6 +808,6 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="domain" /> could not be unloaded. </exception>
     /// <exception cref="T:System.Exception">An error occurred during the unload process.</exception>
     /// <filterpriority>1</filterpriority>
-    void Unload(System.AppDomain domain);
+    void Unload(Wrapperator.Interfaces.IAppDomain domain);
   }
 }

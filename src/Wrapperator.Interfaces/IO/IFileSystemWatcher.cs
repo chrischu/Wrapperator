@@ -80,7 +80,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Ends the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>

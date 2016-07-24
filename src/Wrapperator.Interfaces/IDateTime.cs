@@ -166,7 +166,7 @@ namespace Wrapperator.Interfaces
     /// <param name="t1">The first object to compare. </param>
     /// <param name="t2">The second object to compare. </param>
     /// <filterpriority>1</filterpriority>
-    int Compare(System.DateTime t1, System.DateTime t2);
+    int Compare(Wrapperator.Interfaces.IDateTime t1, Wrapperator.Interfaces.IDateTime t2);
     
     /// <summary>Compares the value of this instance to a specified object that contains a specified <see cref="T:System.DateTime" /> value, and returns an integer that indicates whether this instance is earlier than, the same as, or later than the specified <see cref="T:System.DateTime" /> value.</summary>
     /// <returns>A signed number indicating the relative values of this instance and <paramref name="value" />.Value Description Less than zero This instance is earlier than <paramref name="value" />. Zero This instance is the same as <paramref name="value" />. Greater than zero This instance is later than <paramref name="value" />, or <paramref name="value" /> is null. </returns>
@@ -180,7 +180,7 @@ namespace Wrapperator.Interfaces
     /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value" /> parameter.Value Description Less than zero This instance is earlier than <paramref name="value" />. Zero This instance is the same as <paramref name="value" />. Greater than zero This instance is later than <paramref name="value" />. </returns>
     /// <param name="value">The object to compare to the current instance. </param>
     /// <filterpriority>2</filterpriority>
-    int CompareTo(System.DateTime value);
+    int CompareTo(Wrapperator.Interfaces.IDateTime value);
     
     /// <summary>Returns the number of days in the specified month and year.</summary>
     /// <returns>The number of days in <paramref name="month" /> for the specified <paramref name="year" />.For example, if <paramref name="month" /> equals 2 for February, the return value is 28 or 29 depending upon whether <paramref name="year" /> is a leap year.</returns>
@@ -350,14 +350,14 @@ namespace Wrapperator.Interfaces
     /// <param name="value">A date and time. </param>
     /// <param name="kind">One of the enumeration values that indicates whether the new object represents local time, UTC, or neither.</param>
     /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime SpecifyKind(System.DateTime value, System.DateTimeKind kind);
+    Wrapperator.Interfaces.IDateTime SpecifyKind(Wrapperator.Interfaces.IDateTime value, System.DateTimeKind kind);
     
     /// <summary>Subtracts the specified date and time from this instance.</summary>
     /// <returns>A time interval that is equal to the date and time represented by this instance minus the date and time represented by <paramref name="value" />.</returns>
     /// <param name="value">The date and time value to subtract. </param>
     /// <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
     /// <filterpriority>2</filterpriority>
-    System.TimeSpan Subtract(System.DateTime value);
+    System.TimeSpan Subtract(Wrapperator.Interfaces.IDateTime value);
     
     /// <summary>Subtracts the specified duration from this instance.</summary>
     /// <returns>An object that is equal to the date and time represented by this instance minus the time interval represented by <paramref name="value" />.</returns>

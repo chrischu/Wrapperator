@@ -65,12 +65,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Returns a filtered collection of elements that contain this element, and the ancestors of this element. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> that contain this element, and the ancestors of this element. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> AncestorsAndSelf(System.Xml.Linq.XName name);
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> AncestorsAndSelf(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Returns the <see cref="T:System.Xml.Linq.XAttribute" /> of this <see cref="T:System.Xml.Linq.XElement" /> that has the specified <see cref="T:System.Xml.Linq.XName" />.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XAttribute" /> that has the specified <see cref="T:System.Xml.Linq.XName" />; null if there is no attribute with the specified name.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> of the <see cref="T:System.Xml.Linq.XAttribute" /> to get.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXAttribute Attribute(System.Xml.Linq.XName name);
+    Wrapperator.Interfaces.Xml.Linq.IXAttribute Attribute(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Returns a collection of attributes of this element.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XAttribute" /> of attributes of this element.</returns>
@@ -79,7 +79,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Returns a filtered collection of attributes of this element. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XAttribute" /> that contains the attributes of this element. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> Attributes(System.Xml.Linq.XName name);
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> Attributes(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Returns a collection of nodes that contain this element, and all descendant nodes of this element, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> that contain this element, and all descendant nodes of this element, in document order.</returns>
@@ -92,7 +92,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Returns a filtered collection of elements that contain this element, and all descendant elements of this element, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> that contain this element, and all descendant elements of this element, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> DescendantsAndSelf(System.Xml.Linq.XName name);
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> DescendantsAndSelf(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Gets the default <see cref="T:System.Xml.Linq.XNamespace" /> of this <see cref="T:System.Xml.Linq.XElement" />.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XNamespace" /> that contains the default namespace of this <see cref="T:System.Xml.Linq.XElement" />.</returns>
@@ -109,7 +109,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <returns>A <see cref="T:System.String" /> that contains the namespace prefix.</returns>
     /// <param name="ns">An <see cref="T:System.Xml.Linq.XNamespace" /> to look up.</param>
     /// <filterpriority>2</filterpriority>
-    string GetPrefixOfNamespace(System.Xml.Linq.XNamespace ns);
+    string GetPrefixOfNamespace(Wrapperator.Interfaces.Xml.Linq.IXNamespace ns);
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XElement" /> from a file.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> that contains the contents of the specified file.</returns>
@@ -125,35 +125,35 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XElement" /> instance by using the specified stream.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> object used to read the data that is contained in the stream.</returns>
     /// <param name="stream">The stream that contains the XML data.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXElement Load(System.IO.Stream stream);
+    Wrapperator.Interfaces.Xml.Linq.IXElement Load(Wrapperator.Interfaces.IO.IStream stream);
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XElement" /> instance by using the specified stream, optionally preserving white space, setting the base URI, and retaining line information.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> object used to read the data that the stream contains.</returns>
     /// <param name="stream">The stream containing the XML data.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> object that specifies whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXElement Load(System.IO.Stream stream, System.Xml.Linq.LoadOptions options);
+    Wrapperator.Interfaces.Xml.Linq.IXElement Load(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XElement" /> from a <see cref="T:System.IO.TextReader" />. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> that contains the XML that was read from the specified <see cref="T:System.IO.TextReader" />.</returns>
     /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that will be read for the <see cref="T:System.Xml.Linq.XElement" /> content.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXElement Load(System.IO.TextReader textReader);
+    Wrapperator.Interfaces.Xml.Linq.IXElement Load(Wrapperator.Interfaces.IO.ITextReader textReader);
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XElement" /> from a <see cref="T:System.IO.TextReader" />, optionally preserving white space and retaining line information. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> that contains the XML that was read from the specified <see cref="T:System.IO.TextReader" />.</returns>
     /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that will be read for the <see cref="T:System.Xml.Linq.XElement" /> content.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXElement Load(System.IO.TextReader textReader, System.Xml.Linq.LoadOptions options);
+    Wrapperator.Interfaces.Xml.Linq.IXElement Load(Wrapperator.Interfaces.IO.ITextReader textReader, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XElement" /> from an <see cref="T:System.Xml.XmlReader" />. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> that contains the XML that was read from the specified <see cref="T:System.Xml.XmlReader" />.</returns>
     /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that will be read for the content of the <see cref="T:System.Xml.Linq.XElement" />.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXElement Load(System.Xml.XmlReader reader);
+    Wrapperator.Interfaces.Xml.Linq.IXElement Load(Wrapperator.Interfaces.Xml.IXmlReader reader);
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XElement" /> from an <see cref="T:System.Xml.XmlReader" />, optionally preserving white space, setting the base URI, and retaining line information.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> that contains the XML that was read from the specified <see cref="T:System.Xml.XmlReader" />.</returns>
     /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that will be read for the content of the <see cref="T:System.Xml.Linq.XElement" />.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXElement Load(System.Xml.XmlReader reader, System.Xml.Linq.LoadOptions options);
+    Wrapperator.Interfaces.Xml.Linq.IXElement Load(Wrapperator.Interfaces.Xml.IXmlReader reader, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Load an <see cref="T:System.Xml.Linq.XElement" /> from a string that contains XML.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XElement" /> populated from the string that contains XML.</returns>
@@ -199,37 +199,37 @@ namespace Wrapperator.Interfaces.Xml.Linq
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XElement" /> to the specified <see cref="T:System.IO.Stream" />.</summary>
     /// <param name="stream">The stream to output this <see cref="T:System.Xml.Linq.XElement" /> to.</param>
-    void Save(System.IO.Stream stream);
+    void Save(Wrapperator.Interfaces.IO.IStream stream);
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XElement" /> to the specified <see cref="T:System.IO.Stream" />, optionally specifying formatting behavior.</summary>
     /// <param name="stream">The stream to output this <see cref="T:System.Xml.Linq.XElement" /> to.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> object that specifies formatting behavior.</param>
-    void Save(System.IO.Stream stream, System.Xml.Linq.SaveOptions options);
+    void Save(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.SaveOptions options);
     
     /// <summary>Serialize this element to a <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">A <see cref="T:System.IO.TextWriter" /> that the <see cref="T:System.Xml.Linq.XElement" /> will be written to.</param>
-    void Save(System.IO.TextWriter textWriter);
+    void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter);
     
     /// <summary>Serialize this element to a <see cref="T:System.IO.TextWriter" />, optionally disabling formatting.</summary>
     /// <param name="textWriter">The <see cref="T:System.IO.TextWriter" /> to output the XML to.</param>
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> that specifies formatting behavior.</param>
-    void Save(System.IO.TextWriter textWriter, System.Xml.Linq.SaveOptions options);
+    void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter, System.Xml.Linq.SaveOptions options);
     
     /// <summary>Serialize this element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> that the <see cref="T:System.Xml.Linq.XElement" /> will be written to.</param>
-    void Save(System.Xml.XmlWriter writer);
+    void Save(Wrapperator.Interfaces.Xml.IXmlWriter writer);
     
     /// <summary>Sets the value of an attribute, adds an attribute, or removes an attribute. </summary>
     /// <param name="name">An <see cref="T:System.Xml.Linq.XName" /> that contains the name of the attribute to change.</param>
     /// <param name="value">The value to assign to the attribute. The attribute is removed if the value is null. Otherwise, the value is converted to its string representation and assigned to the <see cref="P:System.Xml.Linq.XAttribute.Value" /> property of the attribute.</param>
     /// <exception cref="T:System.ArgumentException">The <paramref name="value" /> is an instance of <see cref="T:System.Xml.Linq.XObject" />.</exception>
-    void SetAttributeValue(System.Xml.Linq.XName name, object value);
+    void SetAttributeValue(Wrapperator.Interfaces.Xml.Linq.IXName name, object value);
     
     /// <summary>Sets the value of a child element, adds a child element, or removes a child element.</summary>
     /// <param name="name">An <see cref="T:System.Xml.Linq.XName" /> that contains the name of the child element to change.</param>
     /// <param name="value">The value to assign to the child element. The child element is removed if the value is null. Otherwise, the value is converted to its string representation and assigned to the <see cref="P:System.Xml.Linq.XElement.Value" /> property of the child element.</param>
     /// <exception cref="T:System.ArgumentException">The <paramref name="value" /> is an instance of <see cref="T:System.Xml.Linq.XObject" />.</exception>
-    void SetElementValue(System.Xml.Linq.XName name, object value);
+    void SetElementValue(Wrapperator.Interfaces.Xml.Linq.IXName name, object value);
     
     /// <summary>Sets the value of this element.</summary>
     /// <param name="value">The value to assign to this element. The value is converted to its string representation and assigned to the <see cref="P:System.Xml.Linq.XElement.Value" /> property.</param>

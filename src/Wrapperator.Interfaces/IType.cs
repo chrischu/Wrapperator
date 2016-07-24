@@ -427,7 +427,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.TypeLoadException">A custom attribute type cannot be loaded. </exception>
     /// <exception cref="T:System.ArgumentNullException">If <paramref name="attributeType" /> is null.</exception>
     /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
-    object[] GetCustomAttributes(System.Type attributeType, bool inherit);
+    object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit);
     
     /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>
     /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</returns>
@@ -571,7 +571,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.InvalidOperationException">The current <see cref="T:System.Type" /> represents a generic type parameter; that is, <see cref="P:System.Type.IsGenericParameter" /> is true. </exception>
     /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.InterfaceMapping GetInterfaceMap(System.Type interfaceType);
+    System.Reflection.InterfaceMapping GetInterfaceMap(Wrapperator.Interfaces.IType interfaceType);
     
     /// <summary>When overridden in a derived class, gets all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
     /// <returns>An array of <see cref="T:System.Type" /> objects representing all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Type" />, if no interfaces are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
@@ -758,7 +758,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="types" /> is multidimensional.-or- <paramref name="modifiers" /> is multidimensional.-or- <paramref name="types" /> and <paramref name="modifiers" /> do not have the same length. </exception>
     /// <exception cref="T:System.NullReferenceException">An element of <paramref name="types" /> is null.</exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.PropertyInfo GetProperty(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers);
+    System.Reflection.PropertyInfo GetProperty(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, Wrapperator.Interfaces.IType returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers);
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types and modifiers.</summary>
     /// <returns>An object representing the public property that matches the specified requirements, if found; otherwise, null.</returns>
@@ -773,7 +773,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="types" /> is multidimensional.-or- <paramref name="modifiers" /> is multidimensional.-or- <paramref name="types" /> and <paramref name="modifiers" /> do not have the same length. </exception>
     /// <exception cref="T:System.NullReferenceException">An element of <paramref name="types" /> is null.</exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.PropertyInfo GetProperty(string name, System.Type returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers);
+    System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers);
     
     /// <summary>Searches for the specified property, using the specified binding constraints.</summary>
     /// <returns>An object representing the property that matches the specified requirements, if found; otherwise, null.</returns>
@@ -797,7 +797,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="types" /> is multidimensional. </exception>
     /// <exception cref="T:System.NullReferenceException">An element of <paramref name="types" /> is null.</exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.PropertyInfo GetProperty(string name, System.Type returnType, System.Type[] types);
+    System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType, System.Type[] types);
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types.</summary>
     /// <returns>An object representing the public property whose parameters match the specified argument types, if found; otherwise, null.</returns>
@@ -820,7 +820,7 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="name" /> is null, or <paramref name="returnType" /> is null. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Reflection.PropertyInfo GetProperty(string name, System.Type returnType);
+    System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType);
     
     /// <summary>Searches for the public property with the specified name.</summary>
     /// <returns>An object representing the public property with the specified name, if found; otherwise, null.</returns>
@@ -844,7 +844,7 @@ namespace Wrapperator.Interfaces
     /// <returns>The code of the underlying type, or <see cref="F:System.TypeCode.Empty" /> if <paramref name="type" /> is null.</returns>
     /// <param name="type">The type whose underlying type code to get. </param>
     /// <filterpriority>1</filterpriority>
-    System.TypeCode GetTypeCode(System.Type type);
+    System.TypeCode GetTypeCode(Wrapperator.Interfaces.IType type);
     
     /// <summary>Gets the type associated with the specified class identifier (CLSID).</summary>
     /// <returns>System.__ComObject regardless of whether the CLSID is valid.</returns>
@@ -996,13 +996,13 @@ namespace Wrapperator.Interfaces
     /// <returns>true if <paramref name="c" /> and the current Type represent the same type, or if the current Type is in the inheritance hierarchy of <paramref name="c" />, or if the current Type is an interface that <paramref name="c" /> implements, or if <paramref name="c" /> is a generic type parameter and the current Type represents one of the constraints of <paramref name="c" />, or if <paramref name="c" /> represents a value type and the current Type represents Nullable&lt;c&gt; (Nullable(Of c) in Visual Basic). false if none of these conditions are true, or if <paramref name="c" /> is null.</returns>
     /// <param name="c">The type to compare with the current type. </param>
     /// <filterpriority>2</filterpriority>
-    bool IsAssignableFrom(System.Type c);
+    bool IsAssignableFrom(Wrapperator.Interfaces.IType c);
     
     /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
     /// <returns>true if one or more instances of <paramref name="attributeType" /> or any of its derived types is applied to this member; otherwise, false.</returns>
     /// <param name="attributeType">The type of custom attribute to search for. The search includes derived types. </param>
     /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
-    bool IsDefined(System.Type attributeType, bool inherit);
+    bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit);
     
     /// <summary>Returns a value that indicates whether the specified value exists in the current enumeration type.</summary>
     /// <returns>true if the specified value is a member of the current enumeration type; otherwise, false.</returns>
@@ -1017,7 +1017,7 @@ namespace Wrapperator.Interfaces
     /// <summary>Determines whether two COM types have the same identity and are eligible for type equivalence.</summary>
     /// <returns>true if the COM types are equivalent; otherwise, false. This method also returns false if one type is in an assembly that is loaded for execution, and the other is in an assembly that is loaded into the reflection-only context.</returns>
     /// <param name="other">The COM type that is tested for equivalence with the current type.</param>
-    bool IsEquivalentTo(System.Type other);
+    bool IsEquivalentTo(Wrapperator.Interfaces.IType other);
     
     /// <summary>Determines whether the specified object is an instance of the current <see cref="T:System.Type" />.</summary>
     /// <returns>true if the current Type is in the inheritance hierarchy of the object represented by <paramref name="o" />, or if the current Type is an interface that <paramref name="o" /> supports. false if neither of these conditions is the case, or if <paramref name="o" /> is null, or if the current Type is an open generic type (that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true).</returns>
@@ -1030,7 +1030,7 @@ namespace Wrapperator.Interfaces
     /// <param name="c">The type to compare with the current type. </param>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="c" /> parameter is null. </exception>
     /// <filterpriority>2</filterpriority>
-    bool IsSubclassOf(System.Type c);
+    bool IsSubclassOf(Wrapperator.Interfaces.IType c);
     
     /// <summary>Returns a <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</summary>
     /// <returns>A <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</returns>

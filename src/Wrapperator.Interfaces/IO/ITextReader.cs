@@ -27,7 +27,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
     /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
@@ -151,6 +151,6 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="reader" /> is null. </exception>
     /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IO.ITextReader Synchronized(System.IO.TextReader reader);
+    Wrapperator.Interfaces.IO.ITextReader Synchronized(Wrapperator.Interfaces.IO.ITextReader reader);
   }
 }

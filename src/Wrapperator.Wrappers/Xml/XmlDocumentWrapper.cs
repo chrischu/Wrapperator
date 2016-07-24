@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Xml
   public partial class XmlDocumentWrapper : Wrapperator.Interfaces.Xml.IXmlDocument
   {
     
-    private System.Xml.XmlDocument _xmlDocument;
-    
-    public static implicit operator System.Xml.XmlDocument (XmlDocumentWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Xml.XmlDocument);
-      return wrapper._xmlDocument;
-    }
+    internal System.Xml.XmlDocument XmlDocument { get; private set; }
+
     
     public XmlDocumentWrapper(System.Xml.XmlDocument xmlDocument)
     {
-      _xmlDocument = xmlDocument;
+      XmlDocument = xmlDocument;
     }
     
     public System.Xml.XmlAttributeCollection Attributes
     {
       get
       {
-        return _xmlDocument.Attributes;
+        return XmlDocument.Attributes;
       }
     }
     
@@ -41,7 +36,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.BaseURI;
+        return XmlDocument.BaseURI;
       }
     }
     
@@ -49,7 +44,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.ChildNodes;
+        return XmlDocument.ChildNodes;
       }
     }
     
@@ -57,7 +52,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.DocumentElement;
+        return XmlDocument.DocumentElement;
       }
     }
     
@@ -65,7 +60,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.DocumentType;
+        return XmlDocument.DocumentType;
       }
     }
     
@@ -73,7 +68,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.FirstChild;
+        return XmlDocument.FirstChild;
       }
     }
     
@@ -81,7 +76,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.HasChildNodes;
+        return XmlDocument.HasChildNodes;
       }
     }
     
@@ -89,7 +84,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.Implementation;
+        return XmlDocument.Implementation;
       }
     }
     
@@ -97,7 +92,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       set
       {
-        _xmlDocument.InnerText = value;
+        XmlDocument.InnerText = value;
       }
     }
     
@@ -105,11 +100,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.InnerXml;
+        return XmlDocument.InnerXml;
       }
       set
       {
-        _xmlDocument.InnerXml = value;
+        XmlDocument.InnerXml = value;
       }
     }
     
@@ -117,7 +112,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.IsReadOnly;
+        return XmlDocument.IsReadOnly;
       }
     }
     
@@ -125,7 +120,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument[name];
+        return XmlDocument[name];
       }
     }
     
@@ -133,7 +128,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument[localname, ns];
+        return XmlDocument[localname, ns];
       }
     }
     
@@ -141,7 +136,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.LastChild;
+        return XmlDocument.LastChild;
       }
     }
     
@@ -149,7 +144,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.LocalName;
+        return XmlDocument.LocalName;
       }
     }
     
@@ -157,7 +152,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.Name;
+        return XmlDocument.Name;
       }
     }
     
@@ -165,7 +160,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.NamespaceURI;
+        return XmlDocument.NamespaceURI;
       }
     }
     
@@ -173,7 +168,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.NameTable;
+        return XmlDocument.NameTable;
       }
     }
     
@@ -181,7 +176,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.NextSibling;
+        return XmlDocument.NextSibling;
       }
     }
     
@@ -189,7 +184,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.NodeType;
+        return XmlDocument.NodeType;
       }
     }
     
@@ -197,7 +192,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.OuterXml;
+        return XmlDocument.OuterXml;
       }
     }
     
@@ -205,7 +200,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.OwnerDocument;
+        return XmlDocument.OwnerDocument;
       }
     }
     
@@ -213,7 +208,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.ParentNode;
+        return XmlDocument.ParentNode;
       }
     }
     
@@ -221,11 +216,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.Prefix;
+        return XmlDocument.Prefix;
       }
       set
       {
-        _xmlDocument.Prefix = value;
+        XmlDocument.Prefix = value;
       }
     }
     
@@ -233,11 +228,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.PreserveWhitespace;
+        return XmlDocument.PreserveWhitespace;
       }
       set
       {
-        _xmlDocument.PreserveWhitespace = value;
+        XmlDocument.PreserveWhitespace = value;
       }
     }
     
@@ -245,7 +240,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.PreviousSibling;
+        return XmlDocument.PreviousSibling;
       }
     }
     
@@ -253,7 +248,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.SchemaInfo;
+        return XmlDocument.SchemaInfo;
       }
     }
     
@@ -261,11 +256,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.Schemas;
+        return XmlDocument.Schemas;
       }
       set
       {
-        _xmlDocument.Schemas = value;
+        XmlDocument.Schemas = value;
       }
     }
     
@@ -273,11 +268,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocument.Value;
+        return XmlDocument.Value;
       }
       set
       {
-        _xmlDocument.Value = value;
+        XmlDocument.Value = value;
       }
     }
     
@@ -285,7 +280,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       set
       {
-        _xmlDocument.XmlResolver = value;
+        XmlDocument.XmlResolver = value;
       }
     }
     
@@ -296,14 +291,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only. </exception>
     public System.Xml.XmlNode AppendChild(System.Xml.XmlNode newChild)
     {
-      return _xmlDocument.AppendChild(newChild);
+      return XmlDocument.AppendChild(newChild);
     }
     
     /// <summary>Creates a duplicate of this node.</summary>
     /// <returns>The cloned node.</returns>
     public System.Xml.XmlNode Clone()
     {
-      return _xmlDocument.Clone();
+      return XmlDocument.Clone();
     }
     
     /// <summary>Creates a duplicate of this node.</summary>
@@ -311,7 +306,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself. </param>
     public System.Xml.XmlNode CloneNode(bool deep)
     {
-      return _xmlDocument.CloneNode(deep);
+      return XmlDocument.CloneNode(deep);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlAttribute" /> with the specified <see cref="P:System.Xml.XmlDocument.Name" />.</summary>
@@ -319,7 +314,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="name">The qualified name of the attribute. If the name contains a colon, the <see cref="P:System.Xml.XmlNode.Prefix" /> property reflects the part of the name preceding the first colon and the <see cref="P:System.Xml.XmlDocument.LocalName" /> property reflects the part of the name following the first colon. The <see cref="P:System.Xml.XmlNode.NamespaceURI" /> remains empty unless the prefix is a recognized built-in prefix such as xmlns. In this case NamespaceURI has a value of http://www.w3.org/2000/xmlns/. </param>
     public System.Xml.XmlAttribute CreateAttribute(string name)
     {
-      return _xmlDocument.CreateAttribute(name);
+      return XmlDocument.CreateAttribute(name);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlAttribute" /> with the specified qualified name and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -328,7 +323,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">The namespaceURI of the attribute. If the qualified name includes a prefix of xmlns, then this parameter must be http://www.w3.org/2000/xmlns/. </param>
     public System.Xml.XmlAttribute CreateAttribute(string qualifiedName, string namespaceURI)
     {
-      return _xmlDocument.CreateAttribute(qualifiedName, namespaceURI);
+      return XmlDocument.CreateAttribute(qualifiedName, namespaceURI);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlAttribute" /> with the specified <see cref="P:System.Xml.XmlNode.Prefix" />, <see cref="P:System.Xml.XmlDocument.LocalName" />, and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -338,7 +333,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">The namespace URI of the attribute (if any). String.Empty and null are equivalent. If <paramref name="prefix" /> is xmlns, then this parameter must be http://www.w3.org/2000/xmlns/; otherwise an exception is thrown. </param>
     public System.Xml.XmlAttribute CreateAttribute(string prefix, string localName, string namespaceURI)
     {
-      return _xmlDocument.CreateAttribute(prefix, localName, namespaceURI);
+      return XmlDocument.CreateAttribute(prefix, localName, namespaceURI);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlCDataSection" /> containing the specified data.</summary>
@@ -346,7 +341,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="data">The content of the new XmlCDataSection. </param>
     public System.Xml.XmlCDataSection CreateCDataSection(string data)
     {
-      return _xmlDocument.CreateCDataSection(data);
+      return XmlDocument.CreateCDataSection(data);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlComment" /> containing the specified data.</summary>
@@ -354,14 +349,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="data">The content of the new XmlComment. </param>
     public System.Xml.XmlComment CreateComment(string data)
     {
-      return _xmlDocument.CreateComment(data);
+      return XmlDocument.CreateComment(data);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlDocumentFragment" />.</summary>
     /// <returns>The new XmlDocumentFragment.</returns>
     public Wrapperator.Interfaces.Xml.IXmlDocumentFragment CreateDocumentFragment()
     {
-      return new Wrapperator.Wrappers.Xml.XmlDocumentFragmentWrapper(_xmlDocument.CreateDocumentFragment());
+      return new Wrapperator.Wrappers.Xml.XmlDocumentFragmentWrapper(XmlDocument.CreateDocumentFragment());
     }
     
     /// <summary>Returns a new <see cref="T:System.Xml.XmlDocumentType" /> object.</summary>
@@ -372,7 +367,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="internalSubset">The DTD internal subset of the document type or null. </param>
     public System.Xml.XmlDocumentType CreateDocumentType(string name, string publicId, string systemId, string internalSubset)
     {
-      return _xmlDocument.CreateDocumentType(name, publicId, systemId, internalSubset);
+      return XmlDocument.CreateDocumentType(name, publicId, systemId, internalSubset);
     }
     
     /// <summary>Creates an element with the specified name.</summary>
@@ -380,7 +375,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="name">The qualified name of the element. If the name contains a colon then the <see cref="P:System.Xml.XmlNode.Prefix" /> property reflects the part of the name preceding the colon and the <see cref="P:System.Xml.XmlDocument.LocalName" /> property reflects the part of the name after the colon. The qualified name cannot include a prefix of'xmlns'. </param>
     public System.Xml.XmlElement CreateElement(string name)
     {
-      return _xmlDocument.CreateElement(name);
+      return XmlDocument.CreateElement(name);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlElement" /> with the qualified name and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -389,7 +384,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">The namespace URI of the element. </param>
     public System.Xml.XmlElement CreateElement(string qualifiedName, string namespaceURI)
     {
-      return _xmlDocument.CreateElement(qualifiedName, namespaceURI);
+      return XmlDocument.CreateElement(qualifiedName, namespaceURI);
     }
     
     /// <summary>Creates an element with the specified <see cref="P:System.Xml.XmlNode.Prefix" />, <see cref="P:System.Xml.XmlDocument.LocalName" />, and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -399,7 +394,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">The namespace URI of the new element (if any). String.Empty and null are equivalent. </param>
     public System.Xml.XmlElement CreateElement(string prefix, string localName, string namespaceURI)
     {
-      return _xmlDocument.CreateElement(prefix, localName, namespaceURI);
+      return XmlDocument.CreateElement(prefix, localName, namespaceURI);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlEntityReference" /> with the specified name.</summary>
@@ -408,14 +403,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The name is invalid (for example, names starting with'#' are invalid.) </exception>
     public System.Xml.XmlEntityReference CreateEntityReference(string name)
     {
-      return _xmlDocument.CreateEntityReference(name);
+      return XmlDocument.CreateEntityReference(name);
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XPath.XPathNavigator" /> object for navigating this document.</summary>
     /// <returns>An <see cref="T:System.Xml.XPath.XPathNavigator" /> object.</returns>
     public System.Xml.XPath.XPathNavigator CreateNavigator()
     {
-      return _xmlDocument.CreateNavigator();
+      return XmlDocument.CreateNavigator();
     }
     
     /// <summary>Creates a <see cref="T:System.Xml.XmlNode" /> with the specified <see cref="T:System.Xml.XmlNodeType" />, <see cref="P:System.Xml.XmlNode.Prefix" />, <see cref="P:System.Xml.XmlDocument.Name" />, and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -427,7 +422,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The name was not provided and the XmlNodeType requires a name. </exception>
     public System.Xml.XmlNode CreateNode(System.Xml.XmlNodeType type, string prefix, string name, string namespaceURI)
     {
-      return _xmlDocument.CreateNode(type, prefix, name, namespaceURI);
+      return XmlDocument.CreateNode(type, prefix, name, namespaceURI);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlNode" /> with the specified node type, <see cref="P:System.Xml.XmlDocument.Name" />, and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -438,7 +433,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The name was not provided and the XmlNodeType requires a name; or <paramref name="nodeTypeString" /> is not one of the strings listed below. </exception>
     public System.Xml.XmlNode CreateNode(string nodeTypeString, string name, string namespaceURI)
     {
-      return _xmlDocument.CreateNode(nodeTypeString, name, namespaceURI);
+      return XmlDocument.CreateNode(nodeTypeString, name, namespaceURI);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlNode" /> with the specified <see cref="T:System.Xml.XmlNodeType" />, <see cref="P:System.Xml.XmlDocument.Name" />, and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -449,7 +444,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The name was not provided and the XmlNodeType requires a name. </exception>
     public System.Xml.XmlNode CreateNode(System.Xml.XmlNodeType type, string name, string namespaceURI)
     {
-      return _xmlDocument.CreateNode(type, name, namespaceURI);
+      return XmlDocument.CreateNode(type, name, namespaceURI);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlProcessingInstruction" /> with the specified name and data.</summary>
@@ -458,7 +453,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="data">The data for the processing instruction. </param>
     public System.Xml.XmlProcessingInstruction CreateProcessingInstruction(string target, string data)
     {
-      return _xmlDocument.CreateProcessingInstruction(target, data);
+      return XmlDocument.CreateProcessingInstruction(target, data);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlSignificantWhitespace" /> node.</summary>
@@ -466,7 +461,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="text">The string must contain only the following characters &amp;#20; &amp;#10; &amp;#13; and &amp;#9; </param>
     public System.Xml.XmlSignificantWhitespace CreateSignificantWhitespace(string text)
     {
-      return _xmlDocument.CreateSignificantWhitespace(text);
+      return XmlDocument.CreateSignificantWhitespace(text);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlText" /> with the specified text.</summary>
@@ -474,7 +469,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="text">The text for the Text node. </param>
     public System.Xml.XmlText CreateTextNode(string text)
     {
-      return _xmlDocument.CreateTextNode(text);
+      return XmlDocument.CreateTextNode(text);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlWhitespace" /> node.</summary>
@@ -482,7 +477,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="text">The string must contain only the following characters &amp;#20; &amp;#10; &amp;#13; and &amp;#9; </param>
     public System.Xml.XmlWhitespace CreateWhitespace(string text)
     {
-      return _xmlDocument.CreateWhitespace(text);
+      return XmlDocument.CreateWhitespace(text);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlDeclaration" /> node with the specified values.</summary>
@@ -493,7 +488,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The values of <paramref name="version" /> or <paramref name="standalone" /> are something other than the ones specified above. </exception>
     public System.Xml.XmlDeclaration CreateXmlDeclaration(string version, string encoding, string standalone)
     {
-      return _xmlDocument.CreateXmlDeclaration(version, encoding, standalone);
+      return XmlDocument.CreateXmlDeclaration(version, encoding, standalone);
     }
     
     /// <summary>Gets the <see cref="T:System.Xml.XmlElement" /> with the specified ID.</summary>
@@ -501,7 +496,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="elementId">The attribute ID to match. </param>
     public System.Xml.XmlElement GetElementById(string elementId)
     {
-      return _xmlDocument.GetElementById(elementId);
+      return XmlDocument.GetElementById(elementId);
     }
     
     /// <summary>Returns an <see cref="T:System.Xml.XmlNodeList" /> containing a list of all descendant elements that match the specified <see cref="P:System.Xml.XmlDocument.Name" />.</summary>
@@ -509,7 +504,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="name">The qualified name to match. It is matched against the Name property of the matching node. The special value "*" matches all tags. </param>
     public System.Xml.XmlNodeList GetElementsByTagName(string name)
     {
-      return _xmlDocument.GetElementsByTagName(name);
+      return XmlDocument.GetElementsByTagName(name);
     }
     
     /// <summary>Returns an <see cref="T:System.Xml.XmlNodeList" /> containing a list of all descendant elements that match the specified <see cref="P:System.Xml.XmlDocument.LocalName" /> and <see cref="P:System.Xml.XmlNode.NamespaceURI" />.</summary>
@@ -518,14 +513,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">NamespaceURI to match. </param>
     public System.Xml.XmlNodeList GetElementsByTagName(string localName, string namespaceURI)
     {
-      return _xmlDocument.GetElementsByTagName(localName, namespaceURI);
+      return XmlDocument.GetElementsByTagName(localName, namespaceURI);
     }
     
     /// <summary>Get an enumerator that iterates through the child nodes in the current node.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the child nodes in the current node.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return _xmlDocument.GetEnumerator();
+      return XmlDocument.GetEnumerator();
     }
     
     /// <summary>Looks up the closest xmlns declaration for the given prefix that is in scope for the current node and returns the namespace URI in the declaration.</summary>
@@ -533,7 +528,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="prefix">The prefix whose namespace URI you want to find. </param>
     public string GetNamespaceOfPrefix(string prefix)
     {
-      return _xmlDocument.GetNamespaceOfPrefix(prefix);
+      return XmlDocument.GetNamespaceOfPrefix(prefix);
     }
     
     /// <summary>Looks up the closest xmlns declaration for the given namespace URI that is in scope for the current node and returns the prefix defined in that declaration.</summary>
@@ -541,7 +536,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">The namespace URI whose prefix you want to find. </param>
     public string GetPrefixOfNamespace(string namespaceURI)
     {
-      return _xmlDocument.GetPrefixOfNamespace(namespaceURI);
+      return XmlDocument.GetPrefixOfNamespace(namespaceURI);
     }
     
     /// <summary>Imports a node from another document to the current document.</summary>
@@ -551,7 +546,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">Calling this method on a node type which cannot be imported. </exception>
     public System.Xml.XmlNode ImportNode(System.Xml.XmlNode node, bool deep)
     {
-      return _xmlDocument.ImportNode(node, deep);
+      return XmlDocument.ImportNode(node, deep);
     }
     
     /// <summary>Inserts the specified node immediately after the specified reference node.</summary>
@@ -562,7 +557,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.The <paramref name="refChild" /> is not a child of this node.This node is read-only. </exception>
     public System.Xml.XmlNode InsertAfter(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild)
     {
-      return _xmlDocument.InsertAfter(newChild, refChild);
+      return XmlDocument.InsertAfter(newChild, refChild);
     }
     
     /// <summary>Inserts the specified node immediately before the specified reference node.</summary>
@@ -573,7 +568,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.The <paramref name="refChild" /> is not a child of this node.This node is read-only. </exception>
     public System.Xml.XmlNode InsertBefore(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild)
     {
-      return _xmlDocument.InsertBefore(newChild, refChild);
+      return XmlDocument.InsertBefore(newChild, refChild);
     }
     
     /// <summary>Loads the XML document from the specified URL.</summary>
@@ -594,31 +589,31 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     public void Load(string filename)
     {
-      _xmlDocument.Load(filename);
+      XmlDocument.Load(filename);
     }
     
     /// <summary>Loads the XML document from the specified stream.</summary>
     /// <param name="inStream">The stream containing the XML document to load. </param>
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, a <see cref="T:System.IO.FileNotFoundException" /> is raised. </exception>
-    public void Load(System.IO.Stream inStream)
+    public void Load(Wrapperator.Interfaces.IO.IStream inStream)
     {
-      _xmlDocument.Load(inStream);
+      XmlDocument.Load(inStream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)inStream).Stream);
     }
     
     /// <summary>Loads the XML document from the specified <see cref="T:System.IO.TextReader" />.</summary>
     /// <param name="txtReader">The TextReader used to feed the XML data into the document. </param>
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
-    public void Load(System.IO.TextReader txtReader)
+    public void Load(Wrapperator.Interfaces.IO.ITextReader txtReader)
     {
-      _xmlDocument.Load(txtReader);
+      XmlDocument.Load(txtReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)txtReader).TextReader);
     }
     
     /// <summary>Loads the XML document from the specified <see cref="T:System.Xml.XmlReader" />.</summary>
     /// <param name="reader">The XmlReader used to feed the XML data into the document. </param>
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
-    public void Load(System.Xml.XmlReader reader)
+    public void Load(Wrapperator.Interfaces.Xml.IXmlReader reader)
     {
-      _xmlDocument.Load(reader);
+      XmlDocument.Load(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader);
     }
     
     /// <summary>Loads the XML document from the specified string.</summary>
@@ -626,13 +621,13 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
     public void LoadXml(string xml)
     {
-      _xmlDocument.LoadXml(xml);
+      XmlDocument.LoadXml(xml);
     }
     
     /// <summary>Puts all XmlText nodes in the full depth of the sub-tree underneath this XmlNode into a "normal" form where only markup (that is, tags, comments, processing instructions, CDATA sections, and entity references) separates XmlText nodes, that is, there are no adjacent XmlText nodes.</summary>
     public void Normalize()
     {
-      _xmlDocument.Normalize();
+      XmlDocument.Normalize();
     }
     
     /// <summary>Adds the specified node to the beginning of the list of child nodes for this node.</summary>
@@ -642,22 +637,22 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only. </exception>
     public System.Xml.XmlNode PrependChild(System.Xml.XmlNode newChild)
     {
-      return _xmlDocument.PrependChild(newChild);
+      return XmlDocument.PrependChild(newChild);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlNode" /> object based on the information in the <see cref="T:System.Xml.XmlReader" />. The reader must be positioned on a node or attribute.</summary>
     /// <returns>The new XmlNode or null if no more nodes exist.</returns>
     /// <param name="reader">The XML source </param>
     /// <exception cref="T:System.NullReferenceException">The reader is positioned on a node type that does not translate to a valid DOM node (for example, EndElement or EndEntity). </exception>
-    public System.Xml.XmlNode ReadNode(System.Xml.XmlReader reader)
+    public System.Xml.XmlNode ReadNode(Wrapperator.Interfaces.Xml.IXmlReader reader)
     {
-      return _xmlDocument.ReadNode(reader);
+      return XmlDocument.ReadNode(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader);
     }
     
     /// <summary>Removes all the child nodes and/or attributes of the current node.</summary>
     public void RemoveAll()
     {
-      _xmlDocument.RemoveAll();
+      XmlDocument.RemoveAll();
     }
     
     /// <summary>Removes specified child node.</summary>
@@ -666,7 +661,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="oldChild" /> is not a child of this node. Or this node is read-only. </exception>
     public System.Xml.XmlNode RemoveChild(System.Xml.XmlNode oldChild)
     {
-      return _xmlDocument.RemoveChild(oldChild);
+      return XmlDocument.RemoveChild(oldChild);
     }
     
     /// <summary>Replaces the child node <paramref name="oldChild" /> with <paramref name="newChild" /> node.</summary>
@@ -677,7 +672,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only.The <paramref name="oldChild" /> is not a child of this node. </exception>
     public System.Xml.XmlNode ReplaceChild(System.Xml.XmlNode newChild, System.Xml.XmlNode oldChild)
     {
-      return _xmlDocument.ReplaceChild(newChild, oldChild);
+      return XmlDocument.ReplaceChild(newChild, oldChild);
     }
     
     /// <summary>Saves the XML document to the specified file.</summary>
@@ -685,31 +680,31 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
     public void Save(string filename)
     {
-      _xmlDocument.Save(filename);
+      XmlDocument.Save(filename);
     }
     
     /// <summary>Saves the XML document to the specified stream.</summary>
     /// <param name="outStream">The stream to which you want to save. </param>
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
-    public void Save(System.IO.Stream outStream)
+    public void Save(Wrapperator.Interfaces.IO.IStream outStream)
     {
-      _xmlDocument.Save(outStream);
+      XmlDocument.Save(outStream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)outStream).Stream);
     }
     
     /// <summary>Saves the XML document to the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="writer">The TextWriter to which you want to save. </param>
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
-    public void Save(System.IO.TextWriter writer)
+    public void Save(Wrapperator.Interfaces.IO.ITextWriter writer)
     {
-      _xmlDocument.Save(writer);
+      XmlDocument.Save(writer == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)writer).TextWriter);
     }
     
     /// <summary>Saves the XML document to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
-    public void Save(System.Xml.XmlWriter w)
+    public void Save(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _xmlDocument.Save(w);
+      XmlDocument.Save(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w).XmlWriter);
     }
     
     /// <summary>Selects a list of nodes matching the XPath expression.</summary>
@@ -718,7 +713,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix. </exception>
     public System.Xml.XmlNodeList SelectNodes(string xpath)
     {
-      return _xmlDocument.SelectNodes(xpath);
+      return XmlDocument.SelectNodes(xpath);
     }
     
     /// <summary>Selects a list of nodes matching the XPath expression. Any prefixes found in the XPath expression are resolved using the supplied <see cref="T:System.Xml.XmlNamespaceManager" />.</summary>
@@ -728,7 +723,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix which is not defined in the XmlNamespaceManager. </exception>
     public System.Xml.XmlNodeList SelectNodes(string xpath, System.Xml.XmlNamespaceManager nsmgr)
     {
-      return _xmlDocument.SelectNodes(xpath, nsmgr);
+      return XmlDocument.SelectNodes(xpath, nsmgr);
     }
     
     /// <summary>Selects the first XmlNode that matches the XPath expression.</summary>
@@ -737,7 +732,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix. </exception>
     public System.Xml.XmlNode SelectSingleNode(string xpath)
     {
-      return _xmlDocument.SelectSingleNode(xpath);
+      return XmlDocument.SelectSingleNode(xpath);
     }
     
     /// <summary>Selects the first XmlNode that matches the XPath expression. Any prefixes found in the XPath expression are resolved using the supplied <see cref="T:System.Xml.XmlNamespaceManager" />.</summary>
@@ -747,7 +742,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix which is not defined in the XmlNamespaceManager. </exception>
     public System.Xml.XmlNode SelectSingleNode(string xpath, System.Xml.XmlNamespaceManager nsmgr)
     {
-      return _xmlDocument.SelectSingleNode(xpath, nsmgr);
+      return XmlDocument.SelectSingleNode(xpath, nsmgr);
     }
     
     /// <summary>Tests if the DOM implementation implements a specific feature.</summary>
@@ -756,7 +751,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="version">The version number of the package name to test. If the version is not specified (null), supporting any version of the feature causes the method to return true. </param>
     public bool Supports(string feature, string version)
     {
-      return _xmlDocument.Supports(feature, version);
+      return XmlDocument.Supports(feature, version);
     }
     
     /// <summary>Validates the <see cref="T:System.Xml.XmlDocument" /> against the XML Schema Definition Language (XSD) schemas contained in the <see cref="P:System.Xml.XmlDocument.Schemas" /> property.</summary>
@@ -764,7 +759,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.Schema.XmlSchemaValidationException">A schema validation event occurred and no <see cref="T:System.Xml.Schema.ValidationEventHandler" /> object was specified.</exception>
     public void Validate(System.Xml.Schema.ValidationEventHandler validationEventHandler)
     {
-      _xmlDocument.Validate(validationEventHandler);
+      XmlDocument.Validate(validationEventHandler);
     }
     
     /// <summary>Validates the <see cref="T:System.Xml.XmlNode" /> object specified against the XML Schema Definition Language (XSD) schemas in the <see cref="P:System.Xml.XmlDocument.Schemas" /> property.</summary>
@@ -775,21 +770,21 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.Schema.XmlSchemaValidationException">A schema validation event occurred and no <see cref="T:System.Xml.Schema.ValidationEventHandler" /> object was specified.</exception>
     public void Validate(System.Xml.Schema.ValidationEventHandler validationEventHandler, System.Xml.XmlNode nodeToValidate)
     {
-      _xmlDocument.Validate(validationEventHandler, nodeToValidate);
+      XmlDocument.Validate(validationEventHandler, nodeToValidate);
     }
     
     /// <summary>Saves all the children of the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="xw">The XmlWriter to which you want to save. </param>
-    public void WriteContentTo(System.Xml.XmlWriter xw)
+    public void WriteContentTo(Wrapperator.Interfaces.Xml.IXmlWriter xw)
     {
-      _xmlDocument.WriteContentTo(xw);
+      XmlDocument.WriteContentTo(xw == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)xw).XmlWriter);
     }
     
     /// <summary>Saves the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
-    public void WriteTo(System.Xml.XmlWriter w)
+    public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _xmlDocument.WriteTo(w);
+      XmlDocument.WriteTo(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w).XmlWriter);
     }
   }
 }

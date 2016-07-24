@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Reflection
   public partial class AssemblyWrapper : Wrapperator.Interfaces.Reflection.IAssembly
   {
     
-    private System.Reflection.Assembly _assembly;
-    
-    public static implicit operator System.Reflection.Assembly (AssemblyWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Reflection.Assembly);
-      return wrapper._assembly;
-    }
+    internal System.Reflection.Assembly Assembly { get; private set; }
+
     
     public AssemblyWrapper(System.Reflection.Assembly assembly)
     {
-      _assembly = assembly;
+      Assembly = assembly;
     }
     
     public string CodeBase
     {
       get
       {
-        return _assembly.CodeBase;
+        return Assembly.CodeBase;
       }
     }
     
@@ -41,7 +36,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.CustomAttributes;
+        return Assembly.CustomAttributes;
       }
     }
     
@@ -49,7 +44,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.DefinedTypes;
+        return Assembly.DefinedTypes;
       }
     }
     
@@ -57,7 +52,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.EntryPoint;
+        return Assembly.EntryPoint;
       }
     }
     
@@ -65,7 +60,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.EscapedCodeBase;
+        return Assembly.EscapedCodeBase;
       }
     }
     
@@ -73,7 +68,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.Evidence;
+        return Assembly.Evidence;
       }
     }
     
@@ -81,7 +76,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.ExportedTypes;
+        return Assembly.ExportedTypes;
       }
     }
     
@@ -89,7 +84,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.FullName;
+        return Assembly.FullName;
       }
     }
     
@@ -97,7 +92,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.GlobalAssemblyCache;
+        return Assembly.GlobalAssemblyCache;
       }
     }
     
@@ -105,7 +100,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.HostContext;
+        return Assembly.HostContext;
       }
     }
     
@@ -113,7 +108,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.ImageRuntimeVersion;
+        return Assembly.ImageRuntimeVersion;
       }
     }
     
@@ -121,7 +116,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.IsDynamic;
+        return Assembly.IsDynamic;
       }
     }
     
@@ -129,7 +124,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.IsFullyTrusted;
+        return Assembly.IsFullyTrusted;
       }
     }
     
@@ -137,7 +132,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.Location;
+        return Assembly.Location;
       }
     }
     
@@ -145,7 +140,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.ManifestModule;
+        return Assembly.ManifestModule;
       }
     }
     
@@ -153,7 +148,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.Modules;
+        return Assembly.Modules;
       }
     }
     
@@ -161,7 +156,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.PermissionSet;
+        return Assembly.PermissionSet;
       }
     }
     
@@ -169,7 +164,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.ReflectionOnly;
+        return Assembly.ReflectionOnly;
       }
     }
     
@@ -177,7 +172,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assembly.SecurityRuleSet;
+        return Assembly.SecurityRuleSet;
       }
     }
     
@@ -197,7 +192,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="typeName" /> requires a dependent assembly, but the file is not a valid assembly. -or-<paramref name="typeName" /> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version.</exception>
     public object CreateInstance(string typeName)
     {
-      return _assembly.CreateInstance(typeName);
+      return Assembly.CreateInstance(typeName);
     }
     
     /// <summary>Locates the specified type from this assembly and creates an instance of it using the system activator, with optional case-sensitive search.</summary>
@@ -217,7 +212,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="typeName" /> requires a dependent assembly, but the file is not a valid assembly. -or-<paramref name="typeName" /> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version.</exception>
     public object CreateInstance(string typeName, bool ignoreCase)
     {
-      return _assembly.CreateInstance(typeName, ignoreCase);
+      return Assembly.CreateInstance(typeName, ignoreCase);
     }
     
     /// <summary>Locates the specified type from this assembly and creates an instance of it using the system activator, with optional case-sensitive search and having the specified culture, arguments, and binding and activation attributes.</summary>
@@ -243,7 +238,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="typeName" /> requires a dependent assembly, but the file is not a valid assembly. -or-<paramref name="typeName" /> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version.</exception>
     public object CreateInstance(string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes)
     {
-      return _assembly.CreateInstance(typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
+      return Assembly.CreateInstance(typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
     }
     
     /// <summary>Creates the name of a type qualified by the display name of its assembly.</summary>
@@ -260,9 +255,9 @@ namespace Wrapperator.Wrappers.Reflection
     /// <param name="type">An object representing a class in the assembly that will be returned. </param>
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="type" /> is null. </exception>
-    public Wrapperator.Interfaces.Reflection.IAssembly GetAssembly(System.Type type)
+    public Wrapperator.Interfaces.Reflection.IAssembly GetAssembly(Wrapperator.Interfaces.IType type)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.GetAssembly(type));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.GetAssembly(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type));
     }
     
     /// <summary>Returns the <see cref="T:System.Reflection.Assembly" /> of the method that invoked the currently executing method.</summary>
@@ -277,7 +272,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <param name="inherit">This argument is ignored for objects of type <see cref="T:System.Reflection.Assembly" />. </param>
     public object[] GetCustomAttributes(bool inherit)
     {
-      return _assembly.GetCustomAttributes(inherit);
+      return Assembly.GetCustomAttributes(inherit);
     }
     
     /// <summary>Gets the custom attributes for this assembly as specified by type.</summary>
@@ -288,16 +283,16 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="attributeType" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">
     ///  <paramref name="attributeType" /> is not a runtime type. </exception>
-    public object[] GetCustomAttributes(System.Type attributeType, bool inherit)
+    public object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _assembly.GetCustomAttributes(attributeType, inherit);
+      return Assembly.GetCustomAttributes(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
     }
     
     /// <summary>Returns information about the attributes that have been applied to the current <see cref="T:System.Reflection.Assembly" />, expressed as <see cref="T:System.Reflection.CustomAttributeData" /> objects.</summary>
     /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the current assembly.</returns>
     public System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData()
     {
-      return _assembly.GetCustomAttributesData();
+      return Assembly.GetCustomAttributesData();
     }
     
     /// <summary>Gets the process executable in the default application domain. In other application domains, this is the first executable that was executed by <see cref="M:System.AppDomain.ExecuteAssembly(System.String)" />.</summary>
@@ -319,7 +314,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.NotSupportedException">The assembly is a dynamic assembly.</exception>
     public System.Type[] GetExportedTypes()
     {
-      return _assembly.GetExportedTypes();
+      return Assembly.GetExportedTypes();
     }
     
     /// <summary>Gets a <see cref="T:System.IO.FileStream" /> for the specified file in the file table of the manifest of this assembly.</summary>
@@ -334,7 +329,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="name" /> is not a valid assembly. </exception>
     public Wrapperator.Interfaces.IO.IFileStream GetFile(string name)
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_assembly.GetFile(name));
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(Assembly.GetFile(name));
     }
     
     /// <summary>Gets the files in the file table of an assembly manifest.</summary>
@@ -344,7 +339,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.BadImageFormatException">A file was not a valid assembly. </exception>
     public System.IO.FileStream[] GetFiles()
     {
-      return _assembly.GetFiles();
+      return Assembly.GetFiles();
     }
     
     /// <summary>Gets the files in the file table of an assembly manifest, specifying whether to include resource modules.</summary>
@@ -355,14 +350,14 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.BadImageFormatException">A file was not a valid assembly. </exception>
     public System.IO.FileStream[] GetFiles(bool getResourceModules)
     {
-      return _assembly.GetFiles(getResourceModules);
+      return Assembly.GetFiles(getResourceModules);
     }
     
     /// <summary>Gets all the loaded modules that are part of this assembly.</summary>
     /// <returns>An array of modules.</returns>
     public System.Reflection.Module[] GetLoadedModules()
     {
-      return _assembly.GetLoadedModules();
+      return Assembly.GetLoadedModules();
     }
     
     /// <summary>Gets all the loaded modules that are part of this assembly, specifying whether to include resource modules.</summary>
@@ -370,7 +365,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <param name="getResourceModules">true to include resource modules; otherwise, false. </param>
     public System.Reflection.Module[] GetLoadedModules(bool getResourceModules)
     {
-      return _assembly.GetLoadedModules(getResourceModules);
+      return Assembly.GetLoadedModules(getResourceModules);
     }
     
     /// <summary>Returns information about how the given resource has been persisted.</summary>
@@ -381,14 +376,14 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.ArgumentException">The <paramref name="resourceName" /> parameter is an empty string (""). </exception>
     public System.Reflection.ManifestResourceInfo GetManifestResourceInfo(string resourceName)
     {
-      return _assembly.GetManifestResourceInfo(resourceName);
+      return Assembly.GetManifestResourceInfo(resourceName);
     }
     
     /// <summary>Returns the names of all the resources in this assembly.</summary>
     /// <returns>An array that contains the names of all the resources.</returns>
     public string[] GetManifestResourceNames()
     {
-      return _assembly.GetManifestResourceNames();
+      return Assembly.GetManifestResourceNames();
     }
     
     /// <summary>Loads the specified manifest resource, scoped by the namespace of the specified type, from this assembly.</summary>
@@ -403,9 +398,9 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.BadImageFormatException">
     ///  <paramref name="name" /> is not a valid assembly. </exception>
     /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
-    public Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(System.Type type, string name)
+    public Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(Wrapperator.Interfaces.IType type, string name)
     {
-      return new Wrapperator.Wrappers.IO.StreamWrapper(_assembly.GetManifestResourceStream(type, name));
+      return new Wrapperator.Wrappers.IO.StreamWrapper(Assembly.GetManifestResourceStream(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type, name));
     }
     
     /// <summary>Loads the specified manifest resource from this assembly.</summary>
@@ -421,7 +416,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
     public Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(string name)
     {
-      return new Wrapperator.Wrappers.IO.StreamWrapper(_assembly.GetManifestResourceStream(name));
+      return new Wrapperator.Wrappers.IO.StreamWrapper(Assembly.GetManifestResourceStream(name));
     }
     
     /// <summary>Gets the specified module in this assembly.</summary>
@@ -436,7 +431,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="name" /> is not a valid assembly. </exception>
     public System.Reflection.Module GetModule(string name)
     {
-      return _assembly.GetModule(name);
+      return Assembly.GetModule(name);
     }
     
     /// <summary>Gets all the modules that are part of this assembly.</summary>
@@ -444,7 +439,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.IO.FileNotFoundException">The module to be loaded does not specify a file name extension. </exception>
     public System.Reflection.Module[] GetModules()
     {
-      return _assembly.GetModules();
+      return Assembly.GetModules();
     }
     
     /// <summary>Gets all the modules that are part of this assembly, specifying whether to include resource modules.</summary>
@@ -452,14 +447,14 @@ namespace Wrapperator.Wrappers.Reflection
     /// <param name="getResourceModules">true to include resource modules; otherwise, false. </param>
     public System.Reflection.Module[] GetModules(bool getResourceModules)
     {
-      return _assembly.GetModules(getResourceModules);
+      return Assembly.GetModules(getResourceModules);
     }
     
     /// <summary>Gets an <see cref="T:System.Reflection.AssemblyName" /> for this assembly.</summary>
     /// <returns>An object that contains the fully parsed display name for this assembly.</returns>
     public Wrapperator.Interfaces.Reflection.IAssemblyName GetName()
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyNameWrapper(_assembly.GetName());
+      return new Wrapperator.Wrappers.Reflection.AssemblyNameWrapper(Assembly.GetName());
     }
     
     /// <summary>Gets an <see cref="T:System.Reflection.AssemblyName" /> for this assembly, setting the codebase as specified by <paramref name="copiedName" />.</summary>
@@ -467,7 +462,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <param name="copiedName">true to set the <see cref="P:System.Reflection.Assembly.CodeBase" /> to the location of the assembly after it was shadow copied; false to set <see cref="P:System.Reflection.Assembly.CodeBase" /> to the original location. </param>
     public Wrapperator.Interfaces.Reflection.IAssemblyName GetName(bool copiedName)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyNameWrapper(_assembly.GetName(copiedName));
+      return new Wrapperator.Wrappers.Reflection.AssemblyNameWrapper(Assembly.GetName(copiedName));
     }
     
     /// <summary>Gets serialization information with all of the data needed to reinstantiate this assembly.</summary>
@@ -477,14 +472,14 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="info" /> is null. </exception>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      _assembly.GetObjectData(info, context);
+      Assembly.GetObjectData(info, context);
     }
     
     /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> objects for all the assemblies referenced by this assembly.</summary>
     /// <returns>An array that contains the fully parsed display names of all the assemblies referenced by this assembly.</returns>
     public System.Reflection.AssemblyName[] GetReferencedAssemblies()
     {
-      return _assembly.GetReferencedAssemblies();
+      return Assembly.GetReferencedAssemblies();
     }
     
     /// <summary>Gets the satellite assembly for the specified culture.</summary>
@@ -497,7 +492,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
     public Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_assembly.GetSatelliteAssembly(culture));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(Assembly.GetSatelliteAssembly(culture));
     }
     
     /// <summary>Gets the specified version of the satellite assembly for the specified culture.</summary>
@@ -509,9 +504,9 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.IO.FileLoadException">The satellite assembly with a matching file name was found, but the CultureInfo or the version did not match the one specified. </exception>
     /// <exception cref="T:System.IO.FileNotFoundException">The assembly cannot be found. </exception>
     /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
-    public Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, System.Version version)
+    public Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, Wrapperator.Interfaces.IVersion version)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_assembly.GetSatelliteAssembly(culture, version));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(Assembly.GetSatelliteAssembly(culture, version == null ? default(System.Version) : ((Wrapperator.Wrappers.VersionWrapper)version).Version));
     }
     
     /// <summary>Gets the types defined in this assembly.</summary>
@@ -519,7 +514,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.Reflection.ReflectionTypeLoadException">The assembly contains one or more types that cannot be loaded. The array returned by the <see cref="P:System.Reflection.ReflectionTypeLoadException.Types" /> property of this exception contains a <see cref="T:System.Type" /> object for each type that was loaded and null for each type that could not be loaded, while the <see cref="P:System.Reflection.ReflectionTypeLoadException.LoaderExceptions" /> property contains an exception for each type that could not be loaded.</exception>
     public System.Type[] GetTypes()
     {
-      return _assembly.GetTypes();
+      return Assembly.GetTypes();
     }
     
     /// <summary>Indicates whether or not a specified attribute has been applied to the assembly.</summary>
@@ -530,9 +525,9 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="attributeType" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">
     ///  <paramref name="attributeType" /> uses an invalid type.</exception>
-    public bool IsDefined(System.Type attributeType, bool inherit)
+    public bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _assembly.IsDefined(attributeType, inherit);
+      return Assembly.IsDefined(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
     }
     
     /// <summary>Loads an assembly given the long form of its name.</summary>
@@ -562,9 +557,9 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.IO.FileLoadException">NoteIn the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.IO.IOException" />, instead.A file that was found could not be loaded. </exception>
     /// <exception cref="T:System.BadImageFormatException">
     ///  <paramref name="assemblyRef" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyRef" /> was compiled with a later version.</exception>
-    public Wrapperator.Interfaces.Reflection.IAssembly Load(System.Reflection.AssemblyName assemblyRef)
+    public Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.Load(assemblyRef));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyRef).AssemblyName));
     }
     
     /// <summary>Loads the assembly with a common object file format (COFF)-based image containing an emitted assembly. The assembly is loaded into the application domain of the caller.</summary>
@@ -671,7 +666,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
     public System.Reflection.Module LoadModule(string moduleName, byte[] rawModule)
     {
-      return _assembly.LoadModule(moduleName, rawModule);
+      return Assembly.LoadModule(moduleName, rawModule);
     }
     
     /// <summary>Loads the module, internal to this assembly, with a common object file format (COFF)-based image containing an emitted module, or a resource file. The raw bytes representing the symbols for the module are also loaded.</summary>
@@ -688,7 +683,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
     public System.Reflection.Module LoadModule(string moduleName, byte[] rawModule, byte[] rawSymbolStore)
     {
-      return _assembly.LoadModule(moduleName, rawModule, rawSymbolStore);
+      return Assembly.LoadModule(moduleName, rawModule, rawSymbolStore);
     }
     
     /// <summary>Loads an assembly into the reflection-only context, given its display name.</summary>

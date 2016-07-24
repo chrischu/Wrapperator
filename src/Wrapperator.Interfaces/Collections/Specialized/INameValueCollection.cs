@@ -47,7 +47,7 @@ namespace Wrapperator.Interfaces.Collections.Specialized
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="c" /> is null.</exception>
-    void Add(System.Collections.Specialized.NameValueCollection c);
+    void Add(Wrapperator.Interfaces.Collections.Specialized.INameValueCollection c);
     
     /// <summary>Adds an entry with the specified name and value to the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <param name="name">The <see cref="T:System.String" /> key of the entry to add. The key can be null.</param>

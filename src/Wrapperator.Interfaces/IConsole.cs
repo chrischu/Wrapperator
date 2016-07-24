@@ -315,7 +315,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="newError" /> is null. </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    void SetError(System.IO.TextWriter newError);
+    void SetError(Wrapperator.Interfaces.IO.ITextWriter newError);
     
     /// <summary>Sets the <see cref="P:System.Console.In" /> property to the specified <see cref="T:System.IO.TextReader" /> object.</summary>
     /// <param name="newIn">A stream that is the new standard input. </param>
@@ -323,7 +323,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="newIn" /> is null. </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    void SetIn(System.IO.TextReader newIn);
+    void SetIn(Wrapperator.Interfaces.IO.ITextReader newIn);
     
     /// <summary>Sets the <see cref="P:System.Console.Out" /> property to the specified <see cref="T:System.IO.TextWriter" /> object.</summary>
     /// <param name="newOut">A stream that is the new standard output. </param>
@@ -331,7 +331,7 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="newOut" /> is null. </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    void SetOut(System.IO.TextWriter newOut);
+    void SetOut(Wrapperator.Interfaces.IO.ITextWriter newOut);
     
     /// <summary>Sets the position of the console window relative to the screen buffer.</summary>
     /// <param name="left">The column position of the upper left  corner of the console window. </param>

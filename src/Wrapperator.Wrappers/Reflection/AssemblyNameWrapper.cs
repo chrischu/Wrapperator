@@ -16,28 +16,23 @@ namespace Wrapperator.Wrappers.Reflection
   public partial class AssemblyNameWrapper : Wrapperator.Interfaces.Reflection.IAssemblyName
   {
     
-    private System.Reflection.AssemblyName _assemblyName;
-    
-    public static implicit operator System.Reflection.AssemblyName (AssemblyNameWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Reflection.AssemblyName);
-      return wrapper._assemblyName;
-    }
+    internal System.Reflection.AssemblyName AssemblyName { get; private set; }
+
     
     public AssemblyNameWrapper(System.Reflection.AssemblyName assemblyName)
     {
-      _assemblyName = assemblyName;
+      AssemblyName = assemblyName;
     }
     
     public string CodeBase
     {
       get
       {
-        return _assemblyName.CodeBase;
+        return AssemblyName.CodeBase;
       }
       set
       {
-        _assemblyName.CodeBase = value;
+        AssemblyName.CodeBase = value;
       }
     }
     
@@ -45,11 +40,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.ContentType;
+        return AssemblyName.ContentType;
       }
       set
       {
-        _assemblyName.ContentType = value;
+        AssemblyName.ContentType = value;
       }
     }
     
@@ -57,11 +52,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.CultureInfo;
+        return AssemblyName.CultureInfo;
       }
       set
       {
-        _assemblyName.CultureInfo = value;
+        AssemblyName.CultureInfo = value;
       }
     }
     
@@ -69,7 +64,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.EscapedCodeBase;
+        return AssemblyName.EscapedCodeBase;
       }
     }
     
@@ -77,11 +72,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.Flags;
+        return AssemblyName.Flags;
       }
       set
       {
-        _assemblyName.Flags = value;
+        AssemblyName.Flags = value;
       }
     }
     
@@ -89,7 +84,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.FullName;
+        return AssemblyName.FullName;
       }
     }
     
@@ -97,11 +92,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.HashAlgorithm;
+        return AssemblyName.HashAlgorithm;
       }
       set
       {
-        _assemblyName.HashAlgorithm = value;
+        AssemblyName.HashAlgorithm = value;
       }
     }
     
@@ -109,11 +104,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.KeyPair;
+        return AssemblyName.KeyPair;
       }
       set
       {
-        _assemblyName.KeyPair = value;
+        AssemblyName.KeyPair = value;
       }
     }
     
@@ -121,11 +116,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.Name;
+        return AssemblyName.Name;
       }
       set
       {
-        _assemblyName.Name = value;
+        AssemblyName.Name = value;
       }
     }
     
@@ -133,11 +128,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.ProcessorArchitecture;
+        return AssemblyName.ProcessorArchitecture;
       }
       set
       {
-        _assemblyName.ProcessorArchitecture = value;
+        AssemblyName.ProcessorArchitecture = value;
       }
     }
     
@@ -145,11 +140,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.Version;
+        return AssemblyName.Version;
       }
       set
       {
-        _assemblyName.Version = value;
+        AssemblyName.Version = value;
       }
     }
     
@@ -157,11 +152,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return _assemblyName.VersionCompatibility;
+        return AssemblyName.VersionCompatibility;
       }
       set
       {
-        _assemblyName.VersionCompatibility = value;
+        AssemblyName.VersionCompatibility = value;
       }
     }
     
@@ -169,7 +164,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <returns>An object that is a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</returns>
     public object Clone()
     {
-      return _assemblyName.Clone();
+      return AssemblyName.Clone();
     }
     
     /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> for a given file.</summary>
@@ -197,7 +192,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="info" /> is null. </exception>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      _assemblyName.GetObjectData(info, context);
+      AssemblyName.GetObjectData(info, context);
     }
     
     /// <summary>Gets the public key of the assembly.</summary>
@@ -205,44 +200,44 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.Security.SecurityException">A public key was provided (for example, by using the <see cref="M:System.Reflection.AssemblyName.SetPublicKey(System.Byte[])" /> method), but no public key token was provided. </exception>
     public byte[] GetPublicKey()
     {
-      return _assemblyName.GetPublicKey();
+      return AssemblyName.GetPublicKey();
     }
     
     /// <summary>Gets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
     /// <returns>A byte array that contains the public key token.</returns>
     public byte[] GetPublicKeyToken()
     {
-      return _assemblyName.GetPublicKeyToken();
+      return AssemblyName.GetPublicKeyToken();
     }
     
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and is called back by the deserialization event when deserialization is complete.</summary>
     /// <param name="sender">The source of the deserialization event. </param>
     public void OnDeserialization(object sender)
     {
-      _assemblyName.OnDeserialization(sender);
+      AssemblyName.OnDeserialization(sender);
     }
     
     /// <summary>Returns a value indicating whether two assembly names are the same. The comparison is based on the simple assembly names.</summary>
     /// <returns>true if the simple assembly names are the same; otherwise, false.</returns>
     /// <param name="reference">The reference assembly name.</param>
     /// <param name="definition">The assembly name that is compared to the reference assembly.</param>
-    public bool ReferenceMatchesDefinition(System.Reflection.AssemblyName reference, System.Reflection.AssemblyName definition)
+    public bool ReferenceMatchesDefinition(Wrapperator.Interfaces.Reflection.IAssemblyName reference, Wrapperator.Interfaces.Reflection.IAssemblyName definition)
     {
-      return System.Reflection.AssemblyName.ReferenceMatchesDefinition(reference, definition);
+      return System.Reflection.AssemblyName.ReferenceMatchesDefinition(reference == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)reference).AssemblyName, definition == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)definition).AssemblyName);
     }
     
     /// <summary>Sets the public key identifying the assembly.</summary>
     /// <param name="publicKey">A byte array containing the public key of the assembly. </param>
     public void SetPublicKey(byte[] publicKey)
     {
-      _assemblyName.SetPublicKey(publicKey);
+      AssemblyName.SetPublicKey(publicKey);
     }
     
     /// <summary>Sets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
     /// <param name="publicKeyToken">A byte array containing the public key token of the assembly. </param>
     public void SetPublicKeyToken(byte[] publicKeyToken)
     {
-      _assemblyName.SetPublicKeyToken(publicKeyToken);
+      AssemblyName.SetPublicKeyToken(publicKeyToken);
     }
   }
 }

@@ -76,6 +76,9 @@ namespace Wrapperator
                   typeof(XmlWriter),
                   typeof(XmlReader)
               })
+          {
+            WrapParameterTypes = true
+          }
           );
     }
   }

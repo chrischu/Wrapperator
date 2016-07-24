@@ -16,60 +16,55 @@ namespace Wrapperator.Wrappers.Xml.Serialization
   public partial class XmlSerializerWrapper : Wrapperator.Interfaces.Xml.Serialization.IXmlSerializer
   {
     
-    private System.Xml.Serialization.XmlSerializer _xmlSerializer;
-    
-    public static implicit operator System.Xml.Serialization.XmlSerializer (XmlSerializerWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Xml.Serialization.XmlSerializer);
-      return wrapper._xmlSerializer;
-    }
+    internal System.Xml.Serialization.XmlSerializer XmlSerializer { get; private set; }
+
     
     public XmlSerializerWrapper(System.Xml.Serialization.XmlSerializer xmlSerializer)
     {
-      _xmlSerializer = xmlSerializer;
+      XmlSerializer = xmlSerializer;
     }
     
     /// <summary>Gets a value that indicates whether this <see cref="T:System.Xml.Serialization.XmlSerializer" /> can deserialize a specified XML document.</summary>
     /// <returns>true if this <see cref="T:System.Xml.Serialization.XmlSerializer" /> can deserialize the object that the <see cref="T:System.Xml.XmlReader" /> points to; otherwise, false.</returns>
     /// <param name="xmlReader">An <see cref="T:System.Xml.XmlReader" /> that points to the document to deserialize. </param>
-    public bool CanDeserialize(System.Xml.XmlReader xmlReader)
+    public bool CanDeserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader)
     {
-      return _xmlSerializer.CanDeserialize(xmlReader);
+      return XmlSerializer.CanDeserialize(xmlReader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)xmlReader).XmlReader);
     }
     
     /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.IO.Stream" />.</summary>
     /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
     /// <param name="stream">The <see cref="T:System.IO.Stream" /> that contains the XML document to deserialize. </param>
-    public object Deserialize(System.IO.Stream stream)
+    public object Deserialize(Wrapperator.Interfaces.IO.IStream stream)
     {
-      return _xmlSerializer.Deserialize(stream);
+      return XmlSerializer.Deserialize(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream);
     }
     
     /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.IO.TextReader" />.</summary>
     /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
     /// <param name="textReader">The <see cref="T:System.IO.TextReader" /> that contains the XML document to deserialize. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public object Deserialize(System.IO.TextReader textReader)
+    public object Deserialize(Wrapperator.Interfaces.IO.ITextReader textReader)
     {
-      return _xmlSerializer.Deserialize(textReader);
+      return XmlSerializer.Deserialize(textReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)textReader).TextReader);
     }
     
     /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.xml.XmlReader" />.</summary>
     /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
     /// <param name="xmlReader">The <see cref="T:System.xml.XmlReader" /> that contains the XML document to deserialize. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public object Deserialize(System.Xml.XmlReader xmlReader)
+    public object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader)
     {
-      return _xmlSerializer.Deserialize(xmlReader);
+      return XmlSerializer.Deserialize(xmlReader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)xmlReader).XmlReader);
     }
     
     /// <summary>Deserializes an XML document contained by the specified <see cref="T:System.Xml.XmlReader" /> and allows the overriding of events that occur during deserialization.</summary>
     /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
     /// <param name="xmlReader">The <see cref="T:System.Xml.XmlReader" /> that contains the document to deserialize.</param>
     /// <param name="events">An instance of the <see cref="T:System.Xml.Serialization.XmlDeserializationEvents" /> class. </param>
-    public object Deserialize(System.Xml.XmlReader xmlReader, System.Xml.Serialization.XmlDeserializationEvents events)
+    public object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, System.Xml.Serialization.XmlDeserializationEvents events)
     {
-      return _xmlSerializer.Deserialize(xmlReader, events);
+      return XmlSerializer.Deserialize(xmlReader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)xmlReader).XmlReader, events);
     }
     
     /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.xml.XmlReader" /> and encoding style.</summary>
@@ -77,9 +72,9 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="xmlReader">The <see cref="T:System.xml.XmlReader" /> that contains the XML document to deserialize. </param>
     /// <param name="encodingStyle">The encoding style of the serialized XML. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public object Deserialize(System.Xml.XmlReader xmlReader, string encodingStyle)
+    public object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, string encodingStyle)
     {
-      return _xmlSerializer.Deserialize(xmlReader, encodingStyle);
+      return XmlSerializer.Deserialize(xmlReader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)xmlReader).XmlReader, encodingStyle);
     }
     
     /// <summary>Deserializes the object using the data contained by the specified <see cref="T:System.Xml.XmlReader" />.</summary>
@@ -87,9 +82,9 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="xmlReader">An instance of the <see cref="T:System.Xml.XmlReader" /> class used to read the document.</param>
     /// <param name="encodingStyle">The encoding used.</param>
     /// <param name="events">An instance of the <see cref="T:System.Xml.Serialization.XmlDeserializationEvents" /> class. </param>
-    public object Deserialize(System.Xml.XmlReader xmlReader, string encodingStyle, System.Xml.Serialization.XmlDeserializationEvents events)
+    public object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, string encodingStyle, System.Xml.Serialization.XmlDeserializationEvents events)
     {
-      return _xmlSerializer.Deserialize(xmlReader, encodingStyle, events);
+      return XmlSerializer.Deserialize(xmlReader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)xmlReader).XmlReader, encodingStyle, events);
     }
     
     /// <summary>Returns an array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects created from an array of <see cref="T:System.Xml.Serialization.XmlTypeMapping" /> objects.</summary>
@@ -104,9 +99,9 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <returns>An instance of the <see cref="T:System.Xml.Serialization.XmlSerializer" /> class.</returns>
     /// <param name="mappings">An array of <see cref="T:System.Xml.Serialization.XmlMapping" /> objects.</param>
     /// <param name="type">The <see cref="T:System.Type" /> of the deserialized object.</param>
-    public System.Xml.Serialization.XmlSerializer[] FromMappings(System.Xml.Serialization.XmlMapping[] mappings, System.Type type)
+    public System.Xml.Serialization.XmlSerializer[] FromMappings(System.Xml.Serialization.XmlMapping[] mappings, Wrapperator.Interfaces.IType type)
     {
-      return System.Xml.Serialization.XmlSerializer.FromMappings(mappings, type);
+      return System.Xml.Serialization.XmlSerializer.FromMappings(mappings, type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
     }
     
     /// <summary>Returns an array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects created from an array of types.</summary>
@@ -139,26 +134,26 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <summary>Returns the name of the assembly that contains one or more versions of the <see cref="T:System.Xml.Serialization.XmlSerializer" /> especially created to serialize or deserialize the specified type.</summary>
     /// <returns>The name of the assembly that contains an <see cref="T:System.Xml.Serialization.XmlSerializer" /> for the type.</returns>
     /// <param name="type">The <see cref="T:System.Type" /> you are deserializing.</param>
-    public string GetXmlSerializerAssemblyName(System.Type type)
+    public string GetXmlSerializerAssemblyName(Wrapperator.Interfaces.IType type)
     {
-      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type);
+      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
     }
     
     /// <summary>Returns the name of the assembly that contains the serializer for the specified type in the specified namespace.</summary>
     /// <returns>The name of the assembly that contains specially built serializers.</returns>
     /// <param name="type">The <see cref="T:System.Type" /> you are interested in.</param>
     /// <param name="defaultNamespace">The namespace of the type.</param>
-    public string GetXmlSerializerAssemblyName(System.Type type, string defaultNamespace)
+    public string GetXmlSerializerAssemblyName(Wrapperator.Interfaces.IType type, string defaultNamespace)
     {
-      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type, defaultNamespace);
+      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type, defaultNamespace);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">The <see cref="T:System.IO.TextWriter" /> used to write the XML document. </param>
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>
-    public void Serialize(System.IO.TextWriter textWriter, object o)
+    public void Serialize(Wrapperator.Interfaces.IO.ITextWriter textWriter, object o)
     {
-      _xmlSerializer.Serialize(textWriter, o);
+      XmlSerializer.Serialize(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter).TextWriter, o);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.IO.TextWriter" /> and references the specified namespaces.</summary>
@@ -166,18 +161,18 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>
     /// <param name="namespaces">The <see cref="T:System.Xml.Serialization.XmlSerializerNamespaces" /> that contains namespaces for the generated XML document. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during serialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public void Serialize(System.IO.TextWriter textWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces)
+    public void Serialize(Wrapperator.Interfaces.IO.ITextWriter textWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces)
     {
-      _xmlSerializer.Serialize(textWriter, o, namespaces);
+      XmlSerializer.Serialize(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter).TextWriter, o, namespaces);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.IO.Stream" />.</summary>
     /// <param name="stream">The <see cref="T:System.IO.Stream" /> used to write the XML document. </param>
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during serialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public void Serialize(System.IO.Stream stream, object o)
+    public void Serialize(Wrapperator.Interfaces.IO.IStream stream, object o)
     {
-      _xmlSerializer.Serialize(stream, o);
+      XmlSerializer.Serialize(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream, o);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.IO.Stream" />that references the specified namespaces.</summary>
@@ -185,18 +180,18 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>
     /// <param name="namespaces">The <see cref="T:System.Xml.Serialization.XmlSerializerNamespaces" /> referenced by the object. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during serialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public void Serialize(System.IO.Stream stream, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces)
+    public void Serialize(Wrapperator.Interfaces.IO.IStream stream, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces)
     {
-      _xmlSerializer.Serialize(stream, o, namespaces);
+      XmlSerializer.Serialize(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream, o, namespaces);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="xmlWriter">The <see cref="T:System.xml.XmlWriter" /> used to write the XML document. </param>
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during serialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public void Serialize(System.Xml.XmlWriter xmlWriter, object o)
+    public void Serialize(Wrapperator.Interfaces.Xml.IXmlWriter xmlWriter, object o)
     {
-      _xmlSerializer.Serialize(xmlWriter, o);
+      XmlSerializer.Serialize(xmlWriter == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)xmlWriter).XmlWriter, o);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.Xml.XmlWriter" /> and references the specified namespaces.</summary>
@@ -204,9 +199,9 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>
     /// <param name="namespaces">The <see cref="T:System.Xml.Serialization.XmlSerializerNamespaces" /> referenced by the object. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during serialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public void Serialize(System.Xml.XmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces)
+    public void Serialize(Wrapperator.Interfaces.Xml.IXmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces)
     {
-      _xmlSerializer.Serialize(xmlWriter, o, namespaces);
+      XmlSerializer.Serialize(xmlWriter == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)xmlWriter).XmlWriter, o, namespaces);
     }
     
     /// <summary>Serializes the specified object and writes the XML document to a file using the specified <see cref="T:System.Xml.XmlWriter" /> and references the specified namespaces and encoding style.</summary>
@@ -215,9 +210,9 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="namespaces">The <see cref="T:System.Xml.Serialization.XmlSerializerNamespaces" /> referenced by the object. </param>
     /// <param name="encodingStyle">The encoding style of the serialized XML. </param>
     /// <exception cref="T:System.InvalidOperationException">An error occurred during serialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    public void Serialize(System.Xml.XmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle)
+    public void Serialize(Wrapperator.Interfaces.Xml.IXmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle)
     {
-      _xmlSerializer.Serialize(xmlWriter, o, namespaces, encodingStyle);
+      XmlSerializer.Serialize(xmlWriter == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)xmlWriter).XmlWriter, o, namespaces, encodingStyle);
     }
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.Xml.XmlWriter" />, XML namespaces, and encoding. </summary>
@@ -226,9 +221,9 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="namespaces">An instance of the XmlSerializaerNamespaces that contains namespaces and prefixes to use.</param>
     /// <param name="encodingStyle">The encoding used in the document.</param>
     /// <param name="id">For SOAP encoded messages, the base used to generate id attributes. </param>
-    public void Serialize(System.Xml.XmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle, string id)
+    public void Serialize(Wrapperator.Interfaces.Xml.IXmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle, string id)
     {
-      _xmlSerializer.Serialize(xmlWriter, o, namespaces, encodingStyle, id);
+      XmlSerializer.Serialize(xmlWriter == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)xmlWriter).XmlWriter, o, namespaces, encodingStyle, id);
     }
   }
 }

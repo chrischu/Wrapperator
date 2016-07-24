@@ -17,28 +17,23 @@ namespace Wrapperator.Wrappers.IO
   public partial class FileInfoWrapper : Wrapperator.Interfaces.IO.IFileInfo
   {
     
-    private System.IO.FileInfo _fileInfo;
-    
-    public static implicit operator System.IO.FileInfo (FileInfoWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.IO.FileInfo);
-      return wrapper._fileInfo;
-    }
+    internal System.IO.FileInfo FileInfo { get; private set; }
+
     
     public FileInfoWrapper(System.IO.FileInfo fileInfo)
     {
-      _fileInfo = fileInfo;
+      FileInfo = fileInfo;
     }
     
     public System.IO.FileAttributes Attributes
     {
       get
       {
-        return _fileInfo.Attributes;
+        return FileInfo.Attributes;
       }
       set
       {
-        _fileInfo.Attributes = value;
+        FileInfo.Attributes = value;
       }
     }
     
@@ -46,11 +41,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.CreationTime;
+        return FileInfo.CreationTime;
       }
       set
       {
-        _fileInfo.CreationTime = value;
+        FileInfo.CreationTime = value;
       }
     }
     
@@ -58,11 +53,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.CreationTimeUtc;
+        return FileInfo.CreationTimeUtc;
       }
       set
       {
-        _fileInfo.CreationTimeUtc = value;
+        FileInfo.CreationTimeUtc = value;
       }
     }
     
@@ -70,7 +65,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.Directory;
+        return FileInfo.Directory;
       }
     }
     
@@ -78,7 +73,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.DirectoryName;
+        return FileInfo.DirectoryName;
       }
     }
     
@@ -86,7 +81,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.Exists;
+        return FileInfo.Exists;
       }
     }
     
@@ -94,7 +89,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.Extension;
+        return FileInfo.Extension;
       }
     }
     
@@ -102,7 +97,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.FullName;
+        return FileInfo.FullName;
       }
     }
     
@@ -110,11 +105,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.IsReadOnly;
+        return FileInfo.IsReadOnly;
       }
       set
       {
-        _fileInfo.IsReadOnly = value;
+        FileInfo.IsReadOnly = value;
       }
     }
     
@@ -122,11 +117,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.LastAccessTime;
+        return FileInfo.LastAccessTime;
       }
       set
       {
-        _fileInfo.LastAccessTime = value;
+        FileInfo.LastAccessTime = value;
       }
     }
     
@@ -134,11 +129,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.LastAccessTimeUtc;
+        return FileInfo.LastAccessTimeUtc;
       }
       set
       {
-        _fileInfo.LastAccessTimeUtc = value;
+        FileInfo.LastAccessTimeUtc = value;
       }
     }
     
@@ -146,11 +141,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.LastWriteTime;
+        return FileInfo.LastWriteTime;
       }
       set
       {
-        _fileInfo.LastWriteTime = value;
+        FileInfo.LastWriteTime = value;
       }
     }
     
@@ -158,11 +153,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.LastWriteTimeUtc;
+        return FileInfo.LastWriteTimeUtc;
       }
       set
       {
-        _fileInfo.LastWriteTimeUtc = value;
+        FileInfo.LastWriteTimeUtc = value;
       }
     }
     
@@ -170,7 +165,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.Length;
+        return FileInfo.Length;
       }
     }
     
@@ -178,7 +173,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return _fileInfo.Name;
+        return FileInfo.Name;
       }
     }
     
@@ -187,7 +182,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.IO.IStreamWriter AppendText()
     {
-      return new Wrapperator.Wrappers.IO.StreamWriterWrapper(_fileInfo.AppendText());
+      return new Wrapperator.Wrappers.IO.StreamWriterWrapper(FileInfo.AppendText());
     }
     
     /// <summary>Copies an existing file to a new file, disallowing the overwriting of an existing file.</summary>
@@ -207,7 +202,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.IO.IFileInfo CopyTo(string destFileName)
     {
-      return new Wrapperator.Wrappers.IO.FileInfoWrapper(_fileInfo.CopyTo(destFileName));
+      return new Wrapperator.Wrappers.IO.FileInfoWrapper(FileInfo.CopyTo(destFileName));
     }
     
     /// <summary>Copies an existing file to a new file, allowing the overwriting of an existing file.</summary>
@@ -228,7 +223,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.IO.IFileInfo CopyTo(string destFileName, bool overwrite)
     {
-      return new Wrapperator.Wrappers.IO.FileInfoWrapper(_fileInfo.CopyTo(destFileName, overwrite));
+      return new Wrapperator.Wrappers.IO.FileInfoWrapper(FileInfo.CopyTo(destFileName, overwrite));
     }
     
     /// <summary>Creates a file.</summary>
@@ -236,7 +231,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.IO.IFileStream Create()
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.Create());
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(FileInfo.Create());
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -245,9 +240,9 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType)
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _fileInfo.CreateObjRef(requestedType);
+      return FileInfo.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     /// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that writes a new text file.</summary>
@@ -258,7 +253,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.IO.IStreamWriter CreateText()
     {
-      return new Wrapperator.Wrappers.IO.StreamWriterWrapper(_fileInfo.CreateText());
+      return new Wrapperator.Wrappers.IO.StreamWriterWrapper(FileInfo.CreateText());
     }
     
     /// <summary>Decrypts a file that was encrypted by the current account using the <see cref="M:System.IO.FileInfo.Encrypt" /> method.</summary>
@@ -271,7 +266,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void Decrypt()
     {
-      _fileInfo.Decrypt();
+      FileInfo.Decrypt();
     }
     
     /// <summary>Permanently deletes a file.</summary>
@@ -281,7 +276,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Delete()
     {
-      _fileInfo.Delete();
+      FileInfo.Delete();
     }
     
     /// <summary>Encrypts a file so that only the account used to encrypt the file can decrypt it.</summary>
@@ -294,7 +289,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Encrypt()
     {
-      _fileInfo.Encrypt();
+      FileInfo.Encrypt();
     }
     
     /// <summary>Gets a <see cref="T:System.Security.AccessControl.FileSecurity" /> object that encapsulates the access control list (ACL) entries for the file described by the current <see cref="T:System.IO.FileInfo" /> object.</summary>
@@ -307,7 +302,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.Security.AccessControl.FileSecurity GetAccessControl()
     {
-      return _fileInfo.GetAccessControl();
+      return FileInfo.GetAccessControl();
     }
     
     /// <summary>Gets a <see cref="T:System.Security.AccessControl.FileSecurity" /> object that encapsulates the specified type of access control list (ACL) entries for the file described by the current <see cref="T:System.IO.FileInfo" /> object.</summary>
@@ -321,7 +316,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public System.Security.AccessControl.FileSecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections)
     {
-      return _fileInfo.GetAccessControl(includeSections);
+      return FileInfo.GetAccessControl(includeSections);
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -330,7 +325,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return _fileInfo.GetLifetimeService();
+      return FileInfo.GetLifetimeService();
     }
     
     /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
@@ -339,7 +334,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      _fileInfo.GetObjectData(info, context);
+      FileInfo.GetObjectData(info, context);
     }
     
     /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
@@ -348,7 +343,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return _fileInfo.InitializeLifetimeService();
+      return FileInfo.InitializeLifetimeService();
     }
     
     /// <summary>Moves a specified file to a new location, providing the option to specify a new file name.</summary>
@@ -369,7 +364,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void MoveTo(string destFileName)
     {
-      _fileInfo.MoveTo(destFileName);
+      FileInfo.MoveTo(destFileName);
     }
     
     /// <summary>Opens a file in the specified mode.</summary>
@@ -382,7 +377,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileStream Open(System.IO.FileMode mode)
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.Open(mode));
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(FileInfo.Open(mode));
     }
     
     /// <summary>Opens a file in the specified mode with read, write, or read/write access.</summary>
@@ -398,7 +393,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileStream Open(System.IO.FileMode mode, System.IO.FileAccess access)
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.Open(mode, access));
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(FileInfo.Open(mode, access));
     }
     
     /// <summary>Opens a file in the specified mode with read, write, or read/write access and the specified sharing option.</summary>
@@ -415,7 +410,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileStream Open(System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share)
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.Open(mode, access, share));
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(FileInfo.Open(mode, access, share));
     }
     
     /// <summary>Creates a read-only <see cref="T:System.IO.FileStream" />.</summary>
@@ -427,7 +422,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileStream OpenRead()
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.OpenRead());
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(FileInfo.OpenRead());
     }
     
     /// <summary>Creates a <see cref="T:System.IO.StreamReader" /> with UTF8 encoding that reads from an existing text file.</summary>
@@ -440,7 +435,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IStreamReader OpenText()
     {
-      return new Wrapperator.Wrappers.IO.StreamReaderWrapper(_fileInfo.OpenText());
+      return new Wrapperator.Wrappers.IO.StreamReaderWrapper(FileInfo.OpenText());
     }
     
     /// <summary>Creates a write-only <see cref="T:System.IO.FileStream" />.</summary>
@@ -450,7 +445,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileStream OpenWrite()
     {
-      return new Wrapperator.Wrappers.IO.FileStreamWrapper(_fileInfo.OpenWrite());
+      return new Wrapperator.Wrappers.IO.FileStreamWrapper(FileInfo.OpenWrite());
     }
     
     /// <summary>Refreshes the state of the object.</summary>
@@ -458,7 +453,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Refresh()
     {
-      _fileInfo.Refresh();
+      FileInfo.Refresh();
     }
     
     /// <summary>Replaces the contents of a specified file with the file described by the current <see cref="T:System.IO.FileInfo" /> object, deleting the original file, and creating a backup of the replaced file.</summary>
@@ -472,7 +467,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileInfo Replace(string destinationFileName, string destinationBackupFileName)
     {
-      return new Wrapperator.Wrappers.IO.FileInfoWrapper(_fileInfo.Replace(destinationFileName, destinationBackupFileName));
+      return new Wrapperator.Wrappers.IO.FileInfoWrapper(FileInfo.Replace(destinationFileName, destinationBackupFileName));
     }
     
     /// <summary>Replaces the contents of a specified file with the file described by the current <see cref="T:System.IO.FileInfo" /> object, deleting the original file, and creating a backup of the replaced file.  Also specifies whether to ignore merge errors. </summary>
@@ -487,7 +482,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.IFileInfo Replace(string destinationFileName, string destinationBackupFileName, bool ignoreMetadataErrors)
     {
-      return new Wrapperator.Wrappers.IO.FileInfoWrapper(_fileInfo.Replace(destinationFileName, destinationBackupFileName, ignoreMetadataErrors));
+      return new Wrapperator.Wrappers.IO.FileInfoWrapper(FileInfo.Replace(destinationFileName, destinationBackupFileName, ignoreMetadataErrors));
     }
     
     /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.FileSecurity" /> object to the file described by the current <see cref="T:System.IO.FileInfo" /> object.</summary>
@@ -499,7 +494,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void SetAccessControl(System.Security.AccessControl.FileSecurity fileSecurity)
     {
-      _fileInfo.SetAccessControl(fileSecurity);
+      FileInfo.SetAccessControl(fileSecurity);
     }
   }
 }

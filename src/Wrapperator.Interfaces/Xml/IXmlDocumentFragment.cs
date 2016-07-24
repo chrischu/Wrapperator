@@ -246,10 +246,10 @@ namespace Wrapperator.Interfaces.Xml
     
     /// <summary>Saves all the children of the node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
-    void WriteContentTo(System.Xml.XmlWriter w);
+    void WriteContentTo(Wrapperator.Interfaces.Xml.IXmlWriter w);
     
     /// <summary>Saves the node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
-    void WriteTo(System.Xml.XmlWriter w);
+    void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter w);
   }
 }

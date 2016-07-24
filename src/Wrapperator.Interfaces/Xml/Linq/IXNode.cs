@@ -64,14 +64,14 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Returns a filtered collection of the ancestor elements of this node. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the ancestor elements of this node. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.The nodes in the returned collection are in reverse document order.This method uses deferred execution.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors(System.Xml.Linq.XName name);
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Compares two nodes to determine their relative XML document order.</summary>
     /// <returns>An int containing 0 if the nodes are equal; -1 if <paramref name="n1" /> is before <paramref name="n2" />; 1 if <paramref name="n1" /> is after <paramref name="n2" />.</returns>
     /// <param name="n1">First <see cref="T:System.Xml.Linq.XNode" /> to compare.</param>
     /// <param name="n2">Second <see cref="T:System.Xml.Linq.XNode" /> to compare.</param>
     /// <exception cref="T:System.InvalidOperationException">The two nodes do not share a common ancestor.</exception>
-    int CompareDocumentOrder(System.Xml.Linq.XNode n1, System.Xml.Linq.XNode n2);
+    int CompareDocumentOrder(Wrapperator.Interfaces.Xml.Linq.IXNode n1, Wrapperator.Interfaces.Xml.Linq.IXNode n2);
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> for this node.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> that can be used to read this node and its descendants.</returns>
@@ -87,7 +87,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <returns>true if the nodes are equal; otherwise false.</returns>
     /// <param name="n1">The first <see cref="T:System.Xml.Linq.XNode" /> to compare.</param>
     /// <param name="n2">The second <see cref="T:System.Xml.Linq.XNode" /> to compare.</param>
-    bool DeepEquals(System.Xml.Linq.XNode n1, System.Xml.Linq.XNode n2);
+    bool DeepEquals(Wrapperator.Interfaces.Xml.Linq.IXNode n1, Wrapperator.Interfaces.Xml.Linq.IXNode n2);
     
     /// <summary>Returns a collection of the sibling elements after this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements after this node, in document order.</returns>
@@ -96,7 +96,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Returns a filtered collection of the sibling elements after this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements after this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf(System.Xml.Linq.XName name);
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Returns a collection of the sibling elements before this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements before this node, in document order.</returns>
@@ -105,17 +105,17 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Returns a filtered collection of the sibling elements before this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements before this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</returns>
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf(System.Xml.Linq.XName name);
+    System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf(Wrapperator.Interfaces.Xml.Linq.IXName name);
     
     /// <summary>Determines if the current node appears after a specified node in terms of document order.</summary>
     /// <returns>true if this node appears after the specified node; otherwise false.</returns>
     /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
-    bool IsAfter(System.Xml.Linq.XNode node);
+    bool IsAfter(Wrapperator.Interfaces.Xml.Linq.IXNode node);
     
     /// <summary>Determines if the current node appears before a specified node in terms of document order.</summary>
     /// <returns>true if this node appears before the specified node; otherwise false.</returns>
     /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
-    bool IsBefore(System.Xml.Linq.XNode node);
+    bool IsBefore(Wrapperator.Interfaces.Xml.Linq.IXNode node);
     
     /// <summary>Returns a collection of the sibling nodes after this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes after this node, in document order.</returns>
@@ -131,7 +131,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.Xml.XmlReader" /> is not positioned on a recognized node type.</exception>
     /// <exception cref="T:System.Xml.XmlException">The underlying <see cref="T:System.Xml.XmlReader" /> throws an exception.</exception>
     /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.Xml.Linq.IXNode ReadFrom(System.Xml.XmlReader reader);
+    Wrapperator.Interfaces.Xml.Linq.IXNode ReadFrom(Wrapperator.Interfaces.Xml.IXmlReader reader);
     
     /// <summary>Removes this node from its parent.</summary>
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
@@ -148,6 +148,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Writes this node to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
     /// <filterpriority>2</filterpriority>
-    void WriteTo(System.Xml.XmlWriter writer);
+    void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer);
   }
 }

@@ -569,7 +569,7 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="creationTime" /> specifies a value outside the range of dates or times permitted for this operation. </exception>
     /// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetCreationTime(string path, System.DateTime creationTime);
+    void SetCreationTime(string path, Wrapperator.Interfaces.IDateTime creationTime);
     
     /// <summary>Sets the creation date and time, in Coordinated Universal Time (UTC) format, for the specified file or directory.</summary>
     /// <param name="path">The file or directory for which to set the creation date and time information. </param>
@@ -585,7 +585,7 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="creationTime" /> specifies a value outside the range of dates or times permitted for this operation. </exception>
     /// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Windows NT or later.</exception>
     /// <filterpriority>2</filterpriority>
-    void SetCreationTimeUtc(string path, System.DateTime creationTimeUtc);
+    void SetCreationTimeUtc(string path, Wrapperator.Interfaces.IDateTime creationTimeUtc);
     
     /// <summary>Sets the application's current working directory to the specified directory.</summary>
     /// <param name="path">The path to which the current working directory is set. </param>
@@ -615,7 +615,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastAccessTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetLastAccessTime(string path, System.DateTime lastAccessTime);
+    void SetLastAccessTime(string path, Wrapperator.Interfaces.IDateTime lastAccessTime);
     
     /// <summary>Sets the date and time, in Coordinated Universal Time (UTC) format, that the specified file or directory was last accessed.</summary>
     /// <param name="path">The file or directory for which to set the access date and time information. </param>
@@ -631,7 +631,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastAccessTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetLastAccessTimeUtc(string path, System.DateTime lastAccessTimeUtc);
+    void SetLastAccessTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastAccessTimeUtc);
     
     /// <summary>Sets the date and time a directory was last written to.</summary>
     /// <param name="path">The path of the directory. </param>
@@ -647,7 +647,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastWriteTime" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>1</filterpriority>
-    void SetLastWriteTime(string path, System.DateTime lastWriteTime);
+    void SetLastWriteTime(string path, Wrapperator.Interfaces.IDateTime lastWriteTime);
     
     /// <summary>Sets the date and time, in Coordinated Universal Time (UTC) format, that a directory was last written to.</summary>
     /// <param name="path">The path of the directory. </param>
@@ -663,6 +663,6 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentOutOfRangeException">
     ///  <paramref name="lastWriteTimeUtc" /> specifies a value outside the range of dates or times permitted for this operation.</exception>
     /// <filterpriority>2</filterpriority>
-    void SetLastWriteTimeUtc(string path, System.DateTime lastWriteTimeUtc);
+    void SetLastWriteTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastWriteTimeUtc);
   }
 }

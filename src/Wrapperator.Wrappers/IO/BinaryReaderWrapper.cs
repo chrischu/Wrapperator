@@ -17,24 +17,19 @@ namespace Wrapperator.Wrappers.IO
   public partial class BinaryReaderWrapper : Wrapperator.Interfaces.IO.IBinaryReader
   {
     
-    private System.IO.BinaryReader _binaryReader;
-    
-    public static implicit operator System.IO.BinaryReader (BinaryReaderWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.IO.BinaryReader);
-      return wrapper._binaryReader;
-    }
+    internal System.IO.BinaryReader BinaryReader { get; private set; }
+
     
     public BinaryReaderWrapper(System.IO.BinaryReader binaryReader)
     {
-      _binaryReader = binaryReader;
+      BinaryReader = binaryReader;
     }
     
     public System.IO.Stream BaseStream
     {
       get
       {
-        return _binaryReader.BaseStream;
+        return BinaryReader.BaseStream;
       }
     }
     
@@ -42,7 +37,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void Close()
     {
-      _binaryReader.Close();
+      BinaryReader.Close();
     }
     
     /// <summary>Returns the next available character and does not advance the byte or character position.</summary>
@@ -52,7 +47,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public int PeekChar()
     {
-      return _binaryReader.PeekChar();
+      return BinaryReader.PeekChar();
     }
     
     /// <summary>Reads characters from the underlying stream and advances the current position of the stream in accordance with the Encoding used and the specific character being read from the stream.</summary>
@@ -62,7 +57,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public int Read()
     {
-      return _binaryReader.Read();
+      return BinaryReader.Read();
     }
     
     /// <summary>Reads the specified number of characters from the stream, starting from a specified point in the character array.</summary>
@@ -80,7 +75,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public int Read(char[] buffer, int index, int count)
     {
-      return _binaryReader.Read(buffer, index, count);
+      return BinaryReader.Read(buffer, index, count);
     }
     
     /// <summary>Reads the specified number of bytes from the stream, starting from a specified point in the byte array. </summary>
@@ -98,7 +93,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public int Read(byte[] buffer, int index, int count)
     {
-      return _binaryReader.Read(buffer, index, count);
+      return BinaryReader.Read(buffer, index, count);
     }
     
     /// <summary>Reads a Boolean value from the current stream and advances the current position of the stream by one byte.</summary>
@@ -109,7 +104,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public bool ReadBoolean()
     {
-      return _binaryReader.ReadBoolean();
+      return BinaryReader.ReadBoolean();
     }
     
     /// <summary>Reads the next byte from the current stream and advances the current position of the stream by one byte.</summary>
@@ -120,7 +115,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public byte ReadByte()
     {
-      return _binaryReader.ReadByte();
+      return BinaryReader.ReadByte();
     }
     
     /// <summary>Reads the specified number of bytes from the current stream into a byte array and advances the current position by that number of bytes.</summary>
@@ -134,7 +129,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public byte[] ReadBytes(int count)
     {
-      return _binaryReader.ReadBytes(count);
+      return BinaryReader.ReadBytes(count);
     }
     
     /// <summary>Reads the next character from the current stream and advances the current position of the stream in accordance with the Encoding used and the specific character being read from the stream.</summary>
@@ -146,7 +141,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public char ReadChar()
     {
-      return _binaryReader.ReadChar();
+      return BinaryReader.ReadChar();
     }
     
     /// <summary>Reads the specified number of characters from the current stream, returns the data in a character array, and advances the current position in accordance with the Encoding used and the specific character being read from the stream.</summary>
@@ -160,7 +155,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public char[] ReadChars(int count)
     {
-      return _binaryReader.ReadChars(count);
+      return BinaryReader.ReadChars(count);
     }
     
     /// <summary>Reads a decimal value from the current stream and advances the current position of the stream by sixteen bytes.</summary>
@@ -171,7 +166,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public decimal ReadDecimal()
     {
-      return _binaryReader.ReadDecimal();
+      return BinaryReader.ReadDecimal();
     }
     
     /// <summary>Reads an 8-byte floating point value from the current stream and advances the current position of the stream by eight bytes.</summary>
@@ -182,7 +177,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public double ReadDouble()
     {
-      return _binaryReader.ReadDouble();
+      return BinaryReader.ReadDouble();
     }
     
     /// <summary>Reads a 2-byte signed integer from the current stream and advances the current position of the stream by two bytes.</summary>
@@ -193,7 +188,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public short ReadInt16()
     {
-      return _binaryReader.ReadInt16();
+      return BinaryReader.ReadInt16();
     }
     
     /// <summary>Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.</summary>
@@ -204,7 +199,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public int ReadInt32()
     {
-      return _binaryReader.ReadInt32();
+      return BinaryReader.ReadInt32();
     }
     
     /// <summary>Reads an 8-byte signed integer from the current stream and advances the current position of the stream by eight bytes.</summary>
@@ -215,7 +210,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public long ReadInt64()
     {
-      return _binaryReader.ReadInt64();
+      return BinaryReader.ReadInt64();
     }
     
     /// <summary>Reads a signed byte from this stream and advances the current position of the stream by one byte.</summary>
@@ -226,7 +221,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public sbyte ReadSByte()
     {
-      return _binaryReader.ReadSByte();
+      return BinaryReader.ReadSByte();
     }
     
     /// <summary>Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.</summary>
@@ -237,7 +232,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public float ReadSingle()
     {
-      return _binaryReader.ReadSingle();
+      return BinaryReader.ReadSingle();
     }
     
     /// <summary>Reads a string from the current stream. The string is prefixed with the length, encoded as an integer seven bits at a time.</summary>
@@ -248,7 +243,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public string ReadString()
     {
-      return _binaryReader.ReadString();
+      return BinaryReader.ReadString();
     }
     
     /// <summary>Reads a 2-byte unsigned integer from the current stream using little-endian encoding and advances the position of the stream by two bytes.</summary>
@@ -259,7 +254,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public ushort ReadUInt16()
     {
-      return _binaryReader.ReadUInt16();
+      return BinaryReader.ReadUInt16();
     }
     
     /// <summary>Reads a 4-byte unsigned integer from the current stream and advances the position of the stream by four bytes.</summary>
@@ -270,7 +265,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public uint ReadUInt32()
     {
-      return _binaryReader.ReadUInt32();
+      return BinaryReader.ReadUInt32();
     }
     
     /// <summary>Reads an 8-byte unsigned integer from the current stream and advances the position of the stream by eight bytes.</summary>
@@ -281,14 +276,14 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public ulong ReadUInt64()
     {
-      return _binaryReader.ReadUInt64();
+      return BinaryReader.ReadUInt64();
     }
     
     protected virtual void Dispose(bool disposing)
     {
       if (disposing)
       {
-        _binaryReader.Dispose();
+        BinaryReader.Dispose();
       }
     }
     

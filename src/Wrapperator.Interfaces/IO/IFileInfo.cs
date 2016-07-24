@@ -151,7 +151,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Creates a <see cref="T:System.IO.StreamWriter" /> that writes a new text file.</summary>
     /// <returns>A new StreamWriter.</returns>

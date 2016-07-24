@@ -64,7 +64,7 @@ namespace Wrapperator.Interfaces
     /// <returns>A signed integer that indicates the relative values of the two objects, as shown in the following table.Return value Meaning Less than zero The current <see cref="T:System.Version" /> object is a version before <paramref name="value" />. Zero The current <see cref="T:System.Version" /> object is the same version as <paramref name="value" />. Greater than zero The current <see cref="T:System.Version" /> object is a version subsequent to <paramref name="value" />. -or-<paramref name="value" /> is null.</returns>
     /// <param name="value">A <see cref="T:System.Version" /> object to compare to the current <see cref="T:System.Version" /> object, or null.</param>
     /// <filterpriority>1</filterpriority>
-    int CompareTo(System.Version value);
+    int CompareTo(Wrapperator.Interfaces.IVersion value);
     
     /// <summary>Converts the string representation of a version number to an equivalent <see cref="T:System.Version" /> object.</summary>
     /// <returns>An object that is equivalent to the version number specified in the <paramref name="input" /> parameter.</returns>

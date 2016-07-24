@@ -14,9 +14,6 @@ namespace Wrapperator
     public IReadOnlyCollection<WrapperatorMemberModel<MethodInfo>> WrapperMethods { get; }
     public IReadOnlyCollection<WrapperatorMemberModel<PropertyInfo>> WrapperProperties { get; }
 
-    public string ParameterName => Type.Name.ToLowerCamelCase();
-    public string FieldName => $"_{ParameterName}";
-
     public WrapperatorModel (Type type, IReadOnlyCollection<MethodInfo> interfaceMethods, IReadOnlyCollection<PropertyInfo> interfaceProperties, IReadOnlyCollection<WrapperatorMemberModel<MethodInfo>> wrapperMethods, IReadOnlyCollection<WrapperatorMemberModel<PropertyInfo>> wrapperProperties)
     {
       Type = type;

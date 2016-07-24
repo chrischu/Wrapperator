@@ -99,7 +99,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
     /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-    void CopyTo(System.IO.Stream destination);
+    void CopyTo(Wrapperator.Interfaces.IO.IStream destination);
     
     /// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
     /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
@@ -111,7 +111,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
     /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-    void CopyTo(System.IO.Stream destination, int bufferSize);
+    void CopyTo(Wrapperator.Interfaces.IO.IStream destination, int bufferSize);
     
     /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
     /// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -120,7 +120,7 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="destination" /> is null.</exception>
     /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-    System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination);
+    System.Threading.Tasks.Task CopyToAsync(Wrapperator.Interfaces.IO.IStream destination);
     
     /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
     /// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -132,7 +132,7 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="buffersize" /> is negative or zero.</exception>
     /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-    System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize);
+    System.Threading.Tasks.Task CopyToAsync(Wrapperator.Interfaces.IO.IStream destination, int bufferSize);
     
     /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
     /// <returns>A task that represents the asynchronous copy operation.</returns>
@@ -145,7 +145,7 @@ namespace Wrapperator.Interfaces.IO
     ///  <paramref name="buffersize" /> is negative or zero.</exception>
     /// <exception cref="T:System.ObjectDisposedException">Either the current stream or the destination stream is disposed.</exception>
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
-    System.Threading.Tasks.Task CopyToAsync(System.IO.Stream destination, int bufferSize, System.Threading.CancellationToken cancellationToken);
+    System.Threading.Tasks.Task CopyToAsync(Wrapperator.Interfaces.IO.IStream destination, int bufferSize, System.Threading.CancellationToken cancellationToken);
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
     /// <returns>Information required to generate a proxy.</returns>
@@ -153,7 +153,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Waits for the pending asynchronous read to complete. (Consider using <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> instead; see the Remarks section.)</summary>
     /// <returns>The number of bytes read from the stream, between zero (0) and the number of bytes you requested. Streams return zero (0) only at the end of the stream, otherwise, they should block until at least one byte is available.</returns>
@@ -283,7 +283,7 @@ namespace Wrapperator.Interfaces.IO
     /// <param name="stream">The <see cref="T:System.IO.Stream" /> object to synchronize.</param>
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="stream" /> is null.</exception>
-    Wrapperator.Interfaces.IO.IStream Synchronized(System.IO.Stream stream);
+    Wrapperator.Interfaces.IO.IStream Synchronized(Wrapperator.Interfaces.IO.IStream stream);
     
     /// <summary>When overridden in a derived class, writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
     /// <param name="buffer">An array of bytes. This method copies <paramref name="count" /> bytes from <paramref name="buffer" /> to the current stream. </param>

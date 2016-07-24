@@ -44,7 +44,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <returns>The <see cref="T:System.Object" /> that contains the first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
     /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
-    object Annotation(System.Type type);
+    object Annotation(Wrapperator.Interfaces.IType type);
     
     /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
     /// <returns>The first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
@@ -55,7 +55,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Object" /> that contains the annotations that match the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
     /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
-    System.Collections.Generic.IEnumerable<object> Annotations(System.Type type);
+    System.Collections.Generic.IEnumerable<object> Annotations(Wrapperator.Interfaces.IType type);
     
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the annotations for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
@@ -65,7 +65,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
-    void RemoveAnnotations(System.Type type);
+    void RemoveAnnotations(Wrapperator.Interfaces.IType type);
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <typeparam name="T">The type of annotations to remove.</typeparam>

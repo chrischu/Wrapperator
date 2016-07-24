@@ -17,24 +17,19 @@ namespace Wrapperator.Wrappers
   public partial class DateTimeWrapper : Wrapperator.Interfaces.IDateTime
   {
     
-    private System.DateTime _dateTime;
-    
-    public static implicit operator System.DateTime (DateTimeWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.DateTime);
-      return wrapper._dateTime;
-    }
+    internal System.DateTime DateTime { get; private set; }
+
     
     public DateTimeWrapper(System.DateTime dateTime)
     {
-      _dateTime = dateTime;
+      DateTime = dateTime;
     }
     
     public System.DateTime Date
     {
       get
       {
-        return _dateTime.Date;
+        return DateTime.Date;
       }
     }
     
@@ -42,7 +37,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Day;
+        return DateTime.Day;
       }
     }
     
@@ -50,7 +45,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.DayOfWeek;
+        return DateTime.DayOfWeek;
       }
     }
     
@@ -58,7 +53,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.DayOfYear;
+        return DateTime.DayOfYear;
       }
     }
     
@@ -66,7 +61,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Hour;
+        return DateTime.Hour;
       }
     }
     
@@ -74,7 +69,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Kind;
+        return DateTime.Kind;
       }
     }
     
@@ -82,7 +77,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Millisecond;
+        return DateTime.Millisecond;
       }
     }
     
@@ -90,7 +85,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Minute;
+        return DateTime.Minute;
       }
     }
     
@@ -98,7 +93,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Month;
+        return DateTime.Month;
       }
     }
     
@@ -114,7 +109,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Second;
+        return DateTime.Second;
       }
     }
     
@@ -122,7 +117,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Ticks;
+        return DateTime.Ticks;
       }
     }
     
@@ -130,7 +125,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.TimeOfDay;
+        return DateTime.TimeOfDay;
       }
     }
     
@@ -154,7 +149,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return _dateTime.Year;
+        return DateTime.Year;
       }
     }
     
@@ -165,7 +160,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime Add(System.TimeSpan value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.Add(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.Add(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of days to the value of this instance.</summary>
@@ -175,7 +170,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddDays(double value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddDays(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddDays(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of hours to the value of this instance.</summary>
@@ -185,7 +180,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddHours(double value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddHours(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddHours(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of milliseconds to the value of this instance.</summary>
@@ -195,7 +190,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddMilliseconds(double value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddMilliseconds(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddMilliseconds(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of minutes to the value of this instance.</summary>
@@ -205,7 +200,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddMinutes(double value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddMinutes(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddMinutes(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of months to the value of this instance.</summary>
@@ -215,7 +210,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddMonths(int months)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddMonths(months));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddMonths(months));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of seconds to the value of this instance.</summary>
@@ -225,7 +220,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddSeconds(double value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddSeconds(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddSeconds(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of ticks to the value of this instance.</summary>
@@ -235,7 +230,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddTicks(long value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddTicks(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddTicks(value));
     }
     
     /// <summary>Returns a new <see cref="T:System.DateTime" /> that adds the specified number of years to the value of this instance.</summary>
@@ -246,7 +241,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime AddYears(int value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.AddYears(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.AddYears(value));
     }
     
     /// <summary>Compares two instances of <see cref="T:System.DateTime" /> and returns an integer that indicates whether the first instance is earlier than, the same as, or later than the second instance.</summary>
@@ -254,9 +249,9 @@ namespace Wrapperator.Wrappers
     /// <param name="t1">The first object to compare. </param>
     /// <param name="t2">The second object to compare. </param>
     /// <filterpriority>1</filterpriority>
-    public int Compare(System.DateTime t1, System.DateTime t2)
+    public int Compare(Wrapperator.Interfaces.IDateTime t1, Wrapperator.Interfaces.IDateTime t2)
     {
-      return System.DateTime.Compare(t1, t2);
+      return System.DateTime.Compare(t1 == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)t1).DateTime, t2 == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)t2).DateTime);
     }
     
     /// <summary>Compares the value of this instance to a specified object that contains a specified <see cref="T:System.DateTime" /> value, and returns an integer that indicates whether this instance is earlier than, the same as, or later than the specified <see cref="T:System.DateTime" /> value.</summary>
@@ -267,16 +262,16 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public int CompareTo(object value)
     {
-      return _dateTime.CompareTo(value);
+      return DateTime.CompareTo(value);
     }
     
     /// <summary>Compares the value of this instance to a specified <see cref="T:System.DateTime" /> value and returns an integer that indicates whether this instance is earlier than, the same as, or later than the specified <see cref="T:System.DateTime" /> value.</summary>
     /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value" /> parameter.Value Description Less than zero This instance is earlier than <paramref name="value" />. Zero This instance is the same as <paramref name="value" />. Greater than zero This instance is later than <paramref name="value" />. </returns>
     /// <param name="value">The object to compare to the current instance. </param>
     /// <filterpriority>2</filterpriority>
-    public int CompareTo(System.DateTime value)
+    public int CompareTo(Wrapperator.Interfaces.IDateTime value)
     {
-      return _dateTime.CompareTo(value);
+      return DateTime.CompareTo(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value).DateTime);
     }
     
     /// <summary>Returns the number of days in the specified month and year.</summary>
@@ -339,7 +334,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string[] GetDateTimeFormats()
     {
-      return _dateTime.GetDateTimeFormats();
+      return DateTime.GetDateTimeFormats();
     }
     
     /// <summary>Converts the value of this instance to all the string representations supported by the standard date and time format specifiers and the specified culture-specific formatting information.</summary>
@@ -348,7 +343,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string[] GetDateTimeFormats(System.IFormatProvider provider)
     {
-      return _dateTime.GetDateTimeFormats(provider);
+      return DateTime.GetDateTimeFormats(provider);
     }
     
     /// <summary>Converts the value of this instance to all the string representations supported by the specified standard date and time format specifier.</summary>
@@ -359,7 +354,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string[] GetDateTimeFormats(char format)
     {
-      return _dateTime.GetDateTimeFormats(format);
+      return DateTime.GetDateTimeFormats(format);
     }
     
     /// <summary>Converts the value of this instance to all the string representations supported by the specified standard date and time format specifier and culture-specific formatting information.</summary>
@@ -371,7 +366,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string[] GetDateTimeFormats(char format, System.IFormatProvider provider)
     {
-      return _dateTime.GetDateTimeFormats(format, provider);
+      return DateTime.GetDateTimeFormats(format, provider);
     }
     
     /// <summary>Returns the <see cref="T:System.TypeCode" /> for value type <see cref="T:System.DateTime" />.</summary>
@@ -379,7 +374,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.TypeCode GetTypeCode()
     {
-      return _dateTime.GetTypeCode();
+      return DateTime.GetTypeCode();
     }
     
     /// <summary>Indicates whether this instance of <see cref="T:System.DateTime" /> is within the daylight saving time range for the current time zone.</summary>
@@ -387,7 +382,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public bool IsDaylightSavingTime()
     {
-      return _dateTime.IsDaylightSavingTime();
+      return DateTime.IsDaylightSavingTime();
     }
     
     /// <summary>Returns an indication whether the specified year is a leap year.</summary>
@@ -501,9 +496,9 @@ namespace Wrapperator.Wrappers
     /// <param name="value">A date and time. </param>
     /// <param name="kind">One of the enumeration values that indicates whether the new object represents local time, UTC, or neither.</param>
     /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IDateTime SpecifyKind(System.DateTime value, System.DateTimeKind kind)
+    public Wrapperator.Interfaces.IDateTime SpecifyKind(Wrapperator.Interfaces.IDateTime value, System.DateTimeKind kind)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.SpecifyKind(value, kind));
+      return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.SpecifyKind(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value).DateTime, kind));
     }
     
     /// <summary>Subtracts the specified date and time from this instance.</summary>
@@ -511,9 +506,9 @@ namespace Wrapperator.Wrappers
     /// <param name="value">The date and time value to subtract. </param>
     /// <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.TimeSpan Subtract(System.DateTime value)
+    public System.TimeSpan Subtract(Wrapperator.Interfaces.IDateTime value)
     {
-      return _dateTime.Subtract(value);
+      return DateTime.Subtract(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value).DateTime);
     }
     
     /// <summary>Subtracts the specified duration from this instance.</summary>
@@ -523,7 +518,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime Subtract(System.TimeSpan value)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.Subtract(value));
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.Subtract(value));
     }
     
     /// <summary>Serializes the current <see cref="T:System.DateTime" /> object to a 64-bit binary value that subsequently can be used to recreate the <see cref="T:System.DateTime" /> object.</summary>
@@ -531,7 +526,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public long ToBinary()
     {
-      return _dateTime.ToBinary();
+      return DateTime.ToBinary();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to a Windows file time.</summary>
@@ -540,7 +535,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public long ToFileTime()
     {
-      return _dateTime.ToFileTime();
+      return DateTime.ToFileTime();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to a Windows file time.</summary>
@@ -549,7 +544,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public long ToFileTimeUtc()
     {
-      return _dateTime.ToFileTimeUtc();
+      return DateTime.ToFileTimeUtc();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to local time.</summary>
@@ -557,7 +552,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime ToLocalTime()
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.ToLocalTime());
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.ToLocalTime());
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent long date string representation.</summary>
@@ -565,7 +560,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string ToLongDateString()
     {
-      return _dateTime.ToLongDateString();
+      return DateTime.ToLongDateString();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent long time string representation.</summary>
@@ -573,7 +568,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string ToLongTimeString()
     {
-      return _dateTime.ToLongTimeString();
+      return DateTime.ToLongTimeString();
     }
     
     /// <summary>Converts the value of this instance to the equivalent OLE Automation date.</summary>
@@ -582,7 +577,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public double ToOADate()
     {
-      return _dateTime.ToOADate();
+      return DateTime.ToOADate();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent short date string representation.</summary>
@@ -590,7 +585,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string ToShortDateString()
     {
-      return _dateTime.ToShortDateString();
+      return DateTime.ToShortDateString();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent short time string representation.</summary>
@@ -598,7 +593,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public string ToShortTimeString()
     {
-      return _dateTime.ToShortTimeString();
+      return DateTime.ToShortTimeString();
     }
     
     /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to Coordinated Universal Time (UTC).</summary>
@@ -606,7 +601,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime ToUniversalTime()
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(_dateTime.ToUniversalTime());
+      return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.ToUniversalTime());
     }
     
     /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent and returns a value that indicates whether the conversion succeeded.</summary>

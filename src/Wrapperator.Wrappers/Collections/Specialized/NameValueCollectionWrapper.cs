@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Collections.Specialized
   public partial class NameValueCollectionWrapper : Wrapperator.Interfaces.Collections.Specialized.INameValueCollection
   {
     
-    private System.Collections.Specialized.NameValueCollection _nameValueCollection;
-    
-    public static implicit operator System.Collections.Specialized.NameValueCollection (NameValueCollectionWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Collections.Specialized.NameValueCollection);
-      return wrapper._nameValueCollection;
-    }
+    internal System.Collections.Specialized.NameValueCollection NameValueCollection { get; private set; }
+
     
     public NameValueCollectionWrapper(System.Collections.Specialized.NameValueCollection nameValueCollection)
     {
-      _nameValueCollection = nameValueCollection;
+      NameValueCollection = nameValueCollection;
     }
     
     public string[] AllKeys
     {
       get
       {
-        return _nameValueCollection.AllKeys;
+        return NameValueCollection.AllKeys;
       }
     }
     
@@ -41,7 +36,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     {
       get
       {
-        return _nameValueCollection.Count;
+        return NameValueCollection.Count;
       }
     }
     
@@ -49,11 +44,11 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     {
       get
       {
-        return _nameValueCollection[name];
+        return NameValueCollection[name];
       }
       set
       {
-        _nameValueCollection[name] = value;
+        NameValueCollection[name] = value;
       }
     }
     
@@ -61,7 +56,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     {
       get
       {
-        return _nameValueCollection[index];
+        return NameValueCollection[index];
       }
     }
     
@@ -69,7 +64,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     {
       get
       {
-        return _nameValueCollection.Keys;
+        return NameValueCollection.Keys;
       }
     }
     
@@ -78,9 +73,9 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="c" /> is null.</exception>
-    public void Add(System.Collections.Specialized.NameValueCollection c)
+    public void Add(Wrapperator.Interfaces.Collections.Specialized.INameValueCollection c)
     {
-      _nameValueCollection.Add(c);
+      NameValueCollection.Add(c == null ? default(System.Collections.Specialized.NameValueCollection) : ((Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper)c).NameValueCollection);
     }
     
     /// <summary>Adds an entry with the specified name and value to the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -89,14 +84,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <exception cref="T:System.NotSupportedException">The collection is read-only. </exception>
     public void Add(string name, string value)
     {
-      _nameValueCollection.Add(name, value);
+      NameValueCollection.Add(name, value);
     }
     
     /// <summary>Invalidates the cached arrays and removes all entries from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
     public void Clear()
     {
-      _nameValueCollection.Clear();
+      NameValueCollection.Clear();
     }
     
     /// <summary>Copies the entire <see cref="T:System.Collections.Specialized.NameValueCollection" /> to a compatible one-dimensional <see cref="T:System.Array" />, starting at the specified index of the target array.</summary>
@@ -111,7 +106,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <exception cref="T:System.InvalidCastException">The type of the source <see cref="T:System.Collections.Specialized.NameValueCollection" /> cannot be cast automatically to the type of the destination <paramref name="dest" />.</exception>
     public void CopyTo(System.Array dest, int index)
     {
-      _nameValueCollection.CopyTo(dest, index);
+      NameValueCollection.CopyTo(dest, index);
     }
     
     /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" /> combined into one comma-separated list.</summary>
@@ -119,7 +114,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <param name="name">The <see cref="T:System.String" /> key of the entry that contains the values to get. The key can be null.</param>
     public string Get(string name)
     {
-      return _nameValueCollection.Get(name);
+      return NameValueCollection.Get(name);
     }
     
     /// <summary>Gets the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" /> combined into one comma-separated list.</summary>
@@ -129,14 +124,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     ///  <paramref name="index" /> is outside the valid range of indexes for the collection.</exception>
     public string Get(int index)
     {
-      return _nameValueCollection.Get(index);
+      return NameValueCollection.Get(index);
     }
     
     /// <summary>Returns an enumerator that iterates through the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" />.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> for the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return _nameValueCollection.GetEnumerator();
+      return NameValueCollection.GetEnumerator();
     }
     
     /// <summary>Gets the key at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -146,7 +141,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     ///  <paramref name="index" /> is outside the valid range of indexes for the collection. </exception>
     public string GetKey(int index)
     {
-      return _nameValueCollection.GetKey(index);
+      return NameValueCollection.GetKey(index);
     }
     
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and returns the data needed to serialize the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
@@ -156,7 +151,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     ///  <paramref name="info" /> is null.</exception>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      _nameValueCollection.GetObjectData(info, context);
+      NameValueCollection.GetObjectData(info, context);
     }
     
     /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -164,7 +159,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <param name="name">The <see cref="T:System.String" /> key of the entry that contains the values to get. The key can be null.</param>
     public string[] GetValues(string name)
     {
-      return _nameValueCollection.GetValues(name);
+      return NameValueCollection.GetValues(name);
     }
     
     /// <summary>Gets the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -174,14 +169,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     ///  <paramref name="index" /> is outside the valid range of indexes for the collection. </exception>
     public string[] GetValues(int index)
     {
-      return _nameValueCollection.GetValues(index);
+      return NameValueCollection.GetValues(index);
     }
     
     /// <summary>Gets a value indicating whether the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null.</summary>
     /// <returns>true if the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null; otherwise, false.</returns>
     public bool HasKeys()
     {
-      return _nameValueCollection.HasKeys();
+      return NameValueCollection.HasKeys();
     }
     
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and raises the deserialization event when the deserialization is complete.</summary>
@@ -189,7 +184,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <exception cref="T:System.Runtime.Serialization.SerializationException">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object associated with the current <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance is invalid.</exception>
     public void OnDeserialization(object sender)
     {
-      _nameValueCollection.OnDeserialization(sender);
+      NameValueCollection.OnDeserialization(sender);
     }
     
     /// <summary>Removes the entries with the specified key from the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
@@ -197,7 +192,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
     public void Remove(string name)
     {
-      _nameValueCollection.Remove(name);
+      NameValueCollection.Remove(name);
     }
     
     /// <summary>Sets the value of an entry in the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -206,7 +201,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
     public void Set(string name, string value)
     {
-      _nameValueCollection.Set(name, value);
+      NameValueCollection.Set(name, value);
     }
   }
 }

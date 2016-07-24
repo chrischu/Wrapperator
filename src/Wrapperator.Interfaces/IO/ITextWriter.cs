@@ -43,7 +43,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
     /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
     /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(System.Type requestedType);
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
     /// <filterpriority>1</filterpriority>
@@ -73,7 +73,7 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="writer" /> is null. </exception>
     /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IO.ITextWriter Synchronized(System.IO.TextWriter writer);
+    Wrapperator.Interfaces.IO.ITextWriter Synchronized(Wrapperator.Interfaces.IO.ITextWriter writer);
     
     /// <summary>Writes a character to the text string or stream.</summary>
     /// <param name="value">The character to write to the text stream. </param>

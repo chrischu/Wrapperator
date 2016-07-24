@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 No changes yet.
 
+## [0.7.0](https://github.com/chrischu/Wrapperator/compare/v0.6.0...v0.7.0) - 2016-07-24
+
+* Types used in parameters are also wrapped now.
+
 ## [0.6.0](https://github.com/chrischu/Wrapperator/compare/v0.5.0...v0.6.0) - 2016-07-24
 
 * Added option to generate implicit conversion operator from the wrapper type to the wrapped type and enabled it by default.

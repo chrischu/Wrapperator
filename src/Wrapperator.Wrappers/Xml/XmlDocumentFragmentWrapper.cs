@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Xml
   public partial class XmlDocumentFragmentWrapper : Wrapperator.Interfaces.Xml.IXmlDocumentFragment
   {
     
-    private System.Xml.XmlDocumentFragment _xmlDocumentFragment;
-    
-    public static implicit operator System.Xml.XmlDocumentFragment (XmlDocumentFragmentWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Xml.XmlDocumentFragment);
-      return wrapper._xmlDocumentFragment;
-    }
+    internal System.Xml.XmlDocumentFragment XmlDocumentFragment { get; private set; }
+
     
     public XmlDocumentFragmentWrapper(System.Xml.XmlDocumentFragment xmlDocumentFragment)
     {
-      _xmlDocumentFragment = xmlDocumentFragment;
+      XmlDocumentFragment = xmlDocumentFragment;
     }
     
     public System.Xml.XmlAttributeCollection Attributes
     {
       get
       {
-        return _xmlDocumentFragment.Attributes;
+        return XmlDocumentFragment.Attributes;
       }
     }
     
@@ -41,7 +36,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.BaseURI;
+        return XmlDocumentFragment.BaseURI;
       }
     }
     
@@ -49,7 +44,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.ChildNodes;
+        return XmlDocumentFragment.ChildNodes;
       }
     }
     
@@ -57,7 +52,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.FirstChild;
+        return XmlDocumentFragment.FirstChild;
       }
     }
     
@@ -65,7 +60,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.HasChildNodes;
+        return XmlDocumentFragment.HasChildNodes;
       }
     }
     
@@ -73,11 +68,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.InnerText;
+        return XmlDocumentFragment.InnerText;
       }
       set
       {
-        _xmlDocumentFragment.InnerText = value;
+        XmlDocumentFragment.InnerText = value;
       }
     }
     
@@ -85,11 +80,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.InnerXml;
+        return XmlDocumentFragment.InnerXml;
       }
       set
       {
-        _xmlDocumentFragment.InnerXml = value;
+        XmlDocumentFragment.InnerXml = value;
       }
     }
     
@@ -97,7 +92,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.IsReadOnly;
+        return XmlDocumentFragment.IsReadOnly;
       }
     }
     
@@ -105,7 +100,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment[name];
+        return XmlDocumentFragment[name];
       }
     }
     
@@ -113,7 +108,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment[localname, ns];
+        return XmlDocumentFragment[localname, ns];
       }
     }
     
@@ -121,7 +116,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.LastChild;
+        return XmlDocumentFragment.LastChild;
       }
     }
     
@@ -129,7 +124,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.LocalName;
+        return XmlDocumentFragment.LocalName;
       }
     }
     
@@ -137,7 +132,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.Name;
+        return XmlDocumentFragment.Name;
       }
     }
     
@@ -145,7 +140,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.NamespaceURI;
+        return XmlDocumentFragment.NamespaceURI;
       }
     }
     
@@ -153,7 +148,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.NextSibling;
+        return XmlDocumentFragment.NextSibling;
       }
     }
     
@@ -161,7 +156,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.NodeType;
+        return XmlDocumentFragment.NodeType;
       }
     }
     
@@ -169,7 +164,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.OuterXml;
+        return XmlDocumentFragment.OuterXml;
       }
     }
     
@@ -177,7 +172,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.OwnerDocument;
+        return XmlDocumentFragment.OwnerDocument;
       }
     }
     
@@ -185,7 +180,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.ParentNode;
+        return XmlDocumentFragment.ParentNode;
       }
     }
     
@@ -193,11 +188,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.Prefix;
+        return XmlDocumentFragment.Prefix;
       }
       set
       {
-        _xmlDocumentFragment.Prefix = value;
+        XmlDocumentFragment.Prefix = value;
       }
     }
     
@@ -205,7 +200,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.PreviousSibling;
+        return XmlDocumentFragment.PreviousSibling;
       }
     }
     
@@ -213,7 +208,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.SchemaInfo;
+        return XmlDocumentFragment.SchemaInfo;
       }
     }
     
@@ -221,11 +216,11 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return _xmlDocumentFragment.Value;
+        return XmlDocumentFragment.Value;
       }
       set
       {
-        _xmlDocumentFragment.Value = value;
+        XmlDocumentFragment.Value = value;
       }
     }
     
@@ -236,14 +231,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only. </exception>
     public System.Xml.XmlNode AppendChild(System.Xml.XmlNode newChild)
     {
-      return _xmlDocumentFragment.AppendChild(newChild);
+      return XmlDocumentFragment.AppendChild(newChild);
     }
     
     /// <summary>Creates a duplicate of this node.</summary>
     /// <returns>The cloned node.</returns>
     public System.Xml.XmlNode Clone()
     {
-      return _xmlDocumentFragment.Clone();
+      return XmlDocumentFragment.Clone();
     }
     
     /// <summary>Creates a duplicate of this node.</summary>
@@ -251,21 +246,21 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="deep">true to recursively clone the subtree under the specified node; false to clone only the node itself. </param>
     public System.Xml.XmlNode CloneNode(bool deep)
     {
-      return _xmlDocumentFragment.CloneNode(deep);
+      return XmlDocumentFragment.CloneNode(deep);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XPath.XPathNavigator" /> for navigating this object.</summary>
     /// <returns>An XPathNavigator object used to navigate the node. The XPathNavigator is positioned on the node from which the method was called. It is not positioned on the root of the document.</returns>
     public System.Xml.XPath.XPathNavigator CreateNavigator()
     {
-      return _xmlDocumentFragment.CreateNavigator();
+      return XmlDocumentFragment.CreateNavigator();
     }
     
     /// <summary>Get an enumerator that iterates through the child nodes in the current node.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the child nodes in the current node.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return _xmlDocumentFragment.GetEnumerator();
+      return XmlDocumentFragment.GetEnumerator();
     }
     
     /// <summary>Looks up the closest xmlns declaration for the given prefix that is in scope for the current node and returns the namespace URI in the declaration.</summary>
@@ -273,7 +268,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="prefix">The prefix whose namespace URI you want to find. </param>
     public string GetNamespaceOfPrefix(string prefix)
     {
-      return _xmlDocumentFragment.GetNamespaceOfPrefix(prefix);
+      return XmlDocumentFragment.GetNamespaceOfPrefix(prefix);
     }
     
     /// <summary>Looks up the closest xmlns declaration for the given namespace URI that is in scope for the current node and returns the prefix defined in that declaration.</summary>
@@ -281,7 +276,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="namespaceURI">The namespace URI whose prefix you want to find. </param>
     public string GetPrefixOfNamespace(string namespaceURI)
     {
-      return _xmlDocumentFragment.GetPrefixOfNamespace(namespaceURI);
+      return XmlDocumentFragment.GetPrefixOfNamespace(namespaceURI);
     }
     
     /// <summary>Inserts the specified node immediately after the specified reference node.</summary>
@@ -292,7 +287,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.The <paramref name="refChild" /> is not a child of this node.This node is read-only. </exception>
     public System.Xml.XmlNode InsertAfter(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild)
     {
-      return _xmlDocumentFragment.InsertAfter(newChild, refChild);
+      return XmlDocumentFragment.InsertAfter(newChild, refChild);
     }
     
     /// <summary>Inserts the specified node immediately before the specified reference node.</summary>
@@ -303,13 +298,13 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.The <paramref name="refChild" /> is not a child of this node.This node is read-only. </exception>
     public System.Xml.XmlNode InsertBefore(System.Xml.XmlNode newChild, System.Xml.XmlNode refChild)
     {
-      return _xmlDocumentFragment.InsertBefore(newChild, refChild);
+      return XmlDocumentFragment.InsertBefore(newChild, refChild);
     }
     
     /// <summary>Puts all XmlText nodes in the full depth of the sub-tree underneath this XmlNode into a "normal" form where only markup (that is, tags, comments, processing instructions, CDATA sections, and entity references) separates XmlText nodes, that is, there are no adjacent XmlText nodes.</summary>
     public void Normalize()
     {
-      _xmlDocumentFragment.Normalize();
+      XmlDocumentFragment.Normalize();
     }
     
     /// <summary>Adds the specified node to the beginning of the list of child nodes for this node.</summary>
@@ -319,13 +314,13 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only. </exception>
     public System.Xml.XmlNode PrependChild(System.Xml.XmlNode newChild)
     {
-      return _xmlDocumentFragment.PrependChild(newChild);
+      return XmlDocumentFragment.PrependChild(newChild);
     }
     
     /// <summary>Removes all the child nodes and/or attributes of the current node.</summary>
     public void RemoveAll()
     {
-      _xmlDocumentFragment.RemoveAll();
+      XmlDocumentFragment.RemoveAll();
     }
     
     /// <summary>Removes specified child node.</summary>
@@ -334,7 +329,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="oldChild" /> is not a child of this node. Or this node is read-only. </exception>
     public System.Xml.XmlNode RemoveChild(System.Xml.XmlNode oldChild)
     {
-      return _xmlDocumentFragment.RemoveChild(oldChild);
+      return XmlDocumentFragment.RemoveChild(oldChild);
     }
     
     /// <summary>Replaces the child node <paramref name="oldChild" /> with <paramref name="newChild" /> node.</summary>
@@ -345,7 +340,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <paramref name="newChild" /> was created from a different document than the one that created this node.This node is read-only.The <paramref name="oldChild" /> is not a child of this node. </exception>
     public System.Xml.XmlNode ReplaceChild(System.Xml.XmlNode newChild, System.Xml.XmlNode oldChild)
     {
-      return _xmlDocumentFragment.ReplaceChild(newChild, oldChild);
+      return XmlDocumentFragment.ReplaceChild(newChild, oldChild);
     }
     
     /// <summary>Selects a list of nodes matching the XPath expression.</summary>
@@ -354,7 +349,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix. </exception>
     public System.Xml.XmlNodeList SelectNodes(string xpath)
     {
-      return _xmlDocumentFragment.SelectNodes(xpath);
+      return XmlDocumentFragment.SelectNodes(xpath);
     }
     
     /// <summary>Selects a list of nodes matching the XPath expression. Any prefixes found in the XPath expression are resolved using the supplied <see cref="T:System.Xml.XmlNamespaceManager" />.</summary>
@@ -364,7 +359,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix which is not defined in the XmlNamespaceManager. </exception>
     public System.Xml.XmlNodeList SelectNodes(string xpath, System.Xml.XmlNamespaceManager nsmgr)
     {
-      return _xmlDocumentFragment.SelectNodes(xpath, nsmgr);
+      return XmlDocumentFragment.SelectNodes(xpath, nsmgr);
     }
     
     /// <summary>Selects the first XmlNode that matches the XPath expression.</summary>
@@ -373,7 +368,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix. </exception>
     public System.Xml.XmlNode SelectSingleNode(string xpath)
     {
-      return _xmlDocumentFragment.SelectSingleNode(xpath);
+      return XmlDocumentFragment.SelectSingleNode(xpath);
     }
     
     /// <summary>Selects the first XmlNode that matches the XPath expression. Any prefixes found in the XPath expression are resolved using the supplied <see cref="T:System.Xml.XmlNamespaceManager" />.</summary>
@@ -383,7 +378,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XPath.XPathException">The XPath expression contains a prefix which is not defined in the XmlNamespaceManager. </exception>
     public System.Xml.XmlNode SelectSingleNode(string xpath, System.Xml.XmlNamespaceManager nsmgr)
     {
-      return _xmlDocumentFragment.SelectSingleNode(xpath, nsmgr);
+      return XmlDocumentFragment.SelectSingleNode(xpath, nsmgr);
     }
     
     /// <summary>Tests if the DOM implementation implements a specific feature.</summary>
@@ -392,21 +387,21 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="version">The version number of the package name to test. If the version is not specified (null), supporting any version of the feature causes the method to return true. </param>
     public bool Supports(string feature, string version)
     {
-      return _xmlDocumentFragment.Supports(feature, version);
+      return XmlDocumentFragment.Supports(feature, version);
     }
     
     /// <summary>Saves all the children of the node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
-    public void WriteContentTo(System.Xml.XmlWriter w)
+    public void WriteContentTo(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _xmlDocumentFragment.WriteContentTo(w);
+      XmlDocumentFragment.WriteContentTo(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w).XmlWriter);
     }
     
     /// <summary>Saves the node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
-    public void WriteTo(System.Xml.XmlWriter w)
+    public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _xmlDocumentFragment.WriteTo(w);
+      XmlDocumentFragment.WriteTo(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w).XmlWriter);
     }
   }
 }

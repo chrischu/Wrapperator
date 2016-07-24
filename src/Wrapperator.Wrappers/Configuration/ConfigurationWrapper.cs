@@ -16,24 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public partial class ConfigurationWrapper : Wrapperator.Interfaces.Configuration.IConfiguration
   {
     
-    private System.Configuration.Configuration _configuration;
-    
-    public static implicit operator System.Configuration.Configuration (ConfigurationWrapper wrapper)
-    {
-      if (wrapper == null) return default(System.Configuration.Configuration);
-      return wrapper._configuration;
-    }
+    internal System.Configuration.Configuration Configuration { get; private set; }
+
     
     public ConfigurationWrapper(System.Configuration.Configuration configuration)
     {
-      _configuration = configuration;
+      Configuration = configuration;
     }
     
     public System.Configuration.AppSettingsSection AppSettings
     {
       get
       {
-        return _configuration.AppSettings;
+        return Configuration.AppSettings;
       }
     }
     
@@ -41,11 +36,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.AssemblyStringTransformer;
+        return Configuration.AssemblyStringTransformer;
       }
       set
       {
-        _configuration.AssemblyStringTransformer = value;
+        Configuration.AssemblyStringTransformer = value;
       }
     }
     
@@ -53,7 +48,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.ConnectionStrings;
+        return Configuration.ConnectionStrings;
       }
     }
     
@@ -61,7 +56,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.EvaluationContext;
+        return Configuration.EvaluationContext;
       }
     }
     
@@ -69,7 +64,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.FilePath;
+        return Configuration.FilePath;
       }
     }
     
@@ -77,7 +72,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.HasFile;
+        return Configuration.HasFile;
       }
     }
     
@@ -85,7 +80,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.Locations;
+        return Configuration.Locations;
       }
     }
     
@@ -93,11 +88,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.NamespaceDeclared;
+        return Configuration.NamespaceDeclared;
       }
       set
       {
-        _configuration.NamespaceDeclared = value;
+        Configuration.NamespaceDeclared = value;
       }
     }
     
@@ -105,7 +100,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.RootSectionGroup;
+        return Configuration.RootSectionGroup;
       }
     }
     
@@ -113,7 +108,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.SectionGroups;
+        return Configuration.SectionGroups;
       }
     }
     
@@ -121,7 +116,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.Sections;
+        return Configuration.Sections;
       }
     }
     
@@ -129,11 +124,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.TargetFramework;
+        return Configuration.TargetFramework;
       }
       set
       {
-        _configuration.TargetFramework = value;
+        Configuration.TargetFramework = value;
       }
     }
     
@@ -141,11 +136,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return _configuration.TypeStringTransformer;
+        return Configuration.TypeStringTransformer;
       }
       set
       {
-        _configuration.TypeStringTransformer = value;
+        Configuration.TypeStringTransformer = value;
       }
     }
     
@@ -154,7 +149,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="sectionName">The path to the section to be returned.</param>
     public System.Configuration.ConfigurationSection GetSection(string sectionName)
     {
-      return _configuration.GetSection(sectionName);
+      return Configuration.GetSection(sectionName);
     }
     
     /// <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object.</summary>
@@ -162,14 +157,14 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="sectionGroupName">The path name of the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> to return.</param>
     public System.Configuration.ConfigurationSectionGroup GetSectionGroup(string sectionGroupName)
     {
-      return _configuration.GetSectionGroup(sectionGroupName);
+      return Configuration.GetSectionGroup(sectionGroupName);
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the current XML configuration file.</summary>
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The configuration file could not be written to.- or -The configuration file has changed. </exception>
     public void Save()
     {
-      _configuration.Save();
+      Configuration.Save();
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the current XML configuration file.</summary>
@@ -177,7 +172,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The configuration file could not be written to.- or -The configuration file has changed. </exception>
     public void Save(System.Configuration.ConfigurationSaveMode saveMode)
     {
-      _configuration.Save(saveMode);
+      Configuration.Save(saveMode);
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the current XML configuration file.</summary>
@@ -186,7 +181,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The configuration file could not be written to.- or -The configuration file has changed. </exception>
     public void Save(System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll)
     {
-      _configuration.Save(saveMode, forceSaveAll);
+      Configuration.Save(saveMode, forceSaveAll);
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the specified XML configuration file.</summary>
@@ -194,7 +189,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The configuration file could not be written to.- or -The configuration file has changed. </exception>
     public void SaveAs(string filename)
     {
-      _configuration.SaveAs(filename);
+      Configuration.SaveAs(filename);
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the specified XML configuration file.</summary>
@@ -203,7 +198,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The configuration file could not be written to.- or -The configuration file has changed. </exception>
     public void SaveAs(string filename, System.Configuration.ConfigurationSaveMode saveMode)
     {
-      _configuration.SaveAs(filename, saveMode);
+      Configuration.SaveAs(filename, saveMode);
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the specified XML configuration file.</summary>
@@ -214,7 +209,7 @@ namespace Wrapperator.Wrappers.Configuration
     ///  <paramref name="filename" /> is null or an empty string ("").</exception>
     public void SaveAs(string filename, System.Configuration.ConfigurationSaveMode saveMode, bool forceSaveAll)
     {
-      _configuration.SaveAs(filename, saveMode, forceSaveAll);
+      Configuration.SaveAs(filename, saveMode, forceSaveAll);
     }
   }
 }

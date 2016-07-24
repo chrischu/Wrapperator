@@ -18,7 +18,7 @@ namespace Wrapperator
       foreach (var model in helper.Models)
       {
         GenerateInterface(helper, model);
-        GenerateWrapper(options, helper, model);
+        GenerateWrapper(helper, model);
       }
     }
 
@@ -74,7 +74,7 @@ namespace Wrapperator
       return property;
     }
 
-    private static void GenerateWrapper (WrapperatorOptions options, WrapperatorHelper helper, WrapperatorModel model)
+    private static void GenerateWrapper (WrapperatorHelper helper, WrapperatorModel model)
     {
       var compileUnit = new CodeCompileUnit();
 
@@ -96,15 +96,15 @@ namespace Wrapperator
       ns.Types.Add(wrapperClass);
 
       if (!model.Type.IsStatic())
-        AddWrappedFieldAndCtorToWrapper(helper, model, wrapperClass);
+        AddWrappedPropertyAndCtorToWrapper(helper, model, wrapperClass);
 
       AddMethodsToWrapper(helper, model, wrapperClass);
-      AddPropertiesToWrapper(model, wrapperClass);
+      AddPropertiesToWrapper(helper, model, wrapperClass);
 
       if (typeof(IDisposable).IsAssignableFrom(model.Type))
         AddDisposeMethodToWrapper(helper, model, wrapperClass);
 
-      if (options.Wrapper.GenerateImplicitConversionOperatorsToWrappedType && !model.Type.IsStatic())
+      if (helper.ShouldImplicitConversionOperatorsBeGenerated && !model.Type.IsStatic())
         AddImplicitConversionOperatorToWrappedType(helper, model, wrapperClass);
 
       helper.WriteToWrapperFile(model.Type, sw => ConvertCompileUnitToCode(compileUnit, sw));
@@ -120,7 +120,7 @@ namespace Wrapperator
               $"    public static implicit operator {model.Type.FullName} ({helper.GetWrapperName(model.Type)} wrapper)" + Environment.NewLine +
               "    {" + Environment.NewLine +
               $"      if (wrapper == null) return default({model.Type.FullName});" + Environment.NewLine +
-              $"      return wrapper.{model.FieldName};" + Environment.NewLine +
+              $"      return wrapper.{helper.GetPropertyName(model.Type)};" + Environment.NewLine +
               "    }");
 
       wrapperClass.Members.Add(implicitConversionOperator);
@@ -138,7 +138,7 @@ namespace Wrapperator
       var @if = new CodeConditionStatement(new CodeArgumentReferenceExpression("disposing"));
       @if.TrueStatements.Add(
           new CodeMethodInvokeExpression(
-              new CodeMethodReferenceExpression(new CodeFieldReferenceExpression { FieldName = model.FieldName }, "Dispose")));
+              new CodeMethodReferenceExpression(new CodeFieldReferenceExpression { FieldName = helper.GetPropertyName(model.Type) }, "Dispose")));
 
       protectedDisposeMethod.Statements.Add(@if);
       wrapperClass.Members.Add(protectedDisposeMethod);
@@ -185,7 +185,7 @@ namespace Wrapperator
 
         var invokeTarget = methodInfo.IsStatic
             ? (CodeExpression) new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
-            : new CodeFieldReferenceExpression { FieldName = model.FieldName };
+            : new CodePropertyReferenceExpression { PropertyName = helper.GetPropertyName(model.Type) };
 
         if (memberModel.Overrides)
             // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
@@ -194,7 +194,19 @@ namespace Wrapperator
         var parameters = methodInfo.GetParameters().Select(
             p =>
             {
-              CodeExpression result = new CodeArgumentReferenceExpression(p.Name);
+              CodeExpression result;
+
+              if (helper.ShouldParameterTypesGetWrapped && helper.ShouldTypeBeWrapped(p.ParameterType))
+              {
+                var getWrapped = $"(({helper.GetFullWrapperName(p.ParameterType)}){p.Name}).{helper.GetPropertyName(p.ParameterType)}";
+                var nullHandling = $"{p.Name} == null ? default({p.ParameterType.FullName}) : {getWrapped}";
+
+                result = new CodeSnippetExpression(nullHandling);
+              }
+              else
+              {
+                result = new CodeArgumentReferenceExpression(p.Name);
+              }
 
               if (p.IsOut && !p.ParameterType.IsArray)
                 result = new CodeDirectionExpression(FieldDirection.Out, result);
@@ -225,7 +237,7 @@ namespace Wrapperator
       }
     }
 
-    private static void AddPropertiesToWrapper (WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    private static void AddPropertiesToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
       foreach (var memberModel in model.WrapperProperties.OrderBy(x => x.Member.Name).ThenBy(x => x.Member.IsStatic()))
       {
@@ -239,7 +251,7 @@ namespace Wrapperator
 
         var invokeTarget = propertyInfo.IsStatic()
             ? (CodeExpression) new CodeTypeReferenceExpression(ConvertTypeToTypeReference(model.Type))
-            : new CodeFieldReferenceExpression { FieldName = model.FieldName };
+            : new CodePropertyReferenceExpression { PropertyName = helper.GetPropertyName(model.Type) };
 
         CodeExpression propertyReference = new CodePropertyReferenceExpression(invokeTarget, propertyInfo.Name);
 
@@ -266,10 +278,14 @@ namespace Wrapperator
       }
     }
 
-    private static void AddWrappedFieldAndCtorToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
+    private static void AddWrappedPropertyAndCtorToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
     {
-      var wrappedField = new CodeMemberField(ConvertTypeToTypeReference(model.Type), model.FieldName);
-      wrapperClass.Members.Add(wrappedField);
+      var propertyName = helper.GetPropertyName(model.Type);
+      var parameterName = helper.GetParameterName(model.Type);
+
+      var wrappedProperty =
+          new CodeSnippetTypeMember($"    internal {model.Type.FullName} {propertyName} {{ get; private set; }}" + Environment.NewLine);
+      wrapperClass.Members.Add(wrappedProperty);
 
       var constructor = new CodeConstructor
                         {
@@ -278,14 +294,14 @@ namespace Wrapperator
                         };
 
       if (helper.ShouldTypeBeWrapped(model.Type.BaseType))
-        constructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression(model.ParameterName));
+        constructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression(parameterName));
 
       constructor.Statements.Add(
           new CodeAssignStatement(
-              new CodeFieldReferenceExpression { FieldName = model.FieldName },
-              new CodeArgumentReferenceExpression(model.ParameterName)));
+              new CodePropertyReferenceExpression { PropertyName = propertyName },
+              new CodeArgumentReferenceExpression(parameterName)));
 
-      constructor.Parameters.Add(new CodeParameterDeclarationExpression(ConvertTypeToTypeReference(model.Type), model.ParameterName));
+      constructor.Parameters.Add(new CodeParameterDeclarationExpression(ConvertTypeToTypeReference(model.Type), parameterName));
 
       wrapperClass.Members.Add(constructor);
     }
@@ -318,8 +334,18 @@ namespace Wrapperator
 
       foreach (var parameterInfo in methodInfo.GetParameters())
       {
-        var codeTypeReference = ConvertTypeToTypeReference(parameterInfo.ParameterType);
-        var parameter = new CodeParameterDeclarationExpression(codeTypeReference, parameterInfo.Name);
+        CodeParameterDeclarationExpression parameter;
+
+        if (helper.ShouldParameterTypesGetWrapped && helper.ShouldTypeBeWrapped(parameterInfo.ParameterType))
+        {
+          var codeTypeReference = new CodeTypeReference(helper.GetFullInterfaceName(parameterInfo.ParameterType));
+          parameter = new CodeParameterDeclarationExpression(codeTypeReference, parameterInfo.Name);
+        }
+        else
+        {
+          var codeTypeReference = ConvertTypeToTypeReference(parameterInfo.ParameterType);
+          parameter = new CodeParameterDeclarationExpression(codeTypeReference, parameterInfo.Name);
+        }
 
         if (parameterInfo.IsOut && !parameterInfo.ParameterType.IsArray)
           parameter.Direction = FieldDirection.Out;
