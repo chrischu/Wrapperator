@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.FileSystemWatcher _fileSystemWatcher;
     
+    public static implicit operator System.IO.FileSystemWatcher (FileSystemWatcherWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.FileSystemWatcher);
+      return wrapper._fileSystemWatcher;
+    }
+    
     public FileSystemWatcherWrapper(System.IO.FileSystemWatcher fileSystemWatcher)
     {
       _fileSystemWatcher = fileSystemWatcher;

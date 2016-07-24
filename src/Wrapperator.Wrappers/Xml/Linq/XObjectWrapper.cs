@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XObject _xObject;
     
+    public static implicit operator System.Xml.Linq.XObject (XObjectWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XObject);
+      return wrapper._xObject;
+    }
+    
     public XObjectWrapper(System.Xml.Linq.XObject xObject)
     {
       _xObject = xObject;

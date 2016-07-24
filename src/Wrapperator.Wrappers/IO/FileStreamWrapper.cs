@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.FileStream _fileStream;
     
+    public static implicit operator System.IO.FileStream (FileStreamWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.FileStream);
+      return wrapper._fileStream;
+    }
+    
     public FileStreamWrapper(System.IO.FileStream fileStream) : 
         base(fileStream)
     {

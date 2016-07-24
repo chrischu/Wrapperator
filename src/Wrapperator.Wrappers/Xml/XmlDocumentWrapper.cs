@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml
     
     private System.Xml.XmlDocument _xmlDocument;
     
+    public static implicit operator System.Xml.XmlDocument (XmlDocumentWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.XmlDocument);
+      return wrapper._xmlDocument;
+    }
+    
     public XmlDocumentWrapper(System.Xml.XmlDocument xmlDocument)
     {
       _xmlDocument = xmlDocument;

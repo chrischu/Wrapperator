@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.Stream _stream;
     
+    public static implicit operator System.IO.Stream (StreamWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.Stream);
+      return wrapper._stream;
+    }
+    
     public StreamWrapper(System.IO.Stream stream)
     {
       _stream = stream;

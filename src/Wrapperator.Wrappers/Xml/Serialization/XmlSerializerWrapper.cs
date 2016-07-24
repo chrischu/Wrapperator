@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     
     private System.Xml.Serialization.XmlSerializer _xmlSerializer;
     
+    public static implicit operator System.Xml.Serialization.XmlSerializer (XmlSerializerWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Serialization.XmlSerializer);
+      return wrapper._xmlSerializer;
+    }
+    
     public XmlSerializerWrapper(System.Xml.Serialization.XmlSerializer xmlSerializer)
     {
       _xmlSerializer = xmlSerializer;

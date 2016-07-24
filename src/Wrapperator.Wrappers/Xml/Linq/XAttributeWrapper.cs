@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XAttribute _xAttribute;
     
+    public static implicit operator System.Xml.Linq.XAttribute (XAttributeWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XAttribute);
+      return wrapper._xAttribute;
+    }
+    
     public XAttributeWrapper(System.Xml.Linq.XAttribute xAttribute) : 
         base(xAttribute)
     {

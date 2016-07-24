@@ -18,7 +18,7 @@ namespace Wrapperator
       foreach (var model in helper.Models)
       {
         GenerateInterface(helper, model);
-        GenerateWrapper(helper, model);
+        GenerateWrapper(options, helper, model);
       }
     }
 
@@ -74,7 +74,7 @@ namespace Wrapperator
       return property;
     }
 
-    private static void GenerateWrapper (WrapperatorHelper helper, WrapperatorModel model)
+    private static void GenerateWrapper (WrapperatorOptions options, WrapperatorHelper helper, WrapperatorModel model)
     {
       var compileUnit = new CodeCompileUnit();
 
@@ -90,7 +90,7 @@ namespace Wrapperator
       if (helper.ShouldTypeBeWrapped(model.Type.BaseType))
         wrapperClass.BaseTypes.Add(helper.GetWrapperName(model.Type.BaseType));
 
-      wrapperClass.BaseTypes.Add(new CodeTypeReference($"{helper.GetInterfaceNamespace(model.Type)}.{helper.GetInterfaceName(model.Type)}"));
+      wrapperClass.BaseTypes.Add(new CodeTypeReference($"{helper.GetFullInterfaceName(model.Type)}"));
       wrapperClass.Comments.AddRange(XmlDocumentationRetriever.GetDocumentation(model.Type));
 
       ns.Types.Add(wrapperClass);
@@ -104,7 +104,26 @@ namespace Wrapperator
       if (typeof(IDisposable).IsAssignableFrom(model.Type))
         AddDisposeMethodToWrapper(helper, model, wrapperClass);
 
+      if (options.Wrapper.GenerateImplicitConversionOperatorsToWrappedType && !model.Type.IsStatic())
+        AddImplicitConversionOperatorToWrappedType(helper, model, wrapperClass);
+
       helper.WriteToWrapperFile(model.Type, sw => ConvertCompileUnitToCode(compileUnit, sw));
+    }
+
+    private static void AddImplicitConversionOperatorToWrappedType (
+        WrapperatorHelper helper,
+        WrapperatorModel model,
+        CodeTypeDeclaration wrapperClass)
+    {
+      var implicitConversionOperator =
+          new CodeSnippetTypeMember(
+              $"    public static implicit operator {model.Type.FullName} ({helper.GetWrapperName(model.Type)} wrapper)" + Environment.NewLine +
+              "    {" + Environment.NewLine +
+              $"      if (wrapper == null) return default({model.Type.FullName});" + Environment.NewLine +
+              $"      return wrapper.{model.FieldName};" + Environment.NewLine +
+              "    }");
+
+      wrapperClass.Members.Add(implicitConversionOperator);
     }
 
     private static void AddDisposeMethodToWrapper (WrapperatorHelper helper, WrapperatorModel model, CodeTypeDeclaration wrapperClass)
@@ -195,10 +214,7 @@ namespace Wrapperator
             parameters);
 
         if (helper.ShouldTypeBeWrapped(methodInfo.ReturnType))
-          invoke =
-              new CodeObjectCreateExpression(
-                  $"{helper.GetWrapperNamespace(methodInfo.ReturnType)}.{helper.GetWrapperName(methodInfo.ReturnType)}",
-                  invoke);
+          invoke = new CodeObjectCreateExpression($"{helper.GetFullWrapperName(methodInfo.ReturnType)}", invoke);
 
         if (methodInfo.ReturnType == typeof(void))
           method.Statements.Add(invoke);
@@ -292,7 +308,7 @@ namespace Wrapperator
                        Attributes = MemberAttributes.Public | MemberAttributes.Final,
                        ReturnType = helper.ShouldTypeBeWrapped(methodInfo.ReturnType)
                            ? new CodeTypeReference(
-                           $"{helper.GetInterfaceNamespace(methodInfo.ReturnType)}.{helper.GetInterfaceName(methodInfo.ReturnType)}")
+                           $"{helper.GetFullInterfaceName(methodInfo.ReturnType)}")
                            : ConvertTypeToTypeReference(methodInfo.ReturnType)
                    };
 

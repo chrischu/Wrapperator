@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XElement _xElement;
     
+    public static implicit operator System.Xml.Linq.XElement (XElementWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XElement);
+      return wrapper._xElement;
+    }
+    
     public XElementWrapper(System.Xml.Linq.XElement xElement) : 
         base(xElement)
     {

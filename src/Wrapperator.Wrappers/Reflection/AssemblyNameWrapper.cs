@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Reflection
     
     private System.Reflection.AssemblyName _assemblyName;
     
+    public static implicit operator System.Reflection.AssemblyName (AssemblyNameWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Reflection.AssemblyName);
+      return wrapper._assemblyName;
+    }
+    
     public AssemblyNameWrapper(System.Reflection.AssemblyName assemblyName)
     {
       _assemblyName = assemblyName;

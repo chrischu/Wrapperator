@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.IO.Compression
     
     private System.IO.Compression.DeflateStream _deflateStream;
     
+    public static implicit operator System.IO.Compression.DeflateStream (DeflateStreamWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.Compression.DeflateStream);
+      return wrapper._deflateStream;
+    }
+    
     public DeflateStreamWrapper(System.IO.Compression.DeflateStream deflateStream) : 
         base(deflateStream)
     {

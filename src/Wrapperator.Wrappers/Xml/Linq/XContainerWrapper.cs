@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XContainer _xContainer;
     
+    public static implicit operator System.Xml.Linq.XContainer (XContainerWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XContainer);
+      return wrapper._xContainer;
+    }
+    
     public XContainerWrapper(System.Xml.Linq.XContainer xContainer) : 
         base(xContainer)
     {

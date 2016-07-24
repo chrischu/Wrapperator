@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XProcessingInstruction _xProcessingInstruction;
     
+    public static implicit operator System.Xml.Linq.XProcessingInstruction (XProcessingInstructionWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XProcessingInstruction);
+      return wrapper._xProcessingInstruction;
+    }
+    
     public XProcessingInstructionWrapper(System.Xml.Linq.XProcessingInstruction xProcessingInstruction) : 
         base(xProcessingInstruction)
     {

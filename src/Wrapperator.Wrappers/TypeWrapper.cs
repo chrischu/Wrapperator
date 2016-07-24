@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers
     
     private System.Type _type;
     
+    public static implicit operator System.Type (TypeWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Type);
+      return wrapper._type;
+    }
+    
     public TypeWrapper(System.Type type)
     {
       _type = type;

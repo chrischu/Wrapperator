@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers
     
     private System.AppDomain _appDomain;
     
+    public static implicit operator System.AppDomain (AppDomainWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.AppDomain);
+      return wrapper._appDomain;
+    }
+    
     public AppDomainWrapper(System.AppDomain appDomain)
     {
       _appDomain = appDomain;

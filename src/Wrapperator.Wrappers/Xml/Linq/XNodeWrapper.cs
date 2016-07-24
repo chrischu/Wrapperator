@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XNode _xNode;
     
+    public static implicit operator System.Xml.Linq.XNode (XNodeWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XNode);
+      return wrapper._xNode;
+    }
+    
     public XNodeWrapper(System.Xml.Linq.XNode xNode) : 
         base(xNode)
     {

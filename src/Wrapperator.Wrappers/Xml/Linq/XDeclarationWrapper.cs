@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XDeclaration _xDeclaration;
     
+    public static implicit operator System.Xml.Linq.XDeclaration (XDeclarationWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XDeclaration);
+      return wrapper._xDeclaration;
+    }
+    
     public XDeclarationWrapper(System.Xml.Linq.XDeclaration xDeclaration)
     {
       _xDeclaration = xDeclaration;

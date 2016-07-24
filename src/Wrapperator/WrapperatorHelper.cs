@@ -116,6 +116,10 @@ namespace Wrapperator
     public string GetInterfaceNamespace (Type typeToWrap) => typeToWrap.Namespace.AssertNotNull().Replace("System", _options.Interface.ProjectName);
     public string GetWrapperNamespace (Type typeToWrap) => typeToWrap.Namespace.AssertNotNull().Replace("System", _options.Wrapper.ProjectName);
 
+    public string GetFullInterfaceName(Type typeToWrap) => $"{GetInterfaceNamespace(typeToWrap)}.{GetInterfaceName(typeToWrap)}";
+    public string GetFullWrapperName(Type typeToWrap) => $"{GetWrapperNamespace(typeToWrap)}.{GetWrapperName(typeToWrap)}";
+
+
     public bool ShouldTypeBeWrapped (Type type) => _typesToWrap.Contains(type);
 
     private IEnumerable<MethodInfo> GetMethodsToWrap (Type typeToWrap)

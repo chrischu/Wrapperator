@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml
     
     private System.Xml.XmlWriter _xmlWriter;
     
+    public static implicit operator System.Xml.XmlWriter (XmlWriterWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.XmlWriter);
+      return wrapper._xmlWriter;
+    }
+    
     public XmlWriterWrapper(System.Xml.XmlWriter xmlWriter)
     {
       _xmlWriter = xmlWriter;

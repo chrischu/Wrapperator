@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.FileInfo _fileInfo;
     
+    public static implicit operator System.IO.FileInfo (FileInfoWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.FileInfo);
+      return wrapper._fileInfo;
+    }
+    
     public FileInfoWrapper(System.IO.FileInfo fileInfo)
     {
       _fileInfo = fileInfo;

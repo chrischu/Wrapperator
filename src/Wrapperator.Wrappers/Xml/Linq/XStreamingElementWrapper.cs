@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XStreamingElement _xStreamingElement;
     
+    public static implicit operator System.Xml.Linq.XStreamingElement (XStreamingElementWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XStreamingElement);
+      return wrapper._xStreamingElement;
+    }
+    
     public XStreamingElementWrapper(System.Xml.Linq.XStreamingElement xStreamingElement)
     {
       _xStreamingElement = xStreamingElement;

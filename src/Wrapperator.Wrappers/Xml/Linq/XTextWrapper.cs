@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XText _xText;
     
+    public static implicit operator System.Xml.Linq.XText (XTextWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XText);
+      return wrapper._xText;
+    }
+    
     public XTextWrapper(System.Xml.Linq.XText xText) : 
         base(xText)
     {

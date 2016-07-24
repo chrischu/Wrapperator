@@ -24,6 +24,8 @@ namespace Wrapperator
 
   internal class WrapperatorWrapperOptions : WrapperatorOptionsBase
   {
+    public bool GenerateImplicitConversionOperatorsToWrappedType { get; set; } = true;
+
     public WrapperatorWrapperOptions (string projectName)
         : base(projectName)
     {
@@ -66,7 +68,7 @@ namespace Wrapperator
                                                                               "AssemblyName.CultureName",
                                                                               "XmlDocumentFragment.PreviousText",
                                                                               "XmlDocument.PreviousText"
-                                                                          };
+                                                                          }; 
 
     public WrapperatorOptions (
         string solutionDirectory,

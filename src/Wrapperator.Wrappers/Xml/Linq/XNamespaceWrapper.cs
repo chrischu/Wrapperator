@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XNamespace _xNamespace;
     
+    public static implicit operator System.Xml.Linq.XNamespace (XNamespaceWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XNamespace);
+      return wrapper._xNamespace;
+    }
+    
     public XNamespaceWrapper(System.Xml.Linq.XNamespace xNamespace)
     {
       _xNamespace = xNamespace;

@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml
     
     private System.Xml.XmlDocumentFragment _xmlDocumentFragment;
     
+    public static implicit operator System.Xml.XmlDocumentFragment (XmlDocumentFragmentWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.XmlDocumentFragment);
+      return wrapper._xmlDocumentFragment;
+    }
+    
     public XmlDocumentFragmentWrapper(System.Xml.XmlDocumentFragment xmlDocumentFragment)
     {
       _xmlDocumentFragment = xmlDocumentFragment;

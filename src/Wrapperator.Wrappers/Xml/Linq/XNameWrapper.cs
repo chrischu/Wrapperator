@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XName _xName;
     
+    public static implicit operator System.Xml.Linq.XName (XNameWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XName);
+      return wrapper._xName;
+    }
+    
     public XNameWrapper(System.Xml.Linq.XName xName)
     {
       _xName = xName;

@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XDocument _xDocument;
     
+    public static implicit operator System.Xml.Linq.XDocument (XDocumentWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XDocument);
+      return wrapper._xDocument;
+    }
+    
     public XDocumentWrapper(System.Xml.Linq.XDocument xDocument) : 
         base(xDocument)
     {

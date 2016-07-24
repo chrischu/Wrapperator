@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.TextWriter _textWriter;
     
+    public static implicit operator System.IO.TextWriter (TextWriterWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.TextWriter);
+      return wrapper._textWriter;
+    }
+    
     public TextWriterWrapper(System.IO.TextWriter textWriter)
     {
       _textWriter = textWriter;

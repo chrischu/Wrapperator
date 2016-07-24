@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.DirectoryInfo _directoryInfo;
     
+    public static implicit operator System.IO.DirectoryInfo (DirectoryInfoWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.DirectoryInfo);
+      return wrapper._directoryInfo;
+    }
+    
     public DirectoryInfoWrapper(System.IO.DirectoryInfo directoryInfo)
     {
       _directoryInfo = directoryInfo;

@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers
     
     private System.Version _version;
     
+    public static implicit operator System.Version (VersionWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Version);
+      return wrapper._version;
+    }
+    
     public VersionWrapper(System.Version version)
     {
       _version = version;

@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers
     
     private System.DateTime _dateTime;
     
+    public static implicit operator System.DateTime (DateTimeWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.DateTime);
+      return wrapper._dateTime;
+    }
+    
     public DateTimeWrapper(System.DateTime dateTime)
     {
       _dateTime = dateTime;

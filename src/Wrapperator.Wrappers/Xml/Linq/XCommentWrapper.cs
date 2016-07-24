@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XComment _xComment;
     
+    public static implicit operator System.Xml.Linq.XComment (XCommentWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XComment);
+      return wrapper._xComment;
+    }
+    
     public XCommentWrapper(System.Xml.Linq.XComment xComment) : 
         base(xComment)
     {

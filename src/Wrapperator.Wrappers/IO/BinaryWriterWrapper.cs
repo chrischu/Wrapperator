@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.BinaryWriter _binaryWriter;
     
+    public static implicit operator System.IO.BinaryWriter (BinaryWriterWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.BinaryWriter);
+      return wrapper._binaryWriter;
+    }
+    
     public BinaryWriterWrapper(System.IO.BinaryWriter binaryWriter)
     {
       _binaryWriter = binaryWriter;

@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XDocumentType _xDocumentType;
     
+    public static implicit operator System.Xml.Linq.XDocumentType (XDocumentTypeWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XDocumentType);
+      return wrapper._xDocumentType;
+    }
+    
     public XDocumentTypeWrapper(System.Xml.Linq.XDocumentType xDocumentType) : 
         base(xDocumentType)
     {

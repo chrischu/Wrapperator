@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.StreamWriter _streamWriter;
     
+    public static implicit operator System.IO.StreamWriter (StreamWriterWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.StreamWriter);
+      return wrapper._streamWriter;
+    }
+    
     public StreamWriterWrapper(System.IO.StreamWriter streamWriter) : 
         base(streamWriter)
     {

@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.StreamReader _streamReader;
     
+    public static implicit operator System.IO.StreamReader (StreamReaderWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.StreamReader);
+      return wrapper._streamReader;
+    }
+    
     public StreamReaderWrapper(System.IO.StreamReader streamReader) : 
         base(streamReader)
     {

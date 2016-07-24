@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     
     private System.Collections.Specialized.NameValueCollection _nameValueCollection;
     
+    public static implicit operator System.Collections.Specialized.NameValueCollection (NameValueCollectionWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Collections.Specialized.NameValueCollection);
+      return wrapper._nameValueCollection;
+    }
+    
     public NameValueCollectionWrapper(System.Collections.Specialized.NameValueCollection nameValueCollection)
     {
       _nameValueCollection = nameValueCollection;

@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Reflection
     
     private System.Reflection.Assembly _assembly;
     
+    public static implicit operator System.Reflection.Assembly (AssemblyWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Reflection.Assembly);
+      return wrapper._assembly;
+    }
+    
     public AssemblyWrapper(System.Reflection.Assembly assembly)
     {
       _assembly = assembly;

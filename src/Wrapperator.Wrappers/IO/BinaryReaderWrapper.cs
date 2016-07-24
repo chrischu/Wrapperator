@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.BinaryReader _binaryReader;
     
+    public static implicit operator System.IO.BinaryReader (BinaryReaderWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.BinaryReader);
+      return wrapper._binaryReader;
+    }
+    
     public BinaryReaderWrapper(System.IO.BinaryReader binaryReader)
     {
       _binaryReader = binaryReader;

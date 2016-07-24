@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
     
     private System.Xml.Linq.XCData _xCData;
     
+    public static implicit operator System.Xml.Linq.XCData (XCDataWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.Linq.XCData);
+      return wrapper._xCData;
+    }
+    
     public XCDataWrapper(System.Xml.Linq.XCData xCData) : 
         base(xCData)
     {

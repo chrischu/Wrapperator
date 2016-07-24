@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.TextReader _textReader;
     
+    public static implicit operator System.IO.TextReader (TextReaderWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.TextReader);
+      return wrapper._textReader;
+    }
+    
     public TextReaderWrapper(System.IO.TextReader textReader)
     {
       _textReader = textReader;

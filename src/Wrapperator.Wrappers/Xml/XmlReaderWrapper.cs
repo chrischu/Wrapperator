@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Xml
     
     private System.Xml.XmlReader _xmlReader;
     
+    public static implicit operator System.Xml.XmlReader (XmlReaderWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Xml.XmlReader);
+      return wrapper._xmlReader;
+    }
+    
     public XmlReaderWrapper(System.Xml.XmlReader xmlReader)
     {
       _xmlReader = xmlReader;

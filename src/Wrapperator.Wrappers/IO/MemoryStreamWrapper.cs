@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.IO
     
     private System.IO.MemoryStream _memoryStream;
     
+    public static implicit operator System.IO.MemoryStream (MemoryStreamWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.IO.MemoryStream);
+      return wrapper._memoryStream;
+    }
+    
     public MemoryStreamWrapper(System.IO.MemoryStream memoryStream) : 
         base(memoryStream)
     {

@@ -19,6 +19,12 @@ namespace Wrapperator.Wrappers.Threading
     
     private System.Threading.Thread _thread;
     
+    public static implicit operator System.Threading.Thread (ThreadWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Threading.Thread);
+      return wrapper._thread;
+    }
+    
     public ThreadWrapper(System.Threading.Thread thread)
     {
       _thread = thread;

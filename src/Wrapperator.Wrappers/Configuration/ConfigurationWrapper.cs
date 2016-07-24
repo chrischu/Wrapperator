@@ -18,6 +18,12 @@ namespace Wrapperator.Wrappers.Configuration
     
     private System.Configuration.Configuration _configuration;
     
+    public static implicit operator System.Configuration.Configuration (ConfigurationWrapper wrapper)
+    {
+      if (wrapper == null) return default(System.Configuration.Configuration);
+      return wrapper._configuration;
+    }
+    
     public ConfigurationWrapper(System.Configuration.Configuration configuration)
     {
       _configuration = configuration;
