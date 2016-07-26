@@ -14,8 +14,38 @@ namespace Wrapperator.Interfaces
   
   /// <summary>Represents an application domain, which is an isolated environment where applications execute. This class cannot be inherited.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial interface IAppDomain
+  public interface IAppDomain
   {
+    
+    System.AppDomainManager DomainManager
+    {
+      get;
+    }
+    
+    System.Security.Policy.Evidence Evidence
+    {
+      get;
+    }
+    
+    string FriendlyName
+    {
+      get;
+    }
+    
+    string BaseDirectory
+    {
+      get;
+    }
+    
+    string RelativeSearchPath
+    {
+      get;
+    }
+    
+    bool ShadowCopyFiles
+    {
+      get;
+    }
     
     System.ActivationContext ActivationContext
     {
@@ -32,37 +62,17 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    string BaseDirectory
-    {
-      get;
-    }
-    
-    System.AppDomain CurrentDomain
-    {
-      get;
-    }
-    
-    System.AppDomainManager DomainManager
-    {
-      get;
-    }
-    
     string DynamicDirectory
     {
       get;
     }
     
-    System.Security.Policy.Evidence Evidence
+    System.AppDomainSetup SetupInformation
     {
       get;
     }
     
-    string FriendlyName
-    {
-      get;
-    }
-    
-    int Id
+    System.Security.PermissionSet PermissionSet
     {
       get;
     }
@@ -77,23 +87,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    bool MonitoringIsEnabled
-    {
-      get;
-      set;
-    }
-    
-    long MonitoringSurvivedMemorySize
-    {
-      get;
-    }
-    
-    long MonitoringSurvivedProcessMemorySize
-    {
-      get;
-    }
-    
-    long MonitoringTotalAllocatedMemorySize
+    int Id
     {
       get;
     }
@@ -103,418 +97,15 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Security.PermissionSet PermissionSet
+    long MonitoringTotalAllocatedMemorySize
     {
       get;
     }
     
-    string RelativeSearchPath
+    long MonitoringSurvivedMemorySize
     {
       get;
     }
-    
-    System.AppDomainSetup SetupInformation
-    {
-      get;
-    }
-    
-    bool ShadowCopyFiles
-    {
-      get;
-    }
-    
-    /// <summary>Returns the assembly display name after policy has been applied.</summary>
-    /// <returns>A string containing the assembly display name after policy has been applied.</returns>
-    /// <param name="assemblyName">The assembly display name, in the form provided by the <see cref="P:System.Reflection.Assembly.FullName" /> property.</param>
-    /// <filterpriority>1</filterpriority>
-    string ApplyPolicy(string assemblyName);
-    
-    /// <summary>Creates a new instance of a specified COM type. Parameters specify the name of a file that contains an assembly containing the type and the name of the type.</summary>
-    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyName">The name of a file containing an assembly that defines the requested type. </param>
-    /// <param name="typeName">The name of the requested type. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.TypeLoadException">The type cannot be loaded. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.MissingMethodException">No public parameterless constructor was found. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> is not found. </exception>
-    /// <exception cref="T:System.MemberAccessException">
-    ///  <paramref name="typeName" /> is an abstract class. -or-This member was invoked with a late-binding mechanism. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyName" /> is an empty string (""). </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <exception cref="T:System.NullReferenceException">The COM object that is being referred to is null.</exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName);
-    
-    /// <summary>Creates a new instance of a specified COM type. Parameters specify the name of a file that contains an assembly containing the type and the name of the type.</summary>
-    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyFile">The name of a file containing an assembly that defines the requested type. </param>
-    /// <param name="typeName">The name of the requested type. </param>
-    /// <param name="hashValue">Represents the value of the computed hash code. </param>
-    /// <param name="hashAlgorithm">Represents the hash algorithm used by the assembly manifest. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.TypeLoadException">The type cannot be loaded. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.MissingMethodException">No public parameterless constructor was found. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found. </exception>
-    /// <exception cref="T:System.MemberAccessException">
-    ///  <paramref name="typeName" /> is an abstract class. -or-This member was invoked with a late-binding mechanism. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyFile" /> is the empty string (""). </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <exception cref="T:System.NullReferenceException">The COM object that is being referred to is null.</exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyFile, string typeName, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm);
-    
-    /// <summary>Creates a new application domain with the given name using the supplied evidence.</summary>
-    /// <returns>The newly created application domain.</returns>
-    /// <param name="friendlyName">The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <see cref="P:System.AppDomain.FriendlyName" />. </param>
-    /// <param name="securityInfo">Evidence that establishes the identity of the code that runs in the application domain. Pass null to use the evidence of the current application domain.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="friendlyName" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IAppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo);
-    
-    /// <summary>Creates a new application domain with the given name, using evidence, application base path, relative search path, and a parameter that specifies whether a shadow copy of an assembly is to be loaded into the application domain.</summary>
-    /// <returns>The newly created application domain.</returns>
-    /// <param name="friendlyName">The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <see cref="P:System.AppDomain.FriendlyName" />. </param>
-    /// <param name="securityInfo">Evidence that establishes the identity of the code that runs in the application domain. Pass null to use the evidence of the current application domain.</param>
-    /// <param name="appBasePath">The base directory that the assembly resolver uses to probe for assemblies. For more information, see <see cref="P:System.AppDomain.BaseDirectory" />. </param>
-    /// <param name="appRelativeSearchPath">The path relative to the base directory where the assembly resolver should probe for private assemblies. For more information, see <see cref="P:System.AppDomain.RelativeSearchPath" />. </param>
-    /// <param name="shadowCopyFiles">If true, a shadow copy of an assembly is loaded into this application domain. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="friendlyName" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IAppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, string appBasePath, string appRelativeSearchPath, bool shadowCopyFiles);
-    
-    /// <summary>Creates a new application domain with the specified name.</summary>
-    /// <returns>The newly created application domain.</returns>
-    /// <param name="friendlyName">The friendly name of the domain. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="friendlyName" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IAppDomain CreateDomain(string friendlyName);
-    
-    /// <summary>Creates a new application domain using the specified name, evidence, and application domain setup information.</summary>
-    /// <returns>The newly created application domain.</returns>
-    /// <param name="friendlyName">The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <see cref="P:System.AppDomain.FriendlyName" />. </param>
-    /// <param name="securityInfo">Evidence that establishes the identity of the code that runs in the application domain. Pass null to use the evidence of the current application domain.</param>
-    /// <param name="info">An object that contains application domain initialization information. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="friendlyName" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IAppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, System.AppDomainSetup info);
-    
-    /// <summary>Creates a new application domain using the specified name, evidence, application domain setup information, default permission set, and array of fully trusted assemblies.</summary>
-    /// <returns>The newly created application domain.</returns>
-    /// <param name="friendlyName">The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see the description of <see cref="P:System.AppDomain.FriendlyName" />.</param>
-    /// <param name="securityInfo">Evidence that establishes the identity of the code that runs in the application domain. Pass null to use the evidence of the current application domain.</param>
-    /// <param name="info">An object that contains application domain initialization information.</param>
-    /// <param name="grantSet">A default permission set that is granted to all assemblies loaded into the new application domain that do not have specific grants. </param>
-    /// <param name="fullTrustAssemblies">An array of strong names representing assemblies to be considered fully trusted in the new application domain.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="friendlyName" /> is null. </exception>
-    /// <exception cref="T:System.InvalidOperationException">The application domain is null.-or-The <see cref="P:System.AppDomainSetup.ApplicationBase" /> property is not set on the <see cref="T:System.AppDomainSetup" /> object that is supplied for <paramref name="info" />. </exception>
-    Wrapperator.Interfaces.IAppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, System.AppDomainSetup info, System.Security.PermissionSet grantSet, System.Security.Policy.StrongName[] fullTrustAssemblies);
-    
-    /// <summary>Creates a new application domain with the given name, using evidence, application base path, relative search path, and a parameter that specifies whether a shadow copy of an assembly is to be loaded into the application domain. Specifies a callback method that is invoked when the application domain is initialized, and an array of string arguments to pass the callback method.</summary>
-    /// <returns>The newly created application domain.</returns>
-    /// <param name="friendlyName">The friendly name of the domain. This friendly name can be displayed in user interfaces to identify the domain. For more information, see <see cref="P:System.AppDomain.FriendlyName" />. </param>
-    /// <param name="securityInfo">Evidence that establishes the identity of the code that runs in the application domain. Pass null to use the evidence of the current application domain.</param>
-    /// <param name="appBasePath">The base directory that the assembly resolver uses to probe for assemblies. For more information, see <see cref="P:System.AppDomain.BaseDirectory" />. </param>
-    /// <param name="appRelativeSearchPath">The path relative to the base directory where the assembly resolver should probe for private assemblies. For more information, see <see cref="P:System.AppDomain.RelativeSearchPath" />. </param>
-    /// <param name="shadowCopyFiles">true to load a shadow copy of an assembly into the application domain. </param>
-    /// <param name="adInit">An <see cref="T:System.AppDomainInitializer" /> delegate that represents a callback method to invoke when the new <see cref="T:System.AppDomain" /> object is initialized.</param>
-    /// <param name="adInitArgs">An array of string arguments to be passed to the callback represented by <paramref name="adInit" />, when the new <see cref="T:System.AppDomain" /> object is initialized.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="friendlyName" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IAppDomain CreateDomain(string friendlyName, System.Security.Policy.Evidence securityInfo, string appBasePath, string appRelativeSearchPath, bool shadowCopyFiles, System.AppDomainInitializer adInit, string[] adInitArgs);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly.</summary>
-    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences.</exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly. A parameter specifies an array of activation attributes.</summary>
-    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences.</exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly. Parameters specify a binder, binding flags, constructor arguments, culture-specific information used to interpret arguments, and optional activation attributes.</summary>
-    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
-    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
-    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects using reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
-    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
-    /// <param name="culture">Culture-specific information that governs the coercion of <paramref name="args" /> to the formal types declared for the <paramref name="typeName" /> constructor. If <paramref name="culture" /> is null, the <see cref="T:System.Globalization.CultureInfo" /> for the current thread is used. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences.</exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching constructor was found. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
-    System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type. Parameters specify the assembly where the type is defined, and the name of the type.</summary>
-    /// <returns>An instance of the object specified by <paramref name="typeName" />.</returns>
-    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    object CreateInstanceAndUnwrap(string assemblyName, string typeName);
-    
-    /// <summary>Creates a new instance of the specified type. Parameters specify the assembly where the type is defined, the name of the type, and an array of activation attributes.</summary>
-    /// <returns>An instance of the object specified by <paramref name="typeName" />.</returns>
-    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    object CreateInstanceAndUnwrap(string assemblyName, string typeName, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly, specifying whether the case of the type name is ignored; the binding attributes and the binder that are used to select the type to be created; the arguments of the constructor; the culture; and the activation attributes.</summary>
-    /// <returns>An instance of the object specified by <paramref name="typeName" />.</returns>
-    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
-    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
-    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects using reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
-    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
-    /// <param name="culture">A culture-specific object used to govern the coercion of types. If <paramref name="culture" /> is null, the CultureInfo for the current thread is used. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching constructor was found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    object CreateInstanceAndUnwrap(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
-    /// <returns>An object that is a wrapper for the new instance, or null if <paramref name="typeName" /> is not found. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyFile">The name, including the path, of a file that contains an assembly that defines the requested type. The assembly is loaded using the <see cref="M:System.Reflection.Assembly.LoadFrom(System.String)" />  method.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null.-or- <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> was not found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyFile" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.MissingMethodException">No parameterless public constructor was found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyFile" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
-    /// <returns>An object that is a wrapper for the new instance, or null if <paramref name="typeName" /> is not found. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyFile">The name, including the path, of a file that contains an assembly that defines the requested type. The assembly is loaded using the <see cref="M:System.Reflection.Assembly.LoadFrom(System.String)" />  method. </param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> was not found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyFile" />. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyFile" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
-    /// <returns>An object that is a wrapper for the new instance, or null if <paramref name="typeName" /> is not found. The return value needs to be unwrapped to access the real object.</returns>
-    /// <param name="assemblyFile">The name, including the path, of a file that contains an assembly that defines the requested type. The assembly is loaded using the <see cref="M:System.Reflection.Assembly.LoadFrom(System.String)" />  method.</param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
-    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
-    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects through reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
-    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
-    /// <param name="culture">Culture-specific information that governs the coercion of <paramref name="args" /> to the formal types declared for the <paramref name="typeName" /> constructor. If <paramref name="culture" /> is null, the <see cref="T:System.Globalization.CultureInfo" /> for the current thread is used. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null.-or- <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> was not found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyFile" />. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-<paramref name="assemblyFile" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
-    System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
-    /// <returns>The requested object, or null if <paramref name="typeName" /> is not found.</returns>
-    /// <param name="assemblyName">The file name and path of the assembly that defines the requested type. </param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> is null.-or- <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.MissingMethodException">No parameterless public constructor was found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    object CreateInstanceFromAndUnwrap(string assemblyName, string typeName);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
-    /// <returns>The requested object, or null if <paramref name="typeName" /> is not found.</returns>
-    /// <param name="assemblyName">The file name and path of the assembly that defines the requested type. </param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly (see the <see cref="P:System.Type.FullName" /> property). </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> is null.-or- <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.MissingMethodException">No parameterless public constructor was found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    object CreateInstanceFromAndUnwrap(string assemblyName, string typeName, object[] activationAttributes);
-    
-    /// <summary>Creates a new instance of the specified type defined in the specified assembly file, specifying whether the case of the type name is ignored; the binding attributes and the binder that are used to select the type to be created; the arguments of the constructor; the culture; and the activation attributes.</summary>
-    /// <returns>The requested object, or null if <paramref name="typeName" /> is not found.</returns>
-    /// <param name="assemblyFile">The file name and path of the assembly that defines the requested type. </param>
-    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
-    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
-    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
-    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects through reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
-    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
-    /// <param name="culture">Culture-specific information that governs the coercion of <paramref name="args" /> to the formal types declared for the <paramref name="typeName" /> constructor. If <paramref name="culture" /> is null, the <see cref="T:System.Globalization.CultureInfo" /> for the current thread is used. </param>
-    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyName" /> is null.-or- <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyName" /> was not found. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyName" />. </exception>
-    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
-    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime that the version that is currently loaded.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    object CreateInstanceFromAndUnwrap(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
-    
-    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
-    /// <returns>Information required to generate a proxy.</returns>
-    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
-    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
     
     /// <summary>Defines a dynamic assembly with the specified name and access mode.</summary>
     /// <returns>A dynamic assembly with the specified name and access mode.</returns>
@@ -576,12 +167,248 @@ namespace Wrapperator.Interfaces
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes);
     
-    /// <summary>Executes the code in another application domain that is identified by the specified delegate.</summary>
-    /// <param name="callBackDelegate">A delegate that specifies a method to call. </param>
+    /// <summary>Returns the assembly display name after policy has been applied.</summary>
+    /// <returns>A string containing the assembly display name after policy has been applied.</returns>
+    /// <param name="assemblyName">The assembly display name, in the form provided by the <see cref="P:System.Reflection.Assembly.FullName" /> property.</param>
+    /// <filterpriority>1</filterpriority>
+    string ApplyPolicy(string assemblyName);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly.</summary>
+    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="callBackDelegate" /> is null.</exception>
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences.</exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
     /// <filterpriority>2</filterpriority>
-    void DoCallBack(System.CrossAppDomainDelegate callBackDelegate);
+    System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
+    /// <returns>An object that is a wrapper for the new instance, or null if <paramref name="typeName" /> is not found. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyFile">The name, including the path, of a file that contains an assembly that defines the requested type. The assembly is loaded using the <see cref="M:System.Reflection.Assembly.LoadFrom(System.String)" />  method.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyFile" /> is null.-or- <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyFile" /> was not found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyFile" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.MissingMethodException">No parameterless public constructor was found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyFile" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName);
+    
+    /// <summary>Creates a new instance of a specified COM type. Parameters specify the name of a file that contains an assembly containing the type and the name of the type.</summary>
+    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyName">The name of a file containing an assembly that defines the requested type. </param>
+    /// <param name="typeName">The name of the requested type. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.TypeLoadException">The type cannot be loaded. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.MissingMethodException">No public parameterless constructor was found. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> is not found. </exception>
+    /// <exception cref="T:System.MemberAccessException">
+    ///  <paramref name="typeName" /> is an abstract class. -or-This member was invoked with a late-binding mechanism. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="assemblyName" /> is an empty string (""). </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <exception cref="T:System.NullReferenceException">The COM object that is being referred to is null.</exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName);
+    
+    /// <summary>Creates a new instance of a specified COM type. Parameters specify the name of a file that contains an assembly containing the type and the name of the type.</summary>
+    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyFile">The name of a file containing an assembly that defines the requested type. </param>
+    /// <param name="typeName">The name of the requested type. </param>
+    /// <param name="hashValue">Represents the value of the computed hash code. </param>
+    /// <param name="hashAlgorithm">Represents the hash algorithm used by the assembly manifest. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.TypeLoadException">The type cannot be loaded. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.MissingMethodException">No public parameterless constructor was found. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyFile" /> is not found. </exception>
+    /// <exception cref="T:System.MemberAccessException">
+    ///  <paramref name="typeName" /> is an abstract class. -or-This member was invoked with a late-binding mechanism. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="assemblyFile" /> is the empty string (""). </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyFile" /> is not a valid assembly. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <exception cref="T:System.NullReferenceException">The COM object that is being referred to is null.</exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyFile, string typeName, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly. A parameter specifies an array of activation attributes.</summary>
+    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences.</exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, object[] activationAttributes);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
+    /// <returns>An object that is a wrapper for the new instance, or null if <paramref name="typeName" /> is not found. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyFile">The name, including the path, of a file that contains an assembly that defines the requested type. The assembly is loaded using the <see cref="M:System.Reflection.Assembly.LoadFrom(System.String)" />  method. </param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyFile" /> is null. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyFile" /> was not found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyFile" />. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyFile" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, object[] activationAttributes);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly. Parameters specify a binder, binding flags, constructor arguments, culture-specific information used to interpret arguments, and optional activation attributes.</summary>
+    /// <returns>An object that is a wrapper for the new instance specified by <paramref name="typeName" />. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
+    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
+    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects using reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
+    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
+    /// <param name="culture">Culture-specific information that governs the coercion of <paramref name="args" /> to the formal types declared for the <paramref name="typeName" /> constructor. If <paramref name="culture" /> is null, the <see cref="T:System.Globalization.CultureInfo" /> for the current thread is used. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences.</exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching constructor was found. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
+    System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
+    /// <returns>An object that is a wrapper for the new instance, or null if <paramref name="typeName" /> is not found. The return value needs to be unwrapped to access the real object.</returns>
+    /// <param name="assemblyFile">The name, including the path, of a file that contains an assembly that defines the requested type. The assembly is loaded using the <see cref="M:System.Reflection.Assembly.LoadFrom(System.String)" />  method.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
+    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
+    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects through reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
+    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
+    /// <param name="culture">Culture-specific information that governs the coercion of <paramref name="args" /> to the formal types declared for the <paramref name="typeName" /> constructor. If <paramref name="culture" /> is null, the <see cref="T:System.Globalization.CultureInfo" /> for the current thread is used. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyFile" /> is null.-or- <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyFile" /> was not found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyFile" />. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-<paramref name="assemblyFile" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
+    System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
+    
+    /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its <see cref="T:System.Reflection.AssemblyName" />.</summary>
+    /// <returns>The loaded assembly.</returns>
+    /// <param name="assemblyRef">An object that describes the assembly to load. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyRef" /> is null. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyRef" /> is not found. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyRef" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyRef" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef);
+    
+    /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its display name.</summary>
+    /// <returns>The loaded assembly.</returns>
+    /// <param name="assemblyString">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyString" /> is null</exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyString" /> is not found. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyString" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyString" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.Reflection.IAssembly Load(string assemblyString);
+    
+    /// <summary>Loads the <see cref="T:System.Reflection.Assembly" /> with a common object file format (COFF) based image containing an emitted <see cref="T:System.Reflection.Assembly" />.</summary>
+    /// <returns>The loaded assembly.</returns>
+    /// <param name="rawAssembly">An array of type byte that is a COFF-based image containing an emitted assembly. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="rawAssembly" /> is null. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly);
+    
+    /// <summary>Loads the <see cref="T:System.Reflection.Assembly" /> with a common object file format (COFF) based image containing an emitted <see cref="T:System.Reflection.Assembly" />. The raw bytes representing the symbols for the <see cref="T:System.Reflection.Assembly" /> are also loaded.</summary>
+    /// <returns>The loaded assembly.</returns>
+    /// <param name="rawAssembly">An array of type byte that is a COFF-based image containing an emitted assembly. </param>
+    /// <param name="rawSymbolStore">An array of type byte containing the raw bytes representing the symbols for the assembly. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="rawAssembly" /> is null. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly, byte[] rawSymbolStore);
     
     /// <summary>Executes the assembly contained in the specified file.</summary>
     /// <returns>The value returned by the entry point of the assembly.</returns>
@@ -673,100 +500,16 @@ namespace Wrapperator.Interfaces
     /// <filterpriority>2</filterpriority>
     System.Reflection.Assembly[] GetAssemblies();
     
-    /// <summary>Gets the value stored in the current application domain for the specified name.</summary>
-    /// <returns>The value of the <paramref name="name" /> property, or null if the property does not exist.</returns>
-    /// <param name="name">The name of a predefined application domain property, or the name of an application domain property you have defined.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <filterpriority>2</filterpriority>
-    object GetData(string name);
-    
-    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    object GetLifetimeService();
-    
-    /// <summary>Gives the <see cref="T:System.AppDomain" /> an infinite lifetime by preventing a lease from being created.</summary>
-    /// <returns>Always null.</returns>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <filterpriority>2</filterpriority>
-    object InitializeLifetimeService();
-    
-    /// <summary>Gets a nullable Boolean value that indicates whether any compatibility switches are set, and if so, whether the specified compatibility switch is set.</summary>
-    /// <returns>A null reference (Nothing in Visual Basic) if no compatibility switches are set; otherwise, a Boolean value that indicates whether the compatibility switch that is specified by <paramref name="value" /> is set.</returns>
-    /// <param name="value">The compatibility switch to test.</param>
-    System.Nullable<bool> IsCompatibilitySwitchSet(string value);
-    
-    /// <summary>Returns a value that indicates whether the application domain is the default application domain for the process.</summary>
-    /// <returns>true if the current <see cref="T:System.AppDomain" /> object represents the default application domain for the process; otherwise, false.</returns>
-    /// <filterpriority>1</filterpriority>
-    bool IsDefaultAppDomain();
-    
-    /// <summary>Indicates whether this application domain is unloading, and the objects it contains are being finalized by the common language runtime.</summary>
-    /// <returns>true if this application domain is unloading and the common language runtime has started invoking finalizers; otherwise, false.</returns>
-    /// <filterpriority>2</filterpriority>
-    bool IsFinalizingForUnload();
-    
-    /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its <see cref="T:System.Reflection.AssemblyName" />.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyRef">An object that describes the assembly to load. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyRef" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyRef" /> is not found. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyRef" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyRef" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef);
-    
-    /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its display name.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyString">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyString" /> is null</exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyString" /> is not found. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyString" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyString" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(string assemblyString);
-    
-    /// <summary>Loads the <see cref="T:System.Reflection.Assembly" /> with a common object file format (COFF) based image containing an emitted <see cref="T:System.Reflection.Assembly" />.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="rawAssembly">An array of type byte that is a COFF-based image containing an emitted assembly. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="rawAssembly" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly);
-    
-    /// <summary>Loads the <see cref="T:System.Reflection.Assembly" /> with a common object file format (COFF) based image containing an emitted <see cref="T:System.Reflection.Assembly" />. The raw bytes representing the symbols for the <see cref="T:System.Reflection.Assembly" /> are also loaded.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="rawAssembly">An array of type byte that is a COFF-based image containing an emitted assembly. </param>
-    /// <param name="rawSymbolStore">An array of type byte containing the raw bytes representing the symbols for the assembly. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="rawAssembly" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly, byte[] rawSymbolStore);
-    
     /// <summary>Returns the assemblies that have been loaded into the reflection-only context of the application domain.</summary>
     /// <returns>An array of <see cref="T:System.Reflection.Assembly" /> objects that represent the assemblies loaded into the reflection-only context of the application domain.</returns>
     /// <exception cref="T:System.AppDomainUnloadedException">An operation is attempted on an unloaded application domain. </exception>
     /// <filterpriority>2</filterpriority>
     System.Reflection.Assembly[] ReflectionOnlyGetAssemblies();
+    
+    /// <summary>Indicates whether this application domain is unloading, and the objects it contains are being finalized by the common language runtime.</summary>
+    /// <returns>true if this application domain is unloading and the common language runtime has started invoking finalizers; otherwise, false.</returns>
+    /// <filterpriority>2</filterpriority>
+    bool IsFinalizingForUnload();
     
     /// <summary>Assigns the specified value to the specified application domain property.</summary>
     /// <param name="name">The name of a user-defined application domain property to create or change. </param>
@@ -785,11 +528,19 @@ namespace Wrapperator.Interfaces
     ///  <paramref name="name" /> specifies a system-defined property string and <paramref name="permission" /> is not null.</exception>
     void SetData(string name, object data, System.Security.IPermission permission);
     
-    /// <summary>Specifies how principal and identity objects should be attached to a thread if the thread attempts to bind to a principal while executing in this application domain.</summary>
-    /// <param name="policy">One of the <see cref="T:System.Security.Principal.PrincipalPolicy" /> values that specifies the type of the principal object to attach to threads. </param>
+    /// <summary>Gets the value stored in the current application domain for the specified name.</summary>
+    /// <returns>The value of the <paramref name="name" /> property, or null if the property does not exist.</returns>
+    /// <param name="name">The name of a predefined application domain property, or the name of an application domain property you have defined.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     /// <filterpriority>2</filterpriority>
-    void SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy policy);
+    object GetData(string name);
+    
+    /// <summary>Gets a nullable Boolean value that indicates whether any compatibility switches are set, and if so, whether the specified compatibility switch is set.</summary>
+    /// <returns>A null reference (Nothing in Visual Basic) if no compatibility switches are set; otherwise, a Boolean value that indicates whether the compatibility switch that is specified by <paramref name="value" /> is set.</returns>
+    /// <param name="value">The compatibility switch to test.</param>
+    System.Nullable<bool> IsCompatibilitySwitchSet(string value);
     
     /// <summary>Sets the default principal object to be attached to threads if they attempt to bind to a principal while executing in this application domain.</summary>
     /// <param name="principal">The principal object to attach to threads. </param>
@@ -800,14 +551,172 @@ namespace Wrapperator.Interfaces
     /// <filterpriority>2</filterpriority>
     void SetThreadPrincipal(System.Security.Principal.IPrincipal principal);
     
-    /// <summary>Unloads the specified application domain.</summary>
-    /// <param name="domain">An application domain to unload. </param>
+    /// <summary>Specifies how principal and identity objects should be attached to a thread if the thread attempts to bind to a principal while executing in this application domain.</summary>
+    /// <param name="policy">One of the <see cref="T:System.Security.Principal.PrincipalPolicy" /> values that specifies the type of the principal object to attach to threads. </param>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <filterpriority>2</filterpriority>
+    void SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy policy);
+    
+    /// <summary>Gives the <see cref="T:System.AppDomain" /> an infinite lifetime by preventing a lease from being created.</summary>
+    /// <returns>Always null.</returns>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <filterpriority>2</filterpriority>
+    object InitializeLifetimeService();
+    
+    /// <summary>Executes the code in another application domain that is identified by the specified delegate.</summary>
+    /// <param name="callBackDelegate">A delegate that specifies a method to call. </param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="domain" /> is null. </exception>
-    /// <exception cref="T:System.CannotUnloadAppDomainException">
-    ///  <paramref name="domain" /> could not be unloaded. </exception>
-    /// <exception cref="T:System.Exception">An error occurred during the unload process.</exception>
+    ///  <paramref name="callBackDelegate" /> is null.</exception>
+    /// <filterpriority>2</filterpriority>
+    void DoCallBack(System.CrossAppDomainDelegate callBackDelegate);
+    
+    /// <summary>Creates a new instance of the specified type. Parameters specify the assembly where the type is defined, and the name of the type.</summary>
+    /// <returns>An instance of the object specified by <paramref name="typeName" />.</returns>
+    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    object CreateInstanceAndUnwrap(string assemblyName, string typeName);
+    
+    /// <summary>Creates a new instance of the specified type. Parameters specify the assembly where the type is defined, the name of the type, and an array of activation attributes.</summary>
+    /// <returns>An instance of the object specified by <paramref name="typeName" />.</returns>
+    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    object CreateInstanceAndUnwrap(string assemblyName, string typeName, object[] activationAttributes);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly, specifying whether the case of the type name is ignored; the binding attributes and the binder that are used to select the type to be created; the arguments of the constructor; the culture; and the activation attributes.</summary>
+    /// <returns>An instance of the object specified by <paramref name="typeName" />.</returns>
+    /// <param name="assemblyName">The display name of the assembly. See <see cref="P:System.Reflection.Assembly.FullName" />.</param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
+    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
+    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects using reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
+    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
+    /// <param name="culture">A culture-specific object used to govern the coercion of types. If <paramref name="culture" /> is null, the CultureInfo for the current thread is used. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> or <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching constructor was found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typename" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have permission to call this constructor. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    object CreateInstanceAndUnwrap(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
+    /// <returns>The requested object, or null if <paramref name="typeName" /> is not found.</returns>
+    /// <param name="assemblyName">The file name and path of the assembly that defines the requested type. </param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> is null.-or- <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.MissingMethodException">No parameterless public constructor was found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    object CreateInstanceFromAndUnwrap(string assemblyName, string typeName);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
+    /// <returns>The requested object, or null if <paramref name="typeName" /> is not found.</returns>
+    /// <param name="assemblyName">The file name and path of the assembly that defines the requested type. </param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly (see the <see cref="P:System.Type.FullName" /> property). </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object.  </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> is null.-or- <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.MissingMethodException">No parameterless public constructor was found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyName" /> was compiled with a later version.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    /// <filterpriority>2</filterpriority>
+    object CreateInstanceFromAndUnwrap(string assemblyName, string typeName, object[] activationAttributes);
+    
+    /// <summary>Creates a new instance of the specified type defined in the specified assembly file, specifying whether the case of the type name is ignored; the binding attributes and the binder that are used to select the type to be created; the arguments of the constructor; the culture; and the activation attributes.</summary>
+    /// <returns>The requested object, or null if <paramref name="typeName" /> is not found.</returns>
+    /// <param name="assemblyFile">The file name and path of the assembly that defines the requested type. </param>
+    /// <param name="typeName">The fully qualified name of the requested type, including the namespace but not the assembly, as returned by the <see cref="P:System.Type.FullName" /> property. </param>
+    /// <param name="ignoreCase">A Boolean value specifying whether to perform a case-sensitive search or not. </param>
+    /// <param name="bindingAttr">A combination of zero or more bit flags that affect the search for the <paramref name="typeName" /> constructor. If <paramref name="bindingAttr" /> is zero, a case-sensitive search for public constructors is conducted. </param>
+    /// <param name="binder">An object that enables the binding, coercion of argument types, invocation of members, and retrieval of <see cref="T:System.Reflection.MemberInfo" /> objects through reflection. If <paramref name="binder" /> is null, the default binder is used. </param>
+    /// <param name="args">The arguments to pass to the constructor. This array of arguments must match in number, order, and type the parameters of the constructor to invoke. If the default constructor is preferred, <paramref name="args" /> must be an empty array or null. </param>
+    /// <param name="culture">Culture-specific information that governs the coercion of <paramref name="args" /> to the formal types declared for the <paramref name="typeName" /> constructor. If <paramref name="culture" /> is null, the <see cref="T:System.Globalization.CultureInfo" /> for the current thread is used. </param>
+    /// <param name="activationAttributes">An array of one or more attributes that can participate in activation. Typically, an array that contains a single <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> object. The <see cref="T:System.Runtime.Remoting.Activation.UrlAttribute" /> specifies the URL that is required to activate a remote object. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="assemblyName" /> is null.-or- <paramref name="typeName" /> is null. </exception>
+    /// <exception cref="T:System.NotSupportedException">The caller cannot provide activation attributes for an object that does not inherit from <see cref="T:System.MarshalByRefObject" />. </exception>
+    /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="assemblyName" /> was not found. </exception>
+    /// <exception cref="T:System.TypeLoadException">
+    ///  <paramref name="typeName" /> was not found in <paramref name="assemblyName" />. </exception>
+    /// <exception cref="T:System.MissingMethodException">No matching public constructor was found. </exception>
+    /// <exception cref="T:System.MethodAccessException">The caller does not have sufficient permission to call this constructor. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="assemblyName" /> is not a valid assembly. -or-<paramref name="assemblyName" /> was compiled with a later version of the common language runtime that the version that is currently loaded.</exception>
+    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
+    object CreateInstanceFromAndUnwrap(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
+    
+    /// <summary>Returns a value that indicates whether the application domain is the default application domain for the process.</summary>
+    /// <returns>true if the current <see cref="T:System.AppDomain" /> object represents the default application domain for the process; otherwise, false.</returns>
     /// <filterpriority>1</filterpriority>
-    void Unload(Wrapperator.Interfaces.IAppDomain domain);
+    bool IsDefaultAppDomain();
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    object GetLifetimeService();
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType);
   }
 }

@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents elements in an XML tree that supports deferred streaming output.</summary>
-  public partial interface IXStreamingElement
+  public interface IXStreamingElement
   {
     
     System.Xml.Linq.XName Name

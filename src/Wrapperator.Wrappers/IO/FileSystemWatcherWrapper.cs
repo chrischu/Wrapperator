@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Listens to the file system change notifications and raises events when a directory, or file in a directory, changes.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class FileSystemWatcherWrapper : Wrapperator.Interfaces.IO.IFileSystemWatcher
+  public class FileSystemWatcherWrapper : Wrapperator.Interfaces.IO.IFileSystemWatcher
   {
     
     internal System.IO.FileSystemWatcher FileSystemWatcher { get; private set; }
@@ -25,11 +25,15 @@ namespace Wrapperator.Wrappers.IO
       FileSystemWatcher = fileSystemWatcher;
     }
     
-    public System.ComponentModel.IContainer Container
+    public System.IO.NotifyFilters NotifyFilter
     {
       get
       {
-        return FileSystemWatcher.Container;
+        return FileSystemWatcher.NotifyFilter;
+      }
+      set
+      {
+        FileSystemWatcher.NotifyFilter = value;
       }
     }
     
@@ -81,18 +85,6 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.IO.NotifyFilters NotifyFilter
-    {
-      get
-      {
-        return FileSystemWatcher.NotifyFilter;
-      }
-      set
-      {
-        FileSystemWatcher.NotifyFilter = value;
-      }
-    }
-    
     public string Path
     {
       get
@@ -129,6 +121,14 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public System.ComponentModel.IContainer Container
+    {
+      get
+      {
+        return FileSystemWatcher.Container;
+      }
+    }
+    
     /// <summary>Begins the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>
     public void BeginInit()
@@ -136,40 +136,11 @@ namespace Wrapperator.Wrappers.IO
       FileSystemWatcher.BeginInit();
     }
     
-    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
-    /// <returns>Information required to generate a proxy.</returns>
-    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
-    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
-    {
-      return FileSystemWatcher.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
-    }
-    
     /// <summary>Ends the initialization of a <see cref="T:System.IO.FileSystemWatcher" /> used on a form or used by another component. The initialization occurs at run time.</summary>
     /// <filterpriority>2</filterpriority>
     public void EndInit()
     {
       FileSystemWatcher.EndInit();
-    }
-    
-    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object GetLifetimeService()
-    {
-      return FileSystemWatcher.GetLifetimeService();
-    }
-    
-    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object InitializeLifetimeService()
-    {
-      return FileSystemWatcher.InitializeLifetimeService();
     }
     
     /// <summary>A synchronous method that returns a structure that contains specific information on the change that occurred, given the type of change you want to monitor.</summary>
@@ -191,18 +162,47 @@ namespace Wrapperator.Wrappers.IO
       return FileSystemWatcher.WaitForChanged(changeType, timeout);
     }
     
-    protected virtual void Dispose(bool disposing)
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
     {
-      if (disposing)
-      {
-        FileSystemWatcher.Dispose();
-      }
+      return FileSystemWatcher.GetLifetimeService();
+    }
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object InitializeLifetimeService()
+    {
+      return FileSystemWatcher.InitializeLifetimeService();
+    }
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
+    {
+      return FileSystemWatcher.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     public void Dispose()
     {
       this.Dispose(true);
       System.GC.SuppressFinalize(this);
+    }
+    
+    protected virtual void Dispose(bool disposing)
+    {
+      if (disposing)
+      {
+        FileSystemWatcher.Dispose();
+      }
     }
   }
 }

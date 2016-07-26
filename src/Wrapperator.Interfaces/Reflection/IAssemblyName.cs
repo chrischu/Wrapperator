@@ -13,62 +13,10 @@ namespace Wrapperator.Interfaces.Reflection
   
   
   /// <summary>Describes an assembly's unique identity in full.</summary>
-  public partial interface IAssemblyName
+  public interface IAssemblyName
   {
     
-    string CodeBase
-    {
-      get;
-      set;
-    }
-    
-    System.Reflection.AssemblyContentType ContentType
-    {
-      get;
-      set;
-    }
-    
-    System.Globalization.CultureInfo CultureInfo
-    {
-      get;
-      set;
-    }
-    
-    string EscapedCodeBase
-    {
-      get;
-    }
-    
-    System.Reflection.AssemblyNameFlags Flags
-    {
-      get;
-      set;
-    }
-    
-    string FullName
-    {
-      get;
-    }
-    
-    System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm
-    {
-      get;
-      set;
-    }
-    
-    System.Reflection.StrongNameKeyPair KeyPair
-    {
-      get;
-      set;
-    }
-    
     string Name
-    {
-      get;
-      set;
-    }
-    
-    System.Reflection.ProcessorArchitecture ProcessorArchitecture
     {
       get;
       set;
@@ -80,30 +28,84 @@ namespace Wrapperator.Interfaces.Reflection
       set;
     }
     
+    System.Globalization.CultureInfo CultureInfo
+    {
+      get;
+      set;
+    }
+    
+    string CodeBase
+    {
+      get;
+      set;
+    }
+    
+    string EscapedCodeBase
+    {
+      get;
+    }
+    
+    System.Reflection.ProcessorArchitecture ProcessorArchitecture
+    {
+      get;
+      set;
+    }
+    
+    System.Reflection.AssemblyContentType ContentType
+    {
+      get;
+      set;
+    }
+    
+    System.Reflection.AssemblyNameFlags Flags
+    {
+      get;
+      set;
+    }
+    
+    System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm
+    {
+      get;
+      set;
+    }
+    
     System.Configuration.Assemblies.AssemblyVersionCompatibility VersionCompatibility
     {
       get;
       set;
     }
     
+    System.Reflection.StrongNameKeyPair KeyPair
+    {
+      get;
+      set;
+    }
+    
+    string FullName
+    {
+      get;
+    }
+    
     /// <summary>Makes a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</summary>
     /// <returns>An object that is a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</returns>
     object Clone();
     
-    /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> for a given file.</summary>
-    /// <returns>An object that represents the given assembly file.</returns>
-    /// <param name="assemblyFile">The path for the assembly whose <see cref="T:System.Reflection.AssemblyName" /> is to be returned. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyFile" /> is invalid, such as an assembly with an invalid culture. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have path discovery permission. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different sets of evidence. </exception>
-    Wrapperator.Interfaces.Reflection.IAssemblyName GetAssemblyName(string assemblyFile);
+    /// <summary>Gets the public key of the assembly.</summary>
+    /// <returns>A byte array that contains the public key of the assembly.</returns>
+    /// <exception cref="T:System.Security.SecurityException">A public key was provided (for example, by using the <see cref="M:System.Reflection.AssemblyName.SetPublicKey(System.Byte[])" /> method), but no public key token was provided. </exception>
+    byte[] GetPublicKey();
+    
+    /// <summary>Sets the public key identifying the assembly.</summary>
+    /// <param name="publicKey">A byte array containing the public key of the assembly. </param>
+    void SetPublicKey(byte[] publicKey);
+    
+    /// <summary>Gets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
+    /// <returns>A byte array that contains the public key token.</returns>
+    byte[] GetPublicKeyToken();
+    
+    /// <summary>Sets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
+    /// <param name="publicKeyToken">A byte array containing the public key token of the assembly. </param>
+    void SetPublicKeyToken(byte[] publicKeyToken);
     
     /// <summary>Gets serialization information with all the data needed to recreate an instance of this AssemblyName.</summary>
     /// <param name="info">The object to be populated with serialization information. </param>
@@ -112,31 +114,8 @@ namespace Wrapperator.Interfaces.Reflection
     ///  <paramref name="info" /> is null. </exception>
     void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     
-    /// <summary>Gets the public key of the assembly.</summary>
-    /// <returns>A byte array that contains the public key of the assembly.</returns>
-    /// <exception cref="T:System.Security.SecurityException">A public key was provided (for example, by using the <see cref="M:System.Reflection.AssemblyName.SetPublicKey(System.Byte[])" /> method), but no public key token was provided. </exception>
-    byte[] GetPublicKey();
-    
-    /// <summary>Gets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
-    /// <returns>A byte array that contains the public key token.</returns>
-    byte[] GetPublicKeyToken();
-    
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and is called back by the deserialization event when deserialization is complete.</summary>
     /// <param name="sender">The source of the deserialization event. </param>
     void OnDeserialization(object sender);
-    
-    /// <summary>Returns a value indicating whether two assembly names are the same. The comparison is based on the simple assembly names.</summary>
-    /// <returns>true if the simple assembly names are the same; otherwise, false.</returns>
-    /// <param name="reference">The reference assembly name.</param>
-    /// <param name="definition">The assembly name that is compared to the reference assembly.</param>
-    bool ReferenceMatchesDefinition(Wrapperator.Interfaces.Reflection.IAssemblyName reference, Wrapperator.Interfaces.Reflection.IAssemblyName definition);
-    
-    /// <summary>Sets the public key identifying the assembly.</summary>
-    /// <param name="publicKey">A byte array containing the public key of the assembly. </param>
-    void SetPublicKey(byte[] publicKey);
-    
-    /// <summary>Sets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
-    /// <param name="publicKeyToken">A byte array containing the public key token of the assembly. </param>
-    void SetPublicKeyToken(byte[] publicKeyToken);
   }
 }

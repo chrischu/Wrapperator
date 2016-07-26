@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Configuration
   
   
   /// <summary>Represents a configuration file that is applicable to a particular computer, application, or resource. This class cannot be inherited.</summary>
-  public partial interface IConfiguration
+  public interface IConfiguration
   {
     
     System.Configuration.AppSettingsSection AppSettings
@@ -21,18 +21,7 @@ namespace Wrapperator.Interfaces.Configuration
       get;
     }
     
-    System.Func<string, string> AssemblyStringTransformer
-    {
-      get;
-      set;
-    }
-    
     System.Configuration.ConnectionStringsSection ConnectionStrings
-    {
-      get;
-    }
-    
-    System.Configuration.ContextInformation EvaluationContext
     {
       get;
     }
@@ -52,18 +41,12 @@ namespace Wrapperator.Interfaces.Configuration
       get;
     }
     
-    bool NamespaceDeclared
+    System.Configuration.ContextInformation EvaluationContext
     {
       get;
-      set;
     }
     
     System.Configuration.ConfigurationSectionGroup RootSectionGroup
-    {
-      get;
-    }
-    
-    System.Configuration.ConfigurationSectionGroupCollection SectionGroups
     {
       get;
     }
@@ -73,13 +56,30 @@ namespace Wrapperator.Interfaces.Configuration
       get;
     }
     
-    System.Runtime.Versioning.FrameworkName TargetFramework
+    System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    {
+      get;
+    }
+    
+    bool NamespaceDeclared
     {
       get;
       set;
     }
     
     System.Func<string, string> TypeStringTransformer
+    {
+      get;
+      set;
+    }
+    
+    System.Func<string, string> AssemblyStringTransformer
+    {
+      get;
+      set;
+    }
+    
+    System.Runtime.Versioning.FrameworkName TargetFramework
     {
       get;
       set;

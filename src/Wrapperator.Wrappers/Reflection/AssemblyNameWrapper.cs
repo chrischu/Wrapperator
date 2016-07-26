@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Reflection
   
   
   /// <summary>Describes an assembly's unique identity in full.</summary>
-  public partial class AssemblyNameWrapper : Wrapperator.Interfaces.Reflection.IAssemblyName
+  public class AssemblyNameWrapper : Wrapperator.Interfaces.Reflection.IAssemblyName
   {
     
     internal System.Reflection.AssemblyName AssemblyName { get; private set; }
@@ -22,94 +22,6 @@ namespace Wrapperator.Wrappers.Reflection
     public AssemblyNameWrapper(System.Reflection.AssemblyName assemblyName)
     {
       AssemblyName = assemblyName;
-    }
-    
-    public string CodeBase
-    {
-      get
-      {
-        return AssemblyName.CodeBase;
-      }
-      set
-      {
-        AssemblyName.CodeBase = value;
-      }
-    }
-    
-    public System.Reflection.AssemblyContentType ContentType
-    {
-      get
-      {
-        return AssemblyName.ContentType;
-      }
-      set
-      {
-        AssemblyName.ContentType = value;
-      }
-    }
-    
-    public System.Globalization.CultureInfo CultureInfo
-    {
-      get
-      {
-        return AssemblyName.CultureInfo;
-      }
-      set
-      {
-        AssemblyName.CultureInfo = value;
-      }
-    }
-    
-    public string EscapedCodeBase
-    {
-      get
-      {
-        return AssemblyName.EscapedCodeBase;
-      }
-    }
-    
-    public System.Reflection.AssemblyNameFlags Flags
-    {
-      get
-      {
-        return AssemblyName.Flags;
-      }
-      set
-      {
-        AssemblyName.Flags = value;
-      }
-    }
-    
-    public string FullName
-    {
-      get
-      {
-        return AssemblyName.FullName;
-      }
-    }
-    
-    public System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm
-    {
-      get
-      {
-        return AssemblyName.HashAlgorithm;
-      }
-      set
-      {
-        AssemblyName.HashAlgorithm = value;
-      }
-    }
-    
-    public System.Reflection.StrongNameKeyPair KeyPair
-    {
-      get
-      {
-        return AssemblyName.KeyPair;
-      }
-      set
-      {
-        AssemblyName.KeyPair = value;
-      }
     }
     
     public string Name
@@ -121,18 +33,6 @@ namespace Wrapperator.Wrappers.Reflection
       set
       {
         AssemblyName.Name = value;
-      }
-    }
-    
-    public System.Reflection.ProcessorArchitecture ProcessorArchitecture
-    {
-      get
-      {
-        return AssemblyName.ProcessorArchitecture;
-      }
-      set
-      {
-        AssemblyName.ProcessorArchitecture = value;
       }
     }
     
@@ -148,6 +48,86 @@ namespace Wrapperator.Wrappers.Reflection
       }
     }
     
+    public System.Globalization.CultureInfo CultureInfo
+    {
+      get
+      {
+        return AssemblyName.CultureInfo;
+      }
+      set
+      {
+        AssemblyName.CultureInfo = value;
+      }
+    }
+    
+    public string CodeBase
+    {
+      get
+      {
+        return AssemblyName.CodeBase;
+      }
+      set
+      {
+        AssemblyName.CodeBase = value;
+      }
+    }
+    
+    public string EscapedCodeBase
+    {
+      get
+      {
+        return AssemblyName.EscapedCodeBase;
+      }
+    }
+    
+    public System.Reflection.ProcessorArchitecture ProcessorArchitecture
+    {
+      get
+      {
+        return AssemblyName.ProcessorArchitecture;
+      }
+      set
+      {
+        AssemblyName.ProcessorArchitecture = value;
+      }
+    }
+    
+    public System.Reflection.AssemblyContentType ContentType
+    {
+      get
+      {
+        return AssemblyName.ContentType;
+      }
+      set
+      {
+        AssemblyName.ContentType = value;
+      }
+    }
+    
+    public System.Reflection.AssemblyNameFlags Flags
+    {
+      get
+      {
+        return AssemblyName.Flags;
+      }
+      set
+      {
+        AssemblyName.Flags = value;
+      }
+    }
+    
+    public System.Configuration.Assemblies.AssemblyHashAlgorithm HashAlgorithm
+    {
+      get
+      {
+        return AssemblyName.HashAlgorithm;
+      }
+      set
+      {
+        AssemblyName.HashAlgorithm = value;
+      }
+    }
+    
     public System.Configuration.Assemblies.AssemblyVersionCompatibility VersionCompatibility
     {
       get
@@ -160,6 +140,26 @@ namespace Wrapperator.Wrappers.Reflection
       }
     }
     
+    public System.Reflection.StrongNameKeyPair KeyPair
+    {
+      get
+      {
+        return AssemblyName.KeyPair;
+      }
+      set
+      {
+        AssemblyName.KeyPair = value;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return AssemblyName.FullName;
+      }
+    }
+    
     /// <summary>Makes a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</summary>
     /// <returns>An object that is a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</returns>
     public object Clone()
@@ -167,22 +167,33 @@ namespace Wrapperator.Wrappers.Reflection
       return AssemblyName.Clone();
     }
     
-    /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> for a given file.</summary>
-    /// <returns>An object that represents the given assembly file.</returns>
-    /// <param name="assemblyFile">The path for the assembly whose <see cref="T:System.Reflection.AssemblyName" /> is to be returned. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyFile" /> is invalid, such as an assembly with an invalid culture. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have path discovery permission. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different sets of evidence. </exception>
-    public Wrapperator.Interfaces.Reflection.IAssemblyName GetAssemblyName(string assemblyFile)
+    /// <summary>Gets the public key of the assembly.</summary>
+    /// <returns>A byte array that contains the public key of the assembly.</returns>
+    /// <exception cref="T:System.Security.SecurityException">A public key was provided (for example, by using the <see cref="M:System.Reflection.AssemblyName.SetPublicKey(System.Byte[])" /> method), but no public key token was provided. </exception>
+    public byte[] GetPublicKey()
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyNameWrapper(System.Reflection.AssemblyName.GetAssemblyName(assemblyFile));
+      return AssemblyName.GetPublicKey();
+    }
+    
+    /// <summary>Sets the public key identifying the assembly.</summary>
+    /// <param name="publicKey">A byte array containing the public key of the assembly. </param>
+    public void SetPublicKey(byte[] publicKey)
+    {
+      AssemblyName.SetPublicKey(publicKey);
+    }
+    
+    /// <summary>Gets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
+    /// <returns>A byte array that contains the public key token.</returns>
+    public byte[] GetPublicKeyToken()
+    {
+      return AssemblyName.GetPublicKeyToken();
+    }
+    
+    /// <summary>Sets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
+    /// <param name="publicKeyToken">A byte array containing the public key token of the assembly. </param>
+    public void SetPublicKeyToken(byte[] publicKeyToken)
+    {
+      AssemblyName.SetPublicKeyToken(publicKeyToken);
     }
     
     /// <summary>Gets serialization information with all the data needed to recreate an instance of this AssemblyName.</summary>
@@ -195,49 +206,11 @@ namespace Wrapperator.Wrappers.Reflection
       AssemblyName.GetObjectData(info, context);
     }
     
-    /// <summary>Gets the public key of the assembly.</summary>
-    /// <returns>A byte array that contains the public key of the assembly.</returns>
-    /// <exception cref="T:System.Security.SecurityException">A public key was provided (for example, by using the <see cref="M:System.Reflection.AssemblyName.SetPublicKey(System.Byte[])" /> method), but no public key token was provided. </exception>
-    public byte[] GetPublicKey()
-    {
-      return AssemblyName.GetPublicKey();
-    }
-    
-    /// <summary>Gets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
-    /// <returns>A byte array that contains the public key token.</returns>
-    public byte[] GetPublicKeyToken()
-    {
-      return AssemblyName.GetPublicKeyToken();
-    }
-    
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and is called back by the deserialization event when deserialization is complete.</summary>
     /// <param name="sender">The source of the deserialization event. </param>
     public void OnDeserialization(object sender)
     {
       AssemblyName.OnDeserialization(sender);
-    }
-    
-    /// <summary>Returns a value indicating whether two assembly names are the same. The comparison is based on the simple assembly names.</summary>
-    /// <returns>true if the simple assembly names are the same; otherwise, false.</returns>
-    /// <param name="reference">The reference assembly name.</param>
-    /// <param name="definition">The assembly name that is compared to the reference assembly.</param>
-    public bool ReferenceMatchesDefinition(Wrapperator.Interfaces.Reflection.IAssemblyName reference, Wrapperator.Interfaces.Reflection.IAssemblyName definition)
-    {
-      return System.Reflection.AssemblyName.ReferenceMatchesDefinition(reference == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)reference).AssemblyName, definition == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)definition).AssemblyName);
-    }
-    
-    /// <summary>Sets the public key identifying the assembly.</summary>
-    /// <param name="publicKey">A byte array containing the public key of the assembly. </param>
-    public void SetPublicKey(byte[] publicKey)
-    {
-      AssemblyName.SetPublicKey(publicKey);
-    }
-    
-    /// <summary>Sets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
-    /// <param name="publicKeyToken">A byte array containing the public key token of the assembly. </param>
-    public void SetPublicKeyToken(byte[] publicKeyToken)
-    {
-      AssemblyName.SetPublicKeyToken(publicKeyToken);
     }
   }
 }

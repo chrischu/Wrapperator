@@ -3,9 +3,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v0.6.0...HEAD)
+## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v0.8.0...HEAD)
 
 No changes yet.
+
+## [0.8.0](https://github.com/chrischu/Wrapperator/compare/v0.7.0...v0.8.0) - 2016-07-26
+
+* Did some major refactorings to allow static/instance members, inheritance etc. to work.
+* Created a factory class for all Wrapperator wrappers, named Wrapper.
+* Removed option to generate implicit conversion operators, since they were put on the wrapper implementation classes and users of Wrapperator should not use them directly anyway (only through the interfaces).
 
 ## [0.7.0](https://github.com/chrischu/Wrapperator/compare/v0.6.0...v0.7.0) - 2016-07-24
 

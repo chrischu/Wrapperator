@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML attribute.</summary>
-  public partial class XAttributeWrapper : XObjectWrapper, Wrapperator.Interfaces.Xml.Linq.IXAttribute
+  public class XAttributeWrapper : XObjectWrapper, Wrapperator.Interfaces.Xml.Linq.IXAttribute
   {
     
     internal System.Xml.Linq.XAttribute XAttribute { get; private set; }
@@ -23,30 +23,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
         base(xAttribute)
     {
       XAttribute = xAttribute;
-    }
-    
-    public new string BaseUri
-    {
-      get
-      {
-        return XAttribute.BaseUri;
-      }
-    }
-    
-    public new System.Xml.Linq.XDocument Document
-    {
-      get
-      {
-        return XAttribute.Document;
-      }
-    }
-    
-    public System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
-    {
-      get
-      {
-        return System.Xml.Linq.XAttribute.EmptySequence;
-      }
     }
     
     public bool IsNamespaceDeclaration
@@ -81,14 +57,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XElement Parent
-    {
-      get
-      {
-        return XAttribute.Parent;
-      }
-    }
-    
     public System.Xml.Linq.XAttribute PreviousAttribute
     {
       get
@@ -107,6 +75,46 @@ namespace Wrapperator.Wrappers.Xml.Linq
       {
         XAttribute.Value = value;
       }
+    }
+    
+    public new string BaseUri
+    {
+      get
+      {
+        return XAttribute.BaseUri;
+      }
+    }
+    
+    public new System.Xml.Linq.XDocument Document
+    {
+      get
+      {
+        return XAttribute.Document;
+      }
+    }
+    
+    public new System.Xml.Linq.XElement Parent
+    {
+      get
+      {
+        return XAttribute.Parent;
+      }
+    }
+    
+    /// <summary>Removes this attribute from its parent element.</summary>
+    /// <exception cref="T:System.InvalidOperationException">The parent element is null.</exception>
+    public void Remove()
+    {
+      XAttribute.Remove();
+    }
+    
+    /// <summary>Sets the value of this attribute.</summary>
+    /// <param name="value">The value to assign to this attribute.</param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="value" /> is an <see cref="T:System.Xml.Linq.XObject" />.</exception>
+    public void SetValue(object value)
+    {
+      XAttribute.SetValue(value);
     }
     
     /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -150,13 +158,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       return XAttribute.Annotations<T>();
     }
     
-    /// <summary>Removes this attribute from its parent element.</summary>
-    /// <exception cref="T:System.InvalidOperationException">The parent element is null.</exception>
-    public void Remove()
-    {
-      XAttribute.Remove();
-    }
-    
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
     public new void RemoveAnnotations(Wrapperator.Interfaces.IType type)
@@ -170,15 +171,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       where T :  class
     {
       XAttribute.RemoveAnnotations<T>();
-    }
-    
-    /// <summary>Sets the value of this attribute.</summary>
-    /// <param name="value">The value to assign to this attribute.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="value" /> parameter is null.</exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="value" /> is an <see cref="T:System.Xml.Linq.XObject" />.</exception>
-    public void SetValue(object value)
-    {
-      XAttribute.SetValue(value);
     }
   }
 }

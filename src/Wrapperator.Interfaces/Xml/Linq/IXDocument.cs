@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML document. For the components and usage of an <see cref="T:System.Xml.Linq.XDocument" /> object, see XDocument Class Overview.</summary>
-  public partial interface IXDocument : IXContainer
+  public interface IXDocument : Wrapperator.Interfaces.Xml.Linq.IXContainer
   {
     
     System.Xml.Linq.XDeclaration Declaration
@@ -31,61 +31,6 @@ namespace Wrapperator.Interfaces.Xml.Linq
     {
       get;
     }
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file. </summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
-    /// <param name="uri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(string uri);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file, optionally preserving white space, setting the base URI, and retaining line information.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
-    /// <param name="uri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(string uri, System.Xml.Linq.LoadOptions options);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> instance by using the specified stream.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> object that reads the data that is contained in the stream. </returns>
-    /// <param name="stream">The stream that contains the XML data.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.IStream stream);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> instance by using the specified stream, optionally preserving white space, setting the base URI, and retaining line information.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> object that reads the data that is contained in the stream.</returns>
-    /// <param name="stream">The stream containing the XML data.</param>
-    /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.LoadOptions options);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a <see cref="T:System.IO.TextReader" />. </summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified <see cref="T:System.IO.TextReader" />.</returns>
-    /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.ITextReader textReader);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a <see cref="T:System.IO.TextReader" />, optionally preserving white space, setting the base URI, and retaining line information.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the XML that was read from the specified <see cref="T:System.IO.TextReader" />.</returns>
-    /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.ITextReader textReader, System.Xml.Linq.LoadOptions options);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from an <see cref="T:System.Xml.XmlReader" />. </summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified <see cref="T:System.Xml.XmlReader" />.</returns>
-    /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.Xml.IXmlReader reader);
-    
-    /// <summary>Loads an <see cref="T:System.Xml.Linq.XDocument" /> from an <see cref="T:System.Xml.XmlReader" />, optionally setting the base URI, and retaining line information.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the XML that was read from the specified <see cref="T:System.Xml.XmlReader" />.</returns>
-    /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that will be read for the content of the <see cref="T:System.Xml.Linq.XDocument" />.</param>
-    /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.Xml.IXmlReader reader, System.Xml.Linq.LoadOptions options);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a string.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> populated from the string that contains XML.</returns>
-    /// <param name="text">A string that contains XML.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Parse(string text);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a string, optionally preserving white space, setting the base URI, and retaining line information.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> populated from the string that contains XML.</returns>
-    /// <param name="text">A string that contains XML.</param>
-    /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXDocument Parse(string text, System.Xml.Linq.LoadOptions options);
     
     /// <summary>Serialize this <see cref="T:System.Xml.Linq.XDocument" /> to a file, overwriting an existing file, if it exists.</summary>
     /// <param name="fileName">A string that contains the name of the file.</param>

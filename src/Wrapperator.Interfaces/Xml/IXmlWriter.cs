@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml
   
   
   /// <summary>Represents a writer that provides a fast, non-cached, forward-only way to generate streams or files that contain XML data.</summary>
-  public partial interface IXmlWriter : System.IDisposable
+  public interface IXmlWriter : System.IDisposable
   {
     
     System.Xml.XmlWriterSettings Settings
@@ -26,120 +26,74 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
-    string XmlLang
-    {
-      get;
-    }
-    
     System.Xml.XmlSpace XmlSpace
     {
       get;
     }
     
-    /// <summary>When overridden in a derived class, closes this stream and the underlying stream.</summary>
-    /// <exception cref="T:System.InvalidOperationException">A call is made to write more output after Close has been called or the result of this call is an invalid XML document.</exception>
+    string XmlLang
+    {
+      get;
+    }
+    
+    /// <summary>When overridden in a derived class, writes the XML declaration with the version "1.0".</summary>
+    /// <exception cref="T:System.InvalidOperationException">This is not the first write method called after the constructor.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void Close();
+    void WriteStartDocument();
     
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified filename.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="outputFileName">The file to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> creates a file at the specified path and writes to it in XML 1.0 text syntax. The <paramref name="outputFileName" /> must be a file system path.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="url" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(string outputFileName);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the filename and <see cref="T:System.Xml.XmlWriterSettings" /> object.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="outputFileName">The file to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> creates a file at the specified path and writes to it in XML 1.0 text syntax. The <paramref name="outputFileName" /> must be a file system path.</param>
-    /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="url" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(string outputFileName, System.Xml.XmlWriterSettings settings);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified stream.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The stream to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified stream.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the stream and <see cref="T:System.Xml.XmlWriterSettings" /> object.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The stream to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified stream.</param>
-    /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output, System.Xml.XmlWriterSettings settings);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.IO.TextWriter" />.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The <see cref="T:System.IO.TextWriter" /> to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified <see cref="T:System.IO.TextWriter" />.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the <see cref="T:System.IO.TextWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The <see cref="T:System.IO.TextWriter" /> to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> writes XML 1.0 text syntax and appends it to the specified <see cref="T:System.IO.TextWriter" />.</param>
-    /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output, System.Xml.XmlWriterSettings settings);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Text.StringBuilder" />.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The <see cref="T:System.Text.StringBuilder" /> to which to write to. Content written by the <see cref="T:System.Xml.XmlWriter" /> is appended to the <see cref="T:System.Text.StringBuilder" />.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="builder" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.Text.StringBuilder output);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the <see cref="T:System.Text.StringBuilder" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The <see cref="T:System.Text.StringBuilder" /> to which to write to. Content written by the <see cref="T:System.Xml.XmlWriter" /> is appended to the <see cref="T:System.Text.StringBuilder" />.</param>
-    /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="builder" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(System.Text.StringBuilder output, System.Xml.XmlWriterSettings settings);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Xml.XmlWriter" /> object.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object that is wrapped around the specified <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The <see cref="T:System.Xml.XmlWriter" /> object that you want to use as the underlying writer.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output);
-    
-    /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Xml.XmlWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
-    /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object that is wrapped around the specified <see cref="T:System.Xml.XmlWriter" /> object.</returns>
-    /// <param name="output">The <see cref="T:System.Xml.XmlWriter" /> object that you want to use as the underlying writer.</param>
-    /// <param name="settings">The <see cref="T:System.Xml.XmlWriterSettings" /> object used to configure the new <see cref="T:System.Xml.XmlWriter" /> instance. If this is null, a <see cref="T:System.Xml.XmlWriterSettings" /> with default settings is used.If the <see cref="T:System.Xml.XmlWriter" /> is being used with the <see cref="M:System.Xml.Xsl.XslCompiledTransform.Transform(System.String,System.Xml.XmlWriter)" /> method, you should use the <see cref="P:System.Xml.Xsl.XslCompiledTransform.OutputSettings" /> property to obtain an <see cref="T:System.Xml.XmlWriterSettings" /> object with the correct settings. This ensures that the created <see cref="T:System.Xml.XmlWriter" /> object has the correct output settings.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
-    Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output, System.Xml.XmlWriterSettings settings);
-    
-    /// <summary>When overridden in a derived class, flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
+    /// <summary>When overridden in a derived class, writes the XML declaration with the version "1.0" and the standalone attribute.</summary>
+    /// <param name="standalone">If true, it writes "standalone=yes"; if false, it writes "standalone=no".</param>
+    /// <exception cref="T:System.InvalidOperationException">This is not the first write method called after the constructor. </exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void Flush();
+    void WriteStartDocument(bool standalone);
     
-    /// <summary>Asynchronously flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
-    /// <returns>The task that represents the asynchronous Flush operation.</returns>
+    /// <summary>When overridden in a derived class, closes any open elements or attributes and puts the writer back in the Start state.</summary>
+    /// <exception cref="T:System.ArgumentException">The XML document is invalid.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task FlushAsync();
+    void WriteEndDocument();
     
-    /// <summary>When overridden in a derived class, returns the closest prefix defined in the current namespace scope for the namespace URI.</summary>
-    /// <returns>The matching prefix or null if no matching namespace URI is found in the current scope.</returns>
-    /// <param name="ns">The namespace URI whose prefix you want to find.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="ns" /> is either null or String.Empty.</exception>
+    /// <summary>When overridden in a derived class, writes the DOCTYPE declaration with the specified name and optional attributes.</summary>
+    /// <param name="name">The name of the DOCTYPE. This must be non-empty.</param>
+    /// <param name="pubid">If non-null it also writes PUBLIC "pubid" "sysid" where <paramref name="pubid" /> and <paramref name="sysid" /> are replaced with the value of the given arguments.</param>
+    /// <param name="sysid">If <paramref name="pubid" /> is null and <paramref name="sysid" /> is non-null it writes SYSTEM "sysid" where <paramref name="sysid" /> is replaced with the value of this argument.</param>
+    /// <param name="subset">If non-null it writes [subset] where subset is replaced with the value of this argument.</param>
+    /// <exception cref="T:System.InvalidOperationException">This method was called outside the prolog (after the root element). </exception>
+    /// <exception cref="T:System.ArgumentException">The value for <paramref name="name" /> would result in invalid XML.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    string LookupPrefix(string ns);
+    void WriteDocType(string name, string pubid, string sysid, string subset);
     
-    /// <summary>When overridden in a derived class, writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
-    /// <param name="reader">The XmlReader from which to copy the attributes.</param>
-    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="reader" /> is null. </exception>
-    /// <exception cref="T:System.Xml.XmlException">The reader is not positioned on an element, attribute or XmlDeclaration node. </exception>
+    /// <summary>When overridden in a derived class, writes the specified start tag and associates it with the given namespace.</summary>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="ns">The namespace URI to associate with the element. If this namespace is already in scope and has an associated prefix, the writer automatically writes that prefix also.</param>
+    /// <exception cref="T:System.InvalidOperationException">The writer is closed.</exception>
+    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteAttributes(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
+    void WriteStartElement(string localName, string ns);
     
-    /// <summary>Asynchronously writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
-    /// <returns>The task that represents the asynchronous WriteAttributes operation.</returns>
-    /// <param name="reader">The XmlReader from which to copy the attributes.</param>
-    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
+    /// <summary>When overridden in a derived class, writes the specified start tag and associates it with the given namespace and prefix.</summary>
+    /// <param name="prefix">The namespace prefix of the element.</param>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="ns">The namespace URI to associate with the element.</param>
+    /// <exception cref="T:System.InvalidOperationException">The writer is closed.</exception>
+    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteAttributesAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
+    void WriteStartElement(string prefix, string localName, string ns);
+    
+    /// <summary>When overridden in a derived class, writes out a start tag with the specified local name.</summary>
+    /// <param name="localName">The local name of the element.</param>
+    /// <exception cref="T:System.InvalidOperationException">The writer is closed.</exception>
+    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections. </exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteStartElement(string localName);
+    
+    /// <summary>When overridden in a derived class, closes one element and pops the corresponding namespace scope.</summary>
+    /// <exception cref="T:System.InvalidOperationException">This results in an invalid XML document.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteEndElement();
+    
+    /// <summary>When overridden in a derived class, closes one element and pops the corresponding namespace scope.</summary>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteFullEndElement();
     
     /// <summary>When overridden in a derived class, writes an attribute with the specified local name, namespace URI, and value.</summary>
     /// <param name="localName">The local name of the attribute.</param>
@@ -169,351 +123,6 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     void WriteAttributeString(string prefix, string localName, string ns, string value);
     
-    /// <summary>Asynchronously writes out the attribute with the specified prefix, local name, namespace URI, and value.</summary>
-    /// <returns>The task that represents the asynchronous WriteAttributeString operation.</returns>
-    /// <param name="prefix">The namespace prefix of the attribute.</param>
-    /// <param name="localName">The local name of the attribute.</param>
-    /// <param name="ns">The namespace URI of the attribute.</param>
-    /// <param name="value">The value of the attribute.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteAttributeStringAsync(string prefix, string localName, string ns, string value);
-    
-    /// <summary>When overridden in a derived class, encodes the specified binary bytes as Base64 and writes out the resulting text.</summary>
-    /// <param name="buffer">Byte array to encode.</param>
-    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
-    /// <param name="count">The number of bytes to write.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero. -or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteBase64(byte[] buffer, int index, int count);
-    
-    /// <summary>Asynchronously encodes the specified binary bytes as Base64 and writes out the resulting text.</summary>
-    /// <returns>The task that represents the asynchronous WriteBase64 operation.</returns>
-    /// <param name="buffer">Byte array to encode.</param>
-    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
-    /// <param name="count">The number of bytes to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteBase64Async(byte[] buffer, int index, int count);
-    
-    /// <summary>When overridden in a derived class, encodes the specified binary bytes as BinHex and writes out the resulting text.</summary>
-    /// <param name="buffer">Byte array to encode.</param>
-    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
-    /// <param name="count">The number of bytes to write.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The writer is closed or in error state.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero. -or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteBinHex(byte[] buffer, int index, int count);
-    
-    /// <summary>Asynchronously encodes the specified binary bytes as BinHex and writes out the resulting text.</summary>
-    /// <returns>The task that represents the asynchronous WriteBinHex operation.</returns>
-    /// <param name="buffer">Byte array to encode.</param>
-    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
-    /// <param name="count">The number of bytes to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteBinHexAsync(byte[] buffer, int index, int count);
-    
-    /// <summary>When overridden in a derived class, writes out a &lt;![CDATA[...]]&gt; block containing the specified text.</summary>
-    /// <param name="text">The text to place inside the CDATA block.</param>
-    /// <exception cref="T:System.ArgumentException">The text would result in a non-well formed XML document.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteCData(string text);
-    
-    /// <summary>Asynchronously writes out a &lt;![CDATA[...]]&gt; block containing the specified text.</summary>
-    /// <returns>The task that represents the asynchronous WriteCData operation.</returns>
-    /// <param name="text">The text to place inside the CDATA block.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteCDataAsync(string text);
-    
-    /// <summary>When overridden in a derived class, forces the generation of a character entity for the specified Unicode character value.</summary>
-    /// <param name="ch">The Unicode character for which to generate a character entity.</param>
-    /// <exception cref="T:System.ArgumentException">The character is in the surrogate pair character range, 0xd800 - 0xdfff.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteCharEntity(char ch);
-    
-    /// <summary>Asynchronously forces the generation of a character entity for the specified Unicode character value.</summary>
-    /// <returns>The task that represents the asynchronous WriteCharEntity operation.</returns>
-    /// <param name="ch">The Unicode character for which to generate a character entity.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteCharEntityAsync(char ch);
-    
-    /// <summary>When overridden in a derived class, writes text one buffer at a time.</summary>
-    /// <param name="buffer">Character array containing the text to write.</param>
-    /// <param name="index">The position in the buffer indicating the start of the text to write.</param>
-    /// <param name="count">The number of characters to write.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero.-or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />; the call results in surrogate pair characters being split or an invalid surrogate pair being written.</exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="buffer" /> parameter value is not valid.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteChars(char[] buffer, int index, int count);
-    
-    /// <summary>Asynchronously writes text one buffer at a time.</summary>
-    /// <returns>The task that represents the asynchronous WriteChars operation.</returns>
-    /// <param name="buffer">Character array containing the text to write.</param>
-    /// <param name="index">The position in the buffer indicating the start of the text to write.</param>
-    /// <param name="count">The number of characters to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteCharsAsync(char[] buffer, int index, int count);
-    
-    /// <summary>When overridden in a derived class, writes out a comment &lt;!--...--&gt; containing the specified text.</summary>
-    /// <param name="text">Text to place inside the comment.</param>
-    /// <exception cref="T:System.ArgumentException">The text would result in a non-well-formed XML document.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteComment(string text);
-    
-    /// <summary>Asynchronously writes out a comment &lt;!--...--&gt; containing the specified text.</summary>
-    /// <returns>The task that represents the asynchronous WriteComment operation.</returns>
-    /// <param name="text">Text to place inside the comment.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteCommentAsync(string text);
-    
-    /// <summary>When overridden in a derived class, writes the DOCTYPE declaration with the specified name and optional attributes.</summary>
-    /// <param name="name">The name of the DOCTYPE. This must be non-empty.</param>
-    /// <param name="pubid">If non-null it also writes PUBLIC "pubid" "sysid" where <paramref name="pubid" /> and <paramref name="sysid" /> are replaced with the value of the given arguments.</param>
-    /// <param name="sysid">If <paramref name="pubid" /> is null and <paramref name="sysid" /> is non-null it writes SYSTEM "sysid" where <paramref name="sysid" /> is replaced with the value of this argument.</param>
-    /// <param name="subset">If non-null it writes [subset] where subset is replaced with the value of this argument.</param>
-    /// <exception cref="T:System.InvalidOperationException">This method was called outside the prolog (after the root element). </exception>
-    /// <exception cref="T:System.ArgumentException">The value for <paramref name="name" /> would result in invalid XML.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteDocType(string name, string pubid, string sysid, string subset);
-    
-    /// <summary>Asynchronously writes the DOCTYPE declaration with the specified name and optional attributes.</summary>
-    /// <returns>The task that represents the asynchronous WriteDocType operation.</returns>
-    /// <param name="name">The name of the DOCTYPE. This must be non-empty.</param>
-    /// <param name="pubid">If non-null it also writes PUBLIC "pubid" "sysid" where <paramref name="pubid" /> and <paramref name="sysid" /> are replaced with the value of the given arguments.</param>
-    /// <param name="sysid">If <paramref name="pubid" /> is null and <paramref name="sysid" /> is non-null it writes SYSTEM "sysid" where <paramref name="sysid" /> is replaced with the value of this argument.</param>
-    /// <param name="subset">If non-null it writes [subset] where subset is replaced with the value of this argument.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteDocTypeAsync(string name, string pubid, string sysid, string subset);
-    
-    /// <summary>Writes an element with the specified local name and value.</summary>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="value">The value of the element.</param>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="localName" /> value is null or an empty string.-or-The parameter values are not valid.</exception>
-    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteElementString(string localName, string value);
-    
-    /// <summary>Writes an element with the specified local name, namespace URI, and value.</summary>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="ns">The namespace URI to associate with the element.</param>
-    /// <param name="value">The value of the element.</param>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="localName" /> value is null or an empty string.-or-The parameter values are not valid.</exception>
-    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteElementString(string localName, string ns, string value);
-    
-    /// <summary>Writes an element with the specified prefix, local name, namespace URI, and value.</summary>
-    /// <param name="prefix">The prefix of the element.</param>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="ns">The namespace URI of the element.</param>
-    /// <param name="value">The value of the element.</param>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="localName" /> value is null or an empty string.-or-The parameter values are not valid.</exception>
-    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteElementString(string prefix, string localName, string ns, string value);
-    
-    /// <summary>Asynchronously writes an element with the specified prefix, local name, namespace URI, and value.</summary>
-    /// <returns>The task that represents the asynchronous WriteElementString operation.</returns>
-    /// <param name="prefix">The prefix of the element.</param>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="ns">The namespace URI of the element.</param>
-    /// <param name="value">The value of the element.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteElementStringAsync(string prefix, string localName, string ns, string value);
-    
-    /// <summary>When overridden in a derived class, closes the previous <see cref="M:System.Xml.XmlWriter.WriteStartAttribute(System.String,System.String)" /> call.</summary>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteEndAttribute();
-    
-    /// <summary>When overridden in a derived class, closes any open elements or attributes and puts the writer back in the Start state.</summary>
-    /// <exception cref="T:System.ArgumentException">The XML document is invalid.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteEndDocument();
-    
-    /// <summary>Asynchronously closes any open elements or attributes and puts the writer back in the Start state.</summary>
-    /// <returns>The task that represents the asynchronous WriteEndDocument operation.</returns>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteEndDocumentAsync();
-    
-    /// <summary>When overridden in a derived class, closes one element and pops the corresponding namespace scope.</summary>
-    /// <exception cref="T:System.InvalidOperationException">This results in an invalid XML document.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteEndElement();
-    
-    /// <summary>Asynchronously closes one element and pops the corresponding namespace scope.</summary>
-    /// <returns>The task that represents the asynchronous WriteEndElement operation.</returns>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteEndElementAsync();
-    
-    /// <summary>When overridden in a derived class, writes out an entity reference as &amp;name;.</summary>
-    /// <param name="name">The name of the entity reference.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="name" /> is either null or String.Empty.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteEntityRef(string name);
-    
-    /// <summary>Asynchronously writes out an entity reference as &amp;name;.</summary>
-    /// <returns>The task that represents the asynchronous WriteEntityRef operation.</returns>
-    /// <param name="name">The name of the entity reference.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteEntityRefAsync(string name);
-    
-    /// <summary>When overridden in a derived class, closes one element and pops the corresponding namespace scope.</summary>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteFullEndElement();
-    
-    /// <summary>Asynchronously closes one element and pops the corresponding namespace scope.</summary>
-    /// <returns>The task that represents the asynchronous WriteFullEndElement operation.</returns>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteFullEndElementAsync();
-    
-    /// <summary>When overridden in a derived class, writes out the specified name, ensuring it is a valid name according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
-    /// <param name="name">The name to write.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="name" /> is not a valid XML name; or <paramref name="name" /> is either null or String.Empty.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteName(string name);
-    
-    /// <summary>Asynchronously writes out the specified name, ensuring it is a valid name according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
-    /// <returns>The task that represents the asynchronous WriteName operation.</returns>
-    /// <param name="name">The name to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteNameAsync(string name);
-    
-    /// <summary>When overridden in a derived class, writes out the specified name, ensuring it is a valid NmToken according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
-    /// <param name="name">The name to write.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="name" /> is not a valid NmToken; or <paramref name="name" /> is either null or String.Empty.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteNmToken(string name);
-    
-    /// <summary>Asynchronously writes out the specified name, ensuring it is a valid NmToken according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
-    /// <returns>The task that represents the asynchronous WriteNmToken operation.</returns>
-    /// <param name="name">The name to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteNmTokenAsync(string name);
-    
-    /// <summary>When overridden in a derived class, copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
-    /// <param name="reader">The <see cref="T:System.Xml.XmlReader" /> to read from.</param>
-    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="reader" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="reader" /> contains invalid characters.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteNode(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
-    
-    /// <summary>Copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
-    /// <param name="navigator">The <see cref="T:System.Xml.XPath.XPathNavigator" /> to copy from.</param>
-    /// <param name="defattr">true to copy the default attributes; otherwise, false.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="navigator" /> is null.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteNode(System.Xml.XPath.XPathNavigator navigator, bool defattr);
-    
-    /// <summary>Asynchronously copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
-    /// <returns>The task that represents the asynchronous WriteNode operation.</returns>
-    /// <param name="reader">The <see cref="T:System.Xml.XmlReader" /> to read from.</param>
-    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteNodeAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
-    
-    /// <summary>Asynchronously copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
-    /// <returns>The task that represents the asynchronous WriteNode operation.</returns>
-    /// <param name="navigator">The <see cref="T:System.Xml.XPath.XPathNavigator" /> to copy from.</param>
-    /// <param name="defattr">true to copy the default attributes; otherwise, false.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XPath.XPathNavigator navigator, bool defattr);
-    
-    /// <summary>When overridden in a derived class, writes out a processing instruction with a space between the name and text as follows: &lt;?name text?&gt;.</summary>
-    /// <param name="name">The name of the processing instruction.</param>
-    /// <param name="text">The text to include in the processing instruction.</param>
-    /// <exception cref="T:System.ArgumentException">The text would result in a non-well formed XML document.<paramref name="name" /> is either null or String.Empty.This method is being used to create an XML declaration after <see cref="M:System.Xml.XmlWriter.WriteStartDocument" /> has already been called. </exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteProcessingInstruction(string name, string text);
-    
-    /// <summary>Asynchronously writes out a processing instruction with a space between the name and text as follows: &lt;?name text?&gt;.</summary>
-    /// <returns>The task that represents the asynchronous WriteProcessingInstruction operation.</returns>
-    /// <param name="name">The name of the processing instruction.</param>
-    /// <param name="text">The text to include in the processing instruction.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteProcessingInstructionAsync(string name, string text);
-    
-    /// <summary>When overridden in a derived class, writes out the namespace-qualified name. This method looks up the prefix that is in scope for the given namespace.</summary>
-    /// <param name="localName">The local name to write.</param>
-    /// <param name="ns">The namespace URI for the name.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="localName" /> is either null or String.Empty.<paramref name="localName" /> is not a valid name. </exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteQualifiedName(string localName, string ns);
-    
-    /// <summary>Asynchronously writes out the namespace-qualified name. This method looks up the prefix that is in scope for the given namespace.</summary>
-    /// <returns>The task that represents the asynchronous WriteQualifiedName operation.</returns>
-    /// <param name="localName">The local name to write.</param>
-    /// <param name="ns">The namespace URI for the name.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteQualifiedNameAsync(string localName, string ns);
-    
-    /// <summary>When overridden in a derived class, writes raw markup manually from a character buffer.</summary>
-    /// <param name="buffer">Character array containing the text to write.</param>
-    /// <param name="index">The position within the buffer indicating the start of the text to write.</param>
-    /// <param name="count">The number of characters to write.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero. -or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteRaw(char[] buffer, int index, int count);
-    
-    /// <summary>When overridden in a derived class, writes raw markup manually from a string.</summary>
-    /// <param name="data">String containing the text to write.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="data" /> is either null or String.Empty.</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteRaw(string data);
-    
-    /// <summary>Asynchronously writes raw markup manually from a character buffer.</summary>
-    /// <returns>The task that represents the asynchronous WriteRaw operation.</returns>
-    /// <param name="buffer">Character array containing the text to write.</param>
-    /// <param name="index">The position within the buffer indicating the start of the text to write.</param>
-    /// <param name="count">The number of characters to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteRawAsync(char[] buffer, int index, int count);
-    
-    /// <summary>Asynchronously writes raw markup manually from a string.</summary>
-    /// <returns>The task that represents the asynchronous WriteRaw operation.</returns>
-    /// <param name="data">String containing the text to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteRawAsync(string data);
-    
     /// <summary>Writes the start of an attribute with the specified local name and namespace URI.</summary>
     /// <param name="localName">The local name of the attribute.</param>
     /// <param name="ns">The namespace URI of the attribute.</param>
@@ -536,75 +145,53 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     void WriteStartAttribute(string localName);
     
-    /// <summary>When overridden in a derived class, writes the XML declaration with the version "1.0".</summary>
-    /// <exception cref="T:System.InvalidOperationException">This is not the first write method called after the constructor.</exception>
+    /// <summary>When overridden in a derived class, closes the previous <see cref="M:System.Xml.XmlWriter.WriteStartAttribute(System.String,System.String)" /> call.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteStartDocument();
+    void WriteEndAttribute();
     
-    /// <summary>When overridden in a derived class, writes the XML declaration with the version "1.0" and the standalone attribute.</summary>
-    /// <param name="standalone">If true, it writes "standalone=yes"; if false, it writes "standalone=no".</param>
-    /// <exception cref="T:System.InvalidOperationException">This is not the first write method called after the constructor. </exception>
+    /// <summary>When overridden in a derived class, writes out a &lt;![CDATA[...]]&gt; block containing the specified text.</summary>
+    /// <param name="text">The text to place inside the CDATA block.</param>
+    /// <exception cref="T:System.ArgumentException">The text would result in a non-well formed XML document.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteStartDocument(bool standalone);
+    void WriteCData(string text);
     
-    /// <summary>Asynchronously writes the XML declaration with the version "1.0".</summary>
-    /// <returns>The task that represents the asynchronous WriteStartDocument operation.</returns>
+    /// <summary>When overridden in a derived class, writes out a comment &lt;!--...--&gt; containing the specified text.</summary>
+    /// <param name="text">Text to place inside the comment.</param>
+    /// <exception cref="T:System.ArgumentException">The text would result in a non-well-formed XML document.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteStartDocumentAsync();
+    void WriteComment(string text);
     
-    /// <summary>Asynchronously writes the XML declaration with the version "1.0" and the standalone attribute.</summary>
-    /// <returns>The task that represents the asynchronous WriteStartDocument operation.</returns>
-    /// <param name="standalone">If true, it writes "standalone=yes"; if false, it writes "standalone=no".</param>
+    /// <summary>When overridden in a derived class, writes out a processing instruction with a space between the name and text as follows: &lt;?name text?&gt;.</summary>
+    /// <param name="name">The name of the processing instruction.</param>
+    /// <param name="text">The text to include in the processing instruction.</param>
+    /// <exception cref="T:System.ArgumentException">The text would result in a non-well formed XML document.<paramref name="name" /> is either null or String.Empty.This method is being used to create an XML declaration after <see cref="M:System.Xml.XmlWriter.WriteStartDocument" /> has already been called. </exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteStartDocumentAsync(bool standalone);
+    void WriteProcessingInstruction(string name, string text);
     
-    /// <summary>When overridden in a derived class, writes the specified start tag and associates it with the given namespace.</summary>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="ns">The namespace URI to associate with the element. If this namespace is already in scope and has an associated prefix, the writer automatically writes that prefix also.</param>
-    /// <exception cref="T:System.InvalidOperationException">The writer is closed.</exception>
-    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
+    /// <summary>When overridden in a derived class, writes out an entity reference as &amp;name;.</summary>
+    /// <param name="name">The name of the entity reference.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="name" /> is either null or String.Empty.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteStartElement(string localName, string ns);
+    void WriteEntityRef(string name);
     
-    /// <summary>When overridden in a derived class, writes the specified start tag and associates it with the given namespace and prefix.</summary>
-    /// <param name="prefix">The namespace prefix of the element.</param>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="ns">The namespace URI to associate with the element.</param>
-    /// <exception cref="T:System.InvalidOperationException">The writer is closed.</exception>
-    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
+    /// <summary>When overridden in a derived class, forces the generation of a character entity for the specified Unicode character value.</summary>
+    /// <param name="ch">The Unicode character for which to generate a character entity.</param>
+    /// <exception cref="T:System.ArgumentException">The character is in the surrogate pair character range, 0xd800 - 0xdfff.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteStartElement(string prefix, string localName, string ns);
+    void WriteCharEntity(char ch);
     
-    /// <summary>When overridden in a derived class, writes out a start tag with the specified local name.</summary>
-    /// <param name="localName">The local name of the element.</param>
-    /// <exception cref="T:System.InvalidOperationException">The writer is closed.</exception>
-    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections. </exception>
+    /// <summary>When overridden in a derived class, writes out the given white space.</summary>
+    /// <param name="ws">The string of white space characters.</param>
+    /// <exception cref="T:System.ArgumentException">The string contains non-white space characters.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteStartElement(string localName);
-    
-    /// <summary>Asynchronously writes the specified start tag and associates it with the given namespace and prefix.</summary>
-    /// <returns>The task that represents the asynchronous WriteStartElement operation.</returns>
-    /// <param name="prefix">The namespace prefix of the element.</param>
-    /// <param name="localName">The local name of the element.</param>
-    /// <param name="ns">The namespace URI to associate with the element.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteStartElementAsync(string prefix, string localName, string ns);
+    void WriteWhitespace(string ws);
     
     /// <summary>When overridden in a derived class, writes the given text content.</summary>
     /// <param name="text">The text to write.</param>
     /// <exception cref="T:System.ArgumentException">The text string contains an invalid surrogate pair.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     void WriteString(string text);
-    
-    /// <summary>Asynchronously writes the given text content.</summary>
-    /// <returns>The task that represents the asynchronous WriteString operation.</returns>
-    /// <param name="text">The text to write.</param>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteStringAsync(string text);
     
     /// <summary>When overridden in a derived class, generates and writes the surrogate character entity for the surrogate character pair.</summary>
     /// <param name="lowChar">The low surrogate. This must be a value between 0xDC00 and 0xDFFF.</param>
@@ -613,13 +200,97 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     void WriteSurrogateCharEntity(char lowChar, char highChar);
     
-    /// <summary>Asynchronously generates and writes the surrogate character entity for the surrogate character pair.</summary>
-    /// <returns>The task that represents the asynchronous WriteSurrogateCharEntity operation.</returns>
-    /// <param name="lowChar">The low surrogate. This must be a value between 0xDC00 and 0xDFFF.</param>
-    /// <param name="highChar">The high surrogate. This must be a value between 0xD800 and 0xDBFF.</param>
+    /// <summary>When overridden in a derived class, writes text one buffer at a time.</summary>
+    /// <param name="buffer">Character array containing the text to write.</param>
+    /// <param name="index">The position in the buffer indicating the start of the text to write.</param>
+    /// <param name="count">The number of characters to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero.-or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />; the call results in surrogate pair characters being split or an invalid surrogate pair being written.</exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="buffer" /> parameter value is not valid.</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
-    System.Threading.Tasks.Task WriteSurrogateCharEntityAsync(char lowChar, char highChar);
+    void WriteChars(char[] buffer, int index, int count);
+    
+    /// <summary>When overridden in a derived class, writes raw markup manually from a character buffer.</summary>
+    /// <param name="buffer">Character array containing the text to write.</param>
+    /// <param name="index">The position within the buffer indicating the start of the text to write.</param>
+    /// <param name="count">The number of characters to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero. -or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteRaw(char[] buffer, int index, int count);
+    
+    /// <summary>When overridden in a derived class, writes raw markup manually from a string.</summary>
+    /// <param name="data">String containing the text to write.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="data" /> is either null or String.Empty.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteRaw(string data);
+    
+    /// <summary>When overridden in a derived class, encodes the specified binary bytes as Base64 and writes out the resulting text.</summary>
+    /// <param name="buffer">Byte array to encode.</param>
+    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
+    /// <param name="count">The number of bytes to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero. -or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteBase64(byte[] buffer, int index, int count);
+    
+    /// <summary>When overridden in a derived class, encodes the specified binary bytes as BinHex and writes out the resulting text.</summary>
+    /// <param name="buffer">Byte array to encode.</param>
+    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
+    /// <param name="count">The number of bytes to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The writer is closed or in error state.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is less than zero. -or-The buffer length minus <paramref name="index" /> is less than <paramref name="count" />.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteBinHex(byte[] buffer, int index, int count);
+    
+    /// <summary>When overridden in a derived class, closes this stream and the underlying stream.</summary>
+    /// <exception cref="T:System.InvalidOperationException">A call is made to write more output after Close has been called or the result of this call is an invalid XML document.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void Close();
+    
+    /// <summary>When overridden in a derived class, flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void Flush();
+    
+    /// <summary>When overridden in a derived class, returns the closest prefix defined in the current namespace scope for the namespace URI.</summary>
+    /// <returns>The matching prefix or null if no matching namespace URI is found in the current scope.</returns>
+    /// <param name="ns">The namespace URI whose prefix you want to find.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="ns" /> is either null or String.Empty.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    string LookupPrefix(string ns);
+    
+    /// <summary>When overridden in a derived class, writes out the specified name, ensuring it is a valid NmToken according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
+    /// <param name="name">The name to write.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="name" /> is not a valid NmToken; or <paramref name="name" /> is either null or String.Empty.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteNmToken(string name);
+    
+    /// <summary>When overridden in a derived class, writes out the specified name, ensuring it is a valid name according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
+    /// <param name="name">The name to write.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="name" /> is not a valid XML name; or <paramref name="name" /> is either null or String.Empty.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteName(string name);
+    
+    /// <summary>When overridden in a derived class, writes out the namespace-qualified name. This method looks up the prefix that is in scope for the given namespace.</summary>
+    /// <param name="localName">The local name to write.</param>
+    /// <param name="ns">The namespace URI for the name.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="localName" /> is either null or String.Empty.<paramref name="localName" /> is not a valid name. </exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteQualifiedName(string localName, string ns);
     
     /// <summary>Writes the object value.</summary>
     /// <param name="value">The object value to write.Note   With the release of the .NET Framework 3.5, this method accepts <see cref="T:System.DateTimeOffset" /> as a parameter.</param>
@@ -682,11 +353,155 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     void WriteValue(long value);
     
-    /// <summary>When overridden in a derived class, writes out the given white space.</summary>
-    /// <param name="ws">The string of white space characters.</param>
-    /// <exception cref="T:System.ArgumentException">The string contains non-white space characters.</exception>
+    /// <summary>When overridden in a derived class, writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
+    /// <param name="reader">The XmlReader from which to copy the attributes.</param>
+    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="reader" /> is null. </exception>
+    /// <exception cref="T:System.Xml.XmlException">The reader is not positioned on an element, attribute or XmlDeclaration node. </exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
-    void WriteWhitespace(string ws);
+    void WriteAttributes(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
+    
+    /// <summary>When overridden in a derived class, copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
+    /// <param name="reader">The <see cref="T:System.Xml.XmlReader" /> to read from.</param>
+    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="reader" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="reader" /> contains invalid characters.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteNode(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
+    
+    /// <summary>Copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
+    /// <param name="navigator">The <see cref="T:System.Xml.XPath.XPathNavigator" /> to copy from.</param>
+    /// <param name="defattr">true to copy the default attributes; otherwise, false.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="navigator" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteNode(System.Xml.XPath.XPathNavigator navigator, bool defattr);
+    
+    /// <summary>Writes an element with the specified local name and value.</summary>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="value">The value of the element.</param>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="localName" /> value is null or an empty string.-or-The parameter values are not valid.</exception>
+    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteElementString(string localName, string value);
+    
+    /// <summary>Writes an element with the specified local name, namespace URI, and value.</summary>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="ns">The namespace URI to associate with the element.</param>
+    /// <param name="value">The value of the element.</param>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="localName" /> value is null or an empty string.-or-The parameter values are not valid.</exception>
+    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteElementString(string localName, string ns, string value);
+    
+    /// <summary>Writes an element with the specified prefix, local name, namespace URI, and value.</summary>
+    /// <param name="prefix">The prefix of the element.</param>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="ns">The namespace URI of the element.</param>
+    /// <param name="value">The value of the element.</param>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="localName" /> value is null or an empty string.-or-The parameter values are not valid.</exception>
+    /// <exception cref="T:System.Text.EncoderFallbackException">There is a character in the buffer that is a valid XML character but is not valid for the output encoding. For example, if the output encoding is ASCII, you should only use characters from the range of 0 to 127 for element and attribute names. The invalid character might be in the argument of this method or in an argument of previous methods that were writing to the buffer. Such characters are escaped by character entity references when possible (for example, in text nodes or attribute values). However, the character entity reference is not allowed in element and attribute names, comments, processing instructions, or CDATA sections.</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    void WriteElementString(string prefix, string localName, string ns, string value);
+    
+    /// <summary>Asynchronously writes the XML declaration with the version "1.0".</summary>
+    /// <returns>The task that represents the asynchronous WriteStartDocument operation.</returns>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteStartDocumentAsync();
+    
+    /// <summary>Asynchronously writes the XML declaration with the version "1.0" and the standalone attribute.</summary>
+    /// <returns>The task that represents the asynchronous WriteStartDocument operation.</returns>
+    /// <param name="standalone">If true, it writes "standalone=yes"; if false, it writes "standalone=no".</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteStartDocumentAsync(bool standalone);
+    
+    /// <summary>Asynchronously closes any open elements or attributes and puts the writer back in the Start state.</summary>
+    /// <returns>The task that represents the asynchronous WriteEndDocument operation.</returns>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteEndDocumentAsync();
+    
+    /// <summary>Asynchronously writes the DOCTYPE declaration with the specified name and optional attributes.</summary>
+    /// <returns>The task that represents the asynchronous WriteDocType operation.</returns>
+    /// <param name="name">The name of the DOCTYPE. This must be non-empty.</param>
+    /// <param name="pubid">If non-null it also writes PUBLIC "pubid" "sysid" where <paramref name="pubid" /> and <paramref name="sysid" /> are replaced with the value of the given arguments.</param>
+    /// <param name="sysid">If <paramref name="pubid" /> is null and <paramref name="sysid" /> is non-null it writes SYSTEM "sysid" where <paramref name="sysid" /> is replaced with the value of this argument.</param>
+    /// <param name="subset">If non-null it writes [subset] where subset is replaced with the value of this argument.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteDocTypeAsync(string name, string pubid, string sysid, string subset);
+    
+    /// <summary>Asynchronously writes the specified start tag and associates it with the given namespace and prefix.</summary>
+    /// <returns>The task that represents the asynchronous WriteStartElement operation.</returns>
+    /// <param name="prefix">The namespace prefix of the element.</param>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="ns">The namespace URI to associate with the element.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteStartElementAsync(string prefix, string localName, string ns);
+    
+    /// <summary>Asynchronously closes one element and pops the corresponding namespace scope.</summary>
+    /// <returns>The task that represents the asynchronous WriteEndElement operation.</returns>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteEndElementAsync();
+    
+    /// <summary>Asynchronously closes one element and pops the corresponding namespace scope.</summary>
+    /// <returns>The task that represents the asynchronous WriteFullEndElement operation.</returns>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteFullEndElementAsync();
+    
+    /// <summary>Asynchronously writes out the attribute with the specified prefix, local name, namespace URI, and value.</summary>
+    /// <returns>The task that represents the asynchronous WriteAttributeString operation.</returns>
+    /// <param name="prefix">The namespace prefix of the attribute.</param>
+    /// <param name="localName">The local name of the attribute.</param>
+    /// <param name="ns">The namespace URI of the attribute.</param>
+    /// <param name="value">The value of the attribute.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteAttributeStringAsync(string prefix, string localName, string ns, string value);
+    
+    /// <summary>Asynchronously writes out a &lt;![CDATA[...]]&gt; block containing the specified text.</summary>
+    /// <returns>The task that represents the asynchronous WriteCData operation.</returns>
+    /// <param name="text">The text to place inside the CDATA block.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteCDataAsync(string text);
+    
+    /// <summary>Asynchronously writes out a comment &lt;!--...--&gt; containing the specified text.</summary>
+    /// <returns>The task that represents the asynchronous WriteComment operation.</returns>
+    /// <param name="text">Text to place inside the comment.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteCommentAsync(string text);
+    
+    /// <summary>Asynchronously writes out a processing instruction with a space between the name and text as follows: &lt;?name text?&gt;.</summary>
+    /// <returns>The task that represents the asynchronous WriteProcessingInstruction operation.</returns>
+    /// <param name="name">The name of the processing instruction.</param>
+    /// <param name="text">The text to include in the processing instruction.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteProcessingInstructionAsync(string name, string text);
+    
+    /// <summary>Asynchronously writes out an entity reference as &amp;name;.</summary>
+    /// <returns>The task that represents the asynchronous WriteEntityRef operation.</returns>
+    /// <param name="name">The name of the entity reference.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteEntityRefAsync(string name);
+    
+    /// <summary>Asynchronously forces the generation of a character entity for the specified Unicode character value.</summary>
+    /// <returns>The task that represents the asynchronous WriteCharEntity operation.</returns>
+    /// <param name="ch">The Unicode character for which to generate a character entity.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteCharEntityAsync(char ch);
     
     /// <summary>Asynchronously writes out the given white space.</summary>
     /// <returns>The task that represents the asynchronous WriteWhitespace operation.</returns>
@@ -694,5 +509,125 @@ namespace Wrapperator.Interfaces.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     System.Threading.Tasks.Task WriteWhitespaceAsync(string ws);
+    
+    /// <summary>Asynchronously writes the given text content.</summary>
+    /// <returns>The task that represents the asynchronous WriteString operation.</returns>
+    /// <param name="text">The text to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteStringAsync(string text);
+    
+    /// <summary>Asynchronously generates and writes the surrogate character entity for the surrogate character pair.</summary>
+    /// <returns>The task that represents the asynchronous WriteSurrogateCharEntity operation.</returns>
+    /// <param name="lowChar">The low surrogate. This must be a value between 0xDC00 and 0xDFFF.</param>
+    /// <param name="highChar">The high surrogate. This must be a value between 0xD800 and 0xDBFF.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteSurrogateCharEntityAsync(char lowChar, char highChar);
+    
+    /// <summary>Asynchronously writes text one buffer at a time.</summary>
+    /// <returns>The task that represents the asynchronous WriteChars operation.</returns>
+    /// <param name="buffer">Character array containing the text to write.</param>
+    /// <param name="index">The position in the buffer indicating the start of the text to write.</param>
+    /// <param name="count">The number of characters to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteCharsAsync(char[] buffer, int index, int count);
+    
+    /// <summary>Asynchronously writes raw markup manually from a character buffer.</summary>
+    /// <returns>The task that represents the asynchronous WriteRaw operation.</returns>
+    /// <param name="buffer">Character array containing the text to write.</param>
+    /// <param name="index">The position within the buffer indicating the start of the text to write.</param>
+    /// <param name="count">The number of characters to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteRawAsync(char[] buffer, int index, int count);
+    
+    /// <summary>Asynchronously writes raw markup manually from a string.</summary>
+    /// <returns>The task that represents the asynchronous WriteRaw operation.</returns>
+    /// <param name="data">String containing the text to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteRawAsync(string data);
+    
+    /// <summary>Asynchronously encodes the specified binary bytes as Base64 and writes out the resulting text.</summary>
+    /// <returns>The task that represents the asynchronous WriteBase64 operation.</returns>
+    /// <param name="buffer">Byte array to encode.</param>
+    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
+    /// <param name="count">The number of bytes to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteBase64Async(byte[] buffer, int index, int count);
+    
+    /// <summary>Asynchronously encodes the specified binary bytes as BinHex and writes out the resulting text.</summary>
+    /// <returns>The task that represents the asynchronous WriteBinHex operation.</returns>
+    /// <param name="buffer">Byte array to encode.</param>
+    /// <param name="index">The position in the buffer indicating the start of the bytes to write.</param>
+    /// <param name="count">The number of bytes to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteBinHexAsync(byte[] buffer, int index, int count);
+    
+    /// <summary>Asynchronously flushes whatever is in the buffer to the underlying streams and also flushes the underlying stream.</summary>
+    /// <returns>The task that represents the asynchronous Flush operation.</returns>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task FlushAsync();
+    
+    /// <summary>Asynchronously writes out the specified name, ensuring it is a valid NmToken according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
+    /// <returns>The task that represents the asynchronous WriteNmToken operation.</returns>
+    /// <param name="name">The name to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteNmTokenAsync(string name);
+    
+    /// <summary>Asynchronously writes out the specified name, ensuring it is a valid name according to the W3C XML 1.0 recommendation (http://www.w3.org/TR/1998/REC-xml-19980210#NT-Name).</summary>
+    /// <returns>The task that represents the asynchronous WriteName operation.</returns>
+    /// <param name="name">The name to write.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteNameAsync(string name);
+    
+    /// <summary>Asynchronously writes out the namespace-qualified name. This method looks up the prefix that is in scope for the given namespace.</summary>
+    /// <returns>The task that represents the asynchronous WriteQualifiedName operation.</returns>
+    /// <param name="localName">The local name to write.</param>
+    /// <param name="ns">The namespace URI for the name.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteQualifiedNameAsync(string localName, string ns);
+    
+    /// <summary>Asynchronously writes out all the attributes found at the current position in the <see cref="T:System.Xml.XmlReader" />.</summary>
+    /// <returns>The task that represents the asynchronous WriteAttributes operation.</returns>
+    /// <param name="reader">The XmlReader from which to copy the attributes.</param>
+    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteAttributesAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
+    
+    /// <summary>Asynchronously copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
+    /// <returns>The task that represents the asynchronous WriteNode operation.</returns>
+    /// <param name="reader">The <see cref="T:System.Xml.XmlReader" /> to read from.</param>
+    /// <param name="defattr">true to copy the default attributes from the XmlReader; otherwise, false.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteNodeAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr);
+    
+    /// <summary>Asynchronously copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
+    /// <returns>The task that represents the asynchronous WriteNode operation.</returns>
+    /// <param name="navigator">The <see cref="T:System.Xml.XPath.XPathNavigator" /> to copy from.</param>
+    /// <param name="defattr">true to copy the default attributes; otherwise, false.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteNodeAsync(System.Xml.XPath.XPathNavigator navigator, bool defattr);
+    
+    /// <summary>Asynchronously writes an element with the specified prefix, local name, namespace URI, and value.</summary>
+    /// <returns>The task that represents the asynchronous WriteElementString operation.</returns>
+    /// <param name="prefix">The prefix of the element.</param>
+    /// <param name="localName">The local name of the element.</param>
+    /// <param name="ns">The namespace URI of the element.</param>
+    /// <param name="value">The value of the element.</param>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
+    /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
+    System.Threading.Tasks.Task WriteElementStringAsync(string prefix, string localName, string ns, string value);
   }
 }

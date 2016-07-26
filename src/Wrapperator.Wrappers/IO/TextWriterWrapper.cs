@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Represents a writer that can write a sequential series of characters. This class is abstract.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class TextWriterWrapper : Wrapperator.Interfaces.IO.ITextWriter
+  public class TextWriterWrapper : Wrapperator.Interfaces.IO.ITextWriter
   {
     
     internal System.IO.TextWriter TextWriter { get; private set; }
@@ -25,19 +25,19 @@ namespace Wrapperator.Wrappers.IO
       TextWriter = textWriter;
     }
     
-    public System.Text.Encoding Encoding
-    {
-      get
-      {
-        return TextWriter.Encoding;
-      }
-    }
-    
     public System.IFormatProvider FormatProvider
     {
       get
       {
         return TextWriter.FormatProvider;
+      }
+    }
+    
+    public System.Text.Encoding Encoding
+    {
+      get
+      {
+        return TextWriter.Encoding;
       }
     }
     
@@ -60,60 +60,11 @@ namespace Wrapperator.Wrappers.IO
       TextWriter.Close();
     }
     
-    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
-    /// <returns>Information required to generate a proxy.</returns>
-    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
-    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
-    {
-      return TextWriter.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
-    }
-    
     /// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
     /// <filterpriority>1</filterpriority>
     public void Flush()
     {
       TextWriter.Flush();
-    }
-    
-    /// <summary>Asynchronously clears all buffers for the current writer and causes any buffered data to be written to the underlying device. </summary>
-    /// <returns>A task that represents the asynchronous flush operation. </returns>
-    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task FlushAsync()
-    {
-      return TextWriter.FlushAsync();
-    }
-    
-    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object GetLifetimeService()
-    {
-      return TextWriter.GetLifetimeService();
-    }
-    
-    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object InitializeLifetimeService()
-    {
-      return TextWriter.InitializeLifetimeService();
-    }
-    
-    /// <summary>Creates a thread-safe wrapper around the specified TextWriter.</summary>
-    /// <returns>A thread-safe wrapper.</returns>
-    /// <param name="writer">The TextWriter to synchronize. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="writer" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IO.ITextWriter Synchronized(Wrapperator.Interfaces.IO.ITextWriter writer)
-    {
-      return new Wrapperator.Wrappers.IO.TextWriterWrapper(System.IO.TextWriter.Synchronized(writer == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)writer).TextWriter));
     }
     
     /// <summary>Writes a character to the text string or stream.</summary>
@@ -313,53 +264,6 @@ namespace Wrapperator.Wrappers.IO
     public void Write(string format, object[] arg)
     {
       TextWriter.Write(format, arg);
-    }
-    
-    /// <summary>Writes a character to the text string or stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="value">The character to write to the text stream.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(char value)
-    {
-      return TextWriter.WriteAsync(value);
-    }
-    
-    /// <summary>Writes a string to the text string or stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation. </returns>
-    /// <param name="value">The string to write. If <paramref name="value" /> is null, nothing is written to the text stream.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(string value)
-    {
-      return TextWriter.WriteAsync(value);
-    }
-    
-    /// <summary>Writes a character array to the text string or stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="buffer">The character array to write to the text stream. If <paramref name="buffer" /> is null, nothing is written.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(char[] buffer)
-    {
-      return TextWriter.WriteAsync(buffer);
-    }
-    
-    /// <summary>Writes a subarray of characters to the text string or stream asynchronously. </summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="buffer">The character array to write data from. </param>
-    /// <param name="index">The character position in the buffer at which to start retrieving data. </param>
-    /// <param name="count">The number of characters to write. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="index" /> plus <paramref name="count" /> is greater than the buffer length.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-    public System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
-    {
-      return TextWriter.WriteAsync(buffer, index, count);
     }
     
     /// <summary>Writes a line terminator to the text string or stream.</summary>
@@ -569,6 +473,53 @@ namespace Wrapperator.Wrappers.IO
       TextWriter.WriteLine(format, arg);
     }
     
+    /// <summary>Writes a character to the text string or stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="value">The character to write to the text stream.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public System.Threading.Tasks.Task WriteAsync(char value)
+    {
+      return TextWriter.WriteAsync(value);
+    }
+    
+    /// <summary>Writes a string to the text string or stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation. </returns>
+    /// <param name="value">The string to write. If <paramref name="value" /> is null, nothing is written to the text stream.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public System.Threading.Tasks.Task WriteAsync(string value)
+    {
+      return TextWriter.WriteAsync(value);
+    }
+    
+    /// <summary>Writes a character array to the text string or stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">The character array to write to the text stream. If <paramref name="buffer" /> is null, nothing is written.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public System.Threading.Tasks.Task WriteAsync(char[] buffer)
+    {
+      return TextWriter.WriteAsync(buffer);
+    }
+    
+    /// <summary>Writes a subarray of characters to the text string or stream asynchronously. </summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">The character array to write data from. </param>
+    /// <param name="index">The character position in the buffer at which to start retrieving data. </param>
+    /// <param name="count">The number of characters to write. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="index" /> plus <paramref name="count" /> is greater than the buffer length.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
+    {
+      return TextWriter.WriteAsync(buffer, index, count);
+    }
+    
     /// <summary>Writes a character followed by a line terminator asynchronously to the text string or stream.</summary>
     /// <returns>A task that represents the asynchronous write operation.</returns>
     /// <param name="value">The character to write to the text stream.</param>
@@ -625,18 +576,56 @@ namespace Wrapperator.Wrappers.IO
       return TextWriter.WriteLineAsync();
     }
     
-    protected virtual void Dispose(bool disposing)
+    /// <summary>Asynchronously clears all buffers for the current writer and causes any buffered data to be written to the underlying device. </summary>
+    /// <returns>A task that represents the asynchronous flush operation. </returns>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The writer is currently in use by a previous write operation. </exception>
+    public System.Threading.Tasks.Task FlushAsync()
     {
-      if (disposing)
-      {
-        TextWriter.Dispose();
-      }
+      return TextWriter.FlushAsync();
+    }
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
+    {
+      return TextWriter.GetLifetimeService();
+    }
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object InitializeLifetimeService()
+    {
+      return TextWriter.InitializeLifetimeService();
+    }
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
+    {
+      return TextWriter.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     public void Dispose()
     {
       this.Dispose(true);
       System.GC.SuppressFinalize(this);
+    }
+    
+    protected virtual void Dispose(bool disposing)
+    {
+      if (disposing)
+      {
+        TextWriter.Dispose();
+      }
     }
   }
 }

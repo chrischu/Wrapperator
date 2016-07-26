@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers
   
   /// <summary>Represents type declarations: class types, interface types, array types, value types, enumeration types, type parameters, generic type definitions, and open or closed constructed generic types.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class TypeWrapper : Wrapperator.Interfaces.IType
+  public class TypeWrapper : Wrapperator.Interfaces.IType
   {
     
     internal System.Type Type { get; private set; }
@@ -25,59 +25,11 @@ namespace Wrapperator.Wrappers
       Type = type;
     }
     
-    public System.Reflection.Assembly Assembly
+    public System.Reflection.MemberTypes MemberType
     {
       get
       {
-        return Type.Assembly;
-      }
-    }
-    
-    public string AssemblyQualifiedName
-    {
-      get
-      {
-        return Type.AssemblyQualifiedName;
-      }
-    }
-    
-    public System.Reflection.TypeAttributes Attributes
-    {
-      get
-      {
-        return Type.Attributes;
-      }
-    }
-    
-    public System.Type BaseType
-    {
-      get
-      {
-        return Type.BaseType;
-      }
-    }
-    
-    public bool ContainsGenericParameters
-    {
-      get
-      {
-        return Type.ContainsGenericParameters;
-      }
-    }
-    
-    public System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
-    {
-      get
-      {
-        return Type.CustomAttributes;
-      }
-    }
-    
-    public System.Reflection.MethodBase DeclaringMethod
-    {
-      get
-      {
-        return Type.DeclaringMethod;
+        return Type.MemberType;
       }
     }
     
@@ -89,43 +41,27 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Reflection.Binder DefaultBinder
+    public System.Reflection.MethodBase DeclaringMethod
     {
       get
       {
-        return System.Type.DefaultBinder;
+        return Type.DeclaringMethod;
       }
     }
     
-    public string FullName
+    public System.Type ReflectedType
     {
       get
       {
-        return Type.FullName;
+        return Type.ReflectedType;
       }
     }
     
-    public System.Reflection.GenericParameterAttributes GenericParameterAttributes
+    public System.Runtime.InteropServices.StructLayoutAttribute StructLayoutAttribute
     {
       get
       {
-        return Type.GenericParameterAttributes;
-      }
-    }
-    
-    public int GenericParameterPosition
-    {
-      get
-      {
-        return Type.GenericParameterPosition;
-      }
-    }
-    
-    public System.Type[] GenericTypeArguments
-    {
-      get
-      {
-        return Type.GenericTypeArguments;
+        return Type.StructLayoutAttribute;
       }
     }
     
@@ -137,163 +73,67 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public bool HasElementType
+    public System.Reflection.Module Module
     {
       get
       {
-        return Type.HasElementType;
+        return Type.Module;
       }
     }
     
-    public bool IsAbstract
+    public System.Reflection.Assembly Assembly
     {
       get
       {
-        return Type.IsAbstract;
+        return Type.Assembly;
       }
     }
     
-    public bool IsAnsiClass
+    public System.RuntimeTypeHandle TypeHandle
     {
       get
       {
-        return Type.IsAnsiClass;
+        return Type.TypeHandle;
       }
     }
     
-    public bool IsArray
+    public string FullName
     {
       get
       {
-        return Type.IsArray;
+        return Type.FullName;
       }
     }
     
-    public bool IsAutoClass
+    public string Namespace
     {
       get
       {
-        return Type.IsAutoClass;
+        return Type.Namespace;
       }
     }
     
-    public bool IsAutoLayout
+    public string AssemblyQualifiedName
     {
       get
       {
-        return Type.IsAutoLayout;
+        return Type.AssemblyQualifiedName;
       }
     }
     
-    public bool IsByRef
+    public System.Type BaseType
     {
       get
       {
-        return Type.IsByRef;
+        return Type.BaseType;
       }
     }
     
-    public bool IsClass
+    public System.Reflection.ConstructorInfo TypeInitializer
     {
       get
       {
-        return Type.IsClass;
-      }
-    }
-    
-    public bool IsCOMObject
-    {
-      get
-      {
-        return Type.IsCOMObject;
-      }
-    }
-    
-    public bool IsConstructedGenericType
-    {
-      get
-      {
-        return Type.IsConstructedGenericType;
-      }
-    }
-    
-    public bool IsContextful
-    {
-      get
-      {
-        return Type.IsContextful;
-      }
-    }
-    
-    public bool IsEnum
-    {
-      get
-      {
-        return Type.IsEnum;
-      }
-    }
-    
-    public bool IsExplicitLayout
-    {
-      get
-      {
-        return Type.IsExplicitLayout;
-      }
-    }
-    
-    public bool IsGenericParameter
-    {
-      get
-      {
-        return Type.IsGenericParameter;
-      }
-    }
-    
-    public bool IsGenericType
-    {
-      get
-      {
-        return Type.IsGenericType;
-      }
-    }
-    
-    public bool IsGenericTypeDefinition
-    {
-      get
-      {
-        return Type.IsGenericTypeDefinition;
-      }
-    }
-    
-    public bool IsImport
-    {
-      get
-      {
-        return Type.IsImport;
-      }
-    }
-    
-    public bool IsInterface
-    {
-      get
-      {
-        return Type.IsInterface;
-      }
-    }
-    
-    public bool IsLayoutSequential
-    {
-      get
-      {
-        return Type.IsLayoutSequential;
-      }
-    }
-    
-    public bool IsMarshalByRef
-    {
-      get
-      {
-        return Type.IsMarshalByRef;
+        return Type.TypeInitializer;
       }
     }
     
@@ -302,6 +142,70 @@ namespace Wrapperator.Wrappers
       get
       {
         return Type.IsNested;
+      }
+    }
+    
+    public System.Reflection.TypeAttributes Attributes
+    {
+      get
+      {
+        return Type.Attributes;
+      }
+    }
+    
+    public System.Reflection.GenericParameterAttributes GenericParameterAttributes
+    {
+      get
+      {
+        return Type.GenericParameterAttributes;
+      }
+    }
+    
+    public bool IsVisible
+    {
+      get
+      {
+        return Type.IsVisible;
+      }
+    }
+    
+    public bool IsNotPublic
+    {
+      get
+      {
+        return Type.IsNotPublic;
+      }
+    }
+    
+    public bool IsPublic
+    {
+      get
+      {
+        return Type.IsPublic;
+      }
+    }
+    
+    public bool IsNestedPublic
+    {
+      get
+      {
+        return Type.IsNestedPublic;
+      }
+    }
+    
+    public bool IsNestedPrivate
+    {
+      get
+      {
+        return Type.IsNestedPrivate;
+      }
+    }
+    
+    public bool IsNestedFamily
+    {
+      get
+      {
+        return Type.IsNestedFamily;
       }
     }
     
@@ -321,14 +225,6 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public bool IsNestedFamily
-    {
-      get
-      {
-        return Type.IsNestedFamily;
-      }
-    }
-    
     public bool IsNestedFamORAssem
     {
       get
@@ -337,27 +233,187 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public bool IsNestedPrivate
+    public bool IsAutoLayout
     {
       get
       {
-        return Type.IsNestedPrivate;
+        return Type.IsAutoLayout;
       }
     }
     
-    public bool IsNestedPublic
+    public bool IsLayoutSequential
     {
       get
       {
-        return Type.IsNestedPublic;
+        return Type.IsLayoutSequential;
       }
     }
     
-    public bool IsNotPublic
+    public bool IsExplicitLayout
     {
       get
       {
-        return Type.IsNotPublic;
+        return Type.IsExplicitLayout;
+      }
+    }
+    
+    public bool IsClass
+    {
+      get
+      {
+        return Type.IsClass;
+      }
+    }
+    
+    public bool IsInterface
+    {
+      get
+      {
+        return Type.IsInterface;
+      }
+    }
+    
+    public bool IsValueType
+    {
+      get
+      {
+        return Type.IsValueType;
+      }
+    }
+    
+    public bool IsAbstract
+    {
+      get
+      {
+        return Type.IsAbstract;
+      }
+    }
+    
+    public bool IsSealed
+    {
+      get
+      {
+        return Type.IsSealed;
+      }
+    }
+    
+    public bool IsEnum
+    {
+      get
+      {
+        return Type.IsEnum;
+      }
+    }
+    
+    public bool IsSpecialName
+    {
+      get
+      {
+        return Type.IsSpecialName;
+      }
+    }
+    
+    public bool IsImport
+    {
+      get
+      {
+        return Type.IsImport;
+      }
+    }
+    
+    public bool IsSerializable
+    {
+      get
+      {
+        return Type.IsSerializable;
+      }
+    }
+    
+    public bool IsAnsiClass
+    {
+      get
+      {
+        return Type.IsAnsiClass;
+      }
+    }
+    
+    public bool IsUnicodeClass
+    {
+      get
+      {
+        return Type.IsUnicodeClass;
+      }
+    }
+    
+    public bool IsAutoClass
+    {
+      get
+      {
+        return Type.IsAutoClass;
+      }
+    }
+    
+    public bool IsArray
+    {
+      get
+      {
+        return Type.IsArray;
+      }
+    }
+    
+    public bool IsGenericType
+    {
+      get
+      {
+        return Type.IsGenericType;
+      }
+    }
+    
+    public bool IsGenericTypeDefinition
+    {
+      get
+      {
+        return Type.IsGenericTypeDefinition;
+      }
+    }
+    
+    public bool IsConstructedGenericType
+    {
+      get
+      {
+        return Type.IsConstructedGenericType;
+      }
+    }
+    
+    public bool IsGenericParameter
+    {
+      get
+      {
+        return Type.IsGenericParameter;
+      }
+    }
+    
+    public int GenericParameterPosition
+    {
+      get
+      {
+        return Type.GenericParameterPosition;
+      }
+    }
+    
+    public bool ContainsGenericParameters
+    {
+      get
+      {
+        return Type.ContainsGenericParameters;
+      }
+    }
+    
+    public bool IsByRef
+    {
+      get
+      {
+        return Type.IsByRef;
       }
     }
     
@@ -377,19 +433,43 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public bool IsPublic
+    public bool IsCOMObject
     {
       get
       {
-        return Type.IsPublic;
+        return Type.IsCOMObject;
       }
     }
     
-    public bool IsSealed
+    public bool HasElementType
     {
       get
       {
-        return Type.IsSealed;
+        return Type.HasElementType;
+      }
+    }
+    
+    public bool IsContextful
+    {
+      get
+      {
+        return Type.IsContextful;
+      }
+    }
+    
+    public bool IsMarshalByRef
+    {
+      get
+      {
+        return Type.IsMarshalByRef;
+      }
+    }
+    
+    public System.Type[] GenericTypeArguments
+    {
+      get
+      {
+        return Type.GenericTypeArguments;
       }
     }
     
@@ -417,67 +497,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public bool IsSerializable
+    public System.Type UnderlyingSystemType
     {
       get
       {
-        return Type.IsSerializable;
-      }
-    }
-    
-    public bool IsSpecialName
-    {
-      get
-      {
-        return Type.IsSpecialName;
-      }
-    }
-    
-    public bool IsUnicodeClass
-    {
-      get
-      {
-        return Type.IsUnicodeClass;
-      }
-    }
-    
-    public bool IsValueType
-    {
-      get
-      {
-        return Type.IsValueType;
-      }
-    }
-    
-    public bool IsVisible
-    {
-      get
-      {
-        return Type.IsVisible;
-      }
-    }
-    
-    public System.Reflection.MemberTypes MemberType
-    {
-      get
-      {
-        return Type.MemberType;
-      }
-    }
-    
-    public int MetadataToken
-    {
-      get
-      {
-        return Type.MetadataToken;
-      }
-    }
-    
-    public System.Reflection.Module Module
-    {
-      get
-      {
-        return Type.Module;
+        return Type.UnderlyingSystemType;
       }
     }
     
@@ -489,79 +513,137 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public string Namespace
+    public System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
     {
       get
       {
-        return Type.Namespace;
+        return Type.CustomAttributes;
       }
     }
     
-    public System.Type ReflectedType
+    public int MetadataToken
     {
       get
       {
-        return Type.ReflectedType;
+        return Type.MetadataToken;
       }
     }
     
-    public System.Runtime.InteropServices.StructLayoutAttribute StructLayoutAttribute
-    {
-      get
-      {
-        return Type.StructLayoutAttribute;
-      }
-    }
-    
-    public System.RuntimeTypeHandle TypeHandle
-    {
-      get
-      {
-        return Type.TypeHandle;
-      }
-    }
-    
-    public System.Reflection.ConstructorInfo TypeInitializer
-    {
-      get
-      {
-        return Type.TypeInitializer;
-      }
-    }
-    
-    public System.Type UnderlyingSystemType
-    {
-      get
-      {
-        return Type.UnderlyingSystemType;
-      }
-    }
-    
-    /// <summary>Returns an array of <see cref="T:System.Type" /> objects representing a filtered list of interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects representing a filtered list of the interfaces implemented or inherited by the current <see cref="T:System.Type" />, or an empty array of type <see cref="T:System.Type" /> if no interfaces matching the filter are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
-    /// <param name="filter">The delegate that compares the interfaces against <paramref name="filterCriteria" />. </param>
-    /// <param name="filterCriteria">The search criteria that determines whether an interface should be included in the returned array. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="filter" /> is null. </exception>
-    /// <exception cref="T:System.Reflection.TargetInvocationException">A static initializer is invoked and throws an exception. </exception>
+    /// <summary>Returns a <see cref="T:System.Type" /> object that represents a pointer to the current type.</summary>
+    /// <returns>A <see cref="T:System.Type" /> object that represents a pointer to the current type.</returns>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class.</exception>
+    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Type[] FindInterfaces(System.Reflection.TypeFilter filter, object filterCriteria)
+    public Wrapperator.Interfaces.IType MakePointerType()
     {
-      return Type.FindInterfaces(filter, filterCriteria);
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakePointerType());
     }
     
-    /// <summary>Returns a filtered array of <see cref="T:System.Reflection.MemberInfo" /> objects of the specified member type.</summary>
-    /// <returns>A filtered array of <see cref="T:System.Reflection.MemberInfo" /> objects of the specified member type.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have members of type <paramref name="memberType" /> that match the filter criteria.</returns>
-    /// <param name="memberType">An object that indicates the type of member to search for. </param>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
-    /// <param name="filter">The delegate that does the comparisons, returning true if the member currently being inspected matches the <paramref name="filterCriteria" /> and false otherwise. You can use the FilterAttribute, FilterName, and FilterNameIgnoreCase delegates supplied by this class. The first uses the fields of FieldAttributes, MethodAttributes, and MethodImplAttributes as search criteria, and the other two delegates use String objects as the search criteria. </param>
-    /// <param name="filterCriteria">The search criteria that determines whether a member is returned in the array of MemberInfo objects.The fields of FieldAttributes, MethodAttributes, and MethodImplAttributes can be used in conjunction with the FilterAttribute delegate supplied by this class. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="filter" /> is null. </exception>
+    /// <summary>Returns a <see cref="T:System.Type" /> object that represents the current type when passed as a ref parameter (ByRef parameter in Visual Basic).</summary>
+    /// <returns>A <see cref="T:System.Type" /> object that represents the current type when passed as a ref parameter (ByRef parameter in Visual Basic).</returns>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class.</exception>
+    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] FindMembers(System.Reflection.MemberTypes memberType, System.Reflection.BindingFlags bindingAttr, System.Reflection.MemberFilter filter, object filterCriteria)
+    public Wrapperator.Interfaces.IType MakeByRefType()
     {
-      return Type.FindMembers(memberType, bindingAttr, filter, filterCriteria);
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeByRefType());
+    }
+    
+    /// <summary>Returns a <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</summary>
+    /// <returns>A <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</returns>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
+    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. </exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType MakeArrayType()
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeArrayType());
+    }
+    
+    /// <summary>Returns a <see cref="T:System.Type" /> object representing an array of the current type, with the specified number of dimensions.</summary>
+    /// <returns>An object representing an array of the current type, with the specified number of dimensions.</returns>
+    /// <param name="rank">The number of dimensions for the array. This number must be less than or equal to 32.</param>
+    /// <exception cref="T:System.IndexOutOfRangeException">
+    ///  <paramref name="rank" /> is invalid. For example, 0 or negative.</exception>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class.</exception>
+    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. -or-<paramref name="rank" /> is greater than 32.</exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType MakeArrayType(int rank)
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeArrayType(rank));
+    }
+    
+    /// <summary>When overridden in a derived class, invokes the specified member, using the specified binding constraints and matching the specified argument list, modifiers and culture.</summary>
+    /// <returns>An object representing the return value of the invoked member.</returns>
+    /// <param name="name">The string containing the name of the constructor, method, property, or field member to invoke.-or- An empty string ("") to invoke the default member. -or-For IDispatch members, a string representing the DispID, for example "[DispID=3]".</param>
+    /// <param name="invokeAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted. The access can be one of the BindingFlags such as Public, NonPublic, Private, InvokeMethod, GetField, and so on. The type of lookup need not be specified. If the type of lookup is omitted, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static are used. </param>
+    /// <param name="binder">An object that defines a set of properties and enables binding, which can involve selection of an overloaded method, coercion of argument types, and invocation of a member through reflection.-or- A null reference (Nothing in Visual Basic), to use the <see cref="P:System.Type.DefaultBinder" />. Note that explicitly defining a <see cref="T:System.Reflection.Binder" /> object may be required for successfully invoking method overloads with variable arguments.</param>
+    /// <param name="target">The object on which to invoke the specified member. </param>
+    /// <param name="args">An array containing the arguments to pass to the member to invoke. </param>
+    /// <param name="modifiers">An array of <see cref="T:System.Reflection.ParameterModifier" /> objects representing the attributes associated with the corresponding element in the <paramref name="args" /> array. A parameter's associated attributes are stored in the member's signature. The default binder processes this parameter only when calling a COM component. </param>
+    /// <param name="culture">The <see cref="T:System.Globalization.CultureInfo" /> object representing the globalization locale to use, which may be necessary for locale-specific conversions, such as converting a numeric String to a Double.-or- A null reference (Nothing in Visual Basic) to use the current thread's <see cref="T:System.Globalization.CultureInfo" />. </param>
+    /// <param name="namedParameters">An array containing the names of the parameters to which the values in the <paramref name="args" /> array are passed. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="invokeAttr" /> does not contain CreateInstance and <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="args" /> and <paramref name="modifiers" /> do not have the same length.-or- <paramref name="invokeAttr" /> is not a valid <see cref="T:System.Reflection.BindingFlags" /> attribute.-or- <paramref name="invokeAttr" /> does not contain one of the following binding flags: InvokeMethod, CreateInstance, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains CreateInstance combined with InvokeMethod, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains both GetField and SetField.-or- <paramref name="invokeAttr" /> contains both GetProperty and SetProperty.-or- <paramref name="invokeAttr" /> contains InvokeMethod combined with SetField or SetProperty.-or- <paramref name="invokeAttr" /> contains SetField and <paramref name="args" /> has more than one element.-or- The named parameter array is larger than the argument array.-or- This method is called on a COM object and one of the following binding flags was not passed in: BindingFlags.InvokeMethod, BindingFlags.GetProperty, BindingFlags.SetProperty, BindingFlags.PutDispProperty, or BindingFlags.PutRefDispProperty.-or- One of the named parameter arrays contains a string that is null. </exception>
+    /// <exception cref="T:System.MethodAccessException">The specified member is a class initializer. </exception>
+    /// <exception cref="T:System.MissingFieldException">The field or property cannot be found. </exception>
+    /// <exception cref="T:System.MissingMethodException">No method can be found that matches the arguments in <paramref name="args" />.-or- No member can be found that has the argument names supplied in <paramref name="namedParameters" />.-or- The current <see cref="T:System.Type" /> object represents a type that contains open type parameters, that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true. </exception>
+    /// <exception cref="T:System.Reflection.TargetException">The specified member cannot be invoked on <paramref name="target" />. </exception>
+    /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method matches the binding criteria. </exception>
+    /// <exception cref="T:System.InvalidOperationException">The method represented by <paramref name="name" /> has one or more unspecified generic type parameters. That is, the method's <see cref="P:System.Reflection.MethodInfo.ContainsGenericParameters" /> property returns true.</exception>
+    /// <filterpriority>2</filterpriority>
+    public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] namedParameters)
+    {
+      return Type.InvokeMember(name, invokeAttr, binder, target, args, modifiers, culture, namedParameters);
+    }
+    
+    /// <summary>Invokes the specified member, using the specified binding constraints and matching the specified argument list and culture.</summary>
+    /// <returns>An object representing the return value of the invoked member.</returns>
+    /// <param name="name">The string containing the name of the constructor, method, property, or field member to invoke.-or- An empty string ("") to invoke the default member. -or-For IDispatch members, a string representing the DispID, for example "[DispID=3]".</param>
+    /// <param name="invokeAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted. The access can be one of the BindingFlags such as Public, NonPublic, Private, InvokeMethod, GetField, and so on. The type of lookup need not be specified. If the type of lookup is omitted, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static are used. </param>
+    /// <param name="binder">An object that defines a set of properties and enables binding, which can involve selection of an overloaded method, coercion of argument types, and invocation of a member through reflection.-or- A null reference (Nothing in Visual Basic), to use the <see cref="P:System.Type.DefaultBinder" />. Note that explicitly defining a <see cref="T:System.Reflection.Binder" /> object may be required for successfully invoking method overloads with variable arguments.</param>
+    /// <param name="target">The object on which to invoke the specified member. </param>
+    /// <param name="args">An array containing the arguments to pass to the member to invoke. </param>
+    /// <param name="culture">The object representing the globalization locale to use, which may be necessary for locale-specific conversions, such as converting a numeric <see cref="T:System.String" /> to a <see cref="T:System.Double" />.-or- A null reference (Nothing in Visual Basic) to use the current thread's <see cref="T:System.Globalization.CultureInfo" />. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="invokeAttr" /> does not contain CreateInstance and <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="invokeAttr" /> is not a valid <see cref="T:System.Reflection.BindingFlags" /> attribute. -or- <paramref name="invokeAttr" /> does not contain one of the following binding flags: InvokeMethod, CreateInstance, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains CreateInstance combined with InvokeMethod, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains both GetField and SetField.-or- <paramref name="invokeAttr" /> contains both GetProperty and SetProperty.-or- <paramref name="invokeAttr" /> contains InvokeMethod combined with SetField or SetProperty.-or- <paramref name="invokeAttr" /> contains SetField and <paramref name="args" /> has more than one element.-or- This method is called on a COM object and one of the following binding flags was not passed in: BindingFlags.InvokeMethod, BindingFlags.GetProperty, BindingFlags.SetProperty, BindingFlags.PutDispProperty, or BindingFlags.PutRefDispProperty.-or- One of the named parameter arrays contains a string that is null. </exception>
+    /// <exception cref="T:System.MethodAccessException">The specified member is a class initializer. </exception>
+    /// <exception cref="T:System.MissingFieldException">The field or property cannot be found. </exception>
+    /// <exception cref="T:System.MissingMethodException">No method can be found that matches the arguments in <paramref name="args" />.-or- The current <see cref="T:System.Type" /> object represents a type that contains open type parameters, that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true. </exception>
+    /// <exception cref="T:System.Reflection.TargetException">The specified member cannot be invoked on <paramref name="target" />. </exception>
+    /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method matches the binding criteria. </exception>
+    /// <exception cref="T:System.InvalidOperationException">The method represented by <paramref name="name" /> has one or more unspecified generic type parameters. That is, the method's <see cref="P:System.Reflection.MethodInfo.ContainsGenericParameters" /> property returns true.</exception>
+    /// <filterpriority>2</filterpriority>
+    public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Globalization.CultureInfo culture)
+    {
+      return Type.InvokeMember(name, invokeAttr, binder, target, args, culture);
+    }
+    
+    /// <summary>Invokes the specified member, using the specified binding constraints and matching the specified argument list.</summary>
+    /// <returns>An object representing the return value of the invoked member.</returns>
+    /// <param name="name">The string containing the name of the constructor, method, property, or field member to invoke.-or- An empty string ("") to invoke the default member. -or-For IDispatch members, a string representing the DispID, for example "[DispID=3]".</param>
+    /// <param name="invokeAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted. The access can be one of the BindingFlags such as Public, NonPublic, Private, InvokeMethod, GetField, and so on. The type of lookup need not be specified. If the type of lookup is omitted, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static are used. </param>
+    /// <param name="binder">An object that defines a set of properties and enables binding, which can involve selection of an overloaded method, coercion of argument types, and invocation of a member through reflection.-or- A null reference (Nothing in Visual Basic), to use the <see cref="P:System.Type.DefaultBinder" />. Note that explicitly defining a <see cref="T:System.Reflection.Binder" /> object may be required for successfully invoking method overloads with variable arguments.</param>
+    /// <param name="target">The object on which to invoke the specified member. </param>
+    /// <param name="args">An array containing the arguments to pass to the member to invoke. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="invokeAttr" /> does not contain CreateInstance and <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="invokeAttr" /> is not a valid <see cref="T:System.Reflection.BindingFlags" /> attribute. -or- <paramref name="invokeAttr" /> does not contain one of the following binding flags: InvokeMethod, CreateInstance, GetField, SetField, GetProperty, or SetProperty. -or- <paramref name="invokeAttr" /> contains CreateInstance combined with InvokeMethod, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains both GetField and SetField.-or- <paramref name="invokeAttr" /> contains both GetProperty and SetProperty.-or- <paramref name="invokeAttr" /> contains InvokeMethod combined with SetField or SetProperty.-or- <paramref name="invokeAttr" /> contains SetField and <paramref name="args" /> has more than one element.-or- This method is called on a COM object and one of the following binding flags was not passed in: BindingFlags.InvokeMethod, BindingFlags.GetProperty, BindingFlags.SetProperty, BindingFlags.PutDispProperty, or BindingFlags.PutRefDispProperty.-or- One of the named parameter arrays contains a string that is null. </exception>
+    /// <exception cref="T:System.MethodAccessException">The specified member is a class initializer. </exception>
+    /// <exception cref="T:System.MissingFieldException">The field or property cannot be found. </exception>
+    /// <exception cref="T:System.MissingMethodException">No method can be found that matches the arguments in <paramref name="args" />.-or- The current <see cref="T:System.Type" /> object represents a type that contains open type parameters, that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true. </exception>
+    /// <exception cref="T:System.Reflection.TargetException">The specified member cannot be invoked on <paramref name="target" />. </exception>
+    /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method matches the binding criteria. </exception>
+    /// <exception cref="T:System.NotSupportedException">The .NET Compact Framework does not currently support this method.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The method represented by <paramref name="name" /> has one or more unspecified generic type parameters. That is, the method's <see cref="P:System.Reflection.MethodInfo.ContainsGenericParameters" /> property returns true.</exception>
+    /// <filterpriority>2</filterpriority>
+    public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args)
+    {
+      return Type.InvokeMember(name, invokeAttr, binder, target, args);
     }
     
     /// <summary>Gets the number of dimensions in an <see cref="T:System.Array" />.</summary>
@@ -635,298 +717,6 @@ namespace Wrapperator.Wrappers
     public System.Reflection.ConstructorInfo[] GetConstructors(System.Reflection.BindingFlags bindingAttr)
     {
       return Type.GetConstructors(bindingAttr);
-    }
-    
-    /// <summary>When overridden in a derived class, returns an array of all custom attributes applied to this member. </summary>
-    /// <returns>An array that contains all the custom attributes applied to this member, or an array with zero elements if no attributes are defined.</returns>
-    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
-    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
-    /// <exception cref="T:System.TypeLoadException">A custom attribute type could not be loaded. </exception>
-    public object[] GetCustomAttributes(bool inherit)
-    {
-      return Type.GetCustomAttributes(inherit);
-    }
-    
-    /// <summary>When overridden in a derived class, returns an array of custom attributes applied to this member and identified by <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of custom attributes applied to this member, or an array with zero elements if no attributes assignable to <paramref name="attributeType" /> have been applied.</returns>
-    /// <param name="attributeType">The type of attribute to search for. Only attributes that are assignable to this type are returned. </param>
-    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks. </param>
-    /// <exception cref="T:System.TypeLoadException">A custom attribute type cannot be loaded. </exception>
-    /// <exception cref="T:System.ArgumentNullException">If <paramref name="attributeType" /> is null.</exception>
-    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
-    public object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit)
-    {
-      return Type.GetCustomAttributes(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
-    }
-    
-    /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>
-    /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</returns>
-    public System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData()
-    {
-      return Type.GetCustomAttributesData();
-    }
-    
-    /// <summary>Searches for the members defined for the current <see cref="T:System.Type" /> whose <see cref="T:System.Reflection.DefaultMemberAttribute" /> is set.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all default members of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have default members.</returns>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] GetDefaultMembers()
-    {
-      return Type.GetDefaultMembers();
-    }
-    
-    /// <summary>When overridden in a derived class, returns the <see cref="T:System.Type" /> of the object encompassed or referred to by the current array, pointer or reference type.</summary>
-    /// <returns>The <see cref="T:System.Type" /> of the object encompassed or referred to by the current array, pointer, or reference type, or null if the current <see cref="T:System.Type" /> is not an array or a pointer, or is not passed by reference, or represents a generic type or a type parameter in the definition of a generic type or generic method.</returns>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType GetElementType()
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetElementType());
-    }
-    
-    /// <summary>Returns the name of the constant that has the specified value, for the current enumeration type.</summary>
-    /// <returns>The name of the member of the current enumeration type that has the specified value, or null if no such constant is found.</returns>
-    /// <param name="value">The value whose name is to be retrieved.</param>
-    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.-or-<paramref name="value" /> is neither of the current type nor does it have the same underlying type as the current type.</exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="value" /> is null.</exception>
-    public string GetEnumName(object value)
-    {
-      return Type.GetEnumName(value);
-    }
-    
-    /// <summary>Returns the names of the members of the current enumeration type.</summary>
-    /// <returns>An array that contains the names of the members of the enumeration.</returns>
-    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
-    public string[] GetEnumNames()
-    {
-      return Type.GetEnumNames();
-    }
-    
-    /// <summary>Returns the underlying type of the current enumeration type. </summary>
-    /// <returns>The underlying type of the current enumeration.</returns>
-    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.-or-The enumeration type is not valid, because it contains more than one instance field.</exception>
-    public Wrapperator.Interfaces.IType GetEnumUnderlyingType()
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetEnumUnderlyingType());
-    }
-    
-    /// <summary>Returns an array of the values of the constants in the current enumeration type.</summary>
-    /// <returns>An array that contains the values. The elements of the array are sorted by the binary values (that is, the unsigned values) of the enumeration constants.</returns>
-    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
-    public System.Array GetEnumValues()
-    {
-      return Type.GetEnumValues();
-    }
-    
-    /// <summary>Returns the <see cref="T:System.Reflection.EventInfo" /> object representing the specified public event.</summary>
-    /// <returns>The object representing the specified public event that is declared or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of an event that is declared or inherited by the current <see cref="T:System.Type" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.EventInfo GetEvent(string name)
-    {
-      return Type.GetEvent(name);
-    }
-    
-    /// <summary>When overridden in a derived class, returns the <see cref="T:System.Reflection.EventInfo" /> object representing the specified event, using the specified binding constraints.</summary>
-    /// <returns>The object representing the specified event that is declared or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of an event which is declared or inherited by the current <see cref="T:System.Type" />. </param>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.EventInfo GetEvent(string name, System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetEvent(name, bindingAttr);
-    }
-    
-    /// <summary>Returns all the public events that are declared or inherited by the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.EventInfo" /> objects representing all the public events which are declared or inherited by the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.EventInfo" />, if the current <see cref="T:System.Type" /> does not have public events.</returns>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.EventInfo[] GetEvents()
-    {
-      return Type.GetEvents();
-    }
-    
-    /// <summary>When overridden in a derived class, searches for events that are declared or inherited by the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.EventInfo" /> objects representing all events that are declared or inherited by the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.EventInfo" />, if the current <see cref="T:System.Type" /> does not have events, or if none of the events match the binding constraints.</returns>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.EventInfo[] GetEvents(System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetEvents(bindingAttr);
-    }
-    
-    /// <summary>Searches for the specified field, using the specified binding constraints.</summary>
-    /// <returns>An object representing the field that matches the specified requirements, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of the data field to get. </param>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.FieldInfo GetField(string name, System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetField(name, bindingAttr);
-    }
-    
-    /// <summary>Searches for the public field with the specified name.</summary>
-    /// <returns>An object representing the public field with the specified name, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of the data field to get. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.NotSupportedException">This <see cref="T:System.Type" /> object is a <see cref="T:System.Reflection.Emit.TypeBuilder" /> whose <see cref="M:System.Reflection.Emit.TypeBuilder.CreateType" /> method has not yet been called. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.FieldInfo GetField(string name)
-    {
-      return Type.GetField(name);
-    }
-    
-    /// <summary>Returns all the public fields of the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.FieldInfo" /> objects representing all the public fields defined for the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.FieldInfo" />, if no public fields are defined for the current <see cref="T:System.Type" />.</returns>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.FieldInfo[] GetFields()
-    {
-      return Type.GetFields();
-    }
-    
-    /// <summary>When overridden in a derived class, searches for the fields defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.FieldInfo" /> objects representing all fields defined for the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.FieldInfo" />, if no fields are defined for the current <see cref="T:System.Type" />, or if none of the defined fields match the binding constraints.</returns>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetFields(bindingAttr);
-    }
-    
-    /// <summary>Returns an array of <see cref="T:System.Type" /> objects that represent the type arguments of a generic type or the type parameters of a generic type definition.</summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects that represent the type arguments of a generic type. Returns an empty array if the current type is not a generic type.</returns>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Type[] GetGenericArguments()
-    {
-      return Type.GetGenericArguments();
-    }
-    
-    /// <summary>Returns an array of <see cref="T:System.Type" /> objects that represent the constraints on the current generic type parameter. </summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects that represent the constraints on the current generic type parameter.</returns>
-    /// <exception cref="T:System.InvalidOperationException">The current <see cref="T:System.Type" /> object is not a generic type parameter. That is, the <see cref="P:System.Type.IsGenericParameter" /> property returns false.</exception>
-    /// <filterpriority>1</filterpriority>
-    public System.Type[] GetGenericParameterConstraints()
-    {
-      return Type.GetGenericParameterConstraints();
-    }
-    
-    /// <summary>Returns a <see cref="T:System.Type" /> object that represents a generic type definition from which the current generic type can be constructed.</summary>
-    /// <returns>A <see cref="T:System.Type" /> object representing a generic type from which the current type can be constructed.</returns>
-    /// <exception cref="T:System.InvalidOperationException">The current type is not a generic type.  That is, <see cref="P:System.Type.IsGenericType" /> returns false. </exception>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType GetGenericTypeDefinition()
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetGenericTypeDefinition());
-    }
-    
-    /// <summary>Searches for the interface with the specified name.</summary>
-    /// <returns>An object representing the interface with the specified name, implemented or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of the interface to get. For generic interfaces, this is the mangled name.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.Reflection.AmbiguousMatchException">The current <see cref="T:System.Type" /> represents a type that implements the same generic interface with different type arguments. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType GetInterface(string name)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetInterface(name));
-    }
-    
-    /// <summary>When overridden in a derived class, searches for the specified interface, specifying whether to do a case-insensitive search for the interface name.</summary>
-    /// <returns>An object representing the interface with the specified name, implemented or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of the interface to get. For generic interfaces, this is the mangled name.</param>
-    /// <param name="ignoreCase">true to ignore the case of that part of <paramref name="name" /> that specifies the simple interface name (the part that specifies the namespace must be correctly cased).-or- false to perform a case-sensitive search for all parts of <paramref name="name" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.Reflection.AmbiguousMatchException">The current <see cref="T:System.Type" /> represents a type that implements the same generic interface with different type arguments. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType GetInterface(string name, bool ignoreCase)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetInterface(name, ignoreCase));
-    }
-    
-    /// <summary>Returns an interface mapping for the specified interface type.</summary>
-    /// <returns>An object that represents the interface mapping for <paramref name="interfaceType" />.</returns>
-    /// <param name="interfaceType">The interface type to retrieve a mapping for. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="interfaceType" /> is not implemented by the current type. -or-The <paramref name="interfaceType" /> parameter does not refer to an interface. -or-<paramref name="interfaceType" /> is a generic interface, and the current type is an array type. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="interfaceType" /> is null. </exception>
-    /// <exception cref="T:System.InvalidOperationException">The current <see cref="T:System.Type" /> represents a generic type parameter; that is, <see cref="P:System.Type.IsGenericParameter" /> is true. </exception>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.InterfaceMapping GetInterfaceMap(Wrapperator.Interfaces.IType interfaceType)
-    {
-      return Type.GetInterfaceMap(interfaceType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)interfaceType).Type);
-    }
-    
-    /// <summary>When overridden in a derived class, gets all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects representing all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Type" />, if no interfaces are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
-    /// <exception cref="T:System.Reflection.TargetInvocationException">A static initializer is invoked and throws an exception. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Type[] GetInterfaces()
-    {
-      return Type.GetInterfaces();
-    }
-    
-    /// <summary>Searches for the public members with the specified name.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing the public members with the specified name, if found; otherwise, an empty array.</returns>
-    /// <param name="name">The string containing the name of the public members to get. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] GetMember(string name)
-    {
-      return Type.GetMember(name);
-    }
-    
-    /// <summary>Searches for the specified members, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing the public members with the specified name, if found; otherwise, an empty array.</returns>
-    /// <param name="name">The string containing the name of the members to get. </param>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return an empty array. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] GetMember(string name, System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetMember(name, bindingAttr);
-    }
-    
-    /// <summary>Searches for the specified members of the specified member type, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing the public members with the specified name, if found; otherwise, an empty array.</returns>
-    /// <param name="name">The string containing the name of the members to get. </param>
-    /// <param name="type">The value to search for. </param>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return an empty array. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.NotSupportedException">A derived class must provide an implementation. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] GetMember(string name, System.Reflection.MemberTypes type, System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetMember(name, type, bindingAttr);
-    }
-    
-    /// <summary>Returns all the public members of the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all the public members of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have public members.</returns>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] GetMembers()
-    {
-      return Type.GetMembers();
-    }
-    
-    /// <summary>When overridden in a derived class, searches for the members defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all members defined for the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if no members are defined for the current <see cref="T:System.Type" />, or if none of the defined members match the binding constraints.</returns>
-    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero (<see cref="F:System.Reflection.BindingFlags.Default" />), to return an empty array. </param>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.MemberInfo[] GetMembers(System.Reflection.BindingFlags bindingAttr)
-    {
-      return Type.GetMembers(bindingAttr);
     }
     
     /// <summary>Searches for the specified method whose parameters match the specified argument types and modifiers, using the specified binding constraints and the specified calling convention.</summary>
@@ -1039,61 +829,132 @@ namespace Wrapperator.Wrappers
       return Type.GetMethods(bindingAttr);
     }
     
-    /// <summary>Searches for the public nested type with the specified name.</summary>
-    /// <returns>An object representing the public nested type with the specified name, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of the nested type to get. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="name" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType GetNestedType(string name)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetNestedType(name));
-    }
-    
-    /// <summary>When overridden in a derived class, searches for the specified nested type, using the specified binding constraints.</summary>
-    /// <returns>An object representing the nested type that matches the specified requirements, if found; otherwise, null.</returns>
-    /// <param name="name">The string containing the name of the nested type to get. </param>
+    /// <summary>Searches for the specified field, using the specified binding constraints.</summary>
+    /// <returns>An object representing the field that matches the specified requirements, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of the data field to get. </param>
     /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
     /// <exception cref="T:System.ArgumentNullException">
     ///  <paramref name="name" /> is null. </exception>
     /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType GetNestedType(string name, System.Reflection.BindingFlags bindingAttr)
+    public System.Reflection.FieldInfo GetField(string name, System.Reflection.BindingFlags bindingAttr)
     {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.GetNestedType(name, bindingAttr));
+      return Type.GetField(name, bindingAttr);
     }
     
-    /// <summary>Returns the public types nested in the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects representing the public types nested in the current <see cref="T:System.Type" /> (the search is not recursive), or an empty array of type <see cref="T:System.Type" /> if no public types are nested in the current <see cref="T:System.Type" />.</returns>
+    /// <summary>Searches for the public field with the specified name.</summary>
+    /// <returns>An object representing the public field with the specified name, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of the data field to get. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.NotSupportedException">This <see cref="T:System.Type" /> object is a <see cref="T:System.Reflection.Emit.TypeBuilder" /> whose <see cref="M:System.Reflection.Emit.TypeBuilder.CreateType" /> method has not yet been called. </exception>
     /// <filterpriority>2</filterpriority>
-    public System.Type[] GetNestedTypes()
+    public System.Reflection.FieldInfo GetField(string name)
     {
-      return Type.GetNestedTypes();
+      return Type.GetField(name);
     }
     
-    /// <summary>When overridden in a derived class, searches for the types nested in the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects representing all the types nested in the current <see cref="T:System.Type" /> that match the specified binding constraints (the search is not recursive), or an empty array of type <see cref="T:System.Type" />, if no nested types are found that match the binding constraints.</returns>
+    /// <summary>Returns all the public fields of the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.FieldInfo" /> objects representing all the public fields defined for the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.FieldInfo" />, if no public fields are defined for the current <see cref="T:System.Type" />.</returns>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.FieldInfo[] GetFields()
+    {
+      return Type.GetFields();
+    }
+    
+    /// <summary>When overridden in a derived class, searches for the fields defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.FieldInfo" /> objects representing all fields defined for the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.FieldInfo" />, if no fields are defined for the current <see cref="T:System.Type" />, or if none of the defined fields match the binding constraints.</returns>
     /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
     /// <filterpriority>2</filterpriority>
-    public System.Type[] GetNestedTypes(System.Reflection.BindingFlags bindingAttr)
+    public System.Reflection.FieldInfo[] GetFields(System.Reflection.BindingFlags bindingAttr)
     {
-      return Type.GetNestedTypes(bindingAttr);
+      return Type.GetFields(bindingAttr);
     }
     
-    /// <summary>When overridden in a derived class, searches for the properties of the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.PropertyInfo" /> objects representing all properties of the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.PropertyInfo" />, if the current <see cref="T:System.Type" /> does not have properties, or if none of the properties match the binding constraints.</returns>
+    /// <summary>Searches for the interface with the specified name.</summary>
+    /// <returns>An object representing the interface with the specified name, implemented or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of the interface to get. For generic interfaces, this is the mangled name.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.Reflection.AmbiguousMatchException">The current <see cref="T:System.Type" /> represents a type that implements the same generic interface with different type arguments. </exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType GetInterface(string name)
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetInterface(name));
+    }
+    
+    /// <summary>When overridden in a derived class, searches for the specified interface, specifying whether to do a case-insensitive search for the interface name.</summary>
+    /// <returns>An object representing the interface with the specified name, implemented or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of the interface to get. For generic interfaces, this is the mangled name.</param>
+    /// <param name="ignoreCase">true to ignore the case of that part of <paramref name="name" /> that specifies the simple interface name (the part that specifies the namespace must be correctly cased).-or- false to perform a case-sensitive search for all parts of <paramref name="name" />. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.Reflection.AmbiguousMatchException">The current <see cref="T:System.Type" /> represents a type that implements the same generic interface with different type arguments. </exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType GetInterface(string name, bool ignoreCase)
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetInterface(name, ignoreCase));
+    }
+    
+    /// <summary>When overridden in a derived class, gets all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Type" /> objects representing all the interfaces implemented or inherited by the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Type" />, if no interfaces are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
+    /// <exception cref="T:System.Reflection.TargetInvocationException">A static initializer is invoked and throws an exception. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Type[] GetInterfaces()
+    {
+      return Type.GetInterfaces();
+    }
+    
+    /// <summary>Returns an array of <see cref="T:System.Type" /> objects representing a filtered list of interfaces implemented or inherited by the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Type" /> objects representing a filtered list of the interfaces implemented or inherited by the current <see cref="T:System.Type" />, or an empty array of type <see cref="T:System.Type" /> if no interfaces matching the filter are implemented or inherited by the current <see cref="T:System.Type" />.</returns>
+    /// <param name="filter">The delegate that compares the interfaces against <paramref name="filterCriteria" />. </param>
+    /// <param name="filterCriteria">The search criteria that determines whether an interface should be included in the returned array. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="filter" /> is null. </exception>
+    /// <exception cref="T:System.Reflection.TargetInvocationException">A static initializer is invoked and throws an exception. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Type[] FindInterfaces(System.Reflection.TypeFilter filter, object filterCriteria)
+    {
+      return Type.FindInterfaces(filter, filterCriteria);
+    }
+    
+    /// <summary>Returns the <see cref="T:System.Reflection.EventInfo" /> object representing the specified public event.</summary>
+    /// <returns>The object representing the specified public event that is declared or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of an event that is declared or inherited by the current <see cref="T:System.Type" />. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.EventInfo GetEvent(string name)
+    {
+      return Type.GetEvent(name);
+    }
+    
+    /// <summary>When overridden in a derived class, returns the <see cref="T:System.Reflection.EventInfo" /> object representing the specified event, using the specified binding constraints.</summary>
+    /// <returns>The object representing the specified event that is declared or inherited by the current <see cref="T:System.Type" />, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of an event which is declared or inherited by the current <see cref="T:System.Type" />. </param>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.EventInfo GetEvent(string name, System.Reflection.BindingFlags bindingAttr)
+    {
+      return Type.GetEvent(name, bindingAttr);
+    }
+    
+    /// <summary>Returns all the public events that are declared or inherited by the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.EventInfo" /> objects representing all the public events which are declared or inherited by the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.EventInfo" />, if the current <see cref="T:System.Type" /> does not have public events.</returns>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.EventInfo[] GetEvents()
+    {
+      return Type.GetEvents();
+    }
+    
+    /// <summary>When overridden in a derived class, searches for events that are declared or inherited by the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.EventInfo" /> objects representing all events that are declared or inherited by the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.EventInfo" />, if the current <see cref="T:System.Type" /> does not have events, or if none of the events match the binding constraints.</returns>
     /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
     /// <filterpriority>2</filterpriority>
-    public System.Reflection.PropertyInfo[] GetProperties(System.Reflection.BindingFlags bindingAttr)
+    public System.Reflection.EventInfo[] GetEvents(System.Reflection.BindingFlags bindingAttr)
     {
-      return Type.GetProperties(bindingAttr);
-    }
-    
-    /// <summary>Returns all the public properties of the current <see cref="T:System.Type" />.</summary>
-    /// <returns>An array of <see cref="T:System.Reflection.PropertyInfo" /> objects representing all public properties of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.PropertyInfo" />, if the current <see cref="T:System.Type" /> does not have public properties.</returns>
-    /// <filterpriority>2</filterpriority>
-    public System.Reflection.PropertyInfo[] GetProperties()
-    {
-      return Type.GetProperties();
+      return Type.GetEvents(bindingAttr);
     }
     
     /// <summary>Searches for the specified property whose parameters match the specified argument types and modifiers, using the specified binding constraints.</summary>
@@ -1205,301 +1066,146 @@ namespace Wrapperator.Wrappers
       return Type.GetProperty(name);
     }
     
-    /// <summary>Gets the types of the objects in the specified array.</summary>
-    /// <returns>An array of <see cref="T:System.Type" /> objects representing the types of the corresponding elements in <paramref name="args" />.</returns>
-    /// <param name="args">An array of objects whose types to determine. </param>
+    /// <summary>When overridden in a derived class, searches for the properties of the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.PropertyInfo" /> objects representing all properties of the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.PropertyInfo" />, if the current <see cref="T:System.Type" /> does not have properties, or if none of the properties match the binding constraints.</returns>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.PropertyInfo[] GetProperties(System.Reflection.BindingFlags bindingAttr)
+    {
+      return Type.GetProperties(bindingAttr);
+    }
+    
+    /// <summary>Returns all the public properties of the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.PropertyInfo" /> objects representing all public properties of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.PropertyInfo" />, if the current <see cref="T:System.Type" /> does not have public properties.</returns>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.PropertyInfo[] GetProperties()
+    {
+      return Type.GetProperties();
+    }
+    
+    /// <summary>Returns the public types nested in the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Type" /> objects representing the public types nested in the current <see cref="T:System.Type" /> (the search is not recursive), or an empty array of type <see cref="T:System.Type" /> if no public types are nested in the current <see cref="T:System.Type" />.</returns>
+    /// <filterpriority>2</filterpriority>
+    public System.Type[] GetNestedTypes()
+    {
+      return Type.GetNestedTypes();
+    }
+    
+    /// <summary>When overridden in a derived class, searches for the types nested in the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Type" /> objects representing all the types nested in the current <see cref="T:System.Type" /> that match the specified binding constraints (the search is not recursive), or an empty array of type <see cref="T:System.Type" />, if no nested types are found that match the binding constraints.</returns>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
+    /// <filterpriority>2</filterpriority>
+    public System.Type[] GetNestedTypes(System.Reflection.BindingFlags bindingAttr)
+    {
+      return Type.GetNestedTypes(bindingAttr);
+    }
+    
+    /// <summary>Searches for the public nested type with the specified name.</summary>
+    /// <returns>An object representing the public nested type with the specified name, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of the nested type to get. </param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="args" /> is null. </exception>
-    /// <exception cref="T:System.Reflection.TargetInvocationException">The class initializers are invoked and at least one throws an exception. </exception>
-    /// <filterpriority>1</filterpriority>
-    public System.Type[] GetTypeArray(object[] args)
+    ///  <paramref name="name" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType GetNestedType(string name)
     {
-      return System.Type.GetTypeArray(args);
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetNestedType(name));
     }
     
-    /// <summary>Gets the underlying type code of the specified <see cref="T:System.Type" />.</summary>
-    /// <returns>The code of the underlying type, or <see cref="F:System.TypeCode.Empty" /> if <paramref name="type" /> is null.</returns>
-    /// <param name="type">The type whose underlying type code to get. </param>
-    /// <filterpriority>1</filterpriority>
-    public System.TypeCode GetTypeCode(Wrapperator.Interfaces.IType type)
-    {
-      return System.Type.GetTypeCode(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
-    }
-    
-    /// <summary>Gets the type associated with the specified class identifier (CLSID).</summary>
-    /// <returns>System.__ComObject regardless of whether the CLSID is valid.</returns>
-    /// <param name="clsid">The CLSID of the type to get. </param>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromCLSID(System.Guid clsid)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromCLSID(clsid));
-    }
-    
-    /// <summary>Gets the type associated with the specified class identifier (CLSID), specifying whether to throw an exception if an error occurs while loading the type.</summary>
-    /// <returns>System.__ComObject regardless of whether the CLSID is valid.</returns>
-    /// <param name="clsid">The CLSID of the type to get. </param>
-    /// <param name="throwOnError">true to throw any exception that occurs.-or- false to ignore any exception that occurs. </param>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromCLSID(System.Guid clsid, bool throwOnError)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromCLSID(clsid, throwOnError));
-    }
-    
-    /// <summary>Gets the type associated with the specified class identifier (CLSID) from the specified server.</summary>
-    /// <returns>System.__ComObject regardless of whether the CLSID is valid.</returns>
-    /// <param name="clsid">The CLSID of the type to get. </param>
-    /// <param name="server">The server from which to load the type. If the server name is null, this method automatically reverts to the local machine. </param>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromCLSID(System.Guid clsid, string server)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromCLSID(clsid, server));
-    }
-    
-    /// <summary>Gets the type associated with the specified class identifier (CLSID) from the specified server, specifying whether to throw an exception if an error occurs while loading the type.</summary>
-    /// <returns>System.__ComObject regardless of whether the CLSID is valid.</returns>
-    /// <param name="clsid">The CLSID of the type to get. </param>
-    /// <param name="server">The server from which to load the type. If the server name is null, this method automatically reverts to the local machine. </param>
-    /// <param name="throwOnError">true to throw any exception that occurs.-or- false to ignore any exception that occurs. </param>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromCLSID(System.Guid clsid, string server, bool throwOnError)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromCLSID(clsid, server, throwOnError));
-    }
-    
-    /// <summary>Gets the type referenced by the specified type handle.</summary>
-    /// <returns>The type referenced by the specified <see cref="T:System.RuntimeTypeHandle" />, or null if the <see cref="P:System.RuntimeTypeHandle.Value" /> property of <paramref name="handle" /> is null.</returns>
-    /// <param name="handle">The object that refers to the type. </param>
-    /// <exception cref="T:System.Reflection.TargetInvocationException">A class initializer is invoked and throws an exception. </exception>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromHandle(System.RuntimeTypeHandle handle)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromHandle(handle));
-    }
-    
-    /// <summary>Gets the type associated with the specified program identifier (ProgID), returning null if an error is encountered while loading the <see cref="T:System.Type" />.</summary>
-    /// <returns>The type associated with the specified ProgID, if <paramref name="progID" /> is a valid entry in the registry and a type is associated with it; otherwise, null.</returns>
-    /// <param name="progID">The ProgID of the type to get. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="progID" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromProgID(string progID)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromProgID(progID));
-    }
-    
-    /// <summary>Gets the type associated with the specified program identifier (ProgID), specifying whether to throw an exception if an error occurs while loading the type.</summary>
-    /// <returns>The type associated with the specified program identifier (ProgID), if <paramref name="progID" /> is a valid entry in the registry and a type is associated with it; otherwise, null.</returns>
-    /// <param name="progID">The ProgID of the type to get. </param>
-    /// <param name="throwOnError">true to throw any exception that occurs.-or- false to ignore any exception that occurs. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="progID" /> is null. </exception>
-    /// <exception cref="T:System.Runtime.InteropServices.COMException">The specified ProgID is not registered. </exception>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromProgID(string progID, bool throwOnError)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromProgID(progID, throwOnError));
-    }
-    
-    /// <summary>Gets the type associated with the specified program identifier (progID) from the specified server, returning null if an error is encountered while loading the type.</summary>
-    /// <returns>The type associated with the specified program identifier (progID), if <paramref name="progID" /> is a valid entry in the registry and a type is associated with it; otherwise, null.</returns>
-    /// <param name="progID">The progID of the type to get. </param>
-    /// <param name="server">The server from which to load the type. If the server name is null, this method automatically reverts to the local machine. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="prodID" /> is null. </exception>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromProgID(string progID, string server)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromProgID(progID, server));
-    }
-    
-    /// <summary>Gets the type associated with the specified program identifier (progID) from the specified server, specifying whether to throw an exception if an error occurs while loading the type.</summary>
-    /// <returns>The type associated with the specified program identifier (progID), if <paramref name="progID" /> is a valid entry in the registry and a type is associated with it; otherwise, null.</returns>
-    /// <param name="progID">The progID of the <see cref="T:System.Type" /> to get. </param>
-    /// <param name="server">The server from which to load the type. If the server name is null, this method automatically reverts to the local machine. </param>
-    /// <param name="throwOnError">true to throw any exception that occurs.-or- false to ignore any exception that occurs. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="progID" /> is null. </exception>
-    /// <exception cref="T:System.Runtime.InteropServices.COMException">The specified progID is not registered. </exception>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType GetTypeFromProgID(string progID, string server, bool throwOnError)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.GetTypeFromProgID(progID, server, throwOnError));
-    }
-    
-    /// <summary>Gets the handle for the <see cref="T:System.Type" /> of a specified object.</summary>
-    /// <returns>The handle for the <see cref="T:System.Type" /> of the specified <see cref="T:System.Object" />.</returns>
-    /// <param name="o">The object for which to get the type handle. </param>
+    /// <summary>When overridden in a derived class, searches for the specified nested type, using the specified binding constraints.</summary>
+    /// <returns>An object representing the nested type that matches the specified requirements, if found; otherwise, null.</returns>
+    /// <param name="name">The string containing the name of the nested type to get. </param>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="o" /> is null.</exception>
+    ///  <paramref name="name" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType GetNestedType(string name, System.Reflection.BindingFlags bindingAttr)
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetNestedType(name, bindingAttr));
+    }
+    
+    /// <summary>Searches for the public members with the specified name.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing the public members with the specified name, if found; otherwise, an empty array.</returns>
+    /// <param name="name">The string containing the name of the public members to get. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] GetMember(string name)
+    {
+      return Type.GetMember(name);
+    }
+    
+    /// <summary>Searches for the specified members, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing the public members with the specified name, if found; otherwise, an empty array.</returns>
+    /// <param name="name">The string containing the name of the members to get. </param>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return an empty array. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] GetMember(string name, System.Reflection.BindingFlags bindingAttr)
+    {
+      return Type.GetMember(name, bindingAttr);
+    }
+    
+    /// <summary>Searches for the specified members of the specified member type, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing the public members with the specified name, if found; otherwise, an empty array.</returns>
+    /// <param name="name">The string containing the name of the members to get. </param>
+    /// <param name="type">The value to search for. </param>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return an empty array. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="name" /> is null. </exception>
+    /// <exception cref="T:System.NotSupportedException">A derived class must provide an implementation. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] GetMember(string name, System.Reflection.MemberTypes type, System.Reflection.BindingFlags bindingAttr)
+    {
+      return Type.GetMember(name, type, bindingAttr);
+    }
+    
+    /// <summary>Returns all the public members of the current <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all the public members of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have public members.</returns>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] GetMembers()
+    {
+      return Type.GetMembers();
+    }
+    
+    /// <summary>When overridden in a derived class, searches for the members defined for the current <see cref="T:System.Type" />, using the specified binding constraints.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all members defined for the current <see cref="T:System.Type" /> that match the specified binding constraints.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if no members are defined for the current <see cref="T:System.Type" />, or if none of the defined members match the binding constraints.</returns>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero (<see cref="F:System.Reflection.BindingFlags.Default" />), to return an empty array. </param>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] GetMembers(System.Reflection.BindingFlags bindingAttr)
+    {
+      return Type.GetMembers(bindingAttr);
+    }
+    
+    /// <summary>Searches for the members defined for the current <see cref="T:System.Type" /> whose <see cref="T:System.Reflection.DefaultMemberAttribute" /> is set.</summary>
+    /// <returns>An array of <see cref="T:System.Reflection.MemberInfo" /> objects representing all default members of the current <see cref="T:System.Type" />.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have default members.</returns>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] GetDefaultMembers()
+    {
+      return Type.GetDefaultMembers();
+    }
+    
+    /// <summary>Returns a filtered array of <see cref="T:System.Reflection.MemberInfo" /> objects of the specified member type.</summary>
+    /// <returns>A filtered array of <see cref="T:System.Reflection.MemberInfo" /> objects of the specified member type.-or- An empty array of type <see cref="T:System.Reflection.MemberInfo" />, if the current <see cref="T:System.Type" /> does not have members of type <paramref name="memberType" /> that match the filter criteria.</returns>
+    /// <param name="memberType">An object that indicates the type of member to search for. </param>
+    /// <param name="bindingAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted.-or- Zero, to return null. </param>
+    /// <param name="filter">The delegate that does the comparisons, returning true if the member currently being inspected matches the <paramref name="filterCriteria" /> and false otherwise. You can use the FilterAttribute, FilterName, and FilterNameIgnoreCase delegates supplied by this class. The first uses the fields of FieldAttributes, MethodAttributes, and MethodImplAttributes as search criteria, and the other two delegates use String objects as the search criteria. </param>
+    /// <param name="filterCriteria">The search criteria that determines whether a member is returned in the array of MemberInfo objects.The fields of FieldAttributes, MethodAttributes, and MethodImplAttributes can be used in conjunction with the FilterAttribute delegate supplied by this class. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="filter" /> is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.MemberInfo[] FindMembers(System.Reflection.MemberTypes memberType, System.Reflection.BindingFlags bindingAttr, System.Reflection.MemberFilter filter, object filterCriteria)
+    {
+      return Type.FindMembers(memberType, bindingAttr, filter, filterCriteria);
+    }
+    
+    /// <summary>Returns an array of <see cref="T:System.Type" /> objects that represent the constraints on the current generic type parameter. </summary>
+    /// <returns>An array of <see cref="T:System.Type" /> objects that represent the constraints on the current generic type parameter.</returns>
+    /// <exception cref="T:System.InvalidOperationException">The current <see cref="T:System.Type" /> object is not a generic type parameter. That is, the <see cref="P:System.Type.IsGenericParameter" /> property returns false.</exception>
     /// <filterpriority>1</filterpriority>
-    public System.RuntimeTypeHandle GetTypeHandle(object o)
+    public System.Type[] GetGenericParameterConstraints()
     {
-      return System.Type.GetTypeHandle(o);
-    }
-    
-    /// <summary>When overridden in a derived class, invokes the specified member, using the specified binding constraints and matching the specified argument list, modifiers and culture.</summary>
-    /// <returns>An object representing the return value of the invoked member.</returns>
-    /// <param name="name">The string containing the name of the constructor, method, property, or field member to invoke.-or- An empty string ("") to invoke the default member. -or-For IDispatch members, a string representing the DispID, for example "[DispID=3]".</param>
-    /// <param name="invokeAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted. The access can be one of the BindingFlags such as Public, NonPublic, Private, InvokeMethod, GetField, and so on. The type of lookup need not be specified. If the type of lookup is omitted, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static are used. </param>
-    /// <param name="binder">An object that defines a set of properties and enables binding, which can involve selection of an overloaded method, coercion of argument types, and invocation of a member through reflection.-or- A null reference (Nothing in Visual Basic), to use the <see cref="P:System.Type.DefaultBinder" />. Note that explicitly defining a <see cref="T:System.Reflection.Binder" /> object may be required for successfully invoking method overloads with variable arguments.</param>
-    /// <param name="target">The object on which to invoke the specified member. </param>
-    /// <param name="args">An array containing the arguments to pass to the member to invoke. </param>
-    /// <param name="modifiers">An array of <see cref="T:System.Reflection.ParameterModifier" /> objects representing the attributes associated with the corresponding element in the <paramref name="args" /> array. A parameter's associated attributes are stored in the member's signature. The default binder processes this parameter only when calling a COM component. </param>
-    /// <param name="culture">The <see cref="T:System.Globalization.CultureInfo" /> object representing the globalization locale to use, which may be necessary for locale-specific conversions, such as converting a numeric String to a Double.-or- A null reference (Nothing in Visual Basic) to use the current thread's <see cref="T:System.Globalization.CultureInfo" />. </param>
-    /// <param name="namedParameters">An array containing the names of the parameters to which the values in the <paramref name="args" /> array are passed. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="invokeAttr" /> does not contain CreateInstance and <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="args" /> and <paramref name="modifiers" /> do not have the same length.-or- <paramref name="invokeAttr" /> is not a valid <see cref="T:System.Reflection.BindingFlags" /> attribute.-or- <paramref name="invokeAttr" /> does not contain one of the following binding flags: InvokeMethod, CreateInstance, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains CreateInstance combined with InvokeMethod, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains both GetField and SetField.-or- <paramref name="invokeAttr" /> contains both GetProperty and SetProperty.-or- <paramref name="invokeAttr" /> contains InvokeMethod combined with SetField or SetProperty.-or- <paramref name="invokeAttr" /> contains SetField and <paramref name="args" /> has more than one element.-or- The named parameter array is larger than the argument array.-or- This method is called on a COM object and one of the following binding flags was not passed in: BindingFlags.InvokeMethod, BindingFlags.GetProperty, BindingFlags.SetProperty, BindingFlags.PutDispProperty, or BindingFlags.PutRefDispProperty.-or- One of the named parameter arrays contains a string that is null. </exception>
-    /// <exception cref="T:System.MethodAccessException">The specified member is a class initializer. </exception>
-    /// <exception cref="T:System.MissingFieldException">The field or property cannot be found. </exception>
-    /// <exception cref="T:System.MissingMethodException">No method can be found that matches the arguments in <paramref name="args" />.-or- No member can be found that has the argument names supplied in <paramref name="namedParameters" />.-or- The current <see cref="T:System.Type" /> object represents a type that contains open type parameters, that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true. </exception>
-    /// <exception cref="T:System.Reflection.TargetException">The specified member cannot be invoked on <paramref name="target" />. </exception>
-    /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method matches the binding criteria. </exception>
-    /// <exception cref="T:System.InvalidOperationException">The method represented by <paramref name="name" /> has one or more unspecified generic type parameters. That is, the method's <see cref="P:System.Reflection.MethodInfo.ContainsGenericParameters" /> property returns true.</exception>
-    /// <filterpriority>2</filterpriority>
-    public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Reflection.ParameterModifier[] modifiers, System.Globalization.CultureInfo culture, string[] namedParameters)
-    {
-      return Type.InvokeMember(name, invokeAttr, binder, target, args, modifiers, culture, namedParameters);
-    }
-    
-    /// <summary>Invokes the specified member, using the specified binding constraints and matching the specified argument list and culture.</summary>
-    /// <returns>An object representing the return value of the invoked member.</returns>
-    /// <param name="name">The string containing the name of the constructor, method, property, or field member to invoke.-or- An empty string ("") to invoke the default member. -or-For IDispatch members, a string representing the DispID, for example "[DispID=3]".</param>
-    /// <param name="invokeAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted. The access can be one of the BindingFlags such as Public, NonPublic, Private, InvokeMethod, GetField, and so on. The type of lookup need not be specified. If the type of lookup is omitted, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static are used. </param>
-    /// <param name="binder">An object that defines a set of properties and enables binding, which can involve selection of an overloaded method, coercion of argument types, and invocation of a member through reflection.-or- A null reference (Nothing in Visual Basic), to use the <see cref="P:System.Type.DefaultBinder" />. Note that explicitly defining a <see cref="T:System.Reflection.Binder" /> object may be required for successfully invoking method overloads with variable arguments.</param>
-    /// <param name="target">The object on which to invoke the specified member. </param>
-    /// <param name="args">An array containing the arguments to pass to the member to invoke. </param>
-    /// <param name="culture">The object representing the globalization locale to use, which may be necessary for locale-specific conversions, such as converting a numeric <see cref="T:System.String" /> to a <see cref="T:System.Double" />.-or- A null reference (Nothing in Visual Basic) to use the current thread's <see cref="T:System.Globalization.CultureInfo" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="invokeAttr" /> does not contain CreateInstance and <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="invokeAttr" /> is not a valid <see cref="T:System.Reflection.BindingFlags" /> attribute. -or- <paramref name="invokeAttr" /> does not contain one of the following binding flags: InvokeMethod, CreateInstance, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains CreateInstance combined with InvokeMethod, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains both GetField and SetField.-or- <paramref name="invokeAttr" /> contains both GetProperty and SetProperty.-or- <paramref name="invokeAttr" /> contains InvokeMethod combined with SetField or SetProperty.-or- <paramref name="invokeAttr" /> contains SetField and <paramref name="args" /> has more than one element.-or- This method is called on a COM object and one of the following binding flags was not passed in: BindingFlags.InvokeMethod, BindingFlags.GetProperty, BindingFlags.SetProperty, BindingFlags.PutDispProperty, or BindingFlags.PutRefDispProperty.-or- One of the named parameter arrays contains a string that is null. </exception>
-    /// <exception cref="T:System.MethodAccessException">The specified member is a class initializer. </exception>
-    /// <exception cref="T:System.MissingFieldException">The field or property cannot be found. </exception>
-    /// <exception cref="T:System.MissingMethodException">No method can be found that matches the arguments in <paramref name="args" />.-or- The current <see cref="T:System.Type" /> object represents a type that contains open type parameters, that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true. </exception>
-    /// <exception cref="T:System.Reflection.TargetException">The specified member cannot be invoked on <paramref name="target" />. </exception>
-    /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method matches the binding criteria. </exception>
-    /// <exception cref="T:System.InvalidOperationException">The method represented by <paramref name="name" /> has one or more unspecified generic type parameters. That is, the method's <see cref="P:System.Reflection.MethodInfo.ContainsGenericParameters" /> property returns true.</exception>
-    /// <filterpriority>2</filterpriority>
-    public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args, System.Globalization.CultureInfo culture)
-    {
-      return Type.InvokeMember(name, invokeAttr, binder, target, args, culture);
-    }
-    
-    /// <summary>Invokes the specified member, using the specified binding constraints and matching the specified argument list.</summary>
-    /// <returns>An object representing the return value of the invoked member.</returns>
-    /// <param name="name">The string containing the name of the constructor, method, property, or field member to invoke.-or- An empty string ("") to invoke the default member. -or-For IDispatch members, a string representing the DispID, for example "[DispID=3]".</param>
-    /// <param name="invokeAttr">A bitmask comprised of one or more <see cref="T:System.Reflection.BindingFlags" /> that specify how the search is conducted. The access can be one of the BindingFlags such as Public, NonPublic, Private, InvokeMethod, GetField, and so on. The type of lookup need not be specified. If the type of lookup is omitted, BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static are used. </param>
-    /// <param name="binder">An object that defines a set of properties and enables binding, which can involve selection of an overloaded method, coercion of argument types, and invocation of a member through reflection.-or- A null reference (Nothing in Visual Basic), to use the <see cref="P:System.Type.DefaultBinder" />. Note that explicitly defining a <see cref="T:System.Reflection.Binder" /> object may be required for successfully invoking method overloads with variable arguments.</param>
-    /// <param name="target">The object on which to invoke the specified member. </param>
-    /// <param name="args">An array containing the arguments to pass to the member to invoke. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="invokeAttr" /> does not contain CreateInstance and <paramref name="name" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="invokeAttr" /> is not a valid <see cref="T:System.Reflection.BindingFlags" /> attribute. -or- <paramref name="invokeAttr" /> does not contain one of the following binding flags: InvokeMethod, CreateInstance, GetField, SetField, GetProperty, or SetProperty. -or- <paramref name="invokeAttr" /> contains CreateInstance combined with InvokeMethod, GetField, SetField, GetProperty, or SetProperty.-or- <paramref name="invokeAttr" /> contains both GetField and SetField.-or- <paramref name="invokeAttr" /> contains both GetProperty and SetProperty.-or- <paramref name="invokeAttr" /> contains InvokeMethod combined with SetField or SetProperty.-or- <paramref name="invokeAttr" /> contains SetField and <paramref name="args" /> has more than one element.-or- This method is called on a COM object and one of the following binding flags was not passed in: BindingFlags.InvokeMethod, BindingFlags.GetProperty, BindingFlags.SetProperty, BindingFlags.PutDispProperty, or BindingFlags.PutRefDispProperty.-or- One of the named parameter arrays contains a string that is null. </exception>
-    /// <exception cref="T:System.MethodAccessException">The specified member is a class initializer. </exception>
-    /// <exception cref="T:System.MissingFieldException">The field or property cannot be found. </exception>
-    /// <exception cref="T:System.MissingMethodException">No method can be found that matches the arguments in <paramref name="args" />.-or- The current <see cref="T:System.Type" /> object represents a type that contains open type parameters, that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true. </exception>
-    /// <exception cref="T:System.Reflection.TargetException">The specified member cannot be invoked on <paramref name="target" />. </exception>
-    /// <exception cref="T:System.Reflection.AmbiguousMatchException">More than one method matches the binding criteria. </exception>
-    /// <exception cref="T:System.NotSupportedException">The .NET Compact Framework does not currently support this method.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The method represented by <paramref name="name" /> has one or more unspecified generic type parameters. That is, the method's <see cref="P:System.Reflection.MethodInfo.ContainsGenericParameters" /> property returns true.</exception>
-    /// <filterpriority>2</filterpriority>
-    public object InvokeMember(string name, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, object target, object[] args)
-    {
-      return Type.InvokeMember(name, invokeAttr, binder, target, args);
-    }
-    
-    /// <summary>Determines whether an instance of the current <see cref="T:System.Type" /> can be assigned from an instance of the specified Type.</summary>
-    /// <returns>true if <paramref name="c" /> and the current Type represent the same type, or if the current Type is in the inheritance hierarchy of <paramref name="c" />, or if the current Type is an interface that <paramref name="c" /> implements, or if <paramref name="c" /> is a generic type parameter and the current Type represents one of the constraints of <paramref name="c" />, or if <paramref name="c" /> represents a value type and the current Type represents Nullable&lt;c&gt; (Nullable(Of c) in Visual Basic). false if none of these conditions are true, or if <paramref name="c" /> is null.</returns>
-    /// <param name="c">The type to compare with the current type. </param>
-    /// <filterpriority>2</filterpriority>
-    public bool IsAssignableFrom(Wrapperator.Interfaces.IType c)
-    {
-      return Type.IsAssignableFrom(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c).Type);
-    }
-    
-    /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
-    /// <returns>true if one or more instances of <paramref name="attributeType" /> or any of its derived types is applied to this member; otherwise, false.</returns>
-    /// <param name="attributeType">The type of custom attribute to search for. The search includes derived types. </param>
-    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
-    public bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit)
-    {
-      return Type.IsDefined(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
-    }
-    
-    /// <summary>Returns a value that indicates whether the specified value exists in the current enumeration type.</summary>
-    /// <returns>true if the specified value is a member of the current enumeration type; otherwise, false.</returns>
-    /// <param name="value">The value to be tested.</param>
-    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="value" /> is null.</exception>
-    /// <exception cref="T:System.InvalidOperationException">
-    ///  <paramref name="value" /> is of a type that cannot be the underlying type of an enumeration.</exception>
-    public bool IsEnumDefined(object value)
-    {
-      return Type.IsEnumDefined(value);
-    }
-    
-    /// <summary>Determines whether two COM types have the same identity and are eligible for type equivalence.</summary>
-    /// <returns>true if the COM types are equivalent; otherwise, false. This method also returns false if one type is in an assembly that is loaded for execution, and the other is in an assembly that is loaded into the reflection-only context.</returns>
-    /// <param name="other">The COM type that is tested for equivalence with the current type.</param>
-    public bool IsEquivalentTo(Wrapperator.Interfaces.IType other)
-    {
-      return Type.IsEquivalentTo(other == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)other).Type);
-    }
-    
-    /// <summary>Determines whether the specified object is an instance of the current <see cref="T:System.Type" />.</summary>
-    /// <returns>true if the current Type is in the inheritance hierarchy of the object represented by <paramref name="o" />, or if the current Type is an interface that <paramref name="o" /> supports. false if neither of these conditions is the case, or if <paramref name="o" /> is null, or if the current Type is an open generic type (that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true).</returns>
-    /// <param name="o">The object to compare with the current type. </param>
-    /// <filterpriority>2</filterpriority>
-    public bool IsInstanceOfType(object o)
-    {
-      return Type.IsInstanceOfType(o);
-    }
-    
-    /// <summary>Determines whether the class represented by the current <see cref="T:System.Type" /> derives from the class represented by the specified <see cref="T:System.Type" />.</summary>
-    /// <returns>true if the Type represented by the <paramref name="c" /> parameter and the current Type represent classes, and the class represented by the current Type derives from the class represented by <paramref name="c" />; otherwise, false. This method also returns false if <paramref name="c" /> and the current Type represent the same class.</returns>
-    /// <param name="c">The type to compare with the current type. </param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="c" /> parameter is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public bool IsSubclassOf(Wrapperator.Interfaces.IType c)
-    {
-      return Type.IsSubclassOf(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c).Type);
-    }
-    
-    /// <summary>Returns a <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</summary>
-    /// <returns>A <see cref="T:System.Type" /> object representing a one-dimensional array of the current type, with a lower bound of zero.</returns>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
-    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType MakeArrayType()
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeArrayType());
-    }
-    
-    /// <summary>Returns a <see cref="T:System.Type" /> object representing an array of the current type, with the specified number of dimensions.</summary>
-    /// <returns>An object representing an array of the current type, with the specified number of dimensions.</returns>
-    /// <param name="rank">The number of dimensions for the array. This number must be less than or equal to 32.</param>
-    /// <exception cref="T:System.IndexOutOfRangeException">
-    ///  <paramref name="rank" /> is invalid. For example, 0 or negative.</exception>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class.</exception>
-    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. -or-<paramref name="rank" /> is greater than 32.</exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType MakeArrayType(int rank)
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeArrayType(rank));
-    }
-    
-    /// <summary>Returns a <see cref="T:System.Type" /> object that represents the current type when passed as a ref parameter (ByRef parameter in Visual Basic).</summary>
-    /// <returns>A <see cref="T:System.Type" /> object that represents the current type when passed as a ref parameter (ByRef parameter in Visual Basic).</returns>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class.</exception>
-    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType MakeByRefType()
-    {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.MakeByRefType());
+      return Type.GetGenericParameterConstraints();
     }
     
     /// <summary>Substitutes the elements of an array of types for the type parameters of the current generic type definition and returns a <see cref="T:System.Type" /> object representing the resulting constructed type.</summary>
@@ -1515,36 +1221,168 @@ namespace Wrapperator.Wrappers
       return new Wrapperator.Wrappers.TypeWrapper(Type.MakeGenericType(typeArguments));
     }
     
-    /// <summary>Returns a <see cref="T:System.Type" /> object that represents a pointer to the current type.</summary>
-    /// <returns>A <see cref="T:System.Type" /> object that represents a pointer to the current type.</returns>
-    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class.</exception>
-    /// <exception cref="T:System.TypeLoadException">The current type is <see cref="T:System.TypedReference" />.-or-The current type is a ByRef type. That is, <see cref="P:System.Type.IsByRef" /> returns true. </exception>
+    /// <summary>When overridden in a derived class, returns the <see cref="T:System.Type" /> of the object encompassed or referred to by the current array, pointer or reference type.</summary>
+    /// <returns>The <see cref="T:System.Type" /> of the object encompassed or referred to by the current array, pointer, or reference type, or null if the current <see cref="T:System.Type" /> is not an array or a pointer, or is not passed by reference, or represents a generic type or a type parameter in the definition of a generic type or generic method.</returns>
     /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IType MakePointerType()
+    public Wrapperator.Interfaces.IType GetElementType()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(Type.MakePointerType());
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetElementType());
     }
     
-    /// <summary>Gets the <see cref="T:System.Type" /> with the specified name, specifying whether to perform a case-sensitive search and whether to throw an exception if the type is not found. The type is loaded for reflection only, not for execution.</summary>
-    /// <returns>The type with the specified name, if found; otherwise, null. If the type is not found, the <paramref name="throwIfNotFound" /> parameter specifies whether null is returned or an exception is thrown. In some cases, an exception is thrown regardless of the value of <paramref name="throwIfNotFound" />. See the Exceptions section.</returns>
-    /// <param name="typeName">The assembly-qualified name of the <see cref="T:System.Type" /> to get. </param>
-    /// <param name="throwIfNotFound">true to throw a <see cref="T:System.TypeLoadException" /> if the type cannot be found; false to return null if the type cannot be found. Specifying false also suppresses some other exception conditions, but not all of them. See the Exceptions section.</param>
-    /// <param name="ignoreCase">true to perform a case-insensitive search for <paramref name="typeName" />; false to perform a case-sensitive search for <paramref name="typeName" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="typeName" /> is null. </exception>
-    /// <exception cref="T:System.Reflection.TargetInvocationException">A class initializer is invoked and throws an exception. </exception>
-    /// <exception cref="T:System.TypeLoadException">
-    ///  <paramref name="throwIfNotFound" /> is true and the type is not found. -or-<paramref name="throwIfNotFound" /> is true and <paramref name="typeName" /> contains invalid characters, such as an embedded tab.-or-<paramref name="throwIfNotFound" /> is true and <paramref name="typeName" /> is an empty string.-or-<paramref name="throwIfNotFound" /> is true and <paramref name="typeName" /> represents an array type with an invalid size. -or-<paramref name="typeName" /> represents an array of <see cref="T:System.TypedReference" /> objects. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="typeName" /> does not include the assembly name.-or-<paramref name="throwIfNotFound" /> is true and <paramref name="typeName" /> contains invalid syntax; for example, "MyType[,*,]".-or-<paramref name="typeName" /> represents a generic type that has a pointer type, a ByRef type, or <see cref="T:System.Void" /> as one of its type arguments.-or-<paramref name="typeName" /> represents a generic type that has an incorrect number of type arguments.-or-<paramref name="typeName" /> represents a generic type, and one of its type arguments does not satisfy the constraints for the corresponding type parameter.</exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="throwIfNotFound" /> is true and the assembly or one of its dependencies was not found. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">The assembly or one of its dependencies was found, but could not be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">The assembly or one of its dependencies is not valid. -or-The assembly was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <filterpriority>1</filterpriority>
-    public Wrapperator.Interfaces.IType ReflectionOnlyGetType(string typeName, bool throwIfNotFound, bool ignoreCase)
+    /// <summary>Returns an array of <see cref="T:System.Type" /> objects that represent the type arguments of a generic type or the type parameters of a generic type definition.</summary>
+    /// <returns>An array of <see cref="T:System.Type" /> objects that represent the type arguments of a generic type. Returns an empty array if the current type is not a generic type.</returns>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Type[] GetGenericArguments()
     {
-      return new Wrapperator.Wrappers.TypeWrapper(System.Type.ReflectionOnlyGetType(typeName, throwIfNotFound, ignoreCase));
+      return Type.GetGenericArguments();
+    }
+    
+    /// <summary>Returns a <see cref="T:System.Type" /> object that represents a generic type definition from which the current generic type can be constructed.</summary>
+    /// <returns>A <see cref="T:System.Type" /> object representing a generic type from which the current type can be constructed.</returns>
+    /// <exception cref="T:System.InvalidOperationException">The current type is not a generic type.  That is, <see cref="P:System.Type.IsGenericType" /> returns false. </exception>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
+    /// <filterpriority>2</filterpriority>
+    public Wrapperator.Interfaces.IType GetGenericTypeDefinition()
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetGenericTypeDefinition());
+    }
+    
+    /// <summary>Returns the names of the members of the current enumeration type.</summary>
+    /// <returns>An array that contains the names of the members of the enumeration.</returns>
+    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
+    public string[] GetEnumNames()
+    {
+      return Type.GetEnumNames();
+    }
+    
+    /// <summary>Returns an array of the values of the constants in the current enumeration type.</summary>
+    /// <returns>An array that contains the values. The elements of the array are sorted by the binary values (that is, the unsigned values) of the enumeration constants.</returns>
+    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
+    public System.Array GetEnumValues()
+    {
+      return Type.GetEnumValues();
+    }
+    
+    /// <summary>Returns the underlying type of the current enumeration type. </summary>
+    /// <returns>The underlying type of the current enumeration.</returns>
+    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.-or-The enumeration type is not valid, because it contains more than one instance field.</exception>
+    public Wrapperator.Interfaces.IType GetEnumUnderlyingType()
+    {
+      return new Wrapperator.Wrappers.TypeWrapper(Type.GetEnumUnderlyingType());
+    }
+    
+    /// <summary>Returns a value that indicates whether the specified value exists in the current enumeration type.</summary>
+    /// <returns>true if the specified value is a member of the current enumeration type; otherwise, false.</returns>
+    /// <param name="value">The value to be tested.</param>
+    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.</exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="value" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">
+    ///  <paramref name="value" /> is of a type that cannot be the underlying type of an enumeration.</exception>
+    public bool IsEnumDefined(object value)
+    {
+      return Type.IsEnumDefined(value);
+    }
+    
+    /// <summary>Returns the name of the constant that has the specified value, for the current enumeration type.</summary>
+    /// <returns>The name of the member of the current enumeration type that has the specified value, or null if no such constant is found.</returns>
+    /// <param name="value">The value whose name is to be retrieved.</param>
+    /// <exception cref="T:System.ArgumentException">The current type is not an enumeration.-or-<paramref name="value" /> is neither of the current type nor does it have the same underlying type as the current type.</exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="value" /> is null.</exception>
+    public string GetEnumName(object value)
+    {
+      return Type.GetEnumName(value);
+    }
+    
+    /// <summary>Determines whether the class represented by the current <see cref="T:System.Type" /> derives from the class represented by the specified <see cref="T:System.Type" />.</summary>
+    /// <returns>true if the Type represented by the <paramref name="c" /> parameter and the current Type represent classes, and the class represented by the current Type derives from the class represented by <paramref name="c" />; otherwise, false. This method also returns false if <paramref name="c" /> and the current Type represent the same class.</returns>
+    /// <param name="c">The type to compare with the current type. </param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="c" /> parameter is null. </exception>
+    /// <filterpriority>2</filterpriority>
+    public bool IsSubclassOf(Wrapperator.Interfaces.IType c)
+    {
+      return Type.IsSubclassOf(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c).Type);
+    }
+    
+    /// <summary>Determines whether the specified object is an instance of the current <see cref="T:System.Type" />.</summary>
+    /// <returns>true if the current Type is in the inheritance hierarchy of the object represented by <paramref name="o" />, or if the current Type is an interface that <paramref name="o" /> supports. false if neither of these conditions is the case, or if <paramref name="o" /> is null, or if the current Type is an open generic type (that is, <see cref="P:System.Type.ContainsGenericParameters" /> returns true).</returns>
+    /// <param name="o">The object to compare with the current type. </param>
+    /// <filterpriority>2</filterpriority>
+    public bool IsInstanceOfType(object o)
+    {
+      return Type.IsInstanceOfType(o);
+    }
+    
+    /// <summary>Determines whether an instance of the current <see cref="T:System.Type" /> can be assigned from an instance of the specified Type.</summary>
+    /// <returns>true if <paramref name="c" /> and the current Type represent the same type, or if the current Type is in the inheritance hierarchy of <paramref name="c" />, or if the current Type is an interface that <paramref name="c" /> implements, or if <paramref name="c" /> is a generic type parameter and the current Type represents one of the constraints of <paramref name="c" />, or if <paramref name="c" /> represents a value type and the current Type represents Nullable&lt;c&gt; (Nullable(Of c) in Visual Basic). false if none of these conditions are true, or if <paramref name="c" /> is null.</returns>
+    /// <param name="c">The type to compare with the current type. </param>
+    /// <filterpriority>2</filterpriority>
+    public bool IsAssignableFrom(Wrapperator.Interfaces.IType c)
+    {
+      return Type.IsAssignableFrom(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c).Type);
+    }
+    
+    /// <summary>Determines whether two COM types have the same identity and are eligible for type equivalence.</summary>
+    /// <returns>true if the COM types are equivalent; otherwise, false. This method also returns false if one type is in an assembly that is loaded for execution, and the other is in an assembly that is loaded into the reflection-only context.</returns>
+    /// <param name="other">The COM type that is tested for equivalence with the current type.</param>
+    public bool IsEquivalentTo(Wrapperator.Interfaces.IType other)
+    {
+      return Type.IsEquivalentTo(other == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)other).Type);
+    }
+    
+    /// <summary>Returns an interface mapping for the specified interface type.</summary>
+    /// <returns>An object that represents the interface mapping for <paramref name="interfaceType" />.</returns>
+    /// <param name="interfaceType">The interface type to retrieve a mapping for. </param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="interfaceType" /> is not implemented by the current type. -or-The <paramref name="interfaceType" /> parameter does not refer to an interface. -or-<paramref name="interfaceType" /> is a generic interface, and the current type is an array type. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="interfaceType" /> is null. </exception>
+    /// <exception cref="T:System.InvalidOperationException">The current <see cref="T:System.Type" /> represents a generic type parameter; that is, <see cref="P:System.Type.IsGenericParameter" /> is true. </exception>
+    /// <exception cref="T:System.NotSupportedException">The invoked method is not supported in the base class. Derived classes must provide an implementation.</exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Reflection.InterfaceMapping GetInterfaceMap(Wrapperator.Interfaces.IType interfaceType)
+    {
+      return Type.GetInterfaceMap(interfaceType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)interfaceType).Type);
+    }
+    
+    /// <summary>When overridden in a derived class, returns an array of all custom attributes applied to this member. </summary>
+    /// <returns>An array that contains all the custom attributes applied to this member, or an array with zero elements if no attributes are defined.</returns>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
+    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
+    /// <exception cref="T:System.TypeLoadException">A custom attribute type could not be loaded. </exception>
+    public object[] GetCustomAttributes(bool inherit)
+    {
+      return Type.GetCustomAttributes(inherit);
+    }
+    
+    /// <summary>When overridden in a derived class, returns an array of custom attributes applied to this member and identified by <see cref="T:System.Type" />.</summary>
+    /// <returns>An array of custom attributes applied to this member, or an array with zero elements if no attributes assignable to <paramref name="attributeType" /> have been applied.</returns>
+    /// <param name="attributeType">The type of attribute to search for. Only attributes that are assignable to this type are returned. </param>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks. </param>
+    /// <exception cref="T:System.TypeLoadException">A custom attribute type cannot be loaded. </exception>
+    /// <exception cref="T:System.ArgumentNullException">If <paramref name="attributeType" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
+    public object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit)
+    {
+      return Type.GetCustomAttributes(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
+    }
+    
+    /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
+    /// <returns>true if one or more instances of <paramref name="attributeType" /> or any of its derived types is applied to this member; otherwise, false.</returns>
+    /// <param name="attributeType">The type of custom attribute to search for. The search includes derived types. </param>
+    /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
+    public bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit)
+    {
+      return Type.IsDefined(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType).Type, inherit);
+    }
+    
+    /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>
+    /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</returns>
+    public System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData()
+    {
+      return Type.GetCustomAttributesData();
     }
   }
 }

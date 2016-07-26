@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents a text node. </summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXText : IXNode
+  public interface IXText : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
     string Value

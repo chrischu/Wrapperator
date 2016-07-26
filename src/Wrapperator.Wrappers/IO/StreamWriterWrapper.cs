@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Implements a <see cref="T:System.IO.TextWriter" /> for writing characters to a stream in a particular encoding.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class StreamWriterWrapper : TextWriterWrapper, Wrapperator.Interfaces.IO.IStreamWriter
+  public class StreamWriterWrapper : TextWriterWrapper, Wrapperator.Interfaces.IO.IStreamWriter
   {
     
     internal System.IO.StreamWriter StreamWriter { get; private set; }
@@ -92,14 +92,6 @@ namespace Wrapperator.Wrappers.IO
       StreamWriter.Flush();
     }
     
-    /// <summary>Clears all buffers for this stream asynchronously and causes any buffered data to be written to the underlying device.</summary>
-    /// <returns>A task that represents the asynchronous flush operation.</returns>
-    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-    public new System.Threading.Tasks.Task FlushAsync()
-    {
-      return StreamWriter.FlushAsync();
-    }
-    
     /// <summary>Writes a character to the stream.</summary>
     /// <param name="value">The character to write to the stream. </param>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
@@ -157,6 +149,97 @@ namespace Wrapperator.Wrappers.IO
     public new void Write(string value)
     {
       StreamWriter.Write(value);
+    }
+    
+    /// <summary>Writes a character to the stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="value">The character to write to the stream.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
+    public new System.Threading.Tasks.Task WriteAsync(char value)
+    {
+      return StreamWriter.WriteAsync(value);
+    }
+    
+    /// <summary>Writes a string to the stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="value">The string to write to the stream. If <paramref name="value" /> is null, nothing is written.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
+    public new System.Threading.Tasks.Task WriteAsync(string value)
+    {
+      return StreamWriter.WriteAsync(value);
+    }
+    
+    /// <summary>Writes a subarray of characters to the stream asynchronously.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">A character array that contains the data to write.</param>
+    /// <param name="index">The character position in the buffer at which to begin reading data.</param>
+    /// <param name="count">The maximum number of characters to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="index" /> plus <paramref name="count" /> is greater than the buffer length.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation. </exception>
+    public new System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
+    {
+      return StreamWriter.WriteAsync(buffer, index, count);
+    }
+    
+    /// <summary>Writes a line terminator asynchronously to the stream.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
+    public new System.Threading.Tasks.Task WriteLineAsync()
+    {
+      return StreamWriter.WriteLineAsync();
+    }
+    
+    /// <summary>Writes a character followed by a line terminator asynchronously to the stream.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="value">The character to write to the stream.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
+    public new System.Threading.Tasks.Task WriteLineAsync(char value)
+    {
+      return StreamWriter.WriteLineAsync(value);
+    }
+    
+    /// <summary>Writes a string followed by a line terminator asynchronously to the stream.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="value">The string to write. If the value is null, only a line terminator is written. </param>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
+    public new System.Threading.Tasks.Task WriteLineAsync(string value)
+    {
+      return StreamWriter.WriteLineAsync(value);
+    }
+    
+    /// <summary>Writes a subarray of characters followed by a line terminator asynchronously to the stream.</summary>
+    /// <returns>A task that represents the asynchronous write operation.</returns>
+    /// <param name="buffer">The character array to write data from.</param>
+    /// <param name="index">The character position in the buffer at which to start reading data.</param>
+    /// <param name="count">The maximum number of characters to write.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="index" /> plus <paramref name="count" /> is greater than the buffer length.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation. </exception>
+    public new System.Threading.Tasks.Task WriteLineAsync(char[] buffer, int index, int count)
+    {
+      return StreamWriter.WriteLineAsync(buffer, index, count);
+    }
+    
+    /// <summary>Clears all buffers for this stream asynchronously and causes any buffered data to be written to the underlying device.</summary>
+    /// <returns>A task that represents the asynchronous flush operation.</returns>
+    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+    public new System.Threading.Tasks.Task FlushAsync()
+    {
+      return StreamWriter.FlushAsync();
     }
     
     /// <summary>Writes the text representation of a Boolean value to the text string or stream.</summary>
@@ -310,53 +393,6 @@ namespace Wrapperator.Wrappers.IO
     public new void Write(string format, object[] arg)
     {
       StreamWriter.Write(format, arg);
-    }
-    
-    /// <summary>Writes a character to the stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="value">The character to write to the stream.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public new System.Threading.Tasks.Task WriteAsync(char value)
-    {
-      return StreamWriter.WriteAsync(value);
-    }
-    
-    /// <summary>Writes a string to the stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="value">The string to write to the stream. If <paramref name="value" /> is null, nothing is written.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public new System.Threading.Tasks.Task WriteAsync(string value)
-    {
-      return StreamWriter.WriteAsync(value);
-    }
-    
-    /// <summary>Writes a subarray of characters to the stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="buffer">A character array that contains the data to write.</param>
-    /// <param name="index">The character position in the buffer at which to begin reading data.</param>
-    /// <param name="count">The maximum number of characters to write.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="index" /> plus <paramref name="count" /> is greater than the buffer length.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation. </exception>
-    public new System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
-    {
-      return StreamWriter.WriteAsync(buffer, index, count);
-    }
-    
-    /// <summary>Writes a character array to the text string or stream asynchronously.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="buffer">The character array to write to the text stream. If <paramref name="buffer" /> is null, nothing is written.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
-    public new System.Threading.Tasks.Task WriteAsync(char[] buffer)
-    {
-      return StreamWriter.WriteAsync(buffer);
     }
     
     /// <summary>Writes a line terminator to the text string or stream.</summary>
@@ -566,50 +602,14 @@ namespace Wrapperator.Wrappers.IO
       StreamWriter.WriteLine(format, arg);
     }
     
-    /// <summary>Writes a line terminator asynchronously to the stream.</summary>
+    /// <summary>Writes a character array to the text string or stream asynchronously.</summary>
     /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public new System.Threading.Tasks.Task WriteLineAsync()
+    /// <param name="buffer">The character array to write to the text stream. If <paramref name="buffer" /> is null, nothing is written.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The text writer is disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
+    public new System.Threading.Tasks.Task WriteAsync(char[] buffer)
     {
-      return StreamWriter.WriteLineAsync();
-    }
-    
-    /// <summary>Writes a character followed by a line terminator asynchronously to the stream.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="value">The character to write to the stream.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public new System.Threading.Tasks.Task WriteLineAsync(char value)
-    {
-      return StreamWriter.WriteLineAsync(value);
-    }
-    
-    /// <summary>Writes a string followed by a line terminator asynchronously to the stream.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="value">The string to write. If the value is null, only a line terminator is written. </param>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation.</exception>
-    public new System.Threading.Tasks.Task WriteLineAsync(string value)
-    {
-      return StreamWriter.WriteLineAsync(value);
-    }
-    
-    /// <summary>Writes a subarray of characters followed by a line terminator asynchronously to the stream.</summary>
-    /// <returns>A task that represents the asynchronous write operation.</returns>
-    /// <param name="buffer">The character array to write data from.</param>
-    /// <param name="index">The character position in the buffer at which to start reading data.</param>
-    /// <param name="count">The maximum number of characters to write.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="index" /> plus <paramref name="count" /> is greater than the buffer length.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream writer is disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream writer is currently in use by a previous write operation. </exception>
-    public new System.Threading.Tasks.Task WriteLineAsync(char[] buffer, int index, int count)
-    {
-      return StreamWriter.WriteLineAsync(buffer, index, count);
+      return StreamWriter.WriteAsync(buffer);
     }
     
     /// <summary>Writes an array of characters followed by a line terminator asynchronously to the text string or stream.</summary>

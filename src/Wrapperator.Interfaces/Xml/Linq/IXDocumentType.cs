@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents an XML Document Type Definition (DTD). </summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXDocumentType : IXNode
+  public interface IXDocumentType : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
     string InternalSubset

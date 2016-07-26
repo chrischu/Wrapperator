@@ -13,25 +13,10 @@ namespace Wrapperator.Interfaces.Reflection
   
   
   /// <summary>Represents an assembly, which is a reusable, versionable, and self-describing building block of a common language runtime application.</summary>
-  public partial interface IAssembly
+  public interface IAssembly
   {
     
     string CodeBase
-    {
-      get;
-    }
-    
-    System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
-    {
-      get;
-    }
-    
-    System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> DefinedTypes
-    {
-      get;
-    }
-    
-    System.Reflection.MethodInfo EntryPoint
     {
       get;
     }
@@ -41,7 +26,12 @@ namespace Wrapperator.Interfaces.Reflection
       get;
     }
     
-    System.Security.Policy.Evidence Evidence
+    string FullName
+    {
+      get;
+    }
+    
+    System.Reflection.MethodInfo EntryPoint
     {
       get;
     }
@@ -51,7 +41,57 @@ namespace Wrapperator.Interfaces.Reflection
       get;
     }
     
-    string FullName
+    System.Collections.Generic.IEnumerable<System.Reflection.TypeInfo> DefinedTypes
+    {
+      get;
+    }
+    
+    System.Security.Policy.Evidence Evidence
+    {
+      get;
+    }
+    
+    System.Security.PermissionSet PermissionSet
+    {
+      get;
+    }
+    
+    bool IsFullyTrusted
+    {
+      get;
+    }
+    
+    System.Security.SecurityRuleSet SecurityRuleSet
+    {
+      get;
+    }
+    
+    System.Reflection.Module ManifestModule
+    {
+      get;
+    }
+    
+    System.Collections.Generic.IEnumerable<System.Reflection.CustomAttributeData> CustomAttributes
+    {
+      get;
+    }
+    
+    bool ReflectionOnly
+    {
+      get;
+    }
+    
+    System.Collections.Generic.IEnumerable<System.Reflection.Module> Modules
+    {
+      get;
+    }
+    
+    string Location
+    {
+      get;
+    }
+    
+    string ImageRuntimeVersion
     {
       get;
     }
@@ -66,50 +106,140 @@ namespace Wrapperator.Interfaces.Reflection
       get;
     }
     
-    string ImageRuntimeVersion
-    {
-      get;
-    }
-    
     bool IsDynamic
     {
       get;
     }
     
-    bool IsFullyTrusted
-    {
-      get;
-    }
+    /// <summary>Gets an <see cref="T:System.Reflection.AssemblyName" /> for this assembly.</summary>
+    /// <returns>An object that contains the fully parsed display name for this assembly.</returns>
+    Wrapperator.Interfaces.Reflection.IAssemblyName GetName();
     
-    string Location
-    {
-      get;
-    }
+    /// <summary>Gets an <see cref="T:System.Reflection.AssemblyName" /> for this assembly, setting the codebase as specified by <paramref name="copiedName" />.</summary>
+    /// <returns>An object that contains the fully parsed display name for this assembly.</returns>
+    /// <param name="copiedName">true to set the <see cref="P:System.Reflection.Assembly.CodeBase" /> to the location of the assembly after it was shadow copied; false to set <see cref="P:System.Reflection.Assembly.CodeBase" /> to the original location. </param>
+    Wrapperator.Interfaces.Reflection.IAssemblyName GetName(bool copiedName);
     
-    System.Reflection.Module ManifestModule
-    {
-      get;
-    }
+    /// <summary>Gets the public types defined in this assembly that are visible outside the assembly.</summary>
+    /// <returns>An array that represents the types defined in this assembly that are visible outside the assembly.</returns>
+    /// <exception cref="T:System.NotSupportedException">The assembly is a dynamic assembly.</exception>
+    System.Type[] GetExportedTypes();
     
-    System.Collections.Generic.IEnumerable<System.Reflection.Module> Modules
-    {
-      get;
-    }
+    /// <summary>Gets the types defined in this assembly.</summary>
+    /// <returns>An array that contains all the types that are defined in this assembly.</returns>
+    /// <exception cref="T:System.Reflection.ReflectionTypeLoadException">The assembly contains one or more types that cannot be loaded. The array returned by the <see cref="P:System.Reflection.ReflectionTypeLoadException.Types" /> property of this exception contains a <see cref="T:System.Type" /> object for each type that was loaded and null for each type that could not be loaded, while the <see cref="P:System.Reflection.ReflectionTypeLoadException.LoaderExceptions" /> property contains an exception for each type that could not be loaded.</exception>
+    System.Type[] GetTypes();
     
-    System.Security.PermissionSet PermissionSet
-    {
-      get;
-    }
+    /// <summary>Loads the specified manifest resource, scoped by the namespace of the specified type, from this assembly.</summary>
+    /// <returns>The manifest resource; or null if no resources were specified during compilation or if the resource is not visible to the caller.</returns>
+    /// <param name="type">The type whose namespace is used to scope the manifest resource name. </param>
+    /// <param name="name">The case-sensitive name of the manifest resource being requested. </param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="name" /> parameter is null. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is an empty string (""). </exception>
+    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="name" /> was not found. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="name" /> is not a valid assembly. </exception>
+    /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
+    Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(Wrapperator.Interfaces.IType type, string name);
     
-    bool ReflectionOnly
-    {
-      get;
-    }
+    /// <summary>Loads the specified manifest resource from this assembly.</summary>
+    /// <returns>The manifest resource; or null if no resources were specified during compilation or if the resource is not visible to the caller.</returns>
+    /// <param name="name">The case-sensitive name of the manifest resource being requested. </param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="name" /> parameter is null. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is an empty string (""). </exception>
+    /// <exception cref="T:System.IO.FileLoadException">NoteIn the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.IO.IOException" />, instead.A file that was found could not be loaded. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="name" /> was not found. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="name" /> is not a valid assembly. </exception>
+    /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
+    Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(string name);
     
-    System.Security.SecurityRuleSet SecurityRuleSet
-    {
-      get;
-    }
+    /// <summary>Gets the satellite assembly for the specified culture.</summary>
+    /// <returns>The specified satellite assembly.</returns>
+    /// <param name="culture">The specified culture. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="culture" /> is null. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">The assembly cannot be found. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">The satellite assembly with a matching file name was found, but the CultureInfo did not match the one specified. </exception>
+    /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
+    Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture);
+    
+    /// <summary>Gets the specified version of the satellite assembly for the specified culture.</summary>
+    /// <returns>The specified satellite assembly.</returns>
+    /// <param name="culture">The specified culture. </param>
+    /// <param name="version">The version of the satellite assembly. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="culture" /> is null. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">The satellite assembly with a matching file name was found, but the CultureInfo or the version did not match the one specified. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">The assembly cannot be found. </exception>
+    /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
+    Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, Wrapperator.Interfaces.IVersion version);
+    
+    /// <summary>Gets serialization information with all of the data needed to reinstantiate this assembly.</summary>
+    /// <param name="info">The object to be populated with serialization information. </param>
+    /// <param name="context">The destination context of the serialization. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="info" /> is null. </exception>
+    void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
+    
+    /// <summary>Gets all the custom attributes for this assembly.</summary>
+    /// <returns>An array that contains the custom attributes for this assembly.</returns>
+    /// <param name="inherit">This argument is ignored for objects of type <see cref="T:System.Reflection.Assembly" />. </param>
+    object[] GetCustomAttributes(bool inherit);
+    
+    /// <summary>Gets the custom attributes for this assembly as specified by type.</summary>
+    /// <returns>An array that contains the custom attributes for this assembly as specified by <paramref name="attributeType" />.</returns>
+    /// <param name="attributeType">The type for which the custom attributes are to be returned. </param>
+    /// <param name="inherit">This argument is ignored for objects of type <see cref="T:System.Reflection.Assembly" />. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="attributeType" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="attributeType" /> is not a runtime type. </exception>
+    object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit);
+    
+    /// <summary>Indicates whether or not a specified attribute has been applied to the assembly.</summary>
+    /// <returns>true if the attribute has been applied to the assembly; otherwise, false.</returns>
+    /// <param name="attributeType">The type of the attribute to be checked for this assembly. </param>
+    /// <param name="inherit">This argument is ignored for objects of this type. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="attributeType" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="attributeType" /> uses an invalid type.</exception>
+    bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit);
+    
+    /// <summary>Returns information about the attributes that have been applied to the current <see cref="T:System.Reflection.Assembly" />, expressed as <see cref="T:System.Reflection.CustomAttributeData" /> objects.</summary>
+    /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the current assembly.</returns>
+    System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData();
+    
+    /// <summary>Loads the module, internal to this assembly, with a common object file format (COFF)-based image containing an emitted module, or a resource file.</summary>
+    /// <returns>The loaded module.</returns>
+    /// <param name="moduleName">The name of the module. This string must correspond to a file name in this assembly's manifest. </param>
+    /// <param name="rawModule">A byte array that is a COFF-based image containing an emitted module, or a resource. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="moduleName" /> or <paramref name="rawModule" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="moduleName" /> does not match a file entry in this assembly's manifest. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="rawModule" /> is not a valid module. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
+    System.Reflection.Module LoadModule(string moduleName, byte[] rawModule);
+    
+    /// <summary>Loads the module, internal to this assembly, with a common object file format (COFF)-based image containing an emitted module, or a resource file. The raw bytes representing the symbols for the module are also loaded.</summary>
+    /// <returns>The loaded module.</returns>
+    /// <param name="moduleName">The name of the module. This string must correspond to a file name in this assembly's manifest. </param>
+    /// <param name="rawModule">A byte array that is a COFF-based image containing an emitted module, or a resource. </param>
+    /// <param name="rawSymbolStore">A byte array containing the raw bytes representing the symbols for the module. Must be null if this is a resource file. </param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="moduleName" /> or <paramref name="rawModule" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="moduleName" /> does not match a file entry in this assembly's manifest. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="rawModule" /> is not a valid module. </exception>
+    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
+    System.Reflection.Module LoadModule(string moduleName, byte[] rawModule, byte[] rawSymbolStore);
     
     /// <summary>Locates the specified type from this assembly and creates an instance of it using the system activator, using case-sensitive search.</summary>
     /// <returns>An instance of the specified type created with the default constructor; or null if <paramref name="typeName" /> is not found. The type is resolved using the default binder, without specifying culture or activation attributes, and with <see cref="T:System.Reflection.BindingFlags" /> set to Public or Instance. </returns>
@@ -167,54 +297,36 @@ namespace Wrapperator.Interfaces.Reflection
     ///  <paramref name="typeName" /> requires a dependent assembly, but the file is not a valid assembly. -or-<paramref name="typeName" /> requires a dependent assembly which was compiled for a version of the runtime later than the currently loaded version.</exception>
     object CreateInstance(string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes);
     
-    /// <summary>Creates the name of a type qualified by the display name of its assembly.</summary>
-    /// <returns>The full name of the type qualified by the display name of the assembly.</returns>
-    /// <param name="assemblyName">The display name of an assembly. </param>
-    /// <param name="typeName">The full name of a type. </param>
-    string CreateQualifiedName(string assemblyName, string typeName);
+    /// <summary>Gets all the loaded modules that are part of this assembly.</summary>
+    /// <returns>An array of modules.</returns>
+    System.Reflection.Module[] GetLoadedModules();
     
-    /// <summary>Gets the currently loaded assembly in which the specified class is defined.</summary>
-    /// <returns>The assembly in which the specified class is defined.</returns>
-    /// <param name="type">An object representing a class in the assembly that will be returned. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="type" /> is null. </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly GetAssembly(Wrapperator.Interfaces.IType type);
+    /// <summary>Gets all the loaded modules that are part of this assembly, specifying whether to include resource modules.</summary>
+    /// <returns>An array of modules.</returns>
+    /// <param name="getResourceModules">true to include resource modules; otherwise, false. </param>
+    System.Reflection.Module[] GetLoadedModules(bool getResourceModules);
     
-    /// <summary>Returns the <see cref="T:System.Reflection.Assembly" /> of the method that invoked the currently executing method.</summary>
-    /// <returns>The Assembly object of the method that invoked the currently executing method.</returns>
-    Wrapperator.Interfaces.Reflection.IAssembly GetCallingAssembly();
+    /// <summary>Gets all the modules that are part of this assembly.</summary>
+    /// <returns>An array of modules.</returns>
+    /// <exception cref="T:System.IO.FileNotFoundException">The module to be loaded does not specify a file name extension. </exception>
+    System.Reflection.Module[] GetModules();
     
-    /// <summary>Gets all the custom attributes for this assembly.</summary>
-    /// <returns>An array that contains the custom attributes for this assembly.</returns>
-    /// <param name="inherit">This argument is ignored for objects of type <see cref="T:System.Reflection.Assembly" />. </param>
-    object[] GetCustomAttributes(bool inherit);
+    /// <summary>Gets all the modules that are part of this assembly, specifying whether to include resource modules.</summary>
+    /// <returns>An array of modules.</returns>
+    /// <param name="getResourceModules">true to include resource modules; otherwise, false. </param>
+    System.Reflection.Module[] GetModules(bool getResourceModules);
     
-    /// <summary>Gets the custom attributes for this assembly as specified by type.</summary>
-    /// <returns>An array that contains the custom attributes for this assembly as specified by <paramref name="attributeType" />.</returns>
-    /// <param name="attributeType">The type for which the custom attributes are to be returned. </param>
-    /// <param name="inherit">This argument is ignored for objects of type <see cref="T:System.Reflection.Assembly" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="attributeType" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="attributeType" /> is not a runtime type. </exception>
-    object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit);
-    
-    /// <summary>Returns information about the attributes that have been applied to the current <see cref="T:System.Reflection.Assembly" />, expressed as <see cref="T:System.Reflection.CustomAttributeData" /> objects.</summary>
-    /// <returns>A generic list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the current assembly.</returns>
-    System.Collections.Generic.IList<System.Reflection.CustomAttributeData> GetCustomAttributesData();
-    
-    /// <summary>Gets the process executable in the default application domain. In other application domains, this is the first executable that was executed by <see cref="M:System.AppDomain.ExecuteAssembly(System.String)" />.</summary>
-    /// <returns>The assembly that is the process executable in the default application domain, or the first executable that was executed by <see cref="M:System.AppDomain.ExecuteAssembly(System.String)" />. Can return null when called from unmanaged code.</returns>
-    Wrapperator.Interfaces.Reflection.IAssembly GetEntryAssembly();
-    
-    /// <summary>Gets the assembly that contains the code that is currently executing.</summary>
-    /// <returns>The assembly that contains the code that is currently executing. </returns>
-    Wrapperator.Interfaces.Reflection.IAssembly GetExecutingAssembly();
-    
-    /// <summary>Gets the public types defined in this assembly that are visible outside the assembly.</summary>
-    /// <returns>An array that represents the types defined in this assembly that are visible outside the assembly.</returns>
-    /// <exception cref="T:System.NotSupportedException">The assembly is a dynamic assembly.</exception>
-    System.Type[] GetExportedTypes();
+    /// <summary>Gets the specified module in this assembly.</summary>
+    /// <returns>The module being requested, or null if the module is not found.</returns>
+    /// <param name="name">The name of the module being requested. </param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="name" /> parameter is null. </exception>
+    /// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is an empty string (""). </exception>
+    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
+    /// <exception cref="T:System.IO.FileNotFoundException">
+    ///  <paramref name="name" /> was not found. </exception>
+    /// <exception cref="T:System.BadImageFormatException">
+    ///  <paramref name="name" /> is not a valid assembly. </exception>
+    System.Reflection.Module GetModule(string name);
     
     /// <summary>Gets a <see cref="T:System.IO.FileStream" /> for the specified file in the file table of the manifest of this assembly.</summary>
     /// <returns>A stream that contains the specified file, or null if the file is not found.</returns>
@@ -243,14 +355,13 @@ namespace Wrapperator.Interfaces.Reflection
     /// <exception cref="T:System.BadImageFormatException">A file was not a valid assembly. </exception>
     System.IO.FileStream[] GetFiles(bool getResourceModules);
     
-    /// <summary>Gets all the loaded modules that are part of this assembly.</summary>
-    /// <returns>An array of modules.</returns>
-    System.Reflection.Module[] GetLoadedModules();
+    /// <summary>Returns the names of all the resources in this assembly.</summary>
+    /// <returns>An array that contains the names of all the resources.</returns>
+    string[] GetManifestResourceNames();
     
-    /// <summary>Gets all the loaded modules that are part of this assembly, specifying whether to include resource modules.</summary>
-    /// <returns>An array of modules.</returns>
-    /// <param name="getResourceModules">true to include resource modules; otherwise, false. </param>
-    System.Reflection.Module[] GetLoadedModules(bool getResourceModules);
+    /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> objects for all the assemblies referenced by this assembly.</summary>
+    /// <returns>An array that contains the fully parsed display names of all the assemblies referenced by this assembly.</returns>
+    System.Reflection.AssemblyName[] GetReferencedAssemblies();
     
     /// <summary>Returns information about how the given resource has been persisted.</summary>
     /// <returns>An object that is populated with information about the resource's topology, or null if the resource is not found.</returns>
@@ -259,298 +370,5 @@ namespace Wrapperator.Interfaces.Reflection
     ///  <paramref name="resourceName" /> is null. </exception>
     /// <exception cref="T:System.ArgumentException">The <paramref name="resourceName" /> parameter is an empty string (""). </exception>
     System.Reflection.ManifestResourceInfo GetManifestResourceInfo(string resourceName);
-    
-    /// <summary>Returns the names of all the resources in this assembly.</summary>
-    /// <returns>An array that contains the names of all the resources.</returns>
-    string[] GetManifestResourceNames();
-    
-    /// <summary>Loads the specified manifest resource, scoped by the namespace of the specified type, from this assembly.</summary>
-    /// <returns>The manifest resource; or null if no resources were specified during compilation or if the resource is not visible to the caller.</returns>
-    /// <param name="type">The type whose namespace is used to scope the manifest resource name. </param>
-    /// <param name="name">The case-sensitive name of the manifest resource being requested. </param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="name" /> parameter is null. </exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="name" /> was not found. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="name" /> is not a valid assembly. </exception>
-    /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
-    Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(Wrapperator.Interfaces.IType type, string name);
-    
-    /// <summary>Loads the specified manifest resource from this assembly.</summary>
-    /// <returns>The manifest resource; or null if no resources were specified during compilation or if the resource is not visible to the caller.</returns>
-    /// <param name="name">The case-sensitive name of the manifest resource being requested. </param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="name" /> parameter is null. </exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.FileLoadException">NoteIn the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.IO.IOException" />, instead.A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="name" /> was not found. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="name" /> is not a valid assembly. </exception>
-    /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
-    Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(string name);
-    
-    /// <summary>Gets the specified module in this assembly.</summary>
-    /// <returns>The module being requested, or null if the module is not found.</returns>
-    /// <param name="name">The name of the module being requested. </param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="name" /> parameter is null. </exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="name" /> parameter is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="name" /> was not found. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="name" /> is not a valid assembly. </exception>
-    System.Reflection.Module GetModule(string name);
-    
-    /// <summary>Gets all the modules that are part of this assembly.</summary>
-    /// <returns>An array of modules.</returns>
-    /// <exception cref="T:System.IO.FileNotFoundException">The module to be loaded does not specify a file name extension. </exception>
-    System.Reflection.Module[] GetModules();
-    
-    /// <summary>Gets all the modules that are part of this assembly, specifying whether to include resource modules.</summary>
-    /// <returns>An array of modules.</returns>
-    /// <param name="getResourceModules">true to include resource modules; otherwise, false. </param>
-    System.Reflection.Module[] GetModules(bool getResourceModules);
-    
-    /// <summary>Gets an <see cref="T:System.Reflection.AssemblyName" /> for this assembly.</summary>
-    /// <returns>An object that contains the fully parsed display name for this assembly.</returns>
-    Wrapperator.Interfaces.Reflection.IAssemblyName GetName();
-    
-    /// <summary>Gets an <see cref="T:System.Reflection.AssemblyName" /> for this assembly, setting the codebase as specified by <paramref name="copiedName" />.</summary>
-    /// <returns>An object that contains the fully parsed display name for this assembly.</returns>
-    /// <param name="copiedName">true to set the <see cref="P:System.Reflection.Assembly.CodeBase" /> to the location of the assembly after it was shadow copied; false to set <see cref="P:System.Reflection.Assembly.CodeBase" /> to the original location. </param>
-    Wrapperator.Interfaces.Reflection.IAssemblyName GetName(bool copiedName);
-    
-    /// <summary>Gets serialization information with all of the data needed to reinstantiate this assembly.</summary>
-    /// <param name="info">The object to be populated with serialization information. </param>
-    /// <param name="context">The destination context of the serialization. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="info" /> is null. </exception>
-    void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
-    
-    /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> objects for all the assemblies referenced by this assembly.</summary>
-    /// <returns>An array that contains the fully parsed display names of all the assemblies referenced by this assembly.</returns>
-    System.Reflection.AssemblyName[] GetReferencedAssemblies();
-    
-    /// <summary>Gets the satellite assembly for the specified culture.</summary>
-    /// <returns>The specified satellite assembly.</returns>
-    /// <param name="culture">The specified culture. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="culture" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">The assembly cannot be found. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">The satellite assembly with a matching file name was found, but the CultureInfo did not match the one specified. </exception>
-    /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture);
-    
-    /// <summary>Gets the specified version of the satellite assembly for the specified culture.</summary>
-    /// <returns>The specified satellite assembly.</returns>
-    /// <param name="culture">The specified culture. </param>
-    /// <param name="version">The version of the satellite assembly. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="culture" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">The satellite assembly with a matching file name was found, but the CultureInfo or the version did not match the one specified. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">The assembly cannot be found. </exception>
-    /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, Wrapperator.Interfaces.IVersion version);
-    
-    /// <summary>Gets the types defined in this assembly.</summary>
-    /// <returns>An array that contains all the types that are defined in this assembly.</returns>
-    /// <exception cref="T:System.Reflection.ReflectionTypeLoadException">The assembly contains one or more types that cannot be loaded. The array returned by the <see cref="P:System.Reflection.ReflectionTypeLoadException.Types" /> property of this exception contains a <see cref="T:System.Type" /> object for each type that was loaded and null for each type that could not be loaded, while the <see cref="P:System.Reflection.ReflectionTypeLoadException.LoaderExceptions" /> property contains an exception for each type that could not be loaded.</exception>
-    System.Type[] GetTypes();
-    
-    /// <summary>Indicates whether or not a specified attribute has been applied to the assembly.</summary>
-    /// <returns>true if the attribute has been applied to the assembly; otherwise, false.</returns>
-    /// <param name="attributeType">The type of the attribute to be checked for this assembly. </param>
-    /// <param name="inherit">This argument is ignored for objects of this type. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="attributeType" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="attributeType" /> uses an invalid type.</exception>
-    bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit);
-    
-    /// <summary>Loads an assembly given the long form of its name.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyString">The long form of the assembly name. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyString" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyString" /> is a zero-length string. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyString" /> is not found. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyString" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyString" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(string assemblyString);
-    
-    /// <summary>Loads an assembly given its <see cref="T:System.Reflection.AssemblyName" />.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyRef">The object that describes the assembly to be loaded. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyRef" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyRef" /> is not found. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">NoteIn the .NET for Windows Store apps or the Portable Class Library, catch the base class exception, <see cref="T:System.IO.IOException" />, instead.A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyRef" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyRef" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef);
-    
-    /// <summary>Loads the assembly with a common object file format (COFF)-based image containing an emitted assembly. The assembly is loaded into the application domain of the caller.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="rawAssembly">A byte array that is a COFF-based image containing an emitted assembly. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="rawAssembly" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly);
-    
-    /// <summary>Loads the assembly with a common object file format (COFF)-based image containing an emitted assembly, optionally including symbols for the assembly. The assembly is loaded into the application domain of the caller.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="rawAssembly">A byte array that is a COFF-based image containing an emitted assembly. </param>
-    /// <param name="rawSymbolStore">A byte array that contains the raw bytes representing the symbols for the assembly. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="rawAssembly" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly, byte[] rawSymbolStore);
-    
-    /// <summary>Loads the assembly with a common object file format (COFF)-based image containing an emitted assembly, optionally including symbols and specifying the source for the security context. The assembly is loaded into the application domain of the caller.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="rawAssembly">A byte array that is a COFF-based image containing an emitted assembly. </param>
-    /// <param name="rawSymbolStore">A byte array that contains the raw bytes representing the symbols for the assembly. </param>
-    /// <param name="securityContextSource">The source of the security context. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="rawAssembly" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-<paramref name="rawAssembly" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">The value of <paramref name="securityContextSource" /> is not one of the enumeration values.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly, byte[] rawSymbolStore, System.Security.SecurityContextSource securityContextSource);
-    
-    /// <summary>Loads the contents of an assembly file on the specified path.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="path">The path of the file to load. </param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="path" /> parameter is null. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">The <paramref name="path" /> parameter is an empty string ("") or does not exist. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="path" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="path" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly LoadFile(string path);
-    
-    /// <summary>Loads an assembly given its file name or path.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyFile">The name or path of the file that contains the manifest of the assembly. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found, or the module you are trying to load does not specify a filename extension. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly; for example, a 32-bit assembly in a 64-bit process. See the exception topic for more information. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyFile" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.Security.SecurityException">A codebase that does not start with "file://" was specified without the required <see cref="T:System.Net.WebPermission" />. </exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="assemblyFile" /> parameter is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.PathTooLongException">The assembly name is longer than MAX_PATH characters.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly LoadFrom(string assemblyFile);
-    
-    /// <summary>Loads an assembly given its file name or path, hash value, and hash algorithm.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyFile">The name or path of the file that contains the manifest of the assembly. </param>
-    /// <param name="hashValue">The value of the computed hash code. </param>
-    /// <param name="hashAlgorithm">The hash algorithm used for hashing files and for generating the strong name. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found, or the module you are trying to load does not specify a file name extension. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded.</exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly; for example, a 32-bit assembly in a 64-bit process. See the exception topic for more information. -or-<paramref name="assemblyFile" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <exception cref="T:System.Security.SecurityException">A codebase that does not start with "file://" was specified without the required <see cref="T:System.Net.WebPermission" />. </exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="assemblyFile" /> parameter is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.PathTooLongException">The assembly name is longer than MAX_PATH characters.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly LoadFrom(string assemblyFile, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm);
-    
-    /// <summary>Loads the module, internal to this assembly, with a common object file format (COFF)-based image containing an emitted module, or a resource file.</summary>
-    /// <returns>The loaded module.</returns>
-    /// <param name="moduleName">The name of the module. This string must correspond to a file name in this assembly's manifest. </param>
-    /// <param name="rawModule">A byte array that is a COFF-based image containing an emitted module, or a resource. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="moduleName" /> or <paramref name="rawModule" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="moduleName" /> does not match a file entry in this assembly's manifest. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawModule" /> is not a valid module. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    System.Reflection.Module LoadModule(string moduleName, byte[] rawModule);
-    
-    /// <summary>Loads the module, internal to this assembly, with a common object file format (COFF)-based image containing an emitted module, or a resource file. The raw bytes representing the symbols for the module are also loaded.</summary>
-    /// <returns>The loaded module.</returns>
-    /// <param name="moduleName">The name of the module. This string must correspond to a file name in this assembly's manifest. </param>
-    /// <param name="rawModule">A byte array that is a COFF-based image containing an emitted module, or a resource. </param>
-    /// <param name="rawSymbolStore">A byte array containing the raw bytes representing the symbols for the module. Must be null if this is a resource file. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="moduleName" /> or <paramref name="rawModule" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="moduleName" /> does not match a file entry in this assembly's manifest. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawModule" /> is not a valid module. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    System.Reflection.Module LoadModule(string moduleName, byte[] rawModule, byte[] rawSymbolStore);
-    
-    /// <summary>Loads an assembly into the reflection-only context, given its display name.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyString">The display name of the assembly, as returned by the <see cref="P:System.Reflection.AssemblyName.FullName" /> property.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyString" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyString" /> is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyString" /> is not found. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">
-    ///  <paramref name="assemblyString" /> is found, but cannot be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyString" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyString" /> was compiled with a later version.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly ReflectionOnlyLoad(string assemblyString);
-    
-    /// <summary>Loads the assembly from a common object file format (COFF)-based image containing an emitted assembly. The assembly is loaded into the reflection-only context of the caller's application domain.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="rawAssembly">A byte array that is a COFF-based image containing an emitted assembly.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="rawAssembly" /> is null. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="rawAssembly" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="rawAssembly" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.IO.FileLoadException">
-    ///  <paramref name="rawAssembly" /> cannot be loaded. </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly ReflectionOnlyLoad(byte[] rawAssembly);
-    
-    /// <summary>Loads an assembly into the reflection-only context, given its path.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyFile">The path of the file that contains the manifest of the assembly.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found, or the module you are trying to load does not specify a file name extension. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">
-    ///  <paramref name="assemblyFile" /> is found, but could not be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyFile" /> was compiled with a later version.</exception>
-    /// <exception cref="T:System.Security.SecurityException">A codebase that does not start with "file://" was specified without the required <see cref="T:System.Net.WebPermission" />. </exception>
-    /// <exception cref="T:System.IO.PathTooLongException">The assembly name is longer than MAX_PATH characters. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="assemblyFile" /> is an empty string (""). </exception>
-    Wrapperator.Interfaces.Reflection.IAssembly ReflectionOnlyLoadFrom(string assemblyFile);
-    
-    /// <summary>Loads an assembly into the load-from context, bypassing some security checks.</summary>
-    /// <returns>The loaded assembly.</returns>
-    /// <param name="assemblyFile">The name or path of the file that contains the manifest of the assembly.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="assemblyFile" /> is null. </exception>
-    /// <exception cref="T:System.IO.FileNotFoundException">
-    ///  <paramref name="assemblyFile" /> is not found, or the module you are trying to load does not specify a filename extension. </exception>
-    /// <exception cref="T:System.IO.FileLoadException">A file that was found could not be loaded. </exception>
-    /// <exception cref="T:System.BadImageFormatException">
-    ///  <paramref name="assemblyFile" /> is not a valid assembly. -or-<paramref name="assemblyFile" /> was compiled with a later version of the common language runtime than the version that is currently loaded.</exception>
-    /// <exception cref="T:System.Security.SecurityException">A codebase that does not start with "file://" was specified without the required <see cref="T:System.Net.WebPermission" />. </exception>
-    /// <exception cref="T:System.ArgumentException">The <paramref name="assemblyFile" /> parameter is an empty string (""). </exception>
-    /// <exception cref="T:System.IO.PathTooLongException">The assembly name is longer than MAX_PATH characters.</exception>
-    Wrapperator.Interfaces.Reflection.IAssembly UnsafeLoadFrom(string assemblyFile);
   }
 }

@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Exposes instance methods for creating, moving, and enumerating through directories and subdirectories. This class cannot be inherited.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class DirectoryInfoWrapper : Wrapperator.Interfaces.IO.IDirectoryInfo
+  public class DirectoryInfoWrapper : Wrapperator.Interfaces.IO.IDirectoryInfo
   {
     
     internal System.IO.DirectoryInfo DirectoryInfo { get; private set; }
@@ -25,15 +25,51 @@ namespace Wrapperator.Wrappers.IO
       DirectoryInfo = directoryInfo;
     }
     
-    public System.IO.FileAttributes Attributes
+    public string Name
     {
       get
       {
-        return DirectoryInfo.Attributes;
+        return DirectoryInfo.Name;
       }
-      set
+    }
+    
+    public System.IO.DirectoryInfo Parent
+    {
+      get
       {
-        DirectoryInfo.Attributes = value;
+        return DirectoryInfo.Parent;
+      }
+    }
+    
+    public bool Exists
+    {
+      get
+      {
+        return DirectoryInfo.Exists;
+      }
+    }
+    
+    public System.IO.DirectoryInfo Root
+    {
+      get
+      {
+        return DirectoryInfo.Root;
+      }
+    }
+    
+    public string FullName
+    {
+      get
+      {
+        return DirectoryInfo.FullName;
+      }
+    }
+    
+    public string Extension
+    {
+      get
+      {
+        return DirectoryInfo.Extension;
       }
     }
     
@@ -58,30 +94,6 @@ namespace Wrapperator.Wrappers.IO
       set
       {
         DirectoryInfo.CreationTimeUtc = value;
-      }
-    }
-    
-    public bool Exists
-    {
-      get
-      {
-        return DirectoryInfo.Exists;
-      }
-    }
-    
-    public string Extension
-    {
-      get
-      {
-        return DirectoryInfo.Extension;
-      }
-    }
-    
-    public string FullName
-    {
-      get
-      {
-        return DirectoryInfo.FullName;
       }
     }
     
@@ -133,65 +145,16 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public string Name
+    public System.IO.FileAttributes Attributes
     {
       get
       {
-        return DirectoryInfo.Name;
+        return DirectoryInfo.Attributes;
       }
-    }
-    
-    public System.IO.DirectoryInfo Parent
-    {
-      get
+      set
       {
-        return DirectoryInfo.Parent;
+        DirectoryInfo.Attributes = value;
       }
-    }
-    
-    public System.IO.DirectoryInfo Root
-    {
-      get
-      {
-        return DirectoryInfo.Root;
-      }
-    }
-    
-    /// <summary>Creates a directory.</summary>
-    /// <exception cref="T:System.IO.IOException">The directory cannot be created. </exception>
-    /// <filterpriority>1</filterpriority>
-    public void Create()
-    {
-      DirectoryInfo.Create();
-    }
-    
-    /// <summary>Creates a directory using a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object.</summary>
-    /// <param name="directorySecurity">The access control to apply to the directory.</param>
-    /// <exception cref="T:System.IO.IOException">The directory specified by <paramref name="path" /> is read-only or is not empty. </exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="path" /> is null. </exception>
-    /// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
-    /// <exception cref="T:System.NotSupportedException">Creating a directory with only the colon (:) character was attempted. </exception>
-    /// <exception cref="T:System.IO.IOException">The directory specified by <paramref name="path" /> is read-only or is not empty. </exception>
-    /// <filterpriority>1</filterpriority>
-    public void Create(System.Security.AccessControl.DirectorySecurity directorySecurity)
-    {
-      DirectoryInfo.Create(directorySecurity);
-    }
-    
-    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
-    /// <returns>Information required to generate a proxy.</returns>
-    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
-    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
-    {
-      return DirectoryInfo.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
     
     /// <summary>Creates a subdirectory or subdirectories on the specified path. The specified path can be relative to this instance of the <see cref="T:System.IO.DirectoryInfo" /> class.</summary>
@@ -233,27 +196,189 @@ namespace Wrapperator.Wrappers.IO
       return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(DirectoryInfo.CreateSubdirectory(path, directorySecurity));
     }
     
-    /// <summary>Deletes this <see cref="T:System.IO.DirectoryInfo" /> if it is empty.</summary>
-    /// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
-    /// <exception cref="T:System.IO.IOException">The directory is not empty. -or-The directory is the application's current working directory.-or-There is an open handle on the directory, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories. For more information, see How to: Enumerate Directories and Files.</exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <summary>Creates a directory.</summary>
+    /// <exception cref="T:System.IO.IOException">The directory cannot be created. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Delete()
+    public void Create()
     {
-      DirectoryInfo.Delete();
+      DirectoryInfo.Create();
     }
     
-    /// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
-    /// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>
-    /// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
-    /// <exception cref="T:System.IO.IOException">The directory is read-only.-or- The directory contains one or more files or subdirectories and <paramref name="recursive" /> is false.-or-The directory is the application's current working directory. -or-There is an open handle on the directory or on one of its files, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see How to: Enumerate Directories and Files.</exception>
+    /// <summary>Creates a directory using a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object.</summary>
+    /// <param name="directorySecurity">The access control to apply to the directory.</param>
+    /// <exception cref="T:System.IO.IOException">The directory specified by <paramref name="path" /> is read-only or is not empty. </exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="path" /> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <see cref="F:System.IO.Path.InvalidPathChars" />. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="path" /> is null. </exception>
+    /// <exception cref="T:System.IO.PathTooLongException">The specified path, file name, or both exceed the system-defined maximum length. For example, on Windows-based platforms, paths must be less than 248 characters, and file names must be less than 260 characters. </exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid, such as being on an unmapped drive. </exception>
+    /// <exception cref="T:System.NotSupportedException">Creating a directory with only the colon (:) character was attempted. </exception>
+    /// <exception cref="T:System.IO.IOException">The directory specified by <paramref name="path" /> is read-only or is not empty. </exception>
+    /// <filterpriority>1</filterpriority>
+    public void Create(System.Security.AccessControl.DirectorySecurity directorySecurity)
+    {
+      DirectoryInfo.Create(directorySecurity);
+    }
+    
+    /// <summary>Gets a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control list (ACL) entries for the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
+    /// <returns>A <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control rules for the directory.</returns>
+    /// <exception cref="T:System.SystemException">The directory could not be found or modified.</exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The current process does not have access to open the directory.</exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the directory.</exception>
+    /// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows 2000 or later.</exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The directory is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
+    /// <filterpriority>1</filterpriority>
+    public System.Security.AccessControl.DirectorySecurity GetAccessControl()
+    {
+      return DirectoryInfo.GetAccessControl();
+    }
+    
+    /// <summary>Gets a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the specified type of access control list (ACL) entries for the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
+    /// <returns>A <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control rules for the file described by the <paramref name="path" /> parameter.ExceptionsException typeCondition<see cref="T:System.SystemException" />The directory could not be found or modified.<see cref="T:System.UnauthorizedAccessException" />The current process does not have access to open the directory.<see cref="T:System.IO.IOException" />An I/O error occurred while opening the directory.<see cref="T:System.PlatformNotSupportedException" />The current operating system is not Microsoft Windows 2000 or later.<see cref="T:System.UnauthorizedAccessException" />The directory is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</returns>
+    /// <param name="includeSections">One of the <see cref="T:System.Security.AccessControl.AccessControlSections" /> values that specifies the type of access control list (ACL) information to receive.</param>
+    /// <filterpriority>1</filterpriority>
+    public System.Security.AccessControl.DirectorySecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections)
+    {
+      return DirectoryInfo.GetAccessControl(includeSections);
+    }
+    
+    /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object to the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
+    /// <param name="directorySecurity">An object that describes an ACL entry to apply to the directory described by the <paramref name="path" /> parameter.</param>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="directorySecurity" /> parameter is null.</exception>
+    /// <exception cref="T:System.SystemException">The file could not be found or modified.</exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The current process does not have access to open the file.</exception>
+    /// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows 2000 or later.</exception>
+    /// <filterpriority>1</filterpriority>
+    public void SetAccessControl(System.Security.AccessControl.DirectorySecurity directorySecurity)
+    {
+      DirectoryInfo.SetAccessControl(directorySecurity);
+    }
+    
+    /// <summary>Returns a file list from the current directory matching the given search pattern.</summary>
+    /// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
+    /// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="searchPattern" /> is null. </exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
     /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
     /// <filterpriority>1</filterpriority>
-    public void Delete(bool recursive)
+    public System.IO.FileInfo[] GetFiles(string searchPattern)
     {
-      DirectoryInfo.Delete(recursive);
+      return DirectoryInfo.GetFiles(searchPattern);
+    }
+    
+    /// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
+    /// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
+    /// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+    /// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="searchPattern" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    public System.IO.FileInfo[] GetFiles(string searchPattern, System.IO.SearchOption searchOption)
+    {
+      return DirectoryInfo.GetFiles(searchPattern, searchOption);
+    }
+    
+    /// <summary>Returns a file list from the current directory.</summary>
+    /// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid, such as being on an unmapped drive. </exception>
+    /// <filterpriority>1</filterpriority>
+    public System.IO.FileInfo[] GetFiles()
+    {
+      return DirectoryInfo.GetFiles();
+    }
+    
+    /// <summary>Returns the subdirectories of the current directory.</summary>
+    /// <returns>An array of <see cref="T:System.IO.DirectoryInfo" /> objects.</returns>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid, such as being on an unmapped drive. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
+    /// <filterpriority>1</filterpriority>
+    public System.IO.DirectoryInfo[] GetDirectories()
+    {
+      return DirectoryInfo.GetDirectories();
+    }
+    
+    /// <summary>Retrieves an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> objects representing the files and subdirectories that match the specified search criteria.</summary>
+    /// <returns>An array of strongly typed FileSystemInfo objects matching the search criteria.</returns>
+    /// <param name="searchPattern">The search string to match against the names of directories and files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="searchPattern" /> is null. </exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern)
+    {
+      return DirectoryInfo.GetFileSystemInfos(searchPattern);
+    }
+    
+    /// <summary>Retrieves an array of <see cref="T:System.IO.FileSystemInfo" /> objects that represent the files and subdirectories matching the specified search criteria.</summary>
+    /// <returns>An array of file system entries that match the search criteria.</returns>
+    /// <param name="searchPattern">The search string to match against the names of directories and filesa.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+    /// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories. The default value is <see cref="F:System.IO.SearchOption.TopDirectoryOnly" />.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="searchPattern" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern, System.IO.SearchOption searchOption)
+    {
+      return DirectoryInfo.GetFileSystemInfos(searchPattern, searchOption);
+    }
+    
+    /// <summary>Returns an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries representing all the files and subdirectories in a directory.</summary>
+    /// <returns>An array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries.</returns>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.IO.FileSystemInfo[] GetFileSystemInfos()
+    {
+      return DirectoryInfo.GetFileSystemInfos();
+    }
+    
+    /// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria.</summary>
+    /// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
+    /// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="searchPattern" /> is null. </exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the DirectoryInfo object is invalid (for example, it is on an unmapped drive). </exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
+    /// <filterpriority>1</filterpriority>
+    public System.IO.DirectoryInfo[] GetDirectories(string searchPattern)
+    {
+      return DirectoryInfo.GetDirectories(searchPattern);
+    }
+    
+    /// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria and using a value to determine whether to search subdirectories.</summary>
+    /// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
+    /// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
+    /// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="searchPattern" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the DirectoryInfo object is invalid (for example, it is on an unmapped drive). </exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
+    public System.IO.DirectoryInfo[] GetDirectories(string searchPattern, System.IO.SearchOption searchOption)
+    {
+      return DirectoryInfo.GetDirectories(searchPattern, searchOption);
     }
     
     /// <summary>Returns an enumerable collection of directory information in the current directory.</summary>
@@ -364,180 +489,6 @@ namespace Wrapperator.Wrappers.IO
       return DirectoryInfo.EnumerateFileSystemInfos(searchPattern, searchOption);
     }
     
-    /// <summary>Gets a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control list (ACL) entries for the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
-    /// <returns>A <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control rules for the directory.</returns>
-    /// <exception cref="T:System.SystemException">The directory could not be found or modified.</exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The current process does not have access to open the directory.</exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurred while opening the directory.</exception>
-    /// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows 2000 or later.</exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The directory is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
-    /// <filterpriority>1</filterpriority>
-    public System.Security.AccessControl.DirectorySecurity GetAccessControl()
-    {
-      return DirectoryInfo.GetAccessControl();
-    }
-    
-    /// <summary>Gets a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the specified type of access control list (ACL) entries for the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
-    /// <returns>A <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object that encapsulates the access control rules for the file described by the <paramref name="path" /> parameter.ExceptionsException typeCondition<see cref="T:System.SystemException" />The directory could not be found or modified.<see cref="T:System.UnauthorizedAccessException" />The current process does not have access to open the directory.<see cref="T:System.IO.IOException" />An I/O error occurred while opening the directory.<see cref="T:System.PlatformNotSupportedException" />The current operating system is not Microsoft Windows 2000 or later.<see cref="T:System.UnauthorizedAccessException" />The directory is read-only.-or- This operation is not supported on the current platform.-or- The caller does not have the required permission.</returns>
-    /// <param name="includeSections">One of the <see cref="T:System.Security.AccessControl.AccessControlSections" /> values that specifies the type of access control list (ACL) information to receive.</param>
-    /// <filterpriority>1</filterpriority>
-    public System.Security.AccessControl.DirectorySecurity GetAccessControl(System.Security.AccessControl.AccessControlSections includeSections)
-    {
-      return DirectoryInfo.GetAccessControl(includeSections);
-    }
-    
-    /// <summary>Returns the subdirectories of the current directory.</summary>
-    /// <returns>An array of <see cref="T:System.IO.DirectoryInfo" /> objects.</returns>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the <see cref="T:System.IO.DirectoryInfo" /> object is invalid, such as being on an unmapped drive. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
-    /// <filterpriority>1</filterpriority>
-    public System.IO.DirectoryInfo[] GetDirectories()
-    {
-      return DirectoryInfo.GetDirectories();
-    }
-    
-    /// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria.</summary>
-    /// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
-    /// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="searchPattern" /> is null. </exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the DirectoryInfo object is invalid (for example, it is on an unmapped drive). </exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
-    /// <filterpriority>1</filterpriority>
-    public System.IO.DirectoryInfo[] GetDirectories(string searchPattern)
-    {
-      return DirectoryInfo.GetDirectories(searchPattern);
-    }
-    
-    /// <summary>Returns an array of directories in the current <see cref="T:System.IO.DirectoryInfo" /> matching the given search criteria and using a value to determine whether to search subdirectories.</summary>
-    /// <returns>An array of type DirectoryInfo matching <paramref name="searchPattern" />.</returns>
-    /// <param name="searchPattern">The search string to match against the names of directories.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
-    /// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="searchPattern" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path encapsulated in the DirectoryInfo object is invalid (for example, it is on an unmapped drive). </exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The caller does not have the required permission. </exception>
-    public System.IO.DirectoryInfo[] GetDirectories(string searchPattern, System.IO.SearchOption searchOption)
-    {
-      return DirectoryInfo.GetDirectories(searchPattern, searchOption);
-    }
-    
-    /// <summary>Returns a file list from the current directory matching the given search pattern.</summary>
-    /// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
-    /// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="searchPattern" /> is null. </exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    /// <filterpriority>1</filterpriority>
-    public System.IO.FileInfo[] GetFiles(string searchPattern)
-    {
-      return DirectoryInfo.GetFiles(searchPattern);
-    }
-    
-    /// <summary>Returns a file list from the current directory matching the given search pattern and using a value to determine whether to search subdirectories.</summary>
-    /// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
-    /// <param name="searchPattern">The search string to match against the names of files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
-    /// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="searchPattern" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    public System.IO.FileInfo[] GetFiles(string searchPattern, System.IO.SearchOption searchOption)
-    {
-      return DirectoryInfo.GetFiles(searchPattern, searchOption);
-    }
-    
-    /// <summary>Returns a file list from the current directory.</summary>
-    /// <returns>An array of type <see cref="T:System.IO.FileInfo" />.</returns>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid, such as being on an unmapped drive. </exception>
-    /// <filterpriority>1</filterpriority>
-    public System.IO.FileInfo[] GetFiles()
-    {
-      return DirectoryInfo.GetFiles();
-    }
-    
-    /// <summary>Retrieves an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> objects representing the files and subdirectories that match the specified search criteria.</summary>
-    /// <returns>An array of strongly typed FileSystemInfo objects matching the search criteria.</returns>
-    /// <param name="searchPattern">The search string to match against the names of directories and files.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="searchPattern" /> is null. </exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern)
-    {
-      return DirectoryInfo.GetFileSystemInfos(searchPattern);
-    }
-    
-    /// <summary>Retrieves an array of <see cref="T:System.IO.FileSystemInfo" /> objects that represent the files and subdirectories matching the specified search criteria.</summary>
-    /// <returns>An array of file system entries that match the search criteria.</returns>
-    /// <param name="searchPattern">The search string to match against the names of directories and filesa.  This parameter can contain a combination of valid literal path and wildcard (* and ?) characters (see Remarks), but doesn't support regular expressions. The default pattern is "*", which returns all files.</param>
-    /// <param name="searchOption">One of the enumeration values that specifies whether the search operation should include only the current directory or all subdirectories. The default value is <see cref="F:System.IO.SearchOption.TopDirectoryOnly" />.</param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="searchPattern " />contains one or more invalid characters defined by the <see cref="M:System.IO.Path.GetInvalidPathChars" /> method. </exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="searchPattern" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="searchOption" /> is not a valid <see cref="T:System.IO.SearchOption" /> value.</exception>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The specified path is invalid (for example, it is on an unmapped drive). </exception>
-    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
-    public System.IO.FileSystemInfo[] GetFileSystemInfos(string searchPattern, System.IO.SearchOption searchOption)
-    {
-      return DirectoryInfo.GetFileSystemInfos(searchPattern, searchOption);
-    }
-    
-    /// <summary>Returns an array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries representing all the files and subdirectories in a directory.</summary>
-    /// <returns>An array of strongly typed <see cref="T:System.IO.FileSystemInfo" /> entries.</returns>
-    /// <exception cref="T:System.IO.DirectoryNotFoundException">The path is invalid (for example, it is on an unmapped drive). </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.IO.FileSystemInfo[] GetFileSystemInfos()
-    {
-      return DirectoryInfo.GetFileSystemInfos();
-    }
-    
-    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object GetLifetimeService()
-    {
-      return DirectoryInfo.GetLifetimeService();
-    }
-    
-    /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
-    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param>
-    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param>
-    /// <filterpriority>2</filterpriority>
-    public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
-    {
-      DirectoryInfo.GetObjectData(info, context);
-    }
-    
-    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object InitializeLifetimeService()
-    {
-      return DirectoryInfo.InitializeLifetimeService();
-    }
-    
     /// <summary>Moves a <see cref="T:System.IO.DirectoryInfo" /> instance and its contents to a new path.</summary>
     /// <param name="destDirName">The name and path to which to move this directory. The destination cannot be another disk volume or a directory with the identical name. It can be an existing directory to which you want to add this directory as a subdirectory. </param>
     /// <exception cref="T:System.ArgumentNullException">
@@ -553,6 +504,29 @@ namespace Wrapperator.Wrappers.IO
       DirectoryInfo.MoveTo(destDirName);
     }
     
+    /// <summary>Deletes this <see cref="T:System.IO.DirectoryInfo" /> if it is empty.</summary>
+    /// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
+    /// <exception cref="T:System.IO.IOException">The directory is not empty. -or-The directory is the application's current working directory.-or-There is an open handle on the directory, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories. For more information, see How to: Enumerate Directories and Files.</exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <filterpriority>1</filterpriority>
+    public void Delete()
+    {
+      DirectoryInfo.Delete();
+    }
+    
+    /// <summary>Deletes this instance of a <see cref="T:System.IO.DirectoryInfo" />, specifying whether to delete subdirectories and files.</summary>
+    /// <param name="recursive">true to delete this directory, its subdirectories, and all files; otherwise, false. </param>
+    /// <exception cref="T:System.UnauthorizedAccessException">The directory contains a read-only file.</exception>
+    /// <exception cref="T:System.IO.DirectoryNotFoundException">The directory described by this <see cref="T:System.IO.DirectoryInfo" /> object does not exist or could not be found.</exception>
+    /// <exception cref="T:System.IO.IOException">The directory is read-only.-or- The directory contains one or more files or subdirectories and <paramref name="recursive" /> is false.-or-The directory is the application's current working directory. -or-There is an open handle on the directory or on one of its files, and the operating system is Windows XP or earlier. This open handle can result from enumerating directories and files. For more information, see How to: Enumerate Directories and Files.</exception>
+    /// <exception cref="T:System.Security.SecurityException">The caller does not have the required permission. </exception>
+    /// <filterpriority>1</filterpriority>
+    public void Delete(bool recursive)
+    {
+      DirectoryInfo.Delete(recursive);
+    }
+    
     /// <summary>Refreshes the state of the object.</summary>
     /// <exception cref="T:System.IO.IOException">A device such as a disk drive is not ready. </exception>
     /// <filterpriority>1</filterpriority>
@@ -561,16 +535,42 @@ namespace Wrapperator.Wrappers.IO
       DirectoryInfo.Refresh();
     }
     
-    /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.DirectorySecurity" /> object to the directory described by the current <see cref="T:System.IO.DirectoryInfo" /> object.</summary>
-    /// <param name="directorySecurity">An object that describes an ACL entry to apply to the directory described by the <paramref name="path" /> parameter.</param>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="directorySecurity" /> parameter is null.</exception>
-    /// <exception cref="T:System.SystemException">The file could not be found or modified.</exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The current process does not have access to open the file.</exception>
-    /// <exception cref="T:System.PlatformNotSupportedException">The current operating system is not Microsoft Windows 2000 or later.</exception>
-    /// <filterpriority>1</filterpriority>
-    public void SetAccessControl(System.Security.AccessControl.DirectorySecurity directorySecurity)
+    /// <summary>Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object with the file name and additional exception information.</summary>
+    /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown. </param>
+    /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination. </param>
+    /// <filterpriority>2</filterpriority>
+    public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      DirectoryInfo.SetAccessControl(directorySecurity);
+      DirectoryInfo.GetObjectData(info, context);
+    }
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
+    {
+      return DirectoryInfo.GetLifetimeService();
+    }
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object InitializeLifetimeService()
+    {
+      return DirectoryInfo.InitializeLifetimeService();
+    }
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
+    {
+      return DirectoryInfo.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
     }
   }
 }

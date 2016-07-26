@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.IO.Compression
   
   
   /// <summary>Provides methods and properties for compressing and decompressing streams by using the Deflate algorithm.</summary>
-  public partial class DeflateStreamWrapper : StreamWrapper, Wrapperator.Interfaces.IO.Compression.IDeflateStream
+  public class DeflateStreamWrapper : StreamWrapper, Wrapperator.Interfaces.IO.Compression.IDeflateStream
   {
     
     internal System.IO.Compression.DeflateStream DeflateStream { get; private set; }
@@ -41,27 +41,19 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
-    public new bool CanSeek
-    {
-      get
-      {
-        return DeflateStream.CanSeek;
-      }
-    }
-    
-    public new bool CanTimeout
-    {
-      get
-      {
-        return DeflateStream.CanTimeout;
-      }
-    }
-    
     public new bool CanWrite
     {
       get
       {
         return DeflateStream.CanWrite;
+      }
+    }
+    
+    public new bool CanSeek
+    {
+      get
+      {
+        return DeflateStream.CanSeek;
       }
     }
     
@@ -82,6 +74,14 @@ namespace Wrapperator.Wrappers.IO.Compression
       set
       {
         DeflateStream.Position = value;
+      }
+    }
+    
+    public new bool CanTimeout
+    {
+      get
+      {
+        return DeflateStream.CanTimeout;
       }
     }
     
@@ -109,6 +109,48 @@ namespace Wrapperator.Wrappers.IO.Compression
       }
     }
     
+    /// <summary>The current implementation of this method has no functionality.</summary>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed.</exception>
+    public new void Flush()
+    {
+      DeflateStream.Flush();
+    }
+    
+    /// <summary>This operation is not supported and always throws a <see cref="T:System.NotSupportedException" />.</summary>
+    /// <returns>A long value.</returns>
+    /// <param name="offset">The location in the stream.</param>
+    /// <param name="origin">One of the <see cref="T:System.IO.SeekOrigin" /> values.</param>
+    /// <exception cref="T:System.NotSupportedException">This property is not supported on this stream.</exception>
+    public new long Seek(long offset, System.IO.SeekOrigin origin)
+    {
+      return DeflateStream.Seek(offset, origin);
+    }
+    
+    /// <summary>This operation is not supported and always throws a <see cref="T:System.NotSupportedException" />.</summary>
+    /// <param name="value">The length of the stream.</param>
+    /// <exception cref="T:System.NotSupportedException">This property is not supported on this stream.</exception>
+    public new void SetLength(long value)
+    {
+      DeflateStream.SetLength(value);
+    }
+    
+    /// <summary>Reads a number of decompressed bytes into the specified byte array.</summary>
+    /// <returns>The number of bytes that were read into the byte array.</returns>
+    /// <param name="array">The array to store decompressed bytes.</param>
+    /// <param name="offset">The byte offset in <paramref name="array" /> at which the read bytes will be placed.</param>
+    /// <param name="count">The maximum number of decompressed bytes to read.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="array" /> is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.IO.Compression.CompressionMode" /> value was Compress when the object was created.- or - The underlying stream does not support reading.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="offset" /> or <paramref name="count" /> is less than zero.-or-<paramref name="array" /> length minus the index starting point is less than <paramref name="count" />.</exception>
+    /// <exception cref="T:System.IO.InvalidDataException">The data is in an invalid format.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed.</exception>
+    public new int Read(byte[] array, int offset, int count)
+    {
+      return DeflateStream.Read(array, offset, count);
+    }
+    
     /// <summary>Begins an asynchronous read operation. (Consider using the <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
     /// <returns>An  object that represents the asynchronous read operation, which could still be pending.</returns>
     /// <param name="array">The byte array to read the data into.</param>
@@ -124,6 +166,30 @@ namespace Wrapperator.Wrappers.IO.Compression
     public new System.IAsyncResult BeginRead(byte[] array, int offset, int count, System.AsyncCallback asyncCallback, object asyncState)
     {
       return DeflateStream.BeginRead(array, offset, count, asyncCallback, asyncState);
+    }
+    
+    /// <summary>Waits for the pending asynchronous read to complete. (Consider using the <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
+    /// <returns>The number of bytes read from the stream, between 0 (zero) and the number of bytes you requested. <see cref="T:System.IO.Compression.DeflateStream" /> returns 0 only at the end of the stream; otherwise, it blocks until at least one byte is available.</returns>
+    /// <param name="asyncResult">The reference to the pending asynchronous request to finish.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="asyncResult" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="asyncResult" /> did not originate from a <see cref="M:System.IO.Compression.DeflateStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)" /> method on the current stream.</exception>
+    /// <exception cref="T:System.SystemException">An exception was thrown during a call to <see cref="M:System.Threading.WaitHandle.WaitOne" />.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The end call is invalid because asynchronous read operations for this stream are not yet complete.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream is null.</exception>
+    public new int EndRead(System.IAsyncResult asyncResult)
+    {
+      return DeflateStream.EndRead(asyncResult);
+    }
+    
+    /// <summary>Writes compressed bytes to the underlying stream from the specified byte array.</summary>
+    /// <param name="array">The buffer that contains the data to compress.</param>
+    /// <param name="offset">The byte offset in <paramref name="array" /> from which the bytes will be read.</param>
+    /// <param name="count">The maximum number of bytes to write.</param>
+    public new void Write(byte[] array, int offset, int count)
+    {
+      DeflateStream.Write(array, offset, count);
     }
     
     /// <summary>Begins an asynchronous write operation. (Consider using the <see cref="M:System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
@@ -143,38 +209,18 @@ namespace Wrapperator.Wrappers.IO.Compression
       return DeflateStream.BeginWrite(array, offset, count, asyncCallback, asyncState);
     }
     
-    /// <summary>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream. Instead of calling this method, ensure that the stream is properly disposed.</summary>
-    /// <filterpriority>1</filterpriority>
-    public new void Close()
-    {
-      DeflateStream.Close();
-    }
-    
-    /// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
-    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <summary>Ends an asynchronous write operation. (Consider using the <see cref="M:System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
+    /// <param name="asyncResult">A reference to the outstanding asynchronous I/O request.</param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="destination" /> is null.</exception>
-    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-    public new void CopyTo(Wrapperator.Interfaces.IO.IStream destination)
+    ///  <paramref name="asyncResult" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentException">
+    ///  <paramref name="asyncResult" /> did not originate from a <see cref="M:System.IO.Compression.DeflateStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)" /> method on the current stream.</exception>
+    /// <exception cref="T:System.Exception">An exception was thrown during a call to <see cref="M:System.Threading.WaitHandle.WaitOne" />.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The stream is null.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The end write call is invalid.</exception>
+    public new void EndWrite(System.IAsyncResult asyncResult)
     {
-      DeflateStream.CopyTo(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination).Stream);
-    }
-    
-    /// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
-    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
-    /// <param name="bufferSize">The size of the buffer. This value must be greater than zero. The default size is 81920.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="destination" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="bufferSize" /> is negative or zero.</exception>
-    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
-    public new void CopyTo(Wrapperator.Interfaces.IO.IStream destination, int bufferSize)
-    {
-      DeflateStream.CopyTo(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination).Stream, bufferSize);
+      DeflateStream.EndWrite(asyncResult);
     }
     
     /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream.</summary>
@@ -220,40 +266,38 @@ namespace Wrapperator.Wrappers.IO.Compression
       return DeflateStream.CopyToAsync(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination).Stream, bufferSize, cancellationToken);
     }
     
-    /// <summary>Waits for the pending asynchronous read to complete. (Consider using the <see cref="M:System.IO.Stream.ReadAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
-    /// <returns>The number of bytes read from the stream, between 0 (zero) and the number of bytes you requested. <see cref="T:System.IO.Compression.DeflateStream" /> returns 0 only at the end of the stream; otherwise, it blocks until at least one byte is available.</returns>
-    /// <param name="asyncResult">The reference to the pending asynchronous request to finish.</param>
+    /// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="asyncResult" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="asyncResult" /> did not originate from a <see cref="M:System.IO.Compression.DeflateStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)" /> method on the current stream.</exception>
-    /// <exception cref="T:System.SystemException">An exception was thrown during a call to <see cref="M:System.Threading.WaitHandle.WaitOne" />.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The end call is invalid because asynchronous read operations for this stream are not yet complete.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream is null.</exception>
-    public new int EndRead(System.IAsyncResult asyncResult)
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+    public new void CopyTo(Wrapperator.Interfaces.IO.IStream destination)
     {
-      return DeflateStream.EndRead(asyncResult);
+      DeflateStream.CopyTo(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination).Stream);
     }
     
-    /// <summary>Ends an asynchronous write operation. (Consider using the <see cref="M:System.IO.Stream.WriteAsync(System.Byte[],System.Int32,System.Int32)" /> method instead; see the Remarks section.)</summary>
-    /// <param name="asyncResult">A reference to the outstanding asynchronous I/O request.</param>
+    /// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
+    /// <param name="destination">The stream to which the contents of the current stream will be copied.</param>
+    /// <param name="bufferSize">The size of the buffer. This value must be greater than zero. The default size is 81920.</param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="asyncResult" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="asyncResult" /> did not originate from a <see cref="M:System.IO.Compression.DeflateStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.AsyncCallback,System.Object)" /> method on the current stream.</exception>
-    /// <exception cref="T:System.Exception">An exception was thrown during a call to <see cref="M:System.Threading.WaitHandle.WaitOne" />.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The stream is null.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The end write call is invalid.</exception>
-    public new void EndWrite(System.IAsyncResult asyncResult)
+    ///  <paramref name="destination" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="bufferSize" /> is negative or zero.</exception>
+    /// <exception cref="T:System.NotSupportedException">The current stream does not support reading.-or-<paramref name="destination" /> does not support writing.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">Either the current stream or <paramref name="destination" /> were closed before the <see cref="M:System.IO.Stream.CopyTo(System.IO.Stream)" /> method was called.</exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
+    public new void CopyTo(Wrapperator.Interfaces.IO.IStream destination, int bufferSize)
     {
-      DeflateStream.EndWrite(asyncResult);
+      DeflateStream.CopyTo(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination).Stream, bufferSize);
     }
     
-    /// <summary>The current implementation of this method has no functionality.</summary>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed.</exception>
-    public new void Flush()
+    /// <summary>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream. Instead of calling this method, ensure that the stream is properly disposed.</summary>
+    /// <filterpriority>1</filterpriority>
+    public new void Close()
     {
-      DeflateStream.Flush();
+      DeflateStream.Close();
     }
     
     /// <summary>Asynchronously clears all buffers for this stream and causes any buffered data to be written to the underlying device.</summary>
@@ -271,23 +315,6 @@ namespace Wrapperator.Wrappers.IO.Compression
     public new System.Threading.Tasks.Task FlushAsync(System.Threading.CancellationToken cancellationToken)
     {
       return DeflateStream.FlushAsync(cancellationToken);
-    }
-    
-    /// <summary>Reads a number of decompressed bytes into the specified byte array.</summary>
-    /// <returns>The number of bytes that were read into the byte array.</returns>
-    /// <param name="array">The array to store decompressed bytes.</param>
-    /// <param name="offset">The byte offset in <paramref name="array" /> at which the read bytes will be placed.</param>
-    /// <param name="count">The maximum number of decompressed bytes to read.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="array" /> is null.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.IO.Compression.CompressionMode" /> value was Compress when the object was created.- or - The underlying stream does not support reading.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="offset" /> or <paramref name="count" /> is less than zero.-or-<paramref name="array" /> length minus the index starting point is less than <paramref name="count" />.</exception>
-    /// <exception cref="T:System.IO.InvalidDataException">The data is in an invalid format.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed.</exception>
-    public new int Read(byte[] array, int offset, int count)
-    {
-      return DeflateStream.Read(array, offset, count);
     }
     
     /// <summary>Asynchronously reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read.</summary>
@@ -327,43 +354,6 @@ namespace Wrapperator.Wrappers.IO.Compression
       return DeflateStream.ReadAsync(buffer, offset, count, cancellationToken);
     }
     
-    /// <summary>Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream.</summary>
-    /// <returns>The unsigned byte cast to an Int32, or -1 if at the end of the stream.</returns>
-    /// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
-    /// <filterpriority>2</filterpriority>
-    public new int ReadByte()
-    {
-      return DeflateStream.ReadByte();
-    }
-    
-    /// <summary>This operation is not supported and always throws a <see cref="T:System.NotSupportedException" />.</summary>
-    /// <returns>A long value.</returns>
-    /// <param name="offset">The location in the stream.</param>
-    /// <param name="origin">One of the <see cref="T:System.IO.SeekOrigin" /> values.</param>
-    /// <exception cref="T:System.NotSupportedException">This property is not supported on this stream.</exception>
-    public new long Seek(long offset, System.IO.SeekOrigin origin)
-    {
-      return DeflateStream.Seek(offset, origin);
-    }
-    
-    /// <summary>This operation is not supported and always throws a <see cref="T:System.NotSupportedException" />.</summary>
-    /// <param name="value">The length of the stream.</param>
-    /// <exception cref="T:System.NotSupportedException">This property is not supported on this stream.</exception>
-    public new void SetLength(long value)
-    {
-      DeflateStream.SetLength(value);
-    }
-    
-    /// <summary>Writes compressed bytes to the underlying stream from the specified byte array.</summary>
-    /// <param name="array">The buffer that contains the data to compress.</param>
-    /// <param name="offset">The byte offset in <paramref name="array" /> from which the bytes will be read.</param>
-    /// <param name="count">The maximum number of bytes to write.</param>
-    public new void Write(byte[] array, int offset, int count)
-    {
-      DeflateStream.Write(array, offset, count);
-    }
-    
     /// <summary>Asynchronously writes a sequence of bytes to the current stream and advances the current position within this stream by the number of bytes written.</summary>
     /// <returns>A task that represents the asynchronous write operation.</returns>
     /// <param name="buffer">The buffer to write data from.</param>
@@ -399,6 +389,16 @@ namespace Wrapperator.Wrappers.IO.Compression
     public new System.Threading.Tasks.Task WriteAsync(byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken)
     {
       return DeflateStream.WriteAsync(buffer, offset, count, cancellationToken);
+    }
+    
+    /// <summary>Reads a byte from the stream and advances the position within the stream by one byte, or returns -1 if at the end of the stream.</summary>
+    /// <returns>The unsigned byte cast to an Int32, or -1 if at the end of the stream.</returns>
+    /// <exception cref="T:System.NotSupportedException">The stream does not support reading. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">Methods were called after the stream was closed. </exception>
+    /// <filterpriority>2</filterpriority>
+    public new int ReadByte()
+    {
+      return DeflateStream.ReadByte();
     }
     
     /// <summary>Writes a byte to the current position in the stream and advances the position within the stream by one byte.</summary>

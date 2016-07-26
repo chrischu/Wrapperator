@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents a node that can contain other nodes.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXContainer : IXNode
+  public interface IXContainer : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
     System.Xml.Linq.XNode FirstNode

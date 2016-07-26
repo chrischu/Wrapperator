@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Writes primitive types in binary to a stream and supports writing strings in a specific encoding.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class BinaryWriterWrapper : Wrapperator.Interfaces.IO.IBinaryWriter
+  public class BinaryWriterWrapper : Wrapperator.Interfaces.IO.IBinaryWriter
   {
     
     internal System.IO.BinaryWriter BinaryWriter { get; private set; }
@@ -261,18 +261,18 @@ namespace Wrapperator.Wrappers.IO
       BinaryWriter.Write(value);
     }
     
+    public void Dispose()
+    {
+      this.Dispose(true);
+      System.GC.SuppressFinalize(this);
+    }
+    
     protected virtual void Dispose(bool disposing)
     {
       if (disposing)
       {
         BinaryWriter.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

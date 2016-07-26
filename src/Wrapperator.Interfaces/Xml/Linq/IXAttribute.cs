@@ -13,13 +13,8 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML attribute.</summary>
-  public partial interface IXAttribute : IXObject
+  public interface IXAttribute : Wrapperator.Interfaces.Xml.Linq.IXObject
   {
-    
-    System.Collections.Generic.IEnumerable<System.Xml.Linq.XAttribute> EmptySequence
-    {
-      get;
-    }
     
     bool IsNamespaceDeclaration
     {

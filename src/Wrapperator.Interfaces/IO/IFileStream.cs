@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.IO
   
   /// <summary>Exposes a <see cref="T:System.IO.Stream" /> around a file, supporting both synchronous and asynchronous read and write operations.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial interface IFileStream : System.IDisposable, IStream
+  public interface IFileStream : Wrapperator.Interfaces.IO.IStream
   {
     
     bool IsAsync
@@ -32,10 +32,6 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
-    /// <summary>Clears buffers for this stream and causes any buffered data to be written to the file, and also clears all intermediate file buffers.</summary>
-    /// <param name="flushToDisk">true to flush all intermediate file buffers; otherwise, false. </param>
-    void Flush(bool flushToDisk);
-    
     /// <summary>Gets a <see cref="T:System.Security.AccessControl.FileSecurity" /> object that encapsulates the access control list (ACL) entries for the file described by the current <see cref="T:System.IO.FileStream" /> object.</summary>
     /// <returns>An object that encapsulates the access control settings for the file described by the current <see cref="T:System.IO.FileStream" /> object.</returns>
     /// <exception cref="T:System.ObjectDisposedException">The file is closed.</exception>
@@ -44,6 +40,19 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.UnauthorizedAccessException">This operation is not supported on the current platform.-or- The caller does not have the required permission.</exception>
     /// <filterpriority>1</filterpriority>
     System.Security.AccessControl.FileSecurity GetAccessControl();
+    
+    /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.FileSecurity" /> object to the file described by the current <see cref="T:System.IO.FileStream" /> object.</summary>
+    /// <param name="fileSecurity">An object that describes an ACL entry to apply to the current file.</param>
+    /// <exception cref="T:System.ObjectDisposedException">The file is closed.</exception>
+    /// <exception cref="T:System.ArgumentNullException">The <paramref name="fileSecurity" /> parameter is null.</exception>
+    /// <exception cref="T:System.SystemException">The file could not be found or modified.</exception>
+    /// <exception cref="T:System.UnauthorizedAccessException">The current process does not have access to open the file.</exception>
+    /// <filterpriority>1</filterpriority>
+    void SetAccessControl(System.Security.AccessControl.FileSecurity fileSecurity);
+    
+    /// <summary>Clears buffers for this stream and causes any buffered data to be written to the file, and also clears all intermediate file buffers.</summary>
+    /// <param name="flushToDisk">true to flush all intermediate file buffers; otherwise, false. </param>
+    void Flush(bool flushToDisk);
     
     /// <summary>Prevents other processes from reading from or writing to the <see cref="T:System.IO.FileStream" />.</summary>
     /// <param name="position">The beginning of the range to lock. The value of this parameter must be equal to or greater than zero (0). </param>
@@ -54,15 +63,6 @@ namespace Wrapperator.Interfaces.IO
     /// <exception cref="T:System.IO.IOException">The process cannot access the file because another process has locked a portion of the file.</exception>
     /// <filterpriority>2</filterpriority>
     void Lock(long position, long length);
-    
-    /// <summary>Applies access control list (ACL) entries described by a <see cref="T:System.Security.AccessControl.FileSecurity" /> object to the file described by the current <see cref="T:System.IO.FileStream" /> object.</summary>
-    /// <param name="fileSecurity">An object that describes an ACL entry to apply to the current file.</param>
-    /// <exception cref="T:System.ObjectDisposedException">The file is closed.</exception>
-    /// <exception cref="T:System.ArgumentNullException">The <paramref name="fileSecurity" /> parameter is null.</exception>
-    /// <exception cref="T:System.SystemException">The file could not be found or modified.</exception>
-    /// <exception cref="T:System.UnauthorizedAccessException">The current process does not have access to open the file.</exception>
-    /// <filterpriority>1</filterpriority>
-    void SetAccessControl(System.Security.AccessControl.FileSecurity fileSecurity);
     
     /// <summary>Allows access by other processes to all or part of a file that was previously locked.</summary>
     /// <param name="position">The beginning of the range to unlock. </param>

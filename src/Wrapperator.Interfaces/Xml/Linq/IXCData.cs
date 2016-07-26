@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents a text node that contains CDATA. </summary>
-  public partial interface IXCData : IXText
+  public interface IXCData : Wrapperator.Interfaces.Xml.Linq.IXText
   {
   }
 }

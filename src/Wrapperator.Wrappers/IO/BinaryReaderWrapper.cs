@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Reads primitive data types as binary values in a specific encoding.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class BinaryReaderWrapper : Wrapperator.Interfaces.IO.IBinaryReader
+  public class BinaryReaderWrapper : Wrapperator.Interfaces.IO.IBinaryReader
   {
     
     internal System.IO.BinaryReader BinaryReader { get; private set; }
@@ -60,42 +60,6 @@ namespace Wrapperator.Wrappers.IO
       return BinaryReader.Read();
     }
     
-    /// <summary>Reads the specified number of characters from the stream, starting from a specified point in the character array.</summary>
-    /// <returns>The total number of characters read into the buffer. This might be less than the number of characters requested if that many characters are not currently available, or it might be zero if the end of the stream is reached.</returns>
-    /// <param name="buffer">The buffer to read data into. </param>
-    /// <param name="index">The starting point in the buffer at which to begin reading into the buffer. </param>
-    /// <param name="count">The number of characters to read. </param>
-    /// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />. -or-The number of decoded characters to read is greater than <paramref name="count" />. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public int Read(char[] buffer, int index, int count)
-    {
-      return BinaryReader.Read(buffer, index, count);
-    }
-    
-    /// <summary>Reads the specified number of bytes from the stream, starting from a specified point in the byte array. </summary>
-    /// <returns>The number of bytes read into <paramref name="buffer" />. This might be less than the number of bytes requested if that many bytes are not available, or it might be zero if the end of the stream is reached.</returns>
-    /// <param name="buffer">The buffer to read data into. </param>
-    /// <param name="index">The starting point in the buffer at which to begin reading into the buffer. </param>
-    /// <param name="count">The number of bytes to read. </param>
-    /// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />. -or-The number of decoded characters to read is greater than <paramref name="count" />. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public int Read(byte[] buffer, int index, int count)
-    {
-      return BinaryReader.Read(buffer, index, count);
-    }
-    
     /// <summary>Reads a Boolean value from the current stream and advances the current position of the stream by one byte.</summary>
     /// <returns>true if the byte is nonzero; otherwise, false.</returns>
     /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
@@ -118,18 +82,15 @@ namespace Wrapperator.Wrappers.IO
       return BinaryReader.ReadByte();
     }
     
-    /// <summary>Reads the specified number of bytes from the current stream into a byte array and advances the current position by that number of bytes.</summary>
-    /// <returns>A byte array containing data read from the underlying stream. This might be less than the number of bytes requested if the end of the stream is reached.</returns>
-    /// <param name="count">The number of bytes to read. This value must be 0 or a non-negative number or an exception will occur.</param>
-    /// <exception cref="T:System.ArgumentException">The number of decoded characters to read is greater than <paramref name="count" />. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <summary>Reads a signed byte from this stream and advances the current position of the stream by one byte.</summary>
+    /// <returns>A signed byte read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="count" /> is negative. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>2</filterpriority>
-    public byte[] ReadBytes(int count)
+    public sbyte ReadSByte()
     {
-      return BinaryReader.ReadBytes(count);
+      return BinaryReader.ReadSByte();
     }
     
     /// <summary>Reads the next character from the current stream and advances the current position of the stream in accordance with the Encoding used and the specific character being read from the stream.</summary>
@@ -142,6 +103,134 @@ namespace Wrapperator.Wrappers.IO
     public char ReadChar()
     {
       return BinaryReader.ReadChar();
+    }
+    
+    /// <summary>Reads a 2-byte signed integer from the current stream and advances the current position of the stream by two bytes.</summary>
+    /// <returns>A 2-byte signed integer read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public short ReadInt16()
+    {
+      return BinaryReader.ReadInt16();
+    }
+    
+    /// <summary>Reads a 2-byte unsigned integer from the current stream using little-endian encoding and advances the position of the stream by two bytes.</summary>
+    /// <returns>A 2-byte unsigned integer read from this stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public ushort ReadUInt16()
+    {
+      return BinaryReader.ReadUInt16();
+    }
+    
+    /// <summary>Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.</summary>
+    /// <returns>A 4-byte signed integer read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public int ReadInt32()
+    {
+      return BinaryReader.ReadInt32();
+    }
+    
+    /// <summary>Reads a 4-byte unsigned integer from the current stream and advances the position of the stream by four bytes.</summary>
+    /// <returns>A 4-byte unsigned integer read from this stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public uint ReadUInt32()
+    {
+      return BinaryReader.ReadUInt32();
+    }
+    
+    /// <summary>Reads an 8-byte signed integer from the current stream and advances the current position of the stream by eight bytes.</summary>
+    /// <returns>An 8-byte signed integer read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public long ReadInt64()
+    {
+      return BinaryReader.ReadInt64();
+    }
+    
+    /// <summary>Reads an 8-byte unsigned integer from the current stream and advances the position of the stream by eight bytes.</summary>
+    /// <returns>An 8-byte unsigned integer read from this stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <filterpriority>2</filterpriority>
+    public ulong ReadUInt64()
+    {
+      return BinaryReader.ReadUInt64();
+    }
+    
+    /// <summary>Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.</summary>
+    /// <returns>A 4-byte floating point value read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public float ReadSingle()
+    {
+      return BinaryReader.ReadSingle();
+    }
+    
+    /// <summary>Reads an 8-byte floating point value from the current stream and advances the current position of the stream by eight bytes.</summary>
+    /// <returns>An 8-byte floating point value read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public double ReadDouble()
+    {
+      return BinaryReader.ReadDouble();
+    }
+    
+    /// <summary>Reads a decimal value from the current stream and advances the current position of the stream by sixteen bytes.</summary>
+    /// <returns>A decimal value read from the current stream.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public decimal ReadDecimal()
+    {
+      return BinaryReader.ReadDecimal();
+    }
+    
+    /// <summary>Reads a string from the current stream. The string is prefixed with the length, encoded as an integer seven bits at a time.</summary>
+    /// <returns>The string being read.</returns>
+    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public string ReadString()
+    {
+      return BinaryReader.ReadString();
+    }
+    
+    /// <summary>Reads the specified number of characters from the stream, starting from a specified point in the character array.</summary>
+    /// <returns>The total number of characters read into the buffer. This might be less than the number of characters requested if that many characters are not currently available, or it might be zero if the end of the stream is reached.</returns>
+    /// <param name="buffer">The buffer to read data into. </param>
+    /// <param name="index">The starting point in the buffer at which to begin reading into the buffer. </param>
+    /// <param name="count">The number of characters to read. </param>
+    /// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />. -or-The number of decoded characters to read is greater than <paramref name="count" />. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>2</filterpriority>
+    public int Read(char[] buffer, int index, int count)
+    {
+      return BinaryReader.Read(buffer, index, count);
     }
     
     /// <summary>Reads the specified number of characters from the current stream, returns the data in a character array, and advances the current position in accordance with the Encoding used and the specific character being read from the stream.</summary>
@@ -158,125 +247,42 @@ namespace Wrapperator.Wrappers.IO
       return BinaryReader.ReadChars(count);
     }
     
-    /// <summary>Reads a decimal value from the current stream and advances the current position of the stream by sixteen bytes.</summary>
-    /// <returns>A decimal value read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
+    /// <summary>Reads the specified number of bytes from the stream, starting from a specified point in the byte array. </summary>
+    /// <returns>The number of bytes read into <paramref name="buffer" />. This might be less than the number of bytes requested if that many bytes are not available, or it might be zero if the end of the stream is reached.</returns>
+    /// <param name="buffer">The buffer to read data into. </param>
+    /// <param name="index">The starting point in the buffer at which to begin reading into the buffer. </param>
+    /// <param name="count">The number of bytes to read. </param>
+    /// <exception cref="T:System.ArgumentException">The buffer length minus <paramref name="index" /> is less than <paramref name="count" />. -or-The number of decoded characters to read is greater than <paramref name="count" />. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative. </exception>
     /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
     /// <filterpriority>2</filterpriority>
-    public decimal ReadDecimal()
+    public int Read(byte[] buffer, int index, int count)
     {
-      return BinaryReader.ReadDecimal();
+      return BinaryReader.Read(buffer, index, count);
     }
     
-    /// <summary>Reads an 8-byte floating point value from the current stream and advances the current position of the stream by eight bytes.</summary>
-    /// <returns>An 8-byte floating point value read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <summary>Reads the specified number of bytes from the current stream into a byte array and advances the current position by that number of bytes.</summary>
+    /// <returns>A byte array containing data read from the underlying stream. This might be less than the number of bytes requested if the end of the stream is reached.</returns>
+    /// <param name="count">The number of bytes to read. This value must be 0 or a non-negative number or an exception will occur.</param>
+    /// <exception cref="T:System.ArgumentException">The number of decoded characters to read is greater than <paramref name="count" />. This can happen if a Unicode decoder returns fallback characters or a surrogate pair.</exception>
     /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="count" /> is negative. </exception>
     /// <filterpriority>2</filterpriority>
-    public double ReadDouble()
+    public byte[] ReadBytes(int count)
     {
-      return BinaryReader.ReadDouble();
+      return BinaryReader.ReadBytes(count);
     }
     
-    /// <summary>Reads a 2-byte signed integer from the current stream and advances the current position of the stream by two bytes.</summary>
-    /// <returns>A 2-byte signed integer read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public short ReadInt16()
+    public void Dispose()
     {
-      return BinaryReader.ReadInt16();
-    }
-    
-    /// <summary>Reads a 4-byte signed integer from the current stream and advances the current position of the stream by four bytes.</summary>
-    /// <returns>A 4-byte signed integer read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public int ReadInt32()
-    {
-      return BinaryReader.ReadInt32();
-    }
-    
-    /// <summary>Reads an 8-byte signed integer from the current stream and advances the current position of the stream by eight bytes.</summary>
-    /// <returns>An 8-byte signed integer read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public long ReadInt64()
-    {
-      return BinaryReader.ReadInt64();
-    }
-    
-    /// <summary>Reads a signed byte from this stream and advances the current position of the stream by one byte.</summary>
-    /// <returns>A signed byte read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public sbyte ReadSByte()
-    {
-      return BinaryReader.ReadSByte();
-    }
-    
-    /// <summary>Reads a 4-byte floating point value from the current stream and advances the current position of the stream by four bytes.</summary>
-    /// <returns>A 4-byte floating point value read from the current stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public float ReadSingle()
-    {
-      return BinaryReader.ReadSingle();
-    }
-    
-    /// <summary>Reads a string from the current stream. The string is prefixed with the length, encoded as an integer seven bits at a time.</summary>
-    /// <returns>The string being read.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public string ReadString()
-    {
-      return BinaryReader.ReadString();
-    }
-    
-    /// <summary>Reads a 2-byte unsigned integer from the current stream using little-endian encoding and advances the position of the stream by two bytes.</summary>
-    /// <returns>A 2-byte unsigned integer read from this stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public ushort ReadUInt16()
-    {
-      return BinaryReader.ReadUInt16();
-    }
-    
-    /// <summary>Reads a 4-byte unsigned integer from the current stream and advances the position of the stream by four bytes.</summary>
-    /// <returns>A 4-byte unsigned integer read from this stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>2</filterpriority>
-    public uint ReadUInt32()
-    {
-      return BinaryReader.ReadUInt32();
-    }
-    
-    /// <summary>Reads an 8-byte unsigned integer from the current stream and advances the position of the stream by eight bytes.</summary>
-    /// <returns>An 8-byte unsigned integer read from this stream.</returns>
-    /// <exception cref="T:System.IO.EndOfStreamException">The end of the stream is reached. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream is closed. </exception>
-    /// <filterpriority>2</filterpriority>
-    public ulong ReadUInt64()
-    {
-      return BinaryReader.ReadUInt64();
+      this.Dispose(true);
+      System.GC.SuppressFinalize(this);
     }
     
     protected virtual void Dispose(bool disposing)
@@ -285,12 +291,6 @@ namespace Wrapperator.Wrappers.IO
       {
         BinaryReader.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

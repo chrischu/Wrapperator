@@ -9,6 +9,7 @@ using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using Wrapperator.Options;
 
 namespace Wrapperator
 {
@@ -77,7 +78,7 @@ namespace Wrapperator
                   typeof(XmlReader)
               })
           {
-            WrapParameterTypes = true
+              WrapParameterTypes = true
           }
           );
     }

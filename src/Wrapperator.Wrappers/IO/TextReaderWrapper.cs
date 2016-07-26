@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Represents a reader that can read a sequential series of characters.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class TextReaderWrapper : Wrapperator.Interfaces.IO.ITextReader
+  public class TextReaderWrapper : Wrapperator.Interfaces.IO.ITextReader
   {
     
     internal System.IO.TextReader TextReader { get; private set; }
@@ -30,35 +30,6 @@ namespace Wrapperator.Wrappers.IO
     public void Close()
     {
       TextReader.Close();
-    }
-    
-    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
-    /// <returns>Information required to generate a proxy.</returns>
-    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
-    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
-    {
-      return TextReader.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
-    }
-    
-    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object GetLifetimeService()
-    {
-      return TextReader.GetLifetimeService();
-    }
-    
-    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
-    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
-    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
-    /// <filterpriority>2</filterpriority>
-    public object InitializeLifetimeService()
-    {
-      return TextReader.InitializeLifetimeService();
     }
     
     /// <summary>Reads the next character without changing the state of the reader or the character source. Returns the next available character without actually reading it from the reader.</summary>
@@ -99,21 +70,16 @@ namespace Wrapperator.Wrappers.IO
       return TextReader.Read(buffer, index, count);
     }
     
-    /// <summary>Reads a specified maximum number of characters from the current text reader asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
-    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the text has been reached.</returns>
-    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
-    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
-    /// <param name="count">The maximum number of characters to read. If the end of the text is reached before the specified number of characters is read into the buffer, the current method returns.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The text reader has been disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
+    /// <summary>Reads all characters from the current position to the end of the text reader and returns them as one string.</summary>
+    /// <returns>A string that contains all characters from the current position to the end of the text reader.</returns>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextReader" /> is closed. </exception>
+    /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters in the next line is larger than <see cref="F:System.Int32.MaxValue" /></exception>
+    /// <filterpriority>1</filterpriority>
+    public string ReadToEnd()
     {
-      return TextReader.ReadAsync(buffer, index, count);
+      return TextReader.ReadToEnd();
     }
     
     /// <summary>Reads a specified maximum number of characters from the current text reader and writes the data to a buffer, beginning at the specified index.</summary>
@@ -132,23 +98,6 @@ namespace Wrapperator.Wrappers.IO
     public int ReadBlock(char[] buffer, int index, int count)
     {
       return TextReader.ReadBlock(buffer, index, count);
-    }
-    
-    /// <summary>Reads a specified maximum number of characters from the current text reader asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
-    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the text has been reached.</returns>
-    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
-    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
-    /// <param name="count">The maximum number of characters to read. If the end of the text is reached before the specified number of characters is read into the buffer, the current method returns.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The text reader has been disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
-    {
-      return TextReader.ReadBlockAsync(buffer, index, count);
     }
     
     /// <summary>Reads a line of characters from the text reader and returns the data as a string.</summary>
@@ -173,18 +122,6 @@ namespace Wrapperator.Wrappers.IO
       return TextReader.ReadLineAsync();
     }
     
-    /// <summary>Reads all characters from the current position to the end of the text reader and returns them as one string.</summary>
-    /// <returns>A string that contains all characters from the current position to the end of the text reader.</returns>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <exception cref="T:System.ObjectDisposedException">The <see cref="T:System.IO.TextReader" /> is closed. </exception>
-    /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters in the next line is larger than <see cref="F:System.Int32.MaxValue" /></exception>
-    /// <filterpriority>1</filterpriority>
-    public string ReadToEnd()
-    {
-      return TextReader.ReadToEnd();
-    }
-    
     /// <summary>Reads all characters from the current position to the end of the text reader asynchronously and returns them as one string.</summary>
     /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains a string with the characters from the current position to the end of the text reader. </returns>
     /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
@@ -195,15 +132,73 @@ namespace Wrapperator.Wrappers.IO
       return TextReader.ReadToEndAsync();
     }
     
-    /// <summary>Creates a thread-safe wrapper around the specified TextReader.</summary>
-    /// <returns>A thread-safe <see cref="T:System.IO.TextReader" />.</returns>
-    /// <param name="reader">The TextReader to synchronize. </param>
+    /// <summary>Reads a specified maximum number of characters from the current text reader asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
+    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the text has been reached.</returns>
+    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
+    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
+    /// <param name="count">The maximum number of characters to read. If the end of the text is reached before the specified number of characters is read into the buffer, the current method returns.</param>
     /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="reader" /> is null. </exception>
-    /// <filterpriority>2</filterpriority>
-    public Wrapperator.Interfaces.IO.ITextReader Synchronized(Wrapperator.Interfaces.IO.ITextReader reader)
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The text reader has been disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
+    public System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
     {
-      return new Wrapperator.Wrappers.IO.TextReaderWrapper(System.IO.TextReader.Synchronized(reader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)reader).TextReader));
+      return TextReader.ReadAsync(buffer, index, count);
+    }
+    
+    /// <summary>Reads a specified maximum number of characters from the current text reader asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
+    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the text has been reached.</returns>
+    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
+    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
+    /// <param name="count">The maximum number of characters to read. If the end of the text is reached before the specified number of characters is read into the buffer, the current method returns.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The text reader has been disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
+    public System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
+    {
+      return TextReader.ReadBlockAsync(buffer, index, count);
+    }
+    
+    /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object GetLifetimeService()
+    {
+      return TextReader.GetLifetimeService();
+    }
+    
+    /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
+    /// <returns>An object of type <see cref="T:System.Runtime.Remoting.Lifetime.ILease" /> used to control the lifetime policy for this instance. This is the current lifetime service object for this instance if one exists; otherwise, a new lifetime service object initialized to the value of the <see cref="P:System.Runtime.Remoting.Lifetime.LifetimeServices.LeaseManagerPollTime" /> property.</returns>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public object InitializeLifetimeService()
+    {
+      return TextReader.InitializeLifetimeService();
+    }
+    
+    /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
+    /// <returns>Information required to generate a proxy.</returns>
+    /// <param name="requestedType">The <see cref="T:System.Type" /> of the object that the new <see cref="T:System.Runtime.Remoting.ObjRef" /> will reference. </param>
+    /// <exception cref="T:System.Runtime.Remoting.RemotingException">This instance is not a valid remoting object. </exception>
+    /// <exception cref="T:System.Security.SecurityException">The immediate caller does not have infrastructure permission. </exception>
+    /// <filterpriority>2</filterpriority>
+    public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
+    {
+      return TextReader.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
+    }
+    
+    public void Dispose()
+    {
+      this.Dispose(true);
+      System.GC.SuppressFinalize(this);
     }
     
     protected virtual void Dispose(bool disposing)
@@ -212,12 +207,6 @@ namespace Wrapperator.Wrappers.IO
       {
         TextReader.Dispose();
       }
-    }
-    
-    public void Dispose()
-    {
-      this.Dispose(true);
-      System.GC.SuppressFinalize(this);
     }
   }
 }

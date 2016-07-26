@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   /// <summary>Represents an XML declaration.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IXDeclaration
+  public interface IXDeclaration
   {
     
     string Encoding

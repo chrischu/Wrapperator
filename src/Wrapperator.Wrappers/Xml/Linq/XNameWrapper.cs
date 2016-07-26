@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents a name of an XML element or attribute. </summary>
-  public partial class XNameWrapper : Wrapperator.Interfaces.Xml.Linq.IXName
+  public class XNameWrapper : Wrapperator.Interfaces.Xml.Linq.IXName
   {
     
     internal System.Xml.Linq.XName XName { get; private set; }
@@ -46,23 +46,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       {
         return XName.NamespaceName;
       }
-    }
-    
-    /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from an expanded name.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object constructed from the expanded name.</returns>
-    /// <param name="expandedName">A <see cref="T:System.String" /> that contains an expanded XML name in the format {namespace}localname.</param>
-    public Wrapperator.Interfaces.Xml.Linq.IXName Get(string expandedName)
-    {
-      return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(System.Xml.Linq.XName.Get(expandedName));
-    }
-    
-    /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from a local name and a namespace.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object created from the specified local name and namespace.</returns>
-    /// <param name="localName">A local (unqualified) name.</param>
-    /// <param name="namespaceName">An XML namespace.</param>
-    public Wrapperator.Interfaces.Xml.Linq.IXName Get(string localName, string namespaceName)
-    {
-      return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(System.Xml.Linq.XName.Get(localName, namespaceName));
     }
   }
 }

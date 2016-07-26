@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML processing instruction. </summary>
-  public partial interface IXProcessingInstruction : IXNode
+  public interface IXProcessingInstruction : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
     string Data

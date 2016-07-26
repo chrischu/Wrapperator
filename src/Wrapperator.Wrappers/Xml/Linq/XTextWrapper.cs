@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents a text node. </summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XTextWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXText
+  public class XTextWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXText
   {
     
     internal System.Xml.Linq.XText XText { get; private set; }
@@ -24,6 +24,42 @@ namespace Wrapperator.Wrappers.Xml.Linq
         base(xText)
     {
       XText = xText;
+    }
+    
+    public new System.Xml.XmlNodeType NodeType
+    {
+      get
+      {
+        return XText.NodeType;
+      }
+    }
+    
+    public string Value
+    {
+      get
+      {
+        return XText.Value;
+      }
+      set
+      {
+        XText.Value = value;
+      }
+    }
+    
+    public new System.Xml.Linq.XNode NextNode
+    {
+      get
+      {
+        return XText.NextNode;
+      }
+    }
+    
+    public new System.Xml.Linq.XNode PreviousNode
+    {
+      get
+      {
+        return XText.PreviousNode;
+      }
     }
     
     public new string BaseUri
@@ -42,22 +78,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XNode NextNode
-    {
-      get
-      {
-        return XText.NextNode;
-      }
-    }
-    
-    public new System.Xml.XmlNodeType NodeType
-    {
-      get
-      {
-        return XText.NodeType;
-      }
-    }
-    
     public new System.Xml.Linq.XElement Parent
     {
       get
@@ -66,24 +86,12 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XNode PreviousNode
+    /// <summary>Writes this node to an <see cref="T:System.Xml.XmlWriter" />.</summary>
+    /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
+    /// <filterpriority>2</filterpriority>
+    public new void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      get
-      {
-        return XText.PreviousNode;
-      }
-    }
-    
-    public string Value
-    {
-      get
-      {
-        return XText.Value;
-      }
-      set
-      {
-        XText.Value = value;
-      }
+      XText.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer).XmlWriter);
     }
     
     /// <summary>Adds the specified content immediately after this node.</summary>
@@ -100,13 +108,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public new void AddAfterSelf(object[] content)
     {
       XText.AddAfterSelf(content);
-    }
-    
-    /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
-    /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
-    public new void AddAnnotation(object annotation)
-    {
-      XText.AddAnnotation(annotation);
     }
     
     /// <summary>Adds the specified content immediately before this node.</summary>
@@ -140,40 +141,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       return XText.Ancestors(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name).XName);
     }
     
-    /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
-    /// <returns>The <see cref="T:System.Object" /> that contains the first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
-    /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
-    public new object Annotation(Wrapperator.Interfaces.IType type)
-    {
-      return XText.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
-    }
-    
-    /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
-    /// <returns>The first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
-    /// <typeparam name="T">The type of the annotation to retrieve.</typeparam>
-    public new T Annotation<T>()
-      where T :  class
-    {
-      return XText.Annotation<T>();
-    }
-    
-    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
-    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Object" /> that contains the annotations that match the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
-    /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
-    public new System.Collections.Generic.IEnumerable<object> Annotations(Wrapperator.Interfaces.IType type)
-    {
-      return XText.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
-    }
-    
-    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
-    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the annotations for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
-    /// <typeparam name="T">The type of the annotations to retrieve.</typeparam>
-    public new System.Collections.Generic.IEnumerable<T> Annotations<T>()
-      where T :  class
-    {
-      return XText.Annotations<T>();
-    }
-    
     /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> for this node.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlReader" /> that can be used to read this node and its descendants.</returns>
     /// <filterpriority>2</filterpriority>
@@ -188,6 +155,20 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public new Wrapperator.Interfaces.Xml.IXmlReader CreateReader(System.Xml.Linq.ReaderOptions readerOptions)
     {
       return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(XText.CreateReader(readerOptions));
+    }
+    
+    /// <summary>Returns a collection of the sibling nodes after this node, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes after this node, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesAfterSelf()
+    {
+      return XText.NodesAfterSelf();
+    }
+    
+    /// <summary>Returns a collection of the sibling nodes before this node, in document order.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes before this node, in document order.</returns>
+    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesBeforeSelf()
+    {
+      return XText.NodesBeforeSelf();
     }
     
     /// <summary>Returns a collection of the sibling elements after this node, in document order.</summary>
@@ -236,40 +217,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       return XText.IsBefore(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node).XNode);
     }
     
-    /// <summary>Returns a collection of the sibling nodes after this node, in document order.</summary>
-    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes after this node, in document order.</returns>
-    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesAfterSelf()
-    {
-      return XText.NodesAfterSelf();
-    }
-    
-    /// <summary>Returns a collection of the sibling nodes before this node, in document order.</summary>
-    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes before this node, in document order.</returns>
-    public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesBeforeSelf()
-    {
-      return XText.NodesBeforeSelf();
-    }
-    
     /// <summary>Removes this node from its parent.</summary>
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
     public new void Remove()
     {
       XText.Remove();
-    }
-    
-    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
-    /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
-    public new void RemoveAnnotations(Wrapperator.Interfaces.IType type)
-    {
-      XText.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
-    }
-    
-    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
-    /// <typeparam name="T">The type of annotations to remove.</typeparam>
-    public new void RemoveAnnotations<T>()
-      where T :  class
-    {
-      XText.RemoveAnnotations<T>();
     }
     
     /// <summary>Replaces this node with the specified content.</summary>
@@ -286,12 +238,60 @@ namespace Wrapperator.Wrappers.Xml.Linq
       XText.ReplaceWith(content);
     }
     
-    /// <summary>Writes this node to an <see cref="T:System.Xml.XmlWriter" />.</summary>
-    /// <param name="writer">An <see cref="T:System.Xml.XmlWriter" /> into which this method will write.</param>
-    /// <filterpriority>2</filterpriority>
-    public new void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer)
+    /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
+    public new void AddAnnotation(object annotation)
     {
-      XText.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer).XmlWriter);
+      XText.AddAnnotation(annotation);
+    }
+    
+    /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> that contains the first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
+    public new object Annotation(Wrapperator.Interfaces.IType type)
+    {
+      return XText.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+    }
+    
+    /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
+    /// <returns>The first annotation object that matches the specified type, or null if no annotation is of the specified type.</returns>
+    /// <typeparam name="T">The type of the annotation to retrieve.</typeparam>
+    public new T Annotation<T>()
+      where T :  class
+    {
+      return XText.Annotation<T>();
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Object" /> that contains the annotations that match the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
+    public new System.Collections.Generic.IEnumerable<object> Annotations(Wrapperator.Interfaces.IType type)
+    {
+      return XText.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+    }
+    
+    /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> that contains the annotations for this <see cref="T:System.Xml.Linq.XObject" />.</returns>
+    /// <typeparam name="T">The type of the annotations to retrieve.</typeparam>
+    public new System.Collections.Generic.IEnumerable<T> Annotations<T>()
+      where T :  class
+    {
+      return XText.Annotations<T>();
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
+    public new void RemoveAnnotations(Wrapperator.Interfaces.IType type)
+    {
+      XText.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+    }
+    
+    /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
+    /// <typeparam name="T">The type of annotations to remove.</typeparam>
+    public new void RemoveAnnotations<T>()
+      where T :  class
+    {
+      XText.RemoveAnnotations<T>();
     }
   }
 }

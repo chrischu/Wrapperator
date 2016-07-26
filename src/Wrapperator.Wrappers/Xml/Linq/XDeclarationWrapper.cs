@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents an XML declaration.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XDeclarationWrapper : Wrapperator.Interfaces.Xml.Linq.IXDeclaration
+  public class XDeclarationWrapper : Wrapperator.Interfaces.Xml.Linq.IXDeclaration
   {
     
     internal System.Xml.Linq.XDeclaration XDeclaration { get; private set; }

@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
   
   
   /// <summary>Represents a collection of associated <see cref="T:System.String" /> keys and <see cref="T:System.String" /> values that can be accessed either with the key or with the index.</summary>
-  public partial class NameValueCollectionWrapper : Wrapperator.Interfaces.Collections.Specialized.INameValueCollection
+  public class NameValueCollectionWrapper : Wrapperator.Interfaces.Collections.Specialized.INameValueCollection
   {
     
     internal System.Collections.Specialized.NameValueCollection NameValueCollection { get; private set; }
@@ -22,22 +22,6 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     public NameValueCollectionWrapper(System.Collections.Specialized.NameValueCollection nameValueCollection)
     {
       NameValueCollection = nameValueCollection;
-    }
-    
-    public string[] AllKeys
-    {
-      get
-      {
-        return NameValueCollection.AllKeys;
-      }
-    }
-    
-    public int Count
-    {
-      get
-      {
-        return NameValueCollection.Count;
-      }
     }
     
     public string this[string name]
@@ -60,6 +44,22 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       }
     }
     
+    public string[] AllKeys
+    {
+      get
+      {
+        return NameValueCollection.AllKeys;
+      }
+    }
+    
+    public int Count
+    {
+      get
+      {
+        return NameValueCollection.Count;
+      }
+    }
+    
     public System.Collections.Specialized.NameObjectCollectionBase.KeysCollection Keys
     {
       get
@@ -76,15 +76,6 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     public void Add(Wrapperator.Interfaces.Collections.Specialized.INameValueCollection c)
     {
       NameValueCollection.Add(c == null ? default(System.Collections.Specialized.NameValueCollection) : ((Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper)c).NameValueCollection);
-    }
-    
-    /// <summary>Adds an entry with the specified name and value to the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
-    /// <param name="name">The <see cref="T:System.String" /> key of the entry to add. The key can be null.</param>
-    /// <param name="value">The <see cref="T:System.String" /> value of the entry to add. The value can be null.</param>
-    /// <exception cref="T:System.NotSupportedException">The collection is read-only. </exception>
-    public void Add(string name, string value)
-    {
-      NameValueCollection.Add(name, value);
     }
     
     /// <summary>Invalidates the cached arrays and removes all entries from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -109,12 +100,53 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       NameValueCollection.CopyTo(dest, index);
     }
     
+    /// <summary>Gets a value indicating whether the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null.</summary>
+    /// <returns>true if the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null; otherwise, false.</returns>
+    public bool HasKeys()
+    {
+      return NameValueCollection.HasKeys();
+    }
+    
+    /// <summary>Adds an entry with the specified name and value to the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
+    /// <param name="name">The <see cref="T:System.String" /> key of the entry to add. The key can be null.</param>
+    /// <param name="value">The <see cref="T:System.String" /> value of the entry to add. The value can be null.</param>
+    /// <exception cref="T:System.NotSupportedException">The collection is read-only. </exception>
+    public void Add(string name, string value)
+    {
+      NameValueCollection.Add(name, value);
+    }
+    
     /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" /> combined into one comma-separated list.</summary>
     /// <returns>A <see cref="T:System.String" /> that contains a comma-separated list of the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
     /// <param name="name">The <see cref="T:System.String" /> key of the entry that contains the values to get. The key can be null.</param>
     public string Get(string name)
     {
       return NameValueCollection.Get(name);
+    }
+    
+    /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
+    /// <returns>A <see cref="T:System.String" /> array that contains the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
+    /// <param name="name">The <see cref="T:System.String" /> key of the entry that contains the values to get. The key can be null.</param>
+    public string[] GetValues(string name)
+    {
+      return NameValueCollection.GetValues(name);
+    }
+    
+    /// <summary>Sets the value of an entry in the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
+    /// <param name="name">The <see cref="T:System.String" /> key of the entry to add the new value to. The key can be null.</param>
+    /// <param name="value">The <see cref="T:System.Object" /> that represents the new value to add to the specified entry. The value can be null.</param>
+    /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
+    public void Set(string name, string value)
+    {
+      NameValueCollection.Set(name, value);
+    }
+    
+    /// <summary>Removes the entries with the specified key from the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
+    /// <param name="name">The <see cref="T:System.String" /> key of the entry to remove. The key can be null.</param>
+    /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
+    public void Remove(string name)
+    {
+      NameValueCollection.Remove(name);
     }
     
     /// <summary>Gets the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" /> combined into one comma-separated list.</summary>
@@ -127,11 +159,14 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       return NameValueCollection.Get(index);
     }
     
-    /// <summary>Returns an enumerator that iterates through the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" />.</summary>
-    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> for the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</returns>
-    public System.Collections.IEnumerator GetEnumerator()
+    /// <summary>Gets the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
+    /// <returns>A <see cref="T:System.String" /> array that contains the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
+    /// <param name="index">The zero-based index of the entry that contains the values to get from the collection.</param>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> is outside the valid range of indexes for the collection. </exception>
+    public string[] GetValues(int index)
     {
-      return NameValueCollection.GetEnumerator();
+      return NameValueCollection.GetValues(index);
     }
     
     /// <summary>Gets the key at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
@@ -154,31 +189,6 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       NameValueCollection.GetObjectData(info, context);
     }
     
-    /// <summary>Gets the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
-    /// <returns>A <see cref="T:System.String" /> array that contains the values associated with the specified key from the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
-    /// <param name="name">The <see cref="T:System.String" /> key of the entry that contains the values to get. The key can be null.</param>
-    public string[] GetValues(string name)
-    {
-      return NameValueCollection.GetValues(name);
-    }
-    
-    /// <summary>Gets the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
-    /// <returns>A <see cref="T:System.String" /> array that contains the values at the specified index of the <see cref="T:System.Collections.Specialized.NameValueCollection" />, if found; otherwise, null.</returns>
-    /// <param name="index">The zero-based index of the entry that contains the values to get from the collection.</param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> is outside the valid range of indexes for the collection. </exception>
-    public string[] GetValues(int index)
-    {
-      return NameValueCollection.GetValues(index);
-    }
-    
-    /// <summary>Gets a value indicating whether the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null.</summary>
-    /// <returns>true if the <see cref="T:System.Collections.Specialized.NameValueCollection" /> contains keys that are not null; otherwise, false.</returns>
-    public bool HasKeys()
-    {
-      return NameValueCollection.HasKeys();
-    }
-    
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and raises the deserialization event when the deserialization is complete.</summary>
     /// <param name="sender">The source of the deserialization event.</param>
     /// <exception cref="T:System.Runtime.Serialization.SerializationException">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object associated with the current <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance is invalid.</exception>
@@ -187,21 +197,11 @@ namespace Wrapperator.Wrappers.Collections.Specialized
       NameValueCollection.OnDeserialization(sender);
     }
     
-    /// <summary>Removes the entries with the specified key from the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</summary>
-    /// <param name="name">The <see cref="T:System.String" /> key of the entry to remove. The key can be null.</param>
-    /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
-    public void Remove(string name)
+    /// <summary>Returns an enumerator that iterates through the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" />.</summary>
+    /// <returns>An <see cref="T:System.Collections.IEnumerator" /> for the <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance.</returns>
+    public System.Collections.IEnumerator GetEnumerator()
     {
-      NameValueCollection.Remove(name);
-    }
-    
-    /// <summary>Sets the value of an entry in the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>
-    /// <param name="name">The <see cref="T:System.String" /> key of the entry to add the new value to. The key can be null.</param>
-    /// <param name="value">The <see cref="T:System.Object" /> that represents the new value to add to the specified entry. The value can be null.</param>
-    /// <exception cref="T:System.NotSupportedException">The collection is read-only.</exception>
-    public void Set(string name, string value)
-    {
-      NameValueCollection.Set(name, value);
+      return NameValueCollection.GetEnumerator();
     }
   }
 }

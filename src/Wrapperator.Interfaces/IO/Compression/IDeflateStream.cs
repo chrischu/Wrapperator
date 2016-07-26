@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.IO.Compression
   
   
   /// <summary>Provides methods and properties for compressing and decompressing streams by using the Deflate algorithm.</summary>
-  public partial interface IDeflateStream : System.IDisposable, IStream
+  public interface IDeflateStream : Wrapperator.Interfaces.IO.IStream
   {
     
     System.IO.Stream BaseStream

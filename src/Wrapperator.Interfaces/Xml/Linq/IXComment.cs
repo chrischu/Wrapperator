@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents an XML comment. </summary>
-  public partial interface IXComment : IXNode
+  public interface IXComment : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
     string Value

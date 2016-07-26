@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.IO
   
   /// <summary>Writes primitive types in binary to a stream and supports writing strings in a specific encoding.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IBinaryWriter : System.IDisposable
+  public interface IBinaryWriter : System.IDisposable
   {
     
     System.IO.Stream BaseStream

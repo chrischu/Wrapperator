@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.IO
   
   /// <summary>Creates a stream whose backing store is memory.</summary>
   /// <filterpriority>2</filterpriority>
-  public partial interface IMemoryStream : System.IDisposable, IStream
+  public interface IMemoryStream : Wrapperator.Interfaces.IO.IStream
   {
     
     int Capacity

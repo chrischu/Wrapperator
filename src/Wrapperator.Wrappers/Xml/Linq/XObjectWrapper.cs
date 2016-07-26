@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   /// <summary>Represents a node or an attribute in an XML tree. </summary>
   /// <filterpriority>2</filterpriority>
-  public partial class XObjectWrapper : Wrapperator.Interfaces.Xml.Linq.IXObject
+  public class XObjectWrapper : Wrapperator.Interfaces.Xml.Linq.IXObject
   {
     
     internal System.Xml.Linq.XObject XObject { get; private set; }

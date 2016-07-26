@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces
   
   /// <summary>Represents an instant in time, typically expressed as a date and time of day. To browse the .NET Framework source code for this type, see the Reference Source.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial interface IDateTime
+  public interface IDateTime
   {
     
     System.DateTime Date
@@ -62,11 +62,6 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.DateTime Now
-    {
-      get;
-    }
-    
     int Second
     {
       get;
@@ -78,16 +73,6 @@ namespace Wrapperator.Interfaces
     }
     
     System.TimeSpan TimeOfDay
-    {
-      get;
-    }
-    
-    System.DateTime Today
-    {
-      get;
-    }
-    
-    System.DateTime UtcNow
     {
       get;
     }
@@ -161,13 +146,6 @@ namespace Wrapperator.Interfaces
     /// <filterpriority>2</filterpriority>
     Wrapperator.Interfaces.IDateTime AddYears(int value);
     
-    /// <summary>Compares two instances of <see cref="T:System.DateTime" /> and returns an integer that indicates whether the first instance is earlier than, the same as, or later than the second instance.</summary>
-    /// <returns>A signed number indicating the relative values of <paramref name="t1" /> and <paramref name="t2" />.Value Type Condition Less than zero <paramref name="t1" /> is earlier than <paramref name="t2" />. Zero <paramref name="t1" /> is the same as <paramref name="t2" />. Greater than zero <paramref name="t1" /> is later than <paramref name="t2" />. </returns>
-    /// <param name="t1">The first object to compare. </param>
-    /// <param name="t2">The second object to compare. </param>
-    /// <filterpriority>1</filterpriority>
-    int Compare(Wrapperator.Interfaces.IDateTime t1, Wrapperator.Interfaces.IDateTime t2);
-    
     /// <summary>Compares the value of this instance to a specified object that contains a specified <see cref="T:System.DateTime" /> value, and returns an integer that indicates whether this instance is earlier than, the same as, or later than the specified <see cref="T:System.DateTime" /> value.</summary>
     /// <returns>A signed number indicating the relative values of this instance and <paramref name="value" />.Value Description Less than zero This instance is earlier than <paramref name="value" />. Zero This instance is the same as <paramref name="value" />. Greater than zero This instance is later than <paramref name="value" />, or <paramref name="value" /> is null. </returns>
     /// <param name="value">A boxed object to compare, or null. </param>
@@ -182,45 +160,77 @@ namespace Wrapperator.Interfaces
     /// <filterpriority>2</filterpriority>
     int CompareTo(Wrapperator.Interfaces.IDateTime value);
     
-    /// <summary>Returns the number of days in the specified month and year.</summary>
-    /// <returns>The number of days in <paramref name="month" /> for the specified <paramref name="year" />.For example, if <paramref name="month" /> equals 2 for February, the return value is 28 or 29 depending upon whether <paramref name="year" /> is a leap year.</returns>
-    /// <param name="year">The year. </param>
-    /// <param name="month">The month (a number ranging from 1 to 12). </param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="month" /> is less than 1 or greater than 12.-or-<paramref name="year" /> is less than 1 or greater than 9999.</exception>
-    /// <filterpriority>1</filterpriority>
-    int DaysInMonth(int year, int month);
+    /// <summary>Indicates whether this instance of <see cref="T:System.DateTime" /> is within the daylight saving time range for the current time zone.</summary>
+    /// <returns>true if the value of the <see cref="P:System.DateTime.Kind" /> property is <see cref="F:System.DateTimeKind.Local" /> or <see cref="F:System.DateTimeKind.Unspecified" /> and the value of this instance of <see cref="T:System.DateTime" /> is within the daylight saving time range for the local time zone; false if <see cref="P:System.DateTime.Kind" /> is <see cref="F:System.DateTimeKind.Utc" />.</returns>
+    /// <filterpriority>2</filterpriority>
+    bool IsDaylightSavingTime();
     
-    /// <summary>Deserializes a 64-bit binary value and recreates an original serialized <see cref="T:System.DateTime" /> object.</summary>
-    /// <returns>An object that is equivalent to the <see cref="T:System.DateTime" /> object that was serialized by the <see cref="M:System.DateTime.ToBinary" /> method.</returns>
-    /// <param name="dateData">A 64-bit signed integer that encodes the <see cref="P:System.DateTime.Kind" /> property in a 2-bit field and the <see cref="P:System.DateTime.Ticks" /> property in a 62-bit field. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="dateData" /> is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime FromBinary(long dateData);
+    /// <summary>Serializes the current <see cref="T:System.DateTime" /> object to a 64-bit binary value that subsequently can be used to recreate the <see cref="T:System.DateTime" /> object.</summary>
+    /// <returns>A 64-bit signed integer that encodes the <see cref="P:System.DateTime.Kind" /> and <see cref="P:System.DateTime.Ticks" /> properties. </returns>
+    /// <filterpriority>2</filterpriority>
+    long ToBinary();
     
-    /// <summary>Converts the specified Windows file time to an equivalent local time.</summary>
-    /// <returns>An object that represents the local time equivalent of the date and time represented by the <paramref name="fileTime" /> parameter.</returns>
-    /// <param name="fileTime">A Windows file time expressed in ticks. </param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="fileTime" /> is less than 0 or represents a time greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime FromFileTime(long fileTime);
+    /// <summary>Subtracts the specified date and time from this instance.</summary>
+    /// <returns>A time interval that is equal to the date and time represented by this instance minus the date and time represented by <paramref name="value" />.</returns>
+    /// <param name="value">The date and time value to subtract. </param>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
+    /// <filterpriority>2</filterpriority>
+    System.TimeSpan Subtract(Wrapperator.Interfaces.IDateTime value);
     
-    /// <summary>Converts the specified Windows file time to an equivalent UTC time.</summary>
-    /// <returns>An object that represents the UTC time equivalent of the date and time represented by the <paramref name="fileTime" /> parameter.</returns>
-    /// <param name="fileTime">A Windows file time expressed in ticks. </param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="fileTime" /> is less than 0 or represents a time greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime FromFileTimeUtc(long fileTime);
+    /// <summary>Subtracts the specified duration from this instance.</summary>
+    /// <returns>An object that is equal to the date and time represented by this instance minus the time interval represented by <paramref name="value" />.</returns>
+    /// <param name="value">The time interval to subtract. </param>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.IDateTime Subtract(System.TimeSpan value);
     
-    /// <summary>Returns a <see cref="T:System.DateTime" /> equivalent to the specified OLE Automation Date.</summary>
-    /// <returns>An object that represents the same date and time as <paramref name="d" />.</returns>
-    /// <param name="d">An OLE Automation Date value. </param>
-    /// <exception cref="T:System.ArgumentException">The date is not a valid OLE Automation Date value. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime FromOADate(double d);
+    /// <summary>Converts the value of this instance to the equivalent OLE Automation date.</summary>
+    /// <returns>A double-precision floating-point number that contains an OLE Automation date equivalent to the value of this instance.</returns>
+    /// <exception cref="T:System.OverflowException">The value of this instance cannot be represented as an OLE Automation Date. </exception>
+    /// <filterpriority>2</filterpriority>
+    double ToOADate();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to a Windows file time.</summary>
+    /// <returns>The value of the current <see cref="T:System.DateTime" /> object expressed as a Windows file time.</returns>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">The resulting file time would represent a date and time before 12:00 midnight January 1, 1601 C.E. UTC. </exception>
+    /// <filterpriority>2</filterpriority>
+    long ToFileTime();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to a Windows file time.</summary>
+    /// <returns>The value of the current <see cref="T:System.DateTime" /> object expressed as a Windows file time.</returns>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">The resulting file time would represent a date and time before 12:00 midnight January 1, 1601 C.E. UTC. </exception>
+    /// <filterpriority>2</filterpriority>
+    long ToFileTimeUtc();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to local time.</summary>
+    /// <returns>An object whose <see cref="P:System.DateTime.Kind" /> property is <see cref="F:System.DateTimeKind.Local" />, and whose value is the local time equivalent to the value of the current <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MaxValue" /> if the converted value is too large to be represented by a <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MinValue" /> if the converted value is too small to be represented as a <see cref="T:System.DateTime" /> object.</returns>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.IDateTime ToLocalTime();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent long date string representation.</summary>
+    /// <returns>A string that contains the long date string representation of the current <see cref="T:System.DateTime" /> object.</returns>
+    /// <filterpriority>2</filterpriority>
+    string ToLongDateString();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent long time string representation.</summary>
+    /// <returns>A string that contains the long time string representation of the current <see cref="T:System.DateTime" /> object.</returns>
+    /// <filterpriority>2</filterpriority>
+    string ToLongTimeString();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent short date string representation.</summary>
+    /// <returns>A string that contains the short date string representation of the current <see cref="T:System.DateTime" /> object.</returns>
+    /// <filterpriority>2</filterpriority>
+    string ToShortDateString();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent short time string representation.</summary>
+    /// <returns>A string that contains the short time string representation of the current <see cref="T:System.DateTime" /> object.</returns>
+    /// <filterpriority>2</filterpriority>
+    string ToShortTimeString();
+    
+    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to Coordinated Universal Time (UTC).</summary>
+    /// <returns>An object whose <see cref="P:System.DateTime.Kind" /> property is <see cref="F:System.DateTimeKind.Utc" />, and whose value is the UTC equivalent to the value of the current <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MaxValue" /> if the converted value is too large to be represented by a <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MinValue" /> if the converted value is too small to be represented by a <see cref="T:System.DateTime" /> object.</returns>
+    /// <filterpriority>2</filterpriority>
+    Wrapperator.Interfaces.IDateTime ToUniversalTime();
     
     /// <summary>Converts the value of this instance to all the string representations supported by the standard date and time format specifiers.</summary>
     /// <returns>A string array where each element is the representation of the value of this instance formatted with one of the standard date and time format specifiers.</returns>
@@ -254,213 +264,5 @@ namespace Wrapperator.Interfaces
     /// <returns>The enumerated constant, <see cref="F:System.TypeCode.DateTime" />.</returns>
     /// <filterpriority>2</filterpriority>
     System.TypeCode GetTypeCode();
-    
-    /// <summary>Indicates whether this instance of <see cref="T:System.DateTime" /> is within the daylight saving time range for the current time zone.</summary>
-    /// <returns>true if the value of the <see cref="P:System.DateTime.Kind" /> property is <see cref="F:System.DateTimeKind.Local" /> or <see cref="F:System.DateTimeKind.Unspecified" /> and the value of this instance of <see cref="T:System.DateTime" /> is within the daylight saving time range for the local time zone; false if <see cref="P:System.DateTime.Kind" /> is <see cref="F:System.DateTimeKind.Utc" />.</returns>
-    /// <filterpriority>2</filterpriority>
-    bool IsDaylightSavingTime();
-    
-    /// <summary>Returns an indication whether the specified year is a leap year.</summary>
-    /// <returns>true if <paramref name="year" /> is a leap year; otherwise, false.</returns>
-    /// <param name="year">A 4-digit year. </param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="year" /> is less than 1 or greater than 9999.</exception>
-    /// <filterpriority>1</filterpriority>
-    bool IsLeapYear(int year);
-    
-    /// <summary>Converts the string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent.</summary>
-    /// <returns>An object that is equivalent to the date and time contained in <paramref name="s" />.</returns>
-    /// <param name="s">A string that contains a date and time to convert. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="s" /> is null. </exception>
-    /// <exception cref="T:System.FormatException">
-    ///  <paramref name="s" /> does not contain a valid string representation of a date and time. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime Parse(string s);
-    
-    /// <summary>Converts the string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent by using culture-specific format information.</summary>
-    /// <returns>An object that is equivalent to the date and time contained in <paramref name="s" /> as specified by <paramref name="provider" />.</returns>
-    /// <param name="s">A string that contains a date and time to convert. </param>
-    /// <param name="provider">An object that supplies culture-specific format information about <paramref name="s" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="s" /> is null. </exception>
-    /// <exception cref="T:System.FormatException">
-    ///  <paramref name="s" /> does not contain a valid string representation of a date and time. </exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime Parse(string s, System.IFormatProvider provider);
-    
-    /// <summary>Converts the string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent by using culture-specific format information and formatting style.</summary>
-    /// <returns>An object that is equivalent to the date and time contained in <paramref name="s" />, as specified by <paramref name="provider" /> and <paramref name="styles" />.</returns>
-    /// <param name="s">A string that contains a date and time to convert. </param>
-    /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="s" />. </param>
-    /// <param name="styles">A bitwise combination of the enumeration values that indicates the style elements that can be present in <paramref name="s" /> for the parse operation to succeed, and that defines how to interpret the parsed date in relation to the current time zone or the current date. A typical value to specify is <see cref="F:System.Globalization.DateTimeStyles.None" />.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="s" /> is null. </exception>
-    /// <exception cref="T:System.FormatException">
-    ///  <paramref name="s" /> does not contain a valid string representation of a date and time. </exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="styles" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values. For example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />.</exception>
-    /// <filterpriority>1</filterpriority>
-    Wrapperator.Interfaces.IDateTime Parse(string s, System.IFormatProvider provider, System.Globalization.DateTimeStyles styles);
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent using the specified format and culture-specific format information. The format of the string representation must match the specified format exactly.</summary>
-    /// <returns>An object that is equivalent to the date and time contained in <paramref name="s" />, as specified by <paramref name="format" /> and <paramref name="provider" />.</returns>
-    /// <param name="s">A string that contains a date and time to convert. </param>
-    /// <param name="format">A format specifier that defines the required format of <paramref name="s" />. For more information, see the Remarks section. </param>
-    /// <param name="provider">An object that supplies culture-specific format information about <paramref name="s" />. </param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="s" /> or <paramref name="format" /> is null. </exception>
-    /// <exception cref="T:System.FormatException">
-    ///  <paramref name="s" /> or <paramref name="format" /> is an empty string. -or- <paramref name="s" /> does not contain a date and time that corresponds to the pattern specified in <paramref name="format" />. -or-The hour component and the AM/PM designator in <paramref name="s" /> do not agree.</exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime ParseExact(string s, string format, System.IFormatProvider provider);
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent using the specified format, culture-specific format information, and style. The format of the string representation must match the specified format exactly or an exception is thrown.</summary>
-    /// <returns>An object that is equivalent to the date and time contained in <paramref name="s" />, as specified by <paramref name="format" />, <paramref name="provider" />, and <paramref name="style" />.</returns>
-    /// <param name="s">A string containing a date and time to convert. </param>
-    /// <param name="format">A format specifier that defines the required format of <paramref name="s" />. For more information, see the Remarks section. </param>
-    /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="s" />. </param>
-    /// <param name="style">A bitwise combination of the enumeration values that provides additional information about <paramref name="s" />, about style elements that may be present in <paramref name="s" />, or about the conversion from <paramref name="s" /> to a <see cref="T:System.DateTime" /> value. A typical value to specify is <see cref="F:System.Globalization.DateTimeStyles.None" />.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="s" /> or <paramref name="format" /> is null. </exception>
-    /// <exception cref="T:System.FormatException">
-    ///  <paramref name="s" /> or <paramref name="format" /> is an empty string. -or- <paramref name="s" /> does not contain a date and time that corresponds to the pattern specified in <paramref name="format" />. -or-The hour component and the AM/PM designator in <paramref name="s" /> do not agree.</exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="style" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values. For example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />.</exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime ParseExact(string s, string format, System.IFormatProvider provider, System.Globalization.DateTimeStyles style);
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent using the specified array of formats, culture-specific format information, and style. The format of the string representation must match at least one of the specified formats exactly or an exception is thrown.</summary>
-    /// <returns>An object that is equivalent to the date and time contained in <paramref name="s" />, as specified by <paramref name="formats" />, <paramref name="provider" />, and <paramref name="style" />.</returns>
-    /// <param name="s">A string that contains a date and time to convert. </param>
-    /// <param name="formats">An array of allowable formats of <paramref name="s" />. For more information, see the Remarks section. </param>
-    /// <param name="provider">An object that supplies culture-specific format information about <paramref name="s" />. </param>
-    /// <param name="style">A bitwise combination of enumeration values that indicates the permitted format of <paramref name="s" />. A typical value to specify is <see cref="F:System.Globalization.DateTimeStyles.None" />.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="s" /> or <paramref name="formats" /> is null. </exception>
-    /// <exception cref="T:System.FormatException">
-    ///  <paramref name="s" /> is an empty string. -or- an element of <paramref name="formats" /> is an empty string. -or- <paramref name="s" /> does not contain a date and time that corresponds to any element of <paramref name="formats" />. -or-The hour component and the AM/PM designator in <paramref name="s" /> do not agree.</exception>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="style" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values. For example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />.</exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime ParseExact(string s, string[] formats, System.IFormatProvider provider, System.Globalization.DateTimeStyles style);
-    
-    /// <summary>Creates a new <see cref="T:System.DateTime" /> object that has the same number of ticks as the specified <see cref="T:System.DateTime" />, but is designated as either local time, Coordinated Universal Time (UTC), or neither, as indicated by the specified <see cref="T:System.DateTimeKind" /> value.</summary>
-    /// <returns>A new object that has the same number of ticks as the object represented by the <paramref name="value" /> parameter and the <see cref="T:System.DateTimeKind" /> value specified by the <paramref name="kind" /> parameter. </returns>
-    /// <param name="value">A date and time. </param>
-    /// <param name="kind">One of the enumeration values that indicates whether the new object represents local time, UTC, or neither.</param>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime SpecifyKind(Wrapperator.Interfaces.IDateTime value, System.DateTimeKind kind);
-    
-    /// <summary>Subtracts the specified date and time from this instance.</summary>
-    /// <returns>A time interval that is equal to the date and time represented by this instance minus the date and time represented by <paramref name="value" />.</returns>
-    /// <param name="value">The date and time value to subtract. </param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
-    /// <filterpriority>2</filterpriority>
-    System.TimeSpan Subtract(Wrapperator.Interfaces.IDateTime value);
-    
-    /// <summary>Subtracts the specified duration from this instance.</summary>
-    /// <returns>An object that is equal to the date and time represented by this instance minus the time interval represented by <paramref name="value" />.</returns>
-    /// <param name="value">The time interval to subtract. </param>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">The result is less than <see cref="F:System.DateTime.MinValue" /> or greater than <see cref="F:System.DateTime.MaxValue" />. </exception>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime Subtract(System.TimeSpan value);
-    
-    /// <summary>Serializes the current <see cref="T:System.DateTime" /> object to a 64-bit binary value that subsequently can be used to recreate the <see cref="T:System.DateTime" /> object.</summary>
-    /// <returns>A 64-bit signed integer that encodes the <see cref="P:System.DateTime.Kind" /> and <see cref="P:System.DateTime.Ticks" /> properties. </returns>
-    /// <filterpriority>2</filterpriority>
-    long ToBinary();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to a Windows file time.</summary>
-    /// <returns>The value of the current <see cref="T:System.DateTime" /> object expressed as a Windows file time.</returns>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">The resulting file time would represent a date and time before 12:00 midnight January 1, 1601 C.E. UTC. </exception>
-    /// <filterpriority>2</filterpriority>
-    long ToFileTime();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to a Windows file time.</summary>
-    /// <returns>The value of the current <see cref="T:System.DateTime" /> object expressed as a Windows file time.</returns>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">The resulting file time would represent a date and time before 12:00 midnight January 1, 1601 C.E. UTC. </exception>
-    /// <filterpriority>2</filterpriority>
-    long ToFileTimeUtc();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to local time.</summary>
-    /// <returns>An object whose <see cref="P:System.DateTime.Kind" /> property is <see cref="F:System.DateTimeKind.Local" />, and whose value is the local time equivalent to the value of the current <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MaxValue" /> if the converted value is too large to be represented by a <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MinValue" /> if the converted value is too small to be represented as a <see cref="T:System.DateTime" /> object.</returns>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime ToLocalTime();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent long date string representation.</summary>
-    /// <returns>A string that contains the long date string representation of the current <see cref="T:System.DateTime" /> object.</returns>
-    /// <filterpriority>2</filterpriority>
-    string ToLongDateString();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent long time string representation.</summary>
-    /// <returns>A string that contains the long time string representation of the current <see cref="T:System.DateTime" /> object.</returns>
-    /// <filterpriority>2</filterpriority>
-    string ToLongTimeString();
-    
-    /// <summary>Converts the value of this instance to the equivalent OLE Automation date.</summary>
-    /// <returns>A double-precision floating-point number that contains an OLE Automation date equivalent to the value of this instance.</returns>
-    /// <exception cref="T:System.OverflowException">The value of this instance cannot be represented as an OLE Automation Date. </exception>
-    /// <filterpriority>2</filterpriority>
-    double ToOADate();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent short date string representation.</summary>
-    /// <returns>A string that contains the short date string representation of the current <see cref="T:System.DateTime" /> object.</returns>
-    /// <filterpriority>2</filterpriority>
-    string ToShortDateString();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to its equivalent short time string representation.</summary>
-    /// <returns>A string that contains the short time string representation of the current <see cref="T:System.DateTime" /> object.</returns>
-    /// <filterpriority>2</filterpriority>
-    string ToShortTimeString();
-    
-    /// <summary>Converts the value of the current <see cref="T:System.DateTime" /> object to Coordinated Universal Time (UTC).</summary>
-    /// <returns>An object whose <see cref="P:System.DateTime.Kind" /> property is <see cref="F:System.DateTimeKind.Utc" />, and whose value is the UTC equivalent to the value of the current <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MaxValue" /> if the converted value is too large to be represented by a <see cref="T:System.DateTime" /> object, or <see cref="F:System.DateTime.MinValue" /> if the converted value is too small to be represented by a <see cref="T:System.DateTime" /> object.</returns>
-    /// <filterpriority>2</filterpriority>
-    Wrapperator.Interfaces.IDateTime ToUniversalTime();
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent and returns a value that indicates whether the conversion succeeded.</summary>
-    /// <returns>true if the <paramref name="s" /> parameter was converted successfully; otherwise, false.</returns>
-    /// <param name="s">A string containing a date and time to convert. </param>
-    /// <param name="result">When this method returns, contains the <see cref="T:System.DateTime" /> value equivalent to the date and time contained in <paramref name="s" />, if the conversion succeeded, or <see cref="F:System.DateTime.MinValue" /> if the conversion failed. The conversion fails if the <paramref name="s" /> parameter is null, is an empty string (""), or does not contain a valid string representation of a date and time. This parameter is passed uninitialized. </param>
-    /// <filterpriority>1</filterpriority>
-    bool TryParse(string s, ref System.DateTime result);
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent using the specified culture-specific format information and formatting style, and returns a value that indicates whether the conversion succeeded.</summary>
-    /// <returns>true if the <paramref name="s" /> parameter was converted successfully; otherwise, false.</returns>
-    /// <param name="s">A string containing a date and time to convert. </param>
-    /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="s" />. </param>
-    /// <param name="styles">A bitwise combination of enumeration values that defines how to interpret the parsed date in relation to the current time zone or the current date. A typical value to specify is <see cref="F:System.Globalization.DateTimeStyles.None" />.</param>
-    /// <param name="result">When this method returns, contains the <see cref="T:System.DateTime" /> value equivalent to the date and time contained in <paramref name="s" />, if the conversion succeeded, or <see cref="F:System.DateTime.MinValue" /> if the conversion failed. The conversion fails if the <paramref name="s" /> parameter is null, is an empty string (""), or does not contain a valid string representation of a date and time. This parameter is passed uninitialized. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="styles" /> is not a valid <see cref="T:System.Globalization.DateTimeStyles" /> value.-or-<paramref name="styles" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values (for example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />).</exception>
-    /// <exception cref="T:System.NotSupportedException">
-    ///  <paramref name="provider" /> is a neutral culture and cannot be used in a parsing operation.</exception>
-    /// <filterpriority>1</filterpriority>
-    bool TryParse(string s, System.IFormatProvider provider, System.Globalization.DateTimeStyles styles, ref System.DateTime result);
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent using the specified format, culture-specific format information, and style. The format of the string representation must match the specified format exactly. The method returns a value that indicates whether the conversion succeeded.</summary>
-    /// <returns>true if <paramref name="s" /> was converted successfully; otherwise, false.</returns>
-    /// <param name="s">A string containing a date and time to convert. </param>
-    /// <param name="format">The required format of <paramref name="s" />. See the Remarks section for more information. </param>
-    /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="s" />. </param>
-    /// <param name="style">A bitwise combination of one or more enumeration values that indicate the permitted format of <paramref name="s" />. </param>
-    /// <param name="result">When this method returns, contains the <see cref="T:System.DateTime" /> value equivalent to the date and time contained in <paramref name="s" />, if the conversion succeeded, or <see cref="F:System.DateTime.MinValue" /> if the conversion failed. The conversion fails if either the <paramref name="s" /> or <paramref name="format" /> parameter is null, is an empty string, or does not contain a date and time that correspond to the pattern specified in <paramref name="format" />. This parameter is passed uninitialized. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="styles" /> is not a valid <see cref="T:System.Globalization.DateTimeStyles" /> value.-or-<paramref name="styles" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values (for example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />).</exception>
-    /// <filterpriority>1</filterpriority>
-    bool TryParseExact(string s, string format, System.IFormatProvider provider, System.Globalization.DateTimeStyles style, ref System.DateTime result);
-    
-    /// <summary>Converts the specified string representation of a date and time to its <see cref="T:System.DateTime" /> equivalent using the specified array of formats, culture-specific format information, and style. The format of the string representation must match at least one of the specified formats exactly. The method returns a value that indicates whether the conversion succeeded.</summary>
-    /// <returns>true if the <paramref name="s" /> parameter was converted successfully; otherwise, false.</returns>
-    /// <param name="s">A string that contains a date and time to convert. </param>
-    /// <param name="formats">An array of allowable formats of <paramref name="s" />. See the Remarks section for more information. </param>
-    /// <param name="provider">An object that supplies culture-specific format information about <paramref name="s" />. </param>
-    /// <param name="style">A bitwise combination of enumeration values that indicates the permitted format of <paramref name="s" />. A typical value to specify is <see cref="F:System.Globalization.DateTimeStyles.None" />.</param>
-    /// <param name="result">When this method returns, contains the <see cref="T:System.DateTime" /> value equivalent to the date and time contained in <paramref name="s" />, if the conversion succeeded, or <see cref="F:System.DateTime.MinValue" /> if the conversion failed. The conversion fails if <paramref name="s" /> or <paramref name="formats" /> is null, <paramref name="s" /> or an element of <paramref name="formats" /> is an empty string, or the format of <paramref name="s" /> is not exactly as specified by at least one of the format patterns in <paramref name="formats" />. This parameter is passed uninitialized. </param>
-    /// <exception cref="T:System.ArgumentException">
-    ///  <paramref name="styles" /> is not a valid <see cref="T:System.Globalization.DateTimeStyles" /> value.-or-<paramref name="styles" /> contains an invalid combination of <see cref="T:System.Globalization.DateTimeStyles" /> values (for example, both <see cref="F:System.Globalization.DateTimeStyles.AssumeLocal" /> and <see cref="F:System.Globalization.DateTimeStyles.AssumeUniversal" />).</exception>
-    /// <filterpriority>1</filterpriority>
-    bool TryParseExact(string s, string[] formats, System.IFormatProvider provider, System.Globalization.DateTimeStyles style, ref System.DateTime result);
   }
 }

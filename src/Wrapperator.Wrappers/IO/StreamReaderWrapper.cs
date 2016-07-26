@@ -14,7 +14,7 @@ namespace Wrapperator.Wrappers.IO
   
   /// <summary>Implements a <see cref="T:System.IO.TextReader" /> that reads characters from a byte stream in a particular encoding.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial class StreamReaderWrapper : TextReaderWrapper, Wrapperator.Interfaces.IO.IStreamReader
+  public class StreamReaderWrapper : TextReaderWrapper, Wrapperator.Interfaces.IO.IStreamReader
   {
     
     internal System.IO.StreamReader StreamReader { get; private set; }
@@ -26,19 +26,19 @@ namespace Wrapperator.Wrappers.IO
       StreamReader = streamReader;
     }
     
-    public System.IO.Stream BaseStream
-    {
-      get
-      {
-        return StreamReader.BaseStream;
-      }
-    }
-    
     public System.Text.Encoding CurrentEncoding
     {
       get
       {
         return StreamReader.CurrentEncoding;
+      }
+    }
+    
+    public System.IO.Stream BaseStream
+    {
+      get
+      {
+        return StreamReader.BaseStream;
       }
     }
     
@@ -99,21 +99,14 @@ namespace Wrapperator.Wrappers.IO
       return StreamReader.Read(buffer, index, count);
     }
     
-    /// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
-    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached.</returns>
-    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
-    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
-    /// <param name="count">The maximum number of characters to read. If the end of the stream is reached before the specified number of characters is written into the buffer, the current method returns.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public new System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
+    /// <summary>Reads all characters from the current position to the end of the stream.</summary>
+    /// <returns>The rest of the stream as a string, from the current position to the end. If the current position is at the end of the stream, returns an empty string ("").</returns>
+    /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
+    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
+    /// <filterpriority>1</filterpriority>
+    public new string ReadToEnd()
     {
-      return StreamReader.ReadAsync(buffer, index, count);
+      return StreamReader.ReadToEnd();
     }
     
     /// <summary>Reads a specified maximum number of characters from the current stream and writes the data to a buffer, beginning at the specified index.</summary>
@@ -131,23 +124,6 @@ namespace Wrapperator.Wrappers.IO
     public new int ReadBlock(char[] buffer, int index, int count)
     {
       return StreamReader.ReadBlock(buffer, index, count);
-    }
-    
-    /// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
-    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached.</returns>
-    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
-    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
-    /// <param name="count">The maximum number of characters to read. If the end of the stream is reached before the specified number of characters is written into the buffer, the method returns.</param>
-    /// <exception cref="T:System.ArgumentNullException">
-    ///  <paramref name="buffer" /> is null.</exception>
-    /// <exception cref="T:System.ArgumentOutOfRangeException">
-    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
-    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
-    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
-    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
-    public new System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
-    {
-      return StreamReader.ReadBlockAsync(buffer, index, count);
     }
     
     /// <summary>Reads a line of characters from the current stream and returns the data as a string.</summary>
@@ -170,16 +146,6 @@ namespace Wrapperator.Wrappers.IO
       return StreamReader.ReadLineAsync();
     }
     
-    /// <summary>Reads all characters from the current position to the end of the stream.</summary>
-    /// <returns>The rest of the stream as a string, from the current position to the end. If the current position is at the end of the stream, returns an empty string ("").</returns>
-    /// <exception cref="T:System.OutOfMemoryException">There is insufficient memory to allocate a buffer for the returned string. </exception>
-    /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-    /// <filterpriority>1</filterpriority>
-    public new string ReadToEnd()
-    {
-      return StreamReader.ReadToEnd();
-    }
-    
     /// <summary>Reads all characters from the current position to the end of the stream asynchronously and returns them as one string.</summary>
     /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains a string with the characters from the current position to the end of the stream.</returns>
     /// <exception cref="T:System.ArgumentOutOfRangeException">The number of characters is larger than <see cref="F:System.Int32.MaxValue" />.</exception>
@@ -188,6 +154,40 @@ namespace Wrapperator.Wrappers.IO
     public new System.Threading.Tasks.Task<string> ReadToEndAsync()
     {
       return StreamReader.ReadToEndAsync();
+    }
+    
+    /// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
+    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached.</returns>
+    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
+    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
+    /// <param name="count">The maximum number of characters to read. If the end of the stream is reached before the specified number of characters is written into the buffer, the current method returns.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
+    public new System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
+    {
+      return StreamReader.ReadAsync(buffer, index, count);
+    }
+    
+    /// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
+    /// <returns>A task that represents the asynchronous read operation. The value of the <paramref name="TResult" /> parameter contains the total number of bytes read into the buffer. The result value can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached.</returns>
+    /// <param name="buffer">When this method returns, contains the specified character array with the values between <paramref name="index" /> and (<paramref name="index" /> + <paramref name="count" /> - 1) replaced by the characters read from the current source.</param>
+    /// <param name="index">The position in <paramref name="buffer" /> at which to begin writing.</param>
+    /// <param name="count">The maximum number of characters to read. If the end of the stream is reached before the specified number of characters is written into the buffer, the method returns.</param>
+    /// <exception cref="T:System.ArgumentNullException">
+    ///  <paramref name="buffer" /> is null.</exception>
+    /// <exception cref="T:System.ArgumentOutOfRangeException">
+    ///  <paramref name="index" /> or <paramref name="count" /> is negative.</exception>
+    /// <exception cref="T:System.ArgumentException">The sum of <paramref name="index" /> and <paramref name="count" /> is larger than the buffer length.</exception>
+    /// <exception cref="T:System.ObjectDisposedException">The stream has been disposed.</exception>
+    /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
+    public new System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
+    {
+      return StreamReader.ReadBlockAsync(buffer, index, count);
     }
     
     protected override void Dispose(bool disposing)

@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents elements in an XML tree that supports deferred streaming output.</summary>
-  public partial class XStreamingElementWrapper : Wrapperator.Interfaces.Xml.Linq.IXStreamingElement
+  public class XStreamingElementWrapper : Wrapperator.Interfaces.Xml.Linq.IXStreamingElement
   {
     
     internal System.Xml.Linq.XStreamingElement XStreamingElement { get; private set; }

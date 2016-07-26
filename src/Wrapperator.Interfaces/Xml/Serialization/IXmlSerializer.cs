@@ -13,90 +13,8 @@ namespace Wrapperator.Interfaces.Xml.Serialization
   
   
   /// <summary>Serializes and deserializes objects into and from XML documents. The <see cref="T:System.Xml.Serialization.XmlSerializer" /> enables you to control how objects are encoded into XML.</summary>
-  public partial interface IXmlSerializer
+  public interface IXmlSerializer
   {
-    
-    /// <summary>Gets a value that indicates whether this <see cref="T:System.Xml.Serialization.XmlSerializer" /> can deserialize a specified XML document.</summary>
-    /// <returns>true if this <see cref="T:System.Xml.Serialization.XmlSerializer" /> can deserialize the object that the <see cref="T:System.Xml.XmlReader" /> points to; otherwise, false.</returns>
-    /// <param name="xmlReader">An <see cref="T:System.Xml.XmlReader" /> that points to the document to deserialize. </param>
-    bool CanDeserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader);
-    
-    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.IO.Stream" />.</summary>
-    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
-    /// <param name="stream">The <see cref="T:System.IO.Stream" /> that contains the XML document to deserialize. </param>
-    object Deserialize(Wrapperator.Interfaces.IO.IStream stream);
-    
-    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.IO.TextReader" />.</summary>
-    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
-    /// <param name="textReader">The <see cref="T:System.IO.TextReader" /> that contains the XML document to deserialize. </param>
-    /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    object Deserialize(Wrapperator.Interfaces.IO.ITextReader textReader);
-    
-    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.xml.XmlReader" />.</summary>
-    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
-    /// <param name="xmlReader">The <see cref="T:System.xml.XmlReader" /> that contains the XML document to deserialize. </param>
-    /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader);
-    
-    /// <summary>Deserializes an XML document contained by the specified <see cref="T:System.Xml.XmlReader" /> and allows the overriding of events that occur during deserialization.</summary>
-    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
-    /// <param name="xmlReader">The <see cref="T:System.Xml.XmlReader" /> that contains the document to deserialize.</param>
-    /// <param name="events">An instance of the <see cref="T:System.Xml.Serialization.XmlDeserializationEvents" /> class. </param>
-    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, System.Xml.Serialization.XmlDeserializationEvents events);
-    
-    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.xml.XmlReader" /> and encoding style.</summary>
-    /// <returns>The deserialized object.</returns>
-    /// <param name="xmlReader">The <see cref="T:System.xml.XmlReader" /> that contains the XML document to deserialize. </param>
-    /// <param name="encodingStyle">The encoding style of the serialized XML. </param>
-    /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
-    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, string encodingStyle);
-    
-    /// <summary>Deserializes the object using the data contained by the specified <see cref="T:System.Xml.XmlReader" />.</summary>
-    /// <returns>The object being deserialized.</returns>
-    /// <param name="xmlReader">An instance of the <see cref="T:System.Xml.XmlReader" /> class used to read the document.</param>
-    /// <param name="encodingStyle">The encoding used.</param>
-    /// <param name="events">An instance of the <see cref="T:System.Xml.Serialization.XmlDeserializationEvents" /> class. </param>
-    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, string encodingStyle, System.Xml.Serialization.XmlDeserializationEvents events);
-    
-    /// <summary>Returns an array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects created from an array of <see cref="T:System.Xml.Serialization.XmlTypeMapping" /> objects.</summary>
-    /// <returns>An array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects.</returns>
-    /// <param name="mappings">An array of <see cref="T:System.Xml.Serialization.XmlTypeMapping" /> that maps one type to another. </param>
-    System.Xml.Serialization.XmlSerializer[] FromMappings(System.Xml.Serialization.XmlMapping[] mappings);
-    
-    /// <summary>Returns an instance of the <see cref="T:System.Xml.Serialization.XmlSerializer" /> class from the specified mappings.</summary>
-    /// <returns>An instance of the <see cref="T:System.Xml.Serialization.XmlSerializer" /> class.</returns>
-    /// <param name="mappings">An array of <see cref="T:System.Xml.Serialization.XmlMapping" /> objects.</param>
-    /// <param name="type">The <see cref="T:System.Type" /> of the deserialized object.</param>
-    System.Xml.Serialization.XmlSerializer[] FromMappings(System.Xml.Serialization.XmlMapping[] mappings, Wrapperator.Interfaces.IType type);
-    
-    /// <summary>Returns an array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects created from an array of types.</summary>
-    /// <returns>An array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects.</returns>
-    /// <param name="types">An array of <see cref="T:System.Type" /> objects. </param>
-    System.Xml.Serialization.XmlSerializer[] FromTypes(System.Type[] types);
-    
-    /// <summary>Returns an assembly that contains custom-made serializers used to serialize or deserialize the specified type or types, using the specified mappings.</summary>
-    /// <returns>An <see cref="T:System.Reflection.Assembly" /> object that contains serializers for the supplied types and mappings.</returns>
-    /// <param name="types">A collection of types.</param>
-    /// <param name="mappings">A collection of <see cref="T:System.Xml.Serialization.XmlMapping" /> objects used to convert one type to another.</param>
-    Wrapperator.Interfaces.Reflection.IAssembly GenerateSerializer(System.Type[] types, System.Xml.Serialization.XmlMapping[] mappings);
-    
-    /// <summary>Returns an assembly that contains custom-made serializers used to serialize or deserialize the specified type or types, using the specified mappings and compiler settings and options. </summary>
-    /// <returns>An <see cref="T:System.Reflection.Assembly" /> that contains special versions of the <see cref="T:System.Xml.Serialization.XmlSerializer" />.</returns>
-    /// <param name="types">An array of type <see cref="T:System.Type" /> that contains objects used to serialize and deserialize data.</param>
-    /// <param name="mappings">An array of type <see cref="T:System.Xml.Serialization.XmlMapping" /> that maps the XML data to the type data.</param>
-    /// <param name="parameters">An instance of the <see cref="T:System.CodeDom.Compiler.CompilerParameters" /> class that represents the parameters used to invoke a compiler.</param>
-    Wrapperator.Interfaces.Reflection.IAssembly GenerateSerializer(System.Type[] types, System.Xml.Serialization.XmlMapping[] mappings, System.CodeDom.Compiler.CompilerParameters parameters);
-    
-    /// <summary>Returns the name of the assembly that contains one or more versions of the <see cref="T:System.Xml.Serialization.XmlSerializer" /> especially created to serialize or deserialize the specified type.</summary>
-    /// <returns>The name of the assembly that contains an <see cref="T:System.Xml.Serialization.XmlSerializer" /> for the type.</returns>
-    /// <param name="type">The <see cref="T:System.Type" /> you are deserializing.</param>
-    string GetXmlSerializerAssemblyName(Wrapperator.Interfaces.IType type);
-    
-    /// <summary>Returns the name of the assembly that contains the serializer for the specified type in the specified namespace.</summary>
-    /// <returns>The name of the assembly that contains specially built serializers.</returns>
-    /// <param name="type">The <see cref="T:System.Type" /> you are interested in.</param>
-    /// <param name="defaultNamespace">The namespace of the type.</param>
-    string GetXmlSerializerAssemblyName(Wrapperator.Interfaces.IType type, string defaultNamespace);
     
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">The <see cref="T:System.IO.TextWriter" /> used to write the XML document. </param>
@@ -151,5 +69,47 @@ namespace Wrapperator.Interfaces.Xml.Serialization
     /// <param name="encodingStyle">The encoding used in the document.</param>
     /// <param name="id">For SOAP encoded messages, the base used to generate id attributes. </param>
     void Serialize(Wrapperator.Interfaces.Xml.IXmlWriter xmlWriter, object o, System.Xml.Serialization.XmlSerializerNamespaces namespaces, string encodingStyle, string id);
+    
+    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.IO.Stream" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
+    /// <param name="stream">The <see cref="T:System.IO.Stream" /> that contains the XML document to deserialize. </param>
+    object Deserialize(Wrapperator.Interfaces.IO.IStream stream);
+    
+    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.IO.TextReader" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
+    /// <param name="textReader">The <see cref="T:System.IO.TextReader" /> that contains the XML document to deserialize. </param>
+    /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
+    object Deserialize(Wrapperator.Interfaces.IO.ITextReader textReader);
+    
+    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.xml.XmlReader" />.</summary>
+    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
+    /// <param name="xmlReader">The <see cref="T:System.xml.XmlReader" /> that contains the XML document to deserialize. </param>
+    /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
+    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader);
+    
+    /// <summary>Deserializes an XML document contained by the specified <see cref="T:System.Xml.XmlReader" /> and allows the overriding of events that occur during deserialization.</summary>
+    /// <returns>The <see cref="T:System.Object" /> being deserialized.</returns>
+    /// <param name="xmlReader">The <see cref="T:System.Xml.XmlReader" /> that contains the document to deserialize.</param>
+    /// <param name="events">An instance of the <see cref="T:System.Xml.Serialization.XmlDeserializationEvents" /> class. </param>
+    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, System.Xml.Serialization.XmlDeserializationEvents events);
+    
+    /// <summary>Deserializes the XML document contained by the specified <see cref="T:System.xml.XmlReader" /> and encoding style.</summary>
+    /// <returns>The deserialized object.</returns>
+    /// <param name="xmlReader">The <see cref="T:System.xml.XmlReader" /> that contains the XML document to deserialize. </param>
+    /// <param name="encodingStyle">The encoding style of the serialized XML. </param>
+    /// <exception cref="T:System.InvalidOperationException">An error occurred during deserialization. The original exception is available using the <see cref="P:System.Exception.InnerException" /> property. </exception>
+    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, string encodingStyle);
+    
+    /// <summary>Deserializes the object using the data contained by the specified <see cref="T:System.Xml.XmlReader" />.</summary>
+    /// <returns>The object being deserialized.</returns>
+    /// <param name="xmlReader">An instance of the <see cref="T:System.Xml.XmlReader" /> class used to read the document.</param>
+    /// <param name="encodingStyle">The encoding used.</param>
+    /// <param name="events">An instance of the <see cref="T:System.Xml.Serialization.XmlDeserializationEvents" /> class. </param>
+    object Deserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader, string encodingStyle, System.Xml.Serialization.XmlDeserializationEvents events);
+    
+    /// <summary>Gets a value that indicates whether this <see cref="T:System.Xml.Serialization.XmlSerializer" /> can deserialize a specified XML document.</summary>
+    /// <returns>true if this <see cref="T:System.Xml.Serialization.XmlSerializer" /> can deserialize the object that the <see cref="T:System.Xml.XmlReader" /> points to; otherwise, false.</returns>
+    /// <param name="xmlReader">An <see cref="T:System.Xml.XmlReader" /> that points to the document to deserialize. </param>
+    bool CanDeserialize(Wrapperator.Interfaces.Xml.IXmlReader xmlReader);
   }
 }

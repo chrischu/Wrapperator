@@ -13,7 +13,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   
   
   /// <summary>Represents a name of an XML element or attribute. </summary>
-  public partial interface IXName
+  public interface IXName
   {
     
     string LocalName
@@ -30,16 +30,5 @@ namespace Wrapperator.Interfaces.Xml.Linq
     {
       get;
     }
-    
-    /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from an expanded name.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object constructed from the expanded name.</returns>
-    /// <param name="expandedName">A <see cref="T:System.String" /> that contains an expanded XML name in the format {namespace}localname.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXName Get(string expandedName);
-    
-    /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from a local name and a namespace.</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object created from the specified local name and namespace.</returns>
-    /// <param name="localName">A local (unqualified) name.</param>
-    /// <param name="namespaceName">An XML namespace.</param>
-    Wrapperator.Interfaces.Xml.Linq.IXName Get(string localName, string namespaceName);
   }
 }

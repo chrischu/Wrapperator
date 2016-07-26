@@ -14,7 +14,7 @@ namespace Wrapperator.Interfaces.IO
   
   /// <summary>Implements a <see cref="T:System.IO.TextWriter" /> for writing characters to a stream in a particular encoding.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial interface IStreamWriter : System.IDisposable, ITextWriter
+  public interface IStreamWriter : Wrapperator.Interfaces.IO.ITextWriter
   {
     
     bool AutoFlush

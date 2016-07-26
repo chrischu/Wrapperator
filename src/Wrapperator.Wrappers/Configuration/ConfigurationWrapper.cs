@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Configuration
   
   
   /// <summary>Represents a configuration file that is applicable to a particular computer, application, or resource. This class cannot be inherited.</summary>
-  public partial class ConfigurationWrapper : Wrapperator.Interfaces.Configuration.IConfiguration
+  public class ConfigurationWrapper : Wrapperator.Interfaces.Configuration.IConfiguration
   {
     
     internal System.Configuration.Configuration Configuration { get; private set; }
@@ -32,31 +32,11 @@ namespace Wrapperator.Wrappers.Configuration
       }
     }
     
-    public System.Func<string, string> AssemblyStringTransformer
-    {
-      get
-      {
-        return Configuration.AssemblyStringTransformer;
-      }
-      set
-      {
-        Configuration.AssemblyStringTransformer = value;
-      }
-    }
-    
     public System.Configuration.ConnectionStringsSection ConnectionStrings
     {
       get
       {
         return Configuration.ConnectionStrings;
-      }
-    }
-    
-    public System.Configuration.ContextInformation EvaluationContext
-    {
-      get
-      {
-        return Configuration.EvaluationContext;
       }
     }
     
@@ -84,6 +64,38 @@ namespace Wrapperator.Wrappers.Configuration
       }
     }
     
+    public System.Configuration.ContextInformation EvaluationContext
+    {
+      get
+      {
+        return Configuration.EvaluationContext;
+      }
+    }
+    
+    public System.Configuration.ConfigurationSectionGroup RootSectionGroup
+    {
+      get
+      {
+        return Configuration.RootSectionGroup;
+      }
+    }
+    
+    public System.Configuration.ConfigurationSectionCollection Sections
+    {
+      get
+      {
+        return Configuration.Sections;
+      }
+    }
+    
+    public System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    {
+      get
+      {
+        return Configuration.SectionGroups;
+      }
+    }
+    
     public bool NamespaceDeclared
     {
       get
@@ -96,27 +108,27 @@ namespace Wrapperator.Wrappers.Configuration
       }
     }
     
-    public System.Configuration.ConfigurationSectionGroup RootSectionGroup
+    public System.Func<string, string> TypeStringTransformer
     {
       get
       {
-        return Configuration.RootSectionGroup;
+        return Configuration.TypeStringTransformer;
+      }
+      set
+      {
+        Configuration.TypeStringTransformer = value;
       }
     }
     
-    public System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    public System.Func<string, string> AssemblyStringTransformer
     {
       get
       {
-        return Configuration.SectionGroups;
+        return Configuration.AssemblyStringTransformer;
       }
-    }
-    
-    public System.Configuration.ConfigurationSectionCollection Sections
-    {
-      get
+      set
       {
-        return Configuration.Sections;
+        Configuration.AssemblyStringTransformer = value;
       }
     }
     
@@ -129,18 +141,6 @@ namespace Wrapperator.Wrappers.Configuration
       set
       {
         Configuration.TargetFramework = value;
-      }
-    }
-    
-    public System.Func<string, string> TypeStringTransformer
-    {
-      get
-      {
-        return Configuration.TypeStringTransformer;
-      }
-      set
-      {
-        Configuration.TypeStringTransformer = value;
       }
     }
     

@@ -14,15 +14,15 @@ namespace Wrapperator.Interfaces.IO
   
   /// <summary>Implements a <see cref="T:System.IO.TextReader" /> that reads characters from a byte stream in a particular encoding.</summary>
   /// <filterpriority>1</filterpriority>
-  public partial interface IStreamReader : System.IDisposable, ITextReader
+  public interface IStreamReader : Wrapperator.Interfaces.IO.ITextReader
   {
     
-    System.IO.Stream BaseStream
+    System.Text.Encoding CurrentEncoding
     {
       get;
     }
     
-    System.Text.Encoding CurrentEncoding
+    System.IO.Stream BaseStream
     {
       get;
     }

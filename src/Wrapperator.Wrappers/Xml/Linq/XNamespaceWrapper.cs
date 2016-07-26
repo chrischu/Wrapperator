@@ -13,7 +13,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
   
   
   /// <summary>Represents an XML namespace. This class cannot be inherited. </summary>
-  public partial class XNamespaceWrapper : Wrapperator.Interfaces.Xml.Linq.IXNamespace
+  public class XNamespaceWrapper : Wrapperator.Interfaces.Xml.Linq.IXNamespace
   {
     
     internal System.Xml.Linq.XNamespace XNamespace { get; private set; }
@@ -30,38 +30,6 @@ namespace Wrapperator.Wrappers.Xml.Linq
       {
         return XNamespace.NamespaceName;
       }
-    }
-    
-    public System.Xml.Linq.XNamespace None
-    {
-      get
-      {
-        return System.Xml.Linq.XNamespace.None;
-      }
-    }
-    
-    public System.Xml.Linq.XNamespace Xml
-    {
-      get
-      {
-        return System.Xml.Linq.XNamespace.Xml;
-      }
-    }
-    
-    public System.Xml.Linq.XNamespace Xmlns
-    {
-      get
-      {
-        return System.Xml.Linq.XNamespace.Xmlns;
-      }
-    }
-    
-    /// <summary>Gets an <see cref="T:System.Xml.Linq.XNamespace" /> for the specified Uniform Resource Identifier (URI).</summary>
-    /// <returns>An <see cref="T:System.Xml.Linq.XNamespace" /> created from the specified URI.</returns>
-    /// <param name="namespaceName">A <see cref="T:System.String" /> that contains a namespace URI.</param>
-    public Wrapperator.Interfaces.Xml.Linq.IXNamespace Get(string namespaceName)
-    {
-      return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(System.Xml.Linq.XNamespace.Get(namespaceName));
     }
     
     /// <summary>Returns an <see cref="T:System.Xml.Linq.XName" /> object created from this <see cref="T:System.Xml.Linq.XNamespace" /> and the specified local name.</summary>
