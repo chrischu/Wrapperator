@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml
     internal System.Xml.XmlReader XmlReader { get; private set; }
 
     
-    public XmlReaderWrapper(System.Xml.XmlReader xmlReader)
+    internal XmlReaderWrapper(System.Xml.XmlReader xmlReader)
     {
       XmlReader = xmlReader;
     }

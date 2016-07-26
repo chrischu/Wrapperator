@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.IO
   public class TextWriterStaticWrapper : Wrapperator.Interfaces.IO.ITextWriterStatic
   {
     
+    internal TextWriterStaticWrapper()
+    {
+    }
+    
     /// <summary>Creates a thread-safe wrapper around the specified TextWriter.</summary>
     /// <returns>A thread-safe wrapper.</returns>
     /// <param name="writer">The TextWriter to synchronize. </param>

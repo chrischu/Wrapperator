@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers
   public class EnvironmentStaticWrapper : Wrapperator.Interfaces.IEnvironmentStatic
   {
     
+    internal EnvironmentStaticWrapper()
+    {
+    }
+    
     public int TickCount
     {
       get

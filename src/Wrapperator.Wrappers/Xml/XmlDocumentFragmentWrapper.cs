@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml
     internal System.Xml.XmlDocumentFragment XmlDocumentFragment { get; private set; }
 
     
-    public XmlDocumentFragmentWrapper(System.Xml.XmlDocumentFragment xmlDocumentFragment)
+    internal XmlDocumentFragmentWrapper(System.Xml.XmlDocumentFragment xmlDocumentFragment)
     {
       XmlDocumentFragment = xmlDocumentFragment;
     }

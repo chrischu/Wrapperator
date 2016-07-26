@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XDeclaration XDeclaration { get; private set; }
 
     
-    public XDeclarationWrapper(System.Xml.Linq.XDeclaration xDeclaration)
+    internal XDeclarationWrapper(System.Xml.Linq.XDeclaration xDeclaration)
     {
       XDeclaration = xDeclaration;
     }

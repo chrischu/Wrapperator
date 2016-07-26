@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XDocument XDocument { get; private set; }
 
     
-    public XDocumentWrapper(System.Xml.Linq.XDocument xDocument) : 
+    internal XDocumentWrapper(System.Xml.Linq.XDocument xDocument) : 
         base(xDocument)
     {
       XDocument = xDocument;

@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Reflection
   public class AssemblyNameStaticWrapper : Wrapperator.Interfaces.Reflection.IAssemblyNameStatic
   {
     
+    internal AssemblyNameStaticWrapper()
+    {
+    }
+    
     /// <summary>Gets the <see cref="T:System.Reflection.AssemblyName" /> for a given file.</summary>
     /// <returns>An object that represents the given assembly file.</returns>
     /// <param name="assemblyFile">The path for the assembly whose <see cref="T:System.Reflection.AssemblyName" /> is to be returned. </param>

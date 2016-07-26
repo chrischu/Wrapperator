@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.Stream Stream { get; private set; }
 
     
-    public StreamWrapper(System.IO.Stream stream)
+    internal StreamWrapper(System.IO.Stream stream)
     {
       Stream = stream;
     }

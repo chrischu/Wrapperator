@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Threading
     internal System.Threading.Thread Thread { get; private set; }
 
     
-    public ThreadWrapper(System.Threading.Thread thread)
+    internal ThreadWrapper(System.Threading.Thread thread)
     {
       Thread = thread;
     }

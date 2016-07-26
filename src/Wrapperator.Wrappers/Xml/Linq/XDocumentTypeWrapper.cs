@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XDocumentType XDocumentType { get; private set; }
 
     
-    public XDocumentTypeWrapper(System.Xml.Linq.XDocumentType xDocumentType) : 
+    internal XDocumentTypeWrapper(System.Xml.Linq.XDocumentType xDocumentType) : 
         base(xDocumentType)
     {
       XDocumentType = xDocumentType;

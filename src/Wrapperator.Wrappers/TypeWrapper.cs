@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers
     internal System.Type Type { get; private set; }
 
     
-    public TypeWrapper(System.Type type)
+    internal TypeWrapper(System.Type type)
     {
       Type = type;
     }

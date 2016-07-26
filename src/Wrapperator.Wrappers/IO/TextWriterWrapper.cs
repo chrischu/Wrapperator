@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.TextWriter TextWriter { get; private set; }
 
     
-    public TextWriterWrapper(System.IO.TextWriter textWriter)
+    internal TextWriterWrapper(System.IO.TextWriter textWriter)
     {
       TextWriter = textWriter;
     }

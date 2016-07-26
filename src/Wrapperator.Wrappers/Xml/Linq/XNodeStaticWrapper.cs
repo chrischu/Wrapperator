@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XNodeStaticWrapper : Wrapperator.Interfaces.Xml.Linq.IXNodeStatic
   {
     
+    internal XNodeStaticWrapper()
+    {
+    }
+    
     public System.Xml.Linq.XNodeDocumentOrderComparer DocumentOrderComparer
     {
       get

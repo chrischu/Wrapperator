@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     internal System.Collections.Specialized.NameValueCollection NameValueCollection { get; private set; }
 
     
-    public NameValueCollectionWrapper(System.Collections.Specialized.NameValueCollection nameValueCollection)
+    internal NameValueCollectionWrapper(System.Collections.Specialized.NameValueCollection nameValueCollection)
     {
       NameValueCollection = nameValueCollection;
     }

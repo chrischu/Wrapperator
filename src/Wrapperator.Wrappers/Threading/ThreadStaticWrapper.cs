@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.Threading
   public class ThreadStaticWrapper : Wrapperator.Interfaces.Threading.IThreadStatic
   {
     
+    internal ThreadStaticWrapper()
+    {
+    }
+    
     public System.Threading.Thread CurrentThread
     {
       get

@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.IO
   public class PathStaticWrapper : Wrapperator.Interfaces.IO.IPathStatic
   {
     
+    internal PathStaticWrapper()
+    {
+    }
+    
     /// <summary>Changes the extension of a path string.</summary>
     /// <returns>The modified path information.On Windows-based desktop platforms, if <paramref name="path" /> is null or an empty string (""), the path information is returned unmodified. If <paramref name="extension" /> is null, the returned string contains the specified path with its extension removed. If <paramref name="path" /> has no extension, and <paramref name="extension" /> is not null, the returned path string contains <paramref name="extension" /> appended to the end of <paramref name="path" />.</returns>
     /// <param name="path">The path information to modify. The path cannot contain any of the characters defined in <see cref="M:System.IO.Path.GetInvalidPathChars" />. </param>

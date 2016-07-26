@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.FileStream FileStream { get; private set; }
 
     
-    public FileStreamWrapper(System.IO.FileStream fileStream) : 
+    internal FileStreamWrapper(System.IO.FileStream fileStream) : 
         base(fileStream)
     {
       FileStream = fileStream;

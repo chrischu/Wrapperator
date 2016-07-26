@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Configuration
     internal System.Configuration.Configuration Configuration { get; private set; }
 
     
-    public ConfigurationWrapper(System.Configuration.Configuration configuration)
+    internal ConfigurationWrapper(System.Configuration.Configuration configuration)
     {
       Configuration = configuration;
     }

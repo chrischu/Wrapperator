@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XProcessingInstruction XProcessingInstruction { get; private set; }
 
     
-    public XProcessingInstructionWrapper(System.Xml.Linq.XProcessingInstruction xProcessingInstruction) : 
+    internal XProcessingInstructionWrapper(System.Xml.Linq.XProcessingInstruction xProcessingInstruction) : 
         base(xProcessingInstruction)
     {
       XProcessingInstruction = xProcessingInstruction;

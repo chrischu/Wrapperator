@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml
   public class XmlReaderStaticWrapper : Wrapperator.Interfaces.Xml.IXmlReaderStatic
   {
     
+    internal XmlReaderStaticWrapper()
+    {
+    }
+    
     /// <summary>Returns a value indicating whether the string argument is a valid XML name.</summary>
     /// <returns>true if the name is valid; otherwise, false.</returns>
     /// <param name="str">The name to validate.</param>

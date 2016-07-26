@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XText XText { get; private set; }
 
     
-    public XTextWrapper(System.Xml.Linq.XText xText) : 
+    internal XTextWrapper(System.Xml.Linq.XText xText) : 
         base(xText)
     {
       XText = xText;

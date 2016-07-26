@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers
   public class AppDomainStaticWrapper : Wrapperator.Interfaces.IAppDomainStatic
   {
     
+    internal AppDomainStaticWrapper()
+    {
+    }
+    
     public System.AppDomain CurrentDomain
     {
       get

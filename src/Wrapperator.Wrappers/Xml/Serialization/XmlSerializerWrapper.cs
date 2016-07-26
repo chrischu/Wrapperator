@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     internal System.Xml.Serialization.XmlSerializer XmlSerializer { get; private set; }
 
     
-    public XmlSerializerWrapper(System.Xml.Serialization.XmlSerializer xmlSerializer)
+    internal XmlSerializerWrapper(System.Xml.Serialization.XmlSerializer xmlSerializer)
     {
       XmlSerializer = xmlSerializer;
     }

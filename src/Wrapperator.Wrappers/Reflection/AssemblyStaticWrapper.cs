@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Reflection
   public class AssemblyStaticWrapper : Wrapperator.Interfaces.Reflection.IAssemblyStatic
   {
     
+    internal AssemblyStaticWrapper()
+    {
+    }
+    
     /// <summary>Creates the name of a type qualified by the display name of its assembly.</summary>
     /// <returns>The full name of the type qualified by the display name of the assembly.</returns>
     /// <param name="assemblyName">The display name of an assembly. </param>

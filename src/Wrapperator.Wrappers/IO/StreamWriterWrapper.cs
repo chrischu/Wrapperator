@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.StreamWriter StreamWriter { get; private set; }
 
     
-    public StreamWriterWrapper(System.IO.StreamWriter streamWriter) : 
+    internal StreamWriterWrapper(System.IO.StreamWriter streamWriter) : 
         base(streamWriter)
     {
       StreamWriter = streamWriter;

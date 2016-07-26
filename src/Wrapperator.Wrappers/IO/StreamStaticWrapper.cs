@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.IO
   public class StreamStaticWrapper : Wrapperator.Interfaces.IO.IStreamStatic
   {
     
+    internal StreamStaticWrapper()
+    {
+    }
+    
     /// <summary>Creates a thread-safe (synchronized) wrapper around the specified <see cref="T:System.IO.Stream" /> object.</summary>
     /// <returns>A thread-safe <see cref="T:System.IO.Stream" /> object.</returns>
     /// <param name="stream">The <see cref="T:System.IO.Stream" /> object to synchronize.</param>

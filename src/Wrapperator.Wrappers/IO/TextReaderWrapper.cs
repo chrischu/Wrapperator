@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.TextReader TextReader { get; private set; }
 
     
-    public TextReaderWrapper(System.IO.TextReader textReader)
+    internal TextReaderWrapper(System.IO.TextReader textReader)
     {
       TextReader = textReader;
     }

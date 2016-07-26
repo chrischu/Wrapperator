@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Reflection
     internal System.Reflection.AssemblyName AssemblyName { get; private set; }
 
     
-    public AssemblyNameWrapper(System.Reflection.AssemblyName assemblyName)
+    internal AssemblyNameWrapper(System.Reflection.AssemblyName assemblyName)
     {
       AssemblyName = assemblyName;
     }

@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XContainer XContainer { get; private set; }
 
     
-    public XContainerWrapper(System.Xml.Linq.XContainer xContainer) : 
+    internal XContainerWrapper(System.Xml.Linq.XContainer xContainer) : 
         base(xContainer)
     {
       XContainer = xContainer;

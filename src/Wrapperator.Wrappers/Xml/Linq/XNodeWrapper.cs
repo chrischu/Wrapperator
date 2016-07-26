@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XNode XNode { get; private set; }
 
     
-    public XNodeWrapper(System.Xml.Linq.XNode xNode) : 
+    internal XNodeWrapper(System.Xml.Linq.XNode xNode) : 
         base(xNode)
     {
       XNode = xNode;

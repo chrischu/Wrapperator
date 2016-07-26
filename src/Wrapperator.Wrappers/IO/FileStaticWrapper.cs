@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.IO
   public class FileStaticWrapper : Wrapperator.Interfaces.IO.IFileStatic
   {
     
+    internal FileStaticWrapper()
+    {
+    }
+    
     /// <summary>Opens an existing UTF-8 encoded text file for reading.</summary>
     /// <returns>A <see cref="T:System.IO.StreamReader" /> on the specified path.</returns>
     /// <param name="path">The file to be opened for reading. </param>

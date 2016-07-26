@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XElementStaticWrapper : Wrapperator.Interfaces.Xml.Linq.IXElementStatic
   {
     
+    internal XElementStaticWrapper()
+    {
+    }
+    
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> EmptySequence
     {
       get

@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml
     internal System.Xml.XmlWriter XmlWriter { get; private set; }
 
     
-    public XmlWriterWrapper(System.Xml.XmlWriter xmlWriter)
+    internal XmlWriterWrapper(System.Xml.XmlWriter xmlWriter)
     {
       XmlWriter = xmlWriter;
     }

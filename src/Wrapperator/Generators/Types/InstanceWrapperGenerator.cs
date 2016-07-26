@@ -39,7 +39,7 @@ namespace Wrapperator.Generators.Types
           new CodeSnippetTypeMember($"    internal {WrappedType.FullName} {propertyName} {{ get; private set; }}" + Environment.NewLine);
       yield return wrappedProperty;
 
-      var constructor = new CodeConstructor { Attributes = MemberAttributes.Public };
+      var constructor = new CodeConstructor { Attributes = MemberAttributes.Assembly };
 
       if (Helper.ShouldTypeBeWrapped(WrappedType.BaseType))
         constructor.BaseConstructorArgs.Add(new CodeArgumentReferenceExpression(parameterName));

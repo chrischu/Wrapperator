@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XObject XObject { get; private set; }
 
     
-    public XObjectWrapper(System.Xml.Linq.XObject xObject)
+    internal XObjectWrapper(System.Xml.Linq.XObject xObject)
     {
       XObject = xObject;
     }

@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.IO
   public class TextReaderStaticWrapper : Wrapperator.Interfaces.IO.ITextReaderStatic
   {
     
+    internal TextReaderStaticWrapper()
+    {
+    }
+    
     /// <summary>Creates a thread-safe wrapper around the specified TextReader.</summary>
     /// <returns>A thread-safe <see cref="T:System.IO.TextReader" />.</returns>
     /// <param name="reader">The TextReader to synchronize. </param>

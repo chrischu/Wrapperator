@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml
     internal System.Xml.XmlDocument XmlDocument { get; private set; }
 
     
-    public XmlDocumentWrapper(System.Xml.XmlDocument xmlDocument)
+    internal XmlDocumentWrapper(System.Xml.XmlDocument xmlDocument)
     {
       XmlDocument = xmlDocument;
     }

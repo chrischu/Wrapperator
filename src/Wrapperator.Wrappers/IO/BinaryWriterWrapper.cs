@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.BinaryWriter BinaryWriter { get; private set; }
 
     
-    public BinaryWriterWrapper(System.IO.BinaryWriter binaryWriter)
+    internal BinaryWriterWrapper(System.IO.BinaryWriter binaryWriter)
     {
       BinaryWriter = binaryWriter;
     }

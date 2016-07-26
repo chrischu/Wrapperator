@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XDocumentStaticWrapper : Wrapperator.Interfaces.Xml.Linq.IXDocumentStatic
   {
     
+    internal XDocumentStaticWrapper()
+    {
+    }
+    
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a file. </summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XDocument" /> that contains the contents of the specified file.</returns>
     /// <param name="uri">A URI string that references the file to load into a new <see cref="T:System.Xml.Linq.XDocument" />.</param>

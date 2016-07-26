@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers
     internal System.Version Version { get; private set; }
 
     
-    public VersionWrapper(System.Version version)
+    internal VersionWrapper(System.Version version)
     {
       Version = version;
     }

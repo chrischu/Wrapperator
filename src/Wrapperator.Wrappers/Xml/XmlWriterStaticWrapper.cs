@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml
   public class XmlWriterStaticWrapper : Wrapperator.Interfaces.Xml.IXmlWriterStatic
   {
     
+    internal XmlWriterStaticWrapper()
+    {
+    }
+    
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified filename.</summary>
     /// <returns>An <see cref="T:System.Xml.XmlWriter" /> object.</returns>
     /// <param name="outputFileName">The file to which you want to write. The <see cref="T:System.Xml.XmlWriter" /> creates a file at the specified path and writes to it in XML 1.0 text syntax. The <paramref name="outputFileName" /> must be a file system path.</param>

@@ -21,7 +21,7 @@ namespace Wrapperator.Generators.Types
 
     protected override IEnumerable<CodeTypeMember> GetConstructorMembers ()
     {
-      yield break;
+      yield return  new CodeConstructor { Attributes = MemberAttributes.Assembly };
     }
 
     protected override IEnumerable<CodeTypeMember> GetDisposeMembers ()

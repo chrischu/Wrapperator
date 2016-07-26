@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XCData XCData { get; private set; }
 
     
-    public XCDataWrapper(System.Xml.Linq.XCData xCData) : 
+    internal XCDataWrapper(System.Xml.Linq.XCData xCData) : 
         base(xCData)
     {
       XCData = xCData;

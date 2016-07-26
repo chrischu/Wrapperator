@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers
     internal System.DateTime DateTime { get; private set; }
 
     
-    public DateTimeWrapper(System.DateTime dateTime)
+    internal DateTimeWrapper(System.DateTime dateTime)
     {
       DateTime = dateTime;
     }

@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XAttribute XAttribute { get; private set; }
 
     
-    public XAttributeWrapper(System.Xml.Linq.XAttribute xAttribute) : 
+    internal XAttributeWrapper(System.Xml.Linq.XAttribute xAttribute) : 
         base(xAttribute)
     {
       XAttribute = xAttribute;

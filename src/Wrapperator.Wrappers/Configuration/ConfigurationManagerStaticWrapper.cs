@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationManagerStaticWrapper : Wrapperator.Interfaces.Configuration.IConfigurationManagerStatic
   {
     
+    internal ConfigurationManagerStaticWrapper()
+    {
+    }
+    
     public System.Collections.Specialized.NameValueCollection AppSettings
     {
       get

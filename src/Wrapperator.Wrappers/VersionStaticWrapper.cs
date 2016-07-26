@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers
   public class VersionStaticWrapper : Wrapperator.Interfaces.IVersionStatic
   {
     
+    internal VersionStaticWrapper()
+    {
+    }
+    
     /// <summary>Converts the string representation of a version number to an equivalent <see cref="T:System.Version" /> object.</summary>
     /// <returns>An object that is equivalent to the version number specified in the <paramref name="input" /> parameter.</returns>
     /// <param name="input">A string that contains a version number to convert.</param>

@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XName XName { get; private set; }
 
     
-    public XNameWrapper(System.Xml.Linq.XName xName)
+    internal XNameWrapper(System.Xml.Linq.XName xName)
     {
       XName = xName;
     }

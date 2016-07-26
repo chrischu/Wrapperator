@@ -3,9 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v0.8.0...HEAD)
+## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v0.9.0...HEAD)
 
 No changes yet.
+
+## [0.9.0](https://github.com/chrischu/Wrapperator/compare/v0.8.0...v0.9.0) - 2016-07-26
+
+* Made constructors in wrappers internal to enforce usage of Wrapper factory class.
 
 ## [0.8.0](https://github.com/chrischu/Wrapperator/compare/v0.7.0...v0.8.0) - 2016-07-26
 

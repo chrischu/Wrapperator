@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers
   public class ConsoleStaticWrapper : Wrapperator.Interfaces.IConsoleStatic
   {
     
+    internal ConsoleStaticWrapper()
+    {
+    }
+    
     public bool IsInputRedirected
     {
       get

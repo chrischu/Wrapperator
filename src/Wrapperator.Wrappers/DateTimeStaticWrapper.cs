@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers
   public class DateTimeStaticWrapper : Wrapperator.Interfaces.IDateTimeStatic
   {
     
+    internal DateTimeStaticWrapper()
+    {
+    }
+    
     public System.DateTime Now
     {
       get

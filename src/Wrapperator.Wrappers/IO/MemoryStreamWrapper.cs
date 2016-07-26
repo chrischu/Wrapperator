@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.MemoryStream MemoryStream { get; private set; }
 
     
-    public MemoryStreamWrapper(System.IO.MemoryStream memoryStream) : 
+    internal MemoryStreamWrapper(System.IO.MemoryStream memoryStream) : 
         base(memoryStream)
     {
       MemoryStream = memoryStream;

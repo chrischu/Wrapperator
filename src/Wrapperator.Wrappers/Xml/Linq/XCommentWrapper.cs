@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XComment XComment { get; private set; }
 
     
-    public XCommentWrapper(System.Xml.Linq.XComment xComment) : 
+    internal XCommentWrapper(System.Xml.Linq.XComment xComment) : 
         base(xComment)
     {
       XComment = xComment;

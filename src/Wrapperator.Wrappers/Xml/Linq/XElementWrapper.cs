@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XElement XElement { get; private set; }
 
     
-    public XElementWrapper(System.Xml.Linq.XElement xElement) : 
+    internal XElementWrapper(System.Xml.Linq.XElement xElement) : 
         base(xElement)
     {
       XElement = xElement;

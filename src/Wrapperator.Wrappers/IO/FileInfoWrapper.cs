@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.FileInfo FileInfo { get; private set; }
 
     
-    public FileInfoWrapper(System.IO.FileInfo fileInfo)
+    internal FileInfoWrapper(System.IO.FileInfo fileInfo)
     {
       FileInfo = fileInfo;
     }

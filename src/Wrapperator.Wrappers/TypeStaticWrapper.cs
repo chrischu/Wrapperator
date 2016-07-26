@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers
   public class TypeStaticWrapper : Wrapperator.Interfaces.ITypeStatic
   {
     
+    internal TypeStaticWrapper()
+    {
+    }
+    
     public System.Reflection.Binder DefaultBinder
     {
       get

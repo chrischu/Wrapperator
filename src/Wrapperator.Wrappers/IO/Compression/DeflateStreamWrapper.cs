@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.IO.Compression
     internal System.IO.Compression.DeflateStream DeflateStream { get; private set; }
 
     
-    public DeflateStreamWrapper(System.IO.Compression.DeflateStream deflateStream) : 
+    internal DeflateStreamWrapper(System.IO.Compression.DeflateStream deflateStream) : 
         base(deflateStream)
     {
       DeflateStream = deflateStream;

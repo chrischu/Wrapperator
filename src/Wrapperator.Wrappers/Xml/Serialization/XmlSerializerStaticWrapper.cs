@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml.Serialization
   public class XmlSerializerStaticWrapper : Wrapperator.Interfaces.Xml.Serialization.IXmlSerializerStatic
   {
     
+    internal XmlSerializerStaticWrapper()
+    {
+    }
+    
     /// <summary>Returns an array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects created from an array of <see cref="T:System.Xml.Serialization.XmlTypeMapping" /> objects.</summary>
     /// <returns>An array of <see cref="T:System.Xml.Serialization.XmlSerializer" /> objects.</returns>
     /// <param name="mappings">An array of <see cref="T:System.Xml.Serialization.XmlTypeMapping" /> that maps one type to another. </param>

@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XNamespaceStaticWrapper : Wrapperator.Interfaces.Xml.Linq.IXNamespaceStatic
   {
     
+    internal XNamespaceStaticWrapper()
+    {
+    }
+    
     public System.Xml.Linq.XNamespace None
     {
       get

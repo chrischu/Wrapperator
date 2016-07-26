@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.StreamReader StreamReader { get; private set; }
 
     
-    public StreamReaderWrapper(System.IO.StreamReader streamReader) : 
+    internal StreamReaderWrapper(System.IO.StreamReader streamReader) : 
         base(streamReader)
     {
       StreamReader = streamReader;

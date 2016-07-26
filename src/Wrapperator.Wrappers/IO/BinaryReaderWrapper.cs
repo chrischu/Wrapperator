@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.BinaryReader BinaryReader { get; private set; }
 
     
-    public BinaryReaderWrapper(System.IO.BinaryReader binaryReader)
+    internal BinaryReaderWrapper(System.IO.BinaryReader binaryReader)
     {
       BinaryReader = binaryReader;
     }

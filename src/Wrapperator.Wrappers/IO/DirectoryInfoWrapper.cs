@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.DirectoryInfo DirectoryInfo { get; private set; }
 
     
-    public DirectoryInfoWrapper(System.IO.DirectoryInfo directoryInfo)
+    internal DirectoryInfoWrapper(System.IO.DirectoryInfo directoryInfo)
     {
       DirectoryInfo = directoryInfo;
     }

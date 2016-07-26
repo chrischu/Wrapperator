@@ -17,6 +17,10 @@ namespace Wrapperator.Wrappers.IO
   public class DirectoryStaticWrapper : Wrapperator.Interfaces.IO.IDirectoryStatic
   {
     
+    internal DirectoryStaticWrapper()
+    {
+    }
+    
     /// <summary>Retrieves the parent directory of the specified path, including both absolute and relative paths.</summary>
     /// <returns>The parent directory, or null if <paramref name="path" /> is the root directory, including the root of a UNC server or share name.</returns>
     /// <param name="path">The path for which to retrieve the parent directory. </param>

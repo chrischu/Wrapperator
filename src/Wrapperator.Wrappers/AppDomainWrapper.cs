@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers
     internal System.AppDomain AppDomain { get; private set; }
 
     
-    public AppDomainWrapper(System.AppDomain appDomain)
+    internal AppDomainWrapper(System.AppDomain appDomain)
     {
       AppDomain = appDomain;
     }

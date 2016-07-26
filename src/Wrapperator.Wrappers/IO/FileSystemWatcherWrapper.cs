@@ -20,7 +20,7 @@ namespace Wrapperator.Wrappers.IO
     internal System.IO.FileSystemWatcher FileSystemWatcher { get; private set; }
 
     
-    public FileSystemWatcherWrapper(System.IO.FileSystemWatcher fileSystemWatcher)
+    internal FileSystemWatcherWrapper(System.IO.FileSystemWatcher fileSystemWatcher)
     {
       FileSystemWatcher = fileSystemWatcher;
     }

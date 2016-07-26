@@ -19,7 +19,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     internal System.Xml.Linq.XStreamingElement XStreamingElement { get; private set; }
 
     
-    public XStreamingElementWrapper(System.Xml.Linq.XStreamingElement xStreamingElement)
+    internal XStreamingElementWrapper(System.Xml.Linq.XStreamingElement xStreamingElement)
     {
       XStreamingElement = xStreamingElement;
     }

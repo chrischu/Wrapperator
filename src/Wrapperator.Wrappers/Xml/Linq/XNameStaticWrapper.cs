@@ -16,6 +16,10 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XNameStaticWrapper : Wrapperator.Interfaces.Xml.Linq.IXNameStatic
   {
     
+    internal XNameStaticWrapper()
+    {
+    }
+    
     /// <summary>Gets an <see cref="T:System.Xml.Linq.XName" /> object from an expanded name.</summary>
     /// <returns>An <see cref="T:System.Xml.Linq.XName" /> object constructed from the expanded name.</returns>
     /// <param name="expandedName">A <see cref="T:System.String" /> that contains an expanded XML name in the format {namespace}localname.</param>
