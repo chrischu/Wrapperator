@@ -55,6 +55,14 @@
     <Compile Include="ConsoleStaticWrapper.cs" />
     <Compile Include="DateTimeStaticWrapper.cs" />
     <Compile Include="DateTimeWrapper.cs" />
+    <Compile Include="Diagnostics\DebugStaticWrapper.cs" />
+    <Compile Include="Diagnostics\ProcessStartInfoWrapper.cs" />
+    <Compile Include="Diagnostics\ProcessStaticWrapper.cs" />
+    <Compile Include="Diagnostics\ProcessWrapper.cs" />
+    <Compile Include="Diagnostics\StopwatchStaticWrapper.cs" />
+    <Compile Include="Diagnostics\StopwatchWrapper.cs" />
+    <Compile Include="Diagnostics\TraceStaticWrapper.cs" />
+    <Compile Include="Diagnostics\TraceWrapper.cs" />
     <Compile Include="EnvironmentStaticWrapper.cs" />
     <Compile Include="IO\BinaryReaderWrapper.cs" />
     <Compile Include="IO\BinaryWriterWrapper.cs" />

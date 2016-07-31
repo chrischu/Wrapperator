@@ -39,7 +39,10 @@ namespace Wrapperator.Options
                                                                           {
                                                                               "AssemblyName.CultureName",
                                                                               "XmlDocumentFragment.PreviousText",
-                                                                              "XmlDocument.PreviousText"
+                                                                              "XmlDocument.PreviousText",
+                                                                              "Process.SafeHandle",
+                                                                              "ProcessStartInfo.Environment",
+                                                                              "ProcessStartInfo.PasswordInClearText"
                                                                           };
 
     public bool WrapParameterTypes { get; set; }

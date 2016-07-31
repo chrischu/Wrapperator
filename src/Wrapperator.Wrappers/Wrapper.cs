@@ -132,6 +132,30 @@ namespace Wrapperator.Wrappers
       }
     }
     
+    public static Wrapperator.Interfaces.Diagnostics.IStopwatchStatic Stopwatch
+    {
+      get
+      {
+        return new Wrapperator.Wrappers.Diagnostics.StopwatchStaticWrapper();
+      }
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.IDebugStatic Debug
+    {
+      get
+      {
+        return new Wrapperator.Wrappers.Diagnostics.DebugStaticWrapper();
+      }
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.ITraceStatic Trace
+    {
+      get
+      {
+        return new Wrapperator.Wrappers.Diagnostics.TraceStaticWrapper();
+      }
+    }
+    
     public static Wrapperator.Interfaces.IAppDomainStatic AppDomain
     {
       get
@@ -193,6 +217,14 @@ namespace Wrapperator.Wrappers
       get
       {
         return new Wrapperator.Wrappers.Xml.Linq.XNodeStaticWrapper();
+      }
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.IProcessStatic Process
+    {
+      get
+      {
+        return new Wrapperator.Wrappers.Diagnostics.ProcessStaticWrapper();
       }
     }
     
@@ -280,6 +312,21 @@ namespace Wrapperator.Wrappers
     public static Wrapperator.Interfaces.Xml.IXmlReader Wrap(System.Xml.XmlReader xmlReader)
     {
       return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(xmlReader);
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.IStopwatch Wrap(System.Diagnostics.Stopwatch stopwatch)
+    {
+      return new Wrapperator.Wrappers.Diagnostics.StopwatchWrapper(stopwatch);
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.ITrace Wrap(System.Diagnostics.Trace trace)
+    {
+      return new Wrapperator.Wrappers.Diagnostics.TraceWrapper(trace);
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.IProcessStartInfo Wrap(System.Diagnostics.ProcessStartInfo processStartInfo)
+    {
+      return new Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper(processStartInfo);
     }
     
     public static Wrapperator.Interfaces.IAppDomain Wrap(System.AppDomain appDomain)
@@ -405,6 +452,11 @@ namespace Wrapperator.Wrappers
     public static Wrapperator.Interfaces.Xml.Linq.IXText Wrap(System.Xml.Linq.XText xText)
     {
       return new Wrapperator.Wrappers.Xml.Linq.XTextWrapper(xText);
+    }
+    
+    public static Wrapperator.Interfaces.Diagnostics.IProcess Wrap(System.Diagnostics.Process process)
+    {
+      return new Wrapperator.Wrappers.Diagnostics.ProcessWrapper(process);
     }
     
     public static Wrapperator.Interfaces.Xml.Linq.IXCData Wrap(System.Xml.Linq.XCData xCData)

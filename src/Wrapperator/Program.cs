@@ -75,7 +75,12 @@ namespace Wrapperator
                   typeof(XmlDocumentFragment),
                   typeof(XmlSerializer),
                   typeof(XmlWriter),
-                  typeof(XmlReader)
+                  typeof(XmlReader),
+                  typeof(Process),
+                  typeof(Stopwatch),
+                  typeof(Debug),
+                  typeof(Trace),
+                  typeof(ProcessStartInfo)
               })
           {
               WrapParameterTypes = true

@@ -22,6 +22,12 @@ For current change log/work in progress see [Changelog](CHANGELOG.md).
 * System.Configuration
   * Configuration
   * ConfigurationManager
+* System.Diagnostics
+  * Debug
+  * Trace
+  * Process
+  * ProcessStartInfo
+  * Stopwatch
 * System.IO
   * BinaryReader
   * BinaryWriter

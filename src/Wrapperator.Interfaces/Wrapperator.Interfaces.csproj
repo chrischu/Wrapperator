@@ -50,6 +50,14 @@
     <Compile Include="Collections\Specialized\INameValueCollection.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
     <Compile Include="Configuration\IConfigurationManagerStatic.cs" />
+    <Compile Include="Diagnostics\IDebugStatic.cs" />
+    <Compile Include="Diagnostics\IProcess.cs" />
+    <Compile Include="Diagnostics\IProcessStartInfo.cs" />
+    <Compile Include="Diagnostics\IProcessStatic.cs" />
+    <Compile Include="Diagnostics\IStopwatch.cs" />
+    <Compile Include="Diagnostics\IStopwatchStatic.cs" />
+    <Compile Include="Diagnostics\ITrace.cs" />
+    <Compile Include="Diagnostics\ITraceStatic.cs" />
     <Compile Include="IAppDomain.cs" />
     <Compile Include="IAppDomainStatic.cs" />
     <Compile Include="IConsoleStatic.cs" />
