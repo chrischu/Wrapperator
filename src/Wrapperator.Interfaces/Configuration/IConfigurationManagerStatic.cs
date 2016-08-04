@@ -16,7 +16,7 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConfigurationManagerStatic
   {
     
-    System.Collections.Specialized.NameValueCollection AppSettings
+    Wrapperator.Interfaces.Collections.Specialized.INameValueCollection AppSettings
     {
       get;
     }

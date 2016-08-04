@@ -22,7 +22,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
-    System.Xml.Linq.XDocument Document
+    Wrapperator.Interfaces.Xml.Linq.IXDocument Document
     {
       get;
     }
@@ -32,7 +32,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
-    System.Xml.Linq.XElement Parent
+    Wrapperator.Interfaces.Xml.Linq.IXElement Parent
     {
       get;
     }

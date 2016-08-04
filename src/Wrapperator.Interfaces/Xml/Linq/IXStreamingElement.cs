@@ -16,7 +16,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXStreamingElement
   {
     
-    System.Xml.Linq.XName Name
+    Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get;
       set;

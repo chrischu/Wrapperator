@@ -16,12 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConfiguration
   {
     
-    System.Configuration.AppSettingsSection AppSettings
+    Wrapperator.Interfaces.Configuration.IAppSettingsSection AppSettings
     {
       get;
     }
     
-    System.Configuration.ConnectionStringsSection ConnectionStrings
+    Wrapperator.Interfaces.Configuration.IConnectionStringsSection ConnectionStrings
     {
       get;
     }
@@ -36,27 +36,27 @@ namespace Wrapperator.Interfaces.Configuration
       get;
     }
     
-    System.Configuration.ConfigurationLocationCollection Locations
+    Wrapperator.Interfaces.Configuration.IConfigurationLocationCollection Locations
     {
       get;
     }
     
-    System.Configuration.ContextInformation EvaluationContext
+    Wrapperator.Interfaces.Configuration.IContextInformation EvaluationContext
     {
       get;
     }
     
-    System.Configuration.ConfigurationSectionGroup RootSectionGroup
+    Wrapperator.Interfaces.Configuration.IConfigurationSectionGroup RootSectionGroup
     {
       get;
     }
     
-    System.Configuration.ConfigurationSectionCollection Sections
+    Wrapperator.Interfaces.Configuration.IConfigurationSectionCollection Sections
     {
       get;
     }
     
-    System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    Wrapperator.Interfaces.Configuration.IConfigurationSectionGroupCollection SectionGroups
     {
       get;
     }
@@ -88,12 +88,12 @@ namespace Wrapperator.Interfaces.Configuration
     /// <summary>Returns the specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</summary>
     /// <returns>The specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</returns>
     /// <param name="sectionName">The path to the section to be returned.</param>
-    System.Configuration.ConfigurationSection GetSection(string sectionName);
+    Wrapperator.Interfaces.Configuration.IConfigurationSection GetSection(string sectionName);
     
     /// <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object.</summary>
     /// <returns>The <see cref="T:System.Configuration.ConfigurationSectionGroup" /> specified.</returns>
     /// <param name="sectionGroupName">The path name of the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> to return.</param>
-    System.Configuration.ConfigurationSectionGroup GetSectionGroup(string sectionGroupName);
+    Wrapperator.Interfaces.Configuration.IConfigurationSectionGroup GetSectionGroup(string sectionGroupName);
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the current XML configuration file.</summary>
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The configuration file could not be written to.- or -The configuration file has changed. </exception>

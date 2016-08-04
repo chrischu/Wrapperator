@@ -32,7 +32,7 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
-    System.IO.DirectoryInfo Directory
+    Wrapperator.Interfaces.IO.IDirectoryInfo Directory
     {
       get;
     }
@@ -58,37 +58,37 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
-    System.DateTime CreationTime
+    Wrapperator.Interfaces.IDateTime CreationTime
     {
       get;
       set;
     }
     
-    System.DateTime CreationTimeUtc
+    Wrapperator.Interfaces.IDateTime CreationTimeUtc
     {
       get;
       set;
     }
     
-    System.DateTime LastAccessTime
+    Wrapperator.Interfaces.IDateTime LastAccessTime
     {
       get;
       set;
     }
     
-    System.DateTime LastAccessTimeUtc
+    Wrapperator.Interfaces.IDateTime LastAccessTimeUtc
     {
       get;
       set;
     }
     
-    System.DateTime LastWriteTime
+    Wrapperator.Interfaces.IDateTime LastWriteTime
     {
       get;
       set;
     }
     
-    System.DateTime LastWriteTimeUtc
+    Wrapperator.Interfaces.IDateTime LastWriteTimeUtc
     {
       get;
       set;

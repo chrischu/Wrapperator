@@ -33,11 +33,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Type DeclaringType
+    public Wrapperator.Interfaces.IType DeclaringType
     {
       get
       {
-        return Type.DeclaringType;
+        return new Wrapperator.Wrappers.TypeWrapper(Type.DeclaringType);
       }
     }
     
@@ -49,11 +49,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Type ReflectedType
+    public Wrapperator.Interfaces.IType ReflectedType
     {
       get
       {
-        return Type.ReflectedType;
+        return new Wrapperator.Wrappers.TypeWrapper(Type.ReflectedType);
       }
     }
     
@@ -81,11 +81,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Reflection.Assembly Assembly
+    public Wrapperator.Interfaces.Reflection.IAssembly Assembly
     {
       get
       {
-        return Type.Assembly;
+        return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(Type.Assembly);
       }
     }
     
@@ -121,11 +121,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Type BaseType
+    public Wrapperator.Interfaces.IType BaseType
     {
       get
       {
-        return Type.BaseType;
+        return new Wrapperator.Wrappers.TypeWrapper(Type.BaseType);
       }
     }
     
@@ -497,11 +497,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Type UnderlyingSystemType
+    public Wrapperator.Interfaces.IType UnderlyingSystemType
     {
       get
       {
-        return Type.UnderlyingSystemType;
+        return new Wrapperator.Wrappers.TypeWrapper(Type.UnderlyingSystemType);
       }
     }
     

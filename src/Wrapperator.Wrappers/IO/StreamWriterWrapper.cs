@@ -38,11 +38,11 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.IO.Stream BaseStream
+    public Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get
       {
-        return StreamWriter.BaseStream;
+        return new Wrapperator.Wrappers.IO.StreamWrapper(StreamWriter.BaseStream);
       }
     }
     

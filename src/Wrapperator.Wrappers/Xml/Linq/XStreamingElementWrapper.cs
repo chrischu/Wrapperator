@@ -24,15 +24,15 @@ namespace Wrapperator.Wrappers.Xml.Linq
       XStreamingElement = xStreamingElement;
     }
     
-    public System.Xml.Linq.XName Name
+    public Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get
       {
-        return XStreamingElement.Name;
+        return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(XStreamingElement.Name);
       }
       set
       {
-        XStreamingElement.Name = value;
+        XStreamingElement.Name = ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)(value)).XName;
       }
     }
     

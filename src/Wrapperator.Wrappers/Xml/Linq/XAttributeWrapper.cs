@@ -33,19 +33,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XName Name
+    public Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get
       {
-        return XAttribute.Name;
+        return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(XAttribute.Name);
       }
     }
     
-    public System.Xml.Linq.XAttribute NextAttribute
+    public Wrapperator.Interfaces.Xml.Linq.IXAttribute NextAttribute
     {
       get
       {
-        return XAttribute.NextAttribute;
+        return new Wrapperator.Wrappers.Xml.Linq.XAttributeWrapper(XAttribute.NextAttribute);
       }
     }
     
@@ -57,11 +57,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XAttribute PreviousAttribute
+    public Wrapperator.Interfaces.Xml.Linq.IXAttribute PreviousAttribute
     {
       get
       {
-        return XAttribute.PreviousAttribute;
+        return new Wrapperator.Wrappers.Xml.Linq.XAttributeWrapper(XAttribute.PreviousAttribute);
       }
     }
     
@@ -85,19 +85,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XDocument Document
+    public new Wrapperator.Interfaces.Xml.Linq.IXDocument Document
     {
       get
       {
-        return XAttribute.Document;
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XAttribute.Document);
       }
     }
     
-    public new System.Xml.Linq.XElement Parent
+    public new Wrapperator.Interfaces.Xml.Linq.IXElement Parent
     {
       get
       {
-        return XAttribute.Parent;
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XAttribute.Parent);
       }
     }
     

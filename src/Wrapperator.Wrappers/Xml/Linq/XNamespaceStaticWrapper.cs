@@ -20,27 +20,27 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
     }
     
-    public System.Xml.Linq.XNamespace None
+    public Wrapperator.Interfaces.Xml.Linq.IXNamespace None
     {
       get
       {
-        return System.Xml.Linq.XNamespace.None;
+        return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(System.Xml.Linq.XNamespace.None);
       }
     }
     
-    public System.Xml.Linq.XNamespace Xml
+    public Wrapperator.Interfaces.Xml.Linq.IXNamespace Xml
     {
       get
       {
-        return System.Xml.Linq.XNamespace.Xml;
+        return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(System.Xml.Linq.XNamespace.Xml);
       }
     }
     
-    public System.Xml.Linq.XNamespace Xmlns
+    public Wrapperator.Interfaces.Xml.Linq.IXNamespace Xmlns
     {
       get
       {
-        return System.Xml.Linq.XNamespace.Xmlns;
+        return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(System.Xml.Linq.XNamespace.Xmlns);
       }
     }
     

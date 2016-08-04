@@ -25,11 +25,11 @@ namespace Wrapperator.Wrappers.IO
       BinaryReader = binaryReader;
     }
     
-    public System.IO.Stream BaseStream
+    public Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get
       {
-        return BinaryReader.BaseStream;
+        return new Wrapperator.Wrappers.IO.StreamWrapper(BinaryReader.BaseStream);
       }
     }
     

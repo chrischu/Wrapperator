@@ -23,7 +23,7 @@ namespace Wrapperator.Interfaces.IO
       set;
     }
     
-    System.IO.Stream BaseStream
+    Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get;
     }

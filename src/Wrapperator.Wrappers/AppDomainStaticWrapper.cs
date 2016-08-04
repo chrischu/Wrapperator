@@ -21,11 +21,11 @@ namespace Wrapperator.Wrappers
     {
     }
     
-    public System.AppDomain CurrentDomain
+    public Wrapperator.Interfaces.IAppDomain CurrentDomain
     {
       get
       {
-        return System.AppDomain.CurrentDomain;
+        return new Wrapperator.Wrappers.AppDomainWrapper(System.AppDomain.CurrentDomain);
       }
     }
     

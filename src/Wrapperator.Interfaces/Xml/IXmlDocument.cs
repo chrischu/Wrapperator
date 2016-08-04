@@ -51,7 +51,7 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
-    System.Xml.XmlDocument OwnerDocument
+    Wrapperator.Interfaces.Xml.IXmlDocument OwnerDocument
     {
       get;
     }

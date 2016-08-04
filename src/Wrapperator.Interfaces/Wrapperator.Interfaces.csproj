@@ -48,8 +48,25 @@
       <Link>Properties\AssemblyInfoShared.cs</Link>
     </Compile>
     <Compile Include="Collections\Specialized\INameValueCollection.cs" />
+    <Compile Include="Configuration\IAppSettingsSection.cs" />
     <Compile Include="Configuration\IConfiguration.cs" />
+    <Compile Include="Configuration\IConfigurationLocation.cs" />
+    <Compile Include="Configuration\IConfigurationLocationCollection.cs" />
+    <Compile Include="Configuration\IConfigurationLockCollection.cs" />
     <Compile Include="Configuration\IConfigurationManagerStatic.cs" />
+    <Compile Include="Configuration\IConfigurationSection.cs" />
+    <Compile Include="Configuration\IConfigurationSectionCollection.cs" />
+    <Compile Include="Configuration\IConfigurationSectionGroup.cs" />
+    <Compile Include="Configuration\IConfigurationSectionGroupCollection.cs" />
+    <Compile Include="Configuration\IConnectionStringsSection.cs" />
+    <Compile Include="Configuration\IContextInformation.cs" />
+    <Compile Include="Configuration\IElementInformation.cs" />
+    <Compile Include="Configuration\IKeyValueConfigurationCollection.cs" />
+    <Compile Include="Configuration\IKeyValueConfigurationElement.cs" />
+    <Compile Include="Configuration\IPropertyInformation.cs" />
+    <Compile Include="Configuration\IPropertyInformationCollection.cs" />
+    <Compile Include="Configuration\IProtectedConfigurationProvider.cs" />
+    <Compile Include="Configuration\ISectionInformation.cs" />
     <Compile Include="Diagnostics\IDebugStatic.cs" />
     <Compile Include="Diagnostics\IProcess.cs" />
     <Compile Include="Diagnostics\IProcessStartInfo.cs" />

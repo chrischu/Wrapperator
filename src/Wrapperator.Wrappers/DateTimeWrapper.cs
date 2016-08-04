@@ -25,11 +25,11 @@ namespace Wrapperator.Wrappers
       DateTime = dateTime;
     }
     
-    public System.DateTime Date
+    public Wrapperator.Interfaces.IDateTime Date
     {
       get
       {
-        return DateTime.Date;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DateTime.Date);
       }
     }
     

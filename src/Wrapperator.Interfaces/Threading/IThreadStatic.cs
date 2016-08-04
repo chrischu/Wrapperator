@@ -17,7 +17,7 @@ namespace Wrapperator.Interfaces.Threading
   public interface IThreadStatic
   {
     
-    System.Threading.Thread CurrentThread
+    Wrapperator.Interfaces.Threading.IThread CurrentThread
     {
       get;
     }

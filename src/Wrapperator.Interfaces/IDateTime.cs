@@ -17,7 +17,7 @@ namespace Wrapperator.Interfaces
   public interface IDateTime
   {
     
-    System.DateTime Date
+    Wrapperator.Interfaces.IDateTime Date
     {
       get;
     }

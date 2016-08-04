@@ -25,11 +25,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       XElement = xElement;
     }
     
-    public System.Xml.Linq.XAttribute FirstAttribute
+    public Wrapperator.Interfaces.Xml.Linq.IXAttribute FirstAttribute
     {
       get
       {
-        return XElement.FirstAttribute;
+        return new Wrapperator.Wrappers.Xml.Linq.XAttributeWrapper(XElement.FirstAttribute);
       }
     }
     
@@ -57,23 +57,23 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XAttribute LastAttribute
+    public Wrapperator.Interfaces.Xml.Linq.IXAttribute LastAttribute
     {
       get
       {
-        return XElement.LastAttribute;
+        return new Wrapperator.Wrappers.Xml.Linq.XAttributeWrapper(XElement.LastAttribute);
       }
     }
     
-    public System.Xml.Linq.XName Name
+    public Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get
       {
-        return XElement.Name;
+        return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(XElement.Name);
       }
       set
       {
-        XElement.Name = value;
+        XElement.Name = ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)(value)).XName;
       }
     }
     
@@ -97,35 +97,35 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XNode FirstNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode FirstNode
     {
       get
       {
-        return XElement.FirstNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XElement.FirstNode);
       }
     }
     
-    public new System.Xml.Linq.XNode LastNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode LastNode
     {
       get
       {
-        return XElement.LastNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XElement.LastNode);
       }
     }
     
-    public new System.Xml.Linq.XNode NextNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode NextNode
     {
       get
       {
-        return XElement.NextNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XElement.NextNode);
       }
     }
     
-    public new System.Xml.Linq.XNode PreviousNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode PreviousNode
     {
       get
       {
-        return XElement.PreviousNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XElement.PreviousNode);
       }
     }
     
@@ -137,19 +137,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XDocument Document
+    public new Wrapperator.Interfaces.Xml.Linq.IXDocument Document
     {
       get
       {
-        return XElement.Document;
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XElement.Document);
       }
     }
     
-    public new System.Xml.Linq.XElement Parent
+    public new Wrapperator.Interfaces.Xml.Linq.IXElement Parent
     {
       get
       {
-        return XElement.Parent;
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XElement.Parent);
       }
     }
     

@@ -20,11 +20,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
     }
     
-    public System.Collections.Specialized.NameValueCollection AppSettings
+    public Wrapperator.Interfaces.Collections.Specialized.INameValueCollection AppSettings
     {
       get
       {
-        return System.Configuration.ConfigurationManager.AppSettings;
+        return new Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper(System.Configuration.ConfigurationManager.AppSettings);
       }
     }
     

@@ -7,6 +7,26 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 No changes yet.
 
+## [1.1.0](https://github.com/chrischu/Wrapperator/compare/v1.0.0...v1.1.0) - 2016-08-04
+
+* Properties with types that are wrapped have their types wrapped as well (just like it used to be the case for method return types already).
+* Added wrappers for several classes from System.Configuration:
+  * ConfigurationSection\[Collection\]
+  * ConfigurationSectionGroup\[Collection\]
+  * ConfigurationLocation\[Collection\]
+  * ConfigurationLockCollection
+  * KeyValueConfigurationCollection
+  * KeyValueConfigurationElement
+  * AppSettingsSection
+  * ConnectionStringsSection
+  * ContextInformation
+  * ElementInformation
+  * SectionInformation
+  * PropertyInformationCollection
+  * PropertyInformation
+  * ProtectedConfigurationProvider
+  
+
 ## [1.0.0](https://github.com/chrischu/Wrapperator/compare/v0.9.0...v1.0.0) - 2016-07-31
 
 * Added wrappers for several classes from System.Diagnostics.Process:

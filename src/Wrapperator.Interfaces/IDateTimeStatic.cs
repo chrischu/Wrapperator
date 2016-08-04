@@ -17,17 +17,17 @@ namespace Wrapperator.Interfaces
   public interface IDateTimeStatic
   {
     
-    System.DateTime Now
+    Wrapperator.Interfaces.IDateTime Now
     {
       get;
     }
     
-    System.DateTime UtcNow
+    Wrapperator.Interfaces.IDateTime UtcNow
     {
       get;
     }
     
-    System.DateTime Today
+    Wrapperator.Interfaces.IDateTime Today
     {
       get;
     }

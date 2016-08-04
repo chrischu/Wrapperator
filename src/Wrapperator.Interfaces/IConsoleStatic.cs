@@ -32,17 +32,17 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.IO.TextReader In
+    Wrapperator.Interfaces.IO.ITextReader In
     {
       get;
     }
     
-    System.IO.TextWriter Out
+    Wrapperator.Interfaces.IO.ITextWriter Out
     {
       get;
     }
     
-    System.IO.TextWriter Error
+    Wrapperator.Interfaces.IO.ITextWriter Error
     {
       get;
     }

@@ -16,7 +16,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXElement : Wrapperator.Interfaces.Xml.Linq.IXContainer
   {
     
-    System.Xml.Linq.XAttribute FirstAttribute
+    Wrapperator.Interfaces.Xml.Linq.IXAttribute FirstAttribute
     {
       get;
     }
@@ -36,12 +36,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
-    System.Xml.Linq.XAttribute LastAttribute
+    Wrapperator.Interfaces.Xml.Linq.IXAttribute LastAttribute
     {
       get;
     }
     
-    System.Xml.Linq.XName Name
+    Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get;
       set;

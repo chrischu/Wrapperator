@@ -21,7 +21,7 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
-    System.Xml.Linq.XNamespace Namespace
+    Wrapperator.Interfaces.Xml.Linq.IXNamespace Namespace
     {
       get;
     }

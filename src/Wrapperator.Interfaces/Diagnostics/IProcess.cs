@@ -32,7 +32,7 @@ namespace Wrapperator.Interfaces.Diagnostics
       get;
     }
     
-    System.DateTime ExitTime
+    Wrapperator.Interfaces.IDateTime ExitTime
     {
       get;
     }
@@ -162,13 +162,13 @@ namespace Wrapperator.Interfaces.Diagnostics
       get;
     }
     
-    System.Diagnostics.ProcessStartInfo StartInfo
+    Wrapperator.Interfaces.Diagnostics.IProcessStartInfo StartInfo
     {
       get;
       set;
     }
     
-    System.DateTime StartTime
+    Wrapperator.Interfaces.IDateTime StartTime
     {
       get;
     }
@@ -205,17 +205,17 @@ namespace Wrapperator.Interfaces.Diagnostics
       set;
     }
     
-    System.IO.StreamWriter StandardInput
+    Wrapperator.Interfaces.IO.IStreamWriter StandardInput
     {
       get;
     }
     
-    System.IO.StreamReader StandardOutput
+    Wrapperator.Interfaces.IO.IStreamReader StandardOutput
     {
       get;
     }
     
-    System.IO.StreamReader StandardError
+    Wrapperator.Interfaces.IO.IStreamReader StandardError
     {
       get;
     }

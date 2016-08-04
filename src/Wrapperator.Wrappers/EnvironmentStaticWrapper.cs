@@ -101,11 +101,11 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.Version Version
+    public Wrapperator.Interfaces.IVersion Version
     {
       get
       {
-        return System.Environment.Version;
+        return new Wrapperator.Wrappers.VersionWrapper(System.Environment.Version);
       }
     }
     

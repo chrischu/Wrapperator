@@ -46,19 +46,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XNode NextNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode NextNode
     {
       get
       {
-        return XText.NextNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XText.NextNode);
       }
     }
     
-    public new System.Xml.Linq.XNode PreviousNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode PreviousNode
     {
       get
       {
-        return XText.PreviousNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XText.PreviousNode);
       }
     }
     
@@ -70,19 +70,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XDocument Document
+    public new Wrapperator.Interfaces.Xml.Linq.IXDocument Document
     {
       get
       {
-        return XText.Document;
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XText.Document);
       }
     }
     
-    public new System.Xml.Linq.XElement Parent
+    public new Wrapperator.Interfaces.Xml.Linq.IXElement Parent
     {
       get
       {
-        return XText.Parent;
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XText.Parent);
       }
     }
     

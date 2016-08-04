@@ -22,7 +22,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Type DeclaringType
+    Wrapperator.Interfaces.IType DeclaringType
     {
       get;
     }
@@ -32,7 +32,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Type ReflectedType
+    Wrapperator.Interfaces.IType ReflectedType
     {
       get;
     }
@@ -52,7 +52,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Reflection.Assembly Assembly
+    Wrapperator.Interfaces.Reflection.IAssembly Assembly
     {
       get;
     }
@@ -77,7 +77,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Type BaseType
+    Wrapperator.Interfaces.IType BaseType
     {
       get;
     }
@@ -312,7 +312,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Type UnderlyingSystemType
+    Wrapperator.Interfaces.IType UnderlyingSystemType
     {
       get;
     }

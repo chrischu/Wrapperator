@@ -56,11 +56,11 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
-    public System.Xml.XmlDocument OwnerDocument
+    public Wrapperator.Interfaces.Xml.IXmlDocument OwnerDocument
     {
       get
       {
-        return XmlDocumentFragment.OwnerDocument;
+        return new Wrapperator.Wrappers.Xml.XmlDocumentWrapper(XmlDocumentFragment.OwnerDocument);
       }
     }
     

@@ -17,7 +17,7 @@ namespace Wrapperator.Interfaces.IO
   public interface IBinaryReader : System.IDisposable
   {
     
-    System.IO.Stream BaseStream
+    Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get;
     }

@@ -33,11 +33,11 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.IO.DirectoryInfo Parent
+    public Wrapperator.Interfaces.IO.IDirectoryInfo Parent
     {
       get
       {
-        return DirectoryInfo.Parent;
+        return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(DirectoryInfo.Parent);
       }
     }
     
@@ -49,11 +49,11 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.IO.DirectoryInfo Root
+    public Wrapperator.Interfaces.IO.IDirectoryInfo Root
     {
       get
       {
-        return DirectoryInfo.Root;
+        return new Wrapperator.Wrappers.IO.DirectoryInfoWrapper(DirectoryInfo.Root);
       }
     }
     
@@ -73,75 +73,75 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public System.DateTime CreationTime
+    public Wrapperator.Interfaces.IDateTime CreationTime
     {
       get
       {
-        return DirectoryInfo.CreationTime;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DirectoryInfo.CreationTime);
       }
       set
       {
-        DirectoryInfo.CreationTime = value;
+        DirectoryInfo.CreationTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value)).DateTime;
       }
     }
     
-    public System.DateTime CreationTimeUtc
+    public Wrapperator.Interfaces.IDateTime CreationTimeUtc
     {
       get
       {
-        return DirectoryInfo.CreationTimeUtc;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DirectoryInfo.CreationTimeUtc);
       }
       set
       {
-        DirectoryInfo.CreationTimeUtc = value;
+        DirectoryInfo.CreationTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value)).DateTime;
       }
     }
     
-    public System.DateTime LastAccessTime
+    public Wrapperator.Interfaces.IDateTime LastAccessTime
     {
       get
       {
-        return DirectoryInfo.LastAccessTime;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DirectoryInfo.LastAccessTime);
       }
       set
       {
-        DirectoryInfo.LastAccessTime = value;
+        DirectoryInfo.LastAccessTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value)).DateTime;
       }
     }
     
-    public System.DateTime LastAccessTimeUtc
+    public Wrapperator.Interfaces.IDateTime LastAccessTimeUtc
     {
       get
       {
-        return DirectoryInfo.LastAccessTimeUtc;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DirectoryInfo.LastAccessTimeUtc);
       }
       set
       {
-        DirectoryInfo.LastAccessTimeUtc = value;
+        DirectoryInfo.LastAccessTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value)).DateTime;
       }
     }
     
-    public System.DateTime LastWriteTime
+    public Wrapperator.Interfaces.IDateTime LastWriteTime
     {
       get
       {
-        return DirectoryInfo.LastWriteTime;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DirectoryInfo.LastWriteTime);
       }
       set
       {
-        DirectoryInfo.LastWriteTime = value;
+        DirectoryInfo.LastWriteTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value)).DateTime;
       }
     }
     
-    public System.DateTime LastWriteTimeUtc
+    public Wrapperator.Interfaces.IDateTime LastWriteTimeUtc
     {
       get
       {
-        return DirectoryInfo.LastWriteTimeUtc;
+        return new Wrapperator.Wrappers.DateTimeWrapper(DirectoryInfo.LastWriteTimeUtc);
       }
       set
       {
-        DirectoryInfo.LastWriteTimeUtc = value;
+        DirectoryInfo.LastWriteTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value)).DateTime;
       }
     }
     

@@ -22,6 +22,20 @@ For current change log/work in progress see [Changelog](CHANGELOG.md).
 * System.Configuration
   * Configuration
   * ConfigurationManager
+  * ConfigurationSection\[Collection\]
+  * ConfigurationSectionGroup\[Collection\]
+  * ConfigurationLocation\[Collection\]
+  * ConfigurationLockCollection
+  * KeyValueConfigurationCollection
+  * KeyValueConfigurationElement
+  * AppSettingsSection
+  * ConnectionStringsSection
+  * ContextInformation
+  * ElementInformation
+  * SectionInformation
+  * PropertyInformationCollection
+  * PropertyInformation
+  * ProtectedConfigurationProvider
 * System.Diagnostics
   * Debug
   * Trace

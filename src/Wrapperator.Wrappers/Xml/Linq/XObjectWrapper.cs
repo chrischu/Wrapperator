@@ -33,11 +33,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XDocument Document
+    public Wrapperator.Interfaces.Xml.Linq.IXDocument Document
     {
       get
       {
-        return XObject.Document;
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XObject.Document);
       }
     }
     
@@ -49,11 +49,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XElement Parent
+    public Wrapperator.Interfaces.Xml.Linq.IXElement Parent
     {
       get
       {
-        return XObject.Parent;
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XObject.Parent);
       }
     }
     

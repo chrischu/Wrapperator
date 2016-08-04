@@ -17,12 +17,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXNode : Wrapperator.Interfaces.Xml.Linq.IXObject
   {
     
-    System.Xml.Linq.XNode NextNode
+    Wrapperator.Interfaces.Xml.Linq.IXNode NextNode
     {
       get;
     }
     
-    System.Xml.Linq.XNode PreviousNode
+    Wrapperator.Interfaces.Xml.Linq.IXNode PreviousNode
     {
       get;
     }

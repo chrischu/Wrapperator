@@ -16,18 +16,18 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXDocument : Wrapperator.Interfaces.Xml.Linq.IXContainer
   {
     
-    System.Xml.Linq.XDeclaration Declaration
+    Wrapperator.Interfaces.Xml.Linq.IXDeclaration Declaration
     {
       get;
       set;
     }
     
-    System.Xml.Linq.XDocumentType DocumentType
+    Wrapperator.Interfaces.Xml.Linq.IXDocumentType DocumentType
     {
       get;
     }
     
-    System.Xml.Linq.XElement Root
+    Wrapperator.Interfaces.Xml.Linq.IXElement Root
     {
       get;
     }

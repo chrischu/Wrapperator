@@ -16,17 +16,17 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXNamespaceStatic
   {
     
-    System.Xml.Linq.XNamespace None
+    Wrapperator.Interfaces.Xml.Linq.IXNamespace None
     {
       get;
     }
     
-    System.Xml.Linq.XNamespace Xml
+    Wrapperator.Interfaces.Xml.Linq.IXNamespace Xml
     {
       get;
     }
     
-    System.Xml.Linq.XNamespace Xmlns
+    Wrapperator.Interfaces.Xml.Linq.IXNamespace Xmlns
     {
       get;
     }

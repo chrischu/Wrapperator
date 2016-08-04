@@ -96,7 +96,7 @@ namespace Wrapperator.Interfaces.Xml
       get;
     }
     
-    System.Type ValueType
+    Wrapperator.Interfaces.IType ValueType
     {
       get;
     }

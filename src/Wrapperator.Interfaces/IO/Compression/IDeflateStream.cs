@@ -16,7 +16,7 @@ namespace Wrapperator.Interfaces.IO.Compression
   public interface IDeflateStream : Wrapperator.Interfaces.IO.IStream
   {
     
-    System.IO.Stream BaseStream
+    Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get;
     }

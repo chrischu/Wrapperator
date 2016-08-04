@@ -21,17 +21,17 @@ namespace Wrapperator.Interfaces.Xml.Linq
       get;
     }
     
-    System.Xml.Linq.XName Name
+    Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get;
     }
     
-    System.Xml.Linq.XAttribute NextAttribute
+    Wrapperator.Interfaces.Xml.Linq.IXAttribute NextAttribute
     {
       get;
     }
     
-    System.Xml.Linq.XAttribute PreviousAttribute
+    Wrapperator.Interfaces.Xml.Linq.IXAttribute PreviousAttribute
     {
       get;
     }

@@ -32,11 +32,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public System.Xml.Linq.XNamespace Namespace
+    public Wrapperator.Interfaces.Xml.Linq.IXNamespace Namespace
     {
       get
       {
-        return XName.Namespace;
+        return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(XName.Namespace);
       }
     }
     

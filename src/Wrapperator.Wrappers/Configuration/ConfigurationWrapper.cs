@@ -24,19 +24,19 @@ namespace Wrapperator.Wrappers.Configuration
       Configuration = configuration;
     }
     
-    public System.Configuration.AppSettingsSection AppSettings
+    public Wrapperator.Interfaces.Configuration.IAppSettingsSection AppSettings
     {
       get
       {
-        return Configuration.AppSettings;
+        return new Wrapperator.Wrappers.Configuration.AppSettingsSectionWrapper(Configuration.AppSettings);
       }
     }
     
-    public System.Configuration.ConnectionStringsSection ConnectionStrings
+    public Wrapperator.Interfaces.Configuration.IConnectionStringsSection ConnectionStrings
     {
       get
       {
-        return Configuration.ConnectionStrings;
+        return new Wrapperator.Wrappers.Configuration.ConnectionStringsSectionWrapper(Configuration.ConnectionStrings);
       }
     }
     
@@ -56,43 +56,43 @@ namespace Wrapperator.Wrappers.Configuration
       }
     }
     
-    public System.Configuration.ConfigurationLocationCollection Locations
+    public Wrapperator.Interfaces.Configuration.IConfigurationLocationCollection Locations
     {
       get
       {
-        return Configuration.Locations;
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLocationCollectionWrapper(Configuration.Locations);
       }
     }
     
-    public System.Configuration.ContextInformation EvaluationContext
+    public Wrapperator.Interfaces.Configuration.IContextInformation EvaluationContext
     {
       get
       {
-        return Configuration.EvaluationContext;
+        return new Wrapperator.Wrappers.Configuration.ContextInformationWrapper(Configuration.EvaluationContext);
       }
     }
     
-    public System.Configuration.ConfigurationSectionGroup RootSectionGroup
+    public Wrapperator.Interfaces.Configuration.IConfigurationSectionGroup RootSectionGroup
     {
       get
       {
-        return Configuration.RootSectionGroup;
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupWrapper(Configuration.RootSectionGroup);
       }
     }
     
-    public System.Configuration.ConfigurationSectionCollection Sections
+    public Wrapperator.Interfaces.Configuration.IConfigurationSectionCollection Sections
     {
       get
       {
-        return Configuration.Sections;
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionCollectionWrapper(Configuration.Sections);
       }
     }
     
-    public System.Configuration.ConfigurationSectionGroupCollection SectionGroups
+    public Wrapperator.Interfaces.Configuration.IConfigurationSectionGroupCollection SectionGroups
     {
       get
       {
-        return Configuration.SectionGroups;
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupCollectionWrapper(Configuration.SectionGroups);
       }
     }
     
@@ -147,17 +147,17 @@ namespace Wrapperator.Wrappers.Configuration
     /// <summary>Returns the specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</summary>
     /// <returns>The specified <see cref="T:System.Configuration.ConfigurationSection" /> object.</returns>
     /// <param name="sectionName">The path to the section to be returned.</param>
-    public System.Configuration.ConfigurationSection GetSection(string sectionName)
+    public Wrapperator.Interfaces.Configuration.IConfigurationSection GetSection(string sectionName)
     {
-      return Configuration.GetSection(sectionName);
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(Configuration.GetSection(sectionName));
     }
     
     /// <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object.</summary>
     /// <returns>The <see cref="T:System.Configuration.ConfigurationSectionGroup" /> specified.</returns>
     /// <param name="sectionGroupName">The path name of the <see cref="T:System.Configuration.ConfigurationSectionGroup" /> to return.</param>
-    public System.Configuration.ConfigurationSectionGroup GetSectionGroup(string sectionGroupName)
+    public Wrapperator.Interfaces.Configuration.IConfigurationSectionGroup GetSectionGroup(string sectionGroupName)
     {
-      return Configuration.GetSectionGroup(sectionGroupName);
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupWrapper(Configuration.GetSectionGroup(sectionGroupName));
     }
     
     /// <summary>Writes the configuration settings contained within this <see cref="T:System.Configuration.Configuration" /> object to the current XML configuration file.</summary>

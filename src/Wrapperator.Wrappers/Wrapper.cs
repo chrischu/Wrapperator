@@ -254,6 +254,41 @@ namespace Wrapperator.Wrappers
       return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(configuration);
     }
     
+    public static Wrapperator.Interfaces.Configuration.IConfigurationSectionGroup Wrap(System.Configuration.ConfigurationSectionGroup configurationSectionGroup)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupWrapper(configurationSectionGroup);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IConfigurationLocation Wrap(System.Configuration.ConfigurationLocation configurationLocation)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationLocationWrapper(configurationLocation);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IConfigurationLockCollection Wrap(System.Configuration.ConfigurationLockCollection configurationLockCollection)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(configurationLockCollection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IContextInformation Wrap(System.Configuration.ContextInformation contextInformation)
+    {
+      return new Wrapperator.Wrappers.Configuration.ContextInformationWrapper(contextInformation);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IElementInformation Wrap(System.Configuration.ElementInformation elementInformation)
+    {
+      return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(elementInformation);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IPropertyInformation Wrap(System.Configuration.PropertyInformation propertyInformation)
+    {
+      return new Wrapperator.Wrappers.Configuration.PropertyInformationWrapper(propertyInformation);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.ISectionInformation Wrap(System.Configuration.SectionInformation sectionInformation)
+    {
+      return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(sectionInformation);
+    }
+    
     public static Wrapperator.Interfaces.IO.IBinaryReader Wrap(System.IO.BinaryReader binaryReader)
     {
       return new Wrapperator.Wrappers.IO.BinaryReaderWrapper(binaryReader);
@@ -344,6 +379,41 @@ namespace Wrapperator.Wrappers
       return new Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper(nameValueCollection);
     }
     
+    public static Wrapperator.Interfaces.Configuration.IConfigurationSection Wrap(System.Configuration.ConfigurationSection configurationSection)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(configurationSection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IConfigurationSectionCollection Wrap(System.Configuration.ConfigurationSectionCollection configurationSectionCollection)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionCollectionWrapper(configurationSectionCollection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IConfigurationSectionGroupCollection Wrap(System.Configuration.ConfigurationSectionGroupCollection configurationSectionGroupCollection)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupCollectionWrapper(configurationSectionGroupCollection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IConfigurationLocationCollection Wrap(System.Configuration.ConfigurationLocationCollection configurationLocationCollection)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConfigurationLocationCollectionWrapper(configurationLocationCollection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IKeyValueConfigurationElement Wrap(System.Configuration.KeyValueConfigurationElement keyValueConfigurationElement)
+    {
+      return new Wrapperator.Wrappers.Configuration.KeyValueConfigurationElementWrapper(keyValueConfigurationElement);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IPropertyInformationCollection Wrap(System.Configuration.PropertyInformationCollection propertyInformationCollection)
+    {
+      return new Wrapperator.Wrappers.Configuration.PropertyInformationCollectionWrapper(propertyInformationCollection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IProtectedConfigurationProvider Wrap(System.Configuration.ProtectedConfigurationProvider protectedConfigurationProvider)
+    {
+      return new Wrapperator.Wrappers.Configuration.ProtectedConfigurationProviderWrapper(protectedConfigurationProvider);
+    }
+    
     public static Wrapperator.Interfaces.IO.IStream Wrap(System.IO.Stream stream)
     {
       return new Wrapperator.Wrappers.IO.StreamWrapper(stream);
@@ -387,6 +457,21 @@ namespace Wrapperator.Wrappers
     public static Wrapperator.Interfaces.Xml.IXmlDocumentFragment Wrap(System.Xml.XmlDocumentFragment xmlDocumentFragment)
     {
       return new Wrapperator.Wrappers.Xml.XmlDocumentFragmentWrapper(xmlDocumentFragment);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IKeyValueConfigurationCollection Wrap(System.Configuration.KeyValueConfigurationCollection keyValueConfigurationCollection)
+    {
+      return new Wrapperator.Wrappers.Configuration.KeyValueConfigurationCollectionWrapper(keyValueConfigurationCollection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IAppSettingsSection Wrap(System.Configuration.AppSettingsSection appSettingsSection)
+    {
+      return new Wrapperator.Wrappers.Configuration.AppSettingsSectionWrapper(appSettingsSection);
+    }
+    
+    public static Wrapperator.Interfaces.Configuration.IConnectionStringsSection Wrap(System.Configuration.ConnectionStringsSection connectionStringsSection)
+    {
+      return new Wrapperator.Wrappers.Configuration.ConnectionStringsSectionWrapper(connectionStringsSection);
     }
     
     public static Wrapperator.Interfaces.IO.IDirectoryInfo Wrap(System.IO.DirectoryInfo directoryInfo)

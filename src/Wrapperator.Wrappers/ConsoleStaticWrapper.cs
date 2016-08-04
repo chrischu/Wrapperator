@@ -45,27 +45,27 @@ namespace Wrapperator.Wrappers
       }
     }
     
-    public System.IO.TextReader In
+    public Wrapperator.Interfaces.IO.ITextReader In
     {
       get
       {
-        return System.Console.In;
+        return new Wrapperator.Wrappers.IO.TextReaderWrapper(System.Console.In);
       }
     }
     
-    public System.IO.TextWriter Out
+    public Wrapperator.Interfaces.IO.ITextWriter Out
     {
       get
       {
-        return System.Console.Out;
+        return new Wrapperator.Wrappers.IO.TextWriterWrapper(System.Console.Out);
       }
     }
     
-    public System.IO.TextWriter Error
+    public Wrapperator.Interfaces.IO.ITextWriter Error
     {
       get
       {
-        return System.Console.Error;
+        return new Wrapperator.Wrappers.IO.TextWriterWrapper(System.Console.Error);
       }
     }
     

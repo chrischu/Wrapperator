@@ -21,27 +21,27 @@ namespace Wrapperator.Wrappers
     {
     }
     
-    public System.DateTime Now
+    public Wrapperator.Interfaces.IDateTime Now
     {
       get
       {
-        return System.DateTime.Now;
+        return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.Now);
       }
     }
     
-    public System.DateTime UtcNow
+    public Wrapperator.Interfaces.IDateTime UtcNow
     {
       get
       {
-        return System.DateTime.UtcNow;
+        return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.UtcNow);
       }
     }
     
-    public System.DateTime Today
+    public Wrapperator.Interfaces.IDateTime Today
     {
       get
       {
-        return System.DateTime.Today;
+        return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.Today);
       }
     }
     

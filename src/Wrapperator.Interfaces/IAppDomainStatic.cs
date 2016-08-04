@@ -17,7 +17,7 @@ namespace Wrapperator.Interfaces
   public interface IAppDomainStatic
   {
     
-    System.AppDomain CurrentDomain
+    Wrapperator.Interfaces.IAppDomain CurrentDomain
     {
       get;
     }

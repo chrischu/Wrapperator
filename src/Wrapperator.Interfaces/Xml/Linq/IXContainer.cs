@@ -17,12 +17,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXContainer : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
-    System.Xml.Linq.XNode FirstNode
+    Wrapperator.Interfaces.Xml.Linq.IXNode FirstNode
     {
       get;
     }
     
-    System.Xml.Linq.XNode LastNode
+    Wrapperator.Interfaces.Xml.Linq.IXNode LastNode
     {
       get;
     }

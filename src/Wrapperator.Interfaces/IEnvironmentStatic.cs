@@ -64,7 +64,7 @@ namespace Wrapperator.Interfaces
       get;
     }
     
-    System.Version Version
+    Wrapperator.Interfaces.IVersion Version
     {
       get;
     }

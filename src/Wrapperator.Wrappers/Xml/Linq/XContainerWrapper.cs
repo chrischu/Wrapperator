@@ -26,35 +26,35 @@ namespace Wrapperator.Wrappers.Xml.Linq
       XContainer = xContainer;
     }
     
-    public System.Xml.Linq.XNode FirstNode
+    public Wrapperator.Interfaces.Xml.Linq.IXNode FirstNode
     {
       get
       {
-        return XContainer.FirstNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XContainer.FirstNode);
       }
     }
     
-    public System.Xml.Linq.XNode LastNode
+    public Wrapperator.Interfaces.Xml.Linq.IXNode LastNode
     {
       get
       {
-        return XContainer.LastNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XContainer.LastNode);
       }
     }
     
-    public new System.Xml.Linq.XNode NextNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode NextNode
     {
       get
       {
-        return XContainer.NextNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XContainer.NextNode);
       }
     }
     
-    public new System.Xml.Linq.XNode PreviousNode
+    public new Wrapperator.Interfaces.Xml.Linq.IXNode PreviousNode
     {
       get
       {
-        return XContainer.PreviousNode;
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XContainer.PreviousNode);
       }
     }
     
@@ -66,11 +66,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XDocument Document
+    public new Wrapperator.Interfaces.Xml.Linq.IXDocument Document
     {
       get
       {
-        return XContainer.Document;
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XContainer.Document);
       }
     }
     
@@ -82,11 +82,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
     }
     
-    public new System.Xml.Linq.XElement Parent
+    public new Wrapperator.Interfaces.Xml.Linq.IXElement Parent
     {
       get
       {
-        return XContainer.Parent;
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XContainer.Parent);
       }
     }
     

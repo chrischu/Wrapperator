@@ -49,11 +49,11 @@ namespace Wrapperator.Wrappers.Diagnostics
       }
     }
     
-    public System.DateTime ExitTime
+    public Wrapperator.Interfaces.IDateTime ExitTime
     {
       get
       {
-        return Process.ExitTime;
+        return new Wrapperator.Wrappers.DateTimeWrapper(Process.ExitTime);
       }
     }
     
@@ -269,23 +269,23 @@ namespace Wrapperator.Wrappers.Diagnostics
       }
     }
     
-    public System.Diagnostics.ProcessStartInfo StartInfo
+    public Wrapperator.Interfaces.Diagnostics.IProcessStartInfo StartInfo
     {
       get
       {
-        return Process.StartInfo;
+        return new Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper(Process.StartInfo);
       }
       set
       {
-        Process.StartInfo = value;
+        Process.StartInfo = ((Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper)(value)).ProcessStartInfo;
       }
     }
     
-    public System.DateTime StartTime
+    public Wrapperator.Interfaces.IDateTime StartTime
     {
       get
       {
-        return Process.StartTime;
+        return new Wrapperator.Wrappers.DateTimeWrapper(Process.StartTime);
       }
     }
     
@@ -345,27 +345,27 @@ namespace Wrapperator.Wrappers.Diagnostics
       }
     }
     
-    public System.IO.StreamWriter StandardInput
+    public Wrapperator.Interfaces.IO.IStreamWriter StandardInput
     {
       get
       {
-        return Process.StandardInput;
+        return new Wrapperator.Wrappers.IO.StreamWriterWrapper(Process.StandardInput);
       }
     }
     
-    public System.IO.StreamReader StandardOutput
+    public Wrapperator.Interfaces.IO.IStreamReader StandardOutput
     {
       get
       {
-        return Process.StandardOutput;
+        return new Wrapperator.Wrappers.IO.StreamReaderWrapper(Process.StandardOutput);
       }
     }
     
-    public System.IO.StreamReader StandardError
+    public Wrapperator.Interfaces.IO.IStreamReader StandardError
     {
       get
       {
-        return Process.StandardError;
+        return new Wrapperator.Wrappers.IO.StreamReaderWrapper(Process.StandardError);
       }
     }
     

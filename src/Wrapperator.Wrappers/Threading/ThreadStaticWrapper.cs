@@ -21,11 +21,11 @@ namespace Wrapperator.Wrappers.Threading
     {
     }
     
-    public System.Threading.Thread CurrentThread
+    public Wrapperator.Interfaces.Threading.IThread CurrentThread
     {
       get
       {
-        return System.Threading.Thread.CurrentThread;
+        return new Wrapperator.Wrappers.Threading.ThreadWrapper(System.Threading.Thread.CurrentThread);
       }
     }
     

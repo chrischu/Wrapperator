@@ -25,11 +25,11 @@ namespace Wrapperator.Wrappers.IO.Compression
       DeflateStream = deflateStream;
     }
     
-    public System.IO.Stream BaseStream
+    public Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get
       {
-        return DeflateStream.BaseStream;
+        return new Wrapperator.Wrappers.IO.StreamWrapper(DeflateStream.BaseStream);
       }
     }
     

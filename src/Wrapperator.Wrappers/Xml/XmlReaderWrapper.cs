@@ -152,11 +152,11 @@ namespace Wrapperator.Wrappers.Xml
       }
     }
     
-    public System.Type ValueType
+    public Wrapperator.Interfaces.IType ValueType
     {
       get
       {
-        return XmlReader.ValueType;
+        return new Wrapperator.Wrappers.TypeWrapper(XmlReader.ValueType);
       }
     }
     

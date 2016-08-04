@@ -36,15 +36,15 @@ namespace Wrapperator.Wrappers.Reflection
       }
     }
     
-    public System.Version Version
+    public Wrapperator.Interfaces.IVersion Version
     {
       get
       {
-        return AssemblyName.Version;
+        return new Wrapperator.Wrappers.VersionWrapper(AssemblyName.Version);
       }
       set
       {
-        AssemblyName.Version = value;
+        AssemblyName.Version = ((Wrapperator.Wrappers.VersionWrapper)(value)).Version;
       }
     }
     
