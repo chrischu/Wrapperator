@@ -176,10 +176,10 @@ namespace Wrapperator.Generators.Members
             parameters.Select(p => new CodeArgumentReferenceExpression(p.Name)).ToArray<CodeExpression>());
 
       if (property.HasGet)
-        property.GetStatements.AddRange(GeneratePropertyGetStatements(propertyReference));
+        property.GetStatements.AddRange(GeneratePropertyGetStatements(propertyInfo, propertyReference));
 
       if (property.HasSet)
-        property.SetStatements.AddRange(GeneratePropertySetStatements(propertyReference));
+        property.SetStatements.AddRange(GeneratePropertySetStatements(propertyInfo, propertyReference));
 
       return property;
     }
@@ -189,7 +189,10 @@ namespace Wrapperator.Generators.Members
       var property = new CodeMemberProperty
                      {
                          Name = propertyInfo.Name,
-                         Type = ConvertTypeToTypeReference(propertyInfo.PropertyType),
+                         Type = Helper.ShouldTypeBeWrapped(propertyInfo.PropertyType)
+                             ? new CodeTypeReference(
+                             $"{Helper.GetFullInterfaceName(propertyInfo.PropertyType, WrapMode.Instance)}")
+                             : ConvertTypeToTypeReference(propertyInfo.PropertyType),
                          HasGet = propertyInfo.CanRead,
                          HasSet = propertyInfo.CanWrite,
                          // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
@@ -204,18 +207,30 @@ namespace Wrapperator.Generators.Members
       return property;
     }
 
-    private CodeStatement[] GeneratePropertyGetStatements (CodeExpression propertyReference)
+    private CodeStatement[] GeneratePropertyGetStatements (PropertyInfo propertyInfo, CodeExpression propertyReference)
     {
+      if (Helper.ShouldTypeBeWrapped(propertyInfo.PropertyType))
+        propertyReference = new CodeObjectCreateExpression(
+            $"{Helper.GetFullWrapperName(propertyInfo.PropertyType, WrapMode.Instance)}",
+            propertyReference);
+
       return new CodeStatement[] { new CodeMethodReturnStatement(propertyReference) };
     }
 
-    private CodeStatement[] GeneratePropertySetStatements (CodeExpression propertyReference)
+    private CodeStatement[] GeneratePropertySetStatements (PropertyInfo propertyInfo, CodeExpression propertyReference)
     {
+      CodeExpression setValue = new CodePropertySetValueReferenceExpression();
+
+      if (Helper.ShouldTypeBeWrapped(propertyInfo.PropertyType))
+        setValue = new CodePropertyReferenceExpression(
+            new CodeCastExpression(Helper.GetFullWrapperName(propertyInfo.PropertyType, WrapMode.Instance), setValue),
+            Helper.GetPropertyName(propertyInfo.PropertyType));
+
       return new CodeStatement[]
              {
                  new CodeAssignStatement(
                      propertyReference,
-                     new CodePropertySetValueReferenceExpression())
+                     setValue)
              };
     }
   }
