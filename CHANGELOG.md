@@ -3,9 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v1.1.0...HEAD)
+## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v1.2.0...HEAD)
 
 No changes yet.
+
+## [1.2.0](https://github.com/chrischu/Wrapperator/compare/v1.1.0...v1.2.0) - 2017-01-07
+
+* Added property that enables access to the wrapped instance to the wrapper interfaces (it is named after the wrapped type, e.g. IXDocument._XDocument).
 
 ## [1.1.0](https://github.com/chrischu/Wrapperator/compare/v1.0.0...v1.1.0) - 2016-08-04
 

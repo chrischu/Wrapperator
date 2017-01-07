@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IKeyValueConfigurationCollection
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.KeyValueConfigurationCollection _KeyValueConfigurationCollection
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Configuration.IKeyValueConfigurationElement this[string key]
     {
       get;

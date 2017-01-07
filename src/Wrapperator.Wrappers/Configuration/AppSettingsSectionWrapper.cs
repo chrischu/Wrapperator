@@ -16,20 +16,20 @@ namespace Wrapperator.Wrappers.Configuration
   public class AppSettingsSectionWrapper : ConfigurationSectionWrapper, Wrapperator.Interfaces.Configuration.IAppSettingsSection
   {
     
-    internal System.Configuration.AppSettingsSection AppSettingsSection { get; private set; }
+    public System.Configuration.AppSettingsSection _AppSettingsSection { get; private set; }
 
     
     internal AppSettingsSectionWrapper(System.Configuration.AppSettingsSection appSettingsSection) : 
         base(appSettingsSection)
     {
-      AppSettingsSection = appSettingsSection;
+      _AppSettingsSection = appSettingsSection;
     }
     
     public Wrapperator.Interfaces.Configuration.IKeyValueConfigurationCollection Settings
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.KeyValueConfigurationCollectionWrapper(AppSettingsSection.Settings);
+        return new Wrapperator.Wrappers.Configuration.KeyValueConfigurationCollectionWrapper(_AppSettingsSection.Settings);
       }
     }
     
@@ -37,11 +37,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return AppSettingsSection.File;
+        return _AppSettingsSection.File;
       }
       set
       {
-        AppSettingsSection.File = value;
+        _AppSettingsSection.File = value;
       }
     }
     
@@ -49,7 +49,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(AppSettingsSection.SectionInformation);
+        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(_AppSettingsSection.SectionInformation);
       }
     }
   }

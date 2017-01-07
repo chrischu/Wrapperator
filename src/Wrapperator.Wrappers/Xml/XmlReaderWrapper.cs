@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Xml
   public class XmlReaderWrapper : Wrapperator.Interfaces.Xml.IXmlReader
   {
     
-    internal System.Xml.XmlReader XmlReader { get; private set; }
+    public System.Xml.XmlReader _XmlReader { get; private set; }
 
     
     internal XmlReaderWrapper(System.Xml.XmlReader xmlReader)
     {
-      XmlReader = xmlReader;
+      _XmlReader = xmlReader;
     }
     
     public System.Xml.XmlReaderSettings Settings
     {
       get
       {
-        return XmlReader.Settings;
+        return _XmlReader.Settings;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.NodeType;
+        return _XmlReader.NodeType;
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.Name;
+        return _XmlReader.Name;
       }
     }
     
@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.LocalName;
+        return _XmlReader.LocalName;
       }
     }
     
@@ -60,7 +60,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.NamespaceURI;
+        return _XmlReader.NamespaceURI;
       }
     }
     
@@ -68,7 +68,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.Prefix;
+        return _XmlReader.Prefix;
       }
     }
     
@@ -76,7 +76,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.HasValue;
+        return _XmlReader.HasValue;
       }
     }
     
@@ -84,7 +84,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.Value;
+        return _XmlReader.Value;
       }
     }
     
@@ -92,7 +92,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.Depth;
+        return _XmlReader.Depth;
       }
     }
     
@@ -100,7 +100,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.BaseURI;
+        return _XmlReader.BaseURI;
       }
     }
     
@@ -108,7 +108,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.IsEmptyElement;
+        return _XmlReader.IsEmptyElement;
       }
     }
     
@@ -116,7 +116,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.IsDefault;
+        return _XmlReader.IsDefault;
       }
     }
     
@@ -124,7 +124,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.QuoteChar;
+        return _XmlReader.QuoteChar;
       }
     }
     
@@ -132,7 +132,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.XmlSpace;
+        return _XmlReader.XmlSpace;
       }
     }
     
@@ -140,7 +140,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.XmlLang;
+        return _XmlReader.XmlLang;
       }
     }
     
@@ -148,7 +148,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.SchemaInfo;
+        return _XmlReader.SchemaInfo;
       }
     }
     
@@ -156,7 +156,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return new Wrapperator.Wrappers.TypeWrapper(XmlReader.ValueType);
+        return new Wrapperator.Wrappers.TypeWrapper(_XmlReader.ValueType);
       }
     }
     
@@ -164,7 +164,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.AttributeCount;
+        return _XmlReader.AttributeCount;
       }
     }
     
@@ -172,7 +172,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader[i];
+        return _XmlReader[i];
       }
     }
     
@@ -180,7 +180,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader[name];
+        return _XmlReader[name];
       }
     }
     
@@ -188,7 +188,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader[name, namespaceURI];
+        return _XmlReader[name, namespaceURI];
       }
     }
     
@@ -196,7 +196,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.EOF;
+        return _XmlReader.EOF;
       }
     }
     
@@ -204,7 +204,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.ReadState;
+        return _XmlReader.ReadState;
       }
     }
     
@@ -212,7 +212,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.NameTable;
+        return _XmlReader.NameTable;
       }
     }
     
@@ -220,7 +220,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.CanResolveEntity;
+        return _XmlReader.CanResolveEntity;
       }
     }
     
@@ -228,7 +228,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.CanReadBinaryContent;
+        return _XmlReader.CanReadBinaryContent;
       }
     }
     
@@ -236,7 +236,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.CanReadValueChunk;
+        return _XmlReader.CanReadValueChunk;
       }
     }
     
@@ -244,7 +244,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       get
       {
-        return XmlReader.HasAttributes;
+        return _XmlReader.HasAttributes;
       }
     }
     
@@ -255,7 +255,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadContentAsObject()
     {
-      return XmlReader.ReadContentAsObject();
+      return _XmlReader.ReadContentAsObject();
     }
     
     /// <summary>Reads the text content at the current position as a Boolean.</summary>
@@ -265,7 +265,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool ReadContentAsBoolean()
     {
-      return XmlReader.ReadContentAsBoolean();
+      return _XmlReader.ReadContentAsBoolean();
     }
     
     /// <summary>Reads the text content at the current position as a <see cref="T:System.DateTime" /> object.</summary>
@@ -275,7 +275,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public Wrapperator.Interfaces.IDateTime ReadContentAsDateTime()
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(XmlReader.ReadContentAsDateTime());
+      return new Wrapperator.Wrappers.DateTimeWrapper(_XmlReader.ReadContentAsDateTime());
     }
     
     /// <summary>Reads the text content at the current position as a <see cref="T:System.DateTimeOffset" /> object.</summary>
@@ -283,7 +283,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public System.DateTimeOffset ReadContentAsDateTimeOffset()
     {
-      return XmlReader.ReadContentAsDateTimeOffset();
+      return _XmlReader.ReadContentAsDateTimeOffset();
     }
     
     /// <summary>Reads the text content at the current position as a double-precision floating-point number.</summary>
@@ -293,7 +293,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public double ReadContentAsDouble()
     {
-      return XmlReader.ReadContentAsDouble();
+      return _XmlReader.ReadContentAsDouble();
     }
     
     /// <summary>Reads the text content at the current position as a single-precision floating point number.</summary>
@@ -303,7 +303,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public float ReadContentAsFloat()
     {
-      return XmlReader.ReadContentAsFloat();
+      return _XmlReader.ReadContentAsFloat();
     }
     
     /// <summary>Reads the text content at the current position as a <see cref="T:System.Decimal" /> object.</summary>
@@ -313,7 +313,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public decimal ReadContentAsDecimal()
     {
-      return XmlReader.ReadContentAsDecimal();
+      return _XmlReader.ReadContentAsDecimal();
     }
     
     /// <summary>Reads the text content at the current position as a 32-bit signed integer.</summary>
@@ -323,7 +323,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadContentAsInt()
     {
-      return XmlReader.ReadContentAsInt();
+      return _XmlReader.ReadContentAsInt();
     }
     
     /// <summary>Reads the text content at the current position as a 64-bit signed integer.</summary>
@@ -333,7 +333,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public long ReadContentAsLong()
     {
-      return XmlReader.ReadContentAsLong();
+      return _XmlReader.ReadContentAsLong();
     }
     
     /// <summary>Reads the text content at the current position as a <see cref="T:System.String" /> object.</summary>
@@ -343,7 +343,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadContentAsString()
     {
-      return XmlReader.ReadContentAsString();
+      return _XmlReader.ReadContentAsString();
     }
     
     /// <summary>Reads the content as an object of the type specified.</summary>
@@ -358,7 +358,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return XmlReader.ReadContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, namespaceResolver);
+      return _XmlReader.ReadContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
     }
     
     /// <summary>Reads the current element and returns the contents as an <see cref="T:System.Object" />.</summary>
@@ -369,7 +369,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadElementContentAsObject()
     {
-      return XmlReader.ReadElementContentAsObject();
+      return _XmlReader.ReadElementContentAsObject();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as an <see cref="T:System.Object" />.</summary>
@@ -383,7 +383,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadElementContentAsObject(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsObject(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsObject(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as a <see cref="T:System.Boolean" /> object.</summary>
@@ -394,7 +394,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool ReadElementContentAsBoolean()
     {
-      return XmlReader.ReadElementContentAsBoolean();
+      return _XmlReader.ReadElementContentAsBoolean();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a <see cref="T:System.Boolean" /> object.</summary>
@@ -408,7 +408,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool ReadElementContentAsBoolean(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsBoolean(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsBoolean(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as a <see cref="T:System.DateTime" /> object.</summary>
@@ -419,7 +419,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public Wrapperator.Interfaces.IDateTime ReadElementContentAsDateTime()
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(XmlReader.ReadElementContentAsDateTime());
+      return new Wrapperator.Wrappers.DateTimeWrapper(_XmlReader.ReadElementContentAsDateTime());
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a <see cref="T:System.DateTime" /> object.</summary>
@@ -433,7 +433,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public Wrapperator.Interfaces.IDateTime ReadElementContentAsDateTime(string localName, string namespaceURI)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(XmlReader.ReadElementContentAsDateTime(localName, namespaceURI));
+      return new Wrapperator.Wrappers.DateTimeWrapper(_XmlReader.ReadElementContentAsDateTime(localName, namespaceURI));
     }
     
     /// <summary>Reads the current element and returns the contents as a double-precision floating-point number.</summary>
@@ -444,7 +444,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public double ReadElementContentAsDouble()
     {
-      return XmlReader.ReadElementContentAsDouble();
+      return _XmlReader.ReadElementContentAsDouble();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a double-precision floating-point number.</summary>
@@ -458,7 +458,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public double ReadElementContentAsDouble(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsDouble(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsDouble(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as single-precision floating-point number.</summary>
@@ -469,7 +469,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public float ReadElementContentAsFloat()
     {
-      return XmlReader.ReadElementContentAsFloat();
+      return _XmlReader.ReadElementContentAsFloat();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a single-precision floating-point number.</summary>
@@ -483,7 +483,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public float ReadElementContentAsFloat(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsFloat(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsFloat(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as a <see cref="T:System.Decimal" /> object.</summary>
@@ -494,7 +494,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public decimal ReadElementContentAsDecimal()
     {
-      return XmlReader.ReadElementContentAsDecimal();
+      return _XmlReader.ReadElementContentAsDecimal();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a <see cref="T:System.Decimal" /> object.</summary>
@@ -508,7 +508,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public decimal ReadElementContentAsDecimal(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsDecimal(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsDecimal(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as a 32-bit signed integer.</summary>
@@ -519,7 +519,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadElementContentAsInt()
     {
-      return XmlReader.ReadElementContentAsInt();
+      return _XmlReader.ReadElementContentAsInt();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a 32-bit signed integer.</summary>
@@ -533,7 +533,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadElementContentAsInt(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsInt(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsInt(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as a 64-bit signed integer.</summary>
@@ -544,7 +544,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public long ReadElementContentAsLong()
     {
-      return XmlReader.ReadElementContentAsLong();
+      return _XmlReader.ReadElementContentAsLong();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a 64-bit signed integer.</summary>
@@ -558,7 +558,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public long ReadElementContentAsLong(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsLong(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsLong(localName, namespaceURI);
     }
     
     /// <summary>Reads the current element and returns the contents as a <see cref="T:System.String" /> object.</summary>
@@ -569,7 +569,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadElementContentAsString()
     {
-      return XmlReader.ReadElementContentAsString();
+      return _XmlReader.ReadElementContentAsString();
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the current element and returns the contents as a <see cref="T:System.String" /> object.</summary>
@@ -583,7 +583,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadElementContentAsString(string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAsString(localName, namespaceURI);
+      return _XmlReader.ReadElementContentAsString(localName, namespaceURI);
     }
     
     /// <summary>Reads the element content as the requested type.</summary>
@@ -597,7 +597,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadElementContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, namespaceResolver);
+      return _XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the element content as the requested type.</summary>
@@ -614,7 +614,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadElementContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver, string localName, string namespaceURI)
     {
-      return XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, namespaceResolver, localName, namespaceURI);
+      return _XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver, localName, namespaceURI);
     }
     
     /// <summary>When overridden in a derived class, gets the value of the attribute with the specified <see cref="P:System.Xml.XmlReader.Name" />.</summary>
@@ -625,7 +625,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string GetAttribute(string name)
     {
-      return XmlReader.GetAttribute(name);
+      return _XmlReader.GetAttribute(name);
     }
     
     /// <summary>When overridden in a derived class, gets the value of the attribute with the specified <see cref="P:System.Xml.XmlReader.LocalName" /> and <see cref="P:System.Xml.XmlReader.NamespaceURI" />.</summary>
@@ -637,7 +637,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string GetAttribute(string name, string namespaceURI)
     {
-      return XmlReader.GetAttribute(name, namespaceURI);
+      return _XmlReader.GetAttribute(name, namespaceURI);
     }
     
     /// <summary>When overridden in a derived class, gets the value of the attribute with the specified index.</summary>
@@ -648,7 +648,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string GetAttribute(int i)
     {
-      return XmlReader.GetAttribute(i);
+      return _XmlReader.GetAttribute(i);
     }
     
     /// <summary>When overridden in a derived class, moves to the attribute with the specified <see cref="P:System.Xml.XmlReader.Name" />.</summary>
@@ -658,7 +658,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The parameter is an empty string.</exception>
     public bool MoveToAttribute(string name)
     {
-      return XmlReader.MoveToAttribute(name);
+      return _XmlReader.MoveToAttribute(name);
     }
     
     /// <summary>When overridden in a derived class, moves to the attribute with the specified <see cref="P:System.Xml.XmlReader.LocalName" /> and <see cref="P:System.Xml.XmlReader.NamespaceURI" />.</summary>
@@ -669,7 +669,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">Both parameter values are null.</exception>
     public bool MoveToAttribute(string name, string ns)
     {
-      return XmlReader.MoveToAttribute(name, ns);
+      return _XmlReader.MoveToAttribute(name, ns);
     }
     
     /// <summary>When overridden in a derived class, moves to the attribute with the specified index.</summary>
@@ -678,7 +678,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentOutOfRangeException">The parameter has a negative value.</exception>
     public void MoveToAttribute(int i)
     {
-      XmlReader.MoveToAttribute(i);
+      _XmlReader.MoveToAttribute(i);
     }
     
     /// <summary>When overridden in a derived class, moves to the first attribute.</summary>
@@ -686,7 +686,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool MoveToFirstAttribute()
     {
-      return XmlReader.MoveToFirstAttribute();
+      return _XmlReader.MoveToFirstAttribute();
     }
     
     /// <summary>When overridden in a derived class, moves to the next attribute.</summary>
@@ -694,7 +694,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool MoveToNextAttribute()
     {
-      return XmlReader.MoveToNextAttribute();
+      return _XmlReader.MoveToNextAttribute();
     }
     
     /// <summary>When overridden in a derived class, moves to the element that contains the current attribute node.</summary>
@@ -702,7 +702,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool MoveToElement()
     {
-      return XmlReader.MoveToElement();
+      return _XmlReader.MoveToElement();
     }
     
     /// <summary>When overridden in a derived class, parses the attribute value into one or more Text, EntityReference, or EndEntity nodes.</summary>
@@ -710,7 +710,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool ReadAttributeValue()
     {
-      return XmlReader.ReadAttributeValue();
+      return _XmlReader.ReadAttributeValue();
     }
     
     /// <summary>When overridden in a derived class, reads the next node from the stream.</summary>
@@ -719,21 +719,21 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool Read()
     {
-      return XmlReader.Read();
+      return _XmlReader.Read();
     }
     
     /// <summary>When overridden in a derived class, changes the <see cref="P:System.Xml.XmlReader.ReadState" /> to Closed.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void Close()
     {
-      XmlReader.Close();
+      _XmlReader.Close();
     }
     
     /// <summary>Skips the children of the current node.</summary>
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void Skip()
     {
-      XmlReader.Skip();
+      _XmlReader.Skip();
     }
     
     /// <summary>When overridden in a derived class, resolves a namespace prefix in the current element's scope.</summary>
@@ -742,7 +742,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string LookupNamespace(string prefix)
     {
-      return XmlReader.LookupNamespace(prefix);
+      return _XmlReader.LookupNamespace(prefix);
     }
     
     /// <summary>When overridden in a derived class, resolves the entity reference for EntityReference nodes.</summary>
@@ -750,7 +750,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void ResolveEntity()
     {
-      XmlReader.ResolveEntity();
+      _XmlReader.ResolveEntity();
     }
     
     /// <summary>Reads the content and returns the Base64 decoded binary bytes.</summary>
@@ -766,7 +766,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadContentAsBase64(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadContentAsBase64(buffer, index, count);
+      return _XmlReader.ReadContentAsBase64(buffer, index, count);
     }
     
     /// <summary>Reads the element and decodes the Base64 content.</summary>
@@ -783,7 +783,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadElementContentAsBase64(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadElementContentAsBase64(buffer, index, count);
+      return _XmlReader.ReadElementContentAsBase64(buffer, index, count);
     }
     
     /// <summary>Reads the content and returns the BinHex decoded binary bytes.</summary>
@@ -799,7 +799,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadContentAsBinHex(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadContentAsBinHex(buffer, index, count);
+      return _XmlReader.ReadContentAsBinHex(buffer, index, count);
     }
     
     /// <summary>Reads the element and decodes the BinHex content.</summary>
@@ -816,7 +816,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadElementContentAsBinHex(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadElementContentAsBinHex(buffer, index, count);
+      return _XmlReader.ReadElementContentAsBinHex(buffer, index, count);
     }
     
     /// <summary>Reads large streams of text embedded in an XML document.</summary>
@@ -832,7 +832,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public int ReadValueChunk(char[] buffer, int index, int count)
     {
-      return XmlReader.ReadValueChunk(buffer, index, count);
+      return _XmlReader.ReadValueChunk(buffer, index, count);
     }
     
     /// <summary>When overridden in a derived class, reads the contents of an element or text node as a string.</summary>
@@ -841,7 +841,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadString()
     {
-      return XmlReader.ReadString();
+      return _XmlReader.ReadString();
     }
     
     /// <summary>Checks whether the current node is a content (non-white space text, CDATA, Element, EndElement, EntityReference, or EndEntity) node. If the node is not a content node, the reader skips ahead to the next content node or end of file. It skips over nodes of the following type: ProcessingInstruction, DocumentType, Comment, Whitespace, or SignificantWhitespace.</summary>
@@ -850,7 +850,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public System.Xml.XmlNodeType MoveToContent()
     {
-      return XmlReader.MoveToContent();
+      return _XmlReader.MoveToContent();
     }
     
     /// <summary>Checks that the current node is an element and advances the reader to the next node.</summary>
@@ -858,7 +858,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void ReadStartElement()
     {
-      XmlReader.ReadStartElement();
+      _XmlReader.ReadStartElement();
     }
     
     /// <summary>Checks that the current content node is an element with the given <see cref="P:System.Xml.XmlReader.Name" /> and advances the reader to the next node.</summary>
@@ -867,7 +867,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void ReadStartElement(string name)
     {
-      XmlReader.ReadStartElement(name);
+      _XmlReader.ReadStartElement(name);
     }
     
     /// <summary>Checks that the current content node is an element with the given <see cref="P:System.Xml.XmlReader.LocalName" /> and <see cref="P:System.Xml.XmlReader.NamespaceURI" /> and advances the reader to the next node.</summary>
@@ -877,7 +877,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void ReadStartElement(string localname, string ns)
     {
-      XmlReader.ReadStartElement(localname, ns);
+      _XmlReader.ReadStartElement(localname, ns);
     }
     
     /// <summary>Reads a text-only element.</summary>
@@ -886,7 +886,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadElementString()
     {
-      return XmlReader.ReadElementString();
+      return _XmlReader.ReadElementString();
     }
     
     /// <summary>Checks that the <see cref="P:System.Xml.XmlReader.Name" /> property of the element found matches the given string before reading a text-only element.</summary>
@@ -896,7 +896,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadElementString(string name)
     {
-      return XmlReader.ReadElementString(name);
+      return _XmlReader.ReadElementString(name);
     }
     
     /// <summary>Checks that the <see cref="P:System.Xml.XmlReader.LocalName" /> and <see cref="P:System.Xml.XmlReader.NamespaceURI" /> properties of the element found matches the given strings before reading a text-only element.</summary>
@@ -907,7 +907,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadElementString(string localname, string ns)
     {
-      return XmlReader.ReadElementString(localname, ns);
+      return _XmlReader.ReadElementString(localname, ns);
     }
     
     /// <summary>Checks that the current content node is an end tag and advances the reader to the next node.</summary>
@@ -915,7 +915,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void ReadEndElement()
     {
-      XmlReader.ReadEndElement();
+      _XmlReader.ReadEndElement();
     }
     
     /// <summary>Calls <see cref="M:System.Xml.XmlReader.MoveToContent" /> and tests if the current content node is a start tag or empty element tag.</summary>
@@ -924,7 +924,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool IsStartElement()
     {
-      return XmlReader.IsStartElement();
+      return _XmlReader.IsStartElement();
     }
     
     /// <summary>Calls <see cref="M:System.Xml.XmlReader.MoveToContent" /> and tests if the current content node is a start tag or empty element tag and if the <see cref="P:System.Xml.XmlReader.Name" /> property of the element found matches the given argument.</summary>
@@ -934,7 +934,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool IsStartElement(string name)
     {
-      return XmlReader.IsStartElement(name);
+      return _XmlReader.IsStartElement(name);
     }
     
     /// <summary>Calls <see cref="M:System.Xml.XmlReader.MoveToContent" /> and tests if the current content node is a start tag or empty element tag and if the <see cref="P:System.Xml.XmlReader.LocalName" /> and <see cref="P:System.Xml.XmlReader.NamespaceURI" /> properties of the element found match the given strings.</summary>
@@ -945,7 +945,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public bool IsStartElement(string localname, string ns)
     {
-      return XmlReader.IsStartElement(localname, ns);
+      return _XmlReader.IsStartElement(localname, ns);
     }
     
     /// <summary>Reads until an element with the specified qualified name is found.</summary>
@@ -955,7 +955,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The parameter is an empty string.</exception>
     public bool ReadToFollowing(string name)
     {
-      return XmlReader.ReadToFollowing(name);
+      return _XmlReader.ReadToFollowing(name);
     }
     
     /// <summary>Reads until an element with the specified local name and namespace URI is found.</summary>
@@ -966,7 +966,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">Both parameter values are null.</exception>
     public bool ReadToFollowing(string localName, string namespaceURI)
     {
-      return XmlReader.ReadToFollowing(localName, namespaceURI);
+      return _XmlReader.ReadToFollowing(localName, namespaceURI);
     }
     
     /// <summary>Advances the <see cref="T:System.Xml.XmlReader" /> to the next descendant element with the specified qualified name.</summary>
@@ -976,7 +976,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The parameter is an empty string.</exception>
     public bool ReadToDescendant(string name)
     {
-      return XmlReader.ReadToDescendant(name);
+      return _XmlReader.ReadToDescendant(name);
     }
     
     /// <summary>Advances the <see cref="T:System.Xml.XmlReader" /> to the next descendant element with the specified local name and namespace URI.</summary>
@@ -987,7 +987,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">Both parameter values are null.</exception>
     public bool ReadToDescendant(string localName, string namespaceURI)
     {
-      return XmlReader.ReadToDescendant(localName, namespaceURI);
+      return _XmlReader.ReadToDescendant(localName, namespaceURI);
     }
     
     /// <summary>Advances the XmlReader to the next sibling element with the specified qualified name.</summary>
@@ -997,7 +997,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The parameter is an empty string.</exception>
     public bool ReadToNextSibling(string name)
     {
-      return XmlReader.ReadToNextSibling(name);
+      return _XmlReader.ReadToNextSibling(name);
     }
     
     /// <summary>Advances the XmlReader to the next sibling element with the specified local name and namespace URI.</summary>
@@ -1008,7 +1008,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">Both parameter values are null.</exception>
     public bool ReadToNextSibling(string localName, string namespaceURI)
     {
-      return XmlReader.ReadToNextSibling(localName, namespaceURI);
+      return _XmlReader.ReadToNextSibling(localName, namespaceURI);
     }
     
     /// <summary>When overridden in a derived class, reads all the content, including markup, as a string.</summary>
@@ -1017,7 +1017,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadInnerXml()
     {
-      return XmlReader.ReadInnerXml();
+      return _XmlReader.ReadInnerXml();
     }
     
     /// <summary>When overridden in a derived class, reads the content, including markup, representing this node and all its children.</summary>
@@ -1026,7 +1026,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public string ReadOuterXml()
     {
-      return XmlReader.ReadOuterXml();
+      return _XmlReader.ReadOuterXml();
     }
     
     /// <summary>Returns a new XmlReader instance that can be used to read the current node, and all its descendants.</summary>
@@ -1035,7 +1035,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader ReadSubtree()
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(XmlReader.ReadSubtree());
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(_XmlReader.ReadSubtree());
     }
     
     /// <summary>Asynchronously gets the value of the current node.</summary>
@@ -1044,7 +1044,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<string> GetValueAsync()
     {
-      return XmlReader.GetValueAsync();
+      return _XmlReader.GetValueAsync();
     }
     
     /// <summary>Asynchronously reads the text content at the current position as an <see cref="T:System.Object" />.</summary>
@@ -1053,7 +1053,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<object> ReadContentAsObjectAsync()
     {
-      return XmlReader.ReadContentAsObjectAsync();
+      return _XmlReader.ReadContentAsObjectAsync();
     }
     
     /// <summary>Asynchronously reads the text content at the current position as a <see cref="T:System.String" /> object.</summary>
@@ -1062,7 +1062,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<string> ReadContentAsStringAsync()
     {
-      return XmlReader.ReadContentAsStringAsync();
+      return _XmlReader.ReadContentAsStringAsync();
     }
     
     /// <summary>Asynchronously reads the content as an object of the type specified.</summary>
@@ -1073,7 +1073,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<object> ReadContentAsAsync(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return XmlReader.ReadContentAsAsync(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, namespaceResolver);
+      return _XmlReader.ReadContentAsAsync(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
     }
     
     /// <summary>Asynchronously reads the current element and returns the contents as an <see cref="T:System.Object" />.</summary>
@@ -1082,7 +1082,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<object> ReadElementContentAsObjectAsync()
     {
-      return XmlReader.ReadElementContentAsObjectAsync();
+      return _XmlReader.ReadElementContentAsObjectAsync();
     }
     
     /// <summary>Asynchronously reads the current element and returns the contents as a <see cref="T:System.String" /> object.</summary>
@@ -1091,7 +1091,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<string> ReadElementContentAsStringAsync()
     {
-      return XmlReader.ReadElementContentAsStringAsync();
+      return _XmlReader.ReadElementContentAsStringAsync();
     }
     
     /// <summary>Asynchronously reads the element content as the requested type.</summary>
@@ -1102,7 +1102,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<object> ReadElementContentAsAsync(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return XmlReader.ReadElementContentAsAsync(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType).Type, namespaceResolver);
+      return _XmlReader.ReadElementContentAsAsync(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
     }
     
     /// <summary>Asynchronously reads the next node from the stream.</summary>
@@ -1111,7 +1111,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<bool> ReadAsync()
     {
-      return XmlReader.ReadAsync();
+      return _XmlReader.ReadAsync();
     }
     
     /// <summary>Asynchronously skips the children of the current node.</summary>
@@ -1120,7 +1120,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task SkipAsync()
     {
-      return XmlReader.SkipAsync();
+      return _XmlReader.SkipAsync();
     }
     
     /// <summary>Asynchronously reads the content and returns the Base64 decoded binary bytes.</summary>
@@ -1132,7 +1132,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<int> ReadContentAsBase64Async(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadContentAsBase64Async(buffer, index, count);
+      return _XmlReader.ReadContentAsBase64Async(buffer, index, count);
     }
     
     /// <summary>Asynchronously reads the element and decodes the Base64 content.</summary>
@@ -1144,7 +1144,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<int> ReadElementContentAsBase64Async(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadElementContentAsBase64Async(buffer, index, count);
+      return _XmlReader.ReadElementContentAsBase64Async(buffer, index, count);
     }
     
     /// <summary>Asynchronously reads the content and returns the BinHex decoded binary bytes.</summary>
@@ -1156,7 +1156,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<int> ReadContentAsBinHexAsync(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadContentAsBinHexAsync(buffer, index, count);
+      return _XmlReader.ReadContentAsBinHexAsync(buffer, index, count);
     }
     
     /// <summary>Asynchronously reads the element and decodes the BinHex content.</summary>
@@ -1168,7 +1168,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<int> ReadElementContentAsBinHexAsync(byte[] buffer, int index, int count)
     {
-      return XmlReader.ReadElementContentAsBinHexAsync(buffer, index, count);
+      return _XmlReader.ReadElementContentAsBinHexAsync(buffer, index, count);
     }
     
     /// <summary>Asynchronously reads large streams of text embedded in an XML document.</summary>
@@ -1180,7 +1180,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<int> ReadValueChunkAsync(char[] buffer, int index, int count)
     {
-      return XmlReader.ReadValueChunkAsync(buffer, index, count);
+      return _XmlReader.ReadValueChunkAsync(buffer, index, count);
     }
     
     /// <summary>Asynchronously checks whether the current node is a content node. If the node is not a content node, the reader skips ahead to the next content node or end of file.</summary>
@@ -1189,7 +1189,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<System.Xml.XmlNodeType> MoveToContentAsync()
     {
-      return XmlReader.MoveToContentAsync();
+      return _XmlReader.MoveToContentAsync();
     }
     
     /// <summary>Asynchronously reads all the content, including markup, as a string.</summary>
@@ -1198,7 +1198,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<string> ReadInnerXmlAsync()
     {
-      return XmlReader.ReadInnerXmlAsync();
+      return _XmlReader.ReadInnerXmlAsync();
     }
     
     /// <summary>Asynchronously reads the content, including markup, representing this node and all its children.</summary>
@@ -1207,7 +1207,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<string> ReadOuterXmlAsync()
     {
-      return XmlReader.ReadOuterXmlAsync();
+      return _XmlReader.ReadOuterXmlAsync();
     }
     
     public void Dispose()
@@ -1220,7 +1220,7 @@ namespace Wrapperator.Wrappers.Xml
     {
       if (disposing)
       {
-        XmlReader.Dispose();
+        _XmlReader.Dispose();
       }
     }
   }

@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Reflection
   public interface IAssembly
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Reflection.Assembly _Assembly
+    {
+      get;
+    }
+    
     string CodeBase
     {
       get;

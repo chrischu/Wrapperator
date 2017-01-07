@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConfigurationLockCollection
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.ConfigurationLockCollection _ConfigurationLockCollection
+    {
+      get;
+    }
+    
     int Count
     {
       get;

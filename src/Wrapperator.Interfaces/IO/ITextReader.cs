@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface ITextReader : System.IDisposable
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.TextReader _TextReader
+    {
+      get;
+    }
+    
     /// <summary>Closes the <see cref="T:System.IO.TextReader" /> and releases any system resources associated with the TextReader.</summary>
     /// <filterpriority>1</filterpriority>
     void Close();

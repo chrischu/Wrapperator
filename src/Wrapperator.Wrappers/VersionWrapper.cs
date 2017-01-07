@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers
   public class VersionWrapper : Wrapperator.Interfaces.IVersion
   {
     
-    internal System.Version Version { get; private set; }
+    public System.Version _Version { get; private set; }
 
     
     internal VersionWrapper(System.Version version)
     {
-      Version = version;
+      _Version = version;
     }
     
     public int Major
     {
       get
       {
-        return Version.Major;
+        return _Version.Major;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return Version.Minor;
+        return _Version.Minor;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return Version.Build;
+        return _Version.Build;
       }
     }
     
@@ -53,7 +53,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return Version.Revision;
+        return _Version.Revision;
       }
     }
     
@@ -61,7 +61,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return Version.MajorRevision;
+        return _Version.MajorRevision;
       }
     }
     
@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return Version.MinorRevision;
+        return _Version.MinorRevision;
       }
     }
     
@@ -78,7 +78,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object Clone()
     {
-      return Version.Clone();
+      return _Version.Clone();
     }
     
     /// <summary>Compares the current <see cref="T:System.Version" /> object to a specified object and returns an indication of their relative values.</summary>
@@ -89,7 +89,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public int CompareTo(object version)
     {
-      return Version.CompareTo(version);
+      return _Version.CompareTo(version);
     }
     
     /// <summary>Compares the current <see cref="T:System.Version" /> object to a specified <see cref="T:System.Version" /> object and returns an indication of their relative values.</summary>
@@ -98,7 +98,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public int CompareTo(Wrapperator.Interfaces.IVersion value)
     {
-      return Version.CompareTo(value == null ? default(System.Version) : ((Wrapperator.Wrappers.VersionWrapper)value).Version);
+      return _Version.CompareTo(value == null ? default(System.Version) : ((Wrapperator.Wrappers.VersionWrapper)value)._Version);
     }
   }
 }

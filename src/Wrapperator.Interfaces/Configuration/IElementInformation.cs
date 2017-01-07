@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IElementInformation
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.ElementInformation _ElementInformation
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Configuration.IPropertyInformationCollection Properties
     {
       get;

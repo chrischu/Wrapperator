@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers.IO
   public class BinaryWriterWrapper : Wrapperator.Interfaces.IO.IBinaryWriter
   {
     
-    internal System.IO.BinaryWriter BinaryWriter { get; private set; }
+    public System.IO.BinaryWriter _BinaryWriter { get; private set; }
 
     
     internal BinaryWriterWrapper(System.IO.BinaryWriter binaryWriter)
     {
-      BinaryWriter = binaryWriter;
+      _BinaryWriter = binaryWriter;
     }
     
     public Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get
       {
-        return new Wrapperator.Wrappers.IO.StreamWrapper(BinaryWriter.BaseStream);
+        return new Wrapperator.Wrappers.IO.StreamWrapper(_BinaryWriter.BaseStream);
       }
     }
     
@@ -37,14 +37,14 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Close()
     {
-      BinaryWriter.Close();
+      _BinaryWriter.Close();
     }
     
     /// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
     /// <filterpriority>1</filterpriority>
     public void Flush()
     {
-      BinaryWriter.Flush();
+      _BinaryWriter.Flush();
     }
     
     /// <summary>Sets the position within the current stream.</summary>
@@ -56,7 +56,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public long Seek(int offset, System.IO.SeekOrigin origin)
     {
-      return BinaryWriter.Seek(offset, origin);
+      return _BinaryWriter.Seek(offset, origin);
     }
     
     /// <summary>Writes a one-byte Boolean value to the current stream, with 0 representing false and 1 representing true.</summary>
@@ -66,7 +66,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(bool value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes an unsigned byte to the current stream and advances the stream position by one byte.</summary>
@@ -76,7 +76,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(byte value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a signed byte to the current stream and advances the stream position by one byte.</summary>
@@ -86,7 +86,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(sbyte value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a byte array to the underlying stream.</summary>
@@ -98,7 +98,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(byte[] buffer)
     {
-      BinaryWriter.Write(buffer);
+      _BinaryWriter.Write(buffer);
     }
     
     /// <summary>Writes a region of a byte array to the current stream.</summary>
@@ -115,7 +115,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(byte[] buffer, int index, int count)
     {
-      BinaryWriter.Write(buffer, index, count);
+      _BinaryWriter.Write(buffer, index, count);
     }
     
     /// <summary>Writes a Unicode character to the current stream and advances the current position of the stream in accordance with the Encoding used and the specific characters being written to the stream.</summary>
@@ -127,7 +127,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(char ch)
     {
-      BinaryWriter.Write(ch);
+      _BinaryWriter.Write(ch);
     }
     
     /// <summary>Writes a character array to the current stream and advances the current position of the stream in accordance with the Encoding used and the specific characters being written to the stream.</summary>
@@ -139,7 +139,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(char[] chars)
     {
-      BinaryWriter.Write(chars);
+      _BinaryWriter.Write(chars);
     }
     
     /// <summary>Writes a section of a character array to the current stream, and advances the current position of the stream in accordance with the Encoding used and perhaps the specific characters being written to the stream.</summary>
@@ -156,7 +156,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(char[] chars, int index, int count)
     {
-      BinaryWriter.Write(chars, index, count);
+      _BinaryWriter.Write(chars, index, count);
     }
     
     /// <summary>Writes an eight-byte floating-point value to the current stream and advances the stream position by eight bytes.</summary>
@@ -166,7 +166,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(double value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a decimal value to the current stream and advances the stream position by sixteen bytes.</summary>
@@ -176,7 +176,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(decimal value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a two-byte signed integer to the current stream and advances the stream position by two bytes.</summary>
@@ -186,7 +186,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(short value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a two-byte unsigned integer to the current stream and advances the stream position by two bytes.</summary>
@@ -196,7 +196,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(ushort value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a four-byte signed integer to the current stream and advances the stream position by four bytes.</summary>
@@ -206,7 +206,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(int value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a four-byte unsigned integer to the current stream and advances the stream position by four bytes.</summary>
@@ -216,7 +216,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(uint value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes an eight-byte signed integer to the current stream and advances the stream position by eight bytes.</summary>
@@ -226,7 +226,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(long value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes an eight-byte unsigned integer to the current stream and advances the stream position by eight bytes.</summary>
@@ -236,7 +236,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(ulong value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a four-byte floating-point value to the current stream and advances the stream position by four bytes.</summary>
@@ -246,7 +246,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(float value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     /// <summary>Writes a length-prefixed string to this stream in the current encoding of the <see cref="T:System.IO.BinaryWriter" />, and advances the current position of the stream in accordance with the encoding used and the specific characters being written to the stream.</summary>
@@ -258,7 +258,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(string value)
     {
-      BinaryWriter.Write(value);
+      _BinaryWriter.Write(value);
     }
     
     public void Dispose()
@@ -271,7 +271,7 @@ namespace Wrapperator.Wrappers.IO
     {
       if (disposing)
       {
-        BinaryWriter.Dispose();
+        _BinaryWriter.Dispose();
       }
     }
   }

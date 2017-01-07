@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces
   public interface IAppDomain
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.AppDomain _AppDomain
+    {
+      get;
+    }
+    
     System.AppDomainManager DomainManager
     {
       get;

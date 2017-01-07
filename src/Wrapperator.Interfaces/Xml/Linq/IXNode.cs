@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXNode : Wrapperator.Interfaces.Xml.Linq.IXObject
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XNode _XNode
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Xml.Linq.IXNode NextNode
     {
       get;

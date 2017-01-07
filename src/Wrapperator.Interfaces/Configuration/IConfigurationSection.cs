@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConfigurationSection
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.ConfigurationSection _ConfigurationSection
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Configuration.ISectionInformation SectionInformation
     {
       get;

@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Serialization
   public interface IXmlSerializer
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Serialization.XmlSerializer _XmlSerializer
+    {
+      get;
+    }
+    
     /// <summary>Serializes the specified <see cref="T:System.Object" /> and writes the XML document to a file using the specified <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">The <see cref="T:System.IO.TextWriter" /> used to write the XML document. </param>
     /// <param name="o">The <see cref="T:System.Object" /> to serialize. </param>

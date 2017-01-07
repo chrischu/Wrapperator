@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IProtectedConfigurationProvider
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.ProtectedConfigurationProvider _ProtectedConfigurationProvider
+    {
+      get;
+    }
+    
     string Name
     {
       get;

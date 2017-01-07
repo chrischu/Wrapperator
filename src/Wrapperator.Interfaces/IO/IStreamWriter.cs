@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IStreamWriter : Wrapperator.Interfaces.IO.ITextWriter
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.StreamWriter _StreamWriter
+    {
+      get;
+    }
+    
     bool AutoFlush
     {
       get;

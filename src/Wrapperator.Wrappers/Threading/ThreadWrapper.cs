@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers.Threading
   public class ThreadWrapper : Wrapperator.Interfaces.Threading.IThread
   {
     
-    internal System.Threading.Thread Thread { get; private set; }
+    public System.Threading.Thread _Thread { get; private set; }
 
     
     internal ThreadWrapper(System.Threading.Thread thread)
     {
-      Thread = thread;
+      _Thread = thread;
     }
     
     public int ManagedThreadId
     {
       get
       {
-        return Thread.ManagedThreadId;
+        return _Thread.ManagedThreadId;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.ExecutionContext;
+        return _Thread.ExecutionContext;
       }
     }
     
@@ -45,11 +45,11 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.Priority;
+        return _Thread.Priority;
       }
       set
       {
-        Thread.Priority = value;
+        _Thread.Priority = value;
       }
     }
     
@@ -57,7 +57,7 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.IsAlive;
+        return _Thread.IsAlive;
       }
     }
     
@@ -65,7 +65,7 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.IsThreadPoolThread;
+        return _Thread.IsThreadPoolThread;
       }
     }
     
@@ -73,11 +73,11 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.IsBackground;
+        return _Thread.IsBackground;
       }
       set
       {
-        Thread.IsBackground = value;
+        _Thread.IsBackground = value;
       }
     }
     
@@ -85,7 +85,7 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.ThreadState;
+        return _Thread.ThreadState;
       }
     }
     
@@ -93,11 +93,11 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.CurrentUICulture;
+        return _Thread.CurrentUICulture;
       }
       set
       {
-        Thread.CurrentUICulture = value;
+        _Thread.CurrentUICulture = value;
       }
     }
     
@@ -105,11 +105,11 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.CurrentCulture;
+        return _Thread.CurrentCulture;
       }
       set
       {
-        Thread.CurrentCulture = value;
+        _Thread.CurrentCulture = value;
       }
     }
     
@@ -117,11 +117,11 @@ namespace Wrapperator.Wrappers.Threading
     {
       get
       {
-        return Thread.Name;
+        return _Thread.Name;
       }
       set
       {
-        Thread.Name = value;
+        _Thread.Name = value;
       }
     }
     
@@ -131,7 +131,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public void Start()
     {
-      Thread.Start();
+      _Thread.Start();
     }
     
     /// <summary>Causes the operating system to change the state of the current instance to <see cref="F:System.Threading.ThreadState.Running" />, and optionally supplies an object containing data to be used by the method the thread executes.</summary>
@@ -142,7 +142,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public void Start(object parameter)
     {
-      Thread.Start(parameter);
+      _Thread.Start(parameter);
     }
     
     /// <summary>Raises a <see cref="T:System.Threading.ThreadAbortException" /> in the thread on which it is invoked, to begin the process of terminating the thread while also providing exception information about the thread termination. Calling this method usually terminates the thread.</summary>
@@ -152,7 +152,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public void Abort(object stateInfo)
     {
-      Thread.Abort(stateInfo);
+      _Thread.Abort(stateInfo);
     }
     
     /// <summary>Raises a <see cref="T:System.Threading.ThreadAbortException" /> in the thread on which it is invoked, to begin the process of terminating the thread. Calling this method usually terminates the thread.</summary>
@@ -161,7 +161,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public void Abort()
     {
-      Thread.Abort();
+      _Thread.Abort();
     }
     
     /// <summary>Interrupts a thread that is in the WaitSleepJoin thread state.</summary>
@@ -169,7 +169,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>2</filterpriority>
     public void Interrupt()
     {
-      Thread.Interrupt();
+      _Thread.Interrupt();
     }
     
     /// <summary>Blocks the calling thread until a thread terminates, while continuing to perform standard COM and SendMessage pumping.</summary>
@@ -178,7 +178,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public void Join()
     {
-      Thread.Join();
+      _Thread.Join();
     }
     
     /// <summary>Blocks the calling thread until a thread terminates or the specified time elapses, while continuing to perform standard COM and SendMessage pumping.</summary>
@@ -189,7 +189,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public bool Join(int millisecondsTimeout)
     {
-      return Thread.Join(millisecondsTimeout);
+      return _Thread.Join(millisecondsTimeout);
     }
     
     /// <summary>Blocks the calling thread until a thread terminates or the specified time elapses, while continuing to perform standard COM and SendMessage pumping.</summary>
@@ -200,13 +200,13 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public bool Join(System.TimeSpan timeout)
     {
-      return Thread.Join(timeout);
+      return _Thread.Join(timeout);
     }
     
     /// <summary>Turns off automatic cleanup of runtime callable wrappers (RCW) for the current thread. </summary>
     public void DisableComObjectEagerCleanup()
     {
-      Thread.DisableComObjectEagerCleanup();
+      _Thread.DisableComObjectEagerCleanup();
     }
     
     /// <summary>Returns an <see cref="T:System.Threading.ApartmentState" /> value indicating the apartment state.</summary>
@@ -214,7 +214,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public System.Threading.ApartmentState GetApartmentState()
     {
-      return Thread.GetApartmentState();
+      return _Thread.GetApartmentState();
     }
     
     /// <summary>Sets the apartment state of a thread before it is started.</summary>
@@ -226,7 +226,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public bool TrySetApartmentState(System.Threading.ApartmentState state)
     {
-      return Thread.TrySetApartmentState(state);
+      return _Thread.TrySetApartmentState(state);
     }
     
     /// <summary>Sets the apartment state of a thread before it is started.</summary>
@@ -238,7 +238,7 @@ namespace Wrapperator.Wrappers.Threading
     /// <filterpriority>1</filterpriority>
     public void SetApartmentState(System.Threading.ApartmentState state)
     {
-      Thread.SetApartmentState(state);
+      _Thread.SetApartmentState(state);
     }
   }
 }

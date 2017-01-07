@@ -16,23 +16,23 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XStreamingElementWrapper : Wrapperator.Interfaces.Xml.Linq.IXStreamingElement
   {
     
-    internal System.Xml.Linq.XStreamingElement XStreamingElement { get; private set; }
+    public System.Xml.Linq.XStreamingElement _XStreamingElement { get; private set; }
 
     
     internal XStreamingElementWrapper(System.Xml.Linq.XStreamingElement xStreamingElement)
     {
-      XStreamingElement = xStreamingElement;
+      _XStreamingElement = xStreamingElement;
     }
     
     public Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(XStreamingElement.Name);
+        return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(_XStreamingElement.Name);
       }
       set
       {
-        XStreamingElement.Name = ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)(value)).XName;
+        _XStreamingElement.Name = ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)(value))._XName;
       }
     }
     
@@ -40,21 +40,21 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="content">Content to be added to the streaming element.</param>
     public void Add(object content)
     {
-      XStreamingElement.Add(content);
+      _XStreamingElement.Add(content);
     }
     
     /// <summary>Adds the specified content as children to this <see cref="T:System.Xml.Linq.XStreamingElement" />.</summary>
     /// <param name="content">Content to be added to the streaming element.</param>
     public void Add(object[] content)
     {
-      XStreamingElement.Add(content);
+      _XStreamingElement.Add(content);
     }
     
     /// <summary>Serialize this streaming element to a file.</summary>
     /// <param name="fileName">A <see cref="T:System.String" /> that contains the name of the file.</param>
     public void Save(string fileName)
     {
-      XStreamingElement.Save(fileName);
+      _XStreamingElement.Save(fileName);
     }
     
     /// <summary>Serialize this streaming element to a file, optionally disabling formatting.</summary>
@@ -62,14 +62,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> object that specifies formatting behavior.</param>
     public void Save(string fileName, System.Xml.Linq.SaveOptions options)
     {
-      XStreamingElement.Save(fileName, options);
+      _XStreamingElement.Save(fileName, options);
     }
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XStreamingElement" /> to the specified <see cref="T:System.IO.Stream" />.</summary>
     /// <param name="stream">The stream to output this <see cref="T:System.Xml.Linq.XDocument" /> to.</param>
     public void Save(Wrapperator.Interfaces.IO.IStream stream)
     {
-      XStreamingElement.Save(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream);
+      _XStreamingElement.Save(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream);
     }
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XStreamingElement" /> to the specified <see cref="T:System.IO.Stream" />, optionally specifying formatting behavior.</summary>
@@ -77,14 +77,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> object that specifies formatting behavior.</param>
     public void Save(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.SaveOptions options)
     {
-      XStreamingElement.Save(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream, options);
+      _XStreamingElement.Save(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream, options);
     }
     
     /// <summary>Serialize this streaming element to a <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">A <see cref="T:System.IO.TextWriter" /> that the <see cref="T:System.Xml.Linq.XStreamingElement" /> will be written to.</param>
     public void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter)
     {
-      XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter).TextWriter);
+      _XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter)._TextWriter);
     }
     
     /// <summary>Serialize this streaming element to a <see cref="T:System.IO.TextWriter" />, optionally disabling formatting.</summary>
@@ -92,14 +92,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> that specifies formatting behavior.</param>
     public void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter, System.Xml.Linq.SaveOptions options)
     {
-      XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter).TextWriter, options);
+      _XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter)._TextWriter, options);
     }
     
     /// <summary>Serialize this streaming element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> that the <see cref="T:System.Xml.Linq.XElement" /> will be written to.</param>
     public void Save(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      XStreamingElement.Save(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer).XmlWriter);
+      _XStreamingElement.Save(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer)._XmlWriter);
     }
     
     /// <summary>Writes this streaming element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
@@ -107,7 +107,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <filterpriority>2</filterpriority>
     public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      XStreamingElement.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer).XmlWriter);
+      _XStreamingElement.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer)._XmlWriter);
     }
   }
 }

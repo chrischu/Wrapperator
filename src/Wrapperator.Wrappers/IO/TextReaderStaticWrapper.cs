@@ -29,7 +29,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.ITextReader Synchronized(Wrapperator.Interfaces.IO.ITextReader reader)
     {
-      return new Wrapperator.Wrappers.IO.TextReaderWrapper(System.IO.TextReader.Synchronized(reader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)reader).TextReader));
+      return new Wrapperator.Wrappers.IO.TextReaderWrapper(System.IO.TextReader.Synchronized(reader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)reader)._TextReader));
     }
   }
 }

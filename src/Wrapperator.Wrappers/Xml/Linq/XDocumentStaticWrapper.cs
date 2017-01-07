@@ -42,7 +42,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="stream">The stream that contains the XML data.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.IStream stream)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream));
+      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> instance by using the specified stream, optionally preserving white space, setting the base URI, and retaining line information.</summary>
@@ -51,7 +51,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies whether to load base URI and line information.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.LoadOptions options)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream).Stream, options));
+      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream, options));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a <see cref="T:System.IO.TextReader" />. </summary>
@@ -59,7 +59,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="textReader">A <see cref="T:System.IO.TextReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.ITextReader textReader)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(textReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)textReader).TextReader));
+      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(textReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)textReader)._TextReader));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a <see cref="T:System.IO.TextReader" />, optionally preserving white space, setting the base URI, and retaining line information.</summary>
@@ -68,7 +68,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies white space behavior, and whether to load base URI and line information.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.IO.ITextReader textReader, System.Xml.Linq.LoadOptions options)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(textReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)textReader).TextReader, options));
+      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(textReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)textReader)._TextReader, options));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from an <see cref="T:System.Xml.XmlReader" />. </summary>
@@ -76,7 +76,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="reader">A <see cref="T:System.Xml.XmlReader" /> that contains the content for the <see cref="T:System.Xml.Linq.XDocument" />.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.Xml.IXmlReader reader)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader));
+      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader));
     }
     
     /// <summary>Loads an <see cref="T:System.Xml.Linq.XDocument" /> from an <see cref="T:System.Xml.XmlReader" />, optionally setting the base URI, and retaining line information.</summary>
@@ -85,7 +85,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.LoadOptions" /> that specifies whether to load base URI and line information.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXDocument Load(Wrapperator.Interfaces.Xml.IXmlReader reader, System.Xml.Linq.LoadOptions options)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader, options));
+      return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(System.Xml.Linq.XDocument.Load(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader, options));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.Linq.XDocument" /> from a string.</summary>

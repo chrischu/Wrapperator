@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml
   public interface IXmlDocumentFragment
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.XmlDocumentFragment _XmlDocumentFragment
+    {
+      get;
+    }
+    
     string Name
     {
       get;

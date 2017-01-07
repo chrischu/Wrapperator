@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces
   public interface IDateTime
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.DateTime _DateTime
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.IDateTime Date
     {
       get;

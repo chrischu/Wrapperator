@@ -359,7 +359,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void SetCreationTime(string path, Wrapperator.Interfaces.IDateTime creationTime)
     {
-      System.IO.File.SetCreationTime(path, creationTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)creationTime).DateTime);
+      System.IO.File.SetCreationTime(path, creationTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)creationTime)._DateTime);
     }
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the file was created.</summary>
@@ -380,7 +380,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void SetCreationTimeUtc(string path, Wrapperator.Interfaces.IDateTime creationTimeUtc)
     {
-      System.IO.File.SetCreationTimeUtc(path, creationTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)creationTimeUtc).DateTime);
+      System.IO.File.SetCreationTimeUtc(path, creationTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)creationTimeUtc)._DateTime);
     }
     
     /// <summary>Returns the creation date and time of the specified file or directory.</summary>
@@ -434,7 +434,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void SetLastAccessTime(string path, Wrapperator.Interfaces.IDateTime lastAccessTime)
     {
-      System.IO.File.SetLastAccessTime(path, lastAccessTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastAccessTime).DateTime);
+      System.IO.File.SetLastAccessTime(path, lastAccessTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastAccessTime)._DateTime);
     }
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last accessed.</summary>
@@ -454,7 +454,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void SetLastAccessTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastAccessTimeUtc)
     {
-      System.IO.File.SetLastAccessTimeUtc(path, lastAccessTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastAccessTimeUtc).DateTime);
+      System.IO.File.SetLastAccessTimeUtc(path, lastAccessTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastAccessTimeUtc)._DateTime);
     }
     
     /// <summary>Returns the date and time the specified file or directory was last accessed.</summary>
@@ -508,7 +508,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void SetLastWriteTime(string path, Wrapperator.Interfaces.IDateTime lastWriteTime)
     {
-      System.IO.File.SetLastWriteTime(path, lastWriteTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastWriteTime).DateTime);
+      System.IO.File.SetLastWriteTime(path, lastWriteTime == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastWriteTime)._DateTime);
     }
     
     /// <summary>Sets the date and time, in coordinated universal time (UTC), that the specified file was last written to.</summary>
@@ -528,7 +528,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public void SetLastWriteTimeUtc(string path, Wrapperator.Interfaces.IDateTime lastWriteTimeUtc)
     {
-      System.IO.File.SetLastWriteTimeUtc(path, lastWriteTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastWriteTimeUtc).DateTime);
+      System.IO.File.SetLastWriteTimeUtc(path, lastWriteTimeUtc == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)lastWriteTimeUtc)._DateTime);
     }
     
     /// <summary>Returns the date and time the specified file or directory was last written to.</summary>

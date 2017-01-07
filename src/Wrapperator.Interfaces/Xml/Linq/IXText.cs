@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXText : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XText _XText
+    {
+      get;
+    }
+    
     string Value
     {
       get;

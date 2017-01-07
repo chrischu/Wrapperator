@@ -17,12 +17,12 @@ namespace Wrapperator.Wrappers.Diagnostics
   public class TraceWrapper : Wrapperator.Interfaces.Diagnostics.ITrace
   {
     
-    internal System.Diagnostics.Trace Trace { get; private set; }
+    public System.Diagnostics.Trace _Trace { get; private set; }
 
     
     internal TraceWrapper(System.Diagnostics.Trace trace)
     {
-      Trace = trace;
+      _Trace = trace;
     }
   }
 }

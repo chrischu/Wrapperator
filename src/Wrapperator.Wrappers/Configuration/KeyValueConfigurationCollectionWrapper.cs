@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class KeyValueConfigurationCollectionWrapper : Wrapperator.Interfaces.Configuration.IKeyValueConfigurationCollection
   {
     
-    internal System.Configuration.KeyValueConfigurationCollection KeyValueConfigurationCollection { get; private set; }
+    public System.Configuration.KeyValueConfigurationCollection _KeyValueConfigurationCollection { get; private set; }
 
     
     internal KeyValueConfigurationCollectionWrapper(System.Configuration.KeyValueConfigurationCollection keyValueConfigurationCollection)
     {
-      KeyValueConfigurationCollection = keyValueConfigurationCollection;
+      _KeyValueConfigurationCollection = keyValueConfigurationCollection;
     }
     
     public Wrapperator.Interfaces.Configuration.IKeyValueConfigurationElement this[string key]
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.KeyValueConfigurationElementWrapper(KeyValueConfigurationCollection[key]);
+        return new Wrapperator.Wrappers.Configuration.KeyValueConfigurationElementWrapper(_KeyValueConfigurationCollection[key]);
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.AllKeys;
+        return _KeyValueConfigurationCollection.AllKeys;
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.Count;
+        return _KeyValueConfigurationCollection.Count;
       }
     }
     
@@ -52,11 +52,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.EmitClear;
+        return _KeyValueConfigurationCollection.EmitClear;
       }
       set
       {
-        KeyValueConfigurationCollection.EmitClear = value;
+        _KeyValueConfigurationCollection.EmitClear = value;
       }
     }
     
@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.IsSynchronized;
+        return _KeyValueConfigurationCollection.IsSynchronized;
       }
     }
     
@@ -72,7 +72,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.SyncRoot;
+        return _KeyValueConfigurationCollection.SyncRoot;
       }
     }
     
@@ -80,7 +80,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.CollectionType;
+        return _KeyValueConfigurationCollection.CollectionType;
       }
     }
     
@@ -88,7 +88,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationCollection.LockAttributes);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationCollection.LockAttributes);
       }
     }
     
@@ -96,7 +96,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationCollection.LockAllAttributesExcept);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationCollection.LockAllAttributesExcept);
       }
     }
     
@@ -104,7 +104,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationCollection.LockElements);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationCollection.LockElements);
       }
     }
     
@@ -112,7 +112,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationCollection.LockAllElementsExcept);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationCollection.LockAllElementsExcept);
       }
     }
     
@@ -120,11 +120,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationCollection.LockItem;
+        return _KeyValueConfigurationCollection.LockItem;
       }
       set
       {
-        KeyValueConfigurationCollection.LockItem = value;
+        _KeyValueConfigurationCollection.LockItem = value;
       }
     }
     
@@ -132,7 +132,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(KeyValueConfigurationCollection.ElementInformation);
+        return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(_KeyValueConfigurationCollection.ElementInformation);
       }
     }
     
@@ -140,7 +140,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(KeyValueConfigurationCollection.CurrentConfiguration);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(_KeyValueConfigurationCollection.CurrentConfiguration);
       }
     }
     
@@ -148,7 +148,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="keyValue">A <see cref="T:System.Configuration.KeyValueConfigurationElement" />.</param>
     public void Add(Wrapperator.Interfaces.Configuration.IKeyValueConfigurationElement keyValue)
     {
-      KeyValueConfigurationCollection.Add(keyValue == null ? default(System.Configuration.KeyValueConfigurationElement) : ((Wrapperator.Wrappers.Configuration.KeyValueConfigurationElementWrapper)keyValue).KeyValueConfigurationElement);
+      _KeyValueConfigurationCollection.Add(keyValue == null ? default(System.Configuration.KeyValueConfigurationElement) : ((Wrapperator.Wrappers.Configuration.KeyValueConfigurationElementWrapper)keyValue)._KeyValueConfigurationElement);
     }
     
     /// <summary>Adds a <see cref="T:System.Configuration.KeyValueConfigurationElement" /> object to the collection based on the supplied parameters.</summary>
@@ -156,27 +156,27 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="value">A string specifying the value.</param>
     public void Add(string key, string value)
     {
-      KeyValueConfigurationCollection.Add(key, value);
+      _KeyValueConfigurationCollection.Add(key, value);
     }
     
     /// <summary>Removes a <see cref="T:System.Configuration.KeyValueConfigurationElement" /> object from the collection.</summary>
     /// <param name="key">A string specifying the <paramref name="key" />.</param>
     public void Remove(string key)
     {
-      KeyValueConfigurationCollection.Remove(key);
+      _KeyValueConfigurationCollection.Remove(key);
     }
     
     /// <summary>Clears the <see cref="T:System.Configuration.KeyValueConfigurationCollection" /> collection.</summary>
     public void Clear()
     {
-      KeyValueConfigurationCollection.Clear();
+      _KeyValueConfigurationCollection.Clear();
     }
     
     /// <summary>Indicates whether the <see cref="T:System.Configuration.ConfigurationElementCollection" /> object is read only.</summary>
     /// <returns>true if the <see cref="T:System.Configuration.ConfigurationElementCollection" /> object is read only; otherwise, false.</returns>
     public bool IsReadOnly()
     {
-      return KeyValueConfigurationCollection.IsReadOnly();
+      return _KeyValueConfigurationCollection.IsReadOnly();
     }
     
     /// <summary>Copies the contents of the <see cref="T:System.Configuration.ConfigurationElementCollection" /> to an array.</summary>
@@ -184,14 +184,14 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="index">Index location at which to begin copying.</param>
     public void CopyTo(System.Configuration.ConfigurationElement[] array, int index)
     {
-      KeyValueConfigurationCollection.CopyTo(array, index);
+      _KeyValueConfigurationCollection.CopyTo(array, index);
     }
     
     /// <summary>Gets an <see cref="T:System.Collections.IEnumerator" /> which is used to iterate through the <see cref="T:System.Configuration.ConfigurationElementCollection" />.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> which is used to iterate through the <see cref="T:System.Configuration.ConfigurationElementCollection" />.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return KeyValueConfigurationCollection.GetEnumerator();
+      return _KeyValueConfigurationCollection.GetEnumerator();
     }
   }
 }

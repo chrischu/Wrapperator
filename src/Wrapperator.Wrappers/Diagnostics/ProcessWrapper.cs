@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers.Diagnostics
   public class ProcessWrapper : Wrapperator.Interfaces.Diagnostics.IProcess
   {
     
-    internal System.Diagnostics.Process Process { get; private set; }
+    public System.Diagnostics.Process _Process { get; private set; }
 
     
     internal ProcessWrapper(System.Diagnostics.Process process)
     {
-      Process = process;
+      _Process = process;
     }
     
     public int BasePriority
     {
       get
       {
-        return Process.BasePriority;
+        return _Process.BasePriority;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.ExitCode;
+        return _Process.ExitCode;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.HasExited;
+        return _Process.HasExited;
       }
     }
     
@@ -53,7 +53,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return new Wrapperator.Wrappers.DateTimeWrapper(Process.ExitTime);
+        return new Wrapperator.Wrappers.DateTimeWrapper(_Process.ExitTime);
       }
     }
     
@@ -61,7 +61,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Handle;
+        return _Process.Handle;
       }
     }
     
@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.HandleCount;
+        return _Process.HandleCount;
       }
     }
     
@@ -77,7 +77,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Id;
+        return _Process.Id;
       }
     }
     
@@ -85,7 +85,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.MachineName;
+        return _Process.MachineName;
       }
     }
     
@@ -93,7 +93,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.MainWindowHandle;
+        return _Process.MainWindowHandle;
       }
     }
     
@@ -101,7 +101,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.MainWindowTitle;
+        return _Process.MainWindowTitle;
       }
     }
     
@@ -109,7 +109,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.MainModule;
+        return _Process.MainModule;
       }
     }
     
@@ -117,11 +117,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.MaxWorkingSet;
+        return _Process.MaxWorkingSet;
       }
       set
       {
-        Process.MaxWorkingSet = value;
+        _Process.MaxWorkingSet = value;
       }
     }
     
@@ -129,11 +129,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.MinWorkingSet;
+        return _Process.MinWorkingSet;
       }
       set
       {
-        Process.MinWorkingSet = value;
+        _Process.MinWorkingSet = value;
       }
     }
     
@@ -141,7 +141,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Modules;
+        return _Process.Modules;
       }
     }
     
@@ -149,7 +149,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.NonpagedSystemMemorySize64;
+        return _Process.NonpagedSystemMemorySize64;
       }
     }
     
@@ -157,7 +157,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PagedMemorySize64;
+        return _Process.PagedMemorySize64;
       }
     }
     
@@ -165,7 +165,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PagedSystemMemorySize64;
+        return _Process.PagedSystemMemorySize64;
       }
     }
     
@@ -173,7 +173,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PeakPagedMemorySize64;
+        return _Process.PeakPagedMemorySize64;
       }
     }
     
@@ -181,7 +181,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PeakWorkingSet64;
+        return _Process.PeakWorkingSet64;
       }
     }
     
@@ -189,7 +189,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PeakVirtualMemorySize64;
+        return _Process.PeakVirtualMemorySize64;
       }
     }
     
@@ -197,11 +197,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PriorityBoostEnabled;
+        return _Process.PriorityBoostEnabled;
       }
       set
       {
-        Process.PriorityBoostEnabled = value;
+        _Process.PriorityBoostEnabled = value;
       }
     }
     
@@ -209,11 +209,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PriorityClass;
+        return _Process.PriorityClass;
       }
       set
       {
-        Process.PriorityClass = value;
+        _Process.PriorityClass = value;
       }
     }
     
@@ -221,7 +221,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PrivateMemorySize64;
+        return _Process.PrivateMemorySize64;
       }
     }
     
@@ -229,7 +229,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.PrivilegedProcessorTime;
+        return _Process.PrivilegedProcessorTime;
       }
     }
     
@@ -237,7 +237,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.ProcessName;
+        return _Process.ProcessName;
       }
     }
     
@@ -245,11 +245,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.ProcessorAffinity;
+        return _Process.ProcessorAffinity;
       }
       set
       {
-        Process.ProcessorAffinity = value;
+        _Process.ProcessorAffinity = value;
       }
     }
     
@@ -257,7 +257,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Responding;
+        return _Process.Responding;
       }
     }
     
@@ -265,7 +265,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.SessionId;
+        return _Process.SessionId;
       }
     }
     
@@ -273,11 +273,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return new Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper(Process.StartInfo);
+        return new Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper(_Process.StartInfo);
       }
       set
       {
-        Process.StartInfo = ((Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper)(value)).ProcessStartInfo;
+        _Process.StartInfo = ((Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper)(value))._ProcessStartInfo;
       }
     }
     
@@ -285,7 +285,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return new Wrapperator.Wrappers.DateTimeWrapper(Process.StartTime);
+        return new Wrapperator.Wrappers.DateTimeWrapper(_Process.StartTime);
       }
     }
     
@@ -293,11 +293,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.SynchronizingObject;
+        return _Process.SynchronizingObject;
       }
       set
       {
-        Process.SynchronizingObject = value;
+        _Process.SynchronizingObject = value;
       }
     }
     
@@ -305,7 +305,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Threads;
+        return _Process.Threads;
       }
     }
     
@@ -313,7 +313,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.TotalProcessorTime;
+        return _Process.TotalProcessorTime;
       }
     }
     
@@ -321,7 +321,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.UserProcessorTime;
+        return _Process.UserProcessorTime;
       }
     }
     
@@ -329,7 +329,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.VirtualMemorySize64;
+        return _Process.VirtualMemorySize64;
       }
     }
     
@@ -337,11 +337,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.EnableRaisingEvents;
+        return _Process.EnableRaisingEvents;
       }
       set
       {
-        Process.EnableRaisingEvents = value;
+        _Process.EnableRaisingEvents = value;
       }
     }
     
@@ -349,7 +349,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return new Wrapperator.Wrappers.IO.StreamWriterWrapper(Process.StandardInput);
+        return new Wrapperator.Wrappers.IO.StreamWriterWrapper(_Process.StandardInput);
       }
     }
     
@@ -357,7 +357,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return new Wrapperator.Wrappers.IO.StreamReaderWrapper(Process.StandardOutput);
+        return new Wrapperator.Wrappers.IO.StreamReaderWrapper(_Process.StandardOutput);
       }
     }
     
@@ -365,7 +365,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return new Wrapperator.Wrappers.IO.StreamReaderWrapper(Process.StandardError);
+        return new Wrapperator.Wrappers.IO.StreamReaderWrapper(_Process.StandardError);
       }
     }
     
@@ -373,7 +373,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.WorkingSet64;
+        return _Process.WorkingSet64;
       }
     }
     
@@ -381,11 +381,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Site;
+        return _Process.Site;
       }
       set
       {
-        Process.Site = value;
+        _Process.Site = value;
       }
     }
     
@@ -393,7 +393,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Process.Container;
+        return _Process.Container;
       }
     }
     
@@ -404,21 +404,21 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public bool CloseMainWindow()
     {
-      return Process.CloseMainWindow();
+      return _Process.CloseMainWindow();
     }
     
     /// <summary>Frees all the resources that are associated with this component.</summary>
     /// <filterpriority>2</filterpriority>
     public void Close()
     {
-      Process.Close();
+      _Process.Close();
     }
     
     /// <summary>Discards any information about the associated process that has been cached inside the process component.</summary>
     /// <filterpriority>1</filterpriority>
     public void Refresh()
     {
-      Process.Refresh();
+      _Process.Refresh();
     }
     
     /// <summary>Starts (or reuses) the process resource that is specified by the <see cref="P:System.Diagnostics.Process.StartInfo" /> property of this <see cref="T:System.Diagnostics.Process" /> component and associates it with the component.</summary>
@@ -429,7 +429,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public bool Start()
     {
-      return Process.Start();
+      return _Process.Start();
     }
     
     /// <summary>Immediately stops the associated process.</summary>
@@ -439,7 +439,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public void Kill()
     {
-      Process.Kill();
+      _Process.Kill();
     }
     
     /// <summary>Instructs the <see cref="T:System.Diagnostics.Process" /> component to wait the specified number of milliseconds for the associated process to exit.</summary>
@@ -450,7 +450,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public bool WaitForExit(int milliseconds)
     {
-      return Process.WaitForExit(milliseconds);
+      return _Process.WaitForExit(milliseconds);
     }
     
     /// <summary>Instructs the <see cref="T:System.Diagnostics.Process" /> component to wait indefinitely for the associated process to exit.</summary>
@@ -459,7 +459,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public void WaitForExit()
     {
-      Process.WaitForExit();
+      _Process.WaitForExit();
     }
     
     /// <summary>Causes the <see cref="T:System.Diagnostics.Process" /> component to wait the specified number of milliseconds for the associated process to enter an idle state. This overload applies only to processes with a user interface and, therefore, a message loop.</summary>
@@ -469,7 +469,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public bool WaitForInputIdle(int milliseconds)
     {
-      return Process.WaitForInputIdle(milliseconds);
+      return _Process.WaitForInputIdle(milliseconds);
     }
     
     /// <summary>Causes the <see cref="T:System.Diagnostics.Process" /> component to wait indefinitely for the associated process to enter an idle state. This overload applies only to processes with a user interface and, therefore, a message loop.</summary>
@@ -478,7 +478,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public bool WaitForInputIdle()
     {
-      return Process.WaitForInputIdle();
+      return _Process.WaitForInputIdle();
     }
     
     /// <summary>Begins asynchronous read operations on the redirected <see cref="P:System.Diagnostics.Process.StandardOutput" /> stream of the application.</summary>
@@ -486,7 +486,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public void BeginOutputReadLine()
     {
-      Process.BeginOutputReadLine();
+      _Process.BeginOutputReadLine();
     }
     
     /// <summary>Begins asynchronous read operations on the redirected <see cref="P:System.Diagnostics.Process.StandardError" /> stream of the application.</summary>
@@ -494,7 +494,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public void BeginErrorReadLine()
     {
-      Process.BeginErrorReadLine();
+      _Process.BeginErrorReadLine();
     }
     
     /// <summary>Cancels the asynchronous read operation on the redirected <see cref="P:System.Diagnostics.Process.StandardOutput" /> stream of an application.</summary>
@@ -502,7 +502,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public void CancelOutputRead()
     {
-      Process.CancelOutputRead();
+      _Process.CancelOutputRead();
     }
     
     /// <summary>Cancels the asynchronous read operation on the redirected <see cref="P:System.Diagnostics.Process.StandardError" /> stream of an application.</summary>
@@ -510,7 +510,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public void CancelErrorRead()
     {
-      Process.CancelErrorRead();
+      _Process.CancelErrorRead();
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -519,7 +519,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return Process.GetLifetimeService();
+      return _Process.GetLifetimeService();
     }
     
     /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
@@ -528,7 +528,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return Process.InitializeLifetimeService();
+      return _Process.InitializeLifetimeService();
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -539,7 +539,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return Process.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
+      return _Process.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
     }
     
     public void Dispose()
@@ -552,7 +552,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       if (disposing)
       {
-        Process.Dispose();
+        _Process.Dispose();
       }
     }
   }

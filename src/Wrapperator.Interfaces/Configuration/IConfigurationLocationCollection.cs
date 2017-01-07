@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConfigurationLocationCollection
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.ConfigurationLocationCollection _ConfigurationLocationCollection
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Configuration.IConfigurationLocation this[int index]
     {
       get;

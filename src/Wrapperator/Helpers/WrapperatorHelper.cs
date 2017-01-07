@@ -45,7 +45,7 @@ namespace Wrapperator.Helpers
         => $"{GetWrapperNamespace(typeToWrap)}.{GetWrapperName(typeToWrap, wrapMode)}";
 
     public string GetParameterName (Type typeToWrap) => typeToWrap.Name.ToLowerCamelCase();
-    public string GetPropertyName (Type typeToWrap) => typeToWrap.Name;
+    public string GetPropertyName (Type typeToWrap) => "_" + typeToWrap.Name;
 
     public bool ShouldTypeBeWrapped (Type type) => _typesToWrap.Contains(type);
 

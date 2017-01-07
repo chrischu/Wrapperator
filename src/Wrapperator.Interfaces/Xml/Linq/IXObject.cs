@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXObject
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XObject _XObject
+    {
+      get;
+    }
+    
     string BaseUri
     {
       get;

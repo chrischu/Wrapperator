@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class KeyValueConfigurationElementWrapper : Wrapperator.Interfaces.Configuration.IKeyValueConfigurationElement
   {
     
-    internal System.Configuration.KeyValueConfigurationElement KeyValueConfigurationElement { get; private set; }
+    public System.Configuration.KeyValueConfigurationElement _KeyValueConfigurationElement { get; private set; }
 
     
     internal KeyValueConfigurationElementWrapper(System.Configuration.KeyValueConfigurationElement keyValueConfigurationElement)
     {
-      KeyValueConfigurationElement = keyValueConfigurationElement;
+      _KeyValueConfigurationElement = keyValueConfigurationElement;
     }
     
     public string Key
     {
       get
       {
-        return KeyValueConfigurationElement.Key;
+        return _KeyValueConfigurationElement.Key;
       }
     }
     
@@ -36,11 +36,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationElement.Value;
+        return _KeyValueConfigurationElement.Value;
       }
       set
       {
-        KeyValueConfigurationElement.Value = value;
+        _KeyValueConfigurationElement.Value = value;
       }
     }
     
@@ -48,7 +48,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationElement.LockAttributes);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationElement.LockAttributes);
       }
     }
     
@@ -56,7 +56,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationElement.LockAllAttributesExcept);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationElement.LockAllAttributesExcept);
       }
     }
     
@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationElement.LockElements);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationElement.LockElements);
       }
     }
     
@@ -72,7 +72,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(KeyValueConfigurationElement.LockAllElementsExcept);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_KeyValueConfigurationElement.LockAllElementsExcept);
       }
     }
     
@@ -80,11 +80,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return KeyValueConfigurationElement.LockItem;
+        return _KeyValueConfigurationElement.LockItem;
       }
       set
       {
-        KeyValueConfigurationElement.LockItem = value;
+        _KeyValueConfigurationElement.LockItem = value;
       }
     }
     
@@ -92,7 +92,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(KeyValueConfigurationElement.ElementInformation);
+        return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(_KeyValueConfigurationElement.ElementInformation);
       }
     }
     
@@ -100,7 +100,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(KeyValueConfigurationElement.CurrentConfiguration);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(_KeyValueConfigurationElement.CurrentConfiguration);
       }
     }
     
@@ -108,7 +108,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <returns>true if the <see cref="T:System.Configuration.ConfigurationElement" /> object is read-only; otherwise, false.</returns>
     public bool IsReadOnly()
     {
-      return KeyValueConfigurationElement.IsReadOnly();
+      return _KeyValueConfigurationElement.IsReadOnly();
     }
   }
 }

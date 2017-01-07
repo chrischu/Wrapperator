@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXComment : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XComment _XComment
+    {
+      get;
+    }
+    
     string Value
     {
       get;

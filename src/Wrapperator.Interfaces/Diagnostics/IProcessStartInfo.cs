@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Diagnostics
   public interface IProcessStartInfo
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Diagnostics.ProcessStartInfo _ProcessStartInfo
+    {
+      get;
+    }
+    
     string Verb
     {
       get;

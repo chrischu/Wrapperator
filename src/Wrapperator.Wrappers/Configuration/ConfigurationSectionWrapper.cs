@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationSectionWrapper : Wrapperator.Interfaces.Configuration.IConfigurationSection
   {
     
-    internal System.Configuration.ConfigurationSection ConfigurationSection { get; private set; }
+    public System.Configuration.ConfigurationSection _ConfigurationSection { get; private set; }
 
     
     internal ConfigurationSectionWrapper(System.Configuration.ConfigurationSection configurationSection)
     {
-      ConfigurationSection = configurationSection;
+      _ConfigurationSection = configurationSection;
     }
     
     public Wrapperator.Interfaces.Configuration.ISectionInformation SectionInformation
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(ConfigurationSection.SectionInformation);
+        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(_ConfigurationSection.SectionInformation);
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(ConfigurationSection.LockAttributes);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_ConfigurationSection.LockAttributes);
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(ConfigurationSection.LockAllAttributesExcept);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_ConfigurationSection.LockAllAttributesExcept);
       }
     }
     
@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(ConfigurationSection.LockElements);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_ConfigurationSection.LockElements);
       }
     }
     
@@ -60,7 +60,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(ConfigurationSection.LockAllElementsExcept);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLockCollectionWrapper(_ConfigurationSection.LockAllElementsExcept);
       }
     }
     
@@ -68,11 +68,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSection.LockItem;
+        return _ConfigurationSection.LockItem;
       }
       set
       {
-        ConfigurationSection.LockItem = value;
+        _ConfigurationSection.LockItem = value;
       }
     }
     
@@ -80,7 +80,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(ConfigurationSection.ElementInformation);
+        return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(_ConfigurationSection.ElementInformation);
       }
     }
     
@@ -88,7 +88,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(ConfigurationSection.CurrentConfiguration);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(_ConfigurationSection.CurrentConfiguration);
       }
     }
     
@@ -96,7 +96,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <returns>true if the <see cref="T:System.Configuration.ConfigurationElement" /> object is read-only; otherwise, false.</returns>
     public bool IsReadOnly()
     {
-      return ConfigurationSection.IsReadOnly();
+      return _ConfigurationSection.IsReadOnly();
     }
   }
 }

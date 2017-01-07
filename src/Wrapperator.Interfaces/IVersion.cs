@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces
   public interface IVersion
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Version _Version
+    {
+      get;
+    }
+    
     int Major
     {
       get;

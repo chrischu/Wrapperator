@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXNamespace
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XNamespace _XNamespace
+    {
+      get;
+    }
+    
     string NamespaceName
     {
       get;

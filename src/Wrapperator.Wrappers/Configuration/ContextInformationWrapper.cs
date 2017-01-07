@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ContextInformationWrapper : Wrapperator.Interfaces.Configuration.IContextInformation
   {
     
-    internal System.Configuration.ContextInformation ContextInformation { get; private set; }
+    public System.Configuration.ContextInformation _ContextInformation { get; private set; }
 
     
     internal ContextInformationWrapper(System.Configuration.ContextInformation contextInformation)
     {
-      ContextInformation = contextInformation;
+      _ContextInformation = contextInformation;
     }
     
     public object HostingContext
     {
       get
       {
-        return ContextInformation.HostingContext;
+        return _ContextInformation.HostingContext;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ContextInformation.IsMachineLevel;
+        return _ContextInformation.IsMachineLevel;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="sectionName">The name of the configuration section.</param>
     public object GetSection(string sectionName)
     {
-      return ContextInformation.GetSection(sectionName);
+      return _ContextInformation.GetSection(sectionName);
     }
   }
 }

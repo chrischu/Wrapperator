@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XNameWrapper : Wrapperator.Interfaces.Xml.Linq.IXName
   {
     
-    internal System.Xml.Linq.XName XName { get; private set; }
+    public System.Xml.Linq.XName _XName { get; private set; }
 
     
     internal XNameWrapper(System.Xml.Linq.XName xName)
     {
-      XName = xName;
+      _XName = xName;
     }
     
     public string LocalName
     {
       get
       {
-        return XName.LocalName;
+        return _XName.LocalName;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(XName.Namespace);
+        return new Wrapperator.Wrappers.Xml.Linq.XNamespaceWrapper(_XName.Namespace);
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XName.NamespaceName;
+        return _XName.NamespaceName;
       }
     }
   }

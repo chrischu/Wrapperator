@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationLockCollectionWrapper : Wrapperator.Interfaces.Configuration.IConfigurationLockCollection
   {
     
-    internal System.Configuration.ConfigurationLockCollection ConfigurationLockCollection { get; private set; }
+    public System.Configuration.ConfigurationLockCollection _ConfigurationLockCollection { get; private set; }
 
     
     internal ConfigurationLockCollectionWrapper(System.Configuration.ConfigurationLockCollection configurationLockCollection)
     {
-      ConfigurationLockCollection = configurationLockCollection;
+      _ConfigurationLockCollection = configurationLockCollection;
     }
     
     public int Count
     {
       get
       {
-        return ConfigurationLockCollection.Count;
+        return _ConfigurationLockCollection.Count;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationLockCollection.IsSynchronized;
+        return _ConfigurationLockCollection.IsSynchronized;
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationLockCollection.SyncRoot;
+        return _ConfigurationLockCollection.SyncRoot;
       }
     }
     
@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationLockCollection.IsModified;
+        return _ConfigurationLockCollection.IsModified;
       }
     }
     
@@ -60,7 +60,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationLockCollection.AttributeList;
+        return _ConfigurationLockCollection.AttributeList;
       }
     }
     
@@ -68,7 +68,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationLockCollection.HasParentElements;
+        return _ConfigurationLockCollection.HasParentElements;
       }
     }
     
@@ -77,7 +77,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">Occurs when the <paramref name="name" /> does not match an existing configuration object within the collection.</exception>
     public void Add(string name)
     {
-      ConfigurationLockCollection.Add(name);
+      _ConfigurationLockCollection.Add(name);
     }
     
     /// <summary>Removes a configuration object from the collection.</summary>
@@ -85,20 +85,20 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">Occurs when the <paramref name="name" /> does not match an existing configuration object within the collection.</exception>
     public void Remove(string name)
     {
-      ConfigurationLockCollection.Remove(name);
+      _ConfigurationLockCollection.Remove(name);
     }
     
     /// <summary>Gets an <see cref="T:System.Collections.IEnumerator" /> object, which is used to iterate through this <see cref="T:System.Configuration.ConfigurationLockCollection" /> collection.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return ConfigurationLockCollection.GetEnumerator();
+      return _ConfigurationLockCollection.GetEnumerator();
     }
     
     /// <summary>Clears all configuration objects from the collection.</summary>
     public void Clear()
     {
-      ConfigurationLockCollection.Clear();
+      _ConfigurationLockCollection.Clear();
     }
     
     /// <summary>Verifies whether a specific configuration object is locked.</summary>
@@ -106,7 +106,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="name">The name of the configuration object to verify.</param>
     public bool Contains(string name)
     {
-      return ConfigurationLockCollection.Contains(name);
+      return _ConfigurationLockCollection.Contains(name);
     }
     
     /// <summary>Copies the entire <see cref="T:System.Configuration.ConfigurationLockCollection" /> collection to a compatible one-dimensional <see cref="T:System.Array" />, starting at the specified index of the target array.</summary>
@@ -114,7 +114,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
     public void CopyTo(string[] array, int index)
     {
-      ConfigurationLockCollection.CopyTo(array, index);
+      _ConfigurationLockCollection.CopyTo(array, index);
     }
     
     /// <summary>Verifies whether a specific configuration object is read-only.</summary>
@@ -123,7 +123,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">The specified configuration object is not in the collection.</exception>
     public bool IsReadOnly(string name)
     {
-      return ConfigurationLockCollection.IsReadOnly(name);
+      return _ConfigurationLockCollection.IsReadOnly(name);
     }
     
     /// <summary>Locks a set of configuration objects based on the supplied list.</summary>
@@ -131,7 +131,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Configuration.ConfigurationErrorsException">Occurs when an item in the <paramref name="attributeList" /> parameter is not a valid lockable configuration attribute.</exception>
     public void SetFromList(string attributeList)
     {
-      ConfigurationLockCollection.SetFromList(attributeList);
+      _ConfigurationLockCollection.SetFromList(attributeList);
     }
   }
 }

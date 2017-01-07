@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationSectionGroupWrapper : Wrapperator.Interfaces.Configuration.IConfigurationSectionGroup
   {
     
-    internal System.Configuration.ConfigurationSectionGroup ConfigurationSectionGroup { get; private set; }
+    public System.Configuration.ConfigurationSectionGroup _ConfigurationSectionGroup { get; private set; }
 
     
     internal ConfigurationSectionGroupWrapper(System.Configuration.ConfigurationSectionGroup configurationSectionGroup)
     {
-      ConfigurationSectionGroup = configurationSectionGroup;
+      _ConfigurationSectionGroup = configurationSectionGroup;
     }
     
     public bool IsDeclared
     {
       get
       {
-        return ConfigurationSectionGroup.IsDeclared;
+        return _ConfigurationSectionGroup.IsDeclared;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSectionGroup.IsDeclarationRequired;
+        return _ConfigurationSectionGroup.IsDeclarationRequired;
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSectionGroup.SectionGroupName;
+        return _ConfigurationSectionGroup.SectionGroupName;
       }
     }
     
@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSectionGroup.Name;
+        return _ConfigurationSectionGroup.Name;
       }
     }
     
@@ -60,11 +60,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSectionGroup.Type;
+        return _ConfigurationSectionGroup.Type;
       }
       set
       {
-        ConfigurationSectionGroup.Type = value;
+        _ConfigurationSectionGroup.Type = value;
       }
     }
     
@@ -72,7 +72,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionCollectionWrapper(ConfigurationSectionGroup.Sections);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionCollectionWrapper(_ConfigurationSectionGroup.Sections);
       }
     }
     
@@ -80,14 +80,14 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupCollectionWrapper(ConfigurationSectionGroup.SectionGroups);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionGroupCollectionWrapper(_ConfigurationSectionGroup.SectionGroups);
       }
     }
     
     /// <summary>Forces the declaration for this <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object.</summary>
     public void ForceDeclaration()
     {
-      ConfigurationSectionGroup.ForceDeclaration();
+      _ConfigurationSectionGroup.ForceDeclaration();
     }
     
     /// <summary>Forces the declaration for this <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object.</summary>
@@ -95,7 +95,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.InvalidOperationException">The <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object is the root section group.- or -The <see cref="T:System.Configuration.ConfigurationSectionGroup" /> object has a location.</exception>
     public void ForceDeclaration(bool force)
     {
-      ConfigurationSectionGroup.ForceDeclaration(force);
+      _ConfigurationSectionGroup.ForceDeclaration(force);
     }
   }
 }

@@ -17,24 +17,24 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XDocumentTypeWrapper : XNodeWrapper, Wrapperator.Interfaces.Xml.Linq.IXDocumentType
   {
     
-    internal System.Xml.Linq.XDocumentType XDocumentType { get; private set; }
+    public System.Xml.Linq.XDocumentType _XDocumentType { get; private set; }
 
     
     internal XDocumentTypeWrapper(System.Xml.Linq.XDocumentType xDocumentType) : 
         base(xDocumentType)
     {
-      XDocumentType = xDocumentType;
+      _XDocumentType = xDocumentType;
     }
     
     public string InternalSubset
     {
       get
       {
-        return XDocumentType.InternalSubset;
+        return _XDocumentType.InternalSubset;
       }
       set
       {
-        XDocumentType.InternalSubset = value;
+        _XDocumentType.InternalSubset = value;
       }
     }
     
@@ -42,11 +42,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XDocumentType.Name;
+        return _XDocumentType.Name;
       }
       set
       {
-        XDocumentType.Name = value;
+        _XDocumentType.Name = value;
       }
     }
     
@@ -54,7 +54,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XDocumentType.NodeType;
+        return _XDocumentType.NodeType;
       }
     }
     
@@ -62,11 +62,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XDocumentType.PublicId;
+        return _XDocumentType.PublicId;
       }
       set
       {
-        XDocumentType.PublicId = value;
+        _XDocumentType.PublicId = value;
       }
     }
     
@@ -74,11 +74,11 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XDocumentType.SystemId;
+        return _XDocumentType.SystemId;
       }
       set
       {
-        XDocumentType.SystemId = value;
+        _XDocumentType.SystemId = value;
       }
     }
     
@@ -86,7 +86,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XDocumentType.NextNode);
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(_XDocumentType.NextNode);
       }
     }
     
@@ -94,7 +94,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(XDocumentType.PreviousNode);
+        return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(_XDocumentType.PreviousNode);
       }
     }
     
@@ -102,7 +102,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XDocumentType.BaseUri;
+        return _XDocumentType.BaseUri;
       }
     }
     
@@ -110,7 +110,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XDocumentType.Document);
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(_XDocumentType.Document);
       }
     }
     
@@ -118,7 +118,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XDocumentType.Parent);
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(_XDocumentType.Parent);
       }
     }
     
@@ -127,7 +127,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <filterpriority>2</filterpriority>
     public new void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      XDocumentType.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer).XmlWriter);
+      _XDocumentType.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer)._XmlWriter);
     }
     
     /// <summary>Adds the specified content immediately after this node.</summary>
@@ -135,7 +135,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
     public new void AddAfterSelf(object content)
     {
-      XDocumentType.AddAfterSelf(content);
+      _XDocumentType.AddAfterSelf(content);
     }
     
     /// <summary>Adds the specified content immediately after this node.</summary>
@@ -143,7 +143,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
     public new void AddAfterSelf(object[] content)
     {
-      XDocumentType.AddAfterSelf(content);
+      _XDocumentType.AddAfterSelf(content);
     }
     
     /// <summary>Adds the specified content immediately before this node.</summary>
@@ -151,7 +151,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
     public new void AddBeforeSelf(object content)
     {
-      XDocumentType.AddBeforeSelf(content);
+      _XDocumentType.AddBeforeSelf(content);
     }
     
     /// <summary>Adds the specified content immediately before this node.</summary>
@@ -159,14 +159,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
     public new void AddBeforeSelf(object[] content)
     {
-      XDocumentType.AddBeforeSelf(content);
+      _XDocumentType.AddBeforeSelf(content);
     }
     
     /// <summary>Returns a collection of the ancestor elements of this node.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the ancestor elements of this node.</returns>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors()
     {
-      return XDocumentType.Ancestors();
+      return _XDocumentType.Ancestors();
     }
     
     /// <summary>Returns a filtered collection of the ancestor elements of this node. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
@@ -174,7 +174,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors(Wrapperator.Interfaces.Xml.Linq.IXName name)
     {
-      return XDocumentType.Ancestors(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name).XName);
+      return _XDocumentType.Ancestors(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name)._XName);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> for this node.</summary>
@@ -182,7 +182,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <filterpriority>2</filterpriority>
     public new Wrapperator.Interfaces.Xml.IXmlReader CreateReader()
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(XDocumentType.CreateReader());
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(_XDocumentType.CreateReader());
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> with the options specified by the <paramref name="readerOptions" /> parameter.</summary>
@@ -190,28 +190,28 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="readerOptions">A <see cref="T:System.Xml.Linq.ReaderOptions" /> object that specifies whether to omit duplicate namespaces.</param>
     public new Wrapperator.Interfaces.Xml.IXmlReader CreateReader(System.Xml.Linq.ReaderOptions readerOptions)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(XDocumentType.CreateReader(readerOptions));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(_XDocumentType.CreateReader(readerOptions));
     }
     
     /// <summary>Returns a collection of the sibling nodes after this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes after this node, in document order.</returns>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesAfterSelf()
     {
-      return XDocumentType.NodesAfterSelf();
+      return _XDocumentType.NodesAfterSelf();
     }
     
     /// <summary>Returns a collection of the sibling nodes before this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XNode" /> of the sibling nodes before this node, in document order.</returns>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XNode> NodesBeforeSelf()
     {
-      return XDocumentType.NodesBeforeSelf();
+      return _XDocumentType.NodesBeforeSelf();
     }
     
     /// <summary>Returns a collection of the sibling elements after this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements after this node, in document order.</returns>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf()
     {
-      return XDocumentType.ElementsAfterSelf();
+      return _XDocumentType.ElementsAfterSelf();
     }
     
     /// <summary>Returns a filtered collection of the sibling elements after this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
@@ -219,14 +219,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf(Wrapperator.Interfaces.Xml.Linq.IXName name)
     {
-      return XDocumentType.ElementsAfterSelf(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name).XName);
+      return _XDocumentType.ElementsAfterSelf(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name)._XName);
     }
     
     /// <summary>Returns a collection of the sibling elements before this node, in document order.</summary>
     /// <returns>An <see cref="T:System.Collections.Generic.IEnumerable`1" /> of <see cref="T:System.Xml.Linq.XElement" /> of the sibling elements before this node, in document order.</returns>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf()
     {
-      return XDocumentType.ElementsBeforeSelf();
+      return _XDocumentType.ElementsBeforeSelf();
     }
     
     /// <summary>Returns a filtered collection of the sibling elements before this node, in document order. Only elements that have a matching <see cref="T:System.Xml.Linq.XName" /> are included in the collection.</summary>
@@ -234,7 +234,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
     public new System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf(Wrapperator.Interfaces.Xml.Linq.IXName name)
     {
-      return XDocumentType.ElementsBeforeSelf(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name).XName);
+      return _XDocumentType.ElementsBeforeSelf(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name)._XName);
     }
     
     /// <summary>Determines if the current node appears after a specified node in terms of document order.</summary>
@@ -242,7 +242,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
     public new bool IsAfter(Wrapperator.Interfaces.Xml.Linq.IXNode node)
     {
-      return XDocumentType.IsAfter(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node).XNode);
+      return _XDocumentType.IsAfter(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node)._XNode);
     }
     
     /// <summary>Determines if the current node appears before a specified node in terms of document order.</summary>
@@ -250,35 +250,35 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
     public new bool IsBefore(Wrapperator.Interfaces.Xml.Linq.IXNode node)
     {
-      return XDocumentType.IsBefore(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node).XNode);
+      return _XDocumentType.IsBefore(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node)._XNode);
     }
     
     /// <summary>Removes this node from its parent.</summary>
     /// <exception cref="T:System.InvalidOperationException">The parent is null.</exception>
     public new void Remove()
     {
-      XDocumentType.Remove();
+      _XDocumentType.Remove();
     }
     
     /// <summary>Replaces this node with the specified content.</summary>
     /// <param name="content">Content that replaces this node.</param>
     public new void ReplaceWith(object content)
     {
-      XDocumentType.ReplaceWith(content);
+      _XDocumentType.ReplaceWith(content);
     }
     
     /// <summary>Replaces this node with the specified content.</summary>
     /// <param name="content">A parameter list of the new content.</param>
     public new void ReplaceWith(object[] content)
     {
-      XDocumentType.ReplaceWith(content);
+      _XDocumentType.ReplaceWith(content);
     }
     
     /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
     public new void AddAnnotation(object annotation)
     {
-      XDocumentType.AddAnnotation(annotation);
+      _XDocumentType.AddAnnotation(annotation);
     }
     
     /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -286,7 +286,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
     public new object Annotation(Wrapperator.Interfaces.IType type)
     {
-      return XDocumentType.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+      return _XDocumentType.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
     }
     
     /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
@@ -295,7 +295,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public new T Annotation<T>()
       where T :  class
     {
-      return XDocumentType.Annotation<T>();
+      return _XDocumentType.Annotation<T>();
     }
     
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -303,7 +303,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
     public new System.Collections.Generic.IEnumerable<object> Annotations(Wrapperator.Interfaces.IType type)
     {
-      return XDocumentType.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+      return _XDocumentType.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
     }
     
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -312,14 +312,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public new System.Collections.Generic.IEnumerable<T> Annotations<T>()
       where T :  class
     {
-      return XDocumentType.Annotations<T>();
+      return _XDocumentType.Annotations<T>();
     }
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
     public new void RemoveAnnotations(Wrapperator.Interfaces.IType type)
     {
-      XDocumentType.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+      _XDocumentType.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
     }
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -327,7 +327,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public new void RemoveAnnotations<T>()
       where T :  class
     {
-      XDocumentType.RemoveAnnotations<T>();
+      _XDocumentType.RemoveAnnotations<T>();
     }
   }
 }

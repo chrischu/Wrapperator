@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Collections.Specialized
   public interface INameValueCollection
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Collections.Specialized.NameValueCollection _NameValueCollection
+    {
+      get;
+    }
+    
     string this[string name]
     {
       get;

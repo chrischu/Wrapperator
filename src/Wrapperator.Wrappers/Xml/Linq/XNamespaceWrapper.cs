@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XNamespaceWrapper : Wrapperator.Interfaces.Xml.Linq.IXNamespace
   {
     
-    internal System.Xml.Linq.XNamespace XNamespace { get; private set; }
+    public System.Xml.Linq.XNamespace _XNamespace { get; private set; }
 
     
     internal XNamespaceWrapper(System.Xml.Linq.XNamespace xNamespace)
     {
-      XNamespace = xNamespace;
+      _XNamespace = xNamespace;
     }
     
     public string NamespaceName
     {
       get
       {
-        return XNamespace.NamespaceName;
+        return _XNamespace.NamespaceName;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="localName">A <see cref="T:System.String" /> that contains a local name.</param>
     public Wrapperator.Interfaces.Xml.Linq.IXName GetName(string localName)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(XNamespace.GetName(localName));
+      return new Wrapperator.Wrappers.Xml.Linq.XNameWrapper(_XNamespace.GetName(localName));
     }
   }
 }

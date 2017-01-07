@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ElementInformationWrapper : Wrapperator.Interfaces.Configuration.IElementInformation
   {
     
-    internal System.Configuration.ElementInformation ElementInformation { get; private set; }
+    public System.Configuration.ElementInformation _ElementInformation { get; private set; }
 
     
     internal ElementInformationWrapper(System.Configuration.ElementInformation elementInformation)
     {
-      ElementInformation = elementInformation;
+      _ElementInformation = elementInformation;
     }
     
     public Wrapperator.Interfaces.Configuration.IPropertyInformationCollection Properties
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.PropertyInformationCollectionWrapper(ElementInformation.Properties);
+        return new Wrapperator.Wrappers.Configuration.PropertyInformationCollectionWrapper(_ElementInformation.Properties);
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.IsPresent;
+        return _ElementInformation.IsPresent;
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.IsLocked;
+        return _ElementInformation.IsLocked;
       }
     }
     
@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.IsCollection;
+        return _ElementInformation.IsCollection;
       }
     }
     
@@ -60,7 +60,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.Source;
+        return _ElementInformation.Source;
       }
     }
     
@@ -68,7 +68,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.LineNumber;
+        return _ElementInformation.LineNumber;
       }
     }
     
@@ -76,7 +76,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.TypeWrapper(ElementInformation.Type);
+        return new Wrapperator.Wrappers.TypeWrapper(_ElementInformation.Type);
       }
     }
     
@@ -84,7 +84,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.Validator;
+        return _ElementInformation.Validator;
       }
     }
     
@@ -92,7 +92,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ElementInformation.Errors;
+        return _ElementInformation.Errors;
       }
     }
   }

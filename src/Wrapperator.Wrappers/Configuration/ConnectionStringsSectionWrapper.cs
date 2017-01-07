@@ -16,20 +16,20 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConnectionStringsSectionWrapper : ConfigurationSectionWrapper, Wrapperator.Interfaces.Configuration.IConnectionStringsSection
   {
     
-    internal System.Configuration.ConnectionStringsSection ConnectionStringsSection { get; private set; }
+    public System.Configuration.ConnectionStringsSection _ConnectionStringsSection { get; private set; }
 
     
     internal ConnectionStringsSectionWrapper(System.Configuration.ConnectionStringsSection connectionStringsSection) : 
         base(connectionStringsSection)
     {
-      ConnectionStringsSection = connectionStringsSection;
+      _ConnectionStringsSection = connectionStringsSection;
     }
     
     public System.Configuration.ConnectionStringSettingsCollection ConnectionStrings
     {
       get
       {
-        return ConnectionStringsSection.ConnectionStrings;
+        return _ConnectionStringsSection.ConnectionStrings;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(ConnectionStringsSection.SectionInformation);
+        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(_ConnectionStringsSection.SectionInformation);
       }
     }
   }

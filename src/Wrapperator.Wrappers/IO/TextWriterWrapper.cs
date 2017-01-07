@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers.IO
   public class TextWriterWrapper : Wrapperator.Interfaces.IO.ITextWriter
   {
     
-    internal System.IO.TextWriter TextWriter { get; private set; }
+    public System.IO.TextWriter _TextWriter { get; private set; }
 
     
     internal TextWriterWrapper(System.IO.TextWriter textWriter)
     {
-      TextWriter = textWriter;
+      _TextWriter = textWriter;
     }
     
     public System.IFormatProvider FormatProvider
     {
       get
       {
-        return TextWriter.FormatProvider;
+        return _TextWriter.FormatProvider;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return TextWriter.Encoding;
+        return _TextWriter.Encoding;
       }
     }
     
@@ -45,11 +45,11 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return TextWriter.NewLine;
+        return _TextWriter.NewLine;
       }
       set
       {
-        TextWriter.NewLine = value;
+        _TextWriter.NewLine = value;
       }
     }
     
@@ -57,14 +57,14 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Close()
     {
-      TextWriter.Close();
+      _TextWriter.Close();
     }
     
     /// <summary>Clears all buffers for the current writer and causes any buffered data to be written to the underlying device.</summary>
     /// <filterpriority>1</filterpriority>
     public void Flush()
     {
-      TextWriter.Flush();
+      _TextWriter.Flush();
     }
     
     /// <summary>Writes a character to the text string or stream.</summary>
@@ -74,7 +74,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(char value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes a character array to the text string or stream.</summary>
@@ -84,7 +84,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(char[] buffer)
     {
-      TextWriter.Write(buffer);
+      _TextWriter.Write(buffer);
     }
     
     /// <summary>Writes a subarray of characters to the text string or stream.</summary>
@@ -100,7 +100,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(char[] buffer, int index, int count)
     {
-      TextWriter.Write(buffer, index, count);
+      _TextWriter.Write(buffer, index, count);
     }
     
     /// <summary>Writes the text representation of a Boolean value to the text string or stream.</summary>
@@ -110,7 +110,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(bool value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of a 4-byte signed integer to the text string or stream.</summary>
@@ -120,7 +120,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(int value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of a 4-byte unsigned integer to the text string or stream.</summary>
@@ -130,7 +130,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(uint value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of an 8-byte signed integer to the text string or stream.</summary>
@@ -140,7 +140,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(long value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of an 8-byte unsigned integer to the text string or stream.</summary>
@@ -150,7 +150,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(ulong value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of a 4-byte floating-point value to the text string or stream.</summary>
@@ -160,7 +160,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(float value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of an 8-byte floating-point value to the text string or stream.</summary>
@@ -170,7 +170,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(double value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of a decimal value to the text string or stream.</summary>
@@ -180,7 +180,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(decimal value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes a string to the text string or stream.</summary>
@@ -190,7 +190,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(string value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes the text representation of an object to the text string or stream by calling the ToString method on that object.</summary>
@@ -200,7 +200,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(object value)
     {
-      TextWriter.Write(value);
+      _TextWriter.Write(value);
     }
     
     /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object)" /> method.</summary>
@@ -215,7 +215,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(string format, object arg0)
     {
-      TextWriter.Write(format, arg0);
+      _TextWriter.Write(format, arg0);
     }
     
     /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
@@ -231,7 +231,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(string format, object arg0, object arg1)
     {
-      TextWriter.Write(format, arg0, arg1);
+      _TextWriter.Write(format, arg0, arg1);
     }
     
     /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object,System.Object)" /> method.</summary>
@@ -248,7 +248,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(string format, object arg0, object arg1, object arg2)
     {
-      TextWriter.Write(format, arg0, arg1, arg2);
+      _TextWriter.Write(format, arg0, arg1, arg2);
     }
     
     /// <summary>Writes a formatted string to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object[])" /> method.</summary>
@@ -263,7 +263,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void Write(string format, object[] arg)
     {
-      TextWriter.Write(format, arg);
+      _TextWriter.Write(format, arg);
     }
     
     /// <summary>Writes a line terminator to the text string or stream.</summary>
@@ -272,7 +272,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine()
     {
-      TextWriter.WriteLine();
+      _TextWriter.WriteLine();
     }
     
     /// <summary>Writes a character followed by a line terminator to the text string or stream.</summary>
@@ -282,7 +282,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(char value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes an array of characters followed by a line terminator to the text string or stream.</summary>
@@ -292,7 +292,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(char[] buffer)
     {
-      TextWriter.WriteLine(buffer);
+      _TextWriter.WriteLine(buffer);
     }
     
     /// <summary>Writes a subarray of characters followed by a line terminator to the text string or stream.</summary>
@@ -308,7 +308,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(char[] buffer, int index, int count)
     {
-      TextWriter.WriteLine(buffer, index, count);
+      _TextWriter.WriteLine(buffer, index, count);
     }
     
     /// <summary>Writes the text representation of a Boolean value followed by a line terminator to the text string or stream.</summary>
@@ -318,7 +318,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(bool value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of a 4-byte signed integer followed by a line terminator to the text string or stream.</summary>
@@ -328,7 +328,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(int value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of a 4-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
@@ -338,7 +338,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(uint value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of an 8-byte signed integer followed by a line terminator to the text string or stream.</summary>
@@ -348,7 +348,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(long value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of an 8-byte unsigned integer followed by a line terminator to the text string or stream.</summary>
@@ -358,7 +358,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(ulong value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of a 4-byte floating-point value followed by a line terminator to the text string or stream.</summary>
@@ -368,7 +368,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(float value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of a 8-byte floating-point value followed by a line terminator to the text string or stream.</summary>
@@ -378,7 +378,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(double value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of a decimal value followed by a line terminator to the text string or stream.</summary>
@@ -388,7 +388,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(decimal value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes a string followed by a line terminator to the text string or stream.</summary>
@@ -398,7 +398,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(string value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes the text representation of an object by calling the ToString method on that object, followed by a line terminator to the text string or stream.</summary>
@@ -408,7 +408,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(object value)
     {
-      TextWriter.WriteLine(value);
+      _TextWriter.WriteLine(value);
     }
     
     /// <summary>Writes a formatted string and a new line to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object)" /> method.</summary>
@@ -423,7 +423,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(string format, object arg0)
     {
-      TextWriter.WriteLine(format, arg0);
+      _TextWriter.WriteLine(format, arg0);
     }
     
     /// <summary>Writes a formatted string and a new line to the text string or stream, using the same semantics as the <see cref="M:System.String.Format(System.String,System.Object,System.Object)" /> method.</summary>
@@ -439,7 +439,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(string format, object arg0, object arg1)
     {
-      TextWriter.WriteLine(format, arg0, arg1);
+      _TextWriter.WriteLine(format, arg0, arg1);
     }
     
     /// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
@@ -456,7 +456,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(string format, object arg0, object arg1, object arg2)
     {
-      TextWriter.WriteLine(format, arg0, arg1, arg2);
+      _TextWriter.WriteLine(format, arg0, arg1, arg2);
     }
     
     /// <summary>Writes out a formatted string and a new line, using the same semantics as <see cref="M:System.String.Format(System.String,System.Object)" />.</summary>
@@ -470,7 +470,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public void WriteLine(string format, object[] arg)
     {
-      TextWriter.WriteLine(format, arg);
+      _TextWriter.WriteLine(format, arg);
     }
     
     /// <summary>Writes a character to the text string or stream asynchronously.</summary>
@@ -480,7 +480,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteAsync(char value)
     {
-      return TextWriter.WriteAsync(value);
+      return _TextWriter.WriteAsync(value);
     }
     
     /// <summary>Writes a string to the text string or stream asynchronously.</summary>
@@ -490,7 +490,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteAsync(string value)
     {
-      return TextWriter.WriteAsync(value);
+      return _TextWriter.WriteAsync(value);
     }
     
     /// <summary>Writes a character array to the text string or stream asynchronously.</summary>
@@ -500,7 +500,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteAsync(char[] buffer)
     {
-      return TextWriter.WriteAsync(buffer);
+      return _TextWriter.WriteAsync(buffer);
     }
     
     /// <summary>Writes a subarray of characters to the text string or stream asynchronously. </summary>
@@ -517,7 +517,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteAsync(char[] buffer, int index, int count)
     {
-      return TextWriter.WriteAsync(buffer, index, count);
+      return _TextWriter.WriteAsync(buffer, index, count);
     }
     
     /// <summary>Writes a character followed by a line terminator asynchronously to the text string or stream.</summary>
@@ -527,7 +527,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteLineAsync(char value)
     {
-      return TextWriter.WriteLineAsync(value);
+      return _TextWriter.WriteLineAsync(value);
     }
     
     /// <summary>Writes a string followed by a line terminator asynchronously to the text string or stream. </summary>
@@ -537,7 +537,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteLineAsync(string value)
     {
-      return TextWriter.WriteLineAsync(value);
+      return _TextWriter.WriteLineAsync(value);
     }
     
     /// <summary>Writes an array of characters followed by a line terminator asynchronously to the text string or stream.</summary>
@@ -547,7 +547,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteLineAsync(char[] buffer)
     {
-      return TextWriter.WriteLineAsync(buffer);
+      return _TextWriter.WriteLineAsync(buffer);
     }
     
     /// <summary>Writes a subarray of characters followed by a line terminator asynchronously to the text string or stream.</summary>
@@ -564,7 +564,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteLineAsync(char[] buffer, int index, int count)
     {
-      return TextWriter.WriteLineAsync(buffer, index, count);
+      return _TextWriter.WriteLineAsync(buffer, index, count);
     }
     
     /// <summary>Writes a line terminator asynchronously to the text string or stream.</summary>
@@ -573,7 +573,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The text writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task WriteLineAsync()
     {
-      return TextWriter.WriteLineAsync();
+      return _TextWriter.WriteLineAsync();
     }
     
     /// <summary>Asynchronously clears all buffers for the current writer and causes any buffered data to be written to the underlying device. </summary>
@@ -582,7 +582,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The writer is currently in use by a previous write operation. </exception>
     public System.Threading.Tasks.Task FlushAsync()
     {
-      return TextWriter.FlushAsync();
+      return _TextWriter.FlushAsync();
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -591,7 +591,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return TextWriter.GetLifetimeService();
+      return _TextWriter.GetLifetimeService();
     }
     
     /// <summary>Obtains a lifetime service object to control the lifetime policy for this instance.</summary>
@@ -600,7 +600,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return TextWriter.InitializeLifetimeService();
+      return _TextWriter.InitializeLifetimeService();
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -611,7 +611,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return TextWriter.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
+      return _TextWriter.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
     }
     
     public void Dispose()
@@ -624,7 +624,7 @@ namespace Wrapperator.Wrappers.IO
     {
       if (disposing)
       {
-        TextWriter.Dispose();
+        _TextWriter.Dispose();
       }
     }
   }

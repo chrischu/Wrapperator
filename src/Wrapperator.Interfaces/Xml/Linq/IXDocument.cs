@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXDocument : Wrapperator.Interfaces.Xml.Linq.IXContainer
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XDocument _XDocument
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Xml.Linq.IXDeclaration Declaration
     {
       get;

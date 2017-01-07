@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConfiguration
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.Configuration _Configuration
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Configuration.IAppSettingsSection AppSettings
     {
       get;

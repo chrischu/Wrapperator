@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IPropertyInformation
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.PropertyInformation _PropertyInformation
+    {
+      get;
+    }
+    
     string Name
     {
       get;

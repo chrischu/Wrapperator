@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IFileSystemWatcher
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.FileSystemWatcher _FileSystemWatcher
+    {
+      get;
+    }
+    
     System.IO.NotifyFilters NotifyFilter
     {
       get;

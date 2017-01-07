@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ProtectedConfigurationProviderWrapper : Wrapperator.Interfaces.Configuration.IProtectedConfigurationProvider
   {
     
-    internal System.Configuration.ProtectedConfigurationProvider ProtectedConfigurationProvider { get; private set; }
+    public System.Configuration.ProtectedConfigurationProvider _ProtectedConfigurationProvider { get; private set; }
 
     
     internal ProtectedConfigurationProviderWrapper(System.Configuration.ProtectedConfigurationProvider protectedConfigurationProvider)
     {
-      ProtectedConfigurationProvider = protectedConfigurationProvider;
+      _ProtectedConfigurationProvider = protectedConfigurationProvider;
     }
     
     public string Name
     {
       get
       {
-        return ProtectedConfigurationProvider.Name;
+        return _ProtectedConfigurationProvider.Name;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ProtectedConfigurationProvider.Description;
+        return _ProtectedConfigurationProvider.Description;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="node">The <see cref="T:System.Xml.XmlNode" /> object to encrypt.</param>
     public System.Xml.XmlNode Encrypt(System.Xml.XmlNode node)
     {
-      return ProtectedConfigurationProvider.Encrypt(node);
+      return _ProtectedConfigurationProvider.Encrypt(node);
     }
     
     /// <summary>Decrypts the passed <see cref="T:System.Xml.XmlNode" /> object from a configuration file.</summary>
@@ -53,7 +53,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="encryptedNode">The <see cref="T:System.Xml.XmlNode" /> object to decrypt.</param>
     public System.Xml.XmlNode Decrypt(System.Xml.XmlNode encryptedNode)
     {
-      return ProtectedConfigurationProvider.Decrypt(encryptedNode);
+      return _ProtectedConfigurationProvider.Decrypt(encryptedNode);
     }
     
     /// <summary>Initializes the provider.</summary>
@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.InvalidOperationException">An attempt is made to call <see cref="M:System.Configuration.Provider.ProviderBase.Initialize(System.String,System.Collections.Specialized.NameValueCollection)" /> on a provider after the provider has already been initialized.</exception>
     public void Initialize(string name, Wrapperator.Interfaces.Collections.Specialized.INameValueCollection config)
     {
-      ProtectedConfigurationProvider.Initialize(name, config == null ? default(System.Collections.Specialized.NameValueCollection) : ((Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper)config).NameValueCollection);
+      _ProtectedConfigurationProvider.Initialize(name, config == null ? default(System.Collections.Specialized.NameValueCollection) : ((Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper)config)._NameValueCollection);
     }
   }
 }

@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers.Xml.Linq
   public class XObjectWrapper : Wrapperator.Interfaces.Xml.Linq.IXObject
   {
     
-    internal System.Xml.Linq.XObject XObject { get; private set; }
+    public System.Xml.Linq.XObject _XObject { get; private set; }
 
     
     internal XObjectWrapper(System.Xml.Linq.XObject xObject)
     {
-      XObject = xObject;
+      _XObject = xObject;
     }
     
     public string BaseUri
     {
       get
       {
-        return XObject.BaseUri;
+        return _XObject.BaseUri;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(XObject.Document);
+        return new Wrapperator.Wrappers.Xml.Linq.XDocumentWrapper(_XObject.Document);
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return XObject.NodeType;
+        return _XObject.NodeType;
       }
     }
     
@@ -53,7 +53,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     {
       get
       {
-        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(XObject.Parent);
+        return new Wrapperator.Wrappers.Xml.Linq.XElementWrapper(_XObject.Parent);
       }
     }
     
@@ -61,7 +61,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="annotation">An <see cref="T:System.Object" /> that contains the annotation to add.</param>
     public void AddAnnotation(object annotation)
     {
-      XObject.AddAnnotation(annotation);
+      _XObject.AddAnnotation(annotation);
     }
     
     /// <summary>Gets the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
     public object Annotation(Wrapperator.Interfaces.IType type)
     {
-      return XObject.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+      return _XObject.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
     }
     
     /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
@@ -78,7 +78,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public T Annotation<T>()
       where T :  class
     {
-      return XObject.Annotation<T>();
+      return _XObject.Annotation<T>();
     }
     
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -86,7 +86,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
     public System.Collections.Generic.IEnumerable<object> Annotations(Wrapperator.Interfaces.IType type)
     {
-      return XObject.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+      return _XObject.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
     }
     
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -95,14 +95,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public System.Collections.Generic.IEnumerable<T> Annotations<T>()
       where T :  class
     {
-      return XObject.Annotations<T>();
+      return _XObject.Annotations<T>();
     }
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
     /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
     public void RemoveAnnotations(Wrapperator.Interfaces.IType type)
     {
-      XObject.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type).Type);
+      _XObject.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
     }
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -110,7 +110,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     public void RemoveAnnotations<T>()
       where T :  class
     {
-      XObject.RemoveAnnotations<T>();
+      _XObject.RemoveAnnotations<T>();
     }
   }
 }

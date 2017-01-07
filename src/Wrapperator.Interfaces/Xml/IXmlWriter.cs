@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml
   public interface IXmlWriter : System.IDisposable
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.XmlWriter _XmlWriter
+    {
+      get;
+    }
+    
     System.Xml.XmlWriterSettings Settings
     {
       get;

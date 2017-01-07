@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <exception cref="T:System.InvalidOperationException">The two nodes do not share a common ancestor.</exception>
     public int CompareDocumentOrder(Wrapperator.Interfaces.Xml.Linq.IXNode n1, Wrapperator.Interfaces.Xml.Linq.IXNode n2)
     {
-      return System.Xml.Linq.XNode.CompareDocumentOrder(n1 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n1).XNode, n2 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n2).XNode);
+      return System.Xml.Linq.XNode.CompareDocumentOrder(n1 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n1)._XNode, n2 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n2)._XNode);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.Linq.XNode" /> from an <see cref="T:System.Xml.XmlReader" />.</summary>
@@ -55,7 +55,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.Xml.Linq.IXNode ReadFrom(Wrapperator.Interfaces.Xml.IXmlReader reader)
     {
-      return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(System.Xml.Linq.XNode.ReadFrom(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader).XmlReader));
+      return new Wrapperator.Wrappers.Xml.Linq.XNodeWrapper(System.Xml.Linq.XNode.ReadFrom(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader));
     }
     
     /// <summary>Compares the values of two nodes, including the values of all descendant nodes.</summary>
@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="n2">The second <see cref="T:System.Xml.Linq.XNode" /> to compare.</param>
     public bool DeepEquals(Wrapperator.Interfaces.Xml.Linq.IXNode n1, Wrapperator.Interfaces.Xml.Linq.IXNode n2)
     {
-      return System.Xml.Linq.XNode.DeepEquals(n1 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n1).XNode, n2 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n2).XNode);
+      return System.Xml.Linq.XNode.DeepEquals(n1 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n1)._XNode, n2 == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)n2)._XNode);
     }
   }
 }

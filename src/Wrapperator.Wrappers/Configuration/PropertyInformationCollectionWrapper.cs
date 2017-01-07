@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class PropertyInformationCollectionWrapper : Wrapperator.Interfaces.Configuration.IPropertyInformationCollection
   {
     
-    internal System.Configuration.PropertyInformationCollection PropertyInformationCollection { get; private set; }
+    public System.Configuration.PropertyInformationCollection _PropertyInformationCollection { get; private set; }
 
     
     internal PropertyInformationCollectionWrapper(System.Configuration.PropertyInformationCollection propertyInformationCollection)
     {
-      PropertyInformationCollection = propertyInformationCollection;
+      _PropertyInformationCollection = propertyInformationCollection;
     }
     
     public Wrapperator.Interfaces.Configuration.IPropertyInformation this[string propertyName]
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.PropertyInformationWrapper(PropertyInformationCollection[propertyName]);
+        return new Wrapperator.Wrappers.Configuration.PropertyInformationWrapper(_PropertyInformationCollection[propertyName]);
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformationCollection.Count;
+        return _PropertyInformationCollection.Count;
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformationCollection.Keys;
+        return _PropertyInformationCollection.Keys;
       }
     }
     
@@ -55,7 +55,7 @@ namespace Wrapperator.Wrappers.Configuration
     ///  <paramref name="info" /> is null.</exception>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      PropertyInformationCollection.GetObjectData(info, context);
+      _PropertyInformationCollection.GetObjectData(info, context);
     }
     
     /// <summary>Copies the entire <see cref="T:System.Configuration.PropertyInformationCollection" /> collection to a compatible one-dimensional <see cref="T:System.Array" />, starting at the specified index of the target array.</summary>
@@ -66,14 +66,14 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.ArgumentOutOfRangeException">The <see cref="P:System.Array.Length" /> property of <paramref name="array" /> is less than <see cref="P:System.Collections.Specialized.NameObjectCollectionBase.Count" /> + <paramref name="index" />.</exception>
     public void CopyTo(System.Configuration.PropertyInformation[] array, int index)
     {
-      PropertyInformationCollection.CopyTo(array, index);
+      _PropertyInformationCollection.CopyTo(array, index);
     }
     
     /// <summary>Gets an <see cref="T:System.Collections.IEnumerator" /> object, which is used to iterate through this <see cref="T:System.Configuration.PropertyInformationCollection" /> collection.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> object, which is used to iterate through this <see cref="T:System.Configuration.PropertyInformationCollection" />.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return PropertyInformationCollection.GetEnumerator();
+      return _PropertyInformationCollection.GetEnumerator();
     }
     
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and raises the deserialization event when the deserialization is complete.</summary>
@@ -81,7 +81,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Runtime.Serialization.SerializationException">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object associated with the current <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance is invalid.</exception>
     public void OnDeserialization(object sender)
     {
-      PropertyInformationCollection.OnDeserialization(sender);
+      _PropertyInformationCollection.OnDeserialization(sender);
     }
   }
 }

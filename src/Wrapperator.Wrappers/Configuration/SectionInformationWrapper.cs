@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class SectionInformationWrapper : Wrapperator.Interfaces.Configuration.ISectionInformation
   {
     
-    internal System.Configuration.SectionInformation SectionInformation { get; private set; }
+    public System.Configuration.SectionInformation _SectionInformation { get; private set; }
 
     
     internal SectionInformationWrapper(System.Configuration.SectionInformation sectionInformation)
     {
-      SectionInformation = sectionInformation;
+      _SectionInformation = sectionInformation;
     }
     
     public string SectionName
     {
       get
       {
-        return SectionInformation.SectionName;
+        return _SectionInformation.SectionName;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.Name;
+        return _SectionInformation.Name;
       }
     }
     
@@ -44,11 +44,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.AllowDefinition;
+        return _SectionInformation.AllowDefinition;
       }
       set
       {
-        SectionInformation.AllowDefinition = value;
+        _SectionInformation.AllowDefinition = value;
       }
     }
     
@@ -56,11 +56,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.AllowExeDefinition;
+        return _SectionInformation.AllowExeDefinition;
       }
       set
       {
-        SectionInformation.AllowExeDefinition = value;
+        _SectionInformation.AllowExeDefinition = value;
       }
     }
     
@@ -68,11 +68,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.OverrideModeDefault;
+        return _SectionInformation.OverrideModeDefault;
       }
       set
       {
-        SectionInformation.OverrideModeDefault = value;
+        _SectionInformation.OverrideModeDefault = value;
       }
     }
     
@@ -80,11 +80,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.AllowLocation;
+        return _SectionInformation.AllowLocation;
       }
       set
       {
-        SectionInformation.AllowLocation = value;
+        _SectionInformation.AllowLocation = value;
       }
     }
     
@@ -92,11 +92,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.AllowOverride;
+        return _SectionInformation.AllowOverride;
       }
       set
       {
-        SectionInformation.AllowOverride = value;
+        _SectionInformation.AllowOverride = value;
       }
     }
     
@@ -104,11 +104,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.OverrideMode;
+        return _SectionInformation.OverrideMode;
       }
       set
       {
-        SectionInformation.OverrideMode = value;
+        _SectionInformation.OverrideMode = value;
       }
     }
     
@@ -116,7 +116,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.OverrideModeEffective;
+        return _SectionInformation.OverrideModeEffective;
       }
     }
     
@@ -124,11 +124,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.ConfigSource;
+        return _SectionInformation.ConfigSource;
       }
       set
       {
-        SectionInformation.ConfigSource = value;
+        _SectionInformation.ConfigSource = value;
       }
     }
     
@@ -136,11 +136,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.InheritInChildApplications;
+        return _SectionInformation.InheritInChildApplications;
       }
       set
       {
-        SectionInformation.InheritInChildApplications = value;
+        _SectionInformation.InheritInChildApplications = value;
       }
     }
     
@@ -148,7 +148,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.IsDeclared;
+        return _SectionInformation.IsDeclared;
       }
     }
     
@@ -156,7 +156,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.IsDeclarationRequired;
+        return _SectionInformation.IsDeclarationRequired;
       }
     }
     
@@ -164,7 +164,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.IsLocked;
+        return _SectionInformation.IsLocked;
       }
     }
     
@@ -172,7 +172,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.IsProtected;
+        return _SectionInformation.IsProtected;
       }
     }
     
@@ -180,7 +180,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ProtectedConfigurationProviderWrapper(SectionInformation.ProtectionProvider);
+        return new Wrapperator.Wrappers.Configuration.ProtectedConfigurationProviderWrapper(_SectionInformation.ProtectionProvider);
       }
     }
     
@@ -188,11 +188,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.RestartOnExternalChanges;
+        return _SectionInformation.RestartOnExternalChanges;
       }
       set
       {
-        SectionInformation.RestartOnExternalChanges = value;
+        _SectionInformation.RestartOnExternalChanges = value;
       }
     }
     
@@ -200,11 +200,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.RequirePermission;
+        return _SectionInformation.RequirePermission;
       }
       set
       {
-        SectionInformation.RequirePermission = value;
+        _SectionInformation.RequirePermission = value;
       }
     }
     
@@ -212,11 +212,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.Type;
+        return _SectionInformation.Type;
       }
       set
       {
-        SectionInformation.Type = value;
+        _SectionInformation.Type = value;
       }
     }
     
@@ -224,18 +224,18 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return SectionInformation.ForceSave;
+        return _SectionInformation.ForceSave;
       }
       set
       {
-        SectionInformation.ForceSave = value;
+        _SectionInformation.ForceSave = value;
       }
     }
     
     /// <summary>Forces the associated configuration section to appear in the configuration file.</summary>
     public void ForceDeclaration()
     {
-      SectionInformation.ForceDeclaration();
+      _SectionInformation.ForceDeclaration();
     }
     
     /// <summary>Forces the associated configuration section to appear in the configuration file, or removes an existing section from the configuration file.</summary>
@@ -244,7 +244,7 @@ namespace Wrapperator.Wrappers.Configuration
     ///  <paramref name="force" /> is true and the associated section cannot be exported to the child configuration file, or it is undeclared.</exception>
     public void ForceDeclaration(bool force)
     {
-      SectionInformation.ForceDeclaration(force);
+      _SectionInformation.ForceDeclaration(force);
     }
     
     /// <summary>Marks a configuration section for protection. </summary>
@@ -252,13 +252,13 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.InvalidOperationException">The <see cref="P:System.Configuration.SectionInformation.AllowLocation" /> property is set to false.- or -The target section is already a protected data section.</exception>
     public void ProtectSection(string protectionProvider)
     {
-      SectionInformation.ProtectSection(protectionProvider);
+      _SectionInformation.ProtectSection(protectionProvider);
     }
     
     /// <summary>Removes the protected configuration encryption from the associated configuration section.</summary>
     public void UnprotectSection()
     {
-      SectionInformation.UnprotectSection();
+      _SectionInformation.UnprotectSection();
     }
     
     /// <summary>Gets the configuration section that contains the configuration section associated with this object.</summary>
@@ -266,7 +266,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.InvalidOperationException">The method is invoked from a parent section.</exception>
     public Wrapperator.Interfaces.Configuration.IConfigurationSection GetParentSection()
     {
-      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(SectionInformation.GetParentSection());
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(_SectionInformation.GetParentSection());
     }
     
     /// <summary>Returns an XML node object that represents the associated configuration-section object.</summary>
@@ -274,7 +274,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.InvalidOperationException">This configuration object is locked and cannot be edited.</exception>
     public string GetRawXml()
     {
-      return SectionInformation.GetRawXml();
+      return _SectionInformation.GetRawXml();
     }
     
     /// <summary>Sets the object to an XML representation of the associated configuration section within the configuration file.</summary>
@@ -283,14 +283,14 @@ namespace Wrapperator.Wrappers.Configuration
     ///  <paramref name="rawXml" /> is null.</exception>
     public void SetRawXml(string rawXml)
     {
-      SectionInformation.SetRawXml(rawXml);
+      _SectionInformation.SetRawXml(rawXml);
     }
     
     /// <summary>Causes the associated configuration section to inherit all its values from the parent section.</summary>
     /// <exception cref="T:System.InvalidOperationException">This method cannot be called outside editing mode.</exception>
     public void RevertToParent()
     {
-      SectionInformation.RevertToParent();
+      _SectionInformation.RevertToParent();
     }
   }
 }

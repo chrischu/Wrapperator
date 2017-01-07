@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml
   public interface IXmlReader : System.IDisposable
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.XmlReader _XmlReader
+    {
+      get;
+    }
+    
     System.Xml.XmlReaderSettings Settings
     {
       get;

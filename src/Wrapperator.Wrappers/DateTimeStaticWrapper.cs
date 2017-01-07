@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public int Compare(Wrapperator.Interfaces.IDateTime t1, Wrapperator.Interfaces.IDateTime t2)
     {
-      return System.DateTime.Compare(t1 == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)t1).DateTime, t2 == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)t2).DateTime);
+      return System.DateTime.Compare(t1 == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)t1)._DateTime, t2 == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)t2)._DateTime);
     }
     
     /// <summary>Returns the number of days in the specified month and year.</summary>
@@ -117,7 +117,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IDateTime SpecifyKind(Wrapperator.Interfaces.IDateTime value, System.DateTimeKind kind)
     {
-      return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.SpecifyKind(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value).DateTime, kind));
+      return new Wrapperator.Wrappers.DateTimeWrapper(System.DateTime.SpecifyKind(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value)._DateTime, kind));
     }
     
     /// <summary>Returns an indication whether the specified year is a leap year.</summary>

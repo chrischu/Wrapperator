@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml
   public interface IXmlDocument
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.XmlDocument _XmlDocument
+    {
+      get;
+    }
+    
     System.Xml.XmlNodeType NodeType
     {
       get;

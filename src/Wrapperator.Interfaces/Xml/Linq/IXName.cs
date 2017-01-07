@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXName
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XName _XName
+    {
+      get;
+    }
+    
     string LocalName
     {
       get;

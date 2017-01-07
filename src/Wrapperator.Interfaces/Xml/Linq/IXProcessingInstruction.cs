@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXProcessingInstruction : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XProcessingInstruction _XProcessingInstruction
+    {
+      get;
+    }
+    
     string Data
     {
       get;

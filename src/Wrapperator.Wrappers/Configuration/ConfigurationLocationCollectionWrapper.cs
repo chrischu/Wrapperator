@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationLocationCollectionWrapper : Wrapperator.Interfaces.Configuration.IConfigurationLocationCollection
   {
     
-    internal System.Configuration.ConfigurationLocationCollection ConfigurationLocationCollection { get; private set; }
+    public System.Configuration.ConfigurationLocationCollection _ConfigurationLocationCollection { get; private set; }
 
     
     internal ConfigurationLocationCollectionWrapper(System.Configuration.ConfigurationLocationCollection configurationLocationCollection)
     {
-      ConfigurationLocationCollection = configurationLocationCollection;
+      _ConfigurationLocationCollection = configurationLocationCollection;
     }
     
     public Wrapperator.Interfaces.Configuration.IConfigurationLocation this[int index]
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationLocationWrapper(ConfigurationLocationCollection[index]);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationLocationWrapper(_ConfigurationLocationCollection[index]);
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationLocationCollection.Count;
+        return _ConfigurationLocationCollection.Count;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <filterpriority>2</filterpriority>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return ConfigurationLocationCollection.GetEnumerator();
+      return _ConfigurationLocationCollection.GetEnumerator();
     }
   }
 }

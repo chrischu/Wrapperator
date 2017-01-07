@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IDirectoryInfo
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.DirectoryInfo _DirectoryInfo
+    {
+      get;
+    }
+    
     string Name
     {
       get;

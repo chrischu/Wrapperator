@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Configuration
   public interface IConnectionStringsSection : Wrapperator.Interfaces.Configuration.IConfigurationSection
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Configuration.ConnectionStringsSection _ConnectionStringsSection
+    {
+      get;
+    }
+    
     System.Configuration.ConnectionStringSettingsCollection ConnectionStrings
     {
       get;

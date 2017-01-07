@@ -17,23 +17,23 @@ namespace Wrapperator.Wrappers.Diagnostics
   public class ProcessStartInfoWrapper : Wrapperator.Interfaces.Diagnostics.IProcessStartInfo
   {
     
-    internal System.Diagnostics.ProcessStartInfo ProcessStartInfo { get; private set; }
+    public System.Diagnostics.ProcessStartInfo _ProcessStartInfo { get; private set; }
 
     
     internal ProcessStartInfoWrapper(System.Diagnostics.ProcessStartInfo processStartInfo)
     {
-      ProcessStartInfo = processStartInfo;
+      _ProcessStartInfo = processStartInfo;
     }
     
     public string Verb
     {
       get
       {
-        return ProcessStartInfo.Verb;
+        return _ProcessStartInfo.Verb;
       }
       set
       {
-        ProcessStartInfo.Verb = value;
+        _ProcessStartInfo.Verb = value;
       }
     }
     
@@ -41,11 +41,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.Arguments;
+        return _ProcessStartInfo.Arguments;
       }
       set
       {
-        ProcessStartInfo.Arguments = value;
+        _ProcessStartInfo.Arguments = value;
       }
     }
     
@@ -53,11 +53,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.CreateNoWindow;
+        return _ProcessStartInfo.CreateNoWindow;
       }
       set
       {
-        ProcessStartInfo.CreateNoWindow = value;
+        _ProcessStartInfo.CreateNoWindow = value;
       }
     }
     
@@ -65,7 +65,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.EnvironmentVariables;
+        return _ProcessStartInfo.EnvironmentVariables;
       }
     }
     
@@ -73,11 +73,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.RedirectStandardInput;
+        return _ProcessStartInfo.RedirectStandardInput;
       }
       set
       {
-        ProcessStartInfo.RedirectStandardInput = value;
+        _ProcessStartInfo.RedirectStandardInput = value;
       }
     }
     
@@ -85,11 +85,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.RedirectStandardOutput;
+        return _ProcessStartInfo.RedirectStandardOutput;
       }
       set
       {
-        ProcessStartInfo.RedirectStandardOutput = value;
+        _ProcessStartInfo.RedirectStandardOutput = value;
       }
     }
     
@@ -97,11 +97,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.RedirectStandardError;
+        return _ProcessStartInfo.RedirectStandardError;
       }
       set
       {
-        ProcessStartInfo.RedirectStandardError = value;
+        _ProcessStartInfo.RedirectStandardError = value;
       }
     }
     
@@ -109,11 +109,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.StandardErrorEncoding;
+        return _ProcessStartInfo.StandardErrorEncoding;
       }
       set
       {
-        ProcessStartInfo.StandardErrorEncoding = value;
+        _ProcessStartInfo.StandardErrorEncoding = value;
       }
     }
     
@@ -121,11 +121,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.StandardOutputEncoding;
+        return _ProcessStartInfo.StandardOutputEncoding;
       }
       set
       {
-        ProcessStartInfo.StandardOutputEncoding = value;
+        _ProcessStartInfo.StandardOutputEncoding = value;
       }
     }
     
@@ -133,11 +133,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.UseShellExecute;
+        return _ProcessStartInfo.UseShellExecute;
       }
       set
       {
-        ProcessStartInfo.UseShellExecute = value;
+        _ProcessStartInfo.UseShellExecute = value;
       }
     }
     
@@ -145,7 +145,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.Verbs;
+        return _ProcessStartInfo.Verbs;
       }
     }
     
@@ -153,11 +153,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.UserName;
+        return _ProcessStartInfo.UserName;
       }
       set
       {
-        ProcessStartInfo.UserName = value;
+        _ProcessStartInfo.UserName = value;
       }
     }
     
@@ -165,11 +165,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.Password;
+        return _ProcessStartInfo.Password;
       }
       set
       {
-        ProcessStartInfo.Password = value;
+        _ProcessStartInfo.Password = value;
       }
     }
     
@@ -177,11 +177,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.Domain;
+        return _ProcessStartInfo.Domain;
       }
       set
       {
-        ProcessStartInfo.Domain = value;
+        _ProcessStartInfo.Domain = value;
       }
     }
     
@@ -189,11 +189,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.LoadUserProfile;
+        return _ProcessStartInfo.LoadUserProfile;
       }
       set
       {
-        ProcessStartInfo.LoadUserProfile = value;
+        _ProcessStartInfo.LoadUserProfile = value;
       }
     }
     
@@ -201,11 +201,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.FileName;
+        return _ProcessStartInfo.FileName;
       }
       set
       {
-        ProcessStartInfo.FileName = value;
+        _ProcessStartInfo.FileName = value;
       }
     }
     
@@ -213,11 +213,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.WorkingDirectory;
+        return _ProcessStartInfo.WorkingDirectory;
       }
       set
       {
-        ProcessStartInfo.WorkingDirectory = value;
+        _ProcessStartInfo.WorkingDirectory = value;
       }
     }
     
@@ -225,11 +225,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.ErrorDialog;
+        return _ProcessStartInfo.ErrorDialog;
       }
       set
       {
-        ProcessStartInfo.ErrorDialog = value;
+        _ProcessStartInfo.ErrorDialog = value;
       }
     }
     
@@ -237,11 +237,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.ErrorDialogParentHandle;
+        return _ProcessStartInfo.ErrorDialogParentHandle;
       }
       set
       {
-        ProcessStartInfo.ErrorDialogParentHandle = value;
+        _ProcessStartInfo.ErrorDialogParentHandle = value;
       }
     }
     
@@ -249,11 +249,11 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return ProcessStartInfo.WindowStyle;
+        return _ProcessStartInfo.WindowStyle;
       }
       set
       {
-        ProcessStartInfo.WindowStyle = value;
+        _ProcessStartInfo.WindowStyle = value;
       }
     }
   }

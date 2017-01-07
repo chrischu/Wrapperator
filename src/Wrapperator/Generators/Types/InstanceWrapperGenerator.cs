@@ -36,7 +36,7 @@ namespace Wrapperator.Generators.Types
       var parameterName = Helper.GetParameterName(WrappedType);
 
       var wrappedProperty =
-          new CodeSnippetTypeMember($"    internal {WrappedType.FullName} {propertyName} {{ get; private set; }}" + Environment.NewLine);
+          new CodeSnippetTypeMember($"    public {WrappedType.FullName} {propertyName} {{ get; private set; }}" + Environment.NewLine);
       yield return wrappedProperty;
 
       var constructor = new CodeConstructor { Attributes = MemberAttributes.Assembly };

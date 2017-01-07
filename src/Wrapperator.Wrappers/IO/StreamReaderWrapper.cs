@@ -17,20 +17,20 @@ namespace Wrapperator.Wrappers.IO
   public class StreamReaderWrapper : TextReaderWrapper, Wrapperator.Interfaces.IO.IStreamReader
   {
     
-    internal System.IO.StreamReader StreamReader { get; private set; }
+    public System.IO.StreamReader _StreamReader { get; private set; }
 
     
     internal StreamReaderWrapper(System.IO.StreamReader streamReader) : 
         base(streamReader)
     {
-      StreamReader = streamReader;
+      _StreamReader = streamReader;
     }
     
     public System.Text.Encoding CurrentEncoding
     {
       get
       {
-        return StreamReader.CurrentEncoding;
+        return _StreamReader.CurrentEncoding;
       }
     }
     
@@ -38,7 +38,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return new Wrapperator.Wrappers.IO.StreamWrapper(StreamReader.BaseStream);
+        return new Wrapperator.Wrappers.IO.StreamWrapper(_StreamReader.BaseStream);
       }
     }
     
@@ -46,7 +46,7 @@ namespace Wrapperator.Wrappers.IO
     {
       get
       {
-        return StreamReader.EndOfStream;
+        return _StreamReader.EndOfStream;
       }
     }
     
@@ -54,14 +54,14 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public new void Close()
     {
-      StreamReader.Close();
+      _StreamReader.Close();
     }
     
     /// <summary>Clears the internal buffer.</summary>
     /// <filterpriority>2</filterpriority>
     public void DiscardBufferedData()
     {
-      StreamReader.DiscardBufferedData();
+      _StreamReader.DiscardBufferedData();
     }
     
     /// <summary>Returns the next available character but does not consume it.</summary>
@@ -70,7 +70,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public new int Peek()
     {
-      return StreamReader.Peek();
+      return _StreamReader.Peek();
     }
     
     /// <summary>Reads the next character from the input stream and advances the character position by one character.</summary>
@@ -79,7 +79,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public new int Read()
     {
-      return StreamReader.Read();
+      return _StreamReader.Read();
     }
     
     /// <summary>Reads a specified maximum of characters from the current stream into a buffer, beginning at the specified index.</summary>
@@ -96,7 +96,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public new int Read(char[] buffer, int index, int count)
     {
-      return StreamReader.Read(buffer, index, count);
+      return _StreamReader.Read(buffer, index, count);
     }
     
     /// <summary>Reads all characters from the current position to the end of the stream.</summary>
@@ -106,7 +106,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public new string ReadToEnd()
     {
-      return StreamReader.ReadToEnd();
+      return _StreamReader.ReadToEnd();
     }
     
     /// <summary>Reads a specified maximum number of characters from the current stream and writes the data to a buffer, beginning at the specified index.</summary>
@@ -123,7 +123,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.IO.IOException">An I/O error occurred. </exception>
     public new int ReadBlock(char[] buffer, int index, int count)
     {
-      return StreamReader.ReadBlock(buffer, index, count);
+      return _StreamReader.ReadBlock(buffer, index, count);
     }
     
     /// <summary>Reads a line of characters from the current stream and returns the data as a string.</summary>
@@ -133,7 +133,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>1</filterpriority>
     public new string ReadLine()
     {
-      return StreamReader.ReadLine();
+      return _StreamReader.ReadLine();
     }
     
     /// <summary>Reads a line of characters asynchronously from the current stream and returns the data as a string.</summary>
@@ -143,7 +143,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public new System.Threading.Tasks.Task<string> ReadLineAsync()
     {
-      return StreamReader.ReadLineAsync();
+      return _StreamReader.ReadLineAsync();
     }
     
     /// <summary>Reads all characters from the current position to the end of the stream asynchronously and returns them as one string.</summary>
@@ -153,7 +153,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public new System.Threading.Tasks.Task<string> ReadToEndAsync()
     {
-      return StreamReader.ReadToEndAsync();
+      return _StreamReader.ReadToEndAsync();
     }
     
     /// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index. </summary>
@@ -170,7 +170,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public new System.Threading.Tasks.Task<int> ReadAsync(char[] buffer, int index, int count)
     {
-      return StreamReader.ReadAsync(buffer, index, count);
+      return _StreamReader.ReadAsync(buffer, index, count);
     }
     
     /// <summary>Reads a specified maximum number of characters from the current stream asynchronously and writes the data to a buffer, beginning at the specified index.</summary>
@@ -187,7 +187,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.InvalidOperationException">The reader is currently in use by a previous read operation. </exception>
     public new System.Threading.Tasks.Task<int> ReadBlockAsync(char[] buffer, int index, int count)
     {
-      return StreamReader.ReadBlockAsync(buffer, index, count);
+      return _StreamReader.ReadBlockAsync(buffer, index, count);
     }
     
     protected override void Dispose(bool disposing)
@@ -195,7 +195,7 @@ namespace Wrapperator.Wrappers.IO
       base.Dispose(disposing);
       if (disposing)
       {
-        StreamReader.Dispose();
+        _StreamReader.Dispose();
       }
     }
   }

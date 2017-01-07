@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationSectionCollectionWrapper : Wrapperator.Interfaces.Configuration.IConfigurationSectionCollection
   {
     
-    internal System.Configuration.ConfigurationSectionCollection ConfigurationSectionCollection { get; private set; }
+    public System.Configuration.ConfigurationSectionCollection _ConfigurationSectionCollection { get; private set; }
 
     
     internal ConfigurationSectionCollectionWrapper(System.Configuration.ConfigurationSectionCollection configurationSectionCollection)
     {
-      ConfigurationSectionCollection = configurationSectionCollection;
+      _ConfigurationSectionCollection = configurationSectionCollection;
     }
     
     public Wrapperator.Interfaces.Configuration.IConfigurationSection this[string name]
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(ConfigurationSectionCollection[name]);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(_ConfigurationSectionCollection[name]);
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(ConfigurationSectionCollection[index]);
+        return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(_ConfigurationSectionCollection[index]);
       }
     }
     
@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSectionCollection.Count;
+        return _ConfigurationSectionCollection.Count;
       }
     }
     
@@ -52,7 +52,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return ConfigurationSectionCollection.Keys;
+        return _ConfigurationSectionCollection.Keys;
       }
     }
     
@@ -61,7 +61,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="context">The applicable <see cref="T:System.Runtime.Serialization.StreamingContext" /> object.</param>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      ConfigurationSectionCollection.GetObjectData(info, context);
+      _ConfigurationSectionCollection.GetObjectData(info, context);
     }
     
     /// <summary>Adds a <see cref="T:System.Configuration.ConfigurationSection" /> object to the <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
@@ -69,13 +69,13 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="section">The section to be added.</param>
     public void Add(string name, Wrapperator.Interfaces.Configuration.IConfigurationSection section)
     {
-      ConfigurationSectionCollection.Add(name, section == null ? default(System.Configuration.ConfigurationSection) : ((Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper)section).ConfigurationSection);
+      _ConfigurationSectionCollection.Add(name, section == null ? default(System.Configuration.ConfigurationSection) : ((Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper)section)._ConfigurationSection);
     }
     
     /// <summary>Clears this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
     public void Clear()
     {
-      ConfigurationSectionCollection.Clear();
+      _ConfigurationSectionCollection.Clear();
     }
     
     /// <summary>Copies this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object to an array.</summary>
@@ -86,7 +86,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.ArgumentOutOfRangeException">The length of <paramref name="array" /> is less than the value of <see cref="P:System.Configuration.ConfigurationSectionCollection.Count" /> plus <paramref name="index" />.</exception>
     public void CopyTo(System.Configuration.ConfigurationSection[] array, int index)
     {
-      ConfigurationSectionCollection.CopyTo(array, index);
+      _ConfigurationSectionCollection.CopyTo(array, index);
     }
     
     /// <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSection" /> object contained in this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
@@ -94,7 +94,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="index">The index of the <see cref="T:System.Configuration.ConfigurationSection" /> object to be returned.</param>
     public Wrapperator.Interfaces.Configuration.IConfigurationSection Get(int index)
     {
-      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(ConfigurationSectionCollection.Get(index));
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(_ConfigurationSectionCollection.Get(index));
     }
     
     /// <summary>Gets the specified <see cref="T:System.Configuration.ConfigurationSection" /> object contained in this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
@@ -104,14 +104,14 @@ namespace Wrapperator.Wrappers.Configuration
     ///  <paramref name="name" /> is null or an empty string ("").</exception>
     public Wrapperator.Interfaces.Configuration.IConfigurationSection Get(string name)
     {
-      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(ConfigurationSectionCollection.Get(name));
+      return new Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper(_ConfigurationSectionCollection.Get(name));
     }
     
     /// <summary>Gets an enumerator that can iterate through this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
     /// <returns>An <see cref="T:System.Collections.IEnumerator" /> that can be used to iterate through this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</returns>
     public System.Collections.IEnumerator GetEnumerator()
     {
-      return ConfigurationSectionCollection.GetEnumerator();
+      return _ConfigurationSectionCollection.GetEnumerator();
     }
     
     /// <summary>Gets the key of the specified <see cref="T:System.Configuration.ConfigurationSection" /> object contained in this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
@@ -119,21 +119,21 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="index">The index of the <see cref="T:System.Configuration.ConfigurationSection" /> object whose key is to be returned. </param>
     public string GetKey(int index)
     {
-      return ConfigurationSectionCollection.GetKey(index);
+      return _ConfigurationSectionCollection.GetKey(index);
     }
     
     /// <summary>Removes the specified <see cref="T:System.Configuration.ConfigurationSection" /> object from this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
     /// <param name="name">The name of the section to be removed. </param>
     public void Remove(string name)
     {
-      ConfigurationSectionCollection.Remove(name);
+      _ConfigurationSectionCollection.Remove(name);
     }
     
     /// <summary>Removes the specified <see cref="T:System.Configuration.ConfigurationSection" /> object from this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>
     /// <param name="index">The index of the section to be removed. </param>
     public void RemoveAt(int index)
     {
-      ConfigurationSectionCollection.RemoveAt(index);
+      _ConfigurationSectionCollection.RemoveAt(index);
     }
     
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and raises the deserialization event when the deserialization is complete.</summary>
@@ -141,7 +141,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.Runtime.Serialization.SerializationException">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> object associated with the current <see cref="T:System.Collections.Specialized.NameObjectCollectionBase" /> instance is invalid.</exception>
     public void OnDeserialization(object sender)
     {
-      ConfigurationSectionCollection.OnDeserialization(sender);
+      _ConfigurationSectionCollection.OnDeserialization(sender);
     }
   }
 }

@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Diagnostics
   public interface IProcess
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Diagnostics.Process _Process
+    {
+      get;
+    }
+    
     int BasePriority
     {
       get;

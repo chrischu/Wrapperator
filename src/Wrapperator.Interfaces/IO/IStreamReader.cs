@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IStreamReader : Wrapperator.Interfaces.IO.ITextReader
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.StreamReader _StreamReader
+    {
+      get;
+    }
+    
     System.Text.Encoding CurrentEncoding
     {
       get;

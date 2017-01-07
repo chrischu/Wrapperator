@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers.Diagnostics
   public class StopwatchWrapper : Wrapperator.Interfaces.Diagnostics.IStopwatch
   {
     
-    internal System.Diagnostics.Stopwatch Stopwatch { get; private set; }
+    public System.Diagnostics.Stopwatch _Stopwatch { get; private set; }
 
     
     internal StopwatchWrapper(System.Diagnostics.Stopwatch stopwatch)
     {
-      Stopwatch = stopwatch;
+      _Stopwatch = stopwatch;
     }
     
     public bool IsRunning
     {
       get
       {
-        return Stopwatch.IsRunning;
+        return _Stopwatch.IsRunning;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Stopwatch.Elapsed;
+        return _Stopwatch.Elapsed;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Stopwatch.ElapsedMilliseconds;
+        return _Stopwatch.ElapsedMilliseconds;
       }
     }
     
@@ -53,7 +53,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     {
       get
       {
-        return Stopwatch.ElapsedTicks;
+        return _Stopwatch.ElapsedTicks;
       }
     }
     
@@ -61,27 +61,27 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public void Start()
     {
-      Stopwatch.Start();
+      _Stopwatch.Start();
     }
     
     /// <summary>Stops measuring elapsed time for an interval.</summary>
     /// <filterpriority>1</filterpriority>
     public void Stop()
     {
-      Stopwatch.Stop();
+      _Stopwatch.Stop();
     }
     
     /// <summary>Stops time interval measurement and resets the elapsed time to zero.</summary>
     /// <filterpriority>1</filterpriority>
     public void Reset()
     {
-      Stopwatch.Reset();
+      _Stopwatch.Reset();
     }
     
     /// <summary>Stops time interval measurement, resets the elapsed time to zero, and starts measuring elapsed time.</summary>
     public void Restart()
     {
-      Stopwatch.Restart();
+      _Stopwatch.Restart();
     }
   }
 }

@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Threading
   public interface IThread
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Threading.Thread _Thread
+    {
+      get;
+    }
+    
     int ManagedThreadId
     {
       get;

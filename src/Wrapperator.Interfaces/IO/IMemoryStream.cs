@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IMemoryStream : Wrapperator.Interfaces.IO.IStream
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.MemoryStream _MemoryStream
+    {
+      get;
+    }
+    
     int Capacity
     {
       get;

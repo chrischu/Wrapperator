@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXAttribute : Wrapperator.Interfaces.Xml.Linq.IXObject
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XAttribute _XAttribute
+    {
+      get;
+    }
+    
     bool IsNamespaceDeclaration
     {
       get;

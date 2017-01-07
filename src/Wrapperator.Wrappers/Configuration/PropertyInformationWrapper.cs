@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class PropertyInformationWrapper : Wrapperator.Interfaces.Configuration.IPropertyInformation
   {
     
-    internal System.Configuration.PropertyInformation PropertyInformation { get; private set; }
+    public System.Configuration.PropertyInformation _PropertyInformation { get; private set; }
 
     
     internal PropertyInformationWrapper(System.Configuration.PropertyInformation propertyInformation)
     {
-      PropertyInformation = propertyInformation;
+      _PropertyInformation = propertyInformation;
     }
     
     public string Name
     {
       get
       {
-        return PropertyInformation.Name;
+        return _PropertyInformation.Name;
       }
     }
     
@@ -36,11 +36,11 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.Value;
+        return _PropertyInformation.Value;
       }
       set
       {
-        PropertyInformation.Value = value;
+        _PropertyInformation.Value = value;
       }
     }
     
@@ -48,7 +48,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.DefaultValue;
+        return _PropertyInformation.DefaultValue;
       }
     }
     
@@ -56,7 +56,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.ValueOrigin;
+        return _PropertyInformation.ValueOrigin;
       }
     }
     
@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.IsModified;
+        return _PropertyInformation.IsModified;
       }
     }
     
@@ -72,7 +72,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.IsKey;
+        return _PropertyInformation.IsKey;
       }
     }
     
@@ -80,7 +80,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.IsRequired;
+        return _PropertyInformation.IsRequired;
       }
     }
     
@@ -88,7 +88,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.IsLocked;
+        return _PropertyInformation.IsLocked;
       }
     }
     
@@ -96,7 +96,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.Source;
+        return _PropertyInformation.Source;
       }
     }
     
@@ -104,7 +104,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.LineNumber;
+        return _PropertyInformation.LineNumber;
       }
     }
     
@@ -112,7 +112,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return new Wrapperator.Wrappers.TypeWrapper(PropertyInformation.Type);
+        return new Wrapperator.Wrappers.TypeWrapper(_PropertyInformation.Type);
       }
     }
     
@@ -120,7 +120,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.Validator;
+        return _PropertyInformation.Validator;
       }
     }
     
@@ -128,7 +128,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.Converter;
+        return _PropertyInformation.Converter;
       }
     }
     
@@ -136,7 +136,7 @@ namespace Wrapperator.Wrappers.Configuration
     {
       get
       {
-        return PropertyInformation.Description;
+        return _PropertyInformation.Description;
       }
     }
   }

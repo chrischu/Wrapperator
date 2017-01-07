@@ -17,19 +17,19 @@ namespace Wrapperator.Wrappers
   public class AppDomainWrapper : Wrapperator.Interfaces.IAppDomain
   {
     
-    internal System.AppDomain AppDomain { get; private set; }
+    public System.AppDomain _AppDomain { get; private set; }
 
     
     internal AppDomainWrapper(System.AppDomain appDomain)
     {
-      AppDomain = appDomain;
+      _AppDomain = appDomain;
     }
     
     public System.AppDomainManager DomainManager
     {
       get
       {
-        return AppDomain.DomainManager;
+        return _AppDomain.DomainManager;
       }
     }
     
@@ -37,7 +37,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.Evidence;
+        return _AppDomain.Evidence;
       }
     }
     
@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.FriendlyName;
+        return _AppDomain.FriendlyName;
       }
     }
     
@@ -53,7 +53,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.BaseDirectory;
+        return _AppDomain.BaseDirectory;
       }
     }
     
@@ -61,7 +61,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.RelativeSearchPath;
+        return _AppDomain.RelativeSearchPath;
       }
     }
     
@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.ShadowCopyFiles;
+        return _AppDomain.ShadowCopyFiles;
       }
     }
     
@@ -77,7 +77,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.ActivationContext;
+        return _AppDomain.ActivationContext;
       }
     }
     
@@ -85,7 +85,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.ApplicationIdentity;
+        return _AppDomain.ApplicationIdentity;
       }
     }
     
@@ -93,7 +93,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.ApplicationTrust;
+        return _AppDomain.ApplicationTrust;
       }
     }
     
@@ -101,7 +101,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.DynamicDirectory;
+        return _AppDomain.DynamicDirectory;
       }
     }
     
@@ -109,7 +109,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.SetupInformation;
+        return _AppDomain.SetupInformation;
       }
     }
     
@@ -117,7 +117,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.PermissionSet;
+        return _AppDomain.PermissionSet;
       }
     }
     
@@ -125,7 +125,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.IsFullyTrusted;
+        return _AppDomain.IsFullyTrusted;
       }
     }
     
@@ -133,7 +133,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.IsHomogenous;
+        return _AppDomain.IsHomogenous;
       }
     }
     
@@ -141,7 +141,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.Id;
+        return _AppDomain.Id;
       }
     }
     
@@ -149,7 +149,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.MonitoringTotalProcessorTime;
+        return _AppDomain.MonitoringTotalProcessorTime;
       }
     }
     
@@ -157,7 +157,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.MonitoringTotalAllocatedMemorySize;
+        return _AppDomain.MonitoringTotalAllocatedMemorySize;
       }
     }
     
@@ -165,7 +165,7 @@ namespace Wrapperator.Wrappers
     {
       get
       {
-        return AppDomain.MonitoringSurvivedMemorySize;
+        return _AppDomain.MonitoringSurvivedMemorySize;
       }
     }
     
@@ -180,7 +180,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access)
     {
-      return AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name).AssemblyName, access);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access);
     }
     
     /// <summary>Defines a dynamic assembly with the specified name, access mode, and custom attributes.</summary>
@@ -194,7 +194,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes)
     {
-      return AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name).AssemblyName, access, assemblyAttributes);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, assemblyAttributes);
     }
     
     /// <summary>Defines a dynamic assembly with the specified name, access mode, and custom attributes, and using the specified source for its security context.</summary>
@@ -210,7 +210,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.ArgumentOutOfRangeException">The value of <paramref name="securityContextSource" /> was not one of the enumeration values.</exception>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes, System.Security.SecurityContextSource securityContextSource)
     {
-      return AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name).AssemblyName, access, assemblyAttributes, securityContextSource);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, assemblyAttributes, securityContextSource);
     }
     
     /// <summary>Defines a dynamic assembly using the specified name, access mode, and storage directory.</summary>
@@ -225,7 +225,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir)
     {
-      return AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name).AssemblyName, access, dir);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, dir);
     }
     
     /// <summary>Defines a dynamic assembly using the specified name, access mode, storage directory, and synchronization option.</summary>
@@ -241,7 +241,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes)
     {
-      return AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name).AssemblyName, access, dir, isSynchronized, assemblyAttributes);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, dir, isSynchronized, assemblyAttributes);
     }
     
     /// <summary>Returns the assembly display name after policy has been applied.</summary>
@@ -250,7 +250,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public string ApplyPolicy(string assemblyName)
     {
-      return AppDomain.ApplyPolicy(assemblyName);
+      return _AppDomain.ApplyPolicy(assemblyName);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly.</summary>
@@ -273,7 +273,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName)
     {
-      return AppDomain.CreateInstance(assemblyName, typeName);
+      return _AppDomain.CreateInstance(assemblyName, typeName);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
@@ -296,7 +296,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName)
     {
-      return AppDomain.CreateInstanceFrom(assemblyFile, typeName);
+      return _AppDomain.CreateInstanceFrom(assemblyFile, typeName);
     }
     
     /// <summary>Creates a new instance of a specified COM type. Parameters specify the name of a file that contains an assembly containing the type and the name of the type.</summary>
@@ -322,7 +322,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyName, string typeName)
     {
-      return AppDomain.CreateComInstanceFrom(assemblyName, typeName);
+      return _AppDomain.CreateComInstanceFrom(assemblyName, typeName);
     }
     
     /// <summary>Creates a new instance of a specified COM type. Parameters specify the name of a file that contains an assembly containing the type and the name of the type.</summary>
@@ -350,7 +350,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjectHandle CreateComInstanceFrom(string assemblyFile, string typeName, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm)
     {
-      return AppDomain.CreateComInstanceFrom(assemblyFile, typeName, hashValue, hashAlgorithm);
+      return _AppDomain.CreateComInstanceFrom(assemblyFile, typeName, hashValue, hashAlgorithm);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly. A parameter specifies an array of activation attributes.</summary>
@@ -375,7 +375,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, object[] activationAttributes)
     {
-      return AppDomain.CreateInstance(assemblyName, typeName, activationAttributes);
+      return _AppDomain.CreateInstance(assemblyName, typeName, activationAttributes);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
@@ -400,7 +400,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, object[] activationAttributes)
     {
-      return AppDomain.CreateInstanceFrom(assemblyFile, typeName, activationAttributes);
+      return _AppDomain.CreateInstanceFrom(assemblyFile, typeName, activationAttributes);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly. Parameters specify a binder, binding flags, constructor arguments, culture-specific information used to interpret arguments, and optional activation attributes.</summary>
@@ -429,7 +429,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
     public System.Runtime.Remoting.ObjectHandle CreateInstance(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes)
     {
-      return AppDomain.CreateInstance(assemblyName, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
+      return _AppDomain.CreateInstance(assemblyName, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
@@ -458,7 +458,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.NullReferenceException">This instance is null.</exception>
     public System.Runtime.Remoting.ObjectHandle CreateInstanceFrom(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes)
     {
-      return AppDomain.CreateInstanceFrom(assemblyFile, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
+      return _AppDomain.CreateInstanceFrom(assemblyFile, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
     }
     
     /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its <see cref="T:System.Reflection.AssemblyName" />.</summary>
@@ -475,7 +475,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(AppDomain.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyRef).AssemblyName));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_AppDomain.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyRef)._AssemblyName));
     }
     
     /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its display name.</summary>
@@ -492,7 +492,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.Reflection.IAssembly Load(string assemblyString)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(AppDomain.Load(assemblyString));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_AppDomain.Load(assemblyString));
     }
     
     /// <summary>Loads the <see cref="T:System.Reflection.Assembly" /> with a common object file format (COFF) based image containing an emitted <see cref="T:System.Reflection.Assembly" />.</summary>
@@ -507,7 +507,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(AppDomain.Load(rawAssembly));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_AppDomain.Load(rawAssembly));
     }
     
     /// <summary>Loads the <see cref="T:System.Reflection.Assembly" /> with a common object file format (COFF) based image containing an emitted <see cref="T:System.Reflection.Assembly" />. The raw bytes representing the symbols for the <see cref="T:System.Reflection.Assembly" /> are also loaded.</summary>
@@ -523,7 +523,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.Reflection.IAssembly Load(byte[] rawAssembly, byte[] rawSymbolStore)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(AppDomain.Load(rawAssembly, rawSymbolStore));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_AppDomain.Load(rawAssembly, rawSymbolStore));
     }
     
     /// <summary>Executes the assembly contained in the specified file.</summary>
@@ -541,7 +541,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public int ExecuteAssembly(string assemblyFile)
     {
-      return AppDomain.ExecuteAssembly(assemblyFile);
+      return _AppDomain.ExecuteAssembly(assemblyFile);
     }
     
     /// <summary>Executes the assembly contained in the specified file, using the specified arguments.</summary>
@@ -559,7 +559,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.MissingMethodException">The specified assembly has no entry point.</exception>
     public int ExecuteAssembly(string assemblyFile, string[] args)
     {
-      return AppDomain.ExecuteAssembly(assemblyFile, args);
+      return _AppDomain.ExecuteAssembly(assemblyFile, args);
     }
     
     /// <summary>Executes the assembly contained in the specified file, using the specified arguments, hash value, and hash algorithm.</summary>
@@ -579,7 +579,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.MissingMethodException">The specified assembly has no entry point.</exception>
     public int ExecuteAssembly(string assemblyFile, string[] args, byte[] hashValue, System.Configuration.Assemblies.AssemblyHashAlgorithm hashAlgorithm)
     {
-      return AppDomain.ExecuteAssembly(assemblyFile, args, hashValue, hashAlgorithm);
+      return _AppDomain.ExecuteAssembly(assemblyFile, args, hashValue, hashAlgorithm);
     }
     
     /// <summary>Executes an assembly given its display name.</summary>
@@ -595,7 +595,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public int ExecuteAssemblyByName(string assemblyName)
     {
-      return AppDomain.ExecuteAssemblyByName(assemblyName);
+      return _AppDomain.ExecuteAssemblyByName(assemblyName);
     }
     
     /// <summary>Executes the assembly given its display name, using the specified arguments.</summary>
@@ -611,7 +611,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.MissingMethodException">The specified assembly has no entry point.</exception>
     public int ExecuteAssemblyByName(string assemblyName, string[] args)
     {
-      return AppDomain.ExecuteAssemblyByName(assemblyName, args);
+      return _AppDomain.ExecuteAssemblyByName(assemblyName, args);
     }
     
     /// <summary>Executes the assembly given an <see cref="T:System.Reflection.AssemblyName" />, using the specified arguments.</summary>
@@ -625,7 +625,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.MissingMethodException">The specified assembly has no entry point.</exception>
     public int ExecuteAssemblyByName(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyName, string[] args)
     {
-      return AppDomain.ExecuteAssemblyByName(assemblyName == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyName).AssemblyName, args);
+      return _AppDomain.ExecuteAssemblyByName(assemblyName == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyName)._AssemblyName, args);
     }
     
     /// <summary>Gets the assemblies that have been loaded into the execution context of this application domain.</summary>
@@ -634,7 +634,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.Assembly[] GetAssemblies()
     {
-      return AppDomain.GetAssemblies();
+      return _AppDomain.GetAssemblies();
     }
     
     /// <summary>Returns the assemblies that have been loaded into the reflection-only context of the application domain.</summary>
@@ -643,7 +643,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.Assembly[] ReflectionOnlyGetAssemblies()
     {
-      return AppDomain.ReflectionOnlyGetAssemblies();
+      return _AppDomain.ReflectionOnlyGetAssemblies();
     }
     
     /// <summary>Indicates whether this application domain is unloading, and the objects it contains are being finalized by the common language runtime.</summary>
@@ -651,7 +651,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public bool IsFinalizingForUnload()
     {
-      return AppDomain.IsFinalizingForUnload();
+      return _AppDomain.IsFinalizingForUnload();
     }
     
     /// <summary>Assigns the specified value to the specified application domain property.</summary>
@@ -661,7 +661,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public void SetData(string name, object data)
     {
-      AppDomain.SetData(name, data);
+      _AppDomain.SetData(name, data);
     }
     
     /// <summary>Assigns the specified value to the specified application domain property, with a specified permission to demand of the caller when the property is retrieved.</summary>
@@ -674,7 +674,7 @@ namespace Wrapperator.Wrappers
     ///  <paramref name="name" /> specifies a system-defined property string and <paramref name="permission" /> is not null.</exception>
     public void SetData(string name, object data, System.Security.IPermission permission)
     {
-      AppDomain.SetData(name, data, permission);
+      _AppDomain.SetData(name, data, permission);
     }
     
     /// <summary>Gets the value stored in the current application domain for the specified name.</summary>
@@ -686,7 +686,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object GetData(string name)
     {
-      return AppDomain.GetData(name);
+      return _AppDomain.GetData(name);
     }
     
     /// <summary>Gets a nullable Boolean value that indicates whether any compatibility switches are set, and if so, whether the specified compatibility switch is set.</summary>
@@ -694,7 +694,7 @@ namespace Wrapperator.Wrappers
     /// <param name="value">The compatibility switch to test.</param>
     public System.Nullable<bool> IsCompatibilitySwitchSet(string value)
     {
-      return AppDomain.IsCompatibilitySwitchSet(value);
+      return _AppDomain.IsCompatibilitySwitchSet(value);
     }
     
     /// <summary>Sets the default principal object to be attached to threads if they attempt to bind to a principal while executing in this application domain.</summary>
@@ -706,7 +706,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public void SetThreadPrincipal(System.Security.Principal.IPrincipal principal)
     {
-      AppDomain.SetThreadPrincipal(principal);
+      _AppDomain.SetThreadPrincipal(principal);
     }
     
     /// <summary>Specifies how principal and identity objects should be attached to a thread if the thread attempts to bind to a principal while executing in this application domain.</summary>
@@ -715,7 +715,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public void SetPrincipalPolicy(System.Security.Principal.PrincipalPolicy policy)
     {
-      AppDomain.SetPrincipalPolicy(policy);
+      _AppDomain.SetPrincipalPolicy(policy);
     }
     
     /// <summary>Gives the <see cref="T:System.AppDomain" /> an infinite lifetime by preventing a lease from being created.</summary>
@@ -724,7 +724,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object InitializeLifetimeService()
     {
-      return AppDomain.InitializeLifetimeService();
+      return _AppDomain.InitializeLifetimeService();
     }
     
     /// <summary>Executes the code in another application domain that is identified by the specified delegate.</summary>
@@ -734,7 +734,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public void DoCallBack(System.CrossAppDomainDelegate callBackDelegate)
     {
-      AppDomain.DoCallBack(callBackDelegate);
+      _AppDomain.DoCallBack(callBackDelegate);
     }
     
     /// <summary>Creates a new instance of the specified type. Parameters specify the assembly where the type is defined, and the name of the type.</summary>
@@ -756,7 +756,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object CreateInstanceAndUnwrap(string assemblyName, string typeName)
     {
-      return AppDomain.CreateInstanceAndUnwrap(assemblyName, typeName);
+      return _AppDomain.CreateInstanceAndUnwrap(assemblyName, typeName);
     }
     
     /// <summary>Creates a new instance of the specified type. Parameters specify the assembly where the type is defined, the name of the type, and an array of activation attributes.</summary>
@@ -780,7 +780,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object CreateInstanceAndUnwrap(string assemblyName, string typeName, object[] activationAttributes)
     {
-      return AppDomain.CreateInstanceAndUnwrap(assemblyName, typeName, activationAttributes);
+      return _AppDomain.CreateInstanceAndUnwrap(assemblyName, typeName, activationAttributes);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly, specifying whether the case of the type name is ignored; the binding attributes and the binder that are used to select the type to be created; the arguments of the constructor; the culture; and the activation attributes.</summary>
@@ -808,7 +808,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
     public object CreateInstanceAndUnwrap(string assemblyName, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes)
     {
-      return AppDomain.CreateInstanceAndUnwrap(assemblyName, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
+      return _AppDomain.CreateInstanceAndUnwrap(assemblyName, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
@@ -830,7 +830,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object CreateInstanceFromAndUnwrap(string assemblyName, string typeName)
     {
-      return AppDomain.CreateInstanceFromAndUnwrap(assemblyName, typeName);
+      return _AppDomain.CreateInstanceFromAndUnwrap(assemblyName, typeName);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly file.</summary>
@@ -854,7 +854,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object CreateInstanceFromAndUnwrap(string assemblyName, string typeName, object[] activationAttributes)
     {
-      return AppDomain.CreateInstanceFromAndUnwrap(assemblyName, typeName, activationAttributes);
+      return _AppDomain.CreateInstanceFromAndUnwrap(assemblyName, typeName, activationAttributes);
     }
     
     /// <summary>Creates a new instance of the specified type defined in the specified assembly file, specifying whether the case of the type name is ignored; the binding attributes and the binder that are used to select the type to be created; the arguments of the constructor; the culture; and the activation attributes.</summary>
@@ -882,7 +882,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.IO.FileLoadException">An assembly or module was loaded twice with two different evidences. </exception>
     public object CreateInstanceFromAndUnwrap(string assemblyFile, string typeName, bool ignoreCase, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, object[] args, System.Globalization.CultureInfo culture, object[] activationAttributes)
     {
-      return AppDomain.CreateInstanceFromAndUnwrap(assemblyFile, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
+      return _AppDomain.CreateInstanceFromAndUnwrap(assemblyFile, typeName, ignoreCase, bindingAttr, binder, args, culture, activationAttributes);
     }
     
     /// <summary>Returns a value that indicates whether the application domain is the default application domain for the process.</summary>
@@ -890,7 +890,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public bool IsDefaultAppDomain()
     {
-      return AppDomain.IsDefaultAppDomain();
+      return _AppDomain.IsDefaultAppDomain();
     }
     
     /// <summary>Retrieves the current lifetime service object that controls the lifetime policy for this instance.</summary>
@@ -899,7 +899,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public object GetLifetimeService()
     {
-      return AppDomain.GetLifetimeService();
+      return _AppDomain.GetLifetimeService();
     }
     
     /// <summary>Creates an object that contains all the relevant information required to generate a proxy used to communicate with a remote object.</summary>
@@ -910,7 +910,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return AppDomain.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType).Type);
+      return _AppDomain.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
     }
   }
 }

@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXStreamingElement
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XStreamingElement _XStreamingElement
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.Xml.Linq.IXName Name
     {
       get;

@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IBinaryReader : System.IDisposable
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.BinaryReader _BinaryReader
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get;

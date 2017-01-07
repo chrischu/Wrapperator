@@ -15,5 +15,11 @@ namespace Wrapperator.Interfaces.Xml.Linq
   /// <summary>Represents a text node that contains CDATA. </summary>
   public interface IXCData : Wrapperator.Interfaces.Xml.Linq.IXText
   {
+    
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XCData _XCData
+    {
+      get;
+    }
   }
 }

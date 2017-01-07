@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.Xml.Linq
   public interface IXDocumentType : Wrapperator.Interfaces.Xml.Linq.IXNode
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Xml.Linq.XDocumentType _XDocumentType
+    {
+      get;
+    }
+    
     string InternalSubset
     {
       get;

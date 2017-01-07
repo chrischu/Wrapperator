@@ -16,23 +16,23 @@ namespace Wrapperator.Wrappers.Reflection
   public class AssemblyNameWrapper : Wrapperator.Interfaces.Reflection.IAssemblyName
   {
     
-    internal System.Reflection.AssemblyName AssemblyName { get; private set; }
+    public System.Reflection.AssemblyName _AssemblyName { get; private set; }
 
     
     internal AssemblyNameWrapper(System.Reflection.AssemblyName assemblyName)
     {
-      AssemblyName = assemblyName;
+      _AssemblyName = assemblyName;
     }
     
     public string Name
     {
       get
       {
-        return AssemblyName.Name;
+        return _AssemblyName.Name;
       }
       set
       {
-        AssemblyName.Name = value;
+        _AssemblyName.Name = value;
       }
     }
     
@@ -40,11 +40,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return new Wrapperator.Wrappers.VersionWrapper(AssemblyName.Version);
+        return new Wrapperator.Wrappers.VersionWrapper(_AssemblyName.Version);
       }
       set
       {
-        AssemblyName.Version = ((Wrapperator.Wrappers.VersionWrapper)(value)).Version;
+        _AssemblyName.Version = ((Wrapperator.Wrappers.VersionWrapper)(value))._Version;
       }
     }
     
@@ -52,11 +52,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.CultureInfo;
+        return _AssemblyName.CultureInfo;
       }
       set
       {
-        AssemblyName.CultureInfo = value;
+        _AssemblyName.CultureInfo = value;
       }
     }
     
@@ -64,11 +64,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.CodeBase;
+        return _AssemblyName.CodeBase;
       }
       set
       {
-        AssemblyName.CodeBase = value;
+        _AssemblyName.CodeBase = value;
       }
     }
     
@@ -76,7 +76,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.EscapedCodeBase;
+        return _AssemblyName.EscapedCodeBase;
       }
     }
     
@@ -84,11 +84,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.ProcessorArchitecture;
+        return _AssemblyName.ProcessorArchitecture;
       }
       set
       {
-        AssemblyName.ProcessorArchitecture = value;
+        _AssemblyName.ProcessorArchitecture = value;
       }
     }
     
@@ -96,11 +96,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.ContentType;
+        return _AssemblyName.ContentType;
       }
       set
       {
-        AssemblyName.ContentType = value;
+        _AssemblyName.ContentType = value;
       }
     }
     
@@ -108,11 +108,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.Flags;
+        return _AssemblyName.Flags;
       }
       set
       {
-        AssemblyName.Flags = value;
+        _AssemblyName.Flags = value;
       }
     }
     
@@ -120,11 +120,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.HashAlgorithm;
+        return _AssemblyName.HashAlgorithm;
       }
       set
       {
-        AssemblyName.HashAlgorithm = value;
+        _AssemblyName.HashAlgorithm = value;
       }
     }
     
@@ -132,11 +132,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.VersionCompatibility;
+        return _AssemblyName.VersionCompatibility;
       }
       set
       {
-        AssemblyName.VersionCompatibility = value;
+        _AssemblyName.VersionCompatibility = value;
       }
     }
     
@@ -144,11 +144,11 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.KeyPair;
+        return _AssemblyName.KeyPair;
       }
       set
       {
-        AssemblyName.KeyPair = value;
+        _AssemblyName.KeyPair = value;
       }
     }
     
@@ -156,7 +156,7 @@ namespace Wrapperator.Wrappers.Reflection
     {
       get
       {
-        return AssemblyName.FullName;
+        return _AssemblyName.FullName;
       }
     }
     
@@ -164,7 +164,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <returns>An object that is a copy of this <see cref="T:System.Reflection.AssemblyName" /> object.</returns>
     public object Clone()
     {
-      return AssemblyName.Clone();
+      return _AssemblyName.Clone();
     }
     
     /// <summary>Gets the public key of the assembly.</summary>
@@ -172,28 +172,28 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.Security.SecurityException">A public key was provided (for example, by using the <see cref="M:System.Reflection.AssemblyName.SetPublicKey(System.Byte[])" /> method), but no public key token was provided. </exception>
     public byte[] GetPublicKey()
     {
-      return AssemblyName.GetPublicKey();
+      return _AssemblyName.GetPublicKey();
     }
     
     /// <summary>Sets the public key identifying the assembly.</summary>
     /// <param name="publicKey">A byte array containing the public key of the assembly. </param>
     public void SetPublicKey(byte[] publicKey)
     {
-      AssemblyName.SetPublicKey(publicKey);
+      _AssemblyName.SetPublicKey(publicKey);
     }
     
     /// <summary>Gets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
     /// <returns>A byte array that contains the public key token.</returns>
     public byte[] GetPublicKeyToken()
     {
-      return AssemblyName.GetPublicKeyToken();
+      return _AssemblyName.GetPublicKeyToken();
     }
     
     /// <summary>Sets the public key token, which is the last 8 bytes of the SHA-1 hash of the public key under which the application or assembly is signed.</summary>
     /// <param name="publicKeyToken">A byte array containing the public key token of the assembly. </param>
     public void SetPublicKeyToken(byte[] publicKeyToken)
     {
-      AssemblyName.SetPublicKeyToken(publicKeyToken);
+      _AssemblyName.SetPublicKeyToken(publicKeyToken);
     }
     
     /// <summary>Gets serialization information with all the data needed to recreate an instance of this AssemblyName.</summary>
@@ -203,14 +203,14 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="info" /> is null. </exception>
     public void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
     {
-      AssemblyName.GetObjectData(info, context);
+      _AssemblyName.GetObjectData(info, context);
     }
     
     /// <summary>Implements the <see cref="T:System.Runtime.Serialization.ISerializable" /> interface and is called back by the deserialization event when deserialization is complete.</summary>
     /// <param name="sender">The source of the deserialization event. </param>
     public void OnDeserialization(object sender)
     {
-      AssemblyName.OnDeserialization(sender);
+      _AssemblyName.OnDeserialization(sender);
     }
   }
 }

@@ -10,12 +10,16 @@
 
 namespace Wrapperator.Interfaces.IO
 {
-  
-  
   /// <summary>Exposes a <see cref="T:System.IO.Stream" /> around a file, supporting both synchronous and asynchronous read and write operations.</summary>
   /// <filterpriority>1</filterpriority>
   public interface IFileStream : Wrapperator.Interfaces.IO.IStream
   {
+    
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.FileStream _FileStream
+    {
+      get;
+    }
     
     bool IsAsync
     {

@@ -29,7 +29,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.IO.ITextWriter Synchronized(Wrapperator.Interfaces.IO.ITextWriter writer)
     {
-      return new Wrapperator.Wrappers.IO.TextWriterWrapper(System.IO.TextWriter.Synchronized(writer == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)writer).TextWriter));
+      return new Wrapperator.Wrappers.IO.TextWriterWrapper(System.IO.TextWriter.Synchronized(writer == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)writer)._TextWriter));
     }
   }
 }

@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IStream : System.IDisposable
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.Stream _Stream
+    {
+      get;
+    }
+    
     bool CanRead
     {
       get;

@@ -16,5 +16,11 @@ namespace Wrapperator.Interfaces.Diagnostics
   /// <filterpriority>1</filterpriority>
   public interface ITrace
   {
+    
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.Diagnostics.Trace _Trace
+    {
+      get;
+    }
   }
 }

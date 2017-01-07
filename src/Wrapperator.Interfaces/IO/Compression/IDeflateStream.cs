@@ -16,6 +16,12 @@ namespace Wrapperator.Interfaces.IO.Compression
   public interface IDeflateStream : Wrapperator.Interfaces.IO.IStream
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.Compression.DeflateStream _DeflateStream
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.IO.IStream BaseStream
     {
       get;

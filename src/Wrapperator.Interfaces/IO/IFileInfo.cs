@@ -17,6 +17,12 @@ namespace Wrapperator.Interfaces.IO
   public interface IFileInfo
   {
     
+    /// <summary>Provides access to the wrapped instance. Should not be used most of the time.</summary>
+    System.IO.FileInfo _FileInfo
+    {
+      get;
+    }
+    
     string Name
     {
       get;

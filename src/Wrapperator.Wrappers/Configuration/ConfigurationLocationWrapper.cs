@@ -16,19 +16,19 @@ namespace Wrapperator.Wrappers.Configuration
   public class ConfigurationLocationWrapper : Wrapperator.Interfaces.Configuration.IConfigurationLocation
   {
     
-    internal System.Configuration.ConfigurationLocation ConfigurationLocation { get; private set; }
+    public System.Configuration.ConfigurationLocation _ConfigurationLocation { get; private set; }
 
     
     internal ConfigurationLocationWrapper(System.Configuration.ConfigurationLocation configurationLocation)
     {
-      ConfigurationLocation = configurationLocation;
+      _ConfigurationLocation = configurationLocation;
     }
     
     public string Path
     {
       get
       {
-        return ConfigurationLocation.Path;
+        return _ConfigurationLocation.Path;
       }
     }
     
@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <returns>A Configuration object.</returns>
     public Wrapperator.Interfaces.Configuration.IConfiguration OpenConfiguration()
     {
-      return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(ConfigurationLocation.OpenConfiguration());
+      return new Wrapperator.Wrappers.Configuration.ConfigurationWrapper(_ConfigurationLocation.OpenConfiguration());
     }
   }
 }
