@@ -34,7 +34,7 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="type">The <see cref="T:System.Type" /> of the deserialized object.</param>
     public System.Xml.Serialization.XmlSerializer[] FromMappings(System.Xml.Serialization.XmlMapping[] mappings, Wrapperator.Interfaces.IType type)
     {
-      return System.Xml.Serialization.XmlSerializer.FromMappings(mappings, type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
+      return System.Xml.Serialization.XmlSerializer.FromMappings(mappings, type == null ? default(System.Type) : type._Type);
     }
     
     /// <summary>Returns an assembly that contains custom-made serializers used to serialize or deserialize the specified type or types, using the specified mappings.</summary>
@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="type">The <see cref="T:System.Type" /> you are deserializing.</param>
     public string GetXmlSerializerAssemblyName(Wrapperator.Interfaces.IType type)
     {
-      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
+      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type == null ? default(System.Type) : type._Type);
     }
     
     /// <summary>Returns the name of the assembly that contains the serializer for the specified type in the specified namespace.</summary>
@@ -78,7 +78,7 @@ namespace Wrapperator.Wrappers.Xml.Serialization
     /// <param name="defaultNamespace">The namespace of the type.</param>
     public string GetXmlSerializerAssemblyName(Wrapperator.Interfaces.IType type, string defaultNamespace)
     {
-      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type, defaultNamespace);
+      return System.Xml.Serialization.XmlSerializer.GetXmlSerializerAssemblyName(type == null ? default(System.Type) : type._Type, defaultNamespace);
     }
   }
 }

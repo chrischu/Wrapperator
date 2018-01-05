@@ -33,6 +33,14 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
+    public string FullName
+    {
+      get
+      {
+        return _DirectoryInfo.FullName;
+      }
+    }
+    
     public Wrapperator.Interfaces.IO.IDirectoryInfo Parent
     {
       get
@@ -57,14 +65,6 @@ namespace Wrapperator.Wrappers.IO
       }
     }
     
-    public string FullName
-    {
-      get
-      {
-        return _DirectoryInfo.FullName;
-      }
-    }
-    
     public string Extension
     {
       get
@@ -81,7 +81,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _DirectoryInfo.CreationTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _DirectoryInfo.CreationTime = value._DateTime;
       }
     }
     
@@ -93,7 +93,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _DirectoryInfo.CreationTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _DirectoryInfo.CreationTimeUtc = value._DateTime;
       }
     }
     
@@ -105,7 +105,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _DirectoryInfo.LastAccessTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _DirectoryInfo.LastAccessTime = value._DateTime;
       }
     }
     
@@ -117,7 +117,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _DirectoryInfo.LastAccessTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _DirectoryInfo.LastAccessTimeUtc = value._DateTime;
       }
     }
     
@@ -129,7 +129,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _DirectoryInfo.LastWriteTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _DirectoryInfo.LastWriteTime = value._DateTime;
       }
     }
     
@@ -141,7 +141,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _DirectoryInfo.LastWriteTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _DirectoryInfo.LastWriteTimeUtc = value._DateTime;
       }
     }
     
@@ -570,7 +570,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _DirectoryInfo.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
+      return _DirectoryInfo.CreateObjRef(requestedType == null ? default(System.Type) : requestedType._Type);
     }
   }
 }

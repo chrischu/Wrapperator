@@ -358,7 +358,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return _XmlReader.ReadContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
+      return _XmlReader.ReadContentAs(returnType == null ? default(System.Type) : returnType._Type, namespaceResolver);
     }
     
     /// <summary>Reads the current element and returns the contents as an <see cref="T:System.Object" />.</summary>
@@ -597,7 +597,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadElementContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return _XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
+      return _XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : returnType._Type, namespaceResolver);
     }
     
     /// <summary>Checks that the specified local name and namespace URI matches that of the current element, then reads the element content as the requested type.</summary>
@@ -614,7 +614,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public object ReadElementContentAs(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver, string localName, string namespaceURI)
     {
-      return _XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver, localName, namespaceURI);
+      return _XmlReader.ReadElementContentAs(returnType == null ? default(System.Type) : returnType._Type, namespaceResolver, localName, namespaceURI);
     }
     
     /// <summary>When overridden in a derived class, gets the value of the attribute with the specified <see cref="P:System.Xml.XmlReader.Name" />.</summary>
@@ -1073,7 +1073,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<object> ReadContentAsAsync(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return _XmlReader.ReadContentAsAsync(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
+      return _XmlReader.ReadContentAsAsync(returnType == null ? default(System.Type) : returnType._Type, namespaceResolver);
     }
     
     /// <summary>Asynchronously reads the current element and returns the contents as an <see cref="T:System.Object" />.</summary>
@@ -1102,7 +1102,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlReader" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlReaderSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlReaderSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task<object> ReadElementContentAsAsync(Wrapperator.Interfaces.IType returnType, System.Xml.IXmlNamespaceResolver namespaceResolver)
     {
-      return _XmlReader.ReadElementContentAsAsync(returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, namespaceResolver);
+      return _XmlReader.ReadElementContentAsAsync(returnType == null ? default(System.Type) : returnType._Type, namespaceResolver);
     }
     
     /// <summary>Asynchronously reads the next node from the stream.</summary>

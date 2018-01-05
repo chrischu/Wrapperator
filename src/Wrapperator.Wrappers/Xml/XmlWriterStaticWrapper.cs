@@ -45,7 +45,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)output)._Stream));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.Stream) : output._Stream));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the stream and <see cref="T:System.Xml.XmlWriterSettings" /> object.</summary>
@@ -55,7 +55,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="stream" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.IStream output, System.Xml.XmlWriterSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)output)._Stream, settings));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.Stream) : output._Stream, settings));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.IO.TextWriter" />.</summary>
@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)output)._TextWriter));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.TextWriter) : output._TextWriter));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the <see cref="T:System.IO.TextWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
@@ -74,7 +74,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="text" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.IO.ITextWriter output, System.Xml.XmlWriterSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)output)._TextWriter, settings));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.IO.TextWriter) : output._TextWriter, settings));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Text.StringBuilder" />.</summary>
@@ -102,7 +102,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)output)._XmlWriter));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.Xml.XmlWriter) : output._XmlWriter));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlWriter" /> instance using the specified <see cref="T:System.Xml.XmlWriter" /> and <see cref="T:System.Xml.XmlWriterSettings" /> objects.</summary>
@@ -112,7 +112,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="writer" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlWriter Create(Wrapperator.Interfaces.Xml.IXmlWriter output, System.Xml.XmlWriterSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)output)._XmlWriter, settings));
+      return new Wrapperator.Wrappers.Xml.XmlWriterWrapper(System.Xml.XmlWriter.Create(output == null ? default(System.Xml.XmlWriter) : output._XmlWriter, settings));
     }
   }
 }

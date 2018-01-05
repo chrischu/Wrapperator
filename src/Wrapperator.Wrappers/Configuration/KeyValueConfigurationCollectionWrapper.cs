@@ -148,7 +148,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="keyValue">A <see cref="T:System.Configuration.KeyValueConfigurationElement" />.</param>
     public void Add(Wrapperator.Interfaces.Configuration.IKeyValueConfigurationElement keyValue)
     {
-      _KeyValueConfigurationCollection.Add(keyValue == null ? default(System.Configuration.KeyValueConfigurationElement) : ((Wrapperator.Wrappers.Configuration.KeyValueConfigurationElementWrapper)keyValue)._KeyValueConfigurationElement);
+      _KeyValueConfigurationCollection.Add(keyValue == null ? default(System.Configuration.KeyValueConfigurationElement) : keyValue._KeyValueConfigurationElement);
     }
     
     /// <summary>Adds a <see cref="T:System.Configuration.KeyValueConfigurationElement" /> object to the collection based on the supplied parameters.</summary>

@@ -236,14 +236,14 @@ namespace Wrapperator.Wrappers.Xml
     /// <param name="w">The XmlWriter to which you want to save. </param>
     public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _XmlDocumentFragment.WriteTo(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w)._XmlWriter);
+      _XmlDocumentFragment.WriteTo(w == null ? default(System.Xml.XmlWriter) : w._XmlWriter);
     }
     
     /// <summary>Saves all the children of the node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
     public void WriteContentTo(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _XmlDocumentFragment.WriteContentTo(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w)._XmlWriter);
+      _XmlDocumentFragment.WriteContentTo(w == null ? default(System.Xml.XmlWriter) : w._XmlWriter);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XPath.XPathNavigator" /> for navigating this object.</summary>

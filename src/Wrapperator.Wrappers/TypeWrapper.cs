@@ -974,7 +974,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, Wrapperator.Interfaces.IType returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _Type.GetProperty(name, bindingAttr, binder, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, types, modifiers);
+      return _Type.GetProperty(name, bindingAttr, binder, returnType == null ? default(System.Type) : returnType._Type, types, modifiers);
     }
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types and modifiers.</summary>
@@ -992,7 +992,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType, System.Type[] types, System.Reflection.ParameterModifier[] modifiers)
     {
-      return _Type.GetProperty(name, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, types, modifiers);
+      return _Type.GetProperty(name, returnType == null ? default(System.Type) : returnType._Type, types, modifiers);
     }
     
     /// <summary>Searches for the specified property, using the specified binding constraints.</summary>
@@ -1022,7 +1022,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType, System.Type[] types)
     {
-      return _Type.GetProperty(name, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type, types);
+      return _Type.GetProperty(name, returnType == null ? default(System.Type) : returnType._Type, types);
     }
     
     /// <summary>Searches for the specified public property whose parameters match the specified argument types.</summary>
@@ -1051,7 +1051,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.PropertyInfo GetProperty(string name, Wrapperator.Interfaces.IType returnType)
     {
-      return _Type.GetProperty(name, returnType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)returnType)._Type);
+      return _Type.GetProperty(name, returnType == null ? default(System.Type) : returnType._Type);
     }
     
     /// <summary>Searches for the public property with the specified name.</summary>
@@ -1303,7 +1303,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public bool IsSubclassOf(Wrapperator.Interfaces.IType c)
     {
-      return _Type.IsSubclassOf(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c)._Type);
+      return _Type.IsSubclassOf(c == null ? default(System.Type) : c._Type);
     }
     
     /// <summary>Determines whether the specified object is an instance of the current <see cref="T:System.Type" />.</summary>
@@ -1321,7 +1321,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public bool IsAssignableFrom(Wrapperator.Interfaces.IType c)
     {
-      return _Type.IsAssignableFrom(c == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)c)._Type);
+      return _Type.IsAssignableFrom(c == null ? default(System.Type) : c._Type);
     }
     
     /// <summary>Determines whether two COM types have the same identity and are eligible for type equivalence.</summary>
@@ -1329,7 +1329,7 @@ namespace Wrapperator.Wrappers
     /// <param name="other">The COM type that is tested for equivalence with the current type.</param>
     public bool IsEquivalentTo(Wrapperator.Interfaces.IType other)
     {
-      return _Type.IsEquivalentTo(other == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)other)._Type);
+      return _Type.IsEquivalentTo(other == null ? default(System.Type) : other._Type);
     }
     
     /// <summary>Returns an interface mapping for the specified interface type.</summary>
@@ -1344,7 +1344,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.InterfaceMapping GetInterfaceMap(Wrapperator.Interfaces.IType interfaceType)
     {
-      return _Type.GetInterfaceMap(interfaceType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)interfaceType)._Type);
+      return _Type.GetInterfaceMap(interfaceType == null ? default(System.Type) : interfaceType._Type);
     }
     
     /// <summary>When overridden in a derived class, returns an array of all custom attributes applied to this member. </summary>
@@ -1366,7 +1366,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.InvalidOperationException">This member belongs to a type that is loaded into the reflection-only context. See How to: Load Assemblies into the Reflection-Only Context.</exception>
     public object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _Type.GetCustomAttributes(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType)._Type, inherit);
+      return _Type.GetCustomAttributes(attributeType == null ? default(System.Type) : attributeType._Type, inherit);
     }
     
     /// <summary>When overridden in a derived class, indicates whether one or more attributes of the specified type or of its derived types is applied to this member.</summary>
@@ -1375,7 +1375,7 @@ namespace Wrapperator.Wrappers
     /// <param name="inherit">true to search this member's inheritance chain to find the attributes; otherwise, false. This parameter is ignored for properties and events; see Remarks.</param>
     public bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _Type.IsDefined(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType)._Type, inherit);
+      return _Type.IsDefined(attributeType == null ? default(System.Type) : attributeType._Type, inherit);
     }
     
     /// <summary>Returns a list of <see cref="T:System.Reflection.CustomAttributeData" /> objects representing data about the attributes that have been applied to the target member.</summary>

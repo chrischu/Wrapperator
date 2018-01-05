@@ -24,11 +24,11 @@ namespace Wrapperator.Wrappers.Configuration
       _ConfigurationSection = configurationSection;
     }
     
-    public Wrapperator.Interfaces.Configuration.ISectionInformation SectionInformation
+    public System.Configuration.SectionInformation SectionInformation
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(_ConfigurationSection.SectionInformation);
+        return _ConfigurationSection.SectionInformation;
       }
     }
     

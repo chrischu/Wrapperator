@@ -84,7 +84,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Security.SecurityException">The <see cref="T:System.Xml.XmlReader" /> does not have sufficient permissions to access the location of the XML data.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)input)._Stream));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : input._Stream));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance with the specified stream and <see cref="T:System.Xml.XmlReaderSettings" /> object.</summary>
@@ -94,7 +94,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input, System.Xml.XmlReaderSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)input)._Stream, settings));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : input._Stream, settings));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified stream, base URI, and <see cref="T:System.Xml.XmlReaderSettings" /> object.</summary>
@@ -105,7 +105,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input, System.Xml.XmlReaderSettings settings, string baseUri)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)input)._Stream, settings, baseUri));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : input._Stream, settings, baseUri));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified stream, <see cref="T:System.Xml.XmlReaderSettings" />, and <see cref="T:System.Xml.XmlParserContext" /> objects.</summary>
@@ -116,7 +116,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.IStream input, System.Xml.XmlReaderSettings settings, System.Xml.XmlParserContext inputContext)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)input)._Stream, settings, inputContext));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.Stream) : input._Stream, settings, inputContext));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance with the specified <see cref="T:System.IO.TextReader" />.</summary>
@@ -125,7 +125,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)input)._TextReader));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : input._TextReader));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified <see cref="T:System.IO.TextReader" /> and <see cref="T:System.Xml.XmlReaderSettings" /> objects.</summary>
@@ -135,7 +135,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input, System.Xml.XmlReaderSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)input)._TextReader, settings));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : input._TextReader, settings));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified <see cref="T:System.IO.TextReader" />, <see cref="T:System.Xml.XmlReaderSettings" />, and base URI.</summary>
@@ -146,7 +146,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="input" /> value is null.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input, System.Xml.XmlReaderSettings settings, string baseUri)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)input)._TextReader, settings, baseUri));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : input._TextReader, settings, baseUri));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance using the specified <see cref="T:System.IO.TextReader" />, <see cref="T:System.Xml.XmlReaderSettings" />, and <see cref="T:System.Xml.XmlParserContext" /> objects.</summary>
@@ -158,7 +158,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.ArgumentException">The <see cref="P:System.Xml.XmlReaderSettings.NameTable" />  and <see cref="P:System.Xml.XmlParserContext.NameTable" /> properties both contain values. (Only one of these NameTable properties can be set and used).</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.IO.ITextReader input, System.Xml.XmlReaderSettings settings, System.Xml.XmlParserContext inputContext)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)input)._TextReader, settings, inputContext));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(input == null ? default(System.IO.TextReader) : input._TextReader, settings, inputContext));
     }
     
     /// <summary>Creates a new <see cref="T:System.Xml.XmlReader" /> instance with the specified <see cref="T:System.Xml.XmlReader" /> and <see cref="T:System.Xml.XmlReaderSettings" /> objects.</summary>
@@ -169,7 +169,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">If the <see cref="T:System.Xml.XmlReaderSettings" /> object specifies a conformance level that is not consistent with conformance level of the underlying reader.-or-The underlying <see cref="T:System.Xml.XmlReader" /> is in an <see cref="F:System.Xml.ReadState.Error" /> or <see cref="F:System.Xml.ReadState.Closed" /> state.</exception>
     public Wrapperator.Interfaces.Xml.IXmlReader Create(Wrapperator.Interfaces.Xml.IXmlReader reader, System.Xml.XmlReaderSettings settings)
     {
-      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader, settings));
+      return new Wrapperator.Wrappers.Xml.XmlReaderWrapper(System.Xml.XmlReader.Create(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader, settings));
     }
   }
 }

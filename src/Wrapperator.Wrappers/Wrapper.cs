@@ -279,11 +279,6 @@ namespace Wrapperator.Wrappers
       return new Wrapperator.Wrappers.Configuration.ElementInformationWrapper(elementInformation);
     }
     
-    public static Wrapperator.Interfaces.Configuration.ISectionInformation Wrap(System.Configuration.SectionInformation sectionInformation)
-    {
-      return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(sectionInformation);
-    }
-    
     public static Wrapperator.Interfaces.Configuration.IPropertyInformation Wrap(System.Configuration.PropertyInformation propertyInformation)
     {
       return new Wrapperator.Wrappers.Configuration.PropertyInformationWrapper(propertyInformation);

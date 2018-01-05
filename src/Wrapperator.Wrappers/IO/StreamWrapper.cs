@@ -110,7 +110,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
     public System.Threading.Tasks.Task CopyToAsync(Wrapperator.Interfaces.IO.IStream destination)
     {
-      return _Stream.CopyToAsync(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination)._Stream);
+      return _Stream.CopyToAsync(destination == null ? default(System.IO.Stream) : destination._Stream);
     }
     
     /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
@@ -125,7 +125,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
     public System.Threading.Tasks.Task CopyToAsync(Wrapperator.Interfaces.IO.IStream destination, int bufferSize)
     {
-      return _Stream.CopyToAsync(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination)._Stream, bufferSize);
+      return _Stream.CopyToAsync(destination == null ? default(System.IO.Stream) : destination._Stream, bufferSize);
     }
     
     /// <summary>Asynchronously reads the bytes from the current stream and writes them to another stream, using a specified buffer size and cancellation token.</summary>
@@ -141,7 +141,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.NotSupportedException">The current stream does not support reading, or the destination stream does not support writing.</exception>
     public System.Threading.Tasks.Task CopyToAsync(Wrapperator.Interfaces.IO.IStream destination, int bufferSize, System.Threading.CancellationToken cancellationToken)
     {
-      return _Stream.CopyToAsync(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination)._Stream, bufferSize, cancellationToken);
+      return _Stream.CopyToAsync(destination == null ? default(System.IO.Stream) : destination._Stream, bufferSize, cancellationToken);
     }
     
     /// <summary>Reads the bytes from the current stream and writes them to another stream.</summary>
@@ -153,7 +153,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
     public void CopyTo(Wrapperator.Interfaces.IO.IStream destination)
     {
-      _Stream.CopyTo(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination)._Stream);
+      _Stream.CopyTo(destination == null ? default(System.IO.Stream) : destination._Stream);
     }
     
     /// <summary>Reads the bytes from the current stream and writes them to another stream, using a specified buffer size.</summary>
@@ -168,7 +168,7 @@ namespace Wrapperator.Wrappers.IO
     /// <exception cref="T:System.IO.IOException">An I/O error occurred.</exception>
     public void CopyTo(Wrapperator.Interfaces.IO.IStream destination, int bufferSize)
     {
-      _Stream.CopyTo(destination == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)destination)._Stream, bufferSize);
+      _Stream.CopyTo(destination == null ? default(System.IO.Stream) : destination._Stream, bufferSize);
     }
     
     /// <summary>Closes the current stream and releases any resources (such as sockets and file handles) associated with the current stream. Instead of calling this method, ensure that the stream is properly disposed.</summary>
@@ -440,7 +440,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _Stream.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
+      return _Stream.CreateObjRef(requestedType == null ? default(System.Type) : requestedType._Type);
     }
     
     public void Dispose()

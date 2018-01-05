@@ -611,7 +611,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _TextWriter.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
+      return _TextWriter.CreateObjRef(requestedType == null ? default(System.Type) : requestedType._Type);
     }
     
     public void Dispose()

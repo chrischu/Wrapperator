@@ -510,7 +510,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public void SetIn(Wrapperator.Interfaces.IO.ITextReader newIn)
     {
-      System.Console.SetIn(newIn == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)newIn)._TextReader);
+      System.Console.SetIn(newIn == null ? default(System.IO.TextReader) : newIn._TextReader);
     }
     
     /// <summary>Sets the <see cref="P:System.Console.Out" /> property to the specified <see cref="T:System.IO.TextWriter" /> object.</summary>
@@ -521,7 +521,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public void SetOut(Wrapperator.Interfaces.IO.ITextWriter newOut)
     {
-      System.Console.SetOut(newOut == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)newOut)._TextWriter);
+      System.Console.SetOut(newOut == null ? default(System.IO.TextWriter) : newOut._TextWriter);
     }
     
     /// <summary>Sets the <see cref="P:System.Console.Error" /> property to the specified <see cref="T:System.IO.TextWriter" /> object.</summary>
@@ -532,7 +532,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public void SetError(Wrapperator.Interfaces.IO.ITextWriter newError)
     {
-      System.Console.SetError(newError == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)newError)._TextWriter);
+      System.Console.SetError(newError == null ? default(System.IO.TextWriter) : newError._TextWriter);
     }
     
     /// <summary>Reads the next character from the standard input stream.</summary>

@@ -68,7 +68,6 @@
     <Compile Include="Configuration\PropertyInformationCollectionWrapper.cs" />
     <Compile Include="Configuration\PropertyInformationWrapper.cs" />
     <Compile Include="Configuration\ProtectedConfigurationProviderWrapper.cs" />
-    <Compile Include="Configuration\SectionInformationWrapper.cs" />
     <Compile Include="ConsoleStaticWrapper.cs" />
     <Compile Include="DateTimeStaticWrapper.cs" />
     <Compile Include="DateTimeWrapper.cs" />

@@ -515,7 +515,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.NullReferenceException">The reader is positioned on a node type that does not translate to a valid DOM node (for example, EndElement or EndEntity). </exception>
     public System.Xml.XmlNode ReadNode(Wrapperator.Interfaces.Xml.IXmlReader reader)
     {
-      return _XmlDocument.ReadNode(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader);
+      return _XmlDocument.ReadNode(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader);
     }
     
     /// <summary>Loads the XML document from the specified URL.</summary>
@@ -544,7 +544,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, a <see cref="T:System.IO.FileNotFoundException" /> is raised. </exception>
     public void Load(Wrapperator.Interfaces.IO.IStream inStream)
     {
-      _XmlDocument.Load(inStream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)inStream)._Stream);
+      _XmlDocument.Load(inStream == null ? default(System.IO.Stream) : inStream._Stream);
     }
     
     /// <summary>Loads the XML document from the specified <see cref="T:System.IO.TextReader" />.</summary>
@@ -552,7 +552,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
     public void Load(Wrapperator.Interfaces.IO.ITextReader txtReader)
     {
-      _XmlDocument.Load(txtReader == null ? default(System.IO.TextReader) : ((Wrapperator.Wrappers.IO.TextReaderWrapper)txtReader)._TextReader);
+      _XmlDocument.Load(txtReader == null ? default(System.IO.TextReader) : txtReader._TextReader);
     }
     
     /// <summary>Loads the XML document from the specified <see cref="T:System.Xml.XmlReader" />.</summary>
@@ -560,7 +560,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">There is a load or parse error in the XML. In this case, the document remains empty. </exception>
     public void Load(Wrapperator.Interfaces.Xml.IXmlReader reader)
     {
-      _XmlDocument.Load(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader);
+      _XmlDocument.Load(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader);
     }
     
     /// <summary>Loads the XML document from the specified string.</summary>
@@ -584,7 +584,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
     public void Save(Wrapperator.Interfaces.IO.IStream outStream)
     {
-      _XmlDocument.Save(outStream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)outStream)._Stream);
+      _XmlDocument.Save(outStream == null ? default(System.IO.Stream) : outStream._Stream);
     }
     
     /// <summary>Saves the XML document to the specified <see cref="T:System.IO.TextWriter" />.</summary>
@@ -592,7 +592,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
     public void Save(Wrapperator.Interfaces.IO.ITextWriter writer)
     {
-      _XmlDocument.Save(writer == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)writer)._TextWriter);
+      _XmlDocument.Save(writer == null ? default(System.IO.TextWriter) : writer._TextWriter);
     }
     
     /// <summary>Saves the XML document to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
@@ -600,21 +600,21 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.Xml.XmlException">The operation would not result in a well formed XML document (for example, no document element or duplicate XML declarations). </exception>
     public void Save(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _XmlDocument.Save(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w)._XmlWriter);
+      _XmlDocument.Save(w == null ? default(System.Xml.XmlWriter) : w._XmlWriter);
     }
     
     /// <summary>Saves the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="w">The XmlWriter to which you want to save. </param>
     public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter w)
     {
-      _XmlDocument.WriteTo(w == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)w)._XmlWriter);
+      _XmlDocument.WriteTo(w == null ? default(System.Xml.XmlWriter) : w._XmlWriter);
     }
     
     /// <summary>Saves all the children of the XmlDocument node to the specified <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="xw">The XmlWriter to which you want to save. </param>
     public void WriteContentTo(Wrapperator.Interfaces.Xml.IXmlWriter xw)
     {
-      _XmlDocument.WriteContentTo(xw == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)xw)._XmlWriter);
+      _XmlDocument.WriteContentTo(xw == null ? default(System.Xml.XmlWriter) : xw._XmlWriter);
     }
     
     /// <summary>Validates the <see cref="T:System.Xml.XmlDocument" /> against the XML Schema Definition Language (XSD) schemas contained in the <see cref="P:System.Xml.XmlDocument.Schemas" /> property.</summary>

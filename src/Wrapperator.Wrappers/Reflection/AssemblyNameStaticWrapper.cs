@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <param name="definition">The assembly name that is compared to the reference assembly.</param>
     public bool ReferenceMatchesDefinition(Wrapperator.Interfaces.Reflection.IAssemblyName reference, Wrapperator.Interfaces.Reflection.IAssemblyName definition)
     {
-      return System.Reflection.AssemblyName.ReferenceMatchesDefinition(reference == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)reference)._AssemblyName, definition == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)definition)._AssemblyName);
+      return System.Reflection.AssemblyName.ReferenceMatchesDefinition(reference == null ? default(System.Reflection.AssemblyName) : reference._AssemblyName, definition == null ? default(System.Reflection.AssemblyName) : definition._AssemblyName);
     }
   }
 }

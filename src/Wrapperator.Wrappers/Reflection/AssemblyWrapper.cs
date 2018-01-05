@@ -221,7 +221,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.NotImplementedException">Resource length is greater than <see cref="F:System.Int64.MaxValue" />.</exception>
     public Wrapperator.Interfaces.IO.IStream GetManifestResourceStream(Wrapperator.Interfaces.IType type, string name)
     {
-      return new Wrapperator.Wrappers.IO.StreamWrapper(_Assembly.GetManifestResourceStream(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type, name));
+      return new Wrapperator.Wrappers.IO.StreamWrapper(_Assembly.GetManifestResourceStream(type == null ? default(System.Type) : type._Type, name));
     }
     
     /// <summary>Loads the specified manifest resource from this assembly.</summary>
@@ -264,7 +264,7 @@ namespace Wrapperator.Wrappers.Reflection
     /// <exception cref="T:System.BadImageFormatException">The satellite assembly is not a valid assembly. </exception>
     public Wrapperator.Interfaces.Reflection.IAssembly GetSatelliteAssembly(System.Globalization.CultureInfo culture, Wrapperator.Interfaces.IVersion version)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_Assembly.GetSatelliteAssembly(culture, version == null ? default(System.Version) : ((Wrapperator.Wrappers.VersionWrapper)version)._Version));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_Assembly.GetSatelliteAssembly(culture, version == null ? default(System.Version) : version._Version));
     }
     
     /// <summary>Gets serialization information with all of the data needed to reinstantiate this assembly.</summary>
@@ -295,7 +295,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="attributeType" /> is not a runtime type. </exception>
     public object[] GetCustomAttributes(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _Assembly.GetCustomAttributes(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType)._Type, inherit);
+      return _Assembly.GetCustomAttributes(attributeType == null ? default(System.Type) : attributeType._Type, inherit);
     }
     
     /// <summary>Indicates whether or not a specified attribute has been applied to the assembly.</summary>
@@ -308,7 +308,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="attributeType" /> uses an invalid type.</exception>
     public bool IsDefined(Wrapperator.Interfaces.IType attributeType, bool inherit)
     {
-      return _Assembly.IsDefined(attributeType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)attributeType)._Type, inherit);
+      return _Assembly.IsDefined(attributeType == null ? default(System.Type) : attributeType._Type, inherit);
     }
     
     /// <summary>Returns information about the attributes that have been applied to the current <see cref="T:System.Reflection.Assembly" />, expressed as <see cref="T:System.Reflection.CustomAttributeData" /> objects.</summary>

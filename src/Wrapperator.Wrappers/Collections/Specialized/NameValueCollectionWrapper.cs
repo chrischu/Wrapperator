@@ -75,7 +75,7 @@ namespace Wrapperator.Wrappers.Collections.Specialized
     ///  <paramref name="c" /> is null.</exception>
     public void Add(Wrapperator.Interfaces.Collections.Specialized.INameValueCollection c)
     {
-      _NameValueCollection.Add(c == null ? default(System.Collections.Specialized.NameValueCollection) : ((Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper)c)._NameValueCollection);
+      _NameValueCollection.Add(c == null ? default(System.Collections.Specialized.NameValueCollection) : c._NameValueCollection);
     }
     
     /// <summary>Invalidates the cached arrays and removes all entries from the <see cref="T:System.Collections.Specialized.NameValueCollection" />.</summary>

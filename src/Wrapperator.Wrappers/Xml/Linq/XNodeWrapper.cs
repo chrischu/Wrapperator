@@ -118,7 +118,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> Ancestors(Wrapperator.Interfaces.Xml.Linq.IXName name)
     {
-      return _XNode.Ancestors(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name)._XName);
+      return _XNode.Ancestors(name == null ? default(System.Xml.Linq.XName) : name._XName);
     }
     
     /// <summary>Creates an <see cref="T:System.Xml.XmlReader" /> for this node.</summary>
@@ -163,7 +163,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsAfterSelf(Wrapperator.Interfaces.Xml.Linq.IXName name)
     {
-      return _XNode.ElementsAfterSelf(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name)._XName);
+      return _XNode.ElementsAfterSelf(name == null ? default(System.Xml.Linq.XName) : name._XName);
     }
     
     /// <summary>Returns a collection of the sibling elements before this node, in document order.</summary>
@@ -178,7 +178,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="name">The <see cref="T:System.Xml.Linq.XName" /> to match.</param>
     public System.Collections.Generic.IEnumerable<System.Xml.Linq.XElement> ElementsBeforeSelf(Wrapperator.Interfaces.Xml.Linq.IXName name)
     {
-      return _XNode.ElementsBeforeSelf(name == null ? default(System.Xml.Linq.XName) : ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)name)._XName);
+      return _XNode.ElementsBeforeSelf(name == null ? default(System.Xml.Linq.XName) : name._XName);
     }
     
     /// <summary>Determines if the current node appears after a specified node in terms of document order.</summary>
@@ -186,7 +186,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
     public bool IsAfter(Wrapperator.Interfaces.Xml.Linq.IXNode node)
     {
-      return _XNode.IsAfter(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node)._XNode);
+      return _XNode.IsAfter(node == null ? default(System.Xml.Linq.XNode) : node._XNode);
     }
     
     /// <summary>Determines if the current node appears before a specified node in terms of document order.</summary>
@@ -194,7 +194,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="node">The <see cref="T:System.Xml.Linq.XNode" /> to compare for document order.</param>
     public bool IsBefore(Wrapperator.Interfaces.Xml.Linq.IXNode node)
     {
-      return _XNode.IsBefore(node == null ? default(System.Xml.Linq.XNode) : ((Wrapperator.Wrappers.Xml.Linq.XNodeWrapper)node)._XNode);
+      return _XNode.IsBefore(node == null ? default(System.Xml.Linq.XNode) : node._XNode);
     }
     
     /// <summary>Removes this node from its parent.</summary>
@@ -223,7 +223,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <filterpriority>2</filterpriority>
     public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      _XNode.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer)._XmlWriter);
+      _XNode.WriteTo(writer == null ? default(System.Xml.XmlWriter) : writer._XmlWriter);
     }
     
     /// <summary>Adds an object to the annotation list of this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -238,7 +238,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of the annotation to retrieve.</param>
     public new object Annotation(Wrapperator.Interfaces.IType type)
     {
-      return _XNode.Annotation(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
+      return _XNode.Annotation(type == null ? default(System.Type) : type._Type);
     }
     
     /// <summary>Get the first annotation object of the specified type from this <see cref="T:System.Xml.Linq.XObject" />. </summary>
@@ -255,7 +255,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of the annotations to retrieve.</param>
     public new System.Collections.Generic.IEnumerable<object> Annotations(Wrapperator.Interfaces.IType type)
     {
-      return _XNode.Annotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
+      return _XNode.Annotations(type == null ? default(System.Type) : type._Type);
     }
     
     /// <summary>Gets a collection of annotations of the specified type for this <see cref="T:System.Xml.Linq.XObject" />.</summary>
@@ -271,7 +271,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="type">The <see cref="T:System.Type" /> of annotations to remove.</param>
     public new void RemoveAnnotations(Wrapperator.Interfaces.IType type)
     {
-      _XNode.RemoveAnnotations(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
+      _XNode.RemoveAnnotations(type == null ? default(System.Type) : type._Type);
     }
     
     /// <summary>Removes the annotations of the specified type from this <see cref="T:System.Xml.Linq.XObject" />.</summary>

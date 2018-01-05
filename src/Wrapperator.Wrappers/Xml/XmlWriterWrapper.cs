@@ -452,7 +452,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteValue(Wrapperator.Interfaces.IDateTime value)
     {
-      _XmlWriter.WriteValue(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value)._DateTime);
+      _XmlWriter.WriteValue(value == null ? default(System.DateTime) : value._DateTime);
     }
     
     /// <summary>Writes a <see cref="T:System.DateTimeOffset" /> value.</summary>
@@ -517,7 +517,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteAttributes(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      _XmlWriter.WriteAttributes(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader, defattr);
+      _XmlWriter.WriteAttributes(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader, defattr);
     }
     
     /// <summary>When overridden in a derived class, copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
@@ -530,7 +530,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> method was called before a previous asynchronous operation finished. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “An asynchronous operation is already in progress.”</exception>
     public void WriteNode(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      _XmlWriter.WriteNode(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader, defattr);
+      _XmlWriter.WriteNode(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader, defattr);
     }
     
     /// <summary>Copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>
@@ -852,7 +852,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteAttributesAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      return _XmlWriter.WriteAttributesAsync(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader, defattr);
+      return _XmlWriter.WriteAttributesAsync(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader, defattr);
     }
     
     /// <summary>Asynchronously copies everything from the reader to the writer and moves the reader to the start of the next sibling.</summary>
@@ -863,7 +863,7 @@ namespace Wrapperator.Wrappers.Xml
     /// <exception cref="T:System.InvalidOperationException">An <see cref="T:System.Xml.XmlWriter" /> asynchronous method was called without setting the <see cref="P:System.Xml.XmlWriterSettings.Async" /> flag to true. In this case, <see cref="T:System.InvalidOperationException" /> is thrown with the message “Set XmlWriterSettings.Async to true if you want to use Async Methods.”</exception>
     public System.Threading.Tasks.Task WriteNodeAsync(Wrapperator.Interfaces.Xml.IXmlReader reader, bool defattr)
     {
-      return _XmlWriter.WriteNodeAsync(reader == null ? default(System.Xml.XmlReader) : ((Wrapperator.Wrappers.Xml.XmlReaderWrapper)reader)._XmlReader, defattr);
+      return _XmlWriter.WriteNodeAsync(reader == null ? default(System.Xml.XmlReader) : reader._XmlReader, defattr);
     }
     
     /// <summary>Asynchronously copies everything from the <see cref="T:System.Xml.XPath.XPathNavigator" /> object to the writer. The position of the <see cref="T:System.Xml.XPath.XPathNavigator" /> remains unchanged.</summary>

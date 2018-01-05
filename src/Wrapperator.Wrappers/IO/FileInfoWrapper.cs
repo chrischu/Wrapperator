@@ -101,7 +101,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _FileInfo.CreationTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _FileInfo.CreationTime = value._DateTime;
       }
     }
     
@@ -113,7 +113,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _FileInfo.CreationTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _FileInfo.CreationTimeUtc = value._DateTime;
       }
     }
     
@@ -125,7 +125,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _FileInfo.LastAccessTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _FileInfo.LastAccessTime = value._DateTime;
       }
     }
     
@@ -137,7 +137,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _FileInfo.LastAccessTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _FileInfo.LastAccessTimeUtc = value._DateTime;
       }
     }
     
@@ -149,7 +149,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _FileInfo.LastWriteTime = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _FileInfo.LastWriteTime = value._DateTime;
       }
     }
     
@@ -161,7 +161,7 @@ namespace Wrapperator.Wrappers.IO
       }
       set
       {
-        _FileInfo.LastWriteTimeUtc = ((Wrapperator.Wrappers.DateTimeWrapper)(value))._DateTime;
+        _FileInfo.LastWriteTimeUtc = value._DateTime;
       }
     }
     
@@ -494,7 +494,7 @@ namespace Wrapperator.Wrappers.IO
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _FileInfo.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
+      return _FileInfo.CreateObjRef(requestedType == null ? default(System.Type) : requestedType._Type);
     }
   }
 }

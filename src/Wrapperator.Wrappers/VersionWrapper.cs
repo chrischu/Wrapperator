@@ -98,7 +98,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public int CompareTo(Wrapperator.Interfaces.IVersion value)
     {
-      return _Version.CompareTo(value == null ? default(System.Version) : ((Wrapperator.Wrappers.VersionWrapper)value)._Version);
+      return _Version.CompareTo(value == null ? default(System.Version) : value._Version);
     }
   }
 }

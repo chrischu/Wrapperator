@@ -186,7 +186,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>1</filterpriority>
     public Wrapperator.Interfaces.Diagnostics.IProcess Start(Wrapperator.Interfaces.Diagnostics.IProcessStartInfo startInfo)
     {
-      return new Wrapperator.Wrappers.Diagnostics.ProcessWrapper(System.Diagnostics.Process.Start(startInfo == null ? default(System.Diagnostics.ProcessStartInfo) : ((Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper)startInfo)._ProcessStartInfo));
+      return new Wrapperator.Wrappers.Diagnostics.ProcessWrapper(System.Diagnostics.Process.Start(startInfo == null ? default(System.Diagnostics.ProcessStartInfo) : startInfo._ProcessStartInfo));
     }
   }
 }

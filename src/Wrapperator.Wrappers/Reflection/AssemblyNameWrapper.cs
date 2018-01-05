@@ -44,7 +44,7 @@ namespace Wrapperator.Wrappers.Reflection
       }
       set
       {
-        _AssemblyName.Version = ((Wrapperator.Wrappers.VersionWrapper)(value))._Version;
+        _AssemblyName.Version = value._Version;
       }
     }
     

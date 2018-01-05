@@ -59,7 +59,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public void Unload(Wrapperator.Interfaces.IAppDomain domain)
     {
-      System.AppDomain.Unload(domain == null ? default(System.AppDomain) : ((Wrapperator.Wrappers.AppDomainWrapper)domain)._AppDomain);
+      System.AppDomain.Unload(domain == null ? default(System.AppDomain) : domain._AppDomain);
     }
     
     /// <summary>Creates a new application domain with the given name using the supplied evidence.</summary>

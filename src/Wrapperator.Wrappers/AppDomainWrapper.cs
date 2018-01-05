@@ -180,7 +180,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access)
     {
-      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : name._AssemblyName, access);
     }
     
     /// <summary>Defines a dynamic assembly with the specified name, access mode, and custom attributes.</summary>
@@ -194,7 +194,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes)
     {
-      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, assemblyAttributes);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : name._AssemblyName, access, assemblyAttributes);
     }
     
     /// <summary>Defines a dynamic assembly with the specified name, access mode, and custom attributes, and using the specified source for its security context.</summary>
@@ -210,7 +210,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.ArgumentOutOfRangeException">The value of <paramref name="securityContextSource" /> was not one of the enumeration values.</exception>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes, System.Security.SecurityContextSource securityContextSource)
     {
-      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, assemblyAttributes, securityContextSource);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : name._AssemblyName, access, assemblyAttributes, securityContextSource);
     }
     
     /// <summary>Defines a dynamic assembly using the specified name, access mode, and storage directory.</summary>
@@ -225,7 +225,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir)
     {
-      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, dir);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : name._AssemblyName, access, dir);
     }
     
     /// <summary>Defines a dynamic assembly using the specified name, access mode, storage directory, and synchronization option.</summary>
@@ -241,7 +241,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.AppDomainUnloadedException">The operation is attempted on an unloaded application domain. </exception>
     public System.Reflection.Emit.AssemblyBuilder DefineDynamicAssembly(Wrapperator.Interfaces.Reflection.IAssemblyName name, System.Reflection.Emit.AssemblyBuilderAccess access, string dir, bool isSynchronized, System.Collections.Generic.IEnumerable<System.Reflection.Emit.CustomAttributeBuilder> assemblyAttributes)
     {
-      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)name)._AssemblyName, access, dir, isSynchronized, assemblyAttributes);
+      return _AppDomain.DefineDynamicAssembly(name == null ? default(System.Reflection.AssemblyName) : name._AssemblyName, access, dir, isSynchronized, assemblyAttributes);
     }
     
     /// <summary>Returns the assembly display name after policy has been applied.</summary>
@@ -475,7 +475,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_AppDomain.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyRef)._AssemblyName));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(_AppDomain.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : assemblyRef._AssemblyName));
     }
     
     /// <summary>Loads an <see cref="T:System.Reflection.Assembly" /> given its display name.</summary>
@@ -625,7 +625,7 @@ namespace Wrapperator.Wrappers
     /// <exception cref="T:System.MissingMethodException">The specified assembly has no entry point.</exception>
     public int ExecuteAssemblyByName(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyName, string[] args)
     {
-      return _AppDomain.ExecuteAssemblyByName(assemblyName == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyName)._AssemblyName, args);
+      return _AppDomain.ExecuteAssemblyByName(assemblyName == null ? default(System.Reflection.AssemblyName) : assemblyName._AssemblyName, args);
     }
     
     /// <summary>Gets the assemblies that have been loaded into the execution context of this application domain.</summary>
@@ -910,7 +910,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _AppDomain.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
+      return _AppDomain.CreateObjRef(requestedType == null ? default(System.Type) : requestedType._Type);
     }
   }
 }

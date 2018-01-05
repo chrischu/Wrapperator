@@ -237,7 +237,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public int CompareTo(Wrapperator.Interfaces.IDateTime value)
     {
-      return _DateTime.CompareTo(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value)._DateTime);
+      return _DateTime.CompareTo(value == null ? default(System.DateTime) : value._DateTime);
     }
     
     /// <summary>Indicates whether this instance of <see cref="T:System.DateTime" /> is within the daylight saving time range for the current time zone.</summary>
@@ -263,7 +263,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>2</filterpriority>
     public System.TimeSpan Subtract(Wrapperator.Interfaces.IDateTime value)
     {
-      return _DateTime.Subtract(value == null ? default(System.DateTime) : ((Wrapperator.Wrappers.DateTimeWrapper)value)._DateTime);
+      return _DateTime.Subtract(value == null ? default(System.DateTime) : value._DateTime);
     }
     
     /// <summary>Subtracts the specified duration from this instance.</summary>

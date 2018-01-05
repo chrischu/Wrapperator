@@ -94,8 +94,7 @@ namespace Wrapperator.Generators.Members
 
             if (Helper.ShouldParameterTypesGetWrapped && Helper.ShouldTypeBeWrapped(p.ParameterType))
             {
-              var getWrapped =
-                  $"(({Helper.GetFullWrapperName(p.ParameterType, WrapMode.Instance)}){p.Name}).{Helper.GetPropertyName(p.ParameterType)}";
+              var getWrapped = $"{p.Name}.{Helper.GetPropertyName(p.ParameterType)}";
               var nullHandling = $"{p.Name} == null ? default({p.ParameterType.FullName}) : {getWrapped}";
 
               result = new CodeSnippetExpression(nullHandling);
@@ -222,9 +221,7 @@ namespace Wrapperator.Generators.Members
       CodeExpression setValue = new CodePropertySetValueReferenceExpression();
 
       if (Helper.ShouldTypeBeWrapped(propertyInfo.PropertyType))
-        setValue = new CodePropertyReferenceExpression(
-            new CodeCastExpression(Helper.GetFullWrapperName(propertyInfo.PropertyType, WrapMode.Instance), setValue),
-            Helper.GetPropertyName(propertyInfo.PropertyType));
+        setValue = new CodePropertyReferenceExpression(setValue, Helper.GetPropertyName(propertyInfo.PropertyType));
 
       return new CodeStatement[]
              {

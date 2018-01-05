@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <param name="section">The section to be added.</param>
     public void Add(string name, Wrapperator.Interfaces.Configuration.IConfigurationSection section)
     {
-      _ConfigurationSectionCollection.Add(name, section == null ? default(System.Configuration.ConfigurationSection) : ((Wrapperator.Wrappers.Configuration.ConfigurationSectionWrapper)section)._ConfigurationSection);
+      _ConfigurationSectionCollection.Add(name, section == null ? default(System.Configuration.ConfigurationSection) : section._ConfigurationSection);
     }
     
     /// <summary>Clears this <see cref="T:System.Configuration.ConfigurationSectionCollection" /> object.</summary>

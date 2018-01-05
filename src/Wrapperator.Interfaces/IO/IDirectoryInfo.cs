@@ -28,6 +28,11 @@ namespace Wrapperator.Interfaces.IO
       get;
     }
     
+    string FullName
+    {
+      get;
+    }
+    
     Wrapperator.Interfaces.IO.IDirectoryInfo Parent
     {
       get;
@@ -39,11 +44,6 @@ namespace Wrapperator.Interfaces.IO
     }
     
     Wrapperator.Interfaces.IO.IDirectoryInfo Root
-    {
-      get;
-    }
-    
-    string FullName
     {
       get;
     }

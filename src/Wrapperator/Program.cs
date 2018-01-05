@@ -49,7 +49,6 @@ namespace Wrapperator
                   typeof(ConnectionStringsSection),
                   typeof(ContextInformation),
                   typeof(ElementInformation),
-                  typeof(SectionInformation),
                   typeof(PropertyInformationCollection),
                   typeof(PropertyInformation),
                   typeof(ProtectedConfigurationProvider),

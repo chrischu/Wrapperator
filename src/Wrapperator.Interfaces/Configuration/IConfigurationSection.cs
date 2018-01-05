@@ -22,7 +22,7 @@ namespace Wrapperator.Interfaces.Configuration
       get;
     }
     
-    Wrapperator.Interfaces.Configuration.ISectionInformation SectionInformation
+    System.Configuration.SectionInformation SectionInformation
     {
       get;
     }

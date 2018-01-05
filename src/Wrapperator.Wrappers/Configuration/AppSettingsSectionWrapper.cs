@@ -45,11 +45,11 @@ namespace Wrapperator.Wrappers.Configuration
       }
     }
     
-    public new Wrapperator.Interfaces.Configuration.ISectionInformation SectionInformation
+    public new System.Configuration.SectionInformation SectionInformation
     {
       get
       {
-        return new Wrapperator.Wrappers.Configuration.SectionInformationWrapper(_AppSettingsSection.SectionInformation);
+        return _AppSettingsSection.SectionInformation;
       }
     }
   }

@@ -147,7 +147,7 @@ namespace Wrapperator.Wrappers
     /// <filterpriority>1</filterpriority>
     public System.TypeCode GetTypeCode(Wrapperator.Interfaces.IType type)
     {
-      return System.Type.GetTypeCode(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type);
+      return System.Type.GetTypeCode(type == null ? default(System.Type) : type._Type);
     }
     
     /// <summary>Gets the handle for the <see cref="T:System.Type" /> of a specified object.</summary>

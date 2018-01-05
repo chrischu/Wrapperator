@@ -32,7 +32,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
       }
       set
       {
-        _XStreamingElement.Name = ((Wrapperator.Wrappers.Xml.Linq.XNameWrapper)(value))._XName;
+        _XStreamingElement.Name = value._XName;
       }
     }
     
@@ -69,7 +69,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="stream">The stream to output this <see cref="T:System.Xml.Linq.XDocument" /> to.</param>
     public void Save(Wrapperator.Interfaces.IO.IStream stream)
     {
-      _XStreamingElement.Save(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream);
+      _XStreamingElement.Save(stream == null ? default(System.IO.Stream) : stream._Stream);
     }
     
     /// <summary>Outputs this <see cref="T:System.Xml.Linq.XStreamingElement" /> to the specified <see cref="T:System.IO.Stream" />, optionally specifying formatting behavior.</summary>
@@ -77,14 +77,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> object that specifies formatting behavior.</param>
     public void Save(Wrapperator.Interfaces.IO.IStream stream, System.Xml.Linq.SaveOptions options)
     {
-      _XStreamingElement.Save(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream, options);
+      _XStreamingElement.Save(stream == null ? default(System.IO.Stream) : stream._Stream, options);
     }
     
     /// <summary>Serialize this streaming element to a <see cref="T:System.IO.TextWriter" />.</summary>
     /// <param name="textWriter">A <see cref="T:System.IO.TextWriter" /> that the <see cref="T:System.Xml.Linq.XStreamingElement" /> will be written to.</param>
     public void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter)
     {
-      _XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter)._TextWriter);
+      _XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : textWriter._TextWriter);
     }
     
     /// <summary>Serialize this streaming element to a <see cref="T:System.IO.TextWriter" />, optionally disabling formatting.</summary>
@@ -92,14 +92,14 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <param name="options">A <see cref="T:System.Xml.Linq.SaveOptions" /> that specifies formatting behavior.</param>
     public void Save(Wrapperator.Interfaces.IO.ITextWriter textWriter, System.Xml.Linq.SaveOptions options)
     {
-      _XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : ((Wrapperator.Wrappers.IO.TextWriterWrapper)textWriter)._TextWriter, options);
+      _XStreamingElement.Save(textWriter == null ? default(System.IO.TextWriter) : textWriter._TextWriter, options);
     }
     
     /// <summary>Serialize this streaming element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
     /// <param name="writer">A <see cref="T:System.Xml.XmlWriter" /> that the <see cref="T:System.Xml.Linq.XElement" /> will be written to.</param>
     public void Save(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      _XStreamingElement.Save(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer)._XmlWriter);
+      _XStreamingElement.Save(writer == null ? default(System.Xml.XmlWriter) : writer._XmlWriter);
     }
     
     /// <summary>Writes this streaming element to an <see cref="T:System.Xml.XmlWriter" />.</summary>
@@ -107,7 +107,7 @@ namespace Wrapperator.Wrappers.Xml.Linq
     /// <filterpriority>2</filterpriority>
     public void WriteTo(Wrapperator.Interfaces.Xml.IXmlWriter writer)
     {
-      _XStreamingElement.WriteTo(writer == null ? default(System.Xml.XmlWriter) : ((Wrapperator.Wrappers.Xml.XmlWriterWrapper)writer)._XmlWriter);
+      _XStreamingElement.WriteTo(writer == null ? default(System.Xml.XmlWriter) : writer._XmlWriter);
     }
   }
 }

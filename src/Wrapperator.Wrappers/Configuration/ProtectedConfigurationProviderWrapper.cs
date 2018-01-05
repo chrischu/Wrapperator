@@ -64,7 +64,7 @@ namespace Wrapperator.Wrappers.Configuration
     /// <exception cref="T:System.InvalidOperationException">An attempt is made to call <see cref="M:System.Configuration.Provider.ProviderBase.Initialize(System.String,System.Collections.Specialized.NameValueCollection)" /> on a provider after the provider has already been initialized.</exception>
     public void Initialize(string name, Wrapperator.Interfaces.Collections.Specialized.INameValueCollection config)
     {
-      _ProtectedConfigurationProvider.Initialize(name, config == null ? default(System.Collections.Specialized.NameValueCollection) : ((Wrapperator.Wrappers.Collections.Specialized.NameValueCollectionWrapper)config)._NameValueCollection);
+      _ProtectedConfigurationProvider.Initialize(name, config == null ? default(System.Collections.Specialized.NameValueCollection) : config._NameValueCollection);
     }
   }
 }

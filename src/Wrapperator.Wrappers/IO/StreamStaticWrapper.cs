@@ -28,7 +28,7 @@ namespace Wrapperator.Wrappers.IO
     ///  <paramref name="stream" /> is null.</exception>
     public Wrapperator.Interfaces.IO.IStream Synchronized(Wrapperator.Interfaces.IO.IStream stream)
     {
-      return new Wrapperator.Wrappers.IO.StreamWrapper(System.IO.Stream.Synchronized(stream == null ? default(System.IO.Stream) : ((Wrapperator.Wrappers.IO.StreamWrapper)stream)._Stream));
+      return new Wrapperator.Wrappers.IO.StreamWrapper(System.IO.Stream.Synchronized(stream == null ? default(System.IO.Stream) : stream._Stream));
     }
   }
 }

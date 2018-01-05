@@ -36,7 +36,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="type" /> is null. </exception>
     public Wrapperator.Interfaces.Reflection.IAssembly GetAssembly(Wrapperator.Interfaces.IType type)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.GetAssembly(type == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)type)._Type));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.GetAssembly(type == null ? default(System.Type) : type._Type));
     }
     
     /// <summary>Loads an assembly given its file name or path.</summary>
@@ -162,7 +162,7 @@ namespace Wrapperator.Wrappers.Reflection
     ///  <paramref name="assemblyRef" /> is not a valid assembly. -or-Version 2.0 or later of the common language runtime is currently loaded and <paramref name="assemblyRef" /> was compiled with a later version.</exception>
     public Wrapperator.Interfaces.Reflection.IAssembly Load(Wrapperator.Interfaces.Reflection.IAssemblyName assemblyRef)
     {
-      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : ((Wrapperator.Wrappers.Reflection.AssemblyNameWrapper)assemblyRef)._AssemblyName));
+      return new Wrapperator.Wrappers.Reflection.AssemblyWrapper(System.Reflection.Assembly.Load(assemblyRef == null ? default(System.Reflection.AssemblyName) : assemblyRef._AssemblyName));
     }
     
     /// <summary>Loads the assembly with a common object file format (COFF)-based image containing an emitted assembly. The assembly is loaded into the application domain of the caller.</summary>

@@ -277,7 +277,7 @@ namespace Wrapperator.Wrappers.Diagnostics
       }
       set
       {
-        _Process.StartInfo = ((Wrapperator.Wrappers.Diagnostics.ProcessStartInfoWrapper)(value))._ProcessStartInfo;
+        _Process.StartInfo = value._ProcessStartInfo;
       }
     }
     
@@ -539,7 +539,7 @@ namespace Wrapperator.Wrappers.Diagnostics
     /// <filterpriority>2</filterpriority>
     public System.Runtime.Remoting.ObjRef CreateObjRef(Wrapperator.Interfaces.IType requestedType)
     {
-      return _Process.CreateObjRef(requestedType == null ? default(System.Type) : ((Wrapperator.Wrappers.TypeWrapper)requestedType)._Type);
+      return _Process.CreateObjRef(requestedType == null ? default(System.Type) : requestedType._Type);
     }
     
     public void Dispose()
