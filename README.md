@@ -32,7 +32,6 @@ For current change log/work in progress see [Changelog](CHANGELOG.md).
   * ConnectionStringsSection
   * ContextInformation
   * ElementInformation
-  * SectionInformation
   * PropertyInformationCollection
   * PropertyInformation
   * ProtectedConfigurationProvider
