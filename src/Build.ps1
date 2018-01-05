@@ -13,8 +13,6 @@ Param (
   [Parameter()]
   [string] $Configuration = "Release",
   [Parameter()]
-  [bool] $RunFxCopCodeAnalysis = $True,
-  [Parameter()]
   [bool] $RunReSharperCodeInspection = $True,
   [Parameter()]
   [bool] $CreateNuGetPackages = $False,
@@ -73,7 +71,6 @@ function Run() {
     Write-Host "Building '$SolutionFile'"
     Write-Host "Version: $Version"
     Write-Host "Configuration: $Configuration"
-    Write-Host "Run FxCop code analysis: $RunFxCopCodeAnalysis"
     Write-Host "Run ReSharper code inspection: $RunReSharperCodeInspection"
     Write-Host "Build NuGetPackages: $CreateNuGetPackages (with version: $AssemblyInformationalVersion)"
     Write-Host "Push NuGet packages: $PushNuGetPackages (to $TargetNuGetFeed)"
@@ -109,7 +106,7 @@ BuildTask Restore-AssemblyInfos {
 }
 
 BuildTask Build {
-  Build-Solution $SolutionFile $Projects $Configuration $TreatWarningsAsErrors $RunFxCopCodeAnalysis $FxCopResultsDirectory
+  Build-Solution $SolutionFile $Projects $Configuration $TreatWarningsAsErrors $False $FxCopResultsDirectory
 }
 
 BuildTask Run-ReSharperCodeInspection {
