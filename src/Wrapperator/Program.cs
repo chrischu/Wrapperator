@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using Wrapperator.Options;
 
@@ -92,6 +93,7 @@ namespace Wrapperator
                   typeof(XmlSerializer),
                   typeof(XmlWriter),
                   typeof(XmlReader),
+                  typeof(XmlSchema),
                   typeof(Process),
                   typeof(Stopwatch),
                   typeof(Debug),

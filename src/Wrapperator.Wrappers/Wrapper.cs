@@ -220,6 +220,14 @@ namespace Wrapperator.Wrappers
       }
     }
     
+    public static Wrapperator.Interfaces.Xml.Schema.IXmlSchemaStatic XmlSchema
+    {
+      get
+      {
+        return new Wrapperator.Wrappers.Xml.Schema.XmlSchemaStaticWrapper();
+      }
+    }
+    
     public static Wrapperator.Interfaces.Diagnostics.IProcessStatic Process
     {
       get
@@ -452,6 +460,11 @@ namespace Wrapperator.Wrappers
     public static Wrapperator.Interfaces.Xml.IXmlDocumentFragment Wrap(System.Xml.XmlDocumentFragment xmlDocumentFragment)
     {
       return new Wrapperator.Wrappers.Xml.XmlDocumentFragmentWrapper(xmlDocumentFragment);
+    }
+    
+    public static Wrapperator.Interfaces.Xml.Schema.IXmlSchema Wrap(System.Xml.Schema.XmlSchema xmlSchema)
+    {
+      return new Wrapperator.Wrappers.Xml.Schema.XmlSchemaWrapper(xmlSchema);
     }
     
     public static Wrapperator.Interfaces.Configuration.IKeyValueConfigurationCollection Wrap(System.Configuration.KeyValueConfigurationCollection keyValueConfigurationCollection)

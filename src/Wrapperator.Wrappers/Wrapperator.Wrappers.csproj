@@ -131,6 +131,8 @@
     <Compile Include="Xml\Linq\XProcessingInstructionWrapper.cs" />
     <Compile Include="Xml\Linq\XStreamingElementWrapper.cs" />
     <Compile Include="Xml\Linq\XTextWrapper.cs" />
+    <Compile Include="Xml\Schema\XmlSchemaStaticWrapper.cs" />
+    <Compile Include="Xml\Schema\XmlSchemaWrapper.cs" />
     <Compile Include="Xml\Serialization\XmlSerializerStaticWrapper.cs" />
     <Compile Include="Xml\Serialization\XmlSerializerWrapper.cs" />
     <Compile Include="Xml\XmlDocumentFragmentWrapper.cs" />

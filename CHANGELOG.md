@@ -3,9 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v2.0.0...HEAD)
+## [Unreleased](https://github.com/chrischu/Wrapperator/compare/v2.1.0...HEAD)
 
 No changes yet.
+
+## [2.1.0](https://github.com/chrischu/Wrapperator/compare/v2.0.0...v2.1.0) - 2018-01-07
+
+* Added wrapper for System.Xml.Schema.XmlSchema
 
 ## [2.0.0](https://github.com/chrischu/Wrapperator/compare/v1.2.0...v2.0.0) - 2018-01-05
 

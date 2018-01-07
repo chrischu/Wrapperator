@@ -136,6 +136,8 @@
     <Compile Include="Xml\Linq\IXProcessingInstruction.cs" />
     <Compile Include="Xml\Linq\IXStreamingElement.cs" />
     <Compile Include="Xml\Linq\IXText.cs" />
+    <Compile Include="Xml\Schema\IXmlSchema.cs" />
+    <Compile Include="Xml\Schema\IXmlSchemaStatic.cs" />
     <Compile Include="Xml\Serialization\IXmlSerializer.cs" />
     <Compile Include="Xml\Serialization\IXmlSerializerStatic.cs" />
   </ItemGroup>
